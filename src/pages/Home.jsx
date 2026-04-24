@@ -26,7 +26,8 @@ const Home = ({ onNavigate }) => {
         <span className="ee-label">Jump into</span>
 
         <div className="ee-home-grid">
-          <button className="ee-home-card primary" onClick={() => onNavigate("cbt")}>
+          {/* CBT */}
+          <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
             <span className="home-card-icon">🧪</span>
             <div>
               <div className="home-card-title">CBT Mode</div>
@@ -34,12 +35,14 @@ const Home = ({ onNavigate }) => {
             </div>
           </button>
 
-          <button className="ee-home-card" onClick={() => onNavigate("study")}>
+          {/* Study */}
+          <button className="ee-home-card" onClick={() => onNavigate("subjectSelect")}>
             <span className="home-card-icon">📚</span>
             <div className="home-card-title">Study Mode</div>
             <div className="home-card-sub">Practice by topic</div>
           </button>
 
+          {/* Weak */}
           <button className="ee-home-card" onClick={() => onNavigate("weak")}>
             <span className="home-card-icon">🔥</span>
             <div className="home-card-title">Weak Areas</div>

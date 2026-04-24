@@ -12,6 +12,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "According to the writer, the exciting thing about Spaceship Earth is that it",
         options: [
@@ -26,6 +27,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The absence of an instruction manual in Spaceship Earth has",
         options: [
@@ -40,6 +42,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "From the passage, it can be deduced that man",
         options: [
@@ -54,6 +57,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The writer's mood in the passage is that of",
         options: [
@@ -77,6 +81,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The expression 'stress is an issue everybody can relate to experimentally' means that",
         options: [
@@ -91,6 +96,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Which of the following is true according to the passage?",
         options: [
@@ -105,6 +111,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "According to the passage, the major step in controlling stress is",
         options: [
@@ -119,6 +126,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The experts feel one can control one's stress because",
         options: [
@@ -133,6 +141,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "From the passage, it can be deduced that stress is",
         options: [
@@ -156,6 +165,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "According to the writer, corruption is triggered off by",
         options: [
@@ -170,6 +180,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "From the passage, one of the consequences of corruption is that",
         options: [
@@ -184,6 +195,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Who, according to the writer, should prevent corruption?",
         options: [
@@ -198,6 +210,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Which of the following is an indication of ethical standard of governance?",
         options: [
@@ -212,6 +225,7 @@ const jamb2010 = [
       {
         topic: "Comprehension",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The essence of fighting corruption, according to the passage, is to",
         options: [
@@ -235,6 +249,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Drought is a word that invokes strong emotions. This is not surprising as the ___ is usually accompanied by a number of unpleasant developments.",
         options: ["ideology", "phenomenon", "idea", "component"],
@@ -244,6 +259,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "These developments have ___ for all citizens, starting from the peasant farmers to the state and federal governments.",
         options: ["feedback", "results", "implications", "outcomes"],
@@ -253,6 +269,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "...governments which may be plunged into emergency and crises situations which, if not successfully ___ could result in social unrest.",
         options: ["managed", "examined", "controlled", "studied"],
@@ -262,6 +279,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "The timeliness of the onset of the rains...have become ___ of considerable anxiety to all people.",
         options: ["objects", "subjects", "issues", "topics"],
@@ -271,6 +289,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "...periodic reduction in normal ___ of rainfall in the country is not new.",
         options: ["amount", "supply", "size", "flood"],
@@ -280,6 +299,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Since large areas of the country are drought prone, the consequences are ___.",
         options: ["effective", "disastrous", "evident", "inevitable"],
@@ -289,6 +309,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "There are two aspects of coping with drought. One has to do with emergency measures and the other with ___ measures.",
         options: ["routine", "organized", "urgent", "delayed"],
@@ -298,6 +319,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "...there are bound to be other lasting and ___ consequences such as distress, sales of cattle...",
         options: ["longitudinal", "objective", "simultaneous", "parallel"],
@@ -307,6 +329,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Government should provide farmers with agricultural inputs and ensure that they have easy access to these inputs under the relief ___.",
         options: ["action", "process", "scheme", "plan"],
@@ -316,6 +339,7 @@ const jamb2010 = [
       {
         topic: "Lexis & Structure",
         year: 2010,
+        subject: "English",
         exam: "JAMB",
         question: "Emergency measures will be much more ___ if a mechanism is established to ensure adequate preparedness.",
         options: ["normal", "correct", "idealistic", "effective"],
@@ -331,6 +355,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Though Mr. Iro is a new chairman, he views other members with jaundiced eye.",
     options: [
@@ -345,6 +370,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "People are not interested in who rules.",
     options: [
@@ -359,6 +385,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "It was good to steer a middle course in whatever one does.",
     options: [
@@ -373,6 +400,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The witness said he had no axe to grind with his brothers.",
     options: [
@@ -387,6 +415,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The footballers moved with their tails between their legs.",
     options: [
@@ -401,6 +430,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The headmaster managed to talk his way out of having to give a speech.",
     options: [
@@ -415,6 +445,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "As regards the matter, we have crossed the Rubicon.",
     options: [
@@ -429,6 +460,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Uche is full of himself.",
     options: [
@@ -443,6 +475,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "As debutants in that tournament, the Super Eagles were up against their first opponents by three goals to nil.",
     options: [
@@ -457,6 +490,7 @@ const jamb2010 = [
   {
     topic: "Sentence Interpretation",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The woman was mournful as her husband was found dead drunk.",
     options: [
@@ -475,6 +509,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "I am optimistic about the interview though it was a mind-bending exercise. (Opposite of 'mind-bending')",
     options: ["An enervating", "A debilitating", "A difficult", "An easy"],
@@ -484,6 +519,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The trader was amused by the cut-throat rush for the goods. (Opposite of 'amused')",
     options: ["Worrisome", "Strange", "Lacklustre", "Mad"],
@@ -493,6 +529,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The teacher said that Ali's essay was full of many redundant details. (Opposite of 'redundant')",
     options: ["Unexplained", "Strange", "Necessary", "Useful"],
@@ -502,6 +539,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "His father surmounted the myriad of obstacles on his way. (Opposite of 'myriad')",
     options: ["Most", "Few", "All", "Many"],
@@ -511,6 +549,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Her ingenuous smile drew our attention. (Opposite of 'ingenuous')",
     options: ["Witty", "Naïve", "Clever", "Arrogant"],
@@ -520,6 +559,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Ndeni gave a flawless speech at the party. (Opposite of 'flawless')",
     options: ["A wonderful", "A careless", "An interesting", "An imperfect"],
@@ -529,6 +569,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Beneath Ado's gruff exterior, he's really very kind-hearted. (Opposite of 'gruff')",
     options: ["Nice", "Harsh", "Rough", "Gentle"],
@@ -538,6 +579,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The captain says sports is being debased by commercial sponsorship. (Opposite of 'debased')",
     options: ["Localized", "Perverted", "Elevated", "Overvalued"],
@@ -547,6 +589,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Governing a country is not always as straightforward as people sometimes imagine. (Opposite of 'straightforward')",
     options: ["Complicated", "Troublesome", "Untoward", "Irksome"],
@@ -556,6 +599,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The crowd was very receptive to the speaker's suggestion. (Opposite of 'receptive')",
     options: ["Disobedient", "Repellent", "Alert", "Hostile"],
@@ -565,6 +609,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "There was a general acquiescence on the new drug law. (Opposite of 'acquiescence')",
     options: ["Resistance", "Discrepancy", "Compromise", "Agreement"],
@@ -574,6 +619,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Aisha seems to feel ambivalent about her future. (Opposite of 'ambivalent')",
     options: ["Decisive", "Anxious", "Ambitious", "Inconsiderate"],
@@ -583,6 +629,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The report of the committee contained a plethora of details. (Opposite of 'plethora')",
     options: ["Shortage", "Simplicity", "Multitude", "Spectrum"],
@@ -592,6 +639,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The weather was still very heavy and sultry. (Opposite of 'sultry')",
     options: ["Wintry and shadowy", "Cold and friendly", "Cloudy and thundery", "Hot and uncomfortable"],
@@ -601,6 +649,7 @@ const jamb2010 = [
   {
     topic: "Antonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Ada gave her husband a look that made words superfluous. (Opposite of 'superfluous')",
     options: ["Redundant", "Spurious", "Unnecessary", "Scanty"],
@@ -614,6 +663,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "A political impasse does not offer the best opportunity for merrymaking.",
     options: ["manifesto", "party", "gridlock", "rally"],
@@ -623,6 +673,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "We were all enthusiastic as we awaited the result of the election.",
     options: ["bemused", "agitated", "elated", "nervous"],
@@ -632,6 +683,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The uniform makes the guards look absurd.",
     options: ["dirty", "smart", "sensible", "ridiculous"],
@@ -641,6 +693,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The law is often tardy in reacting to changing attitude.",
     options: ["quick", "slow", "exclusive", "generous"],
@@ -650,6 +703,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Isa and Ilu ate a sumptuous meal on their brother's wedding day.",
     options: ["expensive", "foreign", "insipid", "cheap"],
@@ -659,6 +713,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Kaltume crouched over the paper on her desk.",
     options: ["wrote on", "stood on", "walked over", "bent over"],
@@ -668,6 +723,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The panacea for a country's economic mess lies in systematic planning and hard work.",
     options: ["cure", "hope", "foresight", "trouble"],
@@ -677,6 +733,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Thousands of workers have been victims of retrenchment since the military came back to power.",
     options: ["Unemployment", "Trench mentality", "Suffering", "Increase in penury"],
@@ -686,6 +743,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The principal gave his speech offhand at the sports meeting.",
     options: ["calmly", "beautifully", "unconcerned", "unprepared"],
@@ -695,6 +753,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Jankoli was dressed in an old assortment of clothes.",
     options: ["Avalanche", "Homogeneity", "Sameness", "Melange"],
@@ -704,6 +763,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The girl's father was astounded to see her appear from the shrine.",
     options: ["collected", "overwhelmed", "embarrassed", "astonished"],
@@ -713,6 +773,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The director's remark was extremely apposite to the issue being discussed.",
     options: ["appropriate", "inconsequential", "emphatic", "adequate"],
@@ -722,6 +783,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Her reputation is without a blemish.",
     options: ["struggle", "problem", "fault", "blessing"],
@@ -731,6 +793,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Ugo is eligible for the post of secretary.",
     options: ["nominated", "invited", "qualified", "intelligent"],
@@ -740,6 +803,7 @@ const jamb2010 = [
   {
     topic: "Synonyms",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "This is an abridged version of No Longer at Ease.",
     options: ["an outdated", "an enlarged", "an illustrated", "a shortened"],
@@ -753,6 +817,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Lemoti……… as a painter, but also as a sculptor.",
     options: [
@@ -767,6 +832,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "He can recall the important dates in the nation's history; it is interesting to listen as he rattles ………",
     options: ["off", "over", "up", "out"],
@@ -776,6 +842,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The boy told his mother ………",
     options: [
@@ -790,6 +857,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Last Monday his father asked me ………",
     options: [
@@ -804,6 +872,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "His wife was badly injured in the fracas, but I think she will pull ………",
     options: ["up", "over", "through", "back"],
@@ -813,6 +882,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "A wide range of options ……… made available to students in the final year last year.",
     options: ["is", "were", "are", "was"],
@@ -822,6 +892,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "One of the women who ……… in the premises ……… been ordered to quit.",
     options: ["sells/have", "sell/has", "sell/have", "sells/has"],
@@ -831,6 +902,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The new trade agreement should facilitate ………",
     options: [
@@ -845,6 +917,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The principal said that he was pleased ……… my effort.",
     options: ["on", "of", "with", "about"],
@@ -854,6 +927,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Paper is made ……… wood pulp.",
     options: ["on", "of", "from", "with"],
@@ -863,6 +937,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Long after everyone ……… the hall, Obi still sat inside.",
     options: ["left", "is leaving", "has left", "had left"],
@@ -872,6 +947,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "They are the ……… dresses.",
     options: ["babys'", "baby", "babies", "babies'"],
@@ -881,6 +957,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The politician was sent ……… exile.",
     options: ["onto", "into", "on", "to"],
@@ -890,6 +967,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "When we looked up, we ……… the plane some miles away.",
     options: ["site", "cited", "sited", "sighted"],
@@ -899,6 +977,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Vital ……… is still spread ……… word of mouth in most villages in Africa.",
     options: [
@@ -913,6 +992,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Western education is one of the ……… of colonial rule.",
     options: ["legacies", "evidence", "remnants", "inheritance"],
@@ -922,6 +1002,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The federal government has ……… child trafficking.",
     options: ["postulated", "projected", "prescribed", "proscribed"],
@@ -931,6 +1012,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "The man was happy that his son confessed his guilt and so the others were ………",
     options: ["implicated", "accused", "punished", "exonerated"],
@@ -940,6 +1022,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Based on the facts before me, I have no alternative ……… to hold you responsible.",
     options: ["only", "as", "than", "but"],
@@ -949,6 +1032,7 @@ const jamb2010 = [
   {
     topic: "Lexis & Structure",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Many people would always find reasons to ……… the law.",
     options: ["arrogate", "debase", "circumvent", "circumspect"],
@@ -962,6 +1046,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same vowel sound as the underlined letters in 'c-ou-p'?",
     options: ["whup", "hoot", "couple", "scout"],
@@ -971,6 +1056,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same vowel sound as the underlined letters in 'ind-i-ct'?",
     options: ["bright", "fish", "pick", "brick"],
@@ -980,6 +1066,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same vowel sound as the underlined letters in 'roar-ed'?",
     options: ["towered", "coast", "brought", "rod"],
@@ -993,6 +1080,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same consonant sound as the underlined letters in 'shea-th'?",
     options: ["bathe", "length", "months", "paths"],
@@ -1002,6 +1090,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same consonant sound as the underlined letter in 'hi-gh'?",
     options: ["what", "honest", "who", "vehicle"],
@@ -1011,6 +1100,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word has the same consonant sound as the underlined letters in 'of course'?",
     options: ["plough", "dough", "over", "orphan"],
@@ -1024,6 +1114,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word rhymes with 'boys'?",
     options: ["stays", "moist", "noise", "elbows"],
@@ -1033,6 +1124,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word rhymes with 'shine'?",
     options: ["clean", "fine", "machine", "lain"],
@@ -1042,6 +1134,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which word rhymes with 'seer'?",
     options: ["snare", "spare", "spear", "square"],
@@ -1055,6 +1148,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which option shows the correct stress pattern for 'political'?",
     options: ["poliTIcal", "PoLItical", "POlitical", "political"],
@@ -1064,6 +1158,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which option shows the correct stress pattern for 'satisfactory'?",
     options: ["saTISfactory", "satisFACtory", "SATisfactory", "satisfactory"],
@@ -1073,6 +1168,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Which option shows the correct stress pattern for 'captivity'?",
     options: ["captiVIty", "CAPtivity", "capTIvity", "CAPtiviTY"],
@@ -1086,6 +1182,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "EMEKA finished his homework yesterday. (What does the emphasis on EMEKA suggest?)",
     options: [
@@ -1100,6 +1197,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "Taiwo SAILED to London. (What does the emphasis on SAILED suggest?)",
     options: [
@@ -1114,6 +1212,7 @@ const jamb2010 = [
   {
     topic: "Oral English",
     year: 2010,
+        subject: "English",
     exam: "JAMB",
     question: "My bag is made of LEATHER. (What does the emphasis on LEATHER suggest?)",
     options: [

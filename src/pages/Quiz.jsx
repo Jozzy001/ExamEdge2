@@ -1,7 +1,7 @@
 import { useState, useRef, useMemo, useEffect } from "react"
 import questions from "../data/questions"
 
-const Quiz = ({ topic, onNavigate }) => {
+const Quiz = ({ topic, subject, onNavigate }) => {
 
   const CBT_QUESTION_COUNT = 60
   const CBT_TIME_SECONDS = 3600
@@ -9,21 +9,32 @@ const Quiz = ({ topic, onNavigate }) => {
   const filteredQuestions = useMemo(() => {
 
     if (topic === "cbt") {
-      // Flatten all questions, shuffle, pick exactly 60
-      const allFlat = questions.flatMap(item => {
-        if (item.passage && item.questions) {
-          return item.questions.map(q => ({
-            ...q,
-            passage: item.passage,
-            topic: q.topic || "General"
-          }))
-        }
-        return { ...item, topic: item.topic || "General" }
-      })
-      return allFlat
-        .sort(() => Math.random() - 0.5)
-        .slice(0, CBT_QUESTION_COUNT)
+  const allFlat = questions.flatMap(item => {
+
+    if (item.passage && item.questions) {
+      return item.questions
+        .filter(q => !subject || q.subject === subject)
+        .map(q => ({
+          ...q,
+          passage: item.passage,
+          topic: q.topic || "General",
+          subject: q.subject
+        }))
     }
+
+    if (subject && item.subject !== subject) return []
+
+    return {
+      ...item,
+      topic: item.topic || "General",
+      subject: item.subject
+    }
+  })
+
+  return allFlat
+    .sort(() => Math.random() - 0.5)
+    .slice(0, CBT_QUESTION_COUNT)
+}
 
     let base
 
@@ -42,14 +53,18 @@ const Quiz = ({ topic, onNavigate }) => {
       if (weakTopics.length === 0) return []
 
       base = questions.filter(q => {
-        if (q.passage && q.questions) return q.questions.some(inner => weakTopics.includes(inner.topic))
-        return weakTopics.includes(q.topic)
+        if (q.passage && q.questions) return q.questions.some(inner =>
+          weakTopics.includes(inner.topic) && (!subject || inner.subject === subject)
+        )
+        return weakTopics.includes(q.topic) && (!subject || q.subject === subject)
       }).sort(() => Math.random() - 0.5)
 
     } else {
       base = questions.filter(q => {
-        if (q.passage && q.questions) return q.questions.some(inner => inner.topic === topic)
-        return q.topic === topic
+        if (q.passage && q.questions) return q.questions.some(inner =>
+          inner.topic === topic && (!subject || inner.subject === subject)
+        )
+        return q.topic === topic && (!subject || q.subject === subject)
       })
     }
 
@@ -99,6 +114,7 @@ const Quiz = ({ topic, onNavigate }) => {
       return {
         question: q.question,
         topic: q.topic || "General",
+        subject: q.subject || subject || "English",
         selected: a.selected || "skipped",
         correct: q.answer,
         explanation: q.explanation || "",
@@ -122,12 +138,13 @@ const Quiz = ({ topic, onNavigate }) => {
     if (isCBT || isWeak) {
       const topicGroups = {}
       answers.forEach(a => {
-        if (!topicGroups[a.topic]) topicGroups[a.topic] = { score: 0, total: 0 }
+        if (!topicGroups[a.topic]) topicGroups[a.topic] = { score: 0, total: 0, subject: a.subject || subject || "English" }
         topicGroups[a.topic].total += 1
         if (a.isCorrect) topicGroups[a.topic].score += 1
       })
       const newEntries = Object.entries(topicGroups).map(([t, s]) => ({
-        topic: t, score: s.score, total: s.total, date: new Date().toISOString()
+        topic: t, subject: s.subject || subject || "English",
+        score: s.score, total: s.total, date: new Date().toISOString()
       }))
       localStorage.setItem("progress", JSON.stringify([...existing, ...newEntries]))
     } else {
@@ -154,7 +171,7 @@ const Quiz = ({ topic, onNavigate }) => {
                 ? "No weak areas found! You're doing great across all topics."
                 : `No questions found for: ${topic}`}
             </p>
-            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("study")}>
+            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>
               Study Mode 📚
             </button>
           </div>
@@ -296,7 +313,14 @@ const Quiz = ({ topic, onNavigate }) => {
     return (
       <div className="ee-page">
         <header className="ee-header">
-          <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Home</button>
+          <button
+  className="ee-back-btn"
+  onClick={() =>
+    onNavigate(topic === "cbt" ? "cbtSubjectSelect" : "subjectSelect")
+  }
+>
+  ← Home
+</button>
         </header>
         <div className="ee-content">
           <div className="ee-result-score">
@@ -317,7 +341,7 @@ const Quiz = ({ topic, onNavigate }) => {
             <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>
               View Progress 📊
             </button>
-            <button className="ee-btn ee-btn-outline" onClick={() => onNavigate("study")}>
+            <button className="ee-btn ee-btn-outline" onClick={() => onNavigate("subjectSelect")}>
               Study More 📚
             </button>
           </div>
@@ -334,7 +358,16 @@ const Quiz = ({ topic, onNavigate }) => {
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Exit</button>
+        <button
+  className="ee-back-btn"
+  onClick={() => {
+    if (topic === "cbt") onNavigate("cbtSubjectSelect")
+    else if (topic === "weak") onNavigate("progress")
+    else onNavigate("study")
+  }}
+>
+  ← Exit
+</button>
         <span style={{ fontWeight: 800, fontSize: "15px" }}>
           {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : topic}
         </span>

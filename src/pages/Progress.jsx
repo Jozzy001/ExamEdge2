@@ -4,10 +4,14 @@ const Progress = ({ onNavigate }) => {
   const grouped = {}
   data.forEach(item => {
     if (!item.topic) return
-    if (!grouped[item.topic]) grouped[item.topic] = { totalScore: 0, totalQuestions: 0, attempts: 0 }
-    grouped[item.topic].totalScore += item.score
-    grouped[item.topic].totalQuestions += item.total
-    grouped[item.topic].attempts += 1
+    const key = item.subject ? `${item.subject}||${item.topic}` : item.topic
+    if (!grouped[key]) grouped[key] = {
+      totalScore: 0, totalQuestions: 0, attempts: 0,
+      topic: item.topic, subject: item.subject || null
+    }
+    grouped[key].totalScore += item.score
+    grouped[key].totalQuestions += item.total
+    grouped[key].attempts += 1
   })
 
   const entries = Object.entries(grouped)
@@ -48,7 +52,16 @@ const Progress = ({ onNavigate }) => {
                 <div key={index} className={`ee-topic-card${isWeak ? " weak" : ""}`}>
                   <div className="topic-row">
                     <span className="topic-name">
-                      {topic}
+                      {stats.subject && (
+                        <span style={{
+                          fontSize: 10, fontWeight: 800,
+                          background: "var(--primary-light)",
+                          color: "var(--primary-text)",
+                          padding: "2px 7px", borderRadius: "var(--radius-pill)",
+                          marginRight: 6
+                        }}>{stats.subject}</span>
+                      )}
+                      {stats.topic || topic}
                       {isWeak && <span className="ee-weak-badge">Weak</span>}
                     </span>
                     <span className="topic-score" style={{ color: barColor }}>{pct}%</span>
