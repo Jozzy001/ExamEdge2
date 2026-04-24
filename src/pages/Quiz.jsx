@@ -3,13 +3,31 @@ import questions from "../data/questions"
 
 const Quiz = ({ topic, onNavigate }) => {
 
+  const CBT_QUESTION_COUNT = 60
+  const CBT_TIME_SECONDS = 3600
+
   const filteredQuestions = useMemo(() => {
-    let base
 
     if (topic === "cbt") {
-      base = [...questions].sort(() => Math.random() - 0.5)
+      // Flatten all questions, shuffle, pick exactly 60
+      const allFlat = questions.flatMap(item => {
+        if (item.passage && item.questions) {
+          return item.questions.map(q => ({
+            ...q,
+            passage: item.passage,
+            topic: q.topic || "General"
+          }))
+        }
+        return { ...item, topic: item.topic || "General" }
+      })
+      return allFlat
+        .sort(() => Math.random() - 0.5)
+        .slice(0, CBT_QUESTION_COUNT)
+    }
 
-    } else if (topic === "weak") {
+    let base
+
+    if (topic === "weak") {
       const progress = JSON.parse(localStorage.getItem("progress")) || []
       const grouped = {}
       progress.forEach(item => {
@@ -52,7 +70,7 @@ const Quiz = ({ topic, onNavigate }) => {
   const [showExplanation, setShowExplanation] = useState(false)
   const [finished, setFinished] = useState(false)
   const [started, setStarted] = useState(false)
-  const [examTimeLeft, setExamTimeLeft] = useState(1800)
+  const [examTimeLeft, setExamTimeLeft] = useState(3600)
 
   const answersMapRef = useRef({})
   const isCBT = topic === "cbt"
@@ -146,6 +164,15 @@ const Quiz = ({ topic, onNavigate }) => {
   }
 
   if (isCBT && !started) {
+    const timeOptions = [
+      { label: "15 mins", seconds: 900 },
+      { label: "30 mins", seconds: 1800 },
+      { label: "45 mins", seconds: 2700 },
+      { label: "1 hour ⭐", seconds: 3600 },
+      { label: "1.5 hours", seconds: 5400 },
+      { label: "2 hours", seconds: 7200 },
+    ]
+
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -156,9 +183,41 @@ const Quiz = ({ topic, onNavigate }) => {
         <div className="ee-content">
           <div className="ee-result-score">
             <span className="result-emoji">🧪</span>
-            <div className="result-fraction">{filteredQuestions.length} Qs</div>
-            <div className="result-msg">Time allowed: {formatTime(examTimeLeft)}</div>
+            <div className="result-fraction">60 Questions</div>
+            <div className="result-msg color-primary">{formatTime(examTimeLeft)} selected</div>
           </div>
+
+          {/* Time selector */}
+          <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Choose your time limit</span>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
+            {timeOptions.map(opt => (
+              <button
+                key={opt.seconds}
+                onClick={() => setExamTimeLeft(opt.seconds)}
+                style={{
+                  padding: "12px 8px",
+                  borderRadius: "var(--radius-md)",
+                  border: examTimeLeft === opt.seconds
+                    ? "2px solid var(--primary)"
+                    : "1.5px solid var(--border)",
+                  background: examTimeLeft === opt.seconds
+                    ? "var(--primary-light)"
+                    : "var(--surface)",
+                  color: examTimeLeft === opt.seconds
+                    ? "var(--primary-text)"
+                    : "var(--text)",
+                  fontFamily: "var(--font-main)",
+                  fontWeight: examTimeLeft === opt.seconds ? 800 : 600,
+                  fontSize: 13,
+                  cursor: "pointer",
+                  transition: "all 0.15s"
+                }}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+
           <div className="ee-card">
             <p style={{ fontSize: "14px", color: "var(--text2)", lineHeight: 1.7 }}>
               ✅ Answer all questions before time runs out<br />
@@ -167,6 +226,7 @@ const Quiz = ({ topic, onNavigate }) => {
               ✅ Submit when you're ready
             </p>
           </div>
+
           <button className="ee-btn ee-btn-primary mt-12" onClick={() => setStarted(true)}>
             Start Exam ▶
           </button>
