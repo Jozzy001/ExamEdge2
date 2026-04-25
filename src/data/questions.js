@@ -29,10 +29,14 @@ import jamb2011 from "./english/jamb2011"
 // --- GOVERNMENT ---
  import govtJamb2010 from "./government/jamb2010"
 
+// --- ECONOMICS ---
+import econJamb2010 from "./economics/jamb2010"
+
 const questions = [
   ...jamb2010,
   ...jamb2011,
   ...govtJamb2010,
+  ...econJamb2010,
   // ...mathsjamb2010,
 ]
 

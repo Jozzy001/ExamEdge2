@@ -7,6 +7,7 @@ const SUBJECT_META = {
   Chemistry:   { icon: "🧪", desc: "Organic & Inorganic" },
   Biology:     { icon: "🌿", desc: "Genetics, Ecology" },
   Government:  { icon: "🏛️", desc: "Politics & Constitution" },
+  Economics:   { icon: "📈", desc: "Micro & Macro, Trade, Development" },
 }
 
 const getSubjects = () => {
@@ -48,7 +49,6 @@ const SubjectSelect = ({ onNavigate, mode }) => {
 
         {subjects.map((subject, index) => {
           const meta = SUBJECT_META[subject] || { icon: "📚", desc: "" }
-
           return (
             <button
               key={index}
@@ -64,12 +64,10 @@ const SubjectSelect = ({ onNavigate, mode }) => {
               }}
             >
               <span style={{ fontSize: 28 }}>{meta.icon}</span>
-
               <div style={{ textAlign: "left" }}>
                 <div className="home-card-title">{subject}</div>
                 <div className="home-card-sub">{meta.desc}</div>
               </div>
-
               <span style={{ marginLeft: "auto" }}>→</span>
             </button>
           )

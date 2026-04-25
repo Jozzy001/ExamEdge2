@@ -406,6 +406,17 @@ const Quiz = ({ topic, subject, onNavigate }) => {
         <div className="ee-question-card">
           <span className="question-topic-tag">{currentQuestion.topic}</span>
           <p className="question-text">{currentQuestion.question}</p>
+          {currentQuestion.image && (
+          <img
+          src={`/images/${currentQuestion.image}`}
+          alt="Question figure"
+          style={{
+          width: "100%",
+          borderRadius: "10px",
+           marginTop: "10px"
+            }}
+          />
+          )}
         </div>
 
         {/* Options */}
