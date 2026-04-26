@@ -1,7 +1,7 @@
 // JAMB 2011 English Language Past Questions
 // 99 questions (Q1 administrative, skipped)
 
-const jamb2011 = [
+const engjamb2011 = [
 
   // =====================
   // COMPREHENSION — PASSAGE I (Bio Cell / Bacteria Battery)
@@ -1192,4 +1192,4 @@ const jamb2011 = [
 
 ]
 
-export default jamb2011
+export default engjamb2011

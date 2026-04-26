@@ -8,6 +8,9 @@ const SUBJECT_META = {
   Biology:     { icon: "🌿", desc: "Genetics, Ecology" },
   Government:  { icon: "🏛️", desc: "Politics & Constitution" },
   Economics:   { icon: "📈", desc: "Micro & Macro, Trade, Development" },
+  Literature:  { icon: "📝", desc: "Prose, Drama, Poetry, Literary Principles" },
+  Economics:   { icon: "📈", desc: "Micro & Macro, Trade, Development" },
+  Biology:     { icon: "🌿", desc: "Genetics, Ecology, Cell Biology" },
 }
 
 const getSubjects = () => {
