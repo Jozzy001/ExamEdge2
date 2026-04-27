@@ -2,15 +2,13 @@ import questions from "../data/questions"
 
 const SUBJECT_META = {
   English:     { icon: "📖", desc: "Comprehension, Lexis & Structure" },
-  Mathematics: { icon: "🔢", desc: "Algebra, Geometry, Numbers" },
-  Physics:     { icon: "⚡", desc: "Mechanics, Electricity" },
-  Chemistry:   { icon: "🧪", desc: "Organic & Inorganic" },
-  Biology:     { icon: "🌿", desc: "Genetics, Ecology" },
+  Mathematics: { icon: "🔢", desc: "Algebra, Geometry, Calculus, Statistics" },
+  Physics:     { icon: "⚡", desc: "Mechanics, Electricity, Waves" },
+  Chemistry:   { icon: "🧪", desc: "Organic, Inorganic & Physical Chemistry" },
+  Biology:     { icon: "🌿", desc: "Cell Biology, Genetics, Ecology" },
   Government:  { icon: "🏛️", desc: "Politics & Constitution" },
   Economics:   { icon: "📈", desc: "Micro & Macro, Trade, Development" },
   Literature:  { icon: "📝", desc: "Prose, Drama, Poetry, Literary Principles" },
-  Economics:   { icon: "📈", desc: "Micro & Macro, Trade, Development" },
-  Biology:     { icon: "🌿", desc: "Genetics, Ecology, Cell Biology" },
 }
 
 const getSubjects = () => {

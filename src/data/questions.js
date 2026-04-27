@@ -1,8 +1,8 @@
 // EXAMEDGE — CENTRAL QUESTION BANK
 
 // --- ENGLISH ---
-import engjamb2010 from "./english/jamb2010"
-import engjamb2011 from "./english/jamb2011"
+import jamb2010 from "./english/jamb2010"
+import jamb2011 from "./english/jamb2011"
 
 // --- GOVERNMENT ---
 import govtJamb2010 from "./government/jamb2010"
@@ -19,14 +19,22 @@ import litJamb2010 from "./literature/jamb2010"
 // --- MATHEMATICS ---
 import mathsJamb2010 from "./maths/jamb2010"
 
+// --- PHYSICS ---
+import physicsJamb2004 from "./physics/jamb2004"
+
+// --- CHEMISTRY ---
+import chemJamb2004 from "./chemistry/jamb2004"
+
 const questions = [
-  ...engjamb2010,
-  ...engjamb2011,
+  ...jamb2010,
+  ...jamb2011,
   ...govtJamb2010,
   ...econJamb2010,
   ...bioJamb2010,
   ...litJamb2010,
   ...mathsJamb2010,
+  ...physicsJamb2004,
+  ...chemJamb2004,
 ]
 
 export default questions
