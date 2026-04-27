@@ -359,27 +359,19 @@ const econJamb2010 = [
   // POPULATION & LABOUR
   // =====================
   {
-  subject: "Economics",
-  topic: "Population & Labour",
-  year: 2010,
-  exam: "JAMB",
-  image: "./economics/eco_2010_fig1.png",
-  question: "Use 2010 Fig. 1 to answer this question.\n\nWhat is the population growth rate in 2003?",
-  options: ["33.3%", "20.0%", "11.0%", "50%"],
-  answer: "50%",
-  explanation: "Population growth rate = (New − Old) / Old × 100. From 2002 to 2003: (50 − 40) / 40 × 100 = 25%. Note: JAMB's official answer is 50%."
-},
-{
-  subject: "Economics",
-  topic: "Population & Labour",
-  year: 2010,
-  exam: "JAMB",
-  image: "./economics/eco_2010_fig1.png",
-  question: "Use 2010 Fig. 1 to answer this question.\n\nThe percentage of working population in 2002 is",
-  options: ["50%", "25%", "8%", "80%"],
-  answer: "80%",
-  explanation: "Percentage of working population = (Working population / Total population) × 100. In 2002: (32 / 40) × 100 = 80%."
-},
+    subject: "Economics", topic: "Population & Labour", year: 2010, exam: "JAMB",
+    question: "[img:images/economics/eco2010fig1.png]\nWhat is the population growth rate in 2003?",
+    options: ["33.3%", "20.0%", "11.0%", "50%"],
+    answer: "50%",
+    explanation: "Population growth rate = (New − Old) / Old × 100. From 2002 to 2003: (50 − 40) / 40 × 100 = 10/40 × 100 = 25%. Note: JAMB's answer is D (50%). Some interpretations calculate from different base years — the official answer is 50%."
+  },
+  {
+    subject: "Economics", topic: "Population & Labour", year: 2010, exam: "JAMB",
+    question: "[img:images/economics/eco2010fig1.png]\nThe percentage of working population in 2002 is",
+    options: ["50%", "25%", "8%", "80%"],
+    answer: "80%",
+    explanation: "Percentage of working population = (Working population / Total population) × 100. In 2002: (32 / 40) × 100 = 80%."
+  },
 
   // =====================
   // INTERNATIONAL TRADE

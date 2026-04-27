@@ -1,40 +1,80 @@
 import { useState, useRef, useMemo, useEffect } from "react"
 import questions from "../data/questions"
 
+// =============================================
+// IMAGE RENDERER — handles [img:path] in question text
+// =============================================
+const RenderText = ({ text }) => {
+  if (!text) return null
+  const parts = text.split(/(\[img:[^\]]+\])/g)
+
+  // Group consecutive images to display them in a row
+  const elements = []
+  let imgGroup = []
+
+  const flushImgGroup = () => {
+    if (imgGroup.length === 0) return
+    const isMultiple = imgGroup.length > 1
+    elements.push(
+      <div key={`grp-${elements.length}`} style={{
+        display: isMultiple ? "flex" : "block",
+        flexWrap: "wrap",
+        gap: 8,
+        margin: "10px 0"
+      }}>
+        {imgGroup.map((src, j) => (
+          <img
+            key={j}
+            src={`/${src}`}
+            alt={`Diagram ${j + 1}`}
+            style={{
+              maxWidth: isMultiple ? `calc(${100 / imgGroup.length}% - 8px)` : "100%",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)"
+            }}
+          />
+        ))}
+      </div>
+    )
+    imgGroup = []
+  }
+
+  parts.forEach((part, i) => {
+    const match = part.match(/^\[img:([^\]]+)\]$/)
+    if (match) {
+      imgGroup.push(match[1])
+    } else {
+      flushImgGroup()
+      if (part) elements.push(<span key={i}>{part}</span>)
+    }
+  })
+  flushImgGroup()
+
+  return <>{elements}</>
+}
+
 const Quiz = ({ topic, subject, onNavigate }) => {
 
   const CBT_QUESTION_COUNT = 60
-  const CBT_TIME_SECONDS = 3600
 
   const filteredQuestions = useMemo(() => {
-
     if (topic === "cbt") {
-  const allFlat = questions.flatMap(item => {
-
-    if (item.passage && item.questions) {
-      return item.questions
-        .filter(q => !subject || q.subject === subject)
-        .map(q => ({
-          ...q,
-          passage: item.passage,
-          topic: q.topic || "General",
-          subject: q.subject
-        }))
+      const allFlat = questions.flatMap(item => {
+        if (item.passage && item.questions) {
+          return item.questions
+            .filter(q => !subject || q.subject === subject)
+            .map(q => ({
+              ...q,
+              passage: item.passage,
+              topic: q.topic || "General",
+              subject: q.subject || subject || "General"
+            }))
+        }
+        if (subject && item.subject !== subject) return []
+        return [{ ...item, topic: item.topic || "General", subject: item.subject || subject || "General" }]
+      })
+      return allFlat.sort(() => Math.random() - 0.5).slice(0, CBT_QUESTION_COUNT)
     }
-
-    if (subject && item.subject !== subject) return []
-
-    return {
-      ...item,
-      topic: item.topic || "General",
-      subject: item.subject
-    }
-  })
-
-  return allFlat
-    .sort(() => Math.random() - 0.5)
-    .slice(0, CBT_QUESTION_COUNT)
-}
 
     let base
 
@@ -49,21 +89,14 @@ const Quiz = ({ topic, subject, onNavigate }) => {
       const weakTopics = Object.entries(grouped)
         .filter(([_, s]) => s.total > 0 && (s.score / s.total) * 100 < 50)
         .map(([t]) => t)
-
       if (weakTopics.length === 0) return []
-
       base = questions.filter(q => {
-        if (q.passage && q.questions) return q.questions.some(inner =>
-          weakTopics.includes(inner.topic) && (!subject || inner.subject === subject)
-        )
+        if (q.passage && q.questions) return q.questions.some(inner => weakTopics.includes(inner.topic) && (!subject || inner.subject === subject))
         return weakTopics.includes(q.topic) && (!subject || q.subject === subject)
       }).sort(() => Math.random() - 0.5)
-
     } else {
       base = questions.filter(q => {
-        if (q.passage && q.questions) return q.questions.some(inner =>
-          inner.topic === topic && (!subject || inner.subject === subject)
-        )
+        if (q.passage && q.questions) return q.questions.some(inner => inner.topic === topic && (!subject || inner.subject === subject))
         return q.topic === topic && (!subject || q.subject === subject)
       })
     }
@@ -73,12 +106,13 @@ const Quiz = ({ topic, subject, onNavigate }) => {
         return item.questions.map(q => ({
           ...q,
           passage: item.passage,
-          topic: q.topic || topic || "General"
+          topic: q.topic || topic || "General",
+          subject: q.subject || subject || "General"
         }))
       }
-      return { ...item, topic: item.topic || topic || "General" }
+      return { ...item, topic: item.topic || topic || "General", subject: item.subject || subject || "General" }
     })
-  }, [topic])
+  }, [topic, subject])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState("")
@@ -108,78 +142,61 @@ const Quiz = ({ topic, subject, onNavigate }) => {
 
   useEffect(() => {
     if (!finished || filteredQuestions.length === 0) return
-
     const answers = filteredQuestions.map((q, i) => {
       const a = answersMapRef.current[i] || {}
       return {
         question: q.question,
         topic: q.topic || "General",
-        subject: q.subject || subject || "English",
+        subject: q.subject || subject || "General",
         selected: a.selected || "skipped",
         correct: q.answer,
         explanation: q.explanation || "",
         isCorrect: a.selected === q.answer
       }
     })
-
     const score = answers.filter(a => a.isCorrect).length
     const total = filteredQuestions.length
-
     if (isCBT) {
-      localStorage.setItem("cbtReport", JSON.stringify({
-        score, total,
-        percentage: Math.round((score / total) * 100),
-        answers
-      }))
+      localStorage.setItem("cbtReport", JSON.stringify({ score, total, percentage: Math.round((score / total) * 100), answers }))
     }
-
     const existing = JSON.parse(localStorage.getItem("progress")) || []
-
     if (isCBT || isWeak) {
       const topicGroups = {}
       answers.forEach(a => {
-        if (!topicGroups[a.topic]) topicGroups[a.topic] = { score: 0, total: 0, subject: a.subject || subject || "English" }
+        if (!topicGroups[a.topic]) topicGroups[a.topic] = { score: 0, total: 0, subject: a.subject }
         topicGroups[a.topic].total += 1
         if (a.isCorrect) topicGroups[a.topic].score += 1
       })
       const newEntries = Object.entries(topicGroups).map(([t, s]) => ({
-        topic: t, subject: s.subject || subject || "English",
-        score: s.score, total: s.total, date: new Date().toISOString()
+        topic: t, subject: s.subject, score: s.score, total: s.total, date: new Date().toISOString()
       }))
       localStorage.setItem("progress", JSON.stringify([...existing, ...newEntries]))
     } else {
-      localStorage.setItem("progress", JSON.stringify([
-        ...existing,
-        { topic, score, total, date: new Date().toISOString() }
-      ]))
+      localStorage.setItem("progress", JSON.stringify([...existing, { topic, subject: subject || "General", score, total, date: new Date().toISOString() }]))
     }
   }, [finished])
 
-  // ---- EDGE CASES ----
-
+  // EDGE CASES
   if (filteredQuestions.length === 0) {
     return (
       <div className="ee-page">
         <header className="ee-header">
           <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+          <span style={{ fontWeight: 800, fontSize: "16px" }}>{isWeak ? "Weak Areas" : topic}</span>
+          <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
           <div className="ee-empty">
             <span className="ee-empty-icon">{isWeak ? "🎉" : "📭"}</span>
-            <p>
-              {isWeak
-                ? "No weak areas found! You're doing great across all topics."
-                : `No questions found for: ${topic}`}
-            </p>
-            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>
-              Study Mode 📚
-            </button>
+            <p>{isWeak ? "No weak areas found! You're doing great." : `No questions found for: ${topic}`}</p>
+            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>Study Mode 📚</button>
           </div>
         </div>
       </div>
     )
   }
 
+  // CBT START SCREEN
   if (isCBT && !started) {
     const timeOptions = [
       { label: "15 mins", seconds: 900 },
@@ -189,11 +206,10 @@ const Quiz = ({ topic, subject, onNavigate }) => {
       { label: "1.5 hours", seconds: 5400 },
       { label: "2 hours", seconds: 7200 },
     ]
-
     return (
       <div className="ee-page">
         <header className="ee-header">
-          <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+          <button className="ee-back-btn" onClick={() => onNavigate("cbtSubjectSelect")}>← Back</button>
           <span style={{ fontWeight: 800, fontSize: "16px" }}>CBT Mode</span>
           <span style={{ width: 60 }} />
         </header>
@@ -201,200 +217,115 @@ const Quiz = ({ topic, subject, onNavigate }) => {
           <div className="ee-result-score">
             <span className="result-emoji">🧪</span>
             <div className="result-fraction">60 Questions</div>
-            <div className="result-msg color-primary">{formatTime(examTimeLeft)} selected</div>
+            <div className="result-msg" style={{ color: "var(--primary)", fontWeight: 700 }}>{formatTime(examTimeLeft)} selected</div>
           </div>
-
-          {/* Time selector */}
           <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Choose your time limit</span>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
             {timeOptions.map(opt => (
-              <button
-                key={opt.seconds}
-                onClick={() => setExamTimeLeft(opt.seconds)}
-                style={{
-                  padding: "12px 8px",
-                  borderRadius: "var(--radius-md)",
-                  border: examTimeLeft === opt.seconds
-                    ? "2px solid var(--primary)"
-                    : "1.5px solid var(--border)",
-                  background: examTimeLeft === opt.seconds
-                    ? "var(--primary-light)"
-                    : "var(--surface)",
-                  color: examTimeLeft === opt.seconds
-                    ? "var(--primary-text)"
-                    : "var(--text)",
-                  fontFamily: "var(--font-main)",
-                  fontWeight: examTimeLeft === opt.seconds ? 800 : 600,
-                  fontSize: 13,
-                  cursor: "pointer",
-                  transition: "all 0.15s"
-                }}
-              >
-                {opt.label}
-              </button>
+              <button key={opt.seconds} onClick={() => setExamTimeLeft(opt.seconds)} style={{
+                padding: "12px 8px", borderRadius: "var(--radius-md)",
+                border: examTimeLeft === opt.seconds ? "2px solid var(--primary)" : "1.5px solid var(--border)",
+                background: examTimeLeft === opt.seconds ? "var(--primary-light)" : "var(--surface)",
+                color: examTimeLeft === opt.seconds ? "var(--primary-text)" : "var(--text)",
+                fontFamily: "var(--font-main)", fontWeight: examTimeLeft === opt.seconds ? 800 : 600,
+                fontSize: 13, cursor: "pointer", transition: "all 0.15s"
+              }}>{opt.label}</button>
             ))}
           </div>
-
           <div className="ee-card">
             <p style={{ fontSize: "14px", color: "var(--text2)", lineHeight: 1.7 }}>
               ✅ Answer all questions before time runs out<br />
-              ✅ You can navigate between questions freely<br />
+              ✅ Navigate freely between questions<br />
               ✅ Green = answered, Red = unanswered<br />
               ✅ Submit when you're ready
             </p>
           </div>
-
-          <button className="ee-btn ee-btn-primary mt-12" onClick={() => setStarted(true)}>
-            Start Exam ▶
-          </button>
-          <button className="ee-btn ee-btn-secondary mt-12" onClick={() => onNavigate("home")}>
-            Not yet, go back
-          </button>
+          <button className="ee-btn ee-btn-primary mt-12" onClick={() => setStarted(true)}>Start Exam ▶</button>
+          <button className="ee-btn ee-btn-secondary mt-12" onClick={() => onNavigate("home")}>Not yet, go back</button>
         </div>
       </div>
     )
   }
 
-  // ---- HELPERS ----
-
+  // HELPERS
   const saveAnswer = (index = currentIndex, value = selected) => {
     answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
   }
-
-  const handleSelectOption = (opt) => {
-    setSelected(opt)
-    setShowExplanation(false)
-    saveAnswer(currentIndex, opt)
-  }
-
-  const handleCheckAnswer = () => {
-    if (!selected) return
-    saveAnswer()
-    setShowExplanation(true)
-  }
-
+  const handleSelectOption = (opt) => { setSelected(opt); setShowExplanation(false); saveAnswer(currentIndex, opt) }
+  const handleCheckAnswer = () => { if (!selected) return; saveAnswer(); setShowExplanation(true) }
   const handleSubmitExam = () => {
     saveAnswer()
-    const unanswered = filteredQuestions
-      .map((_, i) => i)
-      .filter(i => !answersMapRef.current[i]?.selected)
-
+    const unanswered = filteredQuestions.map((_, i) => i).filter(i => !answersMapRef.current[i]?.selected)
     if (unanswered.length > 0) {
-      const ok = window.confirm(
-        `You have ${unanswered.length} unanswered question(s): ${unanswered.map(i => `Q${i+1}`).join(", ")}.\n\nSubmit anyway?`
-      )
+      const ok = window.confirm(`You have ${unanswered.length} unanswered question(s): ${unanswered.map(i => `Q${i + 1}`).join(", ")}.\n\nSubmit anyway?`)
       if (!ok) return
     }
     setFinished(true)
   }
+  const goToQuestion = (i) => { saveAnswer(); setShowExplanation(false); setCurrentIndex(i); setSelected(answersMapRef.current[i]?.selected || "") }
 
-  const goToQuestion = (i) => {
-    saveAnswer()
-    setShowExplanation(false)
-    setCurrentIndex(i)
-    setSelected(answersMapRef.current[i]?.selected || "")
-  }
-
-  // ---- RESULT SCREEN ----
-
+  // RESULT SCREEN
   if (finished) {
-    const score = filteredQuestions.filter((q, i) =>
-      answersMapRef.current[i]?.selected === q.answer
-    ).length
+    const score = filteredQuestions.filter((q, i) => answersMapRef.current[i]?.selected === q.answer).length
     const total = filteredQuestions.length
     const pct = Math.round((score / total) * 100)
     const emoji = pct >= 70 ? "🌟" : pct >= 50 ? "👍" : "💪"
-    const msg = pct >= 70
-      ? "Excellent! Keep it up."
-      : pct >= 50
-      ? "Good effort! Review your mistakes."
-      : "Don't give up — practice more!"
-
+    const msg = pct >= 70 ? "Excellent! Keep it up." : pct >= 50 ? "Good effort! Review your mistakes." : "Don't give up — practice more!"
     return (
       <div className="ee-page">
         <header className="ee-header">
-          <button
-  className="ee-back-btn"
-  onClick={() =>
-    onNavigate(topic === "cbt" ? "cbtSubjectSelect" : "subjectSelect")
-  }
->
-  ← Home
-</button>
+          <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Home</button>
+          <span style={{ fontWeight: 800, fontSize: "16px" }}>Result</span>
+          <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
           <div className="ee-result-score">
             <span className="result-emoji">{emoji}</span>
             <div className="result-fraction">{score} / {total}</div>
-            <div className={`result-percent ${pct >= 70 ? "color-success" : pct >= 50 ? "color-warning" : "color-danger"}`}>
-              {pct}%
-            </div>
+            <div className={`result-percent ${pct >= 70 ? "color-success" : pct >= 50 ? "color-warning" : "color-danger"}`}>{pct}%</div>
             <div className="result-msg">{msg}</div>
           </div>
-
           <div className="ee-btn-row">
-            {isCBT && (
-              <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtResult")}>
-                Review Answers 📖
-              </button>
-            )}
-            <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>
-              View Progress 📊
-            </button>
-            <button className="ee-btn ee-btn-outline" onClick={() => onNavigate("subjectSelect")}>
-              Study More 📚
-            </button>
+            {isCBT && <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtResult")}>Review Answers 📖</button>}
+            <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>View Progress 📊</button>
+            <button className="ee-btn ee-btn-outline" onClick={() => onNavigate("subjectSelect")}>Study More 📚</button>
           </div>
         </div>
       </div>
     )
   }
 
-  // ---- MAIN QUIZ UI ----
-
+  // MAIN QUIZ UI
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button
-  className="ee-back-btn"
-  onClick={() => {
-    if (topic === "cbt") onNavigate("cbtSubjectSelect")
-    else if (topic === "weak") onNavigate("progress")
-    else onNavigate("study")
-  }}
->
-  ← Exit
-</button>
+        <button className="ee-back-btn" onClick={() => {
+          if (isCBT) onNavigate("cbtSubjectSelect")
+          else if (isWeak) onNavigate("progress")
+          else onNavigate("study")
+        }}>← Exit</button>
         <span style={{ fontWeight: 800, fontSize: "15px" }}>
           {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : topic}
         </span>
         {isCBT ? (
-          <span className={`ee-timer${examTimeLeft < 300 ? " urgent" : ""}`}>
-            ⏱ {formatTime(examTimeLeft)}
-          </span>
+          <span className={`ee-timer${examTimeLeft < 300 ? " urgent" : ""}`}>⏱ {formatTime(examTimeLeft)}</span>
         ) : (
           <span style={{ width: 60 }} />
         )}
       </header>
 
       <div className="ee-content">
-        {/* Progress */}
         <div className="ee-quiz-header">
-          <span className="quiz-progress-text">
-            Q{currentIndex + 1} of {filteredQuestions.length}
-          </span>
-          {isCBT && (
-            <span className="quiz-progress-text">{answeredCount} answered</span>
-          )}
+          <span className="quiz-progress-text">Q{currentIndex + 1} of {filteredQuestions.length}</span>
+          {isCBT && <span className="quiz-progress-text">{answeredCount} answered</span>}
         </div>
         <div className="ee-progress-bar">
           <div className="ee-progress-fill" style={{ width: `${progress}%` }} />
         </div>
 
-        {/* Passage */}
         {currentQuestion.passage && (
           <div className="ee-passage">
             <span className="passage-label">Read the passage</span>
@@ -402,59 +333,34 @@ const Quiz = ({ topic, subject, onNavigate }) => {
           </div>
         )}
 
-        {/* Question */}
         <div className="ee-question-card">
           <span className="question-topic-tag">{currentQuestion.topic}</span>
-          <p className="question-text">{currentQuestion.question}</p>
-          {currentQuestion.image && (
-          <img
-          src={`/images/${currentQuestion.image}`}
-          alt="Question figure"
-          style={{
-          width: "100%",
-          borderRadius: "10px",
-           marginTop: "10px"
-            }}
-          />
-          )}
+          <div className="question-text">
+            <RenderText text={currentQuestion.question} />
+          </div>
         </div>
 
-        {/* Options */}
         {currentQuestion.options.map((opt, i) => {
           let cls = "ee-option"
           if (showExplanation) {
             if (opt === currentQuestion.answer) cls += " correct"
             else if (opt === selected && selected !== currentQuestion.answer) cls += " wrong"
             else cls += " disabled"
-          } else if (selected === opt) {
-            cls += " selected"
-          }
-
+          } else if (selected === opt) cls += " selected"
           return (
-            <button
-              key={i}
-              className={cls}
-              onClick={() => !showExplanation && handleSelectOption(opt)}
-              disabled={showExplanation}
-            >
+            <button key={i} className={cls} onClick={() => !showExplanation && handleSelectOption(opt)} disabled={showExplanation}>
               <span className="opt-badge">{String.fromCharCode(65 + i)}</span>
               <span className="opt-label">{opt}</span>
             </button>
           )
         })}
 
-        {/* Check answer (study mode) */}
         {!isCBT && !showExplanation && (
-          <button
-            className="ee-btn ee-btn-primary mt-8"
-            onClick={handleCheckAnswer}
-            disabled={!selected}
-          >
+          <button className="ee-btn ee-btn-primary mt-8" onClick={handleCheckAnswer} disabled={!selected}>
             Check Answer ✅
           </button>
         )}
 
-        {/* Explanation */}
         {showExplanation && currentQuestion.explanation && (
           <div className="ee-explanation">
             <span className="exp-heading">💡 Explanation</span>
@@ -462,43 +368,17 @@ const Quiz = ({ topic, subject, onNavigate }) => {
           </div>
         )}
 
-        {/* Navigation */}
         <div className="ee-nav-row mt-8">
-          <button
-            className="ee-nav-btn"
-            onClick={() => goToQuestion(Math.max(currentIndex - 1, 0))}
-            disabled={currentIndex === 0}
-          >
-            ← Prev
-          </button>
-
+          <button className="ee-nav-btn" onClick={() => goToQuestion(Math.max(currentIndex - 1, 0))} disabled={currentIndex === 0}>← Prev</button>
           {currentIndex < filteredQuestions.length - 1 ? (
-            <button
-              className="ee-nav-btn"
-              onClick={() => goToQuestion(currentIndex + 1)}
-            >
-              Next →
-            </button>
+            <button className="ee-nav-btn" onClick={() => goToQuestion(currentIndex + 1)}>Next →</button>
           ) : isCBT ? (
-            <button
-              className="ee-nav-btn"
-              onClick={handleSubmitExam}
-              style={{ background: "var(--accent)", color: "#fff", border: "none" }}
-            >
-              Submit 🏁
-            </button>
+            <button className="ee-nav-btn" onClick={handleSubmitExam} style={{ background: "var(--accent)", color: "#fff", border: "none" }}>Submit 🏁</button>
           ) : (
-            <button
-              className="ee-nav-btn"
-              onClick={() => { saveAnswer(); setFinished(true) }}
-              style={{ background: "var(--success)", color: "#fff", border: "none" }}
-            >
-              Finish ✅
-            </button>
+            <button className="ee-nav-btn" onClick={() => { saveAnswer(); setFinished(true) }} style={{ background: "var(--success)", color: "#fff", border: "none" }}>Finish ✅</button>
           )}
         </div>
 
-        {/* CBT question grid */}
         {isCBT && (
           <>
             <hr className="ee-divider" />
@@ -509,11 +389,7 @@ const Quiz = ({ topic, subject, onNavigate }) => {
                 if (i === currentIndex) cls += "current"
                 else if (answersMapRef.current[i]?.selected) cls += "answered"
                 else cls += "unanswered"
-                return (
-                  <button key={i} className={cls} onClick={() => goToQuestion(i)}>
-                    {i + 1}
-                  </button>
-                )
+                return <button key={i} className={cls} onClick={() => goToQuestion(i)}>{i + 1}</button>
               })}
             </div>
             <div style={{ fontSize: "12px", color: "var(--text2)", display: "flex", gap: "16px" }}>

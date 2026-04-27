@@ -17,13 +17,16 @@ import bioJamb2010 from "./biology/jamb2010"
 import litJamb2010 from "./literature/jamb2010"
 
 // --- MATHEMATICS ---
-import mathsJamb2010 from "./maths/jamb2010"
+import mathsJamb2010 from "./mathematics/jamb2010"
 
 // --- PHYSICS ---
 import physicsJamb2004 from "./physics/jamb2004"
 
 // --- CHEMISTRY ---
 import chemJamb2004 from "./chemistry/jamb2004"
+
+// --- COMMERCE ---
+import comJamb2004 from "./commerce/jamb2004"
 
 const questions = [
   ...jamb2010,
@@ -35,6 +38,7 @@ const questions = [
   ...mathsJamb2010,
   ...physicsJamb2004,
   ...chemJamb2004,
+  ...comJamb2004,
 ]
 
 export default questions

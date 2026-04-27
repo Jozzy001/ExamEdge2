@@ -64,7 +64,7 @@ const bioJamb2010 = [
   },
   {
     subject: "Biology", topic: "Plant Biology", year: 2010, exam: "JAMB",
-    question: "[Fig 2] The movement of material in the xylem and phloem tissues of the plant are represented by the arrows labelled",
+    question: "[img:images/biology/bio2010fig2.png]\nThe movement of material in the xylem and phloem tissues of the plant are represented by the arrows labelled",
     options: [
       "III and IV respectively",
       "II and I respectively",
@@ -76,7 +76,7 @@ const bioJamb2010 = [
   },
   {
     subject: "Biology", topic: "Plant Biology", year: 2010, exam: "JAMB",
-    question: "[Fig 2] During photosynthesis, the arrow labelled II represents the",
+    question: "[img:images/biology/bio2010fig2.png]\nDuring photosynthesis, the arrow labelled II represents the",
     options: [
       "escape of mineral salts",
       "absorption of energy from the sun",
@@ -138,21 +138,21 @@ const bioJamb2010 = [
   },
   {
     subject: "Biology", topic: "Animal Diversity & Evolution", year: 2010, exam: "JAMB",
-    question: "[Fig 1] With respect to their decreasing dependence on aquatic conditions for reproduction, which of the following is the correct arrangement of the animals represented?",
+    question: "[img:images/biology/bio2010fig1.png]\nWith respect to their decreasing dependence on aquatic conditions for reproduction, which of the following is the correct arrangement of the animals represented?",
     options: ["I, IV, II and III", "IV, III, II and I", "I, II, IV and III", "III, II, IV and I"],
     answer: "IV, III, II and I",
     explanation: "In Fig 1, the arrangement from most to least dependent on water for reproduction is: fish (IV) → amphibians (III) → reptiles (II) → mammals/birds (I). Fish require water entirely; mammals are least dependent."
   },
   {
     subject: "Biology", topic: "Animal Diversity & Evolution", year: 2010, exam: "JAMB",
-    question: "[Fig 1] Which of the animals represents the oldest creatures in terms of evolutionary history?",
+    question: "[img:images/biology/bio2010fig1.png]\nWhich of the animals represents the oldest creatures in terms of evolutionary history?",
     options: ["III", "II", "I", "IV"],
     answer: "IV",
     explanation: "In Fig 1, organism IV represents fish — the oldest vertebrates in evolutionary history, having appeared approximately 500 million years ago, long before amphibians, reptiles, or mammals."
   },
   {
     subject: "Biology", topic: "Animal Diversity & Evolution", year: 2010, exam: "JAMB",
-    question: "[Fig 3] The main function of the feathers covering the part labelled I is to",
+    question: "[img:images/biology/bio2010fig3.png]\nThe main function of the feathers covering the part labelled I is to",
     options: [
       "prevent ectoparasites from attacking the animal",
       "generate heat to keep the animal warm",
@@ -164,7 +164,7 @@ const bioJamb2010 = [
   },
   {
     subject: "Biology", topic: "Animal Diversity & Evolution", year: 2010, exam: "JAMB",
-    question: "[Fig 3] Based on the shape and structure of the beak and feet, the bird represented is likely to feed mainly on",
+    question: "[img:images/biology/bio2010fig3.png]\nBased on the shape and structure of the beak and feet, the bird represented is likely to feed mainly on",
     options: ["flesh", "fruits", "seeds", "nectar"],
     answer: "flesh",
     explanation: "In Fig 3, the bird has a hooked beak and talons characteristic of birds of prey (raptors). These adaptations are for catching, killing, and tearing flesh — not for cracking seeds or probing flowers."
@@ -436,14 +436,14 @@ const bioJamb2010 = [
   // =====================
   {
     subject: "Biology", topic: "Genetics & Heredity", year: 2010, exam: "JAMB",
-    question: "[Fig 4] In which plantation are all the trees between the height of 2-4m?",
+    question: "[img:images/biology/bio2010fig4.png]\nIn which plantation are all the trees between the height of 2-4m?",
     options: ["III", "II", "I", "IV"],
     answer: "III",
     explanation: "From Fig 4 (plantation height distribution diagram), Plantation III contains all trees within the 2–4m height range, showing a uniform and restricted height distribution."
   },
   {
     subject: "Biology", topic: "Genetics & Heredity", year: 2010, exam: "JAMB",
-    question: "[Fig 4] Which of the following is a true feature of plantation II?",
+    question: "[img:images/biology/bio2010fig4.png]\nWhich of the following is a true feature of plantation II?",
     options: [
       "it has the highest number of trees of about 2m high",
       "it has the highest number of trees",

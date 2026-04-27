@@ -76,7 +76,7 @@ const mathsJamb2010 = [
   // =====================
   {
     subject: "Mathematics", topic: "Sets & Venn Diagrams", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 1-4] Which of the Venn diagrams represents P ∩ Q'?",
+    question: "Which of the Venn diagrams represents P ∩ Q'?\n[img:images/maths/maths2010fig1.png][img:images/maths/maths2010fig2.png][img:images/maths/maths2010fig3.png][img:images/maths/maths2010fig4.png]",
     options: ["Fig. 1", "Fig. 2", "Fig. 3", "Fig. 4"],
     answer: "Fig. 2",
     explanation: "P ∩ Q' represents elements in P that are NOT in Q — the part of P that doesn't overlap with Q. This is shown by shading only the non-overlapping portion of P in the Venn diagram (Fig. 2)."
@@ -203,7 +203,7 @@ const mathsJamb2010 = [
   },
   {
     subject: "Mathematics", topic: "Matrices & Determinants", year: 2010, exam: "JAMB",
-    question: "Evaluate the determinant of [[2, 0, 5], [4, 6, 3], [8, 9, 1]].",
+    question: "Evaluate the determinant of [[2, 4, 8], [0, 6, 9], [5, 3, 1]].",
     options: ["358", "−242", "242", "−358"],
     answer: "−242",
     explanation: "Expanding along row 1: 2(6×1 − 9×3) − 4(0×1 − 9×5) + 8(0×3 − 6×5) = 2(6−27) − 4(0−45) + 8(0−30) = 2(−21) − 4(−45) + 8(−30) = −42 + 180 − 240 = −102. Note: JAMB answer is A. Students should verify."
@@ -226,7 +226,7 @@ const mathsJamb2010 = [
   // =====================
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 5] From the diagram, find x.",
+    question: "From the diagram below, find x.\n[img:images/maths/maths2010fig5.png]",
     options: ["75°", "65°", "55°", "50°"],
     answer: "65°",
     explanation: "From Fig. 5 (angles in a triangle or parallel lines diagram), using angle properties, x = 65°. Add the image to verify the specific angle relationships shown."
@@ -240,7 +240,7 @@ const mathsJamb2010 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 6] From the cyclic quadrilateral TUVW, find the value of angle A.",
+    question: "From the cyclic quadrilateral TUVW below, find the value of angle A.\n[img:images/maths/maths2010fig6.png]",
     options: ["20°", "23°", "24°", "26°"],
     answer: "24°",
     explanation: "In a cyclic quadrilateral, opposite angles are supplementary. Using this property with the angles given in Fig. 6, angle A = 24°. Add the image to verify."
@@ -311,7 +311,7 @@ const mathsJamb2010 = [
   },
   {
     subject: "Mathematics", topic: "Trigonometry", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 7] From the figure, if the area of triangle PQU is 12√3 cm², find the length of QU.",
+    question: "From the figure below, if the area of triangle PQU is 12√3 cm², find the length of QU.\n[img:images/maths/maths2010fig7.png]",
     options: ["5 cm", "6 cm", "7 cm", "8 cm"],
     answer: "6 cm",
     explanation: "Area = 1/2 × base × height. With a 60° angle in the triangle, using Area = 1/2 × QU × PU × sin60°. From Fig. 7 with the given area 12√3, QU = 6 cm. Add the image to verify."
@@ -361,21 +361,21 @@ const mathsJamb2010 = [
   // =====================
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 8] If the pass mark is 15, how many students failed the test?",
+    question: "From the chart below, if the pass mark is 15, how many students failed the test?\n[img:images/maths/maths2010fig8.png]",
     options: ["9", "7", "6", "2"],
     answer: "9",
     explanation: "From Fig. 8 (frequency table/histogram), counting students who scored below 15 gives 9 students who failed. Add the image to verify the exact distribution."
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 10] How many students took the test?",
+    question: "From the chart below, how many students took the test?\n[img:images/maths/maths2010fig10.png]",
     options: ["13", "15", "16", "20"],
     answer: "20",
     explanation: "From Fig. 10, summing all the frequencies gives a total of 20 students who took the test. Add the image to verify."
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2010, exam: "JAMB",
-    question: "[Maths2010 Fig. 10] Using the figure, find the mean mark.",
+    question: "Using the chart below, find the mean mark.\n[img:images/maths/maths2010fig10.png]",
     options: ["3.3", "3.2", "3.1", "3.6"],
     answer: "3.3",
     explanation: "Mean = Σ(fx) / Σf. From Fig. 10, calculating the sum of (frequency × mark) divided by total frequency gives a mean of 3.3. Add the image to verify."
