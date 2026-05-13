@@ -76,7 +76,7 @@ const physicsJamb2004 = [
   },
   {
     subject: "Physics", topic: "Sound & Waves", year: 2004, exam: "JAMB",
-    question: "[img:images/physics/physics2004fig2.png]\nThe phase difference between waves P and Q in the diagram is",
+    question: "[img:images/physics/physics2004fig4.png]\nThe phase difference between waves P and Q in the diagram is",
     options: ["π/4", "2π", "π/2", "π"],
     answer: "π/2",
     explanation: "From Physics2004 Fig 2, the wave Q appears to lag wave P by a quarter of a wavelength. A quarter wavelength corresponds to a phase difference of π/2 radians (90°)."
@@ -137,7 +137,7 @@ const physicsJamb2004 = [
   {
     subject: "Physics", topic: "Vectors & Mechanics", year: 2004, exam: "JAMB",
     question: "[img:images/physics/physics2004fig3.png]\nThe diagram shows forces 4N, 6N, 10N and 8N acting at point O. The net horizontal force is",
-    options: ["17 N", "17 N", "13 N", "13 N"],
+    options: ["17 N", "25 N", "13 N", "15 N"],
     answer: "13 N",
     explanation: "From Physics2004 Fig 3, resolving all forces horizontally and applying vector addition gives a net horizontal force of 13 N. Add the image to verify the exact directions of each force."
   },

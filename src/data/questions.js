@@ -28,6 +28,12 @@ import chemJamb2004 from "./chemistry/jamb2004"
 // --- COMMERCE ---
 import comJamb2004 from "./commerce/jamb2004"
 
+// --- CRK ---
+import crkJamb2004 from "./crk/jamb2004"
+
+// --- ACCOUNTS ---
+import accountsJamb2004 from "./accounts/jamb2004"
+
 const questions = [
   ...jamb2010,
   ...jamb2011,
@@ -39,6 +45,8 @@ const questions = [
   ...physicsJamb2004,
   ...chemJamb2004,
   ...comJamb2004,
+  ...crkJamb2004,
+  ...accountsJamb2004,
 ]
 
 export default questions

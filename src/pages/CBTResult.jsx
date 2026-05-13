@@ -18,36 +18,36 @@ const CBTResult = ({ onNavigate }) => {
           <div className="ee-empty">
             <span className="ee-empty-icon">📋</span>
             <p>No CBT result found. Complete a CBT exam first.</p>
-            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbt")}>
-              Take CBT 🧪
-            </button>
+            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtSubjectSelect")}>Take CBT 🧪</button>
           </div>
         </div>
       </div>
     )
   }
 
-  const { score, total, answers } = report
+  const { score, total, answers, subjects } = report
   const percentage = Math.round((score / total) * 100)
   const emoji = percentage >= 70 ? "🌟" : percentage >= 50 ? "👍" : "💪"
-  const msg = percentage >= 70
-    ? "Excellent performance!"
-    : percentage >= 50
-    ? "Good effort! Keep studying."
-    : "Keep practicing — you'll improve!"
+  const msg = percentage >= 70 ? "Excellent performance!" : percentage >= 50 ? "Good effort! Keep studying." : "Keep practicing — you'll improve!"
 
-  // Topic breakdown
-  const topicStats = {}
+  // =============================================
+  // GROUP BY SUBJECT THEN TOPIC
+  // =============================================
+  const subjectStats = {}
   answers.forEach(a => {
-    const t = a.topic || "General"
-    if (!topicStats[t]) topicStats[t] = { correct: 0, total: 0 }
-    topicStats[t].total += 1
-    if (a.isCorrect) topicStats[t].correct += 1
+    const subj = a.subject || "General"
+    const top = a.topic || "General"
+    if (!subjectStats[subj]) subjectStats[subj] = { correct: 0, total: 0, topics: {} }
+    subjectStats[subj].total += 1
+    if (a.isCorrect) subjectStats[subj].correct += 1
+    if (!subjectStats[subj].topics[top]) subjectStats[subj].topics[top] = { correct: 0, total: 0 }
+    subjectStats[subj].topics[top].total += 1
+    if (a.isCorrect) subjectStats[subj].topics[top].correct += 1
   })
 
-  const weakTopics = Object.entries(topicStats)
-    .filter(([_, s]) => (s.correct / s.total) * 100 < 50)
-    .map(([topic]) => topic)
+  const weakSubjects = Object.entries(subjectStats)
+    .filter(([_, s]) => Math.round((s.correct / s.total) * 100) < 50)
+    .map(([subj]) => subj)
 
   return (
     <div className="ee-page">
@@ -59,7 +59,7 @@ const CBTResult = ({ onNavigate }) => {
 
       <div className="ee-content">
 
-        {/* Score card */}
+        {/* Overall score */}
         <div className="ee-result-score">
           <span className="result-emoji">{emoji}</span>
           <div className="result-fraction">{score} / {total}</div>
@@ -67,27 +67,61 @@ const CBTResult = ({ onNavigate }) => {
             {percentage}%
           </div>
           <div className="result-msg">{msg}</div>
+          {subjects && subjects.length > 0 && (
+            <div style={{ marginTop: 8, fontSize: 12, color: "var(--text2)" }}>
+              {subjects.join(" · ")}
+            </div>
+          )}
         </div>
 
-        {/* Topic breakdown */}
-        <span className="ee-label">Topic breakdown</span>
-        {Object.entries(topicStats).map(([t, s], i) => {
-          const pct = Math.round((s.correct / s.total) * 100)
-          const barColor = pct >= 70 ? "var(--success)" : pct >= 50 ? "var(--warning)" : "var(--accent)"
-          const isWeak = pct < 50
+        {/* Subject-by-subject breakdown */}
+        <span className="ee-label">Performance by subject</span>
+        {Object.entries(subjectStats).map(([subj, stats], si) => {
+          const subjPct = Math.round((stats.correct / stats.total) * 100)
+          const subjColor = subjPct >= 70 ? "var(--success)" : subjPct >= 50 ? "var(--warning)" : "var(--accent)"
+          const isWeakSubj = subjPct < 50
           return (
-            <div key={i} className={`ee-topic-card${isWeak ? " weak" : ""}`}>
-              <div className="topic-row">
-                <span className="topic-name">
-                  {t}
-                  {isWeak && <span className="ee-weak-badge">Weak</span>}
+            <div key={si} style={{
+              background: "var(--surface)", border: `1px solid ${isWeakSubj ? "rgba(255,107,107,0.4)" : "var(--border)"}`,
+              borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 12
+            }}>
+              {/* Subject header */}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                <span style={{ fontWeight: 800, fontSize: 15, color: "var(--text)" }}>
+                  {subj}
+                  {isWeakSubj && <span className="ee-weak-badge">Weak</span>}
                 </span>
-                <span className="topic-score" style={{ color: barColor }}>{pct}%</span>
+                <span style={{ fontWeight: 700, fontSize: 15, color: subjColor }}>{subjPct}%</span>
               </div>
-              <div className="topic-bar">
-                <div className="topic-bar-fill" style={{ width: `${pct}%`, background: barColor }} />
+              <div className="topic-bar" style={{ marginBottom: 10 }}>
+                <div className="topic-bar-fill" style={{ width: `${subjPct}%`, background: subjColor }} />
               </div>
-              <div className="topic-meta">{s.correct}/{s.total} correct</div>
+              <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 10 }}>
+                {stats.correct}/{stats.total} correct
+              </div>
+
+              {/* Topic breakdown within subject */}
+              {Object.entries(stats.topics).map(([top, ts], ti) => {
+                const topPct = Math.round((ts.correct / ts.total) * 100)
+                const topColor = topPct >= 70 ? "var(--success)" : topPct >= 50 ? "var(--warning)" : "var(--accent)"
+                return (
+                  <div key={ti} style={{
+                    background: "var(--surface2)", borderRadius: "var(--radius-md)",
+                    padding: "8px 12px", marginBottom: 6
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: "var(--text)" }}>{top}</span>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: topColor }}>{topPct}%</span>
+                    </div>
+                    <div style={{ height: 4, background: "var(--surface3)", borderRadius: 2, overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${topPct}%`, background: topColor, borderRadius: 2 }} />
+                    </div>
+                    <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 3 }}>
+                      {ts.correct}/{ts.total} correct
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           )
         })}
@@ -96,41 +130,40 @@ const CBTResult = ({ onNavigate }) => {
 
         {/* Answer review */}
         <span className="ee-label">Review all answers</span>
-
         {answers.map((a, index) => (
-          <div
-            key={index}
-            className="ee-card-sm"
-            style={{
-              borderColor: a.isCorrect ? "var(--success)" : "rgba(255,107,107,0.4)",
-              background: a.isCorrect ? "var(--success-light)" : "var(--accent-light)"
-            }}
-          >
+          <div key={index} className="ee-card-sm" style={{
+            borderColor: a.isCorrect ? "var(--success)" : "rgba(255,107,107,0.4)",
+            background: a.isCorrect ? "var(--success-light)" : "var(--accent-light)"
+          }}>
+            <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
+              {a.subject && (
+                <span style={{
+                  fontSize: 10, fontWeight: 800, background: "var(--primary-light)",
+                  color: "var(--primary-text)", padding: "2px 7px", borderRadius: "var(--radius-pill)"
+                }}>{a.subject}</span>
+              )}
+              {a.topic && (
+                <span style={{
+                  fontSize: 10, fontWeight: 600, background: "var(--surface2)",
+                  color: "var(--text2)", padding: "2px 7px", borderRadius: "var(--radius-pill)"
+                }}>{a.topic}</span>
+              )}
+            </div>
             <p style={{ fontSize: "13px", fontWeight: 700, color: "var(--text)", marginBottom: "8px" }}>
               Q{index + 1}: {a.question}
             </p>
-
-            {a.topic && (
-              <p style={{ fontSize: "11px", color: "var(--text2)", marginBottom: "6px" }}>
-                {a.topic}
-              </p>
-            )}
-
             <p style={{ fontSize: "13px", marginBottom: "4px" }}>
               Your answer:{" "}
               <span style={{ fontWeight: 700, color: a.isCorrect ? "var(--success)" : "var(--accent)" }}>
                 {a.selected === "skipped" ? "⏭ Skipped" : a.selected || "Not answered"}
               </span>
             </p>
-
             {!a.isCorrect && (
               <p style={{ fontSize: "13px", color: "var(--success)", fontWeight: 700, marginBottom: "4px" }}>
                 Correct: {a.correct}
               </p>
             )}
-
             <p style={{ fontSize: "13px" }}>{a.isCorrect ? "✅ Correct" : "❌ Wrong"}</p>
-
             {a.explanation && (
               <div className="ee-explanation" style={{ marginTop: "10px", marginBottom: 0 }}>
                 <span className="exp-heading">💡 Explanation</span>
@@ -142,7 +175,7 @@ const CBTResult = ({ onNavigate }) => {
 
         {/* Action buttons */}
         <div className="ee-btn-row mt-8">
-          {weakTopics.length > 0 && (
+          {weakSubjects.length > 0 && (
             <button className="ee-btn ee-btn-danger" onClick={() => onNavigate("weak")}>
               Practice Weak Areas 🔥
             </button>

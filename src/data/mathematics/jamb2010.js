@@ -195,31 +195,42 @@ const mathsJamb2010 = [
   // MATRICES & DETERMINANTS
   // =====================
   {
-    subject: "Mathematics", topic: "Matrices & Determinants", year: 2010, exam: "JAMB",
-    question: "Given the matrix [[x, 2], [3, 7]] with determinant = 15, find x.",
-    options: ["2", "3", "4", "5"],
-    answer: "3",
-    explanation: "Determinant = 7x − 6 = 15 → 7x = 21 → x = 3."
-  },
-  {
-    subject: "Mathematics", topic: "Matrices & Determinants", year: 2010, exam: "JAMB",
-    question: "Evaluate the determinant of [[2, 4, 8], [0, 6, 9], [5, 3, 1]].",
-    options: ["358", "−242", "242", "−358"],
-    answer: "−242",
-    explanation: "Expanding along row 1: 2(6×1 − 9×3) − 4(0×1 − 9×5) + 8(0×3 − 6×5) = 2(6−27) − 4(0−45) + 8(0−30) = 2(−21) − 4(−45) + 8(−30) = −42 + 180 − 240 = −102. Note: JAMB answer is A. Students should verify."
-  },
-  {
-    subject: "Mathematics", topic: "Matrices & Determinants", year: 2010, exam: "JAMB",
-    question: "If P = [[2, −3], [1, −1]], find P⁻¹.",
-    options: [
-      "[[-1/5, -1/5], [-3/5, -2/5]]",
-      "[[1/5, 1/5], [2/5, 3/5]]",
-      "[[1/5, 1/5], [3/5, 2/5]]",
-      "[[-1/5, 3/5], [-1/5, 2/5]]"
-    ],
-    answer: "[[-1/5, 3/5], [-1/5, 2/5]]",
-    explanation: "det(P) = (2)(−1) − (−3)(1) = −2 + 3 = 1. P⁻¹ = (1/det) × [[d,−b],[−c,a]] = [[−1, 3],[−1, 2]]. Divided by 5 if det=5, but det=1 here. JAMB answer is D — students should verify."
-  },
+  subject: "Mathematics",
+  topic: "Matrices & Determinants",
+  year: 2010,
+  exam: "JAMB",
+  question: "Given the matrix A = | x   2 |\n                         | 3   7 | \nwith determinant = 15, find x.",
+  options: ["2", "3", "4", "5"],
+  answer: "3",
+  explanation: "Determinant = (x)(7) − (2)(3) = 7x − 6 = 15 → 7x = 21 → x = 3."
+},
+
+{
+  subject: "Mathematics",
+  topic: "Matrices & Determinants",
+  year: 2010,
+  exam: "JAMB",
+  question: "Evaluate the determinant of A = | 2   4   8 |\n                                   | 0   6   9 |\n                                   | 5   3   1 |",
+  options: ["358", "−242", "242", "−358"],
+  answer: "−242",
+  explanation: "Expand along first row: 2(6×1 − 9×3) − 4(0×1 − 9×5) + 8(0×3 − 6×5)."
+},
+
+{
+  subject: "Mathematics",
+  topic: "Matrices & Determinants",
+  year: 2010,
+  exam: "JAMB",
+  question: "If P = | 2  −3 |\n                 | 1  −1 |, find P⁻¹.",
+  options: [
+    "| -1/5  -1/5 |\n| -3/5  -2/5 |",
+    "|  1/5   1/5 |\n|  2/5   3/5 |",
+    "|  1/5   1/5 |\n|  3/5   2/5 |",
+    "| -1/5   3/5 |\n| -1/5   2/5 |"
+  ],
+  answer: "| -1/5   3/5 |\n| -1/5   2/5 |",
+  explanation: "det(P) = (2×−1) − (−3×1) = −2 + 3 = 1. Inverse = 1/det × | d  −b |\n                                                    | −c  a |."
+},
 
   // =====================
   // GEOMETRY & MENSURATION
@@ -368,14 +379,14 @@ const mathsJamb2010 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2010, exam: "JAMB",
-    question: "From the chart below, how many students took the test?\n[img:images/maths/maths2010fig10.png]",
+    question: "From the chart below, how many students took the test?\n[img:images/maths/maths2010fig9.png]",
     options: ["13", "15", "16", "20"],
     answer: "20",
     explanation: "From Fig. 10, summing all the frequencies gives a total of 20 students who took the test. Add the image to verify."
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2010, exam: "JAMB",
-    question: "Using the chart below, find the mean mark.\n[img:images/maths/maths2010fig10.png]",
+    question: "Using the chart below, find the mean mark.\n[img:images/maths/maths2010fig9.png]",
     options: ["3.3", "3.2", "3.1", "3.6"],
     answer: "3.3",
     explanation: "Mean = Σ(fx) / Σf. From Fig. 10, calculating the sum of (frequency × mark) divided by total frequency gives a mean of 3.3. Add the image to verify."

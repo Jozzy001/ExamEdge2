@@ -6,7 +6,7 @@ const Home = ({ onNavigate }) => {
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <span className="ee-logo">ExamEdge</span>
+        <span className="ee-logo">Easy A</span>
         <button className="ee-theme-toggle" onClick={toggleTheme}>
           {dark ? "☀️" : "🌙"}
         </button>

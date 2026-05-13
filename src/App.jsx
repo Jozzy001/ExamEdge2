@@ -9,12 +9,14 @@ import CBTResult from "./pages/CBTResult"
 function App() {
   const [page, setPage] = useState("home")
   const [selectedTopic, setSelectedTopic] = useState(null)
-  const [selectedSubject, setSelectedSubject] = useState(null)
+  const [selectedSubject, setSelectedSubject] = useState(null)      // single — study mode
+  const [selectedSubjects, setSelectedSubjects] = useState([])      // multi  — cbt mode
 
-  const handleNavigate = (newPage, topic = null, subject = null) => {
+  const handleNavigate = (newPage, topic = null, subject = null, subjects = null) => {
     setPage(newPage)
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
+    if (subjects !== null) setSelectedSubjects(subjects)
   }
 
   const renderPage = () => {
@@ -25,7 +27,7 @@ function App() {
     if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} />
     if (page === "progress") return <Progress onNavigate={handleNavigate} />
     if (page === "weak") return <Quiz topic="weak" subject={selectedSubject} onNavigate={handleNavigate} />
-    if (page === "cbt") return <Quiz topic="cbt" subject={selectedSubject} onNavigate={handleNavigate} />
+    if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} />
     if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} />
     return <h2>Page not found</h2>
   }
