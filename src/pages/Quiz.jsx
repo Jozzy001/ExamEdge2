@@ -1,5 +1,6 @@
 import { useState, useRef, useMemo, useEffect } from "react"
-import questions from "../data/questions"
+import jambQuestions from "../data/questions"
+import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 
 // =============================================
 // IMAGE RENDERER
@@ -122,15 +123,28 @@ const Calculator = ({ onClose }) => {
 // =============================================
 // QUIZ
 // =============================================
-const Quiz = ({ topic, subject, subjects, onNavigate }) => {
+const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", university = null, customCounts = null, englishFirst = false }) => {
+
+  // Get the right question pool
+  const questionPool = useMemo(() => {
+    if (examType === "postutme" && university) {
+      return POST_UTME_UNIVERSITIES[university]?.questions || []
+    }
+    return jambQuestions
+  }, [examType, university])
+
+  // Default question counts per subject
+  const getDefaultCount = (subj) => {
+    if (examType === "jamb") return subj === "English" ? 60 : 40
+    return 40 // Post-UTME default
+  }
 
   const filteredQuestions = useMemo(() => {
     const subjectList = subjects && subjects.length > 0 ? subjects : (subject ? [subject] : null)
 
     if (topic === "cbt") {
-      // Build pool per subject
       const bySubject = {}
-      questions.forEach(item => {
+      questionPool.forEach(item => {
         const addQ = (q) => {
           const subj = q.subject || "General"
           if (!bySubject[subj]) bySubject[subj] = []
@@ -142,12 +156,17 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
           addQ(item)
         }
       })
-      // English = 60, others = 40, ordered by subject selection
       const ordered = []
       const subjectsToUse = subjectList || Object.keys(bySubject)
-      subjectsToUse.forEach(subj => {
+
+      // English always comes first if englishFirst is true
+      const sortedSubjects = englishFirst
+        ? ["English", ...subjectsToUse.filter(s => s !== "English")]
+        : subjectsToUse
+
+      sortedSubjects.forEach(subj => {
         const pool = (bySubject[subj] || []).sort(() => Math.random() - 0.5)
-        const count = subj === "English" ? 60 : 40
+        const count = customCounts?.[subj] ?? getDefaultCount(subj)
         ordered.push(...pool.slice(0, count))
       })
       return ordered
@@ -166,14 +185,14 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
         .filter(([_, s]) => s.total > 0 && (s.score / s.total) * 100 < 50)
         .map(([t]) => t)
       if (weakTopics.length === 0) return []
-      base = questions.filter(q => {
+      base = questionPool.filter(q => {
         if (q.passage && q.questions) return q.questions.some(inner =>
           weakTopics.includes(inner.topic) && (!subjectList || subjectList.includes(inner.subject))
         )
         return weakTopics.includes(q.topic) && (!subjectList || subjectList.includes(q.subject))
       }).sort(() => Math.random() - 0.5)
     } else {
-      base = questions.filter(q => {
+      base = questionPool.filter(q => {
         if (q.passage && q.questions) return q.questions.some(inner =>
           inner.topic === topic && (!subjectList || subjectList.includes(inner.subject))
         )
@@ -191,22 +210,24 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
       }
       return { ...item, topic: item.topic || topic || "General", subject: item.subject || subject || "General" }
     })
-  }, [topic, subject, subjects])
+  }, [topic, subject, subjects, questionPool, customCounts])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState("")
   const [showExplanation, setShowExplanation] = useState(false)
   const [finished, setFinished] = useState(false)
   const [started, setStarted] = useState(false)
-  const [examTimeLeft, setExamTimeLeft] = useState(3600)
+  const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
   const [showCalc, setShowCalc] = useState(false)
+  // Custom counts state for start screen
+  const [qCounts, setQCounts] = useState({})
+  const [customTime, setCustomTime] = useState(examType === "jamb" ? 3600 : 1800)
 
   const answersMapRef = useRef({})
   const isCBT = topic === "cbt"
   const isWeak = topic === "weak"
   const currentQuestion = filteredQuestions[currentIndex]
 
-  // Reset all state when topic/subject changes (prevents bleed between sessions)
   useEffect(() => {
     answersMapRef.current = {}
     setSelected("")
@@ -247,10 +268,10 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
       localStorage.setItem("cbtReport", JSON.stringify({
         score, total, percentage: Math.round((score / total) * 100),
         subjects: subjects || (subject ? [subject] : []),
+        examType, university,
         answers
       }))
     }
-    // Save progress — only from this session
     const existing = JSON.parse(localStorage.getItem("progress")) || []
     if (isCBT || isWeak) {
       const topicGroups = {}
@@ -271,7 +292,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
   }, [finished])
 
   // EDGE CASES
-  if (filteredQuestions.length === 0) {
+  if (filteredQuestions.length === 0 && started) {
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -293,51 +314,73 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
   // CBT START SCREEN
   if (isCBT && !started) {
     const subjectList = subjects && subjects.length > 0 ? subjects : (subject ? [subject] : [])
-    const totalQ = subjectList.reduce((t, s) => t + (s === "English" ? 60 : 40), 0)
     const timeOptions = [
       { label: "30 mins", seconds: 1800 },
       { label: "1 hour", seconds: 3600 },
-      { label: "1.5 hrs ⭐", seconds: 5400 },
+      { label: "1.5 hrs", seconds: 5400 },
       { label: "2 hours", seconds: 7200 },
     ]
+    const totalQ = subjectList.reduce((t, s) => t + (qCounts[s] ?? getDefaultCount(s)), 0)
+
     return (
       <div className="ee-page">
         <header className="ee-header">
           <button className="ee-back-btn" onClick={() => onNavigate("cbtSubjectSelect")}>← Back</button>
-          <span style={{ fontWeight: 800, fontSize: "16px" }}>CBT Mode</span>
+          <span style={{ fontWeight: 800, fontSize: "16px" }}>CBT Setup</span>
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
           <div className="ee-result-score">
             <span className="result-emoji">🧪</span>
             <div className="result-fraction">{totalQ} Questions</div>
-            <div style={{ fontSize: 12, color: "var(--text2)", marginTop: 8, lineHeight: 1.8 }}>
-              {subjectList.map(s => (
-                <span key={s} style={{ display: "inline-block", marginRight: 8 }}>
-                  <span style={{ fontWeight: 800, color: "var(--text)" }}>{s}</span>
-                  <span style={{ color: "var(--text3)" }}> ({s === "English" ? 60 : 40}q)</span>
-                </span>
-              ))}
-            </div>
             <div className="result-msg" style={{ color: "var(--primary)", fontWeight: 700, marginTop: 4 }}>
-              {formatTime(examTimeLeft)} selected
+              {formatTime(customTime)}
             </div>
           </div>
-          <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Choose your time limit</span>
+
+          {/* Per-subject question count */}
+          <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Questions per subject</span>
+          {subjectList.map(subj => {
+            const defaultCount = getDefaultCount(subj)
+            const count = qCounts[subj] ?? defaultCount
+            return (
+              <div key={subj} style={{
+                background: "var(--surface)", border: "1px solid var(--border)",
+                borderRadius: "var(--radius-md)", padding: "12px 16px", marginBottom: 10,
+                display: "flex", alignItems: "center", justifyContent: "space-between"
+              }}>
+                <div>
+                  <div style={{ fontWeight: 800, fontSize: 14, color: "var(--text)" }}>{subj}</div>
+                  <div style={{ fontSize: 11, color: "var(--text3)" }}>Default: {defaultCount}q</div>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.max(5, (p[subj] ?? defaultCount) - 5) }))}
+                    style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>−</button>
+                  <span style={{ fontWeight: 800, fontSize: 16, color: "var(--primary)", minWidth: 30, textAlign: "center" }}>{count}</span>
+                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.min(60, (p[subj] ?? defaultCount) + 5) }))}
+                    style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>+</button>
+                </div>
+              </div>
+            )
+          })}
+
+          {/* Time selector */}
+          <span className="ee-label" style={{ marginTop: 8, display: "block" }}>Time limit</span>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
             {timeOptions.map(opt => (
-              <button key={opt.seconds} onClick={() => setExamTimeLeft(opt.seconds)} style={{
+              <button key={opt.seconds} onClick={() => setCustomTime(opt.seconds)} style={{
                 padding: "12px 6px", borderRadius: "var(--radius-md)",
-                border: examTimeLeft === opt.seconds ? "2px solid var(--primary)" : "1.5px solid var(--border)",
-                background: examTimeLeft === opt.seconds ? "var(--primary-light)" : "var(--surface)",
-                color: examTimeLeft === opt.seconds ? "var(--primary-text)" : "var(--text)",
-                fontFamily: "var(--font-main)", fontWeight: examTimeLeft === opt.seconds ? 800 : 600,
+                border: customTime === opt.seconds ? "2px solid var(--primary)" : "1.5px solid var(--border)",
+                background: customTime === opt.seconds ? "var(--primary-light)" : "var(--surface)",
+                color: customTime === opt.seconds ? "var(--primary-text)" : "var(--text)",
+                fontFamily: "var(--font-main)", fontWeight: customTime === opt.seconds ? 800 : 600,
                 fontSize: 12, cursor: "pointer", transition: "all 0.15s"
               }}>{opt.label}</button>
             ))}
           </div>
+
           <div className="ee-card">
-            <p style={{ fontSize: "14px", color: "var(--text2)", lineHeight: 1.7 }}>
+            <p style={{ fontSize: "13px", color: "var(--text2)", lineHeight: 1.7 }}>
               ✅ Questions grouped by subject<br />
               ✅ Navigate freely between questions<br />
               ✅ Green = answered, Red = unanswered<br />
@@ -346,6 +389,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
           </div>
           <button className="ee-btn ee-btn-primary mt-12" onClick={() => {
             localStorage.removeItem("cbtReport")
+            setExamTimeLeft(customTime)
             setStarted(true)
           }}>Start Exam ▶</button>
           <button className="ee-btn ee-btn-secondary mt-12" onClick={() => onNavigate("home")}>Not yet, go back</button>
@@ -356,6 +400,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
 
   // HELPERS
   const saveAnswer = (index = currentIndex, value = selected) => {
+    if (!filteredQuestions[index]) return
     answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
   }
   const handleSelectOption = (opt) => { setSelected(opt); setShowExplanation(false); saveAnswer(currentIndex, opt) }
@@ -364,7 +409,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
     saveAnswer()
     const unanswered = filteredQuestions.map((_, i) => i).filter(i => !answersMapRef.current[i]?.selected)
     if (unanswered.length > 0) {
-      const ok = window.confirm(`You have ${unanswered.length} unanswered question(s): ${unanswered.map(i => `Q${i + 1}`).join(", ")}.\n\nSubmit anyway?`)
+      const ok = window.confirm(`You have ${unanswered.length} unanswered question(s).\n\nSubmit anyway?`)
       if (!ok) return
     }
     setFinished(true)
@@ -402,6 +447,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
     )
   }
 
+  if (!currentQuestion) return null
+
   // MAIN QUIZ UI
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
@@ -423,7 +470,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate }) => {
             border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
             padding: "6px 10px", cursor: "pointer", fontSize: 16,
             color: showCalc ? "#fff" : "var(--text)"
-          }} title="Calculator">🧮</button>
+          }}>🧮</button>
           {isCBT && (
             <span className={`ee-timer${examTimeLeft < 300 ? " urgent" : ""}`}>
               ⏱ {formatTime(examTimeLeft)}
