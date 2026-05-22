@@ -59,7 +59,7 @@ const Home = ({ onNavigate, onReset }) => {
         </button>
 
         <button className="ee-btn ee-btn-secondary" onClick={onReset}>
-          🔄 Change Exam Type 🔄
+          ⚙️ Settings
         </button>
       </div>
     </div>

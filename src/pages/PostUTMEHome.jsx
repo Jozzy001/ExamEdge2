@@ -85,7 +85,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* Change exam type */}
         <button className="ee-btn ee-btn-secondary" onClick={onReset}>
-          🔄 Change Exam / University / Faculty
+          ⚙️ Settings
         </button>
       </div>
     </div>
