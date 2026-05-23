@@ -77,6 +77,7 @@ const unibenEnglish2005 = [
   // =====================
   {
     subject: "English", topic: "Comprehension", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    passage: "The University of Benin has been actively engaged in major development projects across its campus. The construction of new buildings, road diversions, and infrastructure improvements has inevitably caused some inconvenience to staff and students. However, these projects are being executed with due approvals and with an eye to aesthetics, ensuring that the campus remains beautiful even during construction. The university administration has demonstrated its executive ability by ensuring that money voted for projects is spent on them in good time, and has urged patience from the university community, assuring that the inconvenience is temporary and that the completed projects will greatly benefit all.",
     question: "From the passage about university development projects, we can gather that",
     options: [
       "there is not much consideration for the health of the inhabitants",
@@ -89,6 +90,7 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Comprehension", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    passage: "The University of Benin has been actively engaged in major development projects across its campus. The construction of new buildings, road diversions, and infrastructure improvements has inevitably caused some inconvenience to staff and students. However, these projects are being executed with due approvals and with an eye to aesthetics, ensuring that the campus remains beautiful even during construction. The university administration has demonstrated its executive ability by ensuring that money voted for projects is spent on them in good time, and has urged patience from the university community, assuring that the inconvenience is temporary and that the completed projects will greatly benefit all.",
     question: "Unless it can be shown that the money voted for projects can be spent on them in good time",
     options: [
       "the development activity will not be intense",
@@ -101,6 +103,7 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Comprehension", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    passage: "The University of Benin has been actively engaged in major development projects across its campus. The construction of new buildings, road diversions, and infrastructure improvements has inevitably caused some inconvenience to staff and students. However, these projects are being executed with due approvals and with an eye to aesthetics, ensuring that the campus remains beautiful even during construction. The university administration has demonstrated its executive ability by ensuring that money voted for projects is spent on them in good time, and has urged patience from the university community, assuring that the inconvenience is temporary and that the completed projects will greatly benefit all.",
     question: "'An eye to aesthetics' in this passage means",
     options: [
       "a regard for space",
@@ -113,6 +116,7 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Comprehension", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    passage: "The University of Benin has been actively engaged in major development projects across its campus. The construction of new buildings, road diversions, and infrastructure improvements has inevitably caused some inconvenience to staff and students. However, these projects are being executed with due approvals and with an eye to aesthetics, ensuring that the campus remains beautiful even during construction. The university administration has demonstrated its executive ability by ensuring that money voted for projects is spent on them in good time, and has urged patience from the university community, assuring that the inconvenience is temporary and that the completed projects will greatly benefit all.",
     question: "In the passage, the author tries to explain why",
     options: [
       "it is necessary to establish the Works and Services Complex",
@@ -125,6 +129,7 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Comprehension", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    passage: "The University of Benin has been actively engaged in major development projects across its campus. The construction of new buildings, road diversions, and infrastructure improvements has inevitably caused some inconvenience to staff and students. However, these projects are being executed with due approvals and with an eye to aesthetics, ensuring that the campus remains beautiful even during construction. The university administration has demonstrated its executive ability by ensuring that money voted for projects is spent on them in good time, and has urged patience from the university community, assuring that the inconvenience is temporary and that the completed projects will greatly benefit all.",
     question: "Which of these is NOT among the reasons given by the author for enumerating the examples of current development?",
     options: [
       "To show that we are capable of executing approved projects",

@@ -206,6 +206,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
+    passage: "The sky at night is a vast and lonely expanse, silent and remote. After midnight, when all human activity ceases and the world falls into deep sleep, the sky becomes even more isolated. The stars seem distant, cold, and indifferent to human affairs. There is a haunting quality to the midnight sky that makes one reflect on the smallness of human existence in the universe.",
     question: "The sky is very lonely and even more so after midnight. This means that:",
     options: [
       "The sky is lonely even after midnight",
@@ -222,6 +223,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
+    passage: "The meteorologist studied the weather chart carefully, tracing the patterns of isobars and fronts across the map. The more he looked at the chart, the more confused he became. The data seemed contradictory — pressure systems that should have moved east had stalled, and rainfall patterns defied normal prediction models. He wondered if the instruments themselves were at fault.",
     question: "The more I looked at the chart, the more puzzled I became. This means that the speaker:",
     options: [
       "Was not puzzled until he saw the chart",

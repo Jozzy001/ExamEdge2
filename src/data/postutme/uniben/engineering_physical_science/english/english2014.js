@@ -13,6 +13,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "Emeka had never seen so many people on the streets, or so many _____ on the road.",
     options: ["Transportation", "Vehicles", "Wagons", "Trucks"],
     answer: "Vehicles",
@@ -21,6 +22,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "One minute they would be _____ other cars, the next, stopping in the middle of the road.",
     options: ["Bypassing", "Overtaking", "Taking over", "Overtaking"],
     answer: "Overtaking",
@@ -29,6 +31,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "Stopping in the middle of the road to pick up _____ without any signal to other drivers.",
     options: ["Bystanders", "Clients", "Passengers", "Passers-by"],
     answer: "Passengers",
@@ -37,6 +40,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "There were long _____ of people waiting at bus stops.",
     options: ["Tiers", "Rows", "Crowd", "Queues"],
     answer: "Queues",
@@ -45,6 +49,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "There were long queues of people waiting at bus _____.",
     options: ["Stop", "Stations", "Parks", "Halts"],
     answer: "Stop",
@@ -53,6 +58,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "_____ often seemed in danger of their lives as they tried to run across the road.",
     options: ["Walkers", "Trekkers", "Pedestrians", "Pedestrians"],
     answer: "Pedestrians",
@@ -61,6 +67,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "Emeka heard the blaring horn of a _____, then a siren as it rushed to pick up accident victims.",
     options: ["Lorry", "Omnibus", "Ambulance", "Bus"],
     answer: "Ambulance",
@@ -69,6 +76,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "This was followed by four policemen in an open _____.",
     options: ["Keep", "Exceed", "Observe", "See"],
     answer: "Observe",
@@ -77,6 +85,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Comprehension", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
+    passage: "Emeka and his auntie arrived in Port Harcourt during the rush hour, when offices and shops were closing and workers were hurrying home. Emeka had never seen so many people on the streets, or so many vehicles on the road. Emeka's auntie told him that the taxis had the worst drivers. One minute they would be overtaking other cars, the next, stopping in the middle of the road to pick up passengers without any signal to other drivers of their intentions. There were long queues of people waiting at bus stops, and pedestrians often seemed in danger of their lives as they tried to run across the road. Whenever there was a lull in the traffic, Emeka heard the blaring horn of an ambulance, then a siren as it rushed to pick up the victims of an accident. And this was followed by four policemen in an open jeep. His auntie told him that the police did not have to observe the speed limit in cases of emergency, but civilian drivers could be heavily punished for speeding.",
     question: "The police did not have to _____ the speed limit in cases of emergency, but civilian drivers could be heavily _____ for speeding.",
     options: ["Keep / imprisoned", "Exceed / detained", "Observe / fined", "See / remunerated"],
     answer: "Observe / fined",
