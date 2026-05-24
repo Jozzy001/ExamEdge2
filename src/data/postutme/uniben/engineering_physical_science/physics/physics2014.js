@@ -17,6 +17,7 @@ const unibenPhysics2014 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If the period of a sound wave is 10⁻³ s, calculate the distance covered after one complete oscillation. (Speed of sound = 330 m/s)",
     options: ["0.33 m", "16.5 m", "33 m", "65 m"],
@@ -25,6 +26,7 @@ const unibenPhysics2014 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "An obstacle is placed in front of two mirrors inclined at angle θ. If five images are formed, what is θ?",
     options: ["40°", "50°", "60°", "120°"],
@@ -41,6 +43,7 @@ const unibenPhysics2014 = [
   },
   {
     subject: "Physics", topic: "Electricity & Magnetism", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A wire 4 m long, cross-sectional area 2×10⁻⁸ m², has resistance 5 Ω. Calculate its resistivity.",
     options: ["4×10⁻⁷ Ωm", "2.5×10⁻⁷ Ωm", "4×10⁻⁸ Ωm", "2.5×10⁻⁸ Ωm"],
@@ -64,7 +67,7 @@ const unibenPhysics2014 = [
     explanation: "VR = circumference of effort circle / pitch = 2πr / p = 2×(22/7)×21 cm / 0.4 cm = 132/0.4 = 330."
   },
   {
-    subject: "Physics", topic: "Trigonometry", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Physics", topic: "Mechanics", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Given sin45°=cos45°=1/√2, sin30°=1/2, cos30°=√3/2, find sin15°.",
     options: ["√6/4", "(√6−√2)/4", "√(2/3)", "(√2−1)/3"],

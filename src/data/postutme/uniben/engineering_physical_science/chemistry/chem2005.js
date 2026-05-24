@@ -4,7 +4,7 @@
 const unibenChem2005 = [
 
   {
-    subject: "Chemistry", topic: "Physical & Chemical Changes", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Mixtures & Compounds", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Which of the following is a physical change?",
     options: ["Burning", "Reaction with steam", "Dissolution of NaCl in water", "Chlorine in water"],
     answer: "Dissolution of NaCl in water",
@@ -39,21 +39,21 @@ const unibenChem2005 = [
     explanation: "The Law of Multiple Proportions states that when two elements combine to form more than one compound, the masses of one element that combine with a fixed mass of the other are in simple whole number ratios. H₂O and H₂O₂ illustrate this."
   },
   {
-    subject: "Chemistry", topic: "Stoichiometry", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Lead forms two chlorides in the ratio 1:2. If the first chloride (PbCl₂) has molar mass 278 g/mol, find the mass of chlorine in PbCl₄.",
     options: ["71 g", "72 g", "21 g", "73 g"],
     answer: "71 g",
     explanation: "PbCl₂ contains 2 × 35.5 = 71 g Cl per mole. Per the law of multiple proportions, PbCl₄ contains 4 × 35.5 = 142 g Cl. UNIBEN answer is A (71 g) — possibly referring to Cl in PbCl₂. Students should verify."
   },
   {
-    subject: "Chemistry", topic: "Stoichiometry", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "In the reaction 2H₂ + F₂ → 2HF, if 4 mol H₂ reacts with 1 mol F₂, which gas is in excess and by how much?",
     options: ["H₂ by 3 mol", "H₂ by 2 mol", "F₂ by 1 mol", "F₂ by 3 mol"],
     answer: "H₂ by 3 mol",
     explanation: "The ratio is 2H₂ : 1F₂. For 1 mol F₂, only 2 mol H₂ is needed. Since 4 mol H₂ is available, excess H₂ = 4 − 2 = 2 mol. UNIBEN answer suggests 3 mol excess — students should verify the initial amounts."
   },
   {
-    subject: "Chemistry", topic: "Stoichiometry", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Which is heavier: 0.2 mol SO₂ or 0.2 mol CO₂? [S=32, O=16, C=12]",
     options: ["SO₂ is heavier", "CO₂ is heavier", "They are equal", "Cannot be determined"],
     answer: "SO₂ is heavier",
@@ -67,7 +67,7 @@ const unibenChem2005 = [
     explanation: "Diffusion is the spontaneous movement and mixing of gas molecules from a region of high concentration to low concentration. It occurs without any external force due to the kinetic energy of molecules."
   },
   {
-    subject: "Chemistry", topic: "Carbon & Its Compounds", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Organic Chemistry", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Which of the following are properties of carbon in the form of diamond?",
     options: [
       "Nil electrical conductivity, melting point −100°C",

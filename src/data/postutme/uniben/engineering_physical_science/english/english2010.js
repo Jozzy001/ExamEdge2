@@ -67,7 +67,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "They accused the government of knee-jerk responses to issues that affected the masses. This means that:",
+    question: "They accused the government of **knee-jerk** responses to issues that affected the masses. This means that:",
     options: [
       "The government responded quickly to issues affecting the masses",
       "The government did not respond to issues affecting the masses",
@@ -80,7 +80,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The lecturer had me on the edge of my seat. This means that:",
+    question: "The lecturer had me **on the edge of my seat**. This means that:",
     options: [
       "The lecture was interesting and I was fully attentive",
       "The lecture was very boring and I felt like leaving",
@@ -93,7 +93,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'If your dad finds out, you will catch it.' This means that:",
+    question: "'If your dad finds out, you will **catch it**.' This means that:",
     options: [
       "You will get a present if your dad finds out",
       "You will be punished if your dad finds out",
@@ -106,7 +106,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "I listened in as the lecturer discussed my matter with the dean. This means that:",
+    question: "I **listened in** as the lecturer discussed my matter with the dean. This means that:",
     options: [
       "I listened attentively to the discussion",
       "I listened without the lecturer and the dean knowing",
@@ -119,7 +119,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Amanda has always been able to twist her father around her little finger. This means that:",
+    question: "Amanda has always been able to **twist her father around her little finger**. This means that:",
     options: [
       "Amanda is always able to persuade her father",
       "Amanda is always able to deceive her father",
@@ -132,7 +132,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "She turned down our invitation to the party. This means that:",
+    question: "She **turned down** our invitation to the party. This means that:",
     options: [
       "She accepted our invitation to the party",
       "She rejected our invitation to the party",
@@ -145,7 +145,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'I am going back to the office because I have a lot on my plate.' This means that:",
+    question: "'I am going back to the office because I have **a lot on my plate**.' This means that:",
     options: [
       "I have a lot of work to do in my office",
       "I have a lot of food to eat in my office",
@@ -158,7 +158,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "In spite of his mother's efforts, Osuo has remained the black sheep of the family. This means that:",
+    question: "In spite of his mother's efforts, Osuo has remained the **black sheep** of the family. This means that:",
     options: [
       "Osuo is the one supporting the family financially",
       "Osuo is the one bringing shame to the family",
@@ -171,7 +171,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "I was taken aback by his actions. This means that:",
+    question: "I was **taken aback** by his actions. This means that:",
     options: [
       "His actions impressed me",
       "His actions got me angry",
@@ -182,49 +182,51 @@ const unibenEnglish2010 = [
     explanation: "'Taken aback' means shocked or surprised — usually unpleasantly. The actions were unexpected and caught the speaker off guard."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Steps are being taken to ameliorate the transport situation on campus.",
+    question: "Steps are being taken to **ameliorate** the transport situation on campus.",
     options: ["Improve", "Worsen", "Repair", "Maintain"],
     answer: "Improve",
     explanation: "Ameliorate means to make something bad better — to improve. From Latin 'melior' meaning better."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "The Vice-Chancellor thanked him for his invaluable contributions to the growth of the school.",
+    question: "The Vice-Chancellor thanked him for his **invaluable** contributions to the growth of the school.",
     options: ["Useless", "Very useful", "Unacceptable", "Unexpected"],
     answer: "Very useful",
     explanation: "★ TRAP — RECURRING: Invaluable = extremely valuable (NOT useless). The prefix 'in-' means 'cannot be valued/priced', not 'without value'. Same trap tested in 2012/2013."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "His reasons sounded plausible.",
+    question: "His reasons sounded **plausible**.",
     options: ["Unacceptable", "Reasonable", "Incredible", "Unreasonable"],
     answer: "Reasonable",
     explanation: "Plausible means seeming reasonable or probable — believable and logical. Incredible and unreasonable are antonyms."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "His message in the assembly hall was unequivocal.",
+    question: "His message in the assembly hall was **unequivocal**.",
     options: ["Poor", "Stimulating", "Clear and without doubt", "Difficult to understand"],
     answer: "Clear and without doubt",
     explanation: "Unequivocal means leaving no doubt — absolutely clear with no ambiguity. Un + equivocal (ambiguous) = not ambiguous."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "You must be importunate to get assistance from the lecturer.",
+    question: "You must be **importunate** to get assistance from the lecturer.",
     options: ["Be unlucky", "Be very lucky", "Be persistent", "Give a bribe"],
     answer: "Be persistent",
     explanation: "Importunate means persistent in making demands — keep asking repeatedly. Persistence is the key meaning."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "The use of books of tables is becoming obsolete in mathematics examinations.",
+    question: "The use of books of tables is becoming **obsolete** in mathematics examinations.",
     options: ["Out of date", "Scarce", "Unnecessary", "Real"],
     answer: "Out of date",
     explanation: "Obsolete means no longer in use — out of date. ★ RECURRING — also appeared in 2007/2008 antonym question."
@@ -232,7 +234,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Antonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "He intentionally hid the documents from his wife.",
+    question: "He **intentionally** hid the documents from his wife.",
     options: ["Carelessly", "Willingly", "Unknowingly", "Foolishly"],
     answer: "Unknowingly",
     explanation: "Intentionally = deliberately, on purpose. Antonym = unknowingly — without being aware, accidentally."
@@ -240,15 +242,16 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Antonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Natural causes of death are easy to understand.",
+    question: "**Natural** causes of death are easy to understand.",
     options: ["Supernatural", "False", "Artificial", "Modern"],
     answer: "Supernatural",
     explanation: "Natural = existing in nature. Antonym = supernatural — beyond or outside nature. Artificial means man-made, which is different."
   },
   {
     subject: "English", topic: "Antonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "He is one of the most talkative students in his class.",
+    question: "He is one of the most **talkative** students in his class.",
     options: ["Humorous", "Sober", "Taciturn", "Aggressive"],
     answer: "Taciturn",
     explanation: "Talkative = talking a great deal. Antonym = taciturn — reserved, saying very little. ★ RECURRING — taciturn appeared as antonym of loquacious in 2005/2006 and talkative in 2010/2011."
@@ -256,7 +259,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Antonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The whole city has become waterlogged.",
+    question: "The whole city has become **waterlogged**.",
     options: ["Dry", "Sandy", "Flooded", "Muddy"],
     answer: "Dry",
     explanation: "Waterlogged = saturated with water. Antonym = dry — free from moisture. Flooded is a synonym, not antonym."
@@ -264,7 +267,7 @@ const unibenEnglish2010 = [
   {
     subject: "English", topic: "Antonyms", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "His comments at the event were remarkable.",
+    question: "His comments at the event were **remarkable**.",
     options: ["Critical", "Useless", "Ordinary", "Commendable"],
     answer: "Ordinary",
     explanation: "Remarkable = worthy of attention, striking. Antonym = ordinary — nothing special or distinctive. Commendable is positive but not the antonym."

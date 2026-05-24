@@ -26,6 +26,7 @@ const unibenPhysics2018 = [
   },
   {
     subject: "Physics", topic: "Thermal Physics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "How long will it take to heat 2 kg of water from 25°C to 100°C using a 2200 W heater? (c = 4200 J/kg°C)",
     options: ["286 s", "572 s", "1,145 s", "2,290 s"],
@@ -58,6 +59,7 @@ const unibenPhysics2018 = [
   },
   {
     subject: "Physics", topic: "Electricity & Magnetism", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Two points in an electric field have a potential difference of 3 V. What work is required to move a charge of 5 C between the points?",
     options: ["5 J", "14 J", "15 J", "30 J"],
@@ -74,6 +76,7 @@ const unibenPhysics2018 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A 1,000 kg car is driven around a circle of radius 30 m at 9 m/s. How much centripetal force is required?",
     options: ["700 N", "2,700 N", "3,700 N", "2,400 N"],
@@ -82,6 +85,7 @@ const unibenPhysics2018 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A plastic sphere floats in water (ρ=1000 kg/m³) with 0.5 of its volume submerged, and in oil with 0.4 submerged. Find the density of the oil.",
     options: ["800 kg/m³", "1200 kg/m³", "1250 kg/m³", "2000 kg/m³"],

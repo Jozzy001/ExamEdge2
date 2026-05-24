@@ -9,6 +9,7 @@
 const unibenMaths2014 = [
   {
     subject: "Mathematics", topic: "Trigonometry", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A schoolboy lying 30 m from the foot of a water tank observes the angle of elevation of the top is 60°. Calculate the height.",
     options: ["60 m", "30√3 m", "20√3 m", "10√3 m"],
@@ -25,6 +26,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Binary operation * defined by x*y = xy−y−x. If x*3 = 2*x, find x.",
     options: ["−1", "0", "1", "5"],
@@ -57,6 +59,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Logarithms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Simplify: log₃9 + log₃21 − log₃7",
     options: ["0", "27", "1/3", "3"],
@@ -73,6 +76,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Sequences & Series", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If the sum of the first n terms of a sequence is Sₙ = n²−n+1, find the fifth term.",
     options: ["21", "12", "31", "8"],
@@ -81,6 +85,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Solve: −3 < 5−3x ≤ 11",
     options: ["−2/3 < x ≤ 8/3", "−2 ≤ x < 8/3", "x ≥ −2, x > 8/3", "x ≤ −2, x < 8/3"],
@@ -89,6 +94,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Find dy/dx if y = x/(x+1)",
     options: ["x/(x+1)²", "1/(x+1)²", "2x/(x+1)", "x(x−1)"],
@@ -105,6 +111,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "From a bag of 3 red and 4 white balls, 2 balls picked without replacement. Find P(same colour).",
     options: ["1/3", "9/49", "3/7", "1/7"],
@@ -161,6 +168,7 @@ const unibenMaths2014 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Evaluate: ∫sin3x dx",
     options: ["2/3 cos3x + C", "1/3 cos3x + C", "−1/3 cos3x + C", "−2/3 cos3x + C"],

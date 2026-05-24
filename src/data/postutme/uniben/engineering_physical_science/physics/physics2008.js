@@ -6,7 +6,7 @@
 
 const unibenPhysics2008 = [
   {
-    subject: "Physics", topic: "Sound & Waves", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Physics", topic: "Waves & Optics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following waves is both mechanical and transverse?",
     options: ["X-rays", "Water waves", "Sound waves", "Radio waves"],
@@ -44,6 +44,7 @@ const unibenPhysics2008 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following radiations are arranged in ascending order of frequency?",
     options: [
@@ -65,6 +66,7 @@ const unibenPhysics2008 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The gravitational force on a 1 kg mass at Earth's surface is 10 N. Calculate the force on a 100 kg satellite at a distance of 2R from Earth's centre.",
     options: ["250 N", "220 N", "120 N", "110 N"],
@@ -97,6 +99,7 @@ const unibenPhysics2008 = [
   },
   {
     subject: "Physics", topic: "Electronics & Semiconductors", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Doping a semiconductor with impurities:",
     options: ["Decreases conductivity", "Increases resistivity", "Increases conductivity", "Has no effect"],

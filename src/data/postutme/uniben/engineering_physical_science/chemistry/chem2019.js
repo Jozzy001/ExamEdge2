@@ -22,7 +22,7 @@ const unibenChem2019 = [
     explanation: "Alkaline pyrogallol absorbs O₂ completely. The alkaline solution (NaOH) also absorbs CO₂. Water vapour condenses. Heated copper absorbs any remaining O₂. Nitrogen reacts slowly with copper at very high temperatures. The truly inert gases left are the RARE GASES (He, Ne, Ar, Kr, Xe) — they react with nothing."
   },
   {
-    subject: "Chemistry", topic: "Thermal Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Thermochemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "When sodium chloride and metallic sodium are each dissolved in water:",
     options: [
@@ -35,7 +35,8 @@ const unibenChem2019 = [
     explanation: "2Na + 2H₂O → 2NaOH + H₂↑ is highly exothermic (sodium reacts violently with water, releasing heat and hydrogen gas). Dissolving NaCl in water is slightly endothermic (absorbs a small amount of heat — the solution becomes slightly cooler). Answer D is correct."
   },
   {
-    subject: "Chemistry", topic: "Thermal Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Thermochemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "When heat is absorbed during a chemical reaction, the reaction is said to be:",
     options: ["Thermodynamic", "Exothermic", "Isothermal", "Endothermic"],
@@ -44,6 +45,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Chemical Equilibrium", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following conditions promotes the backward reaction?",
     options: [
@@ -57,6 +59,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Chemical Equilibrium", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "In the manufacture of ammonia: N₂(g)+3H₂(g)⇌2NH₃(g), ΔH=−92.37 kJ. The amount of NH₃ formed at equilibrium will increase if:",
     options: [
@@ -70,6 +73,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Metals & Non-Metals", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following materials cannot replace hydrogen from water or steam?",
     options: ["Sodium", "Magnesium", "Iron", "Copper"],
@@ -91,6 +95,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The reaction between an organic acid and an alcohol in the presence of an acid catalyst is known as:",
     options: ["Saponification", "Dehydration", "Esterification", "Hydrolysis"],
@@ -99,6 +104,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The IUPAC names for CH₃COOH and CH₂=CH₂ respectively are:",
     options: [
@@ -112,6 +118,7 @@ const unibenChem2019 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following is NOT a member of the homologous series of paraffins (alkanes)?",
     options: ["C₃H₈", "C₅H₁₂", "C₇H₁₆", "C₂₄H₄₈"],

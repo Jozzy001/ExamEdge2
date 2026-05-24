@@ -9,6 +9,7 @@
 const unibenPhysics2012 = [
   {
     subject: "Physics", topic: "Waves & Optics", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A radio wave has a velocity of 3×10⁸ m/s. A radio station broadcasts at a frequency of 8000 kHz. Find the wavelength of the broadcast.",
     options: ["267 m", "37.5 m", "400 m", "375 m"],
@@ -54,6 +55,7 @@ const unibenPhysics2012 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "For the correction of myopic defect in the human eye, we require:",
     options: [
@@ -67,6 +69,7 @@ const unibenPhysics2012 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A radioactive sample initially contains N atoms. After three half-lives, the number of atoms that have disintegrated is:",
     options: ["N/8", "3N/8", "5N/8", "7N/8"],
@@ -127,7 +130,7 @@ const unibenPhysics2012 = [
     explanation: "The Lorentz force on a moving charge: F = BQv, where B = magnetic field strength, Q = charge, v = velocity. This is the fundamental equation for the magnetic force on a moving charge. F = BIL applies to a current-carrying conductor, not a single charge."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Physics", topic: "Waves & Optics", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "A herdsman yelling out to a fellow herdsman heard his voice reflected by a cliff four seconds later. What is the velocity of sound in air if the cliff is 680 m away?",
     options: ["170 m/s", "136 m/s", "340 m/s", "680 m/s"],

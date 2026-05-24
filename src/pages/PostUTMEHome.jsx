@@ -67,11 +67,29 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </button>
 
           <button className="ee-home-card" onClick={() => onNavigate("weak")}>
-            <span className="home-card-icon">🔥</span>
+            <span className="home-card-icon">💪</span>
             <div className="home-card-title">Weak Areas</div>
             <div className="home-card-sub">Fix what's holding you back</div>
           </button>
         </div>
+
+        {/* Hot Topics — full width card */}
+        <button
+          className="ee-home-card"
+          onClick={() => onNavigate("hotTopics")}
+          style={{
+            display: "flex", alignItems: "center", gap: "14px",
+            marginBottom: 16, width: "100%",
+            background: "linear-gradient(135deg, #fff8f0, #ffe8d6)",
+            border: "1.5px solid #ffb347"
+          }}
+        >
+          <span style={{ fontSize: "28px" }}>🔥</span>
+          <div>
+            <div className="home-card-title" style={{ color: "#c45e00" }}>Hot Topics</div>
+            <div className="home-card-sub">Questions that appear every year</div>
+          </div>
+        </button>
 
         <span className="ee-label">Track yourself</span>
         <button className="ee-home-card" onClick={() => onNavigate("progress")}

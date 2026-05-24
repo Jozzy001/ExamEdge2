@@ -49,6 +49,7 @@ const unibenPhysics2019 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Electrons were discovered by:",
     options: ["Dalton", "James Chadwick", "J.J. Thomson", "Niels Bohr"],
@@ -57,6 +58,7 @@ const unibenPhysics2019 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The reason for heating a valve cathode is to:",
     options: [
@@ -70,6 +72,7 @@ const unibenPhysics2019 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A radioactive source emits X-rays of wavelength 10⁻¹¹ m. What is the frequency of these rays?",
     options: ["2×10¹⁸ Hz", "3×10¹⁹ Hz", "3×10²⁰ Hz", "3×10²¹ Hz"],
@@ -78,6 +81,7 @@ const unibenPhysics2019 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A man standing between two parallel mirrors in a barber's shop will see the following number of his own images:",
     options: ["8", "2", "4", "Infinity"],
@@ -86,6 +90,7 @@ const unibenPhysics2019 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A spring of force constant 1500 N/m is acted upon by a constant force of 75 N. Calculate the potential energy stored in the spring.",
     options: ["1.9 J", "3.2 J", "3.8 J", "5.0 J"],

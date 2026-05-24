@@ -20,7 +20,7 @@ const unibenChem2011 = [
     explanation: "First ionization energy: neutral atom loses first electron → X(g) → X⁺(g) + e⁻. Second ionization energy: singly charged ion loses second electron → X⁺(g) → X²⁺(g) + e⁻. Answer C."
   },
   {
-    subject: "Chemistry", topic: "Thermal Physics", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Thermochemistry", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "How much heat will be liberated if 10 grams of hydrogen burns in excess oxygen? (H₂ + ½O₂ → H₂O, ΔH = −286 kJ/mol)",
     options: ["−1430 kJ", "−2860 kJ", "−5700 kJ", "−572 kJ"],
@@ -55,6 +55,7 @@ const unibenChem2011 = [
   },
   {
     subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Calculate the minimum volume of oxygen required for the complete combustion of a mixture of 20 cm³ of CO and 20 cm³ of H₂.",
     options: ["10 cm³", "20 cm³", "40 cm³", "80 cm³"],
@@ -71,6 +72,7 @@ const unibenChem2011 = [
   },
   {
     subject: "Chemistry", topic: "Rates of Reaction", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the reactions of marble with dilute HCl is fastest?",
     options: [

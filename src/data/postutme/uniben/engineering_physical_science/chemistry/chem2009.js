@@ -8,6 +8,7 @@
 const unibenChem2009 = [
   {
     subject: "Chemistry", topic: "Separation Techniques", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A soluble salt dissolved in water can be separated by:",
     options: ["Evaporation", "Crystallization", "Filtration", "Steam distillation"],
@@ -52,7 +53,8 @@ const unibenChem2009 = [
     explanation: "I — TRUE: All ammonium salts (NH₄⁺) are soluble. II — FALSE: Na₂CO₃ and K₂CO₃ are soluble carbonates. III — FALSE: ALL trioxonitrate(V) (nitrate) salts are soluble — not just some. Therefore only Statement I is correct."
   },
   {
-    subject: "Chemistry", topic: "Atomic & Nuclear Physics", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The half-life of an element is 12 hours. If the initial mass is 50 g, what mass will remain after 2 days?",
     options: ["3.125 g", "6.25 g", "12.5 g", "25 g"],
@@ -60,7 +62,7 @@ const unibenChem2009 = [
     explanation: "2 days = 48 hours. Number of half-lives = 48/12 = 4. Remaining mass = 50 × (½)⁴ = 50 × 1/16 = 3.125 g. ★ RECURRING TOPIC — appeared in 2005/2006."
   },
   {
-    subject: "Chemistry", topic: "Thermal Physics", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Thermochemistry", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Water was added to sodium hydroxide in a test tube, and the test tube became cold. The reaction is:",
     options: ["Reversible", "Exothermic", "Endothermic", "Explosive"],
@@ -69,6 +71,7 @@ const unibenChem2009 = [
   },
   {
     subject: "Chemistry", topic: "Metals & Non-Metals", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following is an alloy of aluminium?",
     options: ["Brass", "Bronze", "Galena", "Magnalium"],
@@ -106,6 +109,7 @@ const unibenChem2009 = [
   },
   {
     subject: "Chemistry", topic: "Laboratory Techniques", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following zones is NOT part of a non-luminous Bunsen flame?",
     options: [
@@ -119,6 +123,7 @@ const unibenChem2009 = [
   },
   {
     subject: "Chemistry", topic: "Environmental Chemistry", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following is a secondary air pollutant?",
     options: ["Particulate dust", "Sulfur oxides", "Ozone", "Chlorofluorocarbon"],

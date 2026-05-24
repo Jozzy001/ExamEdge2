@@ -14,7 +14,7 @@ const unibenMaths2008 = [
     explanation: "Velocity of A relative to B = V_A − V_B. V_A = (0, 5). V_B = (4sin60°, 4cos60°) = (2√3, 2). V_A − V_B = (−2√3, 3). |V_rel| = √(12 + 9) = √21 ≈ 4.58 ≈ 4.6 km/s."
   },
   {
-    subject: "Mathematics", topic: "Mechanics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Mathematics", topic: "Vectors & Mechanics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "A metal sphere falling freely in a liquid is under the influence of:",
     options: [
@@ -27,7 +27,7 @@ const unibenMaths2008 = [
     explanation: "Gravity is a conservative force (work done is path-independent). Viscous drag/friction from the liquid is a non-conservative force (work done depends on path). A sphere falling in liquid experiences both simultaneously — gravity pulling it down and viscosity opposing motion."
   },
   {
-    subject: "Mathematics", topic: "Mechanics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Mathematics", topic: "Vectors & Mechanics", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "A body is projected with an initial velocity of 60 m/s at an angle of 30° to the horizontal. Find the magnitude of the resultant velocity after 2 seconds. (g = 10 m/s²)",
     options: ["37 m/s", "10√5 m/s", "20√7 m/s", "10√37 m/s"],

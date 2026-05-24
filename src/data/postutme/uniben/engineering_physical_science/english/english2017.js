@@ -76,73 +76,75 @@ const unibenEnglish2017 = [
   },
   // VOCABULARY (Q6-15)
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "No wonder Peter later became a detective. He had always been very observant.",
+    question: "No wonder Peter later became a detective. He had always been very **observant**.",
     options: ["Curious", "Perceptive", "Inductive", "Inquisitive"],
     answer: "Perceptive",
     explanation: "Observant means quick to notice details. Its synonym is perceptive — having a ready insight into things. A detective needs perceptive observation skills."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "The man's painting was so realistic that it could almost have been a photograph.",
+    question: "The man's painting was so **realistic** that it could almost have been a photograph.",
     options: ["Pictorial", "Concrete", "Lively", "Authentic"],
     answer: "Authentic",
     explanation: "Realistic means resembling reality closely. 'Authentic' captures the genuine, true-to-life quality — so real it looked like an actual photograph. ★ RECURRING — similar question appeared in 2014/2015."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Courteously, he stood back to let his teacher go first through the door.",
+    question: "**Courteously**, he stood back to let his teacher go first through the door.",
     options: ["Patiently", "Politely", "Carefully", "Calmly"],
     answer: "Politely",
     explanation: "Courteously means in a polite, respectful, and considerate manner. 'Politely' is the most direct synonym — showing good manners and respect."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Many people used to live in poverty.",
+    question: "Many people used to live in **poverty**.",
     options: ["Instability", "Want", "Difficulty", "The slums"],
     answer: "Want",
     explanation: "Poverty means the state of being extremely poor — living in want (lacking necessities). 'Want' as a noun means severe lack of basic needs. This is a formal/literary synonym for poverty."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The fateful decision changed the company's outlook in many ways.",
+    question: "The **fateful** decision changed the company's outlook in many ways.",
     options: ["Wonderful", "Disastrous", "Important", "External"],
     answer: "Disastrous",
     explanation: "Fateful means having far-reaching and typically disastrous consequences. A fateful decision leads to disaster or major negative consequences — 'disastrous' is the most accurate synonym in this context."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Yassin's victim received a superficial wound from the crash.",
+    question: "Yassin's victim received a **superficial** wound from the crash.",
     options: ["Serious", "Painless", "Internal", "External"],
     answer: "External",
     explanation: "Superficial means on the surface — not deep or serious. A superficial wound is on the surface of the skin (external) and does not penetrate deeply. 'External' is the physical synonym here."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "His taciturnity amused everyone in the court during the legal tussle.",
+    question: "His **taciturnity** amused everyone in the court during the legal tussle.",
     options: ["Obliviousness", "Reticence", "Sensibility", "Anxiety"],
     answer: "Reticence",
     explanation: "Taciturnity means the quality of being reserved and saying little. Its synonym is reticence — unwillingness to speak freely. ★ RECURRING — taciturn/taciturnity has appeared across multiple years as a key vocabulary word."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "We made a pile in the business deal.",
+    question: "We **made a pile** in the business deal.",
     options: ["Made a lot of money", "Earned a lot of money", "Broke even", "Cut corners"],
     answer: "Made a lot of money",
     explanation: "'Make a pile' means to earn or accumulate a large sum of money. In a business context, making a pile means becoming very wealthy from the deal."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The greatness of the creator of the universe is always inexpressible to many adherents of certain faiths.",
+    question: "The greatness of the creator of the universe is always **inexpressible** to many adherents of certain faiths.",
     options: ["Inevitable", "Wonderful", "Ineffable", "Unbearable"],
     answer: "Ineffable",
     explanation: "Inexpressible means too great or extreme to be expressed in words. Its precise synonym is ineffable — too great for words, beyond description or expression. This is a high-level vocabulary word."
@@ -235,7 +237,7 @@ const unibenEnglish2017 = [
   },
   // PHONETICS (Q32-35)
   {
-    subject: "English", topic: "Stress Pattern", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Choose the word that contains the sound /ɑː/",
     options: ["Card", "Fat", "Fact", "Sack"],
@@ -243,7 +245,7 @@ const unibenEnglish2017 = [
     explanation: "The /ɑː/ sound is a long open back vowel — as in 'car', 'far', 'bar', 'card'. 'Fat', 'fact', 'sack' all contain the short /æ/ sound (as in 'cat'). 'Card' contains the long /ɑː/ sound."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Choose the word that contains the sound /ʌ/",
     options: ["Dough", "Wonder", "Wander", "Cough"],
@@ -251,7 +253,7 @@ const unibenEnglish2017 = [
     explanation: "The /ʌ/ sound is a short central vowel — as in 'cup', 'run', 'sun', 'wonder'. 'Dough' has /əʊ/; 'wander' has /ɒ/ (British) or /ɑː/ (American); 'cough' has /ɒ/. 'Wonder' = /ˈwʌndə/."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Choose the word that contains the sound /aʊ/",
     options: ["Hot", "Bean", "Rooster", "Down"],
@@ -260,7 +262,7 @@ const unibenEnglish2017 = [
   },
   // RHYMING WORDS (Q36-40)
   {
-    subject: "English", topic: "Stress Pattern", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Choose the word that rhymes with 'Sweet'",
     options: ["Suit", "Sweet", "Suite", "Twice"],
@@ -268,7 +270,7 @@ const unibenEnglish2017 = [
     explanation: "'Sweet' is pronounced /swiːt/. 'Suit' is pronounced /suːt/ — hmm, not identical. 'Suite' is also /swiːt/ but identical to 'sweet' — not a rhyme, a homophone. UNIBEN answer A (suit). Students should verify the intended rhyme."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Choose the word that rhymes with 'Number'",
     options: ["Plumb", "Bomber", "Climb", "Camp"],

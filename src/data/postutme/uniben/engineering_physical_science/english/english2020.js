@@ -48,7 +48,7 @@ const unibenEnglish2020 = [
   {
     subject: "English", topic: "Antonyms", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The boy is too INDOLENT to do well at school.",
+    question: "The boy is too **INDOLENT** to do well at school.",
     options: ["Intelligent", "Industrious", "Inactive", "Slothful"],
     answer: "Industrious",
     explanation: "Indolent means habitually lazy — avoiding work or effort. Its antonym is industrious — diligently hardworking and productive. Inactive and slothful are synonyms of indolent. Intelligent describes intelligence, not work ethic."
@@ -56,7 +56,7 @@ const unibenEnglish2020 = [
   {
     subject: "English", topic: "Antonyms", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "His ideas sounded quite palatable, yet they were just REJECTED after he grew tired.",
+    question: "His ideas sounded quite **palatable**, yet they were just **REJECTED** after he grew tired.",
     options: ["Accepted", "Dumped", "Denied", "Criticized"],
     answer: "Accepted",
     explanation: "Rejected means refused or turned down — not accepted. Its antonym is accepted — approved and received favourably. Dumped, denied, and criticized are all closer in meaning to rejected, not its opposite."
@@ -64,7 +64,7 @@ const unibenEnglish2020 = [
   {
     subject: "English", topic: "Antonyms", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Young people have a PENCHANT for fast cars.",
+    question: "Young people have a **PENCHANT** for fast cars.",
     options: ["Likeness", "Passion", "Madness", "Dislike"],
     answer: "Dislike",
     explanation: "Penchant means a strong liking or tendency toward something — enthusiasm and preference. Its antonym is dislike — a feeling of distaste or aversion. Passion and likeness are synonyms of penchant."
@@ -72,7 +72,7 @@ const unibenEnglish2020 = [
   {
     subject: "English", topic: "Antonyms", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The chairman is PARSIMONIOUS.",
+    question: "The chairman is **PARSIMONIOUS**.",
     options: ["Avaricious", "Thrifty", "Generous", "Miserly"],
     answer: "Generous",
     explanation: "Parsimonious means excessively unwilling to spend or give — extremely miserly. Its antonym is generous — willing to give freely and liberally. Avaricious and miserly are synonyms of parsimonious, and thrifty is a milder form of the same trait."
@@ -80,7 +80,7 @@ const unibenEnglish2020 = [
 
   // WORD CHOICE (Q9-15)
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "A fisherman threw a stone into the river and this caused a ______.",
     options: ["Sprinkle", "Sparkle", "Splash", "Spring"],
@@ -88,7 +88,7 @@ const unibenEnglish2020 = [
     explanation: "A splash is the sound and spray of liquid caused by a solid hitting water. Throwing a stone into a river causes a splash — not a sprinkle (light drops of rain), sparkle (glittering light), or spring (a water source)."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "The play was so interesting that the ______ clapped for quite a long time at the end.",
     options: ["Audience", "Spectators", "Watchers", "Congregation"],
@@ -96,7 +96,7 @@ const unibenEnglish2020 = [
     explanation: "An 'audience' is the group of people watching a performance — specifically used for theatre, cinema, and concerts. 'Spectators' watch sports events. 'Congregation' is for religious gatherings. 'Watchers' is informal. For a play, 'audience' is the correct term."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "The building ______ because of a weak structural foundation.",
     options: ["Tumbled", "Succumbed", "Collapsed", "Caved"],
@@ -104,7 +104,7 @@ const unibenEnglish2020 = [
     explanation: "Collapsed means fell down suddenly due to structural failure — the most precise word for a building's structural failure. 'Tumbled' implies a series of falls (for smaller objects). 'Caved' needs 'in' (caved in). 'Succumbed' = yielded to pressure (not for buildings)."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "The magazine was ______ by the government for an offensive publication.",
     options: ["Prescribed", "Proscribed", "Suspended", "Condemned"],
@@ -112,7 +112,7 @@ const unibenEnglish2020 = [
     explanation: "★ KEY WORD — Proscribed means officially banned or prohibited. DIFFERENT from prescribed (recommended/ordered by doctor). A magazine proscribed by government = officially banned from circulation. This confusion between proscribed/prescribed is a very common English exam trap."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Many people reacted to the brutal murder of the popular journalist with strong ______.",
     options: ["Indignation", "Demonstration", "Mobilization", "Condemnation"],
@@ -120,7 +120,7 @@ const unibenEnglish2020 = [
     explanation: "Indignation means anger or annoyance provoked by what is perceived as unfair, unjust, or wrong — moral outrage. The murder of a journalist triggers moral outrage (indignation). 'Condemnation' is also close but refers to expressing disapproval, while indignation is the emotional reaction."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "I thought that the comments made by the secretary were quite innocuous, but the chairman considered them ______.",
     options: ["Polite", "Harmful", "Inappropriate", "Antagonistic"],
@@ -128,7 +128,8 @@ const unibenEnglish2020 = [
     explanation: "Innocuous means not harmful or likely to cause offence. The sentence sets up a contrast — the speaker thought them harmless (innocuous) but the chairman thought otherwise. The antonym of innocuous is harmful. (Not 'inappropriate' — that relates to social suitability, not harm.)"
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Lexis & Structure", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The ______ of the few rich in our society contrasts with the poverty of the masses.",
     options: ["Arrogance", "Authority", "Influence", "Affluence"],

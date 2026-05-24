@@ -8,6 +8,7 @@
 const unibenChem2017 = [
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The role played by concentrated H₂SO₄ in the esterification of ethanoic acid with an alcohol is that of a:",
     options: ["Reducing agent", "Dehydrating agent", "Catalyst", "Solvent"],
@@ -32,6 +33,7 @@ const unibenChem2017 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "CH₃CH₂CH=CH₂ → CH₃CH₂CH(OH)CH₂OH. The reagent used for this conversion is:",
     options: ["Aqueous NH₃", "Aqueous NaOH", "Dilute H₂SO₄", "Acidified KMnO₄"],
@@ -40,6 +42,7 @@ const unibenChem2017 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The carbon atoms in propene are:",
     options: ["Not hybridized", "sp³ hybridized", "sp² hybridized", "sp hybridized"],

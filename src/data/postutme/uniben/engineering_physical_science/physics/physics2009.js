@@ -26,6 +26,7 @@ const unibenPhysics2009 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following is NOT a characteristic of the image formed in a plane mirror?",
     options: [

@@ -77,7 +77,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Antonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Why did the teacher denounce the principal's approach to discipline? Osegi _____ the approach.",
+    question: "Why did the teacher **denounce** the principal's approach to discipline? Osegi _____ the approach.",
     options: ["Renounced", "Lauded", "Condemned", "Refused"],
     answer: "Lauded",
     explanation: "Denounce means to publicly declare as wrong or evil — to condemn. Its antonym is lauded — praised highly and enthusiastically. Renounced means formally abandoned; condemned is a synonym of denounced, not an antonym."
@@ -85,7 +85,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Antonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The woman croons the words of her prayer every morning, but her husband _____.",
+    question: "The woman **croons** the words of her prayer every morning, but her husband _____.",
     options: ["Mumbles", "Prattles", "Shouts", "Counts"],
     answer: "Shouts",
     explanation: "Croon means to sing or speak in a soft, low, gentle voice. Its antonym is shouts — speaking in a loud, forceful voice. Mumbles means to speak indistinctly (still quiet); prattles means to talk at length in a foolish way — neither is the opposite of soft/gentle."
@@ -95,33 +95,33 @@ const unibenEnglish2009 = [
   // VOCABULARY / SYNONYMS (Q8–11)
   // =====================
   {
-    subject: "English", topic: "Vocabulary", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Are you sure the boy is indisposed now?",
+    question: "Are you sure the boy is **indisposed** now?",
     options: ["Irrational", "Erratic", "Disposed", "Unwell"],
     answer: "Unwell",
     explanation: "Indisposed means slightly unwell or not feeling well. The nearest synonym is unwell. Note: indisposed can also mean unwilling, but in this context the health meaning applies. 'Disposed' is actually an antonym of indisposed here."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The clergy do not pay much attention to terrestrial phenomena.",
+    question: "The clergy do not pay much attention to **terrestrial** phenomena.",
     options: ["Celestial", "Worldly", "Transparent", "Special"],
     answer: "Worldly",
     explanation: "Terrestrial means of or relating to the earth or worldly matters (as opposed to spiritual/heavenly). The synonym is worldly — relating to material, earthly concerns. Note: celestial would be the antonym (heavenly) — it is NOT a synonym here."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Moses was a master of the game. His most victorious battles were all carefully planned.",
+    question: "Moses was a **master of the game**. His most victorious battles were all carefully **planned**.",
     options: ["Arranged", "Mapped", "Skimmed", "Worked out"],
     answer: "Worked out",
     explanation: "Carefully planned means thoroughly thought through and prepared. 'Worked out' best captures this meaning — plans that were developed and figured out in detail. 'Mapped' is close but more specific to routes; 'arranged' is more about organisation; 'skimmed' means to read quickly."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2009, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "One of the most enormous of all monsters is the dinosaur.",
+    question: "One of the most **enormous** of all monsters is the dinosaur.",
     options: ["Little", "Small", "Tiny", "Huge"],
     answer: "Huge",
     explanation: "This question asks for the nearest synonym (NOT antonym) to 'enormous'. Enormous means very large. Its synonym is huge. The options Little, Small, and Tiny are all antonyms — the question asks for nearest in meaning, so Huge is correct."
@@ -133,7 +133,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "In order to meet the deadline, the labourers decided to fire on all cylinders. This means that the labourers:",
+    question: "In order to meet the deadline, the labourers decided to **fire on all cylinders**. This means that the labourers:",
     options: [
       "Shot at all available cylinders",
       "Threw all the cylinders into the fire",
@@ -146,7 +146,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "When Mary was asked to state her case, she began to beat about the bush. This means that Mary:",
+    question: "When Mary was asked to state her case, she began to **beat about the bush**. This means that Mary:",
     options: [
       "Stated her case clearly",
       "Walked through a bushy path",
@@ -159,7 +159,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Since Madam Abike's promotion, she has her head over everyone else in the office. This means that Madam Abike:",
+    question: "Since Madam Abike's promotion, she has **her head over everyone else** in the office. This means that Madam Abike:",
     options: [
       "Behaves in a superior manner towards others",
       "Is like a queen",

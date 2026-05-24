@@ -145,7 +145,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'It's obvious that Paul set little store by our friendship.' This means that Paul:",
+    question: "'It's obvious that Paul **set little store** by our friendship.' This means that Paul:",
     options: [
       "Does not remember our friendship",
       "Thinks it's easy to make friends",
@@ -158,7 +158,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Although wrestling is popular, it is not my cup of tea.' This means that wrestling:",
+    question: "'Although wrestling is popular, it is not **my cup of tea**.' This means that wrestling:",
     options: ["Is a primitive game", "Is not lucrative", "Is rough", "Does not interest me"],
     answer: "Does not interest me",
     explanation: "'Not my cup of tea' means something that does not appeal to or interest a person — it is not to their taste. The speaker acknowledges wrestling's popularity but personally has no interest in it."
@@ -166,7 +166,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Voke's mother keeps her nose to the grindstone.' This means that Voke's mother:",
+    question: "'Voke's mother keeps **her nose to the grindstone**.' This means that Voke's mother:",
     options: [
       "Makes Voke grind things all the time",
       "Forces her to grind stone",
@@ -179,7 +179,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'She delivered her speech without turning a hair.' This means she delivered her speech without:",
+    question: "'She delivered her speech **without turning a hair**.' This means she delivered her speech without:",
     options: ["Nodding", "Any emotion", "Looking up", "Combing her hair"],
     answer: "Any emotion",
     explanation: "'Without turning a hair' means without showing any sign of distress, nervousness, or emotion — completely calmly. She delivered the speech with absolute composure, not showing any feelings."
@@ -187,7 +187,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Ayor goes bananas every night she comes here.' This means that every night Ayor comes here, she:",
+    question: "'Ayor **goes bananas** every night she comes here.' This means that every night Ayor comes here, she:",
     options: ["Is cool and gentle", "Breaks her fast", "Prefers to be served with banana", "Is angry"],
     answer: "Is angry",
     explanation: "'Go bananas' means to become very angry, excited, or crazy. Ayor becomes extremely angry or loses her temper every night she visits."
@@ -195,7 +195,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Ide Mudiya is in rude health.' This means he is:",
+    question: "'Ide Mudiya is in **rude health**.' This means he is:",
     options: [
       "So rude and stubborn that nobody likes him",
       "In a poor state of health",
@@ -208,7 +208,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Victor was advised to grasp the nettle.' This means he was advised to:",
+    question: "'Victor was advised to **grasp the nettle**.' This means he was advised to:",
     options: [
       "Avoid wasting an opportunity",
       "Deal with a difficult matter firmly",
@@ -221,7 +221,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'It is obvious that civil engineers are thick on the ground.' This means civil engineers are:",
+    question: "'It is obvious that civil engineers are **thick on the ground**.' This means civil engineers are:",
     options: ["Scarce", "Experienced", "Many", "Familiar with the ground"],
     answer: "Many",
     explanation: "'Thick on the ground' means present in large numbers — abundant and widespread. Civil engineers are very numerous/common."
@@ -229,7 +229,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'The girl is in a foal.' This means the girl is:",
+    question: "'The girl is **in a foal**.' This means the girl is:",
     options: ["Idle", "Pregnant", "Busy at work", "Enterprising"],
     answer: "Pregnant",
     explanation: "'In a foal' means pregnant. A foal is a young horse — 'in foal' is used for a mare that is pregnant, but the idiom is extended to mean pregnant in general colloquial usage."
@@ -237,7 +237,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'Mr. Okon's plans are castles in the air.' This means his plans are:",
+    question: "'Mr. Okon's plans are **castles in the air**.' This means his plans are:",
     options: [
       "Abstract",
       "Doubtful to come true",
@@ -250,7 +250,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "'In mathematics class, Olu always feels like a fish out of water.' This means that in mathematics class, Olu always:",
+    question: "'In mathematics class, Olu always feels like **a fish out of water**.' This means that in mathematics class, Olu always:",
     options: ["Feels comfortable", "Feels shy", "Feels unrecognized", "Feels strange"],
     answer: "Feels strange",
     explanation: "'A fish out of water' describes someone who feels uncomfortable and out of place in a situation that doesn't suit them. Olu feels strange and out of his element in mathematics class — like a fish removed from its natural environment."
@@ -261,25 +261,25 @@ const unibenEnglish2011 = [
   // Analysis: rich vocabulary — old flame, brainwave, ball of fire, dark horse etc.
   // =====================
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The traders unwittingly allowed themselves to be duped by fraudsters.",
+    question: "The traders **unwittingly** allowed themselves to be **duped** by fraudsters.",
     options: ["Knowingly", "Inadvertently", "Unfortunately", "Intentionally"],
     answer: "Inadvertently",
     explanation: "Unwittingly means without knowing or intending — not on purpose. Its nearest synonym is inadvertently — accidentally and without intention. Knowingly and intentionally are antonyms of unwittingly."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "It was an agreeable atmosphere when the old classmates met at their reunion.",
+    question: "It was an **agreeable** atmosphere when the old classmates met at their reunion.",
     options: ["Congenial", "Attractive", "Palpable", "Pleasant"],
     answer: "Congenial",
     explanation: "Agreeable means pleasant and to one's liking. The most precise synonym is congenial — (of a person or atmosphere) pleasantly suited to one's taste or inclination. Both pleasant and congenial are close, but congenial best captures the social warmth of a reunion."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "For the umpteenth time, she warned her friend to stop shouting.",
+    question: "For the **umpteenth** time, she warned her friend to stop shouting.",
     options: [
       "First of many times",
       "Fifteenth time",
@@ -290,9 +290,9 @@ const unibenEnglish2011 = [
     explanation: "Umpteenth means an indefinitely large number in a sequence — the last of a very long series of repeated occurrences. It implies the warning has been given countless times before. 'For the umpteenth time' = 'for what feels like the hundredth time.'"
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The new staff member turned out to be an old flame of mine.",
+    question: "The new staff member turned out to be an **old flame** of mine.",
     options: [
       "A former girlfriend",
       "An old acquaintance",
@@ -303,9 +303,9 @@ const unibenEnglish2011 = [
     explanation: "An 'old flame' is a former romantic partner — someone with whom one previously had a romantic relationship. The term implies past romantic feelings that have since cooled."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "It was an awful day. All our plans went haywire.",
+    question: "It was an **awful** day. All our plans went **haywire**.",
     options: [
       "We were tied up",
       "We were disrupted",
@@ -316,25 +316,25 @@ const unibenEnglish2011 = [
     explanation: "'Went haywire' means went wrong, became chaotic, or failed to work properly. Plans that went haywire became impossible or very difficult to carry out as intended — everything fell apart."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The material in the book is presented within an eclectic framework.",
+    question: "The material in the book is presented within an **eclectic** framework.",
     options: ["Simple", "Broad", "Restricted", "Clumsy"],
     answer: "Broad",
     explanation: "Eclectic means deriving ideas, style, or taste from a broad and diverse range of sources. An eclectic framework is broad — drawing from many different disciplines and perspectives rather than following a single narrow approach."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Oyanye had a brainwave as to how she could deal with the problem.",
+    question: "Oyanye had a **brainwave** as to how she could deal with the problem.",
     options: ["An imagination", "A desire", "A headache", "An idea"],
     answer: "An idea",
     explanation: "A brainwave is a sudden clever idea or inspiration — a flash of brilliance. It is specifically a sudden good idea, not just any imagination or desire."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Surely, Ahmed is a ball of fire.",
+    question: "Surely, Ahmed is **a ball of fire**.",
     options: [
       "A quarrelsome person",
       "A hot-headed activist",
@@ -345,9 +345,9 @@ const unibenEnglish2011 = [
     explanation: "A 'ball of fire' describes someone who is exceptionally energetic, dynamic, and enthusiastic — full of vigour and drive. It refers to someone who moves through life with tremendous energy and enthusiasm."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "This time, she will be competitive with a dark horse.",
+    question: "This time, she will be competitive with **a dark horse**.",
     options: [
       "A weak and low-spirited person",
       "A person about whom little is known",
@@ -358,9 +358,9 @@ const unibenEnglish2011 = [
     explanation: "A 'dark horse' is a candidate or competitor about whom little is known but who unexpectedly succeeds. The term comes from horse racing — a horse whose form is unknown to bettors. The key element is the mystery about their capabilities."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "In answer to the question as to how life is treating him, the stranger said, 'it never rains, but it pours.'",
+    question: "In answer to the question as to how life is treating him, the stranger said, '**it never rains, but it pours**.'",
     options: [
       "The blessings of life shower on him like heavy rain",
       "He is contented with his improved fortunes",
@@ -371,9 +371,9 @@ const unibenEnglish2011 = [
     explanation: "'It never rains but it pours' means that misfortunes tend to come all at once — when things go wrong, they go very wrong. In context, the stranger is saying things are not just bad but getting significantly worse."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "After many years of struggle as a trader, 'he struck gold'.",
+    question: "After many years of struggle as a trader, 'he **struck gold**'.",
     options: [
       "Became quite rich",
       "Won a big contract",
@@ -384,9 +384,9 @@ const unibenEnglish2011 = [
     explanation: "'Struck gold' means to find or achieve something very valuable or profitable — to become suddenly wealthy or successful after effort. After years of struggle, he finally found great success and wealth."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "One salient character of the jet age is that it encourages people to cut corners.",
+    question: "One salient character of the jet age is that it encourages people to **cut corners**.",
     options: [
       "Not to face problems",
       "To want to become rich quickly",
@@ -397,9 +397,9 @@ const unibenEnglish2011 = [
     explanation: "'Cut corners' means to do something in the easiest and cheapest way, sacrificing quality and proper procedure. It means not doing things properly — taking shortcuts that bypass correct methods."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Idioms & Expressions", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Any student found guilty of examination malpractice should be allowed to stew in his own juice.",
+    question: "Any student found guilty of examination malpractice should be allowed to **stew in his own juice**.",
     options: [
       "Retake the examination",
       "Suffer the consequences of his actions",
@@ -410,9 +410,9 @@ const unibenEnglish2011 = [
     explanation: "'Stew in one's own juice' means to suffer the unpleasant consequences of one's own actions without help from others. The student who cheated should face whatever consequences arise from their own wrongdoing."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The lady who won the beauty contest had a good figure.",
+    question: "The lady who won the beauty contest had a good **figure**.",
     options: ["Stature", "Figure", "Elegance", "Courage"],
     answer: "Stature",
     explanation: "In this context, 'figure' refers to the shape and form of a person's body. The nearest synonym in the options is 'stature' — the height and build of a person. Note that 'figure' itself appears as option B, but UNIBEN's answer is 'stature' as the meaning of 'good figure'."

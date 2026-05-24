@@ -34,6 +34,7 @@ const unibenChem2012 = [
   },
   {
     subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "How many grams of bromine will be required to completely react with 10 g of propene?",
     options: ["20 g", "40 g", "60 g", "80 g"],
@@ -42,6 +43,7 @@ const unibenChem2012 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following sets of elements has the same outermost electronic configuration?",
     options: ["H, He, Be", "H, He, Li", "H, Li, Na", "He, Ne, Ar"],
@@ -74,6 +76,7 @@ const unibenChem2012 = [
   },
   {
     subject: "Chemistry", topic: "Environmental Chemistry", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following ions is a pollutant in drinking water, even in trace amounts?",
     options: ["Ca²⁺", "Hg²⁺", "Mg²⁺", "Fe²⁺"],
@@ -81,7 +84,7 @@ const unibenChem2012 = [
     explanation: "Mercury ions (Hg²⁺) are extremely toxic even in trace amounts — they bioaccumulate and cause neurological damage (Minamata disease). ★ RECURRING TOPIC — appeared in 2006/2007 and 2012/2013, confirming it is a guaranteed exam question."
   },
   {
-    subject: "Chemistry", topic: "Thermal Physics", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Thermochemistry", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "1.1 g of CaCl₂ dissolved in 50 cm³ of water caused a temperature rise of 3.4°C. The heat of reaction ΔH for CaCl₂ in kJ/mol is:",
     options: ["−71.1", "−4.18", "+71.1", "+111.0"],
@@ -103,6 +106,7 @@ const unibenChem2012 = [
   },
   {
     subject: "Chemistry", topic: "Acids, Bases & Salts", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following solutions will have a pH less than 7?",
     options: ["Na₂SO₄(aq)", "NaCl(aq)", "Na₂CO₃(aq)", "NH₄Cl(aq)"],

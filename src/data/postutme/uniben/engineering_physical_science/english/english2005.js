@@ -146,35 +146,35 @@ const unibenEnglish2005 = [
   // =====================
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Retti was able to kindle the fire which my father had to ______ later.",
+    question: "Retti was able to **kindle** the fire which my father had to ______ later.",
     options: ["Kill", "Switch", "Extinguish", "Destroy"],
     answer: "Extinguish",
     explanation: "The antonym of 'kindle' (to start/ignite a fire) is 'extinguish' (to put out a fire). 'Kill' is informal but 'extinguish' is the precise antonym."
   },
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Josephine is loquacious while her younger sister is ______.",
+    question: "Josephine is **loquacious** while her younger sister is ______.",
     options: ["polite", "intelligent", "considerate", "taciturn"],
     answer: "taciturn",
     explanation: "Loquacious means very talkative. Its antonym is taciturn — habitually reserved in speech, saying very little."
   },
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "In his valedictory address, the professor quoted copiously from his ______ lecture.",
+    question: "In his valedictory address, the professor quoted **copiously** from his ______ lecture.",
     options: ["inaugural", "academic", "original", "scholarly"],
     answer: "inaugural",
     explanation: "A valedictory address is given at the end (departure/retirement). Its antonym in context is 'inaugural' — given at the beginning of one's tenure."
   },
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "The chairman vacillated in a matter that required ______ action.",
+    question: "The chairman **vacillated** in a matter that required ______ action.",
     options: ["courageous", "decisive", "authoritative", "reflective"],
     answer: "decisive",
     explanation: "To vacillate means to waver or be indecisive. The antonym in this context is 'decisive' — acting with firmness and clear decision."
   },
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Although the attack of malaria was sudden, the cure was rather ______.",
+    question: "Although the attack of malaria was **sudden**, the cure was rather ______.",
     options: ["permanent", "extended", "delayed", "gradual"],
     answer: "gradual",
     explanation: "The antonym of 'sudden' is 'gradual' — happening slowly over time. The cure came slowly, contrasting the sudden onset of the illness."
@@ -251,14 +251,14 @@ const unibenEnglish2005 = [
   // STRESS PATTERN (Q25-26)
   // =====================
   {
-    subject: "English", topic: "Stress Pattern", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Which word has a different stress pattern from the others?",
     options: ["calendar", "blackboard", "suffer", "success"],
     answer: "success",
     explanation: "Calendar (CAL-en-dar), blackboard (BLACK-board), and suffer (SUF-fer) all have stress on the first syllable. 'Success' (suc-CESS) has stress on the second syllable — making it the odd one out."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Which word has a different stress pattern from the others?",
     options: ["madam", "comment", "contribute", "embarrass"],
     answer: "madam",
@@ -270,7 +270,7 @@ const unibenEnglish2005 = [
   // =====================
   {
     subject: "English", topic: "Idioms & Expressions", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "If experience is anything to go by, a political minefield will prove",
+    question: "If experience is anything to go by, a **political minefield** will prove",
     options: [
       "a source of political benefit",
       "a way out of political trouble",
@@ -282,14 +282,14 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Idioms & Expressions", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "In my view, the play didn't come off. This means it didn't",
+    question: "In my view, the play **didn't come off**. This means it didn't",
     options: ["succeed", "fail", "attract applause", "take place"],
     answer: "succeed",
     explanation: "'Come off' means to succeed or happen as planned. 'The play didn't come off' means it did not succeed — it failed to achieve its intended effect."
   },
   {
     subject: "English", topic: "Idioms & Expressions", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "'When the chips are down, we will know those who have the courage to stand' means",
+    question: "'**When the chips are down**, we will know those who have the courage to stand' means",
     options: [
       "when we get to a crisis point",
       "in the final analysis",
@@ -304,8 +304,8 @@ const unibenEnglish2005 = [
   // VOCABULARY (Q30-40)
   // =====================
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "She said boxing is in fact her pet aversion.",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "She said boxing is in fact her **pet aversion**.",
     options: [
       "something she likes very much",
       "something she dislikes very much",
@@ -316,71 +316,71 @@ const unibenEnglish2005 = [
     explanation: "A 'pet aversion' is something one particularly dislikes or hates — a personal strong dislike. It is the opposite of a 'pet favourite'."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "The gateman does his work perfunctorily.",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "The gateman does his work **perfunctorily**.",
     options: ["without commitment", "with speed", "grudgingly", "enthusiastically"],
     answer: "without commitment",
     explanation: "Perfunctorily means carried out with minimal effort and care — done as a routine duty without real interest or commitment."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Members of the panel were working at cross purposes.",
+    subject: "English", topic: "Idioms & Expressions", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Members of the panel were working at **cross purposes**.",
     options: ["in harmony", "in disunity", "for selfish purposes", "for selfless purpose"],
     answer: "in disunity",
     explanation: "'At cross purposes' means people are misunderstanding each other or working toward conflicting goals — essentially in disunity and confusion."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "The young man who distributed political pamphlets was promptly repudiated.",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "The young man who distributed political pamphlets was promptly **repudiated**.",
     options: ["disowned", "arrested", "warned", "killed"],
     answer: "disowned",
     explanation: "To repudiate means to reject, disown, or refuse to acknowledge. The young man was disowned — those associated with him publicly rejected him."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Joseph is a die-hard criminal.",
+    subject: "English", topic: "Idioms & Expressions", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Joseph is a **die-hard** criminal.",
     options: ["hard to kill", "hard to arrest", "remorseless", "relentless"],
     answer: "relentless",
     explanation: "A 'die-hard' person is one who stubbornly refuses to change, persisting relentlessly in their ways. A die-hard criminal is relentless — persistently criminal without giving up."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "If your life is in turmoil, always take courage. 'Turmoil' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "If your life is in **turmoil**, always take courage. 'Turmoil' means",
     options: ["deviation", "crisis", "trial", "tragedy"],
     answer: "crisis",
     explanation: "Turmoil means a state of great confusion, disorder, and uncertainty — a crisis situation. It refers to chaotic, troubled circumstances."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Do you know one of the most astounding events of my life? 'Astounding' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Do you know one of the most **astounding** events of my life? 'Astounding' means",
     options: ["special", "amazing", "serious", "outstanding"],
     answer: "amazing",
     explanation: "Astounding means extremely surprising or impressive — amazing. Something astounding causes great astonishment."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Adeniji is suffering from the consequences of alienation. 'Alienation' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Adeniji is suffering from the consequences of **alienation**. 'Alienation' means",
     options: ["confinement", "isolation", "enclosure", "imprisonment"],
     answer: "isolation",
     explanation: "Alienation is the state of being isolated or estranged from others — feeling cut off from society or from one's sense of belonging."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Some children mimic their teachers. 'Mimic' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Some children **mimic** their teachers. 'Mimic' means",
     options: ["imitate", "ridicule", "tense", "worship"],
     answer: "imitate",
     explanation: "To mimic means to copy or imitate someone's actions, speech, or mannerisms — often in a humorous or mocking way."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "Wealthy citizens are often niggardly in their ways. 'Niggardly' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "Wealthy citizens are often **niggardly** in their ways. 'Niggardly' means",
     options: ["contemptible", "beggarly", "sordid", "stingy"],
     answer: "stingy",
     explanation: "Niggardly means ungenerous with money or resources — stingy and reluctant to spend. It is ironic that wealthy people can be niggardly."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "I like Jude because he is very outspoken. 'Outspoken' means",
+    subject: "English", topic: "Synonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    question: "I like Jude because he is very **outspoken**. 'Outspoken' means",
     options: ["fluent", "frank", "audible", "talkative"],
     answer: "frank",
     explanation: "Outspoken means frank and direct in expression — willing to say what one thinks without fear. It means frank, honest, and open in speech."

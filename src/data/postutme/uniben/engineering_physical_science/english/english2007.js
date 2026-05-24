@@ -89,7 +89,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "Okili was the fly in the ointment in the family.",
+    question: "Okili was **the fly in the ointment** in the family.",
     options: [
       "The only adventurous one",
       "The only flying captain",
@@ -105,7 +105,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "The war was long and there were reverses on both sides. At last, Kikuyu gained a Pyrrhic victory.",
+    question: "The war was long and there were reverses on both sides. At last, Kikuyu gained a **Pyrrhic victory**.",
     options: [
       "A victory that came suddenly",
       "A victory won at a high cost",
@@ -149,22 +149,22 @@ const unibenEnglish2007 = [
   // =====================
   {
     subject: "English",
-    topic: "Vocabulary",
+    topic: "Synonyms",
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "My attempts to see the principal were all futile.",
+    question: "My attempts to see the principal were all **futile**.",
     options: ["Unrecognized", "Bad", "Unsuccessful", "Clever"],
     answer: "Unsuccessful",
     explanation: "Futile means producing no useful result — pointless and unsuccessful. The attempts to see the principal all failed to achieve their purpose. 'Fruitless' and 'ineffective' are other synonyms."
   },
   {
     subject: "English",
-    topic: "Vocabulary",
+    topic: "Synonyms",
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "American journalists often make disparaging remarks about Africa.",
+    question: "American journalists often make **disparaging** remarks about Africa.",
     options: ["Derogatory", "Critical", "Bad", "Appreciative"],
     answer: "Derogatory",
     explanation: "Disparaging means expressing the opinion that something is of little worth — belittling and derogatory. 'Critical' is close but milder; 'derogatory' best captures the contemptuous nature of disparaging remarks."
@@ -180,7 +180,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "We must maintain the obsolete equipment in our laboratory.",
+    question: "We must maintain the **obsolete** equipment in our laboratory.",
     options: ["Outdated", "Up-to-date", "Old-fashioned", "Imported"],
     answer: "Up-to-date",
     explanation: "Obsolete means no longer in use or out of date. Its antonym is up-to-date — modern and current. Note that outdated and old-fashioned are synonyms of obsolete, not antonyms."
@@ -191,7 +191,7 @@ const unibenEnglish2007 = [
     year: 2007,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "The loan enabled him to procure new supplies.",
+    question: "The loan enabled him to **procure** new supplies.",
     options: ["Purchase", "Give out", "Dispose of", "Stock up"],
     answer: "Dispose of",
     explanation: "Procure means to obtain or acquire something. Its antonym is dispose of — to get rid of or discard. Note that 'purchase' is a synonym of procure (not an antonym)."

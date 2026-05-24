@@ -18,6 +18,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Electricity & Magnetism", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "In a simple cell, mercury amalgamated zinc is used to minimize:",
     options: ["Sparking", "Local action", "Polarization", "Back e.m.f."],
@@ -39,6 +40,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following instruments produces a pure tone?",
     options: ["Vibrating string", "Tuning fork", "Siren", "Violin"],
@@ -47,6 +49,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A radioactive source emits radiations that are deflected by both magnetic and electric fields. The radiations are:",
     options: ["Infrared rays", "X-rays", "Gamma rays", "Beta rays"],
@@ -55,6 +58,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Thermal Physics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following has the highest specific heat capacity?",
     options: ["Water", "Liquid hydrogen", "Copper", "Lead"],
@@ -63,6 +67,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following sources of energy is non-renewable?",
     options: ["Tides", "Solar", "Ocean waves", "Biomass"],
@@ -71,6 +76,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Calculate the work done by a bricklayer who lifted a cement block of mass 10 kg to a height of 2.5 m. (g = 9.8 m/s²)",
     options: ["294.0 J", "245.0 J", "24.5 J", "25.0 J"],
@@ -79,6 +85,7 @@ const unibenPhysics2020 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Determine the wavelength of the fundamental note produced by a guitar string 65 cm long.",
     options: ["65 cm", "130 cm", "295 cm", "160 cm"],

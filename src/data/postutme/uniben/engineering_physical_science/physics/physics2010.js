@@ -31,6 +31,7 @@ const unibenPhysics2010 = [
   },
   {
     subject: "Physics", topic: "Mechanics", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A ball is projected so as to attain maximum range. Determine the angle of projection.",
     options: ["15°", "30°", "60°", "45°"],
@@ -55,6 +56,7 @@ const unibenPhysics2010 = [
   },
   {
     subject: "Physics", topic: "Thermal Physics", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "One advantage of alcohol over mercury as a thermometric liquid is that alcohol:",
     options: [
@@ -76,6 +78,7 @@ const unibenPhysics2010 = [
   },
   {
     subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The process by which protons combine to form helium atoms with a tremendous release of energy is called:",
     options: ["Thermionic emission", "Nuclear fusion", "Thermonuclear fission", "Photoelectric emission"],

@@ -23,6 +23,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Sets & Venn Diagrams", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "In a class of 42, each student offers at least one of Mathematics and Physics. 22 offer Physics and 28 offer Mathematics. How many offer Physics only?",
     options: ["6", "8", "12", "14"],
@@ -47,6 +48,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If y = 2tan3x + cos2x − sin5x, find dy/dx.",
     options: [
@@ -60,6 +62,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The minimum point on the curve y = x² − 6x + 5 is at:",
     options: ["(1, 5)", "(2, 3)", "(−3, −4)", "(3, −4)"],
@@ -68,6 +71,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Evaluate: ∫₋₁¹ (2x+1)² dx",
     options: ["2/3", "4", "9/2", "14/3"],
@@ -76,6 +80,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "How many arrangements are there of the letters of the word LETTERS?",
     options: ["160", "240", "1,260", "3,000"],
@@ -92,6 +97,7 @@ const unibenMaths2018 = [
   },
   {
     subject: "Mathematics", topic: "Trigonometry", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The angle of elevation of the top of a tower from a point 50 m from its foot is 60°. Find the height of the tower.",
     options: ["50√3 m", "80 m", "(80√3)/3 m", "80√3 m"],

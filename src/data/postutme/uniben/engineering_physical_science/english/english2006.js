@@ -108,7 +108,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "The diligence of the man contrasts with the _____ of his wife.",
+    question: "The **diligence** of the man contrasts with the _____ of his wife.",
     options: ["Insolence", "Indiscipline", "Indolence", "Disguise"],
     answer: "Indolence",
     explanation: "Diligence means careful and persistent hard work. Its antonym is indolence — habitual laziness or idleness. Insolence means rudeness, which is unrelated to diligence."
@@ -119,7 +119,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "A generous man is not expected to marry a _____ woman.",
+    question: "A **generous** man is not expected to marry a _____ woman.",
     options: ["Garrulous", "Mean", "Gentle", "Vociferous"],
     answer: "Mean",
     explanation: "Generous means giving freely and willingly. Its antonym in this context is mean — ungenerous, stingy. Garrulous means excessively talkative, which is unrelated."
@@ -130,7 +130,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "When Osakwe met with _____ in the competition, Roli met with failure.",
+    question: "When Osakwe met with _____ in the competition, Roli met with **failure**.",
     options: ["Success", "Fidelity", "Disappointment", "Danger"],
     answer: "Success",
     explanation: "The sentence contrasts what Osakwe experienced with Roli's failure. The antonym of failure is success. Fidelity, disappointment and danger are unrelated to failure."
@@ -141,7 +141,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "This expired drug will not assuage your feverish condition; it will rather _____ it.",
+    question: "This expired drug will not **assuage** your feverish condition; it will rather _____ it.",
     options: ["Amend", "Worsen", "Ameliorate", "Relieve"],
     answer: "Worsen",
     explanation: "Assuage means to relieve or ease (pain, distress). Its antonym here is worsen — to make a condition more severe. Note that ameliorate and relieve are synonyms of assuage, not antonyms."
@@ -152,7 +152,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "The girl is vivacious today, unlike yesterday when she was _____ for the greater part of the day.",
+    question: "The girl is **vivacious** today, unlike yesterday when she was _____ for the greater part of the day.",
     options: ["Veracious", "Ferocious", "Moody", "Voracious"],
     answer: "Moody",
     explanation: "Vivacious means attractively lively and animated. Its antonym in this context is moody — sullen, temperamental, or withdrawn. Veracious means truthful; voracious means excessively eager — neither contrasts with vivacious."
@@ -168,7 +168,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "To carry coals to Newcastle means:",
+    question: "To **carry coals to Newcastle** means:",
     options: [
       "To take things to a place where they are already in abundance",
       "To dirty a place known to be neat",
@@ -184,7 +184,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "Sarah's classmates have sent her to Coventry. This means Sarah is:",
+    question: "Sarah's classmates have **sent her to Coventry**. This means Sarah is:",
     options: [
       "Well-loved by her classmates",
       "So gullible that her classmates cheat her every time",
@@ -200,7 +200,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "My brother left me in the lurch. This means my brother:",
+    question: "My brother **left me in the lurch**. This means my brother:",
     options: [
       "Made me learn my lesson in a hard way",
       "Did not wait for me before taking an important decision",
@@ -216,7 +216,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "We advised the highly educated boy to put his pride in his pocket at the village meeting. This means:",
+    question: "We advised the highly educated boy to **put his pride in his pocket** at the village meeting. This means:",
     options: [
       "To behave simply and humbly",
       "To speak simple and understandable words",
@@ -232,7 +232,7 @@ const unibenEnglish2006 = [
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",
-    question: "The two communities have been advised to turn swords into ploughshares. This means the communities:",
+    question: "The two communities have been advised to **turn swords into ploughshares**. This means the communities:",
     options: [
       "Should encourage their people to farm the land",
       "Should substitute peace for hostilities",

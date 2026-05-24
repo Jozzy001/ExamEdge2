@@ -10,6 +10,7 @@
 const unibenChem2018 = [
   {
     subject: "Chemistry", topic: "Separation Techniques", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A small quantity of solid NH₄Cl was heated gently. The solid disappeared, then a white cloudy deposit appeared on the cooler part of the test tube. NH₄Cl underwent:",
     options: ["Distillation", "Sublimation", "Precipitation", "Evaporation"],
@@ -17,7 +18,7 @@ const unibenChem2018 = [
     explanation: "NH₄Cl sublimates — it converts directly from solid to gases (NH₃ + HCl) on heating, then recombines as white solid on the cooler part. Sublimation = solid→gas→solid without passing through liquid phase. ★ RECURRING — sublimation appeared in 2007, 2011."
   },
   {
-    subject: "Chemistry", topic: "Physical & Chemical Changes", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Mixtures & Compounds", year: 2018, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following changes is physical?",
     options: [
@@ -32,6 +33,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The nucleus of an atom contains:",
     options: ["Protons only", "Neutrons only", "Protons and electrons", "Protons and neutrons"],
@@ -40,6 +42,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The element X forms XCl₄, XCl₃, and XCl₂ with chlorine. This illustrates:",
     options: [
@@ -53,6 +56,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "When ammonia and hydrogen ion bond together to form ammonium ion, the bond formed is called:",
     options: ["Ionic bond", "Electrovalent bond", "Covalent bond", "Coordinate bond"],
@@ -61,6 +65,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The boiling point of water is higher than that of methanol because:",
     options: [
@@ -74,6 +79,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "30 cm³ of oxygen diffuses through a porous pot in 7 seconds. How long for 60 cm³ of chlorine? (Vapour densities: O₂=16, Cl₂=36)",
     options: ["9.3 seconds", "14 seconds", "21 seconds", "28 seconds"],
@@ -82,6 +88,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following statements is true?",
     options: [
@@ -95,6 +102,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Acids, Bases & Salts", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Zinc oxide is:",
     options: ["A basic oxide", "An acidic oxide", "An amphoteric oxide", "A neutral oxide"],
@@ -103,6 +111,7 @@ const unibenChem2018 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2018, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Hypochlorous acid is used as a bleach because:",
     options: [

@@ -137,7 +137,7 @@ const unibenChemistry2006 = [
   },
   {
     subject: "Chemistry",
-    topic: "Atomic & Nuclear Physics",
+    topic: "Atomic Structure & Bonding",
     year: 2006,
     exam: "Post-UTME",
     university: "UNIBEN",

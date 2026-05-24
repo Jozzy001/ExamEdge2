@@ -33,6 +33,7 @@ const unibenMaths2011 = [
   },
   {
     subject: "Mathematics", topic: "Variation", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "P is directly proportional to M and inversely proportional to N. If P = 9 when M = 24 and N = 8, find the value of P when M = 5 and N = 6.",
     options: ["4/11", "2½", "5/3", "1"],

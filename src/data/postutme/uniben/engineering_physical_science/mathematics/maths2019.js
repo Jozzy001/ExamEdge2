@@ -11,6 +11,7 @@
 const unibenMaths2019 = [
   {
     subject: "Mathematics", topic: "Trigonometry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If sec²θ + tan²θ = 3, then angle θ is equal to:",
     options: ["30°", "45°", "60°", "105°"],
@@ -35,6 +36,7 @@ const unibenMaths2019 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A number is selected at random between 20 and 30, both inclusive. Find P(number is prime).",
     options: ["2/11", "5/11", "6/11", "8/11"],
@@ -43,6 +45,7 @@ const unibenMaths2019 = [
   },
   {
     subject: "Mathematics", topic: "Coordinate Geometry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The equation of a straight line with gradient 1/2 which passes through the point (1, 2) is:",
     options: ["2x−y−1=0", "x−3y+5=0", "2x−3y+1=0", "3x−2y+1=0"],
@@ -51,6 +54,7 @@ const unibenMaths2019 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The angle of a sector of a circle of radius 10.5 cm is 48°. Calculate the perimeter of the sector. (π=22/7)",
     options: ["8.8 cm", "25.4 cm", "25.6 cm", "29.8 cm"],
@@ -59,6 +63,7 @@ const unibenMaths2019 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Evaluate: ∫₂³ (x² − 2x) dx",
     options: ["4", "2", "4/3", "1/3"],
@@ -75,6 +80,7 @@ const unibenMaths2019 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2019, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If y = xcosx, find dy/dx when x = π/2.",
     options: ["−π/2", "−1", "1", "π/2"],

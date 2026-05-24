@@ -96,7 +96,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "I assured him I would not go back on my words.",
+    question: "I assured him I would not **go back on my words**.",
     options: [
       "Return to a place",
       "Return to certain words while reading",
@@ -109,7 +109,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Burning the midnight oil is not a prerequisite for success in examinations.",
+    question: "**Burning the midnight oil** is not a prerequisite for success in examinations.",
     options: [
       "Does not need to study very seriously",
       "Does not need to work late into the night",
@@ -122,7 +122,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Adam's opponent has an axe to grind.",
+    question: "Adam's opponent has **an axe to grind**.",
     options: [
       "He has an axe to sharpen",
       "Has some selfish objectives in view",
@@ -135,7 +135,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Jude paid through his nose for his new car.",
+    question: "Jude **paid through his nose** for his new car.",
     options: [
       "Paid a very low price",
       "Paid a very high price",
@@ -148,7 +148,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "They completely closed down the company once it was in the red.",
+    question: "They completely closed down the company once it was **in the red**.",
     options: ["In debt", "Bankrupt", "Formerly successful", "Both good and bad"],
     answer: "In debt",
     explanation: "'In the red' means operating at a loss or in debt — having spent more than earned (from the accounting practice of writing deficits in red ink). The company was closed because it was losing money/in debt."
@@ -192,7 +192,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Antonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Valour and _____ are different attributes respectively.",
+    question: "**Valour** and _____ are different attributes respectively.",
     options: ["Courage", "Cowardice", "Bravery", "Strength"],
     answer: "Cowardice",
     explanation: "Valour means great courage, especially in battle. Its antonym is cowardice — lack of courage, timidity. Courage and bravery are synonyms of valour, not antonyms."
@@ -200,7 +200,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Antonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Peter is very optimistic about the business, while his father is _____.",
+    question: "Peter is very **optimistic** about the business, while his father is _____.",
     options: ["Antagonistic", "Opportunist", "Pessimistic", "Unconvinced"],
     answer: "Pessimistic",
     explanation: "Optimistic means expecting good outcomes. Its antonym is pessimistic — expecting the worst. The contrast 'while his father is...' signals the opposite attitude."
@@ -208,7 +208,7 @@ const unibenEnglish2014 = [
   {
     subject: "English", topic: "Antonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The testimony of the witness was so vague that it was difficult to learn the _____ details of the case.",
+    question: "The testimony of the witness was so **vague** that it was difficult to learn the _____ details of the case.",
     options: ["Specific", "Transparent", "Hidden", "Minute"],
     answer: "Specific",
     explanation: "Vague means not clearly defined or stated — imprecise. Its antonym is specific — clearly and precisely stated. If the testimony was vague, the specific details were hard to determine."
@@ -216,41 +216,41 @@ const unibenEnglish2014 = [
 
   // VOCABULARY (Q26-30)
   {
-    subject: "English", topic: "Vocabulary", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The lawyer's argument of the case was exhaustive.",
+    question: "The lawyer's argument of the case was **exhaustive**.",
     options: ["Thorough", "Interesting", "Exaggerating", "Fascinating"],
     answer: "Thorough",
     explanation: "Exhaustive means covering all aspects comprehensively — thorough and complete. An exhaustive argument leaves nothing out. 'Thorough' is the closest synonym."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The students here are advised to be careful of mundane things.",
+    question: "The students here are advised to be careful of **mundane** things.",
     options: ["Sinful", "Immoral", "Evil", "Worldly"],
     answer: "Worldly",
     explanation: "Mundane means relating to ordinary, everyday worldly matters — not spiritual or extraordinary. Its synonym is worldly — relating to material, earthly concerns."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The minister described the new policy as obnoxious.",
+    question: "The minister described the new policy as **obnoxious**.",
     options: ["Unpredictable", "Offensive", "Prudent", "Affordable"],
     answer: "Offensive",
     explanation: "Obnoxious means extremely unpleasant or objectionable — offensive and repugnant. The nearest synonym is offensive — causing displeasure or moral outrage."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The budget of 2014 was designed to consolidate the gains of the economic recovery programme.",
+    question: "The budget of 2014 was designed to **consolidate** the gains of the economic recovery programme.",
     options: ["Protect", "Support", "Strengthen", "Diversify"],
     answer: "Strengthen",
     explanation: "Consolidate means to make stronger or more solid — to combine and strengthen existing gains. 'Strengthen' is the most precise synonym here: making the gains more firmly established."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2014, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2014, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The art teacher told John that his painting was so realistic that it might almost have been a photograph.",
+    question: "The art teacher told John that his painting was so **realistic** that it might almost have been a photograph.",
     options: ["Clear", "Vivid", "Authentic", "Literal"],
     answer: "Vivid",
     explanation: "Realistic in art means closely resembling real life — producing a vivid impression. 'Vivid' captures the life-like quality of the painting. 'Authentic' means genuine; 'literal' means exactly as stated — neither captures 'realistic' as well as vivid."

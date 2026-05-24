@@ -57,6 +57,7 @@ const unibenMaths2020 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A bag contains 4 white balls and 6 red balls. Two balls are selected without replacement. Find P(both red).",
     options: ["1/3", "2/9", "1/15", "2/15"],
@@ -65,6 +66,7 @@ const unibenMaths2020 = [
   },
   {
     subject: "Mathematics", topic: "Number & Numeration", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Pencils were shared among Bisi, Shola, and Tunde in ratio 2:3:5. If Bisi got 5 pencils, how many were shared altogether?",
     options: ["15", "25", "30", "50"],
@@ -81,6 +83,7 @@ const unibenMaths2020 = [
   },
   {
     subject: "Mathematics", topic: "Number & Numeration", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Convert 241₅ to base 8.",
     options: ["71", "107", "176", "241"],

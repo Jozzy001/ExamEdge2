@@ -82,7 +82,7 @@ const unibenPhysics2011 = [
     explanation: "In a damped RLC oscillator, amplitude decays as e^(−Rt/2L). For 50%: e^(−Rt/2L) = 0.5. −Rt/2L = ln(0.5) = −0.693. t = 0.693×2L/R = 0.693×2×0.012/1.5 = 0.693×0.016 = 0.01109 s ≈ 11 ms."
   },
   {
-    subject: "Physics", topic: "Gases & Kinetic Theory", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Physics", topic: "Thermal Physics", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "A gas occupying an initial volume of 2 dm³ is heated and allowed to expand to 6 dm³ at constant pressure. The ratio of the initial absolute temperature to the final absolute temperature is:",
     options: ["3:1", "1:3", "2:1", "1:2"],
@@ -90,7 +90,7 @@ const unibenPhysics2011 = [
     explanation: "At constant pressure (isobaric process): V/T = constant. V₁/T₁ = V₂/T₂. T₁/T₂ = V₁/V₂ = 2/6 = 1:3."
   },
   {
-    subject: "Physics", topic: "Gases & Kinetic Theory", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Physics", topic: "Thermal Physics", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Why are collisions between gas molecules said to be elastic?",
     options: [

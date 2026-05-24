@@ -14,7 +14,7 @@ const unibenChem2008 = [
     explanation: "Ethanoic acid (acetic acid, CH₃COOH) is produced during the fermentation of palm wine — the souring process. Lemon contains citric acid. Salicylic acid is a separate compound. Crude oil contains hydrocarbons, not ethanoic acid."
   },
   {
-    subject: "Chemistry", topic: "Carbon & Its Compounds", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Chemistry", topic: "Organic Chemistry", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Graphite occurs naturally as:",
     options: ["Dolomite", "Limonite", "Plumbago", "Chalcopyrite"],
@@ -23,6 +23,7 @@ const unibenChem2008 = [
   },
   {
     subject: "Chemistry", topic: "Metals & Non-Metals", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Carbon(II) oxide is poisonous to many animals because:",
     options: [
@@ -44,6 +45,7 @@ const unibenChem2008 = [
   },
   {
     subject: "Chemistry", topic: "Water & Solutions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Plaster of Paris (POP), used for making casts in hospitals, is:",
     options: ["CaSO₄·2H₂O", "CaSO₄·H₂O", "CaSO₄·3H₂O", "CaSO₄·4H₂O"],
@@ -105,6 +107,7 @@ const unibenChem2008 = [
   },
   {
     subject: "Chemistry", topic: "Separation Techniques", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A brand of ink containing cobalt(II) chloride and iron(II) ions can be separated into its components by:",
     options: ["Fractional crystallization", "Fractional distillation", "Sublimation", "Chromatography"],
@@ -113,6 +116,7 @@ const unibenChem2008 = [
   },
   {
     subject: "Chemistry", topic: "Rates of Reaction", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following factors does NOT affect the rate of a chemical reaction between non-gaseous reactants?",
     options: [
@@ -134,6 +138,7 @@ const unibenChem2008 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The main constituents of petroleum are:",
     options: ["Alkanes", "Alkynes", "Gases", "Hydrocarbons"],

@@ -56,6 +56,7 @@ const unibenMaths2010 = [
   },
   {
     subject: "Mathematics", topic: "Coordinate Geometry", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Find the equation of a line with gradient −2 passing through the point (1, 2).",
     options: ["y = 4−2x", "y = 4x+2", "y = 2x+4", "y = −2x−2"],
@@ -64,6 +65,7 @@ const unibenMaths2010 = [
   },
   {
     subject: "Mathematics", topic: "Variation", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If V varies directly as the square of x and inversely as y, and V=18 when x=3 and y=4, find V when x=5 and y=2.",
     options: ["100", "98", "90", "75"],
@@ -80,6 +82,7 @@ const unibenMaths2010 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The interior angles of a pentagon are 130°, 118°, 80°, 78°, and x°. Find the value of x.",
     options: ["75°", "94°", "120°", "134°"],
@@ -96,6 +99,7 @@ const unibenMaths2010 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A chord XY of a circle of radius 14 cm subtends an angle of 60° at the centre. Find the length of arc XY. (π = 22/7)",
     options: ["44/3 cm", "28/3 cm", "22/3 cm", "14/3 cm"],

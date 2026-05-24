@@ -9,6 +9,7 @@
 const unibenPhysics2017 = [
   {
     subject: "Physics", topic: "Mechanics", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A simple pendulum with a period of 2.0 seconds has its initial length doubled. Its new period is:",
     options: ["1.00 s", "1.41 s", "0.35 s", "2.83 s"],
@@ -25,6 +26,7 @@ const unibenPhysics2017 = [
   },
   {
     subject: "Physics", topic: "Thermal Physics", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The essential factor that reduces heat loss by radiation in a thermos flask is the presence of:",
     options: ["A cork", "A vacuum", "Glass material", "Silvered wall surfaces"],
@@ -65,6 +67,7 @@ const unibenPhysics2017 = [
   },
   {
     subject: "Physics", topic: "Electricity & Magnetism", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Two parallel plates 8.0×10⁻³ m apart, maintained at 600 V. Find the electric field strength.",
     options: ["4.8 V/m", "75 V/m", "4800 V/m", "75,000 V/m"],
@@ -73,6 +76,7 @@ const unibenPhysics2017 = [
   },
   {
     subject: "Physics", topic: "Electricity & Magnetism", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Wire length 15 m, resistivity 1.8×10⁻⁶ Ωm, resistance 0.27 Ω. Find the cross-sectional area.",
     options: ["1.5×10⁻⁴ m²", "1.0×10⁻⁴ m²", "2.7×10⁻⁶ m²", "1.0×10⁻⁵ m²"],

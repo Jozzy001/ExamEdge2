@@ -109,7 +109,7 @@ const unibenMaths2005 = [
     explanation: "m/3 + 1/4 > 3m/8. Multiply through by 24: 8m + 6 > 9m. 6 > m. So m < 6."
   },
   {
-    subject: "Mathematics", topic: "Matrices & Determinants", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Mathematics", topic: "Algebra", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "Evaluate the determinant: |[2, −5, 1], [−1, 2, 0], [−3, 4, −6]|",
     options: ["−11", "0", "11", "−21"],
     answer: "−11",
@@ -172,7 +172,7 @@ const unibenMaths2005 = [
     explanation: "P(red) = number of red balls / total balls = 3/(3+5) = 3/8."
   },
   {
-    subject: "Mathematics", topic: "Sets & Algebra", year: 2005, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Mathematics", topic: "Sets & Venn Diagrams", year: 2005, exam: "Post-UTME", university: "UNIBEN",
     question: "If A = {1, 2, 3, 4} and B = {3, 4, 5, 6}, find A ∩ B.",
     options: ["{1, 2}", "{3, 4}", "{5, 6}", "{1, 2, 5, 6}"],
     answer: "{3, 4}",

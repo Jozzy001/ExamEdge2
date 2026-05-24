@@ -41,6 +41,7 @@ const unibenMaths2012 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The turning point on the curve y = 3x² − 9x + 12 is:",
     options: [
@@ -78,6 +79,7 @@ const unibenMaths2012 = [
   },
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The probability of event P is 3/4, while that of event Q is 1/6. If P(P∩Q) = 1/8, what is P(P∪Q)?",
     options: ["11/12", "1/12", "3/12", "4/5"],
@@ -102,6 +104,7 @@ const unibenMaths2012 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Calculate, correct to two significant figures, the length of the arc of a circle of radius 3.5 cm, which subtends an angle of 75° at the centre. (π = 22/7)",
     options: ["2.3 cm", "4.6 cm", "8 cm", "16 cm"],
@@ -110,6 +113,7 @@ const unibenMaths2012 = [
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "A binary operation on the set of real numbers excluding −1 is defined by M△N = M+N+MN. Find the identity element of the operation.",
     options: ["1", "0", "−2", "−1"],

@@ -16,7 +16,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Your _____ contrasts with your brother's frugality.",
+    question: "Your _____ contrasts with your brother's **frugality**.",
     options: ["Stupidity", "Extravagance", "Frivolity", "Meanness"],
     answer: "Extravagance",
     explanation: "Frugality means being careful and economical with money. Its antonym is extravagance — spending money freely and excessively. Frivolity means lack of seriousness, which is unrelated to frugality."
@@ -24,7 +24,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Convocation ceremonies are always more colourful than _____ ceremonies.",
+    question: "**Convocation** ceremonies are always more colourful than _____ ceremonies.",
     options: ["Registration", "Graduation", "Matriculation", "Congress"],
     answer: "Matriculation",
     explanation: "Convocation is the ceremony at the END of an academic programme (graduation). Its opposite in the academic calendar is Matriculation — the ceremony at the BEGINNING when students are formally admitted. Both are major academic ceremonies but at opposite ends."
@@ -32,7 +32,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "While he is a staunch supporter of the president, she is a _____ member of the president's cabinet.",
+    question: "While he is a **staunch** supporter of the president, she is a _____ member of the president's cabinet.",
     options: ["Disloyal", "Faithful", "Vocal", "Courageous"],
     answer: "Disloyal",
     explanation: "Staunch means firmly loyal and committed. Its antonym is disloyal — not faithful or loyal to a person or cause. Faithful is a synonym of staunch, not an antonym."
@@ -40,7 +40,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "While the girl is bereft of ideas, the boy is _____ of ideas.",
+    question: "While the girl is **bereft** of ideas, the boy is _____ of ideas.",
     options: ["In need", "Bereaved", "Bankrupt", "Full"],
     answer: "Full",
     explanation: "Bereft means lacking completely — totally without something. Its antonym is full — having an abundance of. 'Bankrupt of ideas' and 'in need of ideas' are synonymous with bereft, not antonyms. Bereaved means grieving a loss."
@@ -48,7 +48,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The well-wisher is believed to have a very placid temperament. Achaba is notorious for his _____ temperament.",
+    question: "The well-wisher is believed to have a very **placid** temperament. Achaba is notorious for his _____ temperament.",
     options: ["Platonic", "Pleasant", "Platitudinous", "Violent"],
     answer: "Violent",
     explanation: "Placid means calm, peaceful, and untroubled. Its antonym is violent — characterized by intense force or aggression. Platonic means non-physical; platitudinous means dull/clichéd — neither contrasts with placid."
@@ -56,7 +56,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Antonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The woman was full of admiration for her husband, but he treated her with _____.",
+    question: "The woman was full of **admiration** for her husband, but he treated her with _____.",
     options: ["Disdain", "Love", "Disgrace", "Admonition"],
     answer: "Disdain",
     explanation: "Admiration means great respect and warm approval. Its antonym is disdain — contempt, treating someone as if they are beneath consideration. Admonition means a gentle warning or reprimand — not an antonym of admiration."
@@ -128,7 +128,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "No one understands better than a man who participates in a project. Thus, the proof of the pudding is in the eating.",
+    question: "No one understands better than a man who participates in a project. Thus, **the proof of the pudding is in the eating**.",
     options: [
       "To enjoy the pudding, one must eat it after hard work",
       "Only a person with experience understands what it entails",
@@ -141,7 +141,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "When a brother has spoken the bitter truth to another, the latter often wears a long face.",
+    question: "When a brother has spoken the bitter truth to another, the latter often **wears a long face**.",
     options: [
       "Looks serious or unhappy",
       "Wears a gloomy expression",
@@ -154,7 +154,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "If you don't know him well enough, you would think he couldn't say boo to a goose.",
+    question: "If you don't know him well enough, you would think he **couldn't say boo to a goose**.",
     options: [
       "Would run away from a goose",
       "Was very timid",
@@ -167,7 +167,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The businessman near our house is so resourceful that all his grain goes to his mill.",
+    question: "The businessman near our house is so resourceful that **all his grain goes to his mill**.",
     options: [
       "Everyone who goes there is disappointed",
       "He wastes everything",
@@ -180,7 +180,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The famous dancer brought down the house with her performance.",
+    question: "The famous dancer **brought down the house** with her performance.",
     options: [
       "Caused the building to collapse",
       "Brought spectators downstairs",
@@ -193,7 +193,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Idioms & Expressions", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "He used to be an object of ridicule, but later people realized he was a rough diamond.",
+    question: "He used to be an object of ridicule, but later people realized he was a **rough diamond**.",
     options: [
       "A person who is rough and unrefined",
       "A rough but wealthy man",
@@ -208,49 +208,49 @@ const unibenEnglish2008 = [
   // VOCABULARY (Q20–25)
   // =====================
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "While we were waiting for the examination results to be posted, I suffered a lot from the suspense.",
+    question: "While we were waiting for the examination results to be posted, I suffered a lot from the **suspense**.",
     options: ["Fear", "Doubt", "Uncertainty", "Delay"],
     answer: "Uncertainty",
     explanation: "Suspense in this context means a state of uncertain expectation — not knowing what will happen. Uncertainty best captures this meaning. Fear implies a specific threat; doubt implies disbelief; delay refers to time — none capture suspense as precisely as uncertainty."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Jones' master praised him for being diligent in his duties.",
+    question: "Jones' master praised him for being **diligent** in his duties.",
     options: ["Sober", "Careful", "Consistent", "Industrious"],
     answer: "Industrious",
     explanation: "Diligent means hardworking and careful in one's duties. The nearest synonym is industrious — characterised by steady, hard effort. 'Careful' is too narrow; 'consistent' refers to regularity not effort; 'sober' is about demeanour not work ethic."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "We had to control Uli or he would have fought Abu over those words.",
+    question: "We had to **control** Uli or he would have fought Abu over those words.",
     options: ["Advise", "Restrain", "Command", "Forbid"],
     answer: "Restrain",
     explanation: "To control someone physically or prevent them from doing something is to restrain them. In this context, they had to physically hold Uli back from fighting. Restrain means to hold back by force — more specific and accurate than 'advise' or 'command'."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Some people believe that black cats are omens of bad luck.",
+    question: "Some people believe that black cats are **omens** of bad luck.",
     options: ["Warnings", "Signs", "Prophecies", "Promises"],
     answer: "Signs",
     explanation: "Omens are signs or portents — things believed to be indications of future events. 'Signs' is the most direct synonym. 'Warnings' imply a more active caution; 'prophecies' involve prediction; 'promises' imply certainty — omen is simply a sign/indicator."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "A monkey can imitate most of man's actions.",
+    question: "A monkey can **imitate** most of man's actions.",
     options: ["Perform", "Mock", "Learn", "Ape"],
     answer: "Ape",
     explanation: "To ape means to imitate or mimic — particularly in a foolish or thoughtless way. Interestingly, 'ape' as a verb comes from the primate, since apes are known for mimicking behaviour. It is the most precise synonym for imitate in this context."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The villagers were filled with wonder when they saw their first television.",
+    question: "The villagers were filled with **wonder** when they saw their first television.",
     options: ["Shock", "Disbelief", "Amazement", "Fear"],
     answer: "Amazement",
     explanation: "Wonder means a feeling of amazement and admiration caused by something beautiful, remarkable, or unfamiliar. Amazement is the closest synonym. Shock implies a negative surprise; disbelief implies doubt; fear implies danger — wonder is specifically positive amazement."

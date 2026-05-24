@@ -10,6 +10,7 @@
 const unibenMaths2017 = [
   {
     subject: "Mathematics", topic: "Algebra", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If M*N = M² + N² + 2MN, find the value of M*10 when M = 5.",
     options: ["225", "175", "25", "−25"],
@@ -18,6 +19,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Sequences & Series", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If the sixth term of an AP is 11 and the first term is 1, find the common difference.",
     options: ["12/5", "5/3", "−2", "2"],
@@ -26,6 +28,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If 3+x ≤ 5 and 8+x ≥ 5, find the range of values of x.",
     options: ["−2 ≤ x ≤ 2", "2 ≤ x ≤ 3", "−3 ≤ x ≤ −2", "−3 ≤ x ≤ 2"],
@@ -42,6 +45,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Sets & Venn Diagrams", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "In a class of 100 students, 20 can speak Igbo and 20 cannot speak Yoruba, while 10 can speak neither. How many can speak both Yoruba and Igbo?",
     options: ["5", "10", "15", "20"],
@@ -58,6 +62,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "O is the centre of a circle through M, L, N. If ∠MLN = 74° and ∠MNL = 39°, calculate ∠LON.",
     options: ["134°", "67°", "100°", "126°"],
@@ -74,6 +79,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Calculus", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Find the derivative of y = 2sin(2x³ + 3x − 4).",
     options: [
@@ -87,6 +93,7 @@ const unibenMaths2017 = [
   },
   {
     subject: "Mathematics", topic: "Trigonometry", year: 2017, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "If sec²θ + tan²θ = 3, then θ equals:",
     options: ["30°", "45°", "60°", "90°"],

@@ -29,6 +29,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The abnormally high boiling point of water is due to:",
     options: ["Its high molecular mass", "The presence of metallic bonds", "The presence of hydrogen bonds", "The presence of covalent bonds"],
@@ -53,6 +54,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Calculate the volume of oxygen required to burn completely 20 cm³ of carbon monoxide.",
     options: ["10 cm³", "20 cm³", "30 cm³", "40 cm³"],
@@ -61,6 +63,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "One mole of a substance contains _____.",
     options: ["Atomic number of particles", "Faraday's number of particles", "Avogadro's number of particles", "Quantum number of particles"],
@@ -69,6 +72,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Redox Reactions", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "From the reaction Zn + Cu²⁺ → Zn²⁺ + Cu, it can be deduced that:",
     options: ["Zn is the reducing agent", "Zn is the oxidizing agent", "Cu²⁺ loses electrons", "Cu²⁺ is the reducing agent"],
@@ -77,6 +81,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Rates of Reaction", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The following are factors affecting the rate of chemical reactions EXCEPT:",
     options: ["Surface area", "Catalyst", "Nature of reactants", "Activation energy"],
@@ -117,6 +122,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Chemical Equilibrium", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "When a system at equilibrium is disturbed, the equilibrium adjusts itself to counteract the effect of the disturbance. This is known as:",
     options: ["The law of chemical equilibrium", "Le Chatelier's principle", "The law of entropy", "The law of enthalpy"],
@@ -133,6 +139,7 @@ const unibenChem2010 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of these methods is employed in the separation of hydrocarbons in petroleum?",
     options: ["Catalytic cracking", "Polymerization", "Fractional distillation", "Hydrogenation"],

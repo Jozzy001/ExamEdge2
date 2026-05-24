@@ -7,6 +7,7 @@ import Quiz from "./pages/Quiz"
 import Progress from "./pages/Progress"
 import CBTResult from "./pages/CBTResult"
 import PostUTMEHome from "./pages/PostUTMEHome"
+import HotTopics from "./pages/HotTopics"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
 
 function App() {
@@ -106,12 +107,60 @@ function App() {
           allowedSubjects={facultySubjects}
         />
       )
-      if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} university={university} />
-      if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} examType="postutme" university={university} />
+      if (page === "study") return (
+        <StudyMode
+          subject={selectedSubject}
+          onNavigate={handleNavigate}
+          university={university}
+        />
+      )
+      if (page === "quiz") return (
+        <Quiz
+          topic={selectedTopic}
+          subject={selectedSubject}
+          onNavigate={handleNavigate}
+          examType="postutme"
+          university={university}
+        />
+      )
       if (page === "progress") return <Progress onNavigate={handleNavigate} />
-      if (page === "weak") return <Quiz topic="weak" onNavigate={handleNavigate} examType="postutme" university={university} />
-      if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} examType="postutme" university={university} englishFirst={true} />
+      if (page === "weak") return (
+        <Quiz
+          topic="weak"
+          onNavigate={handleNavigate}
+          examType="postutme"
+          university={university}
+        />
+      )
+      if (page === "cbt") return (
+        <Quiz
+          topic="cbt"
+          subjects={selectedSubjects}
+          onNavigate={handleNavigate}
+          examType="postutme"
+          university={university}
+          englishFirst={true}
+        />
+      )
       if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} />
+
+      // ── HOT TOPICS ──
+      if (page === "hotTopics") return (
+        <HotTopics
+          onNavigate={handleNavigate}
+          university={university}
+          facultySubjects={facultySubjects}
+        />
+      )
+      if (page === "hotTopicsQuiz") return (
+        <Quiz
+          topic="hotTopics"
+          subject={selectedSubject}
+          onNavigate={handleNavigate}
+          examType="postutme"
+          university={university}
+        />
+      )
     }
 
     return <h2>Page not found</h2>

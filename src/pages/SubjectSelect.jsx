@@ -1,5 +1,5 @@
 import { useState } from "react"
-import jambQuestions from "../data/questions"
+import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 
 const SUBJECT_META = {
@@ -32,11 +32,11 @@ const SubjectSelect = ({ onNavigate, mode, examType = "jamb", university = null,
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
     : jambQuestions
 
-  // For post-utme, only show subjects relevant to the faculty
   const allSubjects = getSubjects(questionPool)
   const subjects = allowedSubjects
     ? allSubjects.filter(s => allowedSubjects.includes(s))
     : allSubjects
+
   const isCBT = mode === "cbt"
   const [selected, setSelected] = useState([])
 

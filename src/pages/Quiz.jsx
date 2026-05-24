@@ -1,12 +1,34 @@
 import { useState, useRef, useMemo, useEffect } from "react"
-import jambQuestions from "../data/questions"
+import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 
 // =============================================
-// IMAGE RENDERER
+// TEXT RENDERER — handles **bold** highlights and images
 // =============================================
 const RenderText = ({ text }) => {
   if (!text) return null
+
+  const parseSegment = (segment, keyIndex) => {
+    const boldParts = segment.split(/(\*\*[^*]+\*\*)/g)
+    return boldParts.map((part, j) => {
+      const boldMatch = part.match(/^\*\*([^*]+)\*\*$/)
+      if (boldMatch) {
+        return (
+          <strong key={`${keyIndex}-b${j}`} style={{
+            color: "var(--primary)",
+            background: "var(--primary-light)",
+            padding: "1px 5px",
+            borderRadius: "4px",
+            fontWeight: 800
+          }}>
+            {boldMatch[1]}
+          </strong>
+        )
+      }
+      return <span key={`${keyIndex}-t${j}`}>{part}</span>
+    })
+  }
+
   const parts = text.split(/(\[img:[^\]]+\])/g)
   const elements = []
   let imgGroup = []
@@ -31,15 +53,16 @@ const RenderText = ({ text }) => {
   }
 
   parts.forEach((part, i) => {
-    const match = part.match(/^\[img:([^\]]+)\]$/)
-    if (match) {
-      imgGroup.push(match[1])
+    const imgMatch = part.match(/^\[img:([^\]]+)\]$/)
+    if (imgMatch) {
+      imgGroup.push(imgMatch[1])
     } else {
       flushImgGroup()
-      if (part) elements.push(<span key={i}>{part}</span>)
+      if (part) elements.push(...parseSegment(part, i))
     }
   })
   flushImgGroup()
+
   return <>{elements}</>
 }
 
@@ -125,7 +148,6 @@ const Calculator = ({ onClose }) => {
 // =============================================
 const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", university = null, customCounts = null, englishFirst = false }) => {
 
-  // Get the right question pool
   const questionPool = useMemo(() => {
     if (examType === "postutme" && university) {
       return POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -133,10 +155,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     return jambQuestions
   }, [examType, university])
 
-  // Default question counts per subject
   const getDefaultCount = (subj) => {
     if (examType === "jamb") return subj === "English" ? 60 : 40
-    return 40 // Post-UTME default
+    return 40
   }
 
   const filteredQuestions = useMemo(() => {
@@ -158,12 +179,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
       })
       const ordered = []
       const subjectsToUse = subjectList || Object.keys(bySubject)
-
-      // English always comes first if englishFirst is true
       const sortedSubjects = englishFirst
         ? ["English", ...subjectsToUse.filter(s => s !== "English")]
         : subjectsToUse
-
       sortedSubjects.forEach(subj => {
         const pool = (bySubject[subj] || []).sort(() => Math.random() - 0.5)
         const count = customCounts?.[subj] ?? getDefaultCount(subj)
@@ -190,6 +208,13 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
           weakTopics.includes(inner.topic) && (!subjectList || subjectList.includes(inner.subject))
         )
         return weakTopics.includes(q.topic) && (!subjectList || subjectList.includes(q.subject))
+      }).sort(() => Math.random() - 0.5)
+    } else if (topic === "hotTopics") {
+      base = questionPool.filter(q => {
+        if (q.passage && q.questions) return q.questions.some(inner =>
+          inner.isHotTopic === true && (!subjectList || subjectList.includes(inner.subject))
+        )
+        return q.isHotTopic === true && (!subjectList || subjectList.includes(q.subject))
       }).sort(() => Math.random() - 0.5)
     } else {
       base = questionPool.filter(q => {
@@ -219,13 +244,13 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
   const [started, setStarted] = useState(false)
   const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
   const [showCalc, setShowCalc] = useState(false)
-  // Custom counts state for start screen
   const [qCounts, setQCounts] = useState({})
   const [customTime, setCustomTime] = useState(examType === "jamb" ? 3600 : 1800)
 
   const answersMapRef = useRef({})
   const isCBT = topic === "cbt"
   const isWeak = topic === "weak"
+  const isHotTopics = topic === "hotTopics"
   const currentQuestion = filteredQuestions[currentIndex]
 
   useEffect(() => {
@@ -268,8 +293,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
       localStorage.setItem("cbtReport", JSON.stringify({
         score, total, percentage: Math.round((score / total) * 100),
         subjects: subjects || (subject ? [subject] : []),
-        examType, university,
-        answers
+        examType, university, answers
       }))
     }
     const existing = JSON.parse(localStorage.getItem("progress")) || []
@@ -291,7 +315,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     }
   }, [finished])
 
-  // EDGE CASES
   if (filteredQuestions.length === 0 && started) {
     return (
       <div className="ee-page">
@@ -311,7 +334,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     )
   }
 
-  // CBT START SCREEN
   if (isCBT && !started) {
     const subjectList = subjects && subjects.length > 0 ? subjects : (subject ? [subject] : [])
     const timeOptions = [
@@ -338,7 +360,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
             </div>
           </div>
 
-          {/* Per-subject question count */}
           <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Questions per subject</span>
           {subjectList.map(subj => {
             const defaultCount = getDefaultCount(subj)
@@ -364,7 +385,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
             )
           })}
 
-          {/* Time selector */}
           <span className="ee-label" style={{ marginTop: 8, display: "block" }}>Time limit</span>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
             {timeOptions.map(opt => (
@@ -398,7 +418,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     )
   }
 
-  // HELPERS
   const saveAnswer = (index = currentIndex, value = selected) => {
     if (!filteredQuestions[index]) return
     answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
@@ -416,7 +435,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
   }
   const goToQuestion = (i) => { saveAnswer(); setShowExplanation(false); setCurrentIndex(i); setSelected(answersMapRef.current[i]?.selected || "") }
 
-  // RESULT SCREEN
   if (finished) {
     const score = filteredQuestions.filter((q, i) => answersMapRef.current[i]?.selected === q.answer).length
     const total = filteredQuestions.length
@@ -449,7 +467,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
 
   if (!currentQuestion) return null
 
-  // MAIN QUIZ UI
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
@@ -459,10 +476,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
         <button className="ee-back-btn" onClick={() => {
           if (isCBT) onNavigate("cbtSubjectSelect")
           else if (isWeak) onNavigate("progress")
+          else if (isHotTopics) onNavigate("hotTopics")
           else onNavigate("study")
         }}>← Exit</button>
         <span style={{ fontWeight: 800, fontSize: "15px" }}>
-          {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : topic}
+          {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : isHotTopics ? "🔥 Hot Topics" : topic}
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <button onClick={() => setShowCalc(p => !p)} style={{
@@ -507,8 +525,21 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
         )}
 
         <div className="ee-question-card">
-          <span className="question-topic-tag">{currentQuestion.topic}</span>
-          <div className="question-text"><RenderText text={currentQuestion.question} /></div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+            <span className="question-topic-tag">{currentQuestion.topic}</span>
+            {currentQuestion.isHotTopic && (
+              <span style={{
+                fontSize: 10, fontWeight: 800,
+                background: "linear-gradient(135deg, #ff6b35, #f7c59f)",
+                color: "#fff", padding: "2px 8px",
+                borderRadius: "var(--radius-pill)",
+                letterSpacing: "0.04em"
+              }}>🔥 Hot Topic</span>
+            )}
+          </div>
+          <div className="question-text">
+            <RenderText text={currentQuestion.question} />
+          </div>
         </div>
 
         {currentQuestion.options.map((opt, i) => {

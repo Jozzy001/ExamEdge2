@@ -90,41 +90,41 @@ const unibenEnglish2012 = [
   // VOCABULARY / SYNONYMS (Q6–10)
   // =====================
   {
-    subject: "English", topic: "Vocabulary", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The tenure of the principal was an unmitigated disaster.",
+    question: "The tenure of the principal was an **unmitigated** disaster.",
     options: ["Unfortunate", "Unexpected", "Unqualified", "Unprecedented"],
     answer: "Unqualified",
     explanation: "Unmitigated means absolute, complete, and without any qualification or exception — used to intensify a negative noun. 'An unmitigated disaster' = a total, complete disaster. The synonym is 'unqualified' — also meaning absolute/complete. Unprecedented means never happened before."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Among the mountains in Cameroon, there is an extinct volcano.",
+    question: "Among the mountains in Cameroon, there is an **extinct** volcano.",
     options: ["Inactive", "Expired", "Extinguished", "Obsolete"],
     answer: "Inactive",
     explanation: "An extinct volcano is one that has not erupted in recorded history and is unlikely to erupt again — it is inactive. 'Expired' and 'extinguished' suggest a process of ending; 'obsolete' means out of date — none fit as precisely as 'inactive'."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The dispute between the two countries had resulted in the severance of diplomatic relations.",
+    question: "The dispute between the two countries had resulted in the **severance** of diplomatic relations.",
     options: ["Stopping", "Breaking", "Redrawing", "Counselling"],
     answer: "Breaking",
     explanation: "Severance means the action of ending a connection or relationship — cutting it off. The severance of diplomatic relations means breaking those ties. 'Breaking' is the most accurate synonym — it captures the decisive, clean ending of the relationship."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The loud noise of the police siren woke us up.",
+    question: "The loud noise of the police **siren** woke us up.",
     options: ["Clamour", "Ding-dong", "Whistle", "Wail"],
     answer: "Wail",
     explanation: "A siren makes a wailing sound — a long, high-pitched, fluctuating cry. 'Wail' is the most accurate description of the sound a police/ambulance siren makes. A clamour is general loud noise; ding-dong is a bell sound; a whistle is shorter and sharper."
   },
   {
-    subject: "English", topic: "Vocabulary", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Synonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The patient is suffering from an ailment that keeps recurring.",
+    question: "The patient is suffering from an **ailment** that keeps recurring.",
     options: [
       "A chronic ailment",
       "A frequent ailment",
@@ -186,7 +186,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The officer asked for a more temperate assessment of the matter.",
+    question: "The officer asked for a more **temperate** assessment of the matter.",
     options: ["Extreme", "Moderate", "Radical", "Humane"],
     answer: "Extreme",
     explanation: "Temperate means showing moderation and self-restraint — calm and measured. Its antonym is extreme — going to the maximum point, showing no moderation. Moderate is actually a synonym of temperate, not an antonym."
@@ -194,7 +194,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The father's advice to me was quite invaluable.",
+    question: "The father's advice to me was quite **invaluable**.",
     options: ["Useless", "Useful", "Helpful", "Unflinching"],
     answer: "Useless",
     explanation: "Invaluable means extremely valuable — so precious as to be beyond price. Its antonym is useless — having no value or practical use. Be careful: 'invalid' ≠ 'invaluable'. Invaluable = very valuable (not valueless). Useful and helpful are synonyms, not antonyms."
@@ -202,7 +202,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Musa hates Hadiza for her constant bellicose behaviour.",
+    question: "Musa hates Hadiza for her constant **bellicose** behaviour.",
     options: ["Violent", "Gentle", "Meek", "Troublesome"],
     answer: "Gentle",
     explanation: "Bellicose means aggressive and eager to fight — warlike. Its antonym is gentle — mild, kind, and peaceful. Meek is also close but implies excessive submission; gentle captures the true opposite of bellicose aggression. Violent and troublesome are synonyms."
@@ -210,23 +210,25 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "There is much more indifference than continuity in his behaviour.",
+    question: "There is much more **indifference** than continuity in his behaviour.",
     options: ["Concern", "Nonchalance", "Willingness", "Inconsistency"],
     answer: "Concern",
     explanation: "Indifference means lack of interest, concern, or sympathy. Its antonym is concern — active interest and care. Nonchalance is a synonym of indifference (casual lack of concern). Willingness is related but less precise than concern as the direct opposite."
   },
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "My brother married a loquacious woman.",
+    question: "My brother married a **loquacious** woman.",
     options: ["Quiet", "Busy", "Talkative", "Beautiful"],
     answer: "Quiet",
     explanation: "Loquacious means very talkative — talking a great deal. Its antonym is quiet — not talking much, reserved in speech. Note: taciturn is the more precise antonym but is not given as an option here. ★ RECURRING — loquacious also appeared in 2005/2006 (antonym: taciturn)."
   },
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
-    question: "Abdul is fond of the teachings of his teacher, though his substitute makes derogatory remarks about him.",
+    question: "Abdul is fond of the teachings of his teacher, though his substitute makes **derogatory** remarks about him.",
     options: ["Unpleasant", "Complementary", "Expensive", "Insulting"],
     answer: "Complementary",
     explanation: "Derogatory means showing a critical or disrespectful attitude — insulting. Its antonym is complementary — expressing admiration or approval. Note: 'complementary' (with an 'e') means expressing praise; 'complimentary' is the more common spelling. ★ RECURRING — appeared in 2005/2006."
@@ -234,7 +236,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "The minister has finally been dropped from the present cabinet because of his ignoble act.",
+    question: "The minister has finally been dropped from the present cabinet because of his **ignoble** act.",
     options: ["Criminal", "Ignorant", "Honourable", "Selfish"],
     answer: "Honourable",
     explanation: "Ignoble means not honourable in character or purpose — base, dishonorable. Its antonym is honourable — bringing or deserving honour and respect. Criminal and selfish describe types of wrongdoing; ignorant means lacking knowledge — none are antonyms of ignoble."
@@ -242,7 +244,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "His cruelty to his brother defies logical explanation.",
+    question: "His **cruelty** to his brother defies logical explanation.",
     options: ["Demands", "Offers", "Projects", "Precludes"],
     answer: "Demands",
     explanation: "Defy means to resist, challenge, or go against — to make something impossible. Its antonym in this context is demands — to require or call for. If cruelty 'defies explanation' (makes explanation impossible), the antonym would be 'demands explanation' (makes explanation necessary/required)."
@@ -250,7 +252,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Antonyms", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Orenia balances the pan on her head with accustomed ease.",
+    question: "Orenia balances the pan on her head with **accustomed** ease.",
     options: ["Convincing", "Surprising", "Unweary", "Casual"],
     answer: "Surprising",
     explanation: "Accustomed means familiar with something through habit — customary. 'Accustomed ease' means the ease that comes from long practice/habit (expected). Its antonym is surprising — something unexpected and remarkable. If something is accustomed/expected, its opposite is surprising/unexpected."
@@ -261,7 +263,7 @@ const unibenEnglish2012 = [
   // Analysis: NEW topic — first time phonetics appeared in UNIBEN papers ★
   // =====================
   {
-    subject: "English", topic: "Stress Pattern", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which word has the same consonant sound as the underlined letters in 'sheep' (sh)?",
     options: ["Official", "Vision", "Seizure", "Revision"],
@@ -269,7 +271,7 @@ const unibenEnglish2012 = [
     explanation: "The 'sh' in 'sheep' represents the /ʃ/ sound (voiceless palato-alveolar fricative). In 'official', the 'ci' makes the same /ʃ/ sound: of-fi-cial. 'Vision', 'seizure', and 'revision' all contain the /ʒ/ sound (voiced equivalent) — not /ʃ/."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which word has the same consonant sound as the underlined letters in 'auto' (th)?",
     options: ["Rather", "Mother", "Do", "That"],
@@ -277,7 +279,7 @@ const unibenEnglish2012 = [
     explanation: "Note: 'auto' does not typically contain 'th'. This question likely refers to the /θ/ or /ð/ sound. The voiceless 'th' /θ/ in words like 'think' corresponds to 'do' if the question tests the /d/ sound vs 'th'. UNIBEN answer is C (do). Students should verify the exact word and underlined letters."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which word has the same consonant sound as the underlined letters in 'chant' (ch)?",
     options: ["Cheat", "Character", "Chief", "Chemistry"],
@@ -285,7 +287,7 @@ const unibenEnglish2012 = [
     explanation: "The 'ch' in 'chant' represents the /tʃ/ sound (as in church). 'Cheat' also uses /tʃ/: /tʃiːt/. 'Character' uses /k/ (Greek-origin word). 'Chemistry' also uses /k/. 'Chief' uses /tʃ/ — but UNIBEN answer is A (cheat). Both cheat and chief have /tʃ/ — cheat is the standard answer."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which word has the same consonant sound as the underlined letters in 'behind' (h)?",
     options: ["War", "Hour", "Honour", "Honest"],
@@ -293,7 +295,7 @@ const unibenEnglish2012 = [
     explanation: "The 'h' in 'behind' is pronounced /h/. In 'hour', 'honour', and 'honest', the 'h' is silent (these are French-origin words). 'War' starts with /w/ — not /h/. UNIBEN answer is A (war). This question is testing which word does NOT have a silent 'h' — but war has no 'h' at all. Students should verify."
   },
   {
-    subject: "English", topic: "Stress Pattern", year: 2012, exam: "Post-UTME", university: "UNIBEN",
+    subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
     question: "Which word has the same consonant sound as the underlined letters in 'barge' (g)?",
     options: ["Gin", "Guest", "Gasp", "Grade"],

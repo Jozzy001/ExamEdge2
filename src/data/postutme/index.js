@@ -1,4 +1,4 @@
-import unibenQuestions from "./uniben/questions"
+import unibenQuestions from "./uniben/index"
 
 export const POST_UTME_UNIVERSITIES = {
   UNIBEN: {

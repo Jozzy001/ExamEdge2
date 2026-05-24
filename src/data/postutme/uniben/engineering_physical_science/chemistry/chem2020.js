@@ -9,6 +9,7 @@
 const unibenChem2020 = [
   {
     subject: "Chemistry", topic: "Water & Solutions", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Two metallic ions associated with hard water are:",
     options: ["Copper and zinc", "Magnesium and silver", "Calcium and magnesium", "Potassium and tin"],
@@ -17,6 +18,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Metals & Non-Metals", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Bronze is an alloy of:",
     options: ["Copper, zinc, and nickel", "Aluminium and copper", "Copper and zinc", "Tin and copper"],
@@ -33,6 +35,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Redox Reactions", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The oxidation state of manganese in KMnO₄ is:",
     options: ["+1", "+3", "+7", "+5"],
@@ -41,6 +44,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Cotton is almost pure:",
     options: ["Starch", "Cellulose", "Protein", "Animal fibre"],
@@ -49,6 +53,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Which of the following cannot be obtained by fractional distillation of petroleum?",
     options: ["Ether", "Methane", "Butane", "Hydrogen"],
@@ -57,6 +62,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Water & Solutions", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Sodium carbonate crystals, on exposure to a dry atmosphere, change to a white powder. This phenomenon is known as:",
     options: ["Efflorescence", "Hygroscopy", "Oxidation", "Deliquescence"],
@@ -65,6 +71,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Organic Chemistry", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "The by-product obtained during the production of soap is:",
     options: ["Ethanol", "Glycerol", "Methanol", "Propanol"],
@@ -86,6 +93,7 @@ const unibenChem2020 = [
   },
   {
     subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2020, exam: "Post-UTME", university: "UNIBEN",
+    isHotTopic: true,
     faculty: ["engineering", "physicalsciences"],
     question: "Increasing the pressure of a gas:",
     options: [
