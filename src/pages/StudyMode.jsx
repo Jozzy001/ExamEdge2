@@ -27,13 +27,14 @@ const RenderGuideText = ({ text }) => {
 // =============================================
 // EXPANDABLE CARD
 // =============================================
-const ExpandableCard = ({ title, body, index }) => {
-  const [open, setOpen] = useState(false)
+const ExpandableCard = ({ title, body, index, forceOpen }) => {
+  const [localOpen, setLocalOpen] = useState(false)
   const isRecurring = body.includes("RECURRING") || body.includes("★")
+  const open = forceOpen !== undefined ? forceOpen : localOpen
 
   return (
     <div
-      onClick={() => setOpen(p => !p)}
+      onClick={() => setLocalOpen(p => !p)}
       style={{
         background: open ? "var(--primary-light)" : "var(--surface)",
         borderRadius: "var(--radius-md)",
@@ -87,7 +88,7 @@ const ExpandableCard = ({ title, body, index }) => {
 // =============================================
 // SECTION RENDERER
 // =============================================
-const GuideSection = ({ section, sectionIndex }) => {
+const GuideSection = ({ section, sectionIndex, expandAll }) => {
   const sectionColors = {
     text:    { bg: "var(--surface)",       border: "var(--border)",                  accent: "var(--primary)" },
     steps:   { bg: "var(--surface)",       border: "var(--border)",                  accent: "var(--primary)" },
@@ -157,7 +158,7 @@ const GuideSection = ({ section, sectionIndex }) => {
       {section.type === "cards" && (
         <div>
           {section.items.map((card, j) => (
-            <ExpandableCard key={j} title={card.title} body={card.body} index={j} />
+            <ExpandableCard key={j} title={card.title} body={card.body} index={j} forceOpen={expandAll ? true : undefined} />
           ))}
         </div>
       )}
@@ -352,7 +353,7 @@ const GuideView = ({ guide, topic, subject, onStartQuiz, onBack }) => {
 
         {/* All sections */}
         {guide.sections.map((section, i) => (
-          <GuideSection key={i} section={section} sectionIndex={i} />
+          <GuideSection key={i} section={section} sectionIndex={i} expandAll={expandAll} />
         ))}
 
         {/* Bottom CTA */}

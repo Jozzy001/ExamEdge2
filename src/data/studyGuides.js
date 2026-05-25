@@ -70,7 +70,7 @@ const STUDY_GUIDES = {
       {
         heading: "What is an Antonym?",
         type: "text",
-        content: "An antonym is a word opposite in meaning to another. JAMB and Post-UTME test your vocabulary by asking you to identify the opposite of an underlined word."
+        content: "An antonym is a word opposite in meaning to another. UNIBEN tests your vocabulary by asking you to identify the opposite of an underlined word."
       },
       {
         heading: "Strategy",
@@ -216,10 +216,10 @@ const STUDY_GUIDES = {
       {
         heading: "What are Idioms?",
         type: "text",
-        content: "Idioms are phrases whose meaning cannot be understood from the individual words. 'Kick the bucket' does not mean literally kicking a bucket — it means to die. JAMB tests whether you know the true meaning of common idioms."
+        content: "Idioms are phrases whose meaning cannot be understood from the individual words. 'Kick the bucket' does not mean literally kicking a bucket — it means to die. Post-UTME tests whether you know the true meaning of common idioms."
       },
       {
-        heading: "Must-Know Idioms for JAMB/Post-UTME",
+        heading: "Must-Know Idioms for Post-UTME",
         type: "cards",
         items: [
           { title: "When the chips are down", body: "When a situation becomes critical or difficult — at a crisis point." },
@@ -262,7 +262,7 @@ const STUDY_GUIDES = {
       {
         heading: "What is Word Stress?",
         type: "text",
-        content: "Word stress means pronouncing one syllable of a word with more force than the others. Every English word has a stressed syllable. JAMB asks you to identify words with the same or different stress patterns."
+        content: "Word stress means pronouncing one syllable of a word with more force than the others. Every English word has a stressed syllable. Post-UTME asks you to identify words with the same or different stress patterns."
       },
       {
         heading: "How to Mark Stress",
@@ -281,7 +281,7 @@ const STUDY_GUIDES = {
         ]
       },
       {
-        heading: "Common Stress Patterns in JAMB",
+        heading: "Common Stress Patterns in Post-UTME",
         type: "cards",
         items: [
           { title: "1st syllable stress (●oo)", body: "calendar, blackboard, suffer, madam, comment, happy" },
@@ -363,7 +363,7 @@ const STUDY_GUIDES = {
       {
         heading: "Two Main Operations",
         type: "text",
-        content: "Calculus has two branches: Differentiation (finding the rate of change/gradient) and Integration (finding area under a curve). JAMB tests both."
+        content: "Calculus has two branches: Differentiation (finding the rate of change/gradient) and Integration (finding area under a curve). Both topics are tested in UNIBEN Post-UTME."
       },
       {
         heading: "Differentiation Rules",
@@ -397,7 +397,7 @@ const STUDY_GUIDES = {
       {
         heading: "Quick Tip",
         type: "tip",
-        content: "Always add + C (constant of integration) for indefinite integrals. Forgetting C is one of the most common errors in JAMB."
+        content: "Always add + C (constant of integration) for indefinite integrals. Forgetting C is one of the most common errors in Post-UTME."
       }
     ]
   },
@@ -903,7 +903,7 @@ const STUDY_GUIDES = {
         "Try x = 1, -1, 2, -2 first — these are the most common roots in exam questions."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Always try x = 1 and x = -1 first when hunting for factors. These work surprisingly often in JAMB and Post-UTME questions and save a lot of time." }
+        content: "Always try x = 1 and x = -1 first when hunting for factors. These work surprisingly often in Post-UTME questions and save a lot of time." }
     ]
   },
 
@@ -1920,6 +1920,596 @@ const STUDY_GUIDES = {
       ]},
       { heading: "Quick Tip", type: "tip",
         content: "For every Oral English question — say the word aloud in your head first. Sound always beats spelling. 'Great' and 'break' rhyme (/eɪ/) even though they look different. 'Great' and 'heat' do NOT rhyme despite looking similar." }
+    ]
+  }
+
+
+,
+
+  // ==========================================
+  // CHEMISTRY — ACIDS, BASES & SALTS
+  // ==========================================
+  "Acids, Bases & Salts": {
+    subject: "Chemistry", title: "Acids, Bases & Salts",
+    icon: "🧪", estimatedTime: "3 min read",
+    sections: [
+      { heading: "pH Scale", type: "cards", items: [
+        { title: "pH and acidity", body: "pH 0-6 = ACIDIC (lower = more acidic). pH 7 = NEUTRAL. pH 8-14 = ALKALINE/BASIC. pH = -log[H⁺]. RECURRING every year!" },
+        { title: "Calculating [H⁺] from pH", body: "[H⁺] = 10⁻ᵖᴴ. Example: pH 3.80 → [H⁺] = 10⁻³·⁸⁰ = 1.58×10⁻⁴ mol/dm³." },
+        { title: "pOH and pH", body: "pH + pOH = 14. If pOH = 12.23 → pH = 1.77 → [H⁺] = 10⁻¹·⁷⁷ ≈ 1.70×10⁻²." },
+        { title: "Phenolphthalein indicator", body: "COLOURLESS in acid (pH < 8.3). PINK/MAGENTA in alkali (pH > 8.3). At pH 2.5 = colourless. RECURRING!" },
+        { title: "M is most acidic (pH 1)", body: "In questions listing pH values: lowest pH = most acidic. pH 1 = most acidic; pH 14 = most basic. RECURRING!" }
+      ]},
+      { heading: "Hydroxides & Salts", type: "cards", items: [
+        { title: "Calcium hydroxide", body: "Ca(OH)₂ (slaked lime/limewater) DISSOLVES in water to form an ALKALINE solution. Al(OH)₃, Cu(OH)₂, Fe(OH)₃ are all INSOLUBLE. RECURRING!" },
+        { title: "Aluminium oxide + NaOH", body: "Al₂O₃ is AMPHOTERIC — reacts with excess NaOH to form NaAl(OH)₄ (sodium tetrahydroxoaluminate). RECURRING!" },
+        { title: "Double decomposition", body: "Ba²⁺ + SO₄²⁻ → BaSO₄ (precipitate). Two compounds exchange ions = double decomposition (metathesis). RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "pH < 7 = acid. pH 7 = neutral. pH > 7 = alkali. Phenolphthalein is COLOURLESS in acid, PINK in alkali. Ca(OH)₂ is the only common soluble metal hydroxide that gives an alkaline solution. These appear every year." }
+    ]
+  },
+
+  // ==========================================
+  // CHEMISTRY — METALS & NON-METALS
+  // ==========================================
+  "Metals & Non-Metals": {
+    subject: "Chemistry", title: "Metals & Non-Metals",
+    icon: "⚗️", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Facts", type: "cards", items: [
+        { title: "Reactivity series", body: "Na > Ca > Al > Fe > Zn > Pb > H > Cu > Ag > Au. More reactive = more likely to form positive ions. Iron is LESS reactive than Al — least tendency to form positive ions among common metals. RECURRING!" },
+        { title: "Bronze vs Brass", body: "Bronze = copper + TIN (used for electrical conductors, bells). Brass = copper + ZINC. Solder = lead + tin. RECURRING — most confused alloys!" },
+        { title: "Argon in lamps", body: "Argon is used in gas-filled electric lamps because it is INERT — prevents oxidation of the tungsten filament. RECURRING!" },
+        { title: "White phosphorus", body: "Stored UNDER WATER because it has a very LOW ignition temperature — ignites spontaneously in air at ~30°C. RECURRING!" },
+        { title: "Sulphur — non-metal", body: "Sulphur is a NON-METAL (yellow solid, poor conductor). Iron, copper, zinc are metals. RECURRING!" },
+        { title: "Plutonium — artificial", body: "Plutonium (Z=94) is an ARTIFICIAL element — produced in nuclear reactors, does not occur naturally. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Bronze = Cu+Sn (tin). Brass = Cu+Zn. Argon in bulbs = prevents oxidation. White phosphorus stored under water. Plutonium = artificial. These are the most tested metal/non-metal facts in UNIBEN." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — BASIC ECONOMIC CONCEPTS
+  // ==========================================
+  "Basic Economic Concepts": {
+    subject: "Economics", title: "Basic Economic Concepts",
+    icon: "📈", estimatedTime: "3 min read",
+    sections: [
+      { heading: "Definitions", type: "cards", items: [
+        { title: "Alfred Marshall's definition", body: "'Economics is the study of mankind in the ordinary business of life.' RECURRING every year!" },
+        { title: "Lionel Robbins' definition", body: "'Economics is the science of human behaviour as a relationship between ends and scarce means.' Emphasis on SCARCITY and CHOICE." },
+        { title: "Normative vs Positive", body: "POSITIVE = what IS (factual, testable). NORMATIVE = what SHOULD BE (value judgements, policy). 'Should be' = normative. RECURRING!" },
+        { title: "Economic goods", body: "An economic good YIELDS UTILITY and COMMANDS A PRICE (because it is scarce). Free goods (air) yield utility but have no price." },
+        { title: "Opportunity cost = Real cost", body: "Opportunity cost = the value of the next best alternative forgone. Also called REAL COST. RECURRING!" },
+        { title: "Inferior goods", body: "Demand RISES as income FALLS (negative income elasticity). Examples: garri, public transport. As income rises, consumers switch to superior goods." }
+      ]},
+      { heading: "Production Possibility Curve (PPC)", type: "cards", items: [
+        { title: "Inside the PPC", body: "Nigeria is INSIDE the PPC — resources are underutilised (unemployment, inefficiency). RECURRING!" },
+        { title: "Downward slope = opportunity cost", body: "The PPC slopes downward because producing more of one good requires sacrificing another — OPPORTUNITY COST." },
+        { title: "Inward shift", body: "PPC shifts INWARD when resources decrease (natural disaster, war). Shifts OUTWARD when capacity increases (technology, more resources)." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Marshall = 'ordinary business of life'. Positive = what IS. Normative = what SHOULD BE. Opportunity cost = real cost. Nigeria is INSIDE the PPC. Inferior goods: demand rises as income falls. These definitions appear in almost every year." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — DEMAND & SUPPLY
+  // ==========================================
+  "Demand & Supply": {
+    subject: "Economics", title: "Demand & Supply",
+    icon: "📊", estimatedTime: "3 min read",
+    sections: [
+      { heading: "Demand", type: "cards", items: [
+        { title: "Law of demand", body: "As PRICE rises, quantity demanded FALLS (inverse relationship), ceteris paribus. Demand curve slopes downward." },
+        { title: "Derived demand", body: "Factors of production (labour, capital, land) are demanded NOT for their own sake but to produce goods. Demand for inputs is DERIVED from demand for outputs. RECURRING!" },
+        { title: "Price elasticity of demand", body: "PED = % change Qd ÷ % change P. Elastic (>1) = consumers very responsive to price. Inelastic (<1) = not very responsive. RECURRING — calculations!" },
+        { title: "Cross elasticity for complements", body: "Cross elasticity for COMPLEMENTARY goods = NEGATIVE. For SUBSTITUTES = positive. When price of good A rises, demand for its complement B FALLS. RECURRING!" },
+        { title: "At maximum total utility", body: "When TOTAL UTILITY is at maximum, MARGINAL UTILITY = ZERO. When MU becomes negative, TU starts to fall. RECURRING!" }
+      ]},
+      { heading: "Supply", type: "cards", items: [
+        { title: "Supply curve shifts LEFT when", body: "Cost of production rises, unfavourable government policy (heavy taxes), bad weather, fewer producers. RECURRING!" },
+        { title: "Supply curve shifts RIGHT when", body: "Technology improves, cost of production falls, favourable government policy, more producers." },
+        { title: "Equilibrium above = excess supply", body: "Price ABOVE equilibrium → quantity supplied > quantity demanded → EXCESS SUPPLY (surplus). Price BELOW → shortage." },
+        { title: "Price elasticity of supply", body: "PES = % change Qs ÷ % change P. Inelastic supply = cannot respond quickly to price changes (agriculture). RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Derived demand = factors of production. Cross elasticity complements = negative. MU=0 when TU is maximum. Supply shifts LEFT = less supply (unfavourable policy, higher costs). Supply shifts RIGHT = more supply (better technology, lower costs)." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — COSTS OF PRODUCTION
+  // ==========================================
+  "Costs of Production": {
+    subject: "Economics", title: "Costs of Production",
+    icon: "💰", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "TC = FC + VC", body: "Total Cost = Fixed Cost + Variable Cost. VC = TC − FC. AFC = TFC/Q. AVC = TVC/Q. AC = TC/Q. RECURRING every year!" },
+        { title: "Profit = TR − TC", body: "Total Profit = Total Revenue − Total Cost. Profit per unit = AR − AC. RECURRING!" },
+        { title: "Power = variable cost", body: "Power/electricity is a VARIABLE cost (changes with output). Rent, salaries, machine depreciation = FIXED costs. RECURRING!" },
+        { title: "Short run vs long run", body: "SHORT RUN: some costs fixed, some variable. LONG RUN: ALL costs are variable. This distinction creates the fixed/variable cost grouping. RECURRING!" },
+        { title: "AP rising → MP above it", body: "When average product RISES, marginal product is ABOVE it. When AP is at MAX, MP = AP. When AP falls, MP is below it. RECURRING!" }
+      ]},
+      { heading: "Returns to Scale", type: "cards", items: [
+        { title: "Increasing returns", body: "Output MORE than doubles when all inputs double." },
+        { title: "Constant returns", body: "Output EXACTLY doubles when all inputs double." },
+        { title: "Decreasing returns", body: "Output LESS than doubles when all inputs double. Long-run production = RETURNS TO SCALE. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "VC = TC − FC. AC = TC/Q. Profit = TR − TC. Power = variable (not fixed). AP rising → MP above AP. Long run = returns to scale. These formulas appear in virtually every year's paper." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — MONEY & BANKING
+  // ==========================================
+  "Money & Banking": {
+    subject: "Economics", title: "Money & Banking",
+    icon: "🏦", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Central Bank Functions", type: "cards", items: [
+        { title: "Lender of last resort", body: "The CENTRAL BANK is the lender of last resort — provides emergency loans to commercial banks facing liquidity crises. In Nigeria = CBN. RECURRING!" },
+        { title: "Bank rate", body: "The rate at which the Central Bank REDISCOUNTS BILLS to commercial banks. Also called base rate. Key instrument of monetary policy. RECURRING!" },
+        { title: "Monetary control instruments", body: "Open Market Operations (buy/sell securities), Bank Rate, Cash Reserve Ratio, Moral Suasion, Special Deposits. 'Expansionist policy' is a TYPE of policy — NOT an instrument. RECURRING!" },
+        { title: "Money creation", body: "Credit multiplier = 1/cash ratio. If cash ratio = 20% (0.2), multiplier = 5. Total money created = initial deposit × multiplier. RECURRING!" }
+      ]},
+      { heading: "Functions of Money", type: "cards", items: [
+        { title: "Store of value", body: "Money as STORE OF VALUE allows wealth to be saved for future use — including saving for old age. RECURRING!" },
+        { title: "Most liquid asset", body: "CASH is the most liquid asset of a bank (it IS cash — no conversion needed). Then: money at call, treasury bills, investments." },
+        { title: "Demand for money", body: "Demand for money = willingness of people to HOLD money (liquidity preference). Three Keynesian motives: transactions, precautionary, speculative." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "CBN = lender of last resort. Bank rate = rediscount rate. Expansionist policy is NOT an instrument (it's a type). Credit multiplier = 1/cash ratio. Cash = most liquid asset. Store of value = saving for old age." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — MARKET STRUCTURES
+  // ==========================================
+  "Market Structures": {
+    subject: "Economics", title: "Market Structures",
+    icon: "🏪", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Types of Market", type: "cards", items: [
+        { title: "Perfect competition", body: "Many buyers and sellers, identical products, free entry/exit, perfect information. Price = MC = MR in long run. No abnormal profit." },
+        { title: "Monopolistic competition", body: "Features of BOTH monopoly AND perfect competition. Differentiated products, many firms, free entry. No long-run abnormal profit. RECURRING!" },
+        { title: "Oligopoly", body: "Few large sellers. High barriers to entry. Products may be differentiated or homogeneous. Examples: telecoms, oil industry." },
+        { title: "Monopoly", body: "Single seller. High barriers to entry. Price maker. Can earn long-run abnormal profit." },
+        { title: "Imperfect competition", body: "Monopoly, duopoly, and oligopoly are ALL imperfect competition. Only perfect competition is perfectly competitive. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Monopolistic competition = features of BOTH monopoly and perfect competition. All of monopoly, duopoly, and oligopoly = imperfect competition. Last link in distributive trade = RETAILER (not consumer). RECURRING distinctions!" }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — NATIONAL INCOME & GROWTH
+  // ==========================================
+  "National Income & Growth": {
+    subject: "Economics", title: "National Income & Growth",
+    icon: "📉", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Concepts", type: "cards", items: [
+        { title: "APC = C/Y", body: "Average Propensity to Consume = Consumption ÷ Income = C/Y. MPC = ΔC/ΔY. APC measures the fraction of income spent. RECURRING!" },
+        { title: "Multiplier = 1/(1−MPC)", body: "If MPC = 0.8 → Multiplier = 1/(1−0.8) = 5. Investment needed to raise income = ΔY/multiplier. RECURRING calculations!" },
+        { title: "Economic growth", body: "Economic growth = SUSTAINED INCREASE in real GDP (output of goods and services). NOT just population or oil increase." },
+        { title: "Terms of trade", body: "Terms of trade = rate at which EXPORTS exchange for IMPORTS. Favourable terms = exports buy more imports." },
+        { title: "Circular flow of income", body: "Flow of payments from households to firms (buying goods) and from firms to households (wages, rent, profit). RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "APC = C/Y. Multiplier = 1/(1−MPC). If MPC=0.8, multiplier=5. Economic growth = sustained increase in real GDP. Terms of trade = export/import exchange rate. ECOWAS = 90 days visa-free stay." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — PRODUCTION
+  // ==========================================
+  "Production": {
+    subject: "Economics", title: "Production",
+    icon: "🏭", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Production Basics", type: "cards", items: [
+        { title: "Production = creating utility", body: "Production = the creation of UTILITY (usefulness/value). Not just manufacturing — includes services, transport, distribution." },
+        { title: "Three sectors", body: "PRIMARY = extraction (farming, mining, fishing). SECONDARY = manufacturing/processing. TERTIARY = services (banking, transport, education). RECURRING!" },
+        { title: "Localisation of industries", body: "Concentration of firms in the SAME INDUSTRY in one geographical area. Firms benefit from shared skilled labour, suppliers, infrastructure." },
+        { title: "Labour intensive vs capital intensive", body: "Large labour force → use LABOUR-INTENSIVE methods. Scarce labour → use capital-intensive. Choose based on available factor of production." },
+        { title: "Economies of scale", body: "INTERNAL = advantages from firm's own growth (technical, managerial, financial). EXTERNAL = benefits from being near other firms in same industry. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Production = creating utility. Primary/Secondary/Tertiary sectors. Large labour force = labour-intensive methods. Internal economies = from firm's own growth. External economies = from clustering with other firms." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — POPULATION & LABOUR
+  // ==========================================
+  "Population & Labour": {
+    subject: "Economics", title: "Population & Labour",
+    icon: "👥", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Labour Mobility", type: "cards", items: [
+        { title: "Horizontal mobility", body: "Moving to a different job at the SAME LEVEL in a different industry but retaining skills. RECURRING!" },
+        { title: "Vertical mobility", body: "Moving UP or DOWN in the same career (promotion/demotion)." },
+        { title: "Occupational mobility", body: "Changing BOTH occupation AND industry — the most complete form of labour mobility. RECURRING!" },
+        { title: "Geographical mobility", body: "Moving to a different location for work." }
+      ]},
+      { heading: "Population Theory", type: "cards", items: [
+        { title: "Malthusian theory", body: "Population grows GEOMETRICALLY (1,2,4,8...). Food grows ARITHMETICALLY (1,2,3,4...). Positive checks = famine, war, disease. Preventive checks = celibacy, late marriage. Does NOT cover manpower development. RECURRING!" },
+        { title: "Demographic transition Stage 1", body: "Both birth and death rates are HIGH. High death rate due to ABSENCE OF MEDICAL KNOWLEDGE. RECURRING!" },
+        { title: "Population change causes", body: "Population size changes due to: BIRTHS, DEATHS, and MIGRATION — only these three direct factors. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Horizontal mobility = same level, different industry. Occupational = both job AND industry change. Malthus: geometric population, arithmetic food. Stage 1 demographic transition: high births AND deaths. Population change = births + deaths + migration only." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — BUSINESS ORGANISATION
+  // ==========================================
+  "Business Organisation": {
+    subject: "Economics", title: "Business Organisation",
+    icon: "🏢", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Types of Business", type: "cards", items: [
+        { title: "Sole proprietorship", body: "Main handicap = INADEQUATE CAPITAL (one person cannot raise much). Simple to set up, all profit goes to owner. RECURRING!" },
+        { title: "Private limited company", body: "Maximum 50 shareholders. Shares not publicly traded. Minimum = 1 shareholder (in some jurisdictions)." },
+        { title: "Ordinary shares (equity)", body: "Do NOT carry fixed dividend. Dividend varies with profit. PREFERENCE shares carry fixed dividend rates. RECURRING!" },
+        { title: "Public corporation", body: "A STATUTORY QUASI-AUTONOMOUS public body — government-owned, established by law, operates semi-independently. Examples: NEPA, NPA. RECURRING!" },
+        { title: "First cooperative society", body: "Founded in ROCHDALE, ENGLAND in 1844 by the Rochdale Pioneers. Their principles became the foundation of the cooperative movement. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Sole proprietorship = inadequate capital. Ordinary shares = NO fixed dividend. Preference shares = fixed dividend. Public corporation = statutory quasi-autonomous body. First cooperative = Rochdale, England, 1844." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — COMMERCE & TRADE
+  // ==========================================
+  "Commerce & Trade": {
+    subject: "Economics", title: "Commerce & Trade",
+    icon: "🤝", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Commerce Concepts", type: "cards", items: [
+        { title: "Warehousing enables production ahead of demand", body: "WAREHOUSING bridges the time gap — goods produced in advance can be stored until demand rises. RECURRING!" },
+        { title: "Last link in distributive trade", body: "RETAILER is the last link in the distributive chain (Producer → Wholesaler → Retailer). Consumer is the endpoint but not in the trade chain. RECURRING!" },
+        { title: "Structural unemployment", body: "Caused by TECHNOLOGICAL CHANGE making skills redundant (machines replacing workers). Cyclical = recession. Frictional = between jobs. Seasonal = off-season. RECURRING!" },
+        { title: "Tariff", body: "A compulsory levy on imports and exports. Used to protect domestic industries or generate revenue." },
+        { title: "Dumping", body: "Selling goods in a foreign market BELOW cost of production to capture market share. WTO regulations prohibit predatory dumping." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Warehousing = enables advance production. Retailer = last distributive link. Structural unemployment = technology replacing workers. Tariff = tax on imports/exports. Dumping = selling below cost of production in foreign markets." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — ECONOMIC SYSTEMS
+  // ==========================================
+  "Economic Systems": {
+    subject: "Economics", title: "Economic Systems",
+    icon: "🌐", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Types of Economic System", type: "cards", items: [
+        { title: "Capitalist/free market economy", body: "Prices determined by MARKET FORCES of demand and supply. Private ownership of means of production. Profit motive drives decisions. RECURRING!" },
+        { title: "Socialist/command economy", body: "Government controls production and distribution. Advantage: consumer exploitation MINIMAL. No abnormal profit allowed." },
+        { title: "Deregulated economy", body: "An economy where prices are determined by market forces = deregulated/free market economy. RECURRING — same as capitalist." },
+        { title: "Marxist theory", body: "BOURGEOISIE = capitalist class who own means of production. PROLETARIAT = working class who own only their labour. Class struggle between the two. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Capitalist = market forces set prices. Socialist = government controls, minimal exploitation. Bourgeoisie = owners (Marxism). Proletariat = workers (Marxism). Deregulated economy = same as free market/capitalist economy." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — INTERNATIONAL TRADE
+  // ==========================================
+  "International Trade": {
+    subject: "Economics", title: "International Trade",
+    icon: "✈️", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Concepts", type: "cards", items: [
+        { title: "Comparative cost advantage", body: "Countries should specialise in goods where they have the LOWEST OPPORTUNITY COST — even if another country is absolutely better at everything. Basis of international trade. RECURRING!" },
+        { title: "Terms of trade", body: "Rate at which EXPORTS exchange for IMPORTS. Favourable = exports buy more imports." },
+        { title: "ECOWAS — 90 days visa-free", body: "Under ECOWAS Protocol on Free Movement of Persons, citizens can enter and stay in any member country for up to 90 DAYS without a visa. RECURRING!" },
+        { title: "Non-alignment", body: "Idea of staying neutral between East and West blocs. Generally credited to JAWAHARLAL NEHRU of India. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Comparative advantage = specialise where opportunity cost is lowest. ECOWAS = 90 days visa-free. Non-alignment = Nehru (India). Terms of trade = export/import exchange rate. These appear in both Economics and Government questions." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — TAXATION
+  // ==========================================
+  "Taxation": {
+    subject: "Economics", title: "Taxation",
+    icon: "📋", estimatedTime: "1 min read",
+    sections: [
+      { heading: "Types of Tax", type: "cards", items: [
+        { title: "Regressive tax", body: "Takes INCREASING fraction of income as income GOES DOWN. Poor pay higher percentage than rich. Example: VAT (same amount = higher % of small income). RECURRING!" },
+        { title: "Progressive tax", body: "Takes increasing fraction of income as income GOES UP. Rich pay higher percentage. Example: income tax with brackets." },
+        { title: "Proportional tax", body: "Takes the SAME fraction of income regardless of income level (flat tax rate)." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Regressive = higher % on LOWER incomes (rises as income falls). Progressive = higher % on HIGHER incomes. Proportional = same % at all income levels. 'Regressive' is the most tested — remember it penalises the poor." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — STATISTICS & DATA
+  // ==========================================
+  "Statistics & Data": {
+    subject: "Economics", title: "Statistics & Data",
+    icon: "📊", estimatedTime: "1 min read",
+    sections: [
+      { heading: "Charts & Graphs", type: "cards", items: [
+        { title: "Compound/component bar graph", body: "A bar graph where a SINGLE BAR carries more than one information in a given period. Also called stacked bar graph. RECURRING!" },
+        { title: "Percentage bar graph", body: "Can be used IN PLACE OF a PIE CHART — both show proportions of a whole. RECURRING!" },
+        { title: "Rainfall and temperature", body: "Represented by BAR AND LINE GRAPHS combined (climatograph). Rainfall = bars, temperature = line." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Compound bar = one bar with multiple info. Percentage bar = replaces pie chart. Rainfall + temperature = bar and line graph combined. Mean is most commonly used measure of central tendency." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — AGRICULTURE & TRADE (shared)
+  // ==========================================
+  "Agriculture & Trade": {
+    subject: "Economics", title: "Agriculture & Trade",
+    icon: "🌾", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Facts", type: "cards", items: [
+        { title: "Why farmers can't get bank loans", body: "Farmers LACK COLLATERAL (security/assets) required by banks before granting loans. Main barrier to agricultural credit. RECURRING!" },
+        { title: "Inelastic foreign demand", body: "If foreign demand is INELASTIC, increasing export supply causes price to fall MORE than quantity rises → farmers earn LESS total revenue. RECURRING!" },
+        { title: "Bush fallowing", body: "Rotating cultivation land to allow natural recovery of soil fertility. A form of shifting cultivation." },
+        { title: "SAP and agriculture", body: "Nigeria's Structural Adjustment Programme (1986) deregulated agricultural markets — handed to private investors, abolished marketing boards." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Farmers cannot get loans = no collateral. Inelastic foreign demand + more exports = lower total revenue. Bush fallowing = rotating land for fertility. SAP = private investors took over agricultural markets." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — POLITICAL CONCEPTS
+  // ==========================================
+  "Political Concepts": {
+    subject: "Government", title: "Political Concepts",
+    icon: "🏛️", estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Concepts", type: "cards", items: [
+        { title: "Sovereignty", body: "State CANNOT EXIST without sovereignty — it is the supreme, absolute, and uncontrollable power. A nation can exist without sovereignty (stateless nations). RECURRING!" },
+        { title: "Power vs Authority", body: "POWER = ability to make people do things even against their will (Dahl). AUTHORITY = legitimate power. Sovereignty = supreme authority. RECURRING!" },
+        { title: "Anarchy", body: "Absence of government = ANARCHY. No authority to maintain order. Hobbes' 'state of nature.' RECURRING!" },
+        { title: "Constitutionalism", body: "Adherence to a constitution — all government actions must conform to constitutional provisions. RECURRING!" },
+        { title: "Rule of law", body: "Doctrine credited to A.C. DICEY (A.V. Dicey). Three principles: supremacy of law, equality before the law, constitution as source of rights. RECURRING!" },
+        { title: "Separation of powers", body: "Enables each arm (executive, legislature, judiciary) to CARRY OUT ITS CONSTITUTIONAL FUNCTIONS independently. RECURRING!" }
+      ]},
+      { heading: "Political Culture", type: "cards", items: [
+        { title: "Participatory culture", body: "Politically aware AND active society. Citizens are involved in political life. RECURRING!" },
+        { title: "Subject culture", body: "Aware of government but passive — citizens know about politics but don't actively participate." },
+        { title: "Parochial culture", body: "No political awareness. Citizens have no knowledge of or interest in national politics." },
+        { title: "Gerontocracy", body: "Rule by ELDERS. Democracy = people. Oligarchy = few. Theocracy = religious leaders. RECURRING!" }
+      ]},
+      { heading: "Philosophers", type: "cards", items: [
+        { title: "Jean Bodin", body: "First to develop concept of SOVEREIGNTY — argued it should reside with the KING (absolute, perpetual, indivisible). RECURRING!" },
+        { title: "Thomas Hobbes", body: "Social contract — gave power to a sovereign to avoid 'state of nature' (anarchy). Also advocated sovereignty." },
+        { title: "Jean-Jacques Rousseau", body: "Popular sovereignty — power should reside with the PEOPLE (general will)." },
+        { title: "A.C. Dicey", body: "Credited with the RULE OF LAW doctrine. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "State needs sovereignty. Power = making people comply. Authority = legitimate power. Rule of law = Dicey. Gerontocracy = elders rule. Jean Bodin = sovereignty to king. Participatory culture = aware AND active." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — ARMS OF GOVERNMENT
+  // ==========================================
+  "Arms of Government": {
+    subject: "Government", title: "Arms of Government",
+    icon: "⚖️", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Three Arms", type: "cards", items: [
+        { title: "Legislature", body: "Makes laws AND checks executive powers through oversight, budget approval, confirmation of appointments. Can amend the constitution. CANNOT: appoint civil servants, implement executive decisions. RECURRING!" },
+        { title: "Executive", body: "Implements/enforces laws. Powers: budgeting, appointment of top officials, power of pardon, foreign policy." },
+        { title: "Judiciary", body: "INTERPRETS the law. An independent judiciary safeguards INDIVIDUAL LIBERTIES (not just judges' rights). RECURRING!" }
+      ]},
+      { heading: "Presidential vs Parliamentary", type: "cards", items: [
+        { title: "Presidential system", body: "Legislature and executive ELECTED SEPARATELY to FIXED TERMS. Executive does not depend on legislative confidence. RECURRING!" },
+        { title: "Parliamentary system", body: "Executive (Prime Minister) depends on legislative confidence. Government falls if it loses majority." },
+        { title: "Unicameral vs Bicameral", body: "Nigeria = BICAMERAL (Senate 109 members + House of Representatives 360). Ghana = UNICAMERAL. USA = bicameral. RECURRING!" }
+      ]},
+      { heading: "Recall vs Impeachment", type: "cards", items: [
+        { title: "Recall", body: "ELECTORATE removes an elected official — voters collect signatures and hold a vote. RECURRING!" },
+        { title: "Impeachment", body: "LEGISLATURE removes an official through a formal legal process." },
+        { title: "Bill", body: "A PROPOSAL before the legislature (not yet law). Becomes law after passing through the legislature and executive assent." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Legislature = makes laws + checks executive. Judiciary = interprets law. Presidential = elected separately, fixed terms. Nigeria Senate = 109. Recall = electorate removes. Impeachment = legislature removes. Bill = proposal (not yet law)." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — NIGERIAN CONSTITUTION
+  // ==========================================
+  "Nigerian Constitution": {
+    subject: "Government", title: "Nigerian Constitution & History",
+    icon: "📜", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Constitutional Facts", type: "cards", items: [
+        { title: "Land Use Act 1978", body: "Promulgated in 1978 under Obasanjo. Vested all land in the STATE GOVERNOR in trust for the people. RECURRING — appears in 2008, 2010, 2011!" },
+        { title: "Richards Constitution 1946", body: "Criticised for laying the FOUNDATION OF TRIBALISM — introduced regionalisation (North, West, East). RECURRING!" },
+        { title: "10 Downing Street", body: "Home of UK Prime Minister. Aso Rock = Nigeria's Presidential Villa. White House = US President. Capitol = US Congress. RECURRING!" },
+        { title: "Nigeria Senate = 109 members", body: "3 senators per state × 36 states = 108 + 1 for FCT = 109. House of Reps = 360 members. RECURRING!" },
+        { title: "Biafra 1967", body: "Eastern Region declared Republic of Biafra in 1967 under Ojukwu → Nigerian Civil War (1967-1970). RECURRING!" }
+      ]},
+      { heading: "Political History", type: "cards", items: [
+        { title: "Babangida's two-party system", body: "IBB introduced ONLY TWO PARTIES: SDP and NRC. OFN = Obasanjo. WAI = Buhari. Land Use Decree = Obasanjo 1978. RECURRING!" },
+        { title: "Anthony Enahoro 1953", body: "Moved the Nigerian INDEPENDENCE MOTION in 1953 in the House of Representatives (self-government motion). RECURRING!" },
+        { title: "OAU became AU on 9th July 2002", body: "OAU renamed AFRICAN UNION (AU) at Durban, South Africa summit on 9th July 2002. RECURRING!" },
+        { title: "Nigeria's foreign policy centrepiece", body: "AFRICA is the centrepiece of Nigeria's foreign policy. ECOWAS = 90 days visa-free. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Land Use Act = 1978 (Obasanjo). Richards Constitution = tribalism. Senate = 109. Biafra = 1967. Babangida = two-party system. Anthony Enahoro = 1953 independence motion. OAU became AU = 9th July 2002. Africa = centrepiece of Nigeria foreign policy." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — INTERNATIONAL RELATIONS
+  // ==========================================
+  "International Relations": {
+    subject: "Government", title: "International Relations",
+    icon: "🌍", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Concepts", type: "cards", items: [
+        { title: "National interest", body: "Goals a country seeks to achieve in its foreign relations. The fundamental driver of foreign policy. RECURRING!" },
+        { title: "Non-alignment", body: "Staying neutral between East and West blocs. Credited to JAWAHARLAL NEHRU of India. RECURRING!" },
+        { title: "OAU first Secretary-General", body: "DIALLO TELLI of Guinea (1964-1972). Edwin Kodjo was a later Secretary-General. RECURRING!" },
+        { title: "Monrovia Bloc vs Casablanca Bloc", body: "Monrovia Bloc (moderate): Nigeria, Liberia, Tunisia, Cameroon. Casablanca Bloc (radical): Ghana, Egypt, Guinea, Algeria, Mali, Morocco. RECURRING!" },
+        { title: "ECOWAS — Cameroon NOT a member", body: "Cameroon is NOT in ECOWAS (it's Central Africa/ECCAS). Nigeria, Liberia, Ghana, Senegal ARE members. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "National interest = goals in foreign relations. Non-alignment = Nehru. First OAU Secretary-General = Diallo Telli. Guinea was in Casablanca Bloc, not Monrovia. Cameroon is NOT in ECOWAS. These facts are repeatedly tested." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — NIGERIAN HISTORY (shared)
+  // ==========================================
+  "Nigerian History": {
+    subject: "Government", title: "Nigerian Political History",
+    icon: "🇳🇬", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Historical Facts", type: "cards", items: [
+        { title: "Regional self-government 1957", body: "Western and Eastern regions got self-government in 1957. Northern region in 1959. Full independence 1960." },
+        { title: "Sputnik 1 — Soviet Union 1957", body: "First artificial satellite launched by the SOVIET UNION on October 4, 1957. Began the Space Age. RECURRING!" },
+        { title: "8th Military Head of State", body: "ABDULSALAMI ABUBAKAR was Nigeria's 8th military HoS. Handed power to civilian rule in 1999. RECURRING!" },
+        { title: "Acephalous = Igbo", body: "ACEPHALOUS means no centralised authority/chief. Classic example = pre-colonial IGBO society (village councils, age grades). RECURRING!" },
+        { title: "Rule of law = A.C. Dicey", body: "Attributed to A.C. (A.V.) Dicey. Three principles: supremacy of law, equality before law, constitution as source of rights. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "West + East self-government = 1957. Sputnik 1 = Soviet Union 1957. Abdulsalami = 8th military HoS. Acephalous = Igbo (no central authority). Rule of law = Dicey. Bourgeoisie = owners (Marxism). Proletariat = workers." }
+    ]
+  },
+
+  // ==========================================
+  // GOVERNMENT — GEOGRAPHY
+  // ==========================================
+  "Geography": {
+    subject: "Government", title: "Geography",
+    icon: "🌏", estimatedTime: "3 min read",
+    sections: [
+      { heading: "Solar System", type: "cards", items: [
+        { title: "Smallest planet = Mercury", body: "Mercury is the smallest of the 8 planets. Also closest to the Sun. RECURRING — appeared in 2008, 2010!" },
+        { title: "Neptune = longest orbit", body: "Neptune is the most distant planet — longest orbital period (~165 Earth years). RECURRING!" },
+        { title: "Earth's distance from sun", body: "Earth is approximately 148.8-149.6 million km from the Sun (1 Astronomical Unit). Third planet from Sun. RECURRING!" },
+        { title: "Lunar eclipse", body: "EARTH comes between Sun and Moon. Earth's shadow falls on the Moon. Solar eclipse: Moon comes between Earth and Sun. RECURRING!" },
+        { title: "International Date Line", body: "Crossing from West to East = GAIN a day. Crossing East to West = lose a day. Located at 180° meridian. RECURRING!" }
+      ]},
+      { heading: "Rocks & Weathering", type: "cards", items: [
+        { title: "Granite = intrusive igneous", body: "Granite forms by SLOW cooling of magma deep within earth's crust → large crystals. Basalt = extrusive (fast cooling → fine grains). RECURRING!" },
+        { title: "Exfoliation = physical weathering", body: "Exfoliation (onion-skin peeling) = PHYSICAL weathering, NOT chemical. Chemical weathering: chelation, carbonation, hydrolysis, oxidation. RECURRING!" },
+        { title: "Rock metamorphism pairs", body: "Limestone→Marble. Shale→Schist. Granite→Gneiss. Sandstone→Quartzite. Clay→Slate. WRONGLY PAIRED: Granite→Quartzite (wrong!) or Quartzite→Graphite (wrong!). RECURRING!" }
+      ]},
+      { heading: "Geographical Features", type: "cards", items: [
+        { title: "Mississippi = Bird's foot delta", body: "Mississippi River has a BIRD'S FOOT delta (long finger-like distributaries). Nile = arcuate. Thames = estuarine. RECURRING!" },
+        { title: "Block mountain + rift valley", body: "Block mountains (horsts) are ALWAYS associated with RIFT VALLEYS (grabens) — complementary features. RECURRING!" },
+        { title: "Isohel = equal sunshine", body: "Isohel = line joining places with equal sunshine hours. Isobar = pressure. Isotherm = temperature. Isohyet = rainfall. RECURRING!" },
+        { title: "ECOWAS — Cameroon not a member", body: "Cameroon is NOT in ECOWAS. Nigeria, Liberia, Ghana are members. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Smallest planet = Mercury. Lunar eclipse = Earth between Sun and Moon. Date line West→East = gain a day. Granite = intrusive, large crystals. Exfoliation = physical. Mississippi = bird's foot delta. Isohel = sunshine. Cameroon NOT in ECOWAS." }
+    ]
+  },
+
+  // ==========================================
+  // COMMERCE — AGRICULTURE & TRADE
+  // ==========================================
+  "Agriculture & Trade": {
+    subject: "Commerce", title: "Agriculture & Trade",
+    icon: "🌾", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Facts", type: "cards", items: [
+        { title: "Bush fallowing", body: "Rotating cultivation land to allow natural recovery of soil fertility. Shifting cultivation in its traditional form. RECURRING!" },
+        { title: "Sahel = drought", body: "Major environmental hazard in the Sahel and northern Sudan Savanna = DROUGHT. Causes desertification and food insecurity. RECURRING!" },
+        { title: "Softwood = pulp and paper", body: "Softwood from coniferous forests (pine, spruce) is mainly used to make PULP AND PAPER. RECURRING!" },
+        { title: "Industrialisation = iron and steel", body: "Iron and steel processing is the BACKBONE of industrialisation — provides raw materials for all other industries. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Bush fallowing = rotating land for fertility recovery. Sahel = drought is the main hazard. Softwood = pulp and paper. Iron and steel = foundation of industrialisation." }
+    ]
+  },
+
+  // ==========================================
+  // COMMERCE — COMMERCE & TRADE
+  // ==========================================
+  "Commerce & Trade": {
+    subject: "Commerce", title: "Commerce & Trade",
+    icon: "🤝", estimatedTime: "2 min read",
+    sections: [
+      { heading: "Key Commerce Concepts", type: "cards", items: [
+        { title: "Warehousing", body: "Enables production to take place AHEAD OF DEMAND by providing storage. Bridges the time gap between production and consumption. RECURRING!" },
+        { title: "Branding", body: "The process of giving a product a distinctive name/symbol to DIFFERENTIATE it from competitors. RECURRING!" },
+        { title: "Baby milk = indirect advertising", body: "Baby milk (infant formula) requires INDIRECT advertising (through medical professionals) due to WHO/UNICEF code restrictions. RECURRING!" },
+        { title: "Debit note for undercharge", body: "When a seller undercharges, they issue a DEBIT NOTE to charge the additional amount owed. Credit note = reduces what buyer owes. RECURRING!" },
+        { title: "Transporting = commercial service", body: "Commercial services (aids to trade): transport, banking, insurance, warehousing, advertising. Garri processing, drilling, lumbering = production activities. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Warehousing = production ahead of demand. Branding = differentiate manufacturers. Baby milk = indirect advertising. Seller undercharges → issues debit note. Transport = commercial service (not production)." }
+    ]
+  },
+
+  // ==========================================
+  // COMMERCE — INTERNATIONAL TRADE
+  // ==========================================
+  "International Trade": {
+    subject: "Commerce", title: "International Trade",
+    icon: "✈️", estimatedTime: "1 min read",
+    sections: [
+      { heading: "Key Concepts", type: "cards", items: [
+        { title: "Comparative cost advantage", body: "Countries specialise where they have the LOWEST OPPORTUNITY COST. Basis of international trade. RECURRING!" },
+        { title: "Terms of trade", body: "Rate at which EXPORTS exchange for IMPORTS. Direction of foreign trade ≠ terms of trade." },
+        { title: "OPEC non-member", body: "Mexico is sometimes listed as not a full OPEC member. Nigeria, Saudi Arabia, Venezuela ARE members." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Comparative advantage = specialise where opportunity cost is lowest. This is the BASIS of international trade. Terms of trade = export/import exchange rate." }
+    ]
+  },
+
+  // ==========================================
+  // COMMERCE — INDUSTRY & PRODUCTION
+  // ==========================================
+  "Industry & Production": {
+    subject: "Commerce", title: "Industry & Production",
+    icon: "🏭", estimatedTime: "1 min read",
+    sections: [
+      { heading: "Nigerian Industry", type: "cards", items: [
+        { title: "Rolling mills in Nigeria", body: "Major rolling mills: Katsina, Jos, Oshogbo, Delta Steel (Aladja). Jos Steel Rolling Mill is well-known. RECURRING!" },
+        { title: "Iron and steel = industrialisation", body: "Iron and steel processing best promotes industrialisation — backbone of all other industries. RECURRING!" },
+        { title: "Subsidiary firms", body: "Firms that RENDER SERVICES to bigger firms. Different from companies formed by merging or government subsidy." }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Jos = rolling mill. Iron and steel = backbone of industrialisation. Subsidiary firms = service providers to larger firms." }
+    ]
+  },
+
+  // ==========================================
+  // COMMERCE — ENVIRONMENT & RESOURCES
+  // ==========================================
+  "Environment & Resources": {
+    subject: "Commerce", title: "Environment & Resources",
+    icon: "🌿", estimatedTime: "1 min read",
+    sections: [
+      { heading: "Key Facts", type: "cards", items: [
+        { title: "Sahel = drought", body: "Major environmental hazard in the Sahel and northern Sudan Savanna = DROUGHT, leading to desertification. RECURRING!" },
+        { title: "Nylon is NOT petroleum product", body: "Candles (paraffin), plastic, diesel = petroleum products. NYLON is a synthetic polyamide — NOT from petroleum. RECURRING!" },
+        { title: "Chromite ore = not energy source", body: "Chromite ore produces chromium for stainless steel — NOT an energy source. Coal, uranium, natural gas are energy sources. RECURRING!" }
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Sahel = drought (not locusts or harmattan). Nylon is NOT a petroleum product. Chromite ore is NOT an energy source. These distinctions are repeatedly tested." }
     ]
   }
 
