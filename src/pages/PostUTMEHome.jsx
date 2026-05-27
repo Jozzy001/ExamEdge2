@@ -30,7 +30,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.75, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>
             Post-UTME Prep
           </div>
-          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>{university}</div>
+          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>Post-UTME Prep</div>
           <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 12 }}>
             {facultyInfo?.icon} {facultyInfo?.name}
           </div>

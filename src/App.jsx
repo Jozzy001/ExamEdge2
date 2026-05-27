@@ -56,7 +56,6 @@ function App() {
     localStorage.removeItem("ee-university")
     localStorage.removeItem("ee-faculty")
     setProfile(null)
-    setPage("home")
   }
 
   // Show onboarding if no profile yet
