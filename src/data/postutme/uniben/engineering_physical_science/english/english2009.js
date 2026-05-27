@@ -27,7 +27,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Comprehension", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Some people, obviously from the area, were having a picnic in the field.",
+    passage: "One day, Alan, a friend of mine who likes country life, was fishing in a river when he caught a trout. As he tried to pull the fish in, it slipped off the hook, flew over his head, and landed in a field behind him. Alan put down his rod, went through the gate, and started searching for his trout. Some people, obviously from the area, were having a picnic in the field. One of the men shouted, 'What on earth are you doing?' Thinking that the question was asked because of how he was dressed, Alan replied, 'Fishing.' 'Don't be silly. Fish don't live in fields,' the man said, laughing. 'Oh, but they do,' said Alan. 'They jump out of the river to look for flies, and I catch them with my hands.' At that moment, he found his trout in the grass, picked it up, and showed it to the picnickers. He put it in his basket and bent down as if he was searching for another one. The picnickers stopped laughing and spent the rest of the day searching the field.",
     question: "The picnickers were:",
     options: ["Farmers", "From the nearby village", "Tourists", "People from the city"],
     answer: "From the nearby village",
@@ -36,7 +36,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Comprehension", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "At that moment, he found his trout in the grass, picked it up, and showed it to the picnickers.",
+    passage: "One day, Alan, a friend of mine who likes country life, was fishing in a river when he caught a trout. As he tried to pull the fish in, it slipped off the hook, flew over his head, and landed in a field behind him. Alan put down his rod, went through the gate, and started searching for his trout. Some people, obviously from the area, were having a picnic in the field. One of the men shouted, 'What on earth are you doing?' Thinking that the question was asked because of how he was dressed, Alan replied, 'Fishing.' 'Don't be silly. Fish don't live in fields,' the man said, laughing. 'Oh, but they do,' said Alan. 'They jump out of the river to look for flies, and I catch them with my hands.' At that moment, he found his trout in the grass, picked it up, and showed it to the picnickers. He put it in his basket and bent down as if he was searching for another one. The picnickers stopped laughing and spent the rest of the day searching the field.",
     question: "Where was Alan looking for his fish?",
     options: ["In the grass", "In the river", "In front of the gate", "In his basket"],
     answer: "In the grass",
@@ -45,7 +45,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Comprehension", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "He put it in his basket and bent down as if he was searching for another one. The picnickers stopped laughing and spent the rest of the day searching the field.",
+    passage: "One day, Alan, a friend of mine who likes country life, was fishing in a river when he caught a trout. As he tried to pull the fish in, it slipped off the hook, flew over his head, and landed in a field behind him. Alan put down his rod, went through the gate, and started searching for his trout. Some people, obviously from the area, were having a picnic in the field. One of the men shouted, 'What on earth are you doing?' Thinking that the question was asked because of how he was dressed, Alan replied, 'Fishing.' 'Don't be silly. Fish don't live in fields,' the man said, laughing. 'Oh, but they do,' said Alan. 'They jump out of the river to look for flies, and I catch them with my hands.' At that moment, he found his trout in the grass, picked it up, and showed it to the picnickers. He put it in his basket and bent down as if he was searching for another one. The picnickers stopped laughing and spent the rest of the day searching the field.",
     question: "Alan made the picnickers believe that fish jump out of the river by:",
     options: [
       "Telling them a story",
@@ -59,7 +59,7 @@ const unibenEnglish2009 = [
   {
     subject: "English", topic: "Comprehension", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "The picnickers stopped laughing and spent the rest of the day searching the field.",
+    passage: "One day, Alan, a friend of mine who likes country life, was fishing in a river when he caught a trout. As he tried to pull the fish in, it slipped off the hook, flew over his head, and landed in a field behind him. Alan put down his rod, went through the gate, and started searching for his trout. Some people, obviously from the area, were having a picnic in the field. One of the men shouted, 'What on earth are you doing?' Thinking that the question was asked because of how he was dressed, Alan replied, 'Fishing.' 'Don't be silly. Fish don't live in fields,' the man said, laughing. 'Oh, but they do,' said Alan. 'They jump out of the river to look for flies, and I catch them with my hands.' At that moment, he found his trout in the grass, picked it up, and showed it to the picnickers. He put it in his basket and bent down as if he was searching for another one. The picnickers stopped laughing and spent the rest of the day searching the field.",
     question: "'He laughs best who laughs last.' This proverb applies to the story because:",
     options: [
       "The picnickers were enjoying themselves",

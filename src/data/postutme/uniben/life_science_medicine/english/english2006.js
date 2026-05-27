@@ -105,8 +105,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "By the 28th week, the fetus is moving around vigorously within the ______.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "By the 28th week, the fetus is moving around vigorously within the ___[1]___.",
     options: ["Stomach", "Week", "Mouth", "Uterus"],
     answer: "Uterus",
     explanation: "The fetus develops inside the uterus (womb). The uterus is the organ in which fetal development occurs from fertilisation until birth."
@@ -114,8 +114,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "The heartbeat of the fetus can be heard by the ______.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "The heartbeat of the fetus can be heard by the ___[2]___.",
     options: ["Audience", "Route", "Bladder", "Doctor"],
     answer: "Doctor",
     explanation: "The heartbeat of a fetus can be heard by the doctor using a stethoscope or Doppler device during antenatal checkups. The other options make no sense in medical context."
@@ -123,8 +123,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "The fetus can open up its ______.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "The fetus can open up its ___[3]___.",
     options: ["Eyes", "Kicking", "Glass", "Rubber"],
     answer: "Eyes",
     explanation: "By the 28th week the fetus can open its eyes — the eyelids, which were fused earlier, begin to open. The fetus can see light and shadow at this stage."
@@ -132,8 +132,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "The ______ covering of the crystalline lens has gone.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "The ___[4]___ covering of the crystalline lens has gone.",
     options: ["Membrane", "Woman", "Plastic", "Protective"],
     answer: "Protective",
     explanation: "The protective membrane covering the crystalline lens of the eye has dissolved by this stage of fetal development, allowing the fetus to begin to use its eyes."
@@ -141,8 +141,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "If the baby is born at this stage, it can ______, but with difficulty.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "If the baby is born at this stage, it can ___[5]___, but with difficulty.",
     options: ["Left", "Hard", "Breathe", "Uterus"],
     answer: "Breathe",
     explanation: "A baby born at 28 weeks (premature) can breathe independently but with difficulty, as the lungs are not fully mature. This is why premature babies at this stage often require respiratory support."
@@ -150,8 +150,8 @@ const unibenLifeEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the [uterus], and its heartbeat can be heard by the [doctor]. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its [eyes], and the [protective] covering of the crystalline lens has gone. If the baby is born at this stage, it can [breathe], but with difficulty. It can also cry [loudly], and [kick] its legs energetically.",
-    question: "It can also cry ______, and kick its legs energetically.",
+    passage: "By the 28th week, that is the end of the seventh month, the fetus is moving around vigorously within the ___[1]___, and its heartbeat can be heard by the ___[2]___. Its length is 38 cm (15 inches), and its weight is 1000 grams. Its body is thin and its skin reddish and covered with vernix caseosa, a coat of cream-like waxy substance which is manufactured by small glands in the skin. It can open up its ___[3]___, and the ___[4]___ covering of the crystalline lens has gone. If the baby is born at this stage, it can ___[5]___, but with difficulty. It can also cry ___[6]___, and ___[7]___ its legs energetically.",
+    question: "It can also cry ___[6]___, and kick its legs energetically.",
     options: ["Angrily", "Scent", "Year", "Strongly"],
     answer: "Strongly",
     explanation: "The fetus/newborn at 28 weeks can cry strongly. 'Strongly' fits the context of a baby that can also kick its legs energetically — showing overall physical vitality."

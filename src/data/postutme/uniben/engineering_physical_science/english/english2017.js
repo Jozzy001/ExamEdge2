@@ -26,7 +26,7 @@ const unibenEnglish2017 = [
   {
     subject: "English", topic: "Comprehension", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "We must consciously try to establish equilibrium or sooner or later famine will stalk abroad again.",
+    passage: "All over the world still lately, and in most of the world still today, mankind has been following the course of nature, that is to say, it has been breeding up to the maximum and letting nature take her extravagant course in the reproduction of the human race. It may have made sense in an age in which people were also letting nature take her course in decimating mankind by the casualties of war, pestilence, and famine. Being human, we have at last revolted against this senseless waste. We have started to impose on nature's heartless play a humanized new order of our own. But once man has begun to interfere with nature, he cannot afford to stop halfway. We cannot with impunity cut down the death rate and at the same time allow birth rates to go on taking nature's course. We must consciously try to establish equilibrium or sooner or later famine will stalk abroad again.",
     question: "Which statement does NOT express the opinion of the author?",
     options: [
       "Mankind has started to interfere with the work of nature",
@@ -40,7 +40,7 @@ const unibenEnglish2017 = [
   {
     subject: "English", topic: "Comprehension", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "We have started to impose on nature's heartless play a humanized new order of our own.",
+    passage: "All over the world still lately, and in most of the world still today, mankind has been following the course of nature, that is to say, it has been breeding up to the maximum and letting nature take her extravagant course in the reproduction of the human race. It may have made sense in an age in which people were also letting nature take her course in decimating mankind by the casualties of war, pestilence, and famine. Being human, we have at last revolted against this senseless waste. We have started to impose on nature's heartless play a humanized new order of our own. But once man has begun to interfere with nature, he cannot afford to stop halfway. We cannot with impunity cut down the death rate and at the same time allow birth rates to go on taking nature's course. We must consciously try to establish equilibrium or sooner or later famine will stalk abroad again.",
     question: "'Humane' as used in the passage means:",
     options: ["Sensible", "Wise", "Human", "Benevolent"],
     answer: "Benevolent",
@@ -49,7 +49,7 @@ const unibenEnglish2017 = [
   {
     subject: "English", topic: "Comprehension", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "We must consciously try to establish an equilibrium.",
+    passage: "All over the world still lately, and in most of the world still today, mankind has been following the course of nature, that is to say, it has been breeding up to the maximum and letting nature take her extravagant course in the reproduction of the human race. It may have made sense in an age in which people were also letting nature take her course in decimating mankind by the casualties of war, pestilence, and famine. Being human, we have at last revolted against this senseless waste. We have started to impose on nature's heartless play a humanized new order of our own. But once man has begun to interfere with nature, he cannot afford to stop halfway. We cannot with impunity cut down the death rate and at the same time allow birth rates to go on taking nature's course. We must consciously try to establish equilibrium or sooner or later famine will stalk abroad again.",
     question: "'We must consciously try to establish an equilibrium' implies that mankind must:",
     options: [
       "Realistically find an equation",
@@ -63,7 +63,7 @@ const unibenEnglish2017 = [
   {
     subject: "English", topic: "Comprehension", year: 2017, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "We cannot with impunity cut down the death rate and at the same time allow birth rates to go on taking nature's course.",
+    passage: "All over the world still lately, and in most of the world still today, mankind has been following the course of nature, that is to say, it has been breeding up to the maximum and letting nature take her extravagant course in the reproduction of the human race. It may have made sense in an age in which people were also letting nature take her course in decimating mankind by the casualties of war, pestilence, and famine. Being human, we have at last revolted against this senseless waste. We have started to impose on nature's heartless play a humanized new order of our own. But once man has begun to interfere with nature, he cannot afford to stop halfway. We cannot with impunity cut down the death rate and at the same time allow birth rates to go on taking nature's course. We must consciously try to establish equilibrium or sooner or later famine will stalk abroad again.",
     question: "The main idea of the passage is that:",
     options: [
       "Nature is heartless",

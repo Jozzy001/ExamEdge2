@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Home from "./pages/Home"
 import Onboarding from "./pages/Onboarding"
 import SubjectSelect from "./pages/SubjectSelect"
@@ -26,6 +26,8 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedSubjects, setSelectedSubjects] = useState([])
+  const [selectedStartIndex, setSelectedStartIndex] = useState(0)
+  const startIndexRef = useRef(0)
 
   // Get faculty subjects for post-utme
   const getFacultySubjects = () => {
@@ -36,11 +38,12 @@ function App() {
     return []
   }
 
-  const handleNavigate = (newPage, topic = null, subject = null, subjects = null) => {
+  const handleNavigate = (newPage, topic = null, subject = null, startFromIndex = 0) => {
+    startIndexRef.current = startFromIndex  // set ref immediately, before re-render
     setPage(newPage)
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
-    if (subjects !== null) setSelectedSubjects(subjects)
+    setSelectedStartIndex(startFromIndex)
   }
 
   const handleOnboardingDone = (data) => {
@@ -71,7 +74,7 @@ function App() {
       if (page === "subjectSelect") return <SubjectSelect onNavigate={handleNavigate} mode="study" examType="jamb" />
       if (page === "cbtSubjectSelect") return <SubjectSelect onNavigate={handleNavigate} mode="cbt" examType="jamb" />
       if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} />
-      if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} examType="jamb" />
+      if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} examType="jamb" startFromIndex={startIndexRef.current} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} />
       if (page === "weak") return <Quiz topic="weak" onNavigate={handleNavigate} examType="jamb" />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} examType="jamb" />
@@ -121,6 +124,7 @@ function App() {
           onNavigate={handleNavigate}
           examType="postutme"
           university={university}
+          startFromIndex={startIndexRef.current}
         />
       )
       if (page === "progress") return <Progress onNavigate={handleNavigate} />

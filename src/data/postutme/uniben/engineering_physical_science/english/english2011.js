@@ -43,7 +43,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "Months, according to the passage, mean:",
     options: ["Years", "Days", "Hours", "Months"],
     answer: "Months",
@@ -52,7 +52,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "The earth came to life, and the birds in the forest fluttered around and chirped merrily.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "According to the passage, what is the meaning of 'the earth quickly came to life'?",
     options: [
       "The otherwise dry vegetation became worse",
@@ -66,7 +66,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "The world lay panting under the live vibrating heat.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "The expression 'live vibrating heat' means:",
     options: ["Extremely hot", "Piercingly cold", "Moderately hot", "Cool"],
     answer: "Extremely hot",
@@ -75,7 +75,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "Metallic, according to the passage, means:",
     options: ["Melodious", "Mellifluous", "Harsh", "Undefined"],
     answer: "Harsh",
@@ -84,7 +84,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Children sought for shelter and all were happy, refreshed, and thankful.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "As the rain fell, the children in the passage particularly:",
     options: [
       "Hated the rain",
@@ -98,7 +98,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "When the rain finally came, it was in large solid drops of frozen water... They were hard and painful on the body as they fell.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "The rain was 'hard and painful on the body' because:",
     options: [
       "It fell scantily",
@@ -112,7 +112,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength...",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "The most befitting title for this passage is:",
     options: [
       "The Torrential Rain",
@@ -126,7 +126,7 @@ const unibenEnglish2011 = [
   {
     subject: "English", topic: "Comprehension", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Evergreen trees wore dusty coats of brown.",
+    passage: "At last the rain came. It was sudden and tremendous. For two or three months, the sun had been gathering strength till it seemed to breathe a breath of fire on the earth. All the grass had long been scorched brown, and the earth felt like live coals to the feet. Evergreen trees wore dusty coats of brown. The birds were silenced in the forest, and the world lay panting under the live vibrating heat. And then came the clap of thunder. It was an angry, metallic, unrestful clap, unlike the deep and liquid rumbling of the rainy season. A mighty wind arose and filled the air with dust. Palm trees swayed as the wind combed their leaves into flying crests like strange and fantastic coiffures. When the rain finally came, it was in large solid drops of frozen water, which the people called 'the nuts of the water of heaven.' They were hard and painful on the body as they fell, yet young people ran about happily, picking up the cold nuts and putting them into their mouths to melt. The earth came to life, and the birds in the forest fluttered around and chirped merrily. A vague scent of life and green vegetation was diffused in the air as the rain began to fall more slowly and in smaller liquid drops. Children sought for shelter and all were happy, refreshed, and thankful.",
     question: "Evergreen trees wore a dusty coat of brown because:",
     options: [
       "It had just rained",

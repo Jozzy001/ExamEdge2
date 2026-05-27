@@ -7,6 +7,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end.",
     options: ["Suspiciously", "Glamorously", "Eagerly", "Hurriedly"],
     answer: "Eagerly",
@@ -15,6 +16,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "The eagerness is not caused by the thought of ___[2]___ the fasting.",
     options: ["Starting", "Finishing", "Cutting", "Breaking"],
     answer: "Breaking",
@@ -23,6 +25,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "Hence the ___[3]___ to eat and play at any time of the day.",
     options: ["Right", "Privilege", "Idea", "Happiness"],
     answer: "Right",
@@ -31,6 +34,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "The right to eat and ___[4]___ at any time of the day.",
     options: ["Think", "Laugh", "Dance", "Play"],
     answer: "Play",
@@ -39,6 +43,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous embroidery.",
     options: ["Yards", "Shoes", "Clothes", "Jewelry"],
     answer: "Clothes",
@@ -47,6 +52,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "Dresses in fabulous ___[6]___, awaiting to be worn.",
     options: ["Embroidery", "Sizes", "Shapes", "Devices"],
     answer: "Embroidery",
@@ -55,6 +61,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "Awaiting to be worn by the ___[7]___.",
     options: ["Men", "Women", "Ladies", "Children"],
     answer: "Children",
@@ -63,6 +70,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "One can see the excitement in the faces of the kids on the ___[8]___ day.",
     options: ["Happy", "Thirst", "Fasting", "Sallah"],
     answer: "Sallah",
@@ -71,6 +79,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "As they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria.",
     options: ["Arch", "Country", "Town", "Region"],
     answer: "Town",
@@ -79,6 +88,7 @@ const unibenMgtEnglish2006 = [
   {
     subject: "English", topic: "Lexis & Structure", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["management", "socialsciences"],
+    passage: "Every child in Hausa society ___[1]___ awaits that day when the 30-day fasting would come to an end. The eagerness is not caused by the thought of ___[2]___ the fasting, hence the ___[3]___ to eat and ___[4]___ at any time of the day. It is rather caused by the thought of those newly sown ___[5]___ and dresses in fabulous ___[6]___, awaiting to be worn by the ___[7]___. One can see the excitement in the faces of the kids on the ___[8]___ day as they march down the streets, roads, and alleys of every Hausa ___[9]___ in northern Nigeria. This is what the Sallah is all about, as far as the children are ___[10]___.",
     question: "This is what the Sallah is all about, as far as the children are ___[10]___.",
     options: ["Seen", "Believed", "Concerned", "Happy"],
     answer: "Concerned",

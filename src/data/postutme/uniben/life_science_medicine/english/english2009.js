@@ -8,7 +8,7 @@ const unibenLifeEnglish2009 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    question: "Choose the word that has the same sound as the underlined letters in: **poor**",
+    question: "Choose the word that has the same sound as the underlined letters in: **poor** (OOR sound)",
     options: ["More", "Tall", "Dour", "Door"],
     answer: "Door",
     explanation: "'poor' is pronounced /pʊə/ or /pɔːr/. 'Door' = /dɔːr/ shares the same vowel sound as 'poor'. 'More' = /mɔːr/ is also close but 'door' is the best match for the /ɔː/ sound."
@@ -16,7 +16,7 @@ const unibenLifeEnglish2009 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    question: "Choose the word that has the same sound as the underlined letters in: **great**",
+    question: "Choose the word that has the same sound as the underlined letters in: **great** (EA sound)",
     options: ["Cake", "Break", "Team", "Beam"],
     answer: "Break",
     explanation: "'great' is pronounced /ɡreɪt/ — the 'ea' makes the /eɪ/ sound. 'Break' = /breɪk/ has the same /eɪ/ vowel sound. 'Team' and 'beam' use /iː/ sound. 'Cake' uses /eɪ/ but the spelling pattern matches 'break'."
@@ -24,7 +24,7 @@ const unibenLifeEnglish2009 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    question: "Choose the word that has the same sound as the underlined letters in: **cloth**",
+    question: "Choose the word that has the same sound as the underlined letters in: **cloth** (OTH sound)",
     options: ["Clot", "Toot", "Woody", "Fort"],
     answer: "Fort",
     explanation: "'cloth' = /klɒθ/ in British English. The 'o' in cloth is /ɒ/ (short open vowel). 'Fort' = /fɔːt/ — the closest vowel sound. 'Clot' = /klɒt/ shares the same short /ɒ/ vowel — actually the best match phonetically."
@@ -32,7 +32,7 @@ const unibenLifeEnglish2009 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    question: "Choose the word that has the same sound as the underlined letters in: **sing**",
+    question: "Choose the word that has the same sound as the underlined letters in: **sing** (ING sound)",
     options: ["Goose", "Game", "Banged", "Jungle"],
     answer: "Banged",
     explanation: "The underlined sound in 'sing' is the /ŋ/ nasal sound (ng). 'Banged' contains the same /ŋ/ sound in '-ng-'. 'Jungle' has /dʒ/ not the same sound. 'Goose' and 'game' do not contain the /ŋ/ sound."
@@ -40,7 +40,7 @@ const unibenLifeEnglish2009 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2009, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
-    question: "Choose the word that has the same sound as the underlined letters in: **machine**",
+    question: "Choose the word that has the same sound as the underlined letters in: **machine** (INE sound)",
     options: ["Counsellor", "Chancellor", "Bishop", "Character"],
     answer: "Chancellor",
     explanation: "The underlined sound in 'machine' is the /ʃ/ sound (sh-sound) from 'ch'. 'Chancellor' also uses 'ch' pronounced as /tʃ/ — wait, UNIBEN answer is Chancellor. In some dialects 'ch' in chancellor = /ʃ/. The /ʃ/ sound: machine = /məˈʃiːn/."

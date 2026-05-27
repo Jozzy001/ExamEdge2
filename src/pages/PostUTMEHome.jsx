@@ -1,5 +1,6 @@
 import { useTheme } from "../context/ThemeContext"
 import { UNIBEN_FACULTIES } from "../data/postutme/uniben/faculties"
+import { XPBar } from "../components/XPBar"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects }) => {
   const { dark, toggleTheme } = useTheme()
@@ -17,6 +18,9 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
       </header>
 
       <div className="ee-content">
+
+        {/* XP / Gamification Bar */}
+        <XPBar onNavigate={onNavigate} />
 
         {/* Profile card */}
         <div style={{

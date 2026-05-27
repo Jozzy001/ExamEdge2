@@ -1,6 +1,8 @@
 import { useState, useRef, useMemo, useEffect } from "react"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
+import { processQuizResult, checkHotStreak } from "../utils/gamification"
+import { XPToast, BadgeQueue, LevelUpModal } from "../components/BadgeModal"
 
 // =============================================
 // TEXT RENDERER — handles **bold** highlights and images
@@ -13,6 +15,7 @@ const RenderText = ({ text }) => {
     return boldParts.map((part, j) => {
       const boldMatch = part.match(/^\*\*([^*]+)\*\*$/)
       if (boldMatch) {
+        const word = boldMatch[1]
         return (
           <strong key={`${keyIndex}-b${j}`} style={{
             color: "var(--primary)",
@@ -21,12 +24,76 @@ const RenderText = ({ text }) => {
             borderRadius: "4px",
             fontWeight: 800
           }}>
-            {boldMatch[1]}
+            {word}
           </strong>
         )
       }
       return <span key={`${keyIndex}-t${j}`}>{part}</span>
     })
+  }
+
+  // Special handling for phonetics questions with pattern: **word** (XY sound) or **word** (XY)
+  // Highlight the specific letters in the word
+  const phoneticMatch = text.match(/\*\*([^*]+)\*\*\s*\(([^)]+)\)/)
+  if (phoneticMatch) {
+    const word = phoneticMatch[1]
+    const soundHint = phoneticMatch[2] // e.g. "SH sound", "GE sound", "sh"
+    // Extract just the letters to highlight (first word before "sound")
+    const letters = soundHint.replace(/\s*sound\s*/i, '').replace(/\s*vowel\s*/i, '').replace(/\s*consonant\s*/i, '').trim()
+
+    // Try to highlight those letters within the word
+    const lettersLower = letters.toLowerCase()
+    const wordLower = word.toLowerCase()
+    const letterIdx = wordLower.indexOf(lettersLower)
+
+    const renderedWord = letterIdx >= 0 ? (
+      <strong key="pw" style={{
+        color: "var(--primary)", background: "var(--primary-light)",
+        padding: "1px 5px", borderRadius: "4px", fontWeight: 800,
+        fontSize: "1.05em"
+      }}>
+        {word.substring(0, letterIdx)}
+        <span style={{
+          textDecoration: "underline",
+          textDecorationStyle: "solid",
+          textDecorationColor: "var(--accent)",
+          textDecorationThickness: "2.5px",
+          color: "var(--accent)",
+          fontWeight: 900,
+        }}>
+          {word.substring(letterIdx, letterIdx + letters.length)}
+        </span>
+        {word.substring(letterIdx + letters.length)}
+      </strong>
+    ) : (
+      <strong key="pw" style={{
+        color: "var(--primary)", background: "var(--primary-light)",
+        padding: "1px 5px", borderRadius: "4px", fontWeight: 800
+      }}>{word}</strong>
+    )
+
+    // Rebuild the text replacing the **word** (hint) part
+    const before = text.substring(0, text.indexOf(`**${word}**`))
+    const after = text.substring(text.indexOf(`**${word}**`) + `**${word}** (${soundHint})`.length)
+
+    return (
+      <>
+        <span>{before}</span>
+        {renderedWord}
+        <span style={{
+          fontSize: 11, fontWeight: 700,
+          background: "rgba(255,107,107,0.1)",
+          color: "var(--accent)",
+          padding: "1px 6px",
+          borderRadius: "4px",
+          marginLeft: 4,
+          border: "1px solid rgba(255,107,107,0.25)"
+        }}>
+          /{letters}/
+        </span>
+        <span>{after}</span>
+      </>
+    )
   }
 
   const parts = text.split(/(\[img:[^\]]+\])/g)
@@ -146,7 +213,7 @@ const Calculator = ({ onClose }) => {
 // =============================================
 // QUIZ
 // =============================================
-const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", university = null, customCounts = null, englishFirst = false }) => {
+const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", university = null, customCounts = null, englishFirst = false, startFromIndex = 0 }) => {
 
   const questionPool = useMemo(() => {
     if (examType === "postutme" && university) {
@@ -157,8 +224,31 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
 
   const getDefaultCount = (subj) => {
     if (examType === "jamb") return subj === "English" ? 60 : 40
-    return 40
+    return subj === "English" ? 13 : 40
   }
+
+  // All state declared before any memo that reads them
+  const [currentIndex, setCurrentIndex] = useState(startFromIndex)
+  const [selected, setSelected] = useState("")
+  const [showExplanation, setShowExplanation] = useState(false)
+  const [finished, setFinished] = useState(false)
+  const [started, setStarted] = useState(false)
+  const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
+  const [showCalc, setShowCalc] = useState(false)
+  const [qCounts, setQCounts] = useState({})
+  const [customTime, setCustomTime] = useState(examType === "jamb" ? 3600 : 1800)
+  // Gamification
+  const [flashCorrect, setFlashCorrect] = useState(false)
+  const [flashWrong, setFlashWrong] = useState(false)
+  const [xpToast, setXpToast] = useState(null)
+  const [newBadges, setNewBadges] = useState([])
+  const [levelUpInfo, setLevelUpInfo] = useState(null)
+  const correctInARowRef = useRef(0)
+  const quizStartTimeRef = useRef(Date.now())
+  const answersMapRef = useRef({})
+  const isCBT = topic === "cbt"
+  const isWeak = topic === "weak"
+  const isHotTopics = topic === "hotTopics"
 
   const filteredQuestions = useMemo(() => {
     const subjectList = subjects && subjects.length > 0 ? subjects : (subject ? [subject] : null)
@@ -184,7 +274,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
         : subjectsToUse
       sortedSubjects.forEach(subj => {
         const pool = (bySubject[subj] || []).sort(() => Math.random() - 0.5)
-        const count = customCounts?.[subj] ?? getDefaultCount(subj)
+        // Use qCounts (user selection) first, then customCounts prop, then default
+        const count = qCounts[subj] ?? customCounts?.[subj] ?? getDefaultCount(subj)
         ordered.push(...pool.slice(0, count))
       })
       return ordered
@@ -235,28 +326,14 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
       }
       return { ...item, topic: item.topic || topic || "General", subject: item.subject || subject || "General" }
     })
-  }, [topic, subject, subjects, questionPool, customCounts])
+  }, [topic, subject, subjects, questionPool, customCounts, qCounts])
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [selected, setSelected] = useState("")
-  const [showExplanation, setShowExplanation] = useState(false)
-  const [finished, setFinished] = useState(false)
-  const [started, setStarted] = useState(false)
-  const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
-  const [showCalc, setShowCalc] = useState(false)
-  const [qCounts, setQCounts] = useState({})
-  const [customTime, setCustomTime] = useState(examType === "jamb" ? 3600 : 1800)
-
-  const answersMapRef = useRef({})
-  const isCBT = topic === "cbt"
-  const isWeak = topic === "weak"
-  const isHotTopics = topic === "hotTopics"
   const currentQuestion = filteredQuestions[currentIndex]
 
   useEffect(() => {
     answersMapRef.current = {}
     setSelected("")
-    setCurrentIndex(0)
+    setCurrentIndex(startFromIndex)
     setShowExplanation(false)
     setFinished(false)
     setStarted(false)
@@ -313,9 +390,18 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
       const newEntry = { topic, subject: subject || "General", score, total, date: new Date().toISOString() }
       localStorage.setItem("progress", JSON.stringify([...existing, newEntry]))
     }
+
+    // Process gamification — only for non-CBT study mode
+    if (!isCBT) {
+      const timeTaken = Math.round((Date.now() - quizStartTimeRef.current) / 1000)
+      const result = processQuizResult({ score, total, timeTakenSeconds: timeTaken })
+      if (result.xpEarned > 0) setXpToast(result.xpEarned)
+      if (result.newBadges?.length > 0) setNewBadges(result.newBadges)
+      if (result.leveledUp) setLevelUpInfo(result.newLevel)
+    }
   }, [finished])
 
-  if (filteredQuestions.length === 0 && started) {
+  if (filteredQuestions.length === 0) {
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -325,9 +411,42 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
         </header>
         <div className="ee-content">
           <div className="ee-empty">
-            <span className="ee-empty-icon">{isWeak ? "🎉" : "📭"}</span>
-            <p>{isWeak ? "No weak areas found! You're doing great." : `No questions found for: ${topic}`}</p>
-            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>Study Mode 📚</button>
+            {isWeak ? (() => {
+              const hasProgress = (JSON.parse(localStorage.getItem("progress")) || []).length > 0
+              return hasProgress ? (
+                <>
+                  <span className="ee-empty-icon">🎉</span>
+                  <p style={{ fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 6 }}>
+                    No weak areas!
+                  </p>
+                  <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 20 }}>
+                    You're scoring above 50% in every topic. Keep it up!
+                  </p>
+                  <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>
+                    Keep Studying 📚
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="ee-empty-icon">📋</span>
+                  <p style={{ fontWeight: 700, fontSize: 16, color: "var(--text)", marginBottom: 6 }}>
+                    No test taken yet
+                  </p>
+                  <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 20 }}>
+                    Take a quiz first and we'll show your weak areas here.
+                  </p>
+                  <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>
+                    Start a Quiz 🚀
+                  </button>
+                </>
+              )
+            })() : (
+              <>
+                <span className="ee-empty-icon">📭</span>
+                <p>{`No questions found for: ${topic}`}</p>
+                <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>Study Mode 📚</button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -336,12 +455,19 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
 
   if (isCBT && !started) {
     const subjectList = subjects && subjects.length > 0 ? subjects : (subject ? [subject] : [])
-    const timeOptions = [
-      { label: "30 mins", seconds: 1800 },
-      { label: "1 hour", seconds: 3600 },
-      { label: "1.5 hrs", seconds: 5400 },
-      { label: "2 hours", seconds: 7200 },
-    ]
+    const timeOptions = examType === "jamb"
+      ? [
+          { label: "30 mins", seconds: 1800 },
+          { label: "1 hour", seconds: 3600 },
+          { label: "1.5 hrs", seconds: 5400 },
+          { label: "2 hours", seconds: 7200 },
+        ]
+      : [
+          { label: "30 mins", seconds: 1800 },
+          { label: "45 mins", seconds: 2700 },
+          { label: "1 hour", seconds: 3600 },
+          { label: "1.5 hrs", seconds: 5400 },
+        ]
     const totalQ = subjectList.reduce((t, s) => t + (qCounts[s] ?? getDefaultCount(s)), 0)
 
     return (
@@ -352,6 +478,30 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
+
+          {/* Post-UTME standard info banner */}
+          {examType === "postutme" && (
+            <div style={{
+              background: "linear-gradient(135deg, #fff8f0, #ffe8d6)",
+              border: "1px solid #ffb347", borderRadius: "var(--radius-md)",
+              padding: "12px 14px", marginBottom: 16,
+              display: "flex", gap: 10, alignItems: "flex-start"
+            }}>
+              <span style={{ fontSize: 18, flexShrink: 0 }}>📋</span>
+              <div>
+                <div style={{ fontWeight: 800, fontSize: 12, color: "#7a4500", marginBottom: 4 }}>
+                  UNIBEN Post-UTME Standard Format
+                </div>
+                <div style={{ fontSize: 12, color: "#7a4500", lineHeight: 1.6 }}>
+                  • <strong>40 questions total</strong> in <strong>30 minutes</strong><br />
+                  • English: <strong>12–15 questions</strong><br />
+                  • Other subjects: <strong>~9–10 questions each</strong><br />
+                  You can adjust below to your preference.
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="ee-result-score">
             <span className="result-emoji">🧪</span>
             <div className="result-fraction">{totalQ} Questions</div>
@@ -364,6 +514,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
           {subjectList.map(subj => {
             const defaultCount = getDefaultCount(subj)
             const count = qCounts[subj] ?? defaultCount
+            const hint = examType === "postutme" && subj === "English"
+              ? "Standard: 12–15"
+              : examType === "postutme"
+              ? "Standard: ~10"
+              : `Default: ${defaultCount}q`
             return (
               <div key={subj} style={{
                 background: "var(--surface)", border: "1px solid var(--border)",
@@ -372,13 +527,13 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
               }}>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: 14, color: "var(--text)" }}>{subj}</div>
-                  <div style={{ fontSize: 11, color: "var(--text3)" }}>Default: {defaultCount}q</div>
+                  <div style={{ fontSize: 11, color: "var(--text3)" }}>{hint}</div>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.max(5, (p[subj] ?? defaultCount) - 5) }))}
+                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.max(1, (p[subj] ?? defaultCount) - 1) }))}
                     style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>−</button>
                   <span style={{ fontWeight: 800, fontSize: 16, color: "var(--primary)", minWidth: 30, textAlign: "center" }}>{count}</span>
-                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.min(60, (p[subj] ?? defaultCount) + 5) }))}
+                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.min(60, (p[subj] ?? defaultCount) + 1) }))}
                     style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>+</button>
                 </div>
               </div>
@@ -423,7 +578,24 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
   }
   const handleSelectOption = (opt) => { setSelected(opt); setShowExplanation(false); saveAnswer(currentIndex, opt) }
-  const handleCheckAnswer = () => { if (!selected) return; saveAnswer(); setShowExplanation(true) }
+  const handleCheckAnswer = () => {
+    if (!selected) return
+    saveAnswer()
+    setShowExplanation(true)
+    const isCorrect = selected === currentQuestion.answer
+    if (isCorrect) {
+      setFlashCorrect(true)
+      setTimeout(() => setFlashCorrect(false), 600)
+      correctInARowRef.current += 1
+      // Check hot streak badge
+      const hotBadge = checkHotStreak(correctInARowRef.current)
+      if (hotBadge) setNewBadges(prev => [...prev, hotBadge])
+    } else {
+      setFlashWrong(true)
+      setTimeout(() => setFlashWrong(false), 600)
+      correctInARowRef.current = 0
+    }
+  }
   const handleSubmitExam = () => {
     saveAnswer()
     const unanswered = filteredQuestions.map((_, i) => i).filter(i => !answersMapRef.current[i]?.selected)
@@ -436,6 +608,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
   const goToQuestion = (i) => { saveAnswer(); setShowExplanation(false); setCurrentIndex(i); setSelected(answersMapRef.current[i]?.selected || "") }
 
   if (finished) {
+    // Clear saved session — they completed it
+    localStorage.removeItem("studySession")
     const score = filteredQuestions.filter((q, i) => answersMapRef.current[i]?.selected === q.answer).length
     const total = filteredQuestions.length
     const pct = Math.round((score / total) * 100)
@@ -471,13 +645,35 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
   return (
-    <div className="ee-page">
+    <div className="ee-page" style={{
+      background: flashCorrect ? "rgba(34,201,122,0.08)" : flashWrong ? "rgba(255,107,107,0.08)" : undefined,
+      transition: "background 0.3s"
+    }}>
+      {/* Gamification overlays */}
+      {xpToast && <XPToast xp={xpToast} onDone={() => setXpToast(null)} />}
+      {levelUpInfo && <LevelUpModal level={levelUpInfo} onClose={() => setLevelUpInfo(null)} />}
+      {!levelUpInfo && newBadges.length > 0 && (
+        <BadgeQueue badges={newBadges} onAllDone={() => setNewBadges([])} />
+      )}
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => {
           if (isCBT) onNavigate("cbtSubjectSelect")
           else if (isWeak) onNavigate("progress")
           else if (isHotTopics) onNavigate("hotTopics")
-          else onNavigate("study")
+          else {
+            // Save session for resume (study mode only, only if past Q1)
+            if (currentIndex > 0 && !finished) {
+              localStorage.setItem("studySession", JSON.stringify({
+                topic,
+                subject: subject || "General",
+                university: university || null,
+                currentIndex,
+                totalQuestions: filteredQuestions.length,
+                savedAt: Date.now()
+              }))
+            }
+            onNavigate("study")
+          }
         }}>← Exit</button>
         <span style={{ fontWeight: 800, fontSize: "15px" }}>
           {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : isHotTopics ? "🔥 Hot Topics" : topic}
@@ -517,12 +713,72 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
           </div>
         )}
 
-        {currentQuestion.passage && (
-          <div className="ee-passage">
-            <span className="passage-label">Read the passage</span>
-            <p className="passage-text">{currentQuestion.passage}</p>
-          </div>
-        )}
+        {currentQuestion.passage && (() => {
+          // For fill-in-gap questions, highlight the current blank in the passage
+          const isFillGap = /___\[\d+\]___/.test(currentQuestion.passage)
+          
+          if (isFillGap) {
+            // Find which blank number this question is asking about
+            const blankMatch = currentQuestion.question.match(/___\[(\d+)\]___/)
+            const blankNum = blankMatch ? blankMatch[1] : null
+            
+            // Split passage into parts, highlighting the current blank
+            const parts = currentQuestion.passage.split(/(___\[\d+\]___)/)
+            
+            return (
+              <div className="ee-passage">
+                <span className="passage-label">📖 Read the passage — fill in each blank</span>
+                <p className="passage-text" style={{ lineHeight: 2 }}>
+                  {parts.map((part, i) => {
+                    const numMatch = part.match(/___\[(\d+)\]___/)
+                    if (numMatch) {
+                      const isCurrentBlank = numMatch[1] === blankNum
+                      return (
+                        <span key={i} style={{
+                          display: "inline-block",
+                          minWidth: 70,
+                          textAlign: "center",
+                          borderBottom: isCurrentBlank
+                            ? "2.5px solid var(--primary)"
+                            : "1.5px solid var(--text3)",
+                          color: isCurrentBlank ? "var(--primary)" : "var(--text3)",
+                          fontWeight: isCurrentBlank ? 800 : 600,
+                          fontSize: isCurrentBlank ? 13 : 11,
+                          margin: "0 2px",
+                          padding: "0 4px",
+                          background: isCurrentBlank ? "var(--primary-light)" : "transparent",
+                          borderRadius: isCurrentBlank ? "4px 4px 0 0" : 0
+                        }}>
+                          {isCurrentBlank ? `[${numMatch[1]}] ?` : `[${numMatch[1]}]`}
+                        </span>
+                      )
+                    }
+                    return <span key={i}>{part}</span>
+                  })}
+                </p>
+              </div>
+            )
+          }
+          
+          // Regular passage
+          return (
+            <div className="ee-passage">
+              <span className="passage-label">📖 Read the passage</span>
+              <p className="passage-text">{currentQuestion.passage}</p>
+              {currentQuestion.passage.length < 200 && (
+                <div style={{
+                  marginTop: 8, padding: "6px 10px",
+                  background: "rgba(255,179,71,0.12)",
+                  border: "1px solid rgba(255,179,71,0.3)",
+                  borderRadius: "var(--radius-sm)",
+                  fontSize: 11, color: "#7a4500", fontWeight: 600
+                }}>
+                  ⚠️ This is an excerpt. The full passage appears across related questions.
+                </div>
+              )}
+            </div>
+          )
+        })()}
 
         <div className="ee-question-card">
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
@@ -538,7 +794,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
             )}
           </div>
           <div className="question-text">
-            <RenderText text={currentQuestion.question} />
+            {/* For fill-in-gap questions, show "Fill in blank [N]" instead of repeating the sentence */}
+            {/___\[\d+\]___/.test(currentQuestion.question) ? (() => {
+              const m = currentQuestion.question.match(/___\[(\d+)\]___/)
+              return <span>Choose the word that best fills blank <strong style={{ color: "var(--primary)" }}>[{m ? m[1] : "?"}]</strong> in the passage above.</span>
+            })() : <RenderText text={currentQuestion.question} />}
           </div>
         </div>
 

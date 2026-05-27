@@ -391,6 +391,28 @@ const GuideView = ({ guide, topic, subject, onStartQuiz, onBack }) => {
 // =============================================
 const StudyMode = ({ subject, onNavigate, university = null }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
+  const [resumeSession, setResumeSession] = useState(null)
+  const [startFromIndex, setStartFromIndex] = useState(0)
+  const [dismissed, setDismissed] = useState(false)
+
+  // Check for saved session on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("studySession")
+    if (!saved) return
+    try {
+      const session = JSON.parse(saved)
+      const AGE_LIMIT = 24 * 60 * 60 * 1000 // 24 hours
+      const isExpired = Date.now() - session.savedAt > AGE_LIMIT
+      const isMatchingSubject = !subject || session.subject === subject
+      if (!isExpired && isMatchingSubject && session.currentIndex > 0) {
+        setResumeSession(session)
+      } else if (isExpired) {
+        localStorage.removeItem("studySession")
+      }
+    } catch (e) {
+      localStorage.removeItem("studySession")
+    }
+  }, [subject])
 
   const questionPool = university
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -411,11 +433,12 @@ const StudyMode = ({ subject, onNavigate, university = null }) => {
     )
   ]
 
-  const handleTopicClick = (topic) => {
+  const handleTopicClick = (topic, fromIndex = 0) => {
     if (STUDY_GUIDES[topic]) {
+      setStartFromIndex(fromIndex)
       setSelectedTopic(topic)
     } else {
-      onNavigate("quiz", topic, subject)
+      onNavigate("quiz", topic, subject, fromIndex)
     }
   }
 
@@ -427,7 +450,7 @@ const StudyMode = ({ subject, onNavigate, university = null }) => {
         guide={guide}
         topic={selectedTopic}
         subject={subject}
-        onStartQuiz={() => onNavigate("quiz", selectedTopic, subject)}
+        onStartQuiz={() => onNavigate("quiz", selectedTopic, subject, startFromIndex)}
         onBack={() => setSelectedTopic(null)}
       />
     )
@@ -447,6 +470,60 @@ const StudyMode = ({ subject, onNavigate, university = null }) => {
 
       <div className="ee-content">
         <h2 className="ee-title">Pick a topic</h2>
+
+        {/* Resume session notification */}
+        {resumeSession && !dismissed && (
+          <div style={{
+            background: "linear-gradient(135deg, #fff8f0, #ffe8d6)",
+            border: "1.5px solid #ffb347",
+            borderRadius: "var(--radius-md)",
+            padding: "12px 14px",
+            marginBottom: 16,
+            display: "flex", alignItems: "center", gap: 12
+          }}>
+            <span style={{ fontSize: 22, flexShrink: 0 }}>📖</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: 13, color: "#7a4500" }}>
+                Continue where you left off?
+              </div>
+              <div style={{ fontSize: 11, color: "#a05500", marginTop: 2 }}>
+                <strong>{resumeSession.topic}</strong> — Q{resumeSession.currentIndex + 1} of {resumeSession.totalQuestions}
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, flexShrink: 0 }}>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("studySession")
+                  setDismissed(true)
+                  handleTopicClick(resumeSession.topic, resumeSession.currentIndex)
+                }}
+                style={{
+                  background: "#ff9933", color: "#fff", border: "none",
+                  borderRadius: "var(--radius-sm)", padding: "6px 12px",
+                  fontWeight: 800, fontSize: 12, cursor: "pointer",
+                  fontFamily: "var(--font-main)"
+                }}
+              >
+                Continue →
+              </button>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("studySession")
+                  setDismissed(true)
+                  setResumeSession(null)
+                }}
+                style={{
+                  background: "none", color: "#a05500", border: "1px solid #ffb347",
+                  borderRadius: "var(--radius-sm)", padding: "4px 12px",
+                  fontWeight: 700, fontSize: 11, cursor: "pointer",
+                  fontFamily: "var(--font-main)"
+                }}
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Guided topics */}
         {guidedTopics.length > 0 && (

@@ -60,7 +60,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Comprehension", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Apart from the apathy that students have for these and other subjects, inadequate preparation for examinations is a major bane of good performance in JAMB and Post-UME examinations.",
+    passage: "From one examination year to another, students seeking admission into Nigerian higher institutions of learning perform poorly in their examination papers, particularly in the English Language and Mathematics papers. Often, they blame JAMB and schools for their poor performance. In turn, JAMB and schools blame students for lack of seriousness and a number of other personal factors that make students perform poorly in English and Mathematics. Apart from the apathy that students have for these and other subjects, inadequate preparation for examinations is a major bane of good performance in JAMB and Post-UME examinations. Perhaps we should quickly mention students' heavy reliance on sharp practices of different types which they commit before, during and after examinations. Miscomprehension of questions and violation of instructions are no less a factor. Besides, are students even conscious that minor mistakes they make when they complete forms and share materials on the internet and during examinations can rob them of excellence and consequently admission?",
     question: "What is the leading pre-examination factor that the writer holds responsible for failure in English and Mathematics?",
     options: [
       "Lack of preparation",
@@ -74,7 +74,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Comprehension", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Apart from the apathy that students have for these and other subjects...",
+    passage: "From one examination year to another, students seeking admission into Nigerian higher institutions of learning perform poorly in their examination papers, particularly in the English Language and Mathematics papers. Often, they blame JAMB and schools for their poor performance. In turn, JAMB and schools blame students for lack of seriousness and a number of other personal factors that make students perform poorly in English and Mathematics. Apart from the apathy that students have for these and other subjects, inadequate preparation for examinations is a major bane of good performance in JAMB and Post-UME examinations. Perhaps we should quickly mention students' heavy reliance on sharp practices of different types which they commit before, during and after examinations. Miscomprehension of questions and violation of instructions are no less a factor. Besides, are students even conscious that minor mistakes they make when they complete forms and share materials on the internet and during examinations can rob them of excellence and consequently admission?",
     question: "As used in the passage, the word apathy suggests:",
     options: [
       "Fear of some subjects",
@@ -265,7 +265,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Which word has the same consonant sound as the underlined letters in 'sheep' (sh)?",
+    question: "Which word has the same consonant sound as the underlined letters in **sheep** (SH sound)?",
     options: ["Official", "Vision", "Seizure", "Revision"],
     answer: "Official",
     explanation: "The 'sh' in 'sheep' represents the /ʃ/ sound (voiceless palato-alveolar fricative). In 'official', the 'ci' makes the same /ʃ/ sound: of-fi-cial. 'Vision', 'seizure', and 'revision' all contain the /ʒ/ sound (voiced equivalent) — not /ʃ/."
@@ -273,7 +273,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Which word has the same consonant sound as the underlined letters in 'auto' (th)?",
+    question: "Which word has the same consonant sound as the underlined letters in **auto** (TH sound)?",
     options: ["Rather", "Mother", "Do", "That"],
     answer: "Do",
     explanation: "Note: 'auto' does not typically contain 'th'. This question likely refers to the /θ/ or /ð/ sound. The voiceless 'th' /θ/ in words like 'think' corresponds to 'do' if the question tests the /d/ sound vs 'th'. UNIBEN answer is C (do). Students should verify the exact word and underlined letters."
@@ -281,7 +281,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Which word has the same consonant sound as the underlined letters in 'chant' (ch)?",
+    question: "Which word has the same consonant sound as the underlined letters in **chant** (CH sound)?",
     options: ["Cheat", "Character", "Chief", "Chemistry"],
     answer: "Cheat",
     explanation: "The 'ch' in 'chant' represents the /tʃ/ sound (as in church). 'Cheat' also uses /tʃ/: /tʃiːt/. 'Character' uses /k/ (Greek-origin word). 'Chemistry' also uses /k/. 'Chief' uses /tʃ/ — but UNIBEN answer is A (cheat). Both cheat and chief have /tʃ/ — cheat is the standard answer."
@@ -289,7 +289,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Which word has the same consonant sound as the underlined letters in 'behind' (h)?",
+    question: "Which word has the same consonant sound as the underlined letters in **behind** (H sound)?",
     options: ["War", "Hour", "Honour", "Honest"],
     answer: "War",
     explanation: "The 'h' in 'behind' is pronounced /h/. In 'hour', 'honour', and 'honest', the 'h' is silent (these are French-origin words). 'War' starts with /w/ — not /h/. UNIBEN answer is A (war). This question is testing which word does NOT have a silent 'h' — but war has no 'h' at all. Students should verify."
@@ -297,7 +297,7 @@ const unibenEnglish2012 = [
   {
     subject: "English", topic: "Phonetics & Stress", year: 2012, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    question: "Which word has the same consonant sound as the underlined letters in 'barge' (g)?",
+    question: "Which word has the same consonant sound as the underlined letters in **barge** (G sound)?",
     options: ["Gin", "Guest", "Gasp", "Grade"],
     answer: "Gin",
     explanation: "The 'g' in 'barge' represents the soft /dʒ/ sound (like the 'j' in 'judge'). 'Gin' also uses soft g: /dʒɪn/. 'Guest', 'gasp', and 'grade' all use hard g: /g/. The soft /dʒ/ sound appears before 'e', 'i', and 'y' in words of Latin/French origin."

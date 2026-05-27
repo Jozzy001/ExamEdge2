@@ -291,7 +291,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Comprehension", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "A typical sunspot consists of a dark central umbra surrounded by a lighter penumbra, made up of light and dark streaks extending from the centre like the spokes of a wheel.",
+    passage: "According to the controversial sunspots theory, great storms on the surface of the sun hurl streams of solar particles into space and eventually into the atmosphere of our planet, causing shifts in weather on Earth and interference with radio and television communications. A typical sunspot consists of a dark central umbra surrounded by a lighter penumbra, made up of light and dark streaks extending from the centre like the spokes of a wheel. Actually, sunspots are cooler than the rest of the photosphere, which may account for their darker appearance. Typically, the temperature in a sunspot umbra is about 4,000 Kelvin, while the penumbral region is about 5,500 Kelvin, and outside the sunspot it is about 6,000 Kelvin. Sunspots range in size from tiny grains to complex structures stretching for billions of square miles. About 5% of all sunspots are large enough to be seen from Earth without instruments. They are often observed in groups, and tend to occur in pairs with opposite magnetic polarities. Sunspots also occur in cycles of about 11 years, first appearing between 20° and 40° north and south of the sun's equator, then moving closer to the equator as the cycle progresses.",
     question: "How would you describe most sunspots?",
     options: [
       "A dark central shadow surrounded by lighter streaks like spokes",
@@ -305,7 +305,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Comprehension", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "Actually, sunspots are cooler than the rest of the photosphere, which may account for their darker appearance.",
+    passage: "According to the controversial sunspots theory, great storms on the surface of the sun hurl streams of solar particles into space and eventually into the atmosphere of our planet, causing shifts in weather on Earth and interference with radio and television communications. A typical sunspot consists of a dark central umbra surrounded by a lighter penumbra, made up of light and dark streaks extending from the centre like the spokes of a wheel. Actually, sunspots are cooler than the rest of the photosphere, which may account for their darker appearance. Typically, the temperature in a sunspot umbra is about 4,000 Kelvin, while the penumbral region is about 5,500 Kelvin, and outside the sunspot it is about 6,000 Kelvin. Sunspots range in size from tiny grains to complex structures stretching for billions of square miles. About 5% of all sunspots are large enough to be seen from Earth without instruments. They are often observed in groups, and tend to occur in pairs with opposite magnetic polarities. Sunspots also occur in cycles of about 11 years, first appearing between 20° and 40° north and south of the sun's equator, then moving closer to the equator as the cycle progresses.",
     question: "What does the author mean by saying sunspots are cooler than the rest of the photosphere, which may account for their darker colour?",
     options: [
       "Neither sunspots nor the photosphere is hot",
@@ -319,7 +319,7 @@ const unibenEnglish2008 = [
   {
     subject: "English", topic: "Comprehension", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["engineering", "physicalsciences"],
-    passage: "According to the controversial sunspots theory...",
+    passage: "According to the controversial sunspots theory, great storms on the surface of the sun hurl streams of solar particles into space and eventually into the atmosphere of our planet, causing shifts in weather on Earth and interference with radio and television communications. A typical sunspot consists of a dark central umbra surrounded by a lighter penumbra, made up of light and dark streaks extending from the centre like the spokes of a wheel. Actually, sunspots are cooler than the rest of the photosphere, which may account for their darker appearance. Typically, the temperature in a sunspot umbra is about 4,000 Kelvin, while the penumbral region is about 5,500 Kelvin, and outside the sunspot it is about 6,000 Kelvin. Sunspots range in size from tiny grains to complex structures stretching for billions of square miles. About 5% of all sunspots are large enough to be seen from Earth without instruments. They are often observed in groups, and tend to occur in pairs with opposite magnetic polarities. Sunspots also occur in cycles of about 11 years, first appearing between 20° and 40° north and south of the sun's equator, then moving closer to the equator as the cycle progresses.",
     question: "The sunspot theory is:",
     options: ["Not very important", "Widely accepted", "Subject to debate", "Relatively new"],
     answer: "Subject to debate",
