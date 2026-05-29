@@ -1,15 +1,18 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Home from "./pages/Home"
 import Onboarding from "./pages/Onboarding"
+import Auth from "./pages/Auth"
 import SubjectSelect from "./pages/SubjectSelect"
 import StudyMode from "./pages/StudyMode"
 import Quiz from "./pages/Quiz"
 import Progress from "./pages/Progress"
 import CBTResult from "./pages/CBTResult"
+import CBTHistory from "./pages/CBTHistory.jsx"
 import PostUTMEHome from "./pages/PostUTMEHome"
 import HotTopics from "./pages/HotTopics"
+import Settings from "./pages/Settings"
+import AdminDashboard from "./pages/AdminDashboard"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
-
 function App() {
   // Load saved onboarding choices
   const savedExamType = localStorage.getItem("ee-examType")
@@ -27,7 +30,14 @@ function App() {
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedSubjects, setSelectedSubjects] = useState([])
   const [selectedStartIndex, setSelectedStartIndex] = useState(0)
+  const [reviewRecord, setReviewRecord] = useState(null)
+  const [authUser, setAuthUser] = useState(null)
   const startIndexRef = useRef(0)
+
+  // Show Auth screen first if not logged in
+  if (!authUser) {
+    return <Auth onAuthDone={(user) => setAuthUser(user)} />
+  }
 
   // Get faculty subjects for post-utme
   const getFacultySubjects = () => {
@@ -38,12 +48,13 @@ function App() {
     return []
   }
 
-  const handleNavigate = (newPage, topic = null, subject = null, startFromIndex = 0) => {
-    startIndexRef.current = startFromIndex  // set ref immediately, before re-render
+  const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null) => {
+    startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
     setPage(newPage)
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
-    setSelectedStartIndex(startFromIndex)
+    if (Array.isArray(subjectsOrIndex)) setSelectedSubjects(subjectsOrIndex)
+    setSelectedStartIndex(typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0)
   }
 
   const handleOnboardingDone = (data) => {
@@ -77,7 +88,13 @@ function App() {
       if (page === "progress") return <Progress onNavigate={handleNavigate} />
       if (page === "weak") return <Quiz topic="weak" onNavigate={handleNavigate} examType="jamb" />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} examType="jamb" />
-      if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} />
+      if (page === "cbtHistory") return (
+        <CBTHistory
+          onNavigate={handleNavigate}
+          onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}
+        />
+      )
+      if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} record={reviewRecord} />
     }
 
     // ===================== POST-UTME =====================
@@ -89,6 +106,7 @@ function App() {
           university={university}
           faculty={faculty}
           facultySubjects={facultySubjects}
+          authUser={authUser}
         />
       )
       if (page === "subjectSelect") return (
@@ -145,7 +163,13 @@ function App() {
           englishFirst={true}
         />
       )
-      if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} />
+      if (page === "cbtHistory") return (
+        <CBTHistory
+          onNavigate={handleNavigate}
+          onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}
+        />
+      )
+      if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} record={reviewRecord} />
 
       // ── HOT TOPICS ──
       if (page === "hotTopics") return (
@@ -165,6 +189,23 @@ function App() {
         />
       )
     }
+
+      if (page === "settings") return (
+        <Settings
+          onNavigate={handleNavigate}
+          onReset={resetOnboarding}
+          authUser={authUser}
+          faculty={faculty}
+          university={university}
+        />
+      )
+
+      if (page === "admin") return (
+        <AdminDashboard
+          onNavigate={handleNavigate}
+          authUser={authUser}
+        />
+      )
 
     return <h2>Page not found</h2>
   }

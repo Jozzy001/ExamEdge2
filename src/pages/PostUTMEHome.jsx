@@ -1,9 +1,12 @@
+import { useState } from "react"
 import { useTheme } from "../context/ThemeContext"
 import { UNIBEN_FACULTIES } from "../data/postutme/uniben/faculties"
 import { XPBar } from "../components/XPBar"
+import AppTour, { isTourDone } from "../components/AppTour"
 
-const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects }) => {
+const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, authUser }) => {
   const { dark, toggleTheme } = useTheme()
+  const [showTour, setShowTour] = useState(!isTourDone())
 
   const faculties = university === "UNIBEN" ? UNIBEN_FACULTIES : {}
   const facultyInfo = faculties[faculty]
@@ -30,7 +33,9 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.75, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>
             Post-UTME Prep
           </div>
-          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>Post-UTME Prep</div>
+          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>
+            {authUser?.name ? `Hi, ${authUser.name}! 👋` : "Post-UTME Prep"}
+          </div>
           <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 12 }}>
             {facultyInfo?.icon} {facultyInfo?.name}
           </div>
@@ -56,7 +61,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         <span className="ee-label">Jump into</span>
 
         <div className="ee-home-grid">
-          <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
+          <button ref={null} className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
             <span className="home-card-icon">🧪</span>
             <div>
               <div className="home-card-title">CBT Mode</div>
@@ -75,7 +80,21 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             <div className="home-card-title">Weak Areas</div>
             <div className="home-card-sub">Fix what's holding you back</div>
           </button>
+
+          <button className="ee-home-card" onClick={() => onNavigate("progress")}>
+            <span className="home-card-icon">📊</span>
+            <div className="home-card-title">My Progress</div>
+            <div className="home-card-sub">Track your performance</div>
+          </button>
+
+          <button className="ee-home-card" onClick={() => onNavigate("cbtHistory")}>
+            <span className="home-card-icon">📋</span>
+            <div className="home-card-title">CBT History</div>
+            <div className="home-card-sub">Review past exams</div>
+          </button>
         </div>
+
+        {/* CBT History removed from here - now in grid above */}
 
         {/* Hot Topics — full width card */}
         <button
@@ -95,21 +114,16 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         </button>
 
-        <span className="ee-label">Track yourself</span>
-        <button className="ee-home-card" onClick={() => onNavigate("progress")}
-          style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 20 }}>
-          <span style={{ fontSize: "28px" }}>📊</span>
-          <div>
-            <div className="home-card-title">My Progress</div>
-            <div className="home-card-sub">See your scores and weak topics</div>
-          </div>
-        </button>
-
         {/* Change exam type */}
-        <button className="ee-btn ee-btn-secondary" onClick={onReset}>
+        <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("settings")}>
           ⚙️ Settings
         </button>
       </div>
+
+      {/* App Tour — first time only */}
+      {showTour && (
+        <AppTour onDone={() => setShowTour(false)} />
+      )}
     </div>
   )
 }

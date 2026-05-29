@@ -160,7 +160,7 @@ const unibenEnglish2005 = [
   },
   {
     subject: "English", topic: "Antonyms", year: 2005, exam: "Post-UTME", university: "UNIBEN",
-    question: "In his valedictory address, the professor quoted **copiously** from his ______ lecture.",
+    question: "In his **valedictory** address, the professor quoted copiously from his ______ lecture.",
     options: ["inaugural", "academic", "original", "scholarly"],
     answer: "inaugural",
     explanation: "A valedictory address is given at the end (departure/retirement). Its antonym in context is 'inaugural' — given at the beginning of one's tenure."

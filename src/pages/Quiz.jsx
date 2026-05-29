@@ -224,7 +224,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
 
   const getDefaultCount = (subj) => {
     if (examType === "jamb") return subj === "English" ? 60 : 40
-    return subj === "English" ? 13 : 40
+    return subj === "English" ? 13 : 10
   }
 
   // All state declared before any memo that reads them
