@@ -363,7 +363,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                               cursor: "pointer", fontFamily: "var(--font-main)"
                             }}
                           >
-                            {user.disabled ? "✅ Enable Account" : "⏸️ Disable Account"}
+                            {user.disabled ? "✅ Enable Account" : "⏸️ Disable Account (blocks login)"}
                           </button>
 
                           <button
@@ -377,7 +377,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                               cursor: "pointer", fontFamily: "var(--font-main)"
                             }}
                           >
-                            🗑️ Delete Account
+                            🗑️ Delete from Database
                           </button>
                         </div>
                       </div>

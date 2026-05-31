@@ -36,24 +36,23 @@ const Auth = ({ onAuthDone }) => {
         const userDoc = await getDoc(doc(db, "users", user.uid))
         if (userDoc.exists()) {
           const data = userDoc.data()
-          // Sync faculty from localStorage if not in Firestore
-          const localFaculty = localStorage.getItem("ee-faculty")
-          if (!data.faculty && localFaculty) {
-            await setDoc(doc(db, "users", user.uid), {
-              ...data,
-              faculty: localFaculty,
-              examType: localStorage.getItem("ee-examType") || "postutme",
-              university: localStorage.getItem("ee-university") || "UNIBEN",
-              lastLogin: serverTimestamp()
-            }, { merge: true })
-            onAuthDone({ ...data, faculty: localFaculty })
-          } else {
-            await setDoc(doc(db, "users", user.uid), {
-              ...data,
-              lastLogin: serverTimestamp()
-            }, { merge: true })
-            onAuthDone(data)
+
+          // Check if account is disabled
+          if (data.disabled) {
+            await signOut(auth)
+            setError("Your account has been disabled. Please contact support.")
+            setMode("login")
+            return
           }
+
+          // Update last login
+          await setDoc(doc(db, "users", user.uid), {
+            ...data,
+            lastLogin: serverTimestamp()
+          }, { merge: true })
+
+          // Always let user pick faculty — don't auto-assign from localStorage
+          onAuthDone(data)
         }
       }
     })

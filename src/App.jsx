@@ -14,17 +14,12 @@ import Settings from "./pages/Settings"
 import AdminDashboard from "./pages/AdminDashboard"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
 function App() {
-  // Load saved onboarding choices
+  // Load saved onboarding choices — but only use them if authUser confirms them
   const savedExamType = localStorage.getItem("ee-examType")
   const savedUniversity = localStorage.getItem("ee-university")
   const savedFaculty = localStorage.getItem("ee-faculty")
 
-  const [profile, setProfile] = useState(
-    savedExamType
-      ? { examType: savedExamType, university: savedUniversity, faculty: savedFaculty }
-      : null
-  )
-
+  const [profile, setProfile] = useState(null)
   const [page, setPage] = useState("home")
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubject, setSelectedSubject] = useState(null)
@@ -36,7 +31,17 @@ function App() {
 
   // Show Auth screen first if not logged in
   if (!authUser) {
-    return <Auth onAuthDone={(user) => setAuthUser(user)} />
+    return <Auth onAuthDone={(user) => {
+      setAuthUser(user)
+      // Use faculty from Firestore if available, otherwise show onboarding
+      if (user.faculty && user.examType) {
+        localStorage.setItem("ee-examType", user.examType)
+        localStorage.setItem("ee-university", user.university || "UNIBEN")
+        localStorage.setItem("ee-faculty", user.faculty)
+        setProfile({ examType: user.examType, university: user.university || "UNIBEN", faculty: user.faculty })
+      }
+      // If no faculty in Firestore, profile stays null → shows onboarding
+    }} />
   }
 
   // Get faculty subjects for post-utme
