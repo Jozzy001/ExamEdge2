@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useTheme } from "../context/ThemeContext"
 import { UNIBEN_FACULTIES } from "../data/postutme/uniben/faculties"
+import { auth, db } from "../firebase"
+import { doc, updateDoc } from "firebase/firestore"
 
 const Onboarding = ({ onDone }) => {
   const { dark, toggleTheme } = useTheme()
-  const [step, setStep] = useState(1) // 1=exam type, 2=faculty
+  const [step, setStep] = useState(1)
   const [examType, setExamType] = useState(null)
 
   const handleExamType = (type) => {
@@ -19,10 +21,25 @@ const Onboarding = ({ onDone }) => {
     }
   }
 
-  const handleFaculty = (facKey) => {
+  const handleFaculty = async (facKey) => {
     localStorage.setItem("ee-examType", "postutme")
     localStorage.setItem("ee-university", "UNIBEN")
     localStorage.setItem("ee-faculty", facKey)
+
+    // Save faculty to Firestore
+    try {
+      const user = auth.currentUser
+      if (user) {
+        await updateDoc(doc(db, "users", user.uid), {
+          faculty: facKey,
+          examType: "postutme",
+          university: "UNIBEN"
+        })
+      }
+    } catch (e) {
+      console.error("Failed to save faculty to Firestore", e)
+    }
+
     onDone({ examType: "postutme", university: "UNIBEN", faculty: facKey })
   }
 

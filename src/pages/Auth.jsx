@@ -35,11 +35,25 @@ const Auth = ({ onAuthDone }) => {
         }
         const userDoc = await getDoc(doc(db, "users", user.uid))
         if (userDoc.exists()) {
-          await setDoc(doc(db, "users", user.uid), {
-            ...userDoc.data(),
-            lastLogin: serverTimestamp()
-          }, { merge: true })
-          onAuthDone(userDoc.data())
+          const data = userDoc.data()
+          // Sync faculty from localStorage if not in Firestore
+          const localFaculty = localStorage.getItem("ee-faculty")
+          if (!data.faculty && localFaculty) {
+            await setDoc(doc(db, "users", user.uid), {
+              ...data,
+              faculty: localFaculty,
+              examType: localStorage.getItem("ee-examType") || "postutme",
+              university: localStorage.getItem("ee-university") || "UNIBEN",
+              lastLogin: serverTimestamp()
+            }, { merge: true })
+            onAuthDone({ ...data, faculty: localFaculty })
+          } else {
+            await setDoc(doc(db, "users", user.uid), {
+              ...data,
+              lastLogin: serverTimestamp()
+            }, { merge: true })
+            onAuthDone(data)
+          }
         }
       }
     })
@@ -184,6 +198,20 @@ const Auth = ({ onAuthDone }) => {
                 We sent a verification link to <strong>{auth.currentUser?.email}</strong>.
                 Click the link in your email to continue.
               </p>
+            </div>
+
+            {/* Spam notice */}
+            <div style={{
+              background: "rgba(255,179,71,0.12)",
+              border: "1px solid rgba(255,179,71,0.4)",
+              borderRadius: "var(--radius-md)",
+              padding: "12px 14px", marginBottom: 16,
+              display: "flex", gap: 10, alignItems: "flex-start"
+            }}>
+              <span style={{ fontSize: 18, flexShrink: 0 }}>⚠️</span>
+              <div style={{ fontSize: 12, color: "#7a4500", lineHeight: 1.6 }}>
+                <strong>Can't find the email?</strong> Check your <strong>Spam</strong> or <strong>Junk</strong> folder — verification emails sometimes end up there. Mark it as "Not spam" so future emails come through.
+              </div>
             </div>
 
             {error && (
