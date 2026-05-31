@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { auth, db } from "../firebase"
 import { signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
-import { doc, updateDoc } from "firebase/firestore"
+import { doc, updateDoc, collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
@@ -17,8 +17,31 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
+  const [showContactForm, setShowContactForm] = useState(false)
+  const [contactMessage, setContactMessage] = useState("")
 
   const gameState = getGameState()
+
+  const handleSendMessage = async () => {
+    if (!contactMessage.trim()) return
+    setLoading(true); setError(""); setSuccess("")
+    try {
+      await addDoc(collection(db, "messages"), {
+        uid: auth.currentUser.uid,
+        username: authUser?.name || "Unknown",
+        email: authUser?.email || auth.currentUser?.email || "Unknown",
+        message: contactMessage.trim(),
+        status: "unread",
+        createdAt: serverTimestamp()
+      })
+      setSuccess("✅ Message sent! We'll get back to you soon.")
+      setContactMessage("")
+      setShowContactForm(false)
+    } catch (e) {
+      setError("Failed to send message. Please try again.")
+    }
+    setLoading(false)
+  }
 
   const handleSaveUsername = async () => {
     if (!newUsername.trim() || newUsername.trim().length < 2) {
@@ -334,6 +357,74 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
               <span style={{ marginLeft: "auto" }}>→</span>
             </button>
           </>
+        )}
+
+        {/* ===== SUPPORT ===== */}
+        {sectionTitle("💬 Support")}
+
+        {!showContactForm ? (
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            background: "var(--surface)", border: "1px solid var(--border)",
+            borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
+          }}>
+            <span style={{ fontSize: 20 }}>💬</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>Contact Support</div>
+              <div style={{ fontSize: 11, color: "var(--text3)" }}>Send a message to the admin</div>
+            </div>
+            <button onClick={() => { setShowContactForm(true); setSuccess(""); setError("") }} style={{
+              background: "var(--primary-light)", color: "var(--primary-text)",
+              border: "none", borderRadius: "var(--radius-sm)", padding: "6px 12px",
+              fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
+            }}>Message</button>
+          </div>
+        ) : (
+          <div style={{
+            background: "var(--surface)", border: "1px solid var(--border)",
+            borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
+          }}>
+            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>
+              💬 Send a message
+            </div>
+            <textarea
+              value={contactMessage}
+              onChange={e => setContactMessage(e.target.value)}
+              placeholder="Describe your issue or question..."
+              rows={4}
+              style={{
+                width: "100%", padding: "12px 14px",
+                border: "1.5px solid var(--border)",
+                borderRadius: "var(--radius-md)",
+                background: "var(--surface2)", fontSize: 13,
+                fontFamily: "var(--font-main)", color: "var(--text)",
+                outline: "none", boxSizing: "border-box",
+                resize: "vertical", marginBottom: 10
+              }}
+            />
+            <div style={{ display: "flex", gap: 8 }}>
+              <button
+                onClick={handleSendMessage}
+                disabled={loading || !contactMessage.trim()}
+                style={{
+                  flex: 1, padding: "10px",
+                  background: "var(--primary)", color: "#fff",
+                  border: "none", borderRadius: "var(--radius-md)",
+                  fontWeight: 800, fontSize: 13,
+                  cursor: "pointer", fontFamily: "var(--font-main)"
+                }}
+              >
+                {loading ? "Sending..." : "Send →"}
+              </button>
+              <button onClick={() => { setShowContactForm(false); setContactMessage(""); setError("") }} style={{
+                flex: 1, padding: "10px",
+                background: "var(--surface2)", color: "var(--text)",
+                border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
+                fontWeight: 800, fontSize: 13,
+                cursor: "pointer", fontFamily: "var(--font-main)"
+              }}>Cancel</button>
+            </div>
+          </div>
         )}
 
         {/* Log out */}

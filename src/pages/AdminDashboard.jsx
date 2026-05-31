@@ -10,12 +10,13 @@ const ADMIN_EMAIL = "jce680@gmail.com"
 
 const AdminDashboard = ({ onNavigate, authUser }) => {
   const [users, setUsers] = useState([])
+  const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState(null)
   const [actionMsg, setActionMsg] = useState("")
   const [actionError, setActionError] = useState("")
-  const [tab, setTab] = useState("users") // users | stats
+  const [tab, setTab] = useState("users") // users | stats | messages
 
   // Redirect if not admin
   if (authUser?.email !== ADMIN_EMAIL) {
@@ -37,6 +38,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
 
   useEffect(() => {
     fetchUsers()
+    fetchMessages()
   }, [])
 
   const fetchUsers = async () => {
@@ -50,6 +52,26 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
       console.error(e)
     }
     setLoading(false)
+  }
+
+  const fetchMessages = async () => {
+    try {
+      const q = query(collection(db, "messages"), orderBy("createdAt", "desc"))
+      const snapshot = await getDocs(q)
+      setMessages(snapshot.docs.map(d => ({ id: d.id, ...d.data() })))
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const handleMarkRead = async (msgId) => {
+    await updateDoc(doc(db, "messages", msgId), { status: "read" })
+    setMessages(prev => prev.map(m => m.id === msgId ? { ...m, status: "read" } : m))
+  }
+
+  const handleDeleteMessage = async (msgId) => {
+    await deleteDoc(doc(db, "messages", msgId))
+    setMessages(prev => prev.filter(m => m.id !== msgId))
   }
 
   const handlePasswordReset = async (email) => {
@@ -153,16 +175,34 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
-          {["users", "stats"].map(t => (
+          {["users", "stats", "messages"].map(t => (
             <button key={t} onClick={() => setTab(t)} style={{
               flex: 1, padding: "10px",
               borderRadius: "var(--radius-md)",
               border: tab === t ? "2px solid var(--primary)" : "1px solid var(--border)",
               background: tab === t ? "var(--primary-light)" : "var(--surface)",
               color: tab === t ? "var(--primary-text)" : "var(--text)",
-              fontWeight: 800, fontSize: 13, cursor: "pointer",
-              fontFamily: "var(--font-main)", textTransform: "capitalize"
-            }}>{t === "users" ? "👥 Users" : "📊 Stats"}</button>
+              fontWeight: 800, fontSize: 12, cursor: "pointer",
+              fontFamily: "var(--font-main)", textTransform: "capitalize",
+              position: "relative"
+            }}>
+              {t === "users" ? "👥 Users" : t === "stats" ? "📊 Stats" : (
+                <>
+                  💬 Messages
+                  {messages.filter(m => m.status === "unread").length > 0 && (
+                    <span style={{
+                      position: "absolute", top: -6, right: -6,
+                      background: "var(--accent)", color: "#fff",
+                      borderRadius: "50%", width: 18, height: 18,
+                      fontSize: 10, fontWeight: 800,
+                      display: "flex", alignItems: "center", justifyContent: "center"
+                    }}>
+                      {messages.filter(m => m.status === "unread").length}
+                    </span>
+                  )}
+                </>
+              )}
+            </button>
           ))}
         </div>
 
@@ -388,6 +428,84 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
             )}
           </>
         )}
+        {/* ===== MESSAGES TAB ===== */}
+        {tab === "messages" && (
+          <>
+            {messages.length === 0 ? (
+              <div className="ee-empty">
+                <span className="ee-empty-icon">💬</span>
+                <p>No messages yet</p>
+              </div>
+            ) : (
+              <>
+                <div style={{ fontSize: 12, color: "var(--text3)", marginBottom: 12 }}>
+                  {messages.filter(m => m.status === "unread").length} unread · {messages.length} total
+                </div>
+                {messages.map((msg, i) => (
+                  <div key={msg.id} style={{
+                    background: msg.status === "unread" ? "var(--primary-light)" : "var(--surface)",
+                    border: msg.status === "unread" ? "1.5px solid var(--primary)" : "1px solid var(--border)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "14px 16px", marginBottom: 10
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <div style={{
+                          width: 32, height: 32, borderRadius: "50%",
+                          background: "var(--primary-light)",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          fontSize: 14, fontWeight: 800, color: "var(--primary)"
+                        }}>{msg.username?.[0]?.toUpperCase() || "?"}</div>
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)" }}>
+                            {msg.username}
+                            {msg.status === "unread" && (
+                              <span style={{
+                                fontSize: 9, fontWeight: 800, marginLeft: 6,
+                                background: "var(--primary)", color: "#fff",
+                                padding: "1px 6px", borderRadius: "var(--radius-pill)"
+                              }}>NEW</span>
+                            )}
+                          </div>
+                          <div style={{ fontSize: 11, color: "var(--text3)" }}>{msg.email}</div>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: 11, color: "var(--text3)" }}>
+                        {formatDate(msg.createdAt)}
+                      </div>
+                    </div>
+
+                    <p style={{
+                      fontSize: 13, color: "var(--text)", lineHeight: 1.6,
+                      margin: "8px 0", padding: "10px 12px",
+                      background: "var(--surface2)", borderRadius: "var(--radius-md)"
+                    }}>{msg.message}</p>
+
+                    <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+                      {msg.status === "unread" && (
+                        <button onClick={() => handleMarkRead(msg.id)} style={{
+                          flex: 1, padding: "8px",
+                          background: "rgba(34,201,122,0.1)", color: "var(--success)",
+                          border: "1px solid rgba(34,201,122,0.3)",
+                          borderRadius: "var(--radius-sm)", fontWeight: 800,
+                          fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)"
+                        }}>✅ Mark as Read</button>
+                      )}
+                      <button onClick={() => handleDeleteMessage(msg.id)} style={{
+                        flex: 1, padding: "8px",
+                        background: "rgba(255,107,107,0.1)", color: "var(--accent)",
+                        border: "1px solid rgba(255,107,107,0.3)",
+                        borderRadius: "var(--radius-sm)", fontWeight: 800,
+                        fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)"
+                      }}>🗑️ Delete</button>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </>
+        )}
+
       </div>
     </div>
   )
