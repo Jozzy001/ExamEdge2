@@ -1,130 +1,18 @@
-// UNIBEN Post-UTME 2019/2020 — Chemistry
-// 10 questions (Q21–30 from General Paper)
-// Faculty: Engineering & Physical Sciences
-// Analysis notes:
-//   RECURRING: endothermic/exothermic ★, Le Chatelier (Haber) ★, reactivity series ★,
-//              esterification ★, IUPAC naming ★, homologous series ★
-//   NEW: air separation (alkaline pyrogallol + heated Cu), nitrate decomposition pattern,
-//        exothermic Na dissolution, backward reaction conditions
-
-const unibenChem2019 = [
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "When air (O₂, N₂, CO₂, H₂O vapour, rare gases) is passed through alkaline pyrogallol then over heated copper, the only gases left are:",
-    options: [
-      "Nitrogen and carbon dioxide",
-      "Rare gases",
-      "Nitrogen and oxygen",
-      "Nitrogen, carbon dioxide, and the rare gases"
-    ],
-    answer: "Rare gases",
-    explanation: "Alkaline pyrogallol absorbs O₂ completely. The alkaline solution (NaOH) also absorbs CO₂. Water vapour condenses. Heated copper absorbs any remaining O₂. Nitrogen reacts slowly with copper at very high temperatures. The truly inert gases left are the RARE GASES (He, Ne, Ar, Kr, Xe) — they react with nothing."
-  },
-  {
-    subject: "Chemistry", topic: "Thermochemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "When sodium chloride and metallic sodium are each dissolved in water:",
-    options: [
-      "Both processes are exothermic",
-      "Both processes are endothermic",
-      "The dissolution of metallic sodium is endothermic",
-      "The dissolution of metallic sodium is exothermic"
-    ],
-    answer: "The dissolution of metallic sodium is exothermic",
-    explanation: "2Na + 2H₂O → 2NaOH + H₂↑ is highly exothermic (sodium reacts violently with water, releasing heat and hydrogen gas). Dissolving NaCl in water is slightly endothermic (absorbs a small amount of heat — the solution becomes slightly cooler). Answer D is correct."
-  },
-  {
-    subject: "Chemistry", topic: "Thermochemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "When heat is absorbed during a chemical reaction, the reaction is said to be:",
-    options: ["Thermodynamic", "Exothermic", "Isothermal", "Endothermic"],
-    answer: "Endothermic",
-    explanation: "Endothermic reactions absorb heat from the surroundings (ΔH > 0, the system gains energy). Exothermic reactions release heat (ΔH < 0). Isothermal = constant temperature. ★ RECURRING — appeared in every thermochemistry question across all years."
-  },
-  {
-    subject: "Chemistry", topic: "Chemical Equilibrium", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Which of the following conditions promotes the backward reaction?",
-    options: [
-      "Increased pressure and decreased temperature",
-      "Increased pressure, increased temperature, and the presence of a catalyst",
-      "Decreased pressure, decreased concentration of oxygen, and increased temperature",
-      "Decreased pressure and increased concentration of oxygen"
-    ],
-    answer: "Decreased pressure, decreased concentration of oxygen, and increased temperature",
-    explanation: "For the Haber process N₂+3H₂⇌2NH₃ (ΔH=−92 kJ): backward reaction (decomposition of NH₃) favoured by: decreased pressure (4 moles → 2 moles; less pressure favours more moles) ✓, increased temperature (backward is endothermic) ✓, reduced reactant concentration. Answer C. ★ RECURRING — Le Chatelier."
-  },
-  {
-    subject: "Chemistry", topic: "Chemical Equilibrium", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "In the manufacture of ammonia: N₂(g)+3H₂(g)⇌2NH₃(g), ΔH=−92.37 kJ. The amount of NH₃ formed at equilibrium will increase if:",
-    options: [
-      "The pressure decreases",
-      "The temperature increases",
-      "The temperature decreases",
-      "A catalyst is used"
-    ],
-    answer: "The temperature decreases",
-    explanation: "Haber process is exothermic (ΔH<0). Le Chatelier: decreasing temperature shifts equilibrium toward the exothermic direction (forward) → more NH₃ produced. Increasing pressure also increases NH₃ (4 moles→2 moles). Catalyst increases rate but doesn't shift equilibrium position. ★★ RECURRING — Haber/Le Chatelier appeared in 2010, 2017, 2019."
-  },
-  {
-    subject: "Chemistry", topic: "Metals & Non-Metals", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Which of the following materials cannot replace hydrogen from water or steam?",
-    options: ["Sodium", "Magnesium", "Iron", "Copper"],
-    answer: "Copper",
-    explanation: "Reactivity series: K, Na, Ca, Mg, Al, Zn, Fe, Pb, H, Cu, Ag, Au. Copper is BELOW hydrogen — it cannot displace H₂ from water or steam. Na reacts vigorously with cold water. Mg reacts with hot water/steam. Fe reacts with steam. Copper reacts with neither. ★ RECURRING."
-  },
-  {
-    subject: "Chemistry", topic: "Acids, Bases & Salts", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "When each of the nitrates of potassium, magnesium, and iron is heated:",
-    options: [
-      "All the nitrates decompose to their oxides",
-      "The nitrate of magnesium gives nitrite and oxygen",
-      "The nitrates of magnesium and iron give the oxides",
-      "The nitrate of iron gives nitrite and oxygen"
-    ],
-    answer: "The nitrates of magnesium and iron give the oxides",
-    explanation: "Thermal decomposition of nitrates: Group I (K, Na) → nitrite + O₂: 2KNO₃→2KNO₂+O₂. Metals above Cu (Mg, Fe, Cu etc.) → metal oxide + NO₂ + O₂: 2Mg(NO₃)₂→2MgO+4NO₂+O₂; 4Fe(NO₃)₃→2Fe₂O₃+12NO₂+3O₂. Mg and Fe nitrates give oxides ✓. Answer C."
-  },
-  {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The reaction between an organic acid and an alcohol in the presence of an acid catalyst is known as:",
-    options: ["Saponification", "Dehydration", "Esterification", "Hydrolysis"],
-    answer: "Esterification",
-    explanation: "Esterification: RCOOH + R'OH ⇌ RCOOR' + H₂O (acid catalyst, e.g. H₂SO₄). Saponification is the BASE hydrolysis of an ester (reverse reaction). Dehydration = removal of water. Hydrolysis = breakdown by water. ★★ RECURRING — appeared in 2008, 2012, 2017, 2019."
-  },
-  {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The IUPAC names for CH₃COOH and CH₂=CH₂ respectively are:",
-    options: [
-      "Acetic acid and ethane",
-      "Ethanoic acid and ethene",
-      "Methanoic acid and ethene",
-      "Ethanol and ethane"
-    ],
-    answer: "Ethanoic acid and ethene",
-    explanation: "CH₃COOH: 2-carbon carboxylic acid = ethanoic acid (acetic acid is the trivial/common name). CH₂=CH₂: 2-carbon alkene = ethene (ethylene is trivial). IUPAC always preferred: ethanoic acid and ethene. ★★ RECURRING — IUPAC naming appeared in 2008, 2012, 2017, 2019."
-  },
-  {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Which of the following is NOT a member of the homologous series of paraffins (alkanes)?",
-    options: ["C₃H₈", "C₅H₁₂", "C₇H₁₆", "C₂₄H₄₈"],
-    answer: "C₂₄H₄₈",
-    explanation: "Alkane general formula: CₙH₂ₙ₊₂. Check: C₃H₈: 2(3)+2=8 ✓. C₅H₁₂: 2(5)+2=12 ✓. C₇H₁₆: 2(7)+2=16 ✓. C₂₄H₄₈: 2(24)+2=50 ≠ 48. C₂₄H₄₈ follows CₙH₂ₙ = alkene or cycloalkane, NOT alkane. ★★ RECURRING — homologous series appeared in 2008, 2012, 2019."
-  }
+export const chem2019 = [
+  { subject: "Chemistry", topic: "Electrochemistry", question: "Which of the following is the difference between an electrolytic cell X and electrochemical cell Y?", options: ["A. anode in X is -ve while anode in Y is +ve", "B. in X, oxidation at anode while in Y reduction at anode", "C. in X anode is +ve while in Y anode is -ve", "D. in X chemical energy converts to electrical, while Y electrical to chemical"], answer: "C. in X anode is +ve while in Y anode is -ve", explanation: "In electrolytic cells, anode is positive (+). In electrochemical cells, anode is negative (-)." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "What mass of bromine will saturate completely 6.8g of 3-methylbut-1-yne? [H=1, C=12, Br=80]", options: ["A. 16g", "B. 32g", "C. 12g", "D. 24g"], answer: "B. 32g", explanation: "3-methylbut-1-yne has one triple bond. Molar mass = 68g/mol. Moles = 6.8/68 = 0.1mol. Triple bond reacts with 2mol Br₂. Mass Br₂ = 0.1×2×160 = 32g." },
+  { subject: "Chemistry", topic: "Gas Laws", question: "100cm³ of oxygen and 10cm³ of butane measured at RTP were mixed and exploded. Determine the volume of the mixture when brought back to original conditions.", options: ["A. 125cm³", "B. 110cm³", "C. 75cm³", "D. none of these"], answer: "C. 75cm³", explanation: "C₄H₁₀ + 13/2O₂ → 4CO₂ + 5H₂O. 10cm³ C₄H₁₀ needs 65cm³ O₂. Remaining O₂ = 35cm³. CO₂ = 40cm³. Total = 35+40 = 75cm³." },
+  { subject: "Chemistry", topic: "Chemistry of Non-metals", question: "Sulphur", options: ["A. forms two alkaline oxides", "B. is spontaneously inflammable", "C. burns with a blue flame", "D. conducts electricity in molten state"], answer: "C. burns with a blue flame", explanation: "Sulphur burns in air with a characteristic blue flame to form sulphur dioxide." },
+  { subject: "Chemistry", topic: "Chemistry of Non-metals", question: "Which of the following combination of reagents will react to give chlorine gas?", options: ["A. sodium chloride, conc H₂SO₄ and MnO₂", "B. KMnO₄ and conc H₂SO₄", "C. potassium trioxochlorate(V) and conc H₂SO₄", "D. K₂MnO₄ and conc H₂SO₄"], answer: "A. sodium chloride, conc H₂SO₄ and MnO₂", explanation: "MnCl₂ + H₂SO₄ + MnO₂ → Cl₂. The oxidation of HCl with MnO₂ in H₂SO₄ gives chlorine." },
+  { subject: "Chemistry", topic: "Atomic Structure", question: "An element with atomic number twelve is likely to be", options: ["A. electrovalent with valency of 1", "B. electrovalent with valency of 2", "C. covalent with valency of 2", "D. covalent with valency of 4"], answer: "B. electrovalent with valency of 2", explanation: "Element 12 is Magnesium (2,8,2). It loses 2 electrons to form Mg²⁺ — electrovalent bond with valency 2." },
+  { subject: "Chemistry", topic: "Acid-Base Chemistry", question: "Which of the following is an acid salt?", options: ["A. NaHSO₄", "B. Na₂SO₄", "C. CH₃CO₂Na", "D. Na₂S₂"], answer: "A. NaHSO₄", explanation: "NaHSO₄ is sodium hydrogen sulphate — an acid salt as it still contains a replaceable hydrogen." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "Which of the following compounds is NOT formed by the action of chlorine on methane?", options: ["A. CH₃Cl", "B. C₂H₅Cl", "C. CH₂Cl₂", "D. CHCl₃"], answer: "B. C₂H₅Cl", explanation: "Chlorination of methane produces CH₃Cl, CH₂Cl₂, CHCl₃, CCl₄. C₂H₅Cl (chloroethane) is not produced from methane." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "Starch can be converted to ethyl alcohol by", options: ["A. distillation", "B. fermentation", "C. isomerization", "D. cracking"], answer: "B. fermentation", explanation: "Starch is hydrolysed to glucose then fermented by yeast to produce ethanol." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "How many isomers can be formed from organic compounds with the formula C₃H₈O?", options: ["A. 2", "B. 3", "C. 4", "D. 5"], answer: "B. 3", explanation: "C₃H₈O isomers: 1-propanol, 2-propanol, and methyl ethyl ether (methoxyethane) = 3 isomers." },
+  { subject: "Chemistry", topic: "Electrochemistry", question: "Which of the following is an electrolyte?", options: ["A. alcohol", "B. sodium ethanoate", "C. solid potassium hydroxide", "D. mercury"], answer: "B. sodium ethanoate", explanation: "Sodium ethanoate in solution dissociates into ions and conducts electricity." },
+  { subject: "Chemistry", topic: "Nuclear Chemistry", question: "The equation: ¹⁴₇N + ⁴₂He → ¹⁷₈O + ¹₁P represents", options: ["A. nuclear fusion", "B. nuclear fission", "C. artificial radioactivity", "D. nuclear fission using positron"], answer: "C. artificial radioactivity", explanation: "This is an artificial nuclear reaction (transmutation) where nitrogen is bombarded with alpha particles to produce oxygen and a proton." },
+  { subject: "Chemistry", topic: "Acid-Base Chemistry", question: "Which of the following is a general method of preparing acids?", options: ["A. direct combination of constituent elements", "B. double decomposition involving a salt solution", "C. reaction between an anhydride and water", "D. reaction between a base and an amphoteric oxide"], answer: "C. reaction between an anhydride and water", explanation: "Acid anhydrides react with water to form acids: SO₃ + H₂O → H₂SO₄." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "Monosaccharides are:", options: ["A. hydrolysable", "B. non-hydrolysable", "C. not soluble in water", "D. sweet but sometimes non-sugary"], answer: "B. non-hydrolysable", explanation: "Monosaccharides are the simplest sugars and cannot be hydrolysed into simpler sugars." },
+  { subject: "Chemistry", topic: "Environmental Chemistry", question: "The major air pollutants that can result from smoky vehicles include", options: ["A. acid fumes", "B. hydrogen sulphide", "C. carbon(II) oxide", "D. carbon particles"], answer: "C. carbon(II) oxide", explanation: "Incomplete combustion in vehicles produces carbon monoxide (CO) as a major pollutant." },
 ]
-
-export default unibenChem2019
+export default chem2019

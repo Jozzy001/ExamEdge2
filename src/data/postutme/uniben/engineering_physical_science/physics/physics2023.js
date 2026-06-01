@@ -1,0 +1,8 @@
+export const physics2023 = [
+  { subject: "Physics", topic: "Thermometry", question: "A temperature of 20°C is the same as", options: ["A. 36°F", "B. 68°F", "C. 11.1°F", "D. 43.1°F"], answer: "B. 68°F", explanation: "°F = 9C/5 + 32 = 9×20/5 + 32 = 36 + 32 = 68°F." },
+  { subject: "Physics", topic: "Waves", question: "A guitar string is 75cm long. The wavelength of its fundamental note is", options: ["A. 75cm", "B. 150cm", "C. 37.5cm", "D. 112.5cm"], answer: "B. 150cm", explanation: "For fundamental mode, L = λ/2. λ = 2L = 2×75 = 150cm." },
+  { subject: "Physics", topic: "Optics", question: "A man standing between two parallel mirrors in a barber's shop will see the following number of his own image.", options: ["A. eight", "B. two", "C. four", "D. infinite"], answer: "D. infinite", explanation: "For two parallel mirrors (θ=0°), number of images = 360/θ - 1 = infinity." },
+  { subject: "Physics", topic: "Electrochemistry", question: "In an electrolysis experiment, a cathode of mass 5g is found to weigh 5.01g after a current of 5A flows for 50 seconds. What is the electrochemical equivalent of the deposited substance?", options: ["A. 0.00004g/C", "B. 0.00002g/C", "C. 0.02500g/C", "D. 0.05000g/C"], answer: "A. 0.00004g/C", explanation: "Z = m/It = 0.01/(5×50) = 0.01/250 = 0.00004g/C." },
+  { subject: "Physics", topic: "Waves", question: "Which of the following electromagnetic waves has the shortest wavelength?", options: ["A. radio waves", "B. x-rays", "C. infra-red", "D. ultraviolet"], answer: "B. x-rays", explanation: "In order of increasing wavelength: gamma, x-rays, ultraviolet, visible, infrared, microwave, radio. X-rays have shorter wavelength than the other options listed." },
+]
+export default physics2023

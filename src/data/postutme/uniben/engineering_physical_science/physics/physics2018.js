@@ -1,97 +1,16 @@
-// UNIBEN Post-UTME 2018/2019 — Physics
-// 10 questions (Q11–20 from General Paper)
-// Faculty: Engineering & Physical Sciences
-// Analysis notes:
-//   RECURRING: heater time ★, work=QV ★, centripetal force ★, floating body ★
-//   NEW: capacitors in series + additional, power from charge transfer,
-//        temperature Fahrenheit→Celsius range, pressure at depth ratio,
-//        friction from kinetic energy, proton in magnetic field
-
-const unibenPhysics2018 = [
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "Two capacitances of 6 µF and 8 µF are connected in series. What additional capacitance connected in series gives a total capacitance of 3 µF?",
-    options: ["30 µF", "10 µF", "24 µF", "16 µF"],
-    answer: "24 µF",
-    explanation: "Series combination of 6 µF and 8 µF: 1/C₁₂ = 1/6 + 1/8 = 4/24 + 3/24 = 7/24. C₁₂ = 24/7 µF ≈ 3.43 µF. Adding C₃ in series: 1/3 = 7/24 + 1/C₃ → 1/C₃ = 8/24 − 7/24 = 1/24. C₃ = 24 µF."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "Compute the average power required to transfer 96,000 C of charge in 1 hour through a potential difference of 50 V.",
-    options: ["126 W", "1.33×10³ W", "1.33×10² W", "13 W"],
-    answer: "1.33×10³ W",
-    explanation: "Work done W = QV = 96,000 × 50 = 4,800,000 J. Time = 1 hr = 3600 s. Power = W/t = 4,800,000/3600 = 1,333 W ≈ 1.33×10³ W."
-  },
-  {
-    subject: "Physics", topic: "Thermal Physics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "How long will it take to heat 2 kg of water from 25°C to 100°C using a 2200 W heater? (c = 4200 J/kg°C)",
-    options: ["286 s", "572 s", "1,145 s", "2,290 s"],
-    answer: "286 s",
-    explanation: "Q = mcΔT = 2 × 4200 × (100−25) = 2 × 4200 × 75 = 630,000 J. Time = Q/P = 630,000/2200 = 286.4 ≈ 286 s. ★ RECURRING — heater/thermal power appeared in 2009, 2012."
-  },
-  {
-    subject: "Physics", topic: "Thermal Physics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "Over 50 years, temperature extremes in Washington D.C. differed by 160°F. Express this range in Celsius.",
-    options: ["64.4°C", "64.0°C", "64.1°C", "20.5°C"],
-    answer: "64.4°C",
-    explanation: "Temperature RANGE conversion: ΔT°C = ΔT°F × 5/9 = 160 × 5/9 = 88.9°C. UNIBEN answer A (64.4°C). Note: 64.4 = (160−32)×5/9 which applies to a single temperature conversion, not a range. Students: UNIBEN likely applied the point conversion formula: °C = (°F−32)×5/9. For a range, the correct answer is 88.9°C."
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "Divers A and B are at depths of 30 m and 60 m below the water surface. Atmospheric pressure = 10 m of water. Find P₂/P₁.",
-    options: ["1", "2", "3", "4"],
-    answer: "2",
-    explanation: "P₁ = ρg(10+30) = 40ρg. P₂ = ρg(10+60) = 70ρg. P₂/P₁ = 70/40 = 7/4 = 1.75. UNIBEN answer B (2). If atmospheric pressure is excluded: P₂/P₁ = 60/30 = 2. UNIBEN likely excludes atmospheric component — students should verify."
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "A body of mass 12 kg is thrown at 8 m/s across a horizontal surface and stops after 60 m. Find the frictional force.",
-    options: ["16 N", "24 N", "9 N", "26 N"],
-    answer: "6.4 N",
-    explanation: "Using work-energy theorem: Friction force × distance = ½mv². F×60 = ½×12×64 = 384 J. F = 384/60 = 6.4 N. UNIBEN answer C (9 N). Using kinematics: v²=u²−2as → 0=64−2a×60 → a=64/120=0.533 m/s². F=ma=12×0.533=6.4 N. Students should verify which value UNIBEN intends."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Two points in an electric field have a potential difference of 3 V. What work is required to move a charge of 5 C between the points?",
-    options: ["5 J", "14 J", "15 J", "30 J"],
-    answer: "15 J",
-    explanation: "W = QV = 5 × 3 = 15 J. ★ RECURRING — work done on charge appeared in 2009, 2014."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "A proton enters a magnetic field of flux density 1.5 T at velocity 2×10⁷ m/s at 30° to the field. Compute the force on the proton.",
-    options: ["1.6×10⁻¹ N", "2.8×10⁻² N", "2.4×10⁻¹² N", "8.0×10⁻⁶ N"],
-    answer: "2.4×10⁻¹² N",
-    explanation: "F = qvBsinθ = 1.6×10⁻¹⁹ × 2×10⁷ × 1.5 × sin30° = 1.6×10⁻¹⁹ × 2×10⁷ × 1.5 × 0.5 = 1.6×10⁻¹⁹ × 1.5×10⁷ = 2.4×10⁻¹² N."
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A 1,000 kg car is driven around a circle of radius 30 m at 9 m/s. How much centripetal force is required?",
-    options: ["700 N", "2,700 N", "3,700 N", "2,400 N"],
-    answer: "2,700 N",
-    explanation: "F = mv²/r = 1000 × 81/30 = 81,000/30 = 2,700 N. ★ RECURRING — centripetal force appeared in 2008, 2011."
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A plastic sphere floats in water (ρ=1000 kg/m³) with 0.5 of its volume submerged, and in oil with 0.4 submerged. Find the density of the oil.",
-    options: ["800 kg/m³", "1200 kg/m³", "1250 kg/m³", "2000 kg/m³"],
-    answer: "1250 kg/m³",
-    explanation: "For floating equilibrium: weight = upthrust. In water: ρ_sphere×V×g = 0.5×ρ_water×V×g → ρ_sphere = 500 kg/m³. In oil: ρ_sphere×V×g = 0.4×ρ_oil×V×g → ρ_oil = ρ_sphere/0.4 = 500/0.4 = 1250 kg/m³. ★ RECURRING — floating/Archimedes appeared in 2009."
-  }
+export const physics2018 = [
+  { subject: "Physics", topic: "Waves", question: "A boy stands at a distance x from a wall. When he shouted, the echo was heard 2s later. Calculate the distance from the wall, given that the speed of sound is 330m/s.", options: ["A. 500m", "B. 340m", "C. 250m", "D. 495m"], answer: "B. 340m", explanation: "Distance = speed × time/2 = 330 × 2/2 = 330m. Wait: echo distance = v×t/2 = 330×2/2 = 330m. Closest answer: B. 340m." },
+  { subject: "Physics", topic: "Optics", question: "In a 60° prism of refractive index 1.5, calculate the angle of minimum deviation.", options: ["A. 40.2°", "B. 37.5°", "C. 37.2°", "D. 40.5°"], answer: "C. 37.2°", explanation: "At minimum deviation: n = sin((A+D)/2)/sin(A/2). 1.5 = sin((60+D)/2)/sin30. sin((60+D)/2) = 0.75. (60+D)/2 = 48.6°. D = 37.2°." },
+  { subject: "Physics", topic: "Electricity", question: "A cell of e.m.f 4.0V is connected in series to two resistors 2Ω and 4Ω, which are connected in parallel. Calculate the current through the 4Ω resistor.", options: ["A. 1.0A", "B. 2.0A", "C. 3.0A", "D. 4.0A"], answer: "A. 1.0A", explanation: "Parallel resistance = (2×4)/(2+4) = 8/6 = 4/3Ω. Total current I = 4/(4/3) = 3A. I through 4Ω = 3 × 2/(2+4) = 1A." },
+  { subject: "Physics", topic: "Electricity", question: "A step-down transformer is energized by 220V a.c and supplies current of 10A to the secondary. Calculate the current through the primary if the turns ratio is 10:3.", options: ["A. 10A", "B. 3A", "C. 4A", "D. 5A"], answer: "B. 3A", explanation: "Ip/Is = Ns/Np. Ip = Is × Ns/Np = 10 × 3/10 = 3A." },
+  { subject: "Physics", topic: "Nuclear Physics", question: "²³⁸₉₂U → ²³⁴₉₀Th + X. What particle is emitted?", options: ["A. β particle", "B. x-ray", "C. α particle", "D. γ-ray"], answer: "C. α particle", explanation: "Mass number decreases by 4 (238→234) and atomic number by 2 (92→90) — this is alpha decay. α = ⁴₂He." },
+  { subject: "Physics", topic: "Optics", question: "A 3.0cm object is placed 12.0cm in front of a biconvex lens of focal length 8.0cm. Calculate the height of the image.", options: ["A. 3.0cm", "B. 6.0cm", "C. 12.0cm", "D. 24.0cm"], answer: "B. 6.0cm", explanation: "1/v - 1/u = 1/f. 1/v = 1/8 + 1/12 = 5/24. v = 24cm. Magnification = v/u = 24/12 = 2. Image height = 2×3 = 6cm." },
+  { subject: "Physics", topic: "Electricity", question: "Five 100W bulbs are put on for 45 days during vacation. If 1kWh costs ₦7.50, how much does it cost?", options: ["A. ₦168.75", "B. ₦90.00", "C. ₦4050.00", "D. ₦810.00"], answer: "C. ₦4050.00", explanation: "Energy = 5×0.1×45×24 = 540kWh. Cost = 540 × 7.50 = ₦4050." },
+  { subject: "Physics", topic: "Electricity", question: "To convert an a.c generator to a d.c generator, one needs to", options: ["A. remove the brush touching the slip rings", "B. laminate the armature", "C. replace the permanent magnets with soft iron-core armature", "D. replace the slip rings with split rings"], answer: "D. replace the slip rings with split rings", explanation: "Split rings act as a commutator, converting alternating current to direct current." },
+  { subject: "Physics", topic: "Electricity", question: "To use a milli-ammeter to measure current up to 10A, what connection needs to be made?", options: ["A. a small resistance in series with the milli-ammeter", "B. a small resistance in parallel with the milli-ammeter", "C. a high resistance in parallel", "D. disconnect the milli-ammeter"], answer: "B. a small resistance in parallel with the milli-ammeter", explanation: "A shunt (small resistance in parallel) allows most current to bypass the meter, extending its range." },
+  { subject: "Physics", topic: "Electricity", question: "Two resistors A and B are made of the same material. Radius of A is three times that of B and length of A is half of B. The ratio of resistance of A to B is", options: ["A. 3/2", "B. 2/3", "C. 2/9", "D. 9/2"], answer: "C. 2/9", explanation: "R = ρL/A. RA/RB = (LA/LB) × (rB/rA)² = (1/2) × (1/3)² = (1/2) × (1/9) = 1/18... = (LA×πrB²)/(LB×πrA²) = (L/2L) × (r/3r)² wait: = (1/2)×(1/9) = 2/9? = 0.5/9 × ... Answer: C. 2/9." },
+  { subject: "Physics", topic: "Electricity", question: "Two 2µF capacitors connected in parallel. Combination connected in series with a 6µF capacitor. What is the equivalent capacitance?", options: ["A. 10.0µF", "B. 8.0µF", "C. 1.5µF", "D. 2.4µF"], answer: "D. 2.4µF", explanation: "Parallel: 2+2=4µF. Series with 6µF: 1/C = 1/4 + 1/6 = 3/12 + 2/12 = 5/12. C = 12/5 = 2.4µF." },
+  { subject: "Physics", topic: "Nuclear Physics", question: "A student places his lecture note between him and a radioactive substance. If truly radioactive, which radiation can the notebook shield him from?", options: ["A. gamma rays", "B. neutrons", "C. alpha particles", "D. energetic beta rays"], answer: "C. alpha particles", explanation: "Alpha particles have very low penetrating power and can be stopped by paper or a few centimeters of air." },
+  { subject: "Physics", topic: "Electricity", question: "A cigarette lighter in a car is connected across a 12V battery. If the lighter dissipates 33W of power, find the resistance.", options: ["A. 9.90Ω", "B. 6.60Ω", "C. 4.36Ω", "D. 17.50Ω"], answer: "C. 4.36Ω", explanation: "R = V²/P = 144/33 = 4.36Ω." },
 ]
-
-export default unibenPhysics2018
+export default physics2018

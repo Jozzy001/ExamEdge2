@@ -1,128 +1,18 @@
-// UNIBEN Post-UTME 2018/2019 — Chemistry
-// 10 questions (Q21–30 from General Paper)
-// Faculty: Engineering & Physical Sciences
-// Analysis notes:
-//   RECURRING: sublimation ★, nucleus composition ★, coordinate bond ★,
-//              hydrogen bonds/boiling point ★, Graham's law ★,
-//              Boyle's law ★, amphoteric ZnO ★, HOCl oxidising agent ★
-//   NEW: physical vs chemical change distinction, law of multiple proportions
-
-const unibenChem2018 = [
-  {
-    subject: "Chemistry", topic: "Separation Techniques", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A small quantity of solid NH₄Cl was heated gently. The solid disappeared, then a white cloudy deposit appeared on the cooler part of the test tube. NH₄Cl underwent:",
-    options: ["Distillation", "Sublimation", "Precipitation", "Evaporation"],
-    answer: "Sublimation",
-    explanation: "NH₄Cl sublimates — it converts directly from solid to gases (NH₃ + HCl) on heating, then recombines as white solid on the cooler part. Sublimation = solid→gas→solid without passing through liquid phase. ★ RECURRING — sublimation appeared in 2007, 2011."
-  },
-  {
-    subject: "Chemistry", topic: "Mixtures & Compounds", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "Which of the following changes is physical?",
-    options: [
-      "Adding iron filings to acidulated water",
-      "Aerating water",
-      "Adding sodium metal to water",
-      "Cooling sodium tetraoxosulphate(VI) solution to obtain the hydrated salt",
-      "Cooling water to obtain ice"
-    ],
-    answer: "Cooling water to obtain ice",
-    explanation: "Cooling water to ice is a physical change — it is reversible (melt → water again) and no new substance is formed (H₂O remains H₂O). Iron in acid and Na in water are chemical reactions. Crystallization of Na₂SO₄ involves a chemical change. Aerating water is physical but cooling to ice is the clearest physical change."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The nucleus of an atom contains:",
-    options: ["Protons only", "Neutrons only", "Protons and electrons", "Protons and neutrons"],
-    answer: "Protons and neutrons",
-    explanation: "The atomic nucleus contains protons (positive charge) and neutrons (no charge). Electrons orbit the nucleus in electron shells — they are NOT in the nucleus. Hydrogen-1 is the only atom with no neutrons (just 1 proton). ★ RECURRING — atomic structure every year."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The element X forms XCl₄, XCl₃, and XCl₂ with chlorine. This illustrates:",
-    options: [
-      "The law of multiple proportions",
-      "The law of chemical proportions",
-      "The law of simple proportions",
-      "The law of conservation of mass"
-    ],
-    answer: "The law of multiple proportions",
-    explanation: "Law of Multiple Proportions (Dalton): when two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in simple whole number ratios. X combines with Cl in ratios 4:3:2 (whole numbers) in XCl₄:XCl₃:XCl₂. ★ RECURRING."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "When ammonia and hydrogen ion bond together to form ammonium ion, the bond formed is called:",
-    options: ["Ionic bond", "Electrovalent bond", "Covalent bond", "Coordinate bond"],
-    answer: "Coordinate bond",
-    explanation: "NH₃ + H⁺ → NH₄⁺. The nitrogen in NH₃ has a lone pair which it donates to the empty orbital of H⁺. Since both electrons in the bond come from ONE atom (N), this is a coordinate (dative covalent) bond. ★ RECURRING — coordinate bond appeared in 2006, 2011."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The boiling point of water is higher than that of methanol because:",
-    options: [
-      "Water is an alcohol while methanol is an alcohol",
-      "Intermolecular forces in water are stronger than those in methanol",
-      "Water is an inorganic compound while methanol is organic",
-      "Water is an ionic compound while methanol is covalent"
-    ],
-    answer: "Intermolecular forces in water are stronger than those in methanol",
-    explanation: "Water has an extensive network of hydrogen bonds (O-H...O) — stronger than those in methanol (CH₃OH, which has only one OH). Stronger intermolecular forces = more energy needed to vaporise = higher boiling point. ★ RECURRING — hydrogen bonds/water bp appeared in 2006, 2010."
-  },
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "30 cm³ of oxygen diffuses through a porous pot in 7 seconds. How long for 60 cm³ of chlorine? (Vapour densities: O₂=16, Cl₂=36)",
-    options: ["9.3 seconds", "14 seconds", "21 seconds", "28 seconds"],
-    answer: "28 seconds",
-    explanation: "Graham's law: rate ∝ 1/√M. r_O₂/r_Cl₂ = √(M_Cl₂/M_O₂) = √(36/16) = 6/4 = 3/2. Rate of O₂ = 30/7 cm³/s. Rate of Cl₂ = (2/3)×(30/7) = 20/7 cm³/s. Time for 60 cm³ Cl₂ = 60/(20/7) = 60×7/20 = 21 s. UNIBEN answer D (28 s). Students should verify the calculation step. ★ RECURRING — Graham's law."
-  },
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Which of the following statements is true?",
-    options: [
-      "An increase in temperature of a given mass of gas increases the number of gas molecules",
-      "An increase in temperature of a gas does not affect its kinetic energy",
-      "An increase in the pressure of a gas is proportional to the increase in volume",
-      "A decrease in the pressure of a gas is proportional to the increase in volume at constant temperature"
-    ],
-    answer: "A decrease in the pressure of a gas is proportional to the increase in volume at constant temperature",
-    explanation: "Boyle's Law: P ∝ 1/V at constant temperature → as P decreases, V increases proportionally. Temperature increases kinetic energy (A and B are wrong). Increased pressure DECREASES volume (C is wrong). ★ RECURRING — Boyle's law appeared every year."
-  },
-  {
-    subject: "Chemistry", topic: "Acids, Bases & Salts", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Zinc oxide is:",
-    options: ["A basic oxide", "An acidic oxide", "An amphoteric oxide", "A neutral oxide"],
-    answer: "An amphoteric oxide",
-    explanation: "ZnO is amphoteric — it reacts with both acids AND bases. With acid: ZnO + H₂SO₄ → ZnSO₄ + H₂O. With base: ZnO + 2NaOH → Na₂ZnO₂ + H₂O. Other amphoteric oxides: Al₂O₃, PbO, SnO. ★ RECURRING — amphoteric appeared in 2007, 2012."
-  },
-  {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2018, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Hypochlorous acid is used as a bleach because:",
-    options: [
-      "It is a strong acid",
-      "It yields chlorine readily in pure water",
-      "It is an oxidizing agent",
-      "It is weakly acidic"
-    ],
-    answer: "It is an oxidizing agent",
-    explanation: "HOCl bleaches by oxidation — it oxidises coloured compounds (chromophores), destroying the colour. Its bleaching power comes from its strong oxidising ability, not its acidity. HOCl is actually a WEAK acid. ★ RECURRING — HOCl oxidising agent appeared in 2010."
-  }
+export const chem2018 = [
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "The flame used by welders in cutting metals is", options: ["A. butane gas flame", "B. acetylene-hydrogen flame", "C. kerosene flame", "D. oxy-acetylene flame"], answer: "D. oxy-acetylene flame", explanation: "Welders use oxy-acetylene flame (mixture of oxygen and acetylene) which burns at ~3500°C." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "Consecutive members of an alkane homologous series differ by", options: ["A. CH", "B. CH₂", "C. CH₃", "D. C₃H₃"], answer: "B. CH₂", explanation: "Each successive member of the alkane series has one more CH₂ group (methylene group)." },
+  { subject: "Chemistry", topic: "Metals", question: "Which of these will dissolve in HCl? Mg, Fe, Pb and Cu.", options: ["A. all the metals", "B. Mg, Fe and Cu", "C. Mg, Fe and Pb", "D. Mg and Fe only"], answer: "C. Mg, Fe and Pb", explanation: "Cu is below hydrogen in the activity series and won't dissolve in HCl. Mg, Fe and Pb dissolve in HCl." },
+  { subject: "Chemistry", topic: "Alloys", question: "Stainless steel is an alloy of", options: ["A. carbon, iron and copper", "B. carbon, iron and silver", "C. carbon and iron only", "D. iron, chromium and nickel"], answer: "D. iron, chromium and nickel", explanation: "Stainless steel is an alloy of iron with chromium (min 10.5%) and nickel for corrosion resistance." },
+  { subject: "Chemistry", topic: "Volumetric Analysis", question: "What volume of 0.5M H₂SO₄ will exactly neutralize 20cm³ of 0.1M NaOH solution?", options: ["A. 2.0cm³", "B. 5.0cm³", "C. 6.8cm³", "D. 8.3cm³"], answer: "A. 2.0cm³", explanation: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. CAVA/CBVB = 1/2. (0.5×VA)/(0.1×20) = 1/2. VA = 2.0cm³." },
+  { subject: "Chemistry", topic: "Redox Chemistry", question: "A gas that can behave as a reducing agent towards chlorine and as an oxidizing agent towards hydrogen sulphide is", options: ["A. O₂", "B. NO", "C. SO₂", "D. NH₃"], answer: "C. SO₂", explanation: "SO₂ is oxidized by Cl₂ to SO₃ (reducing agent) and oxidizes H₂S to S (oxidizing agent)." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "An element that can exist in two or more different structural forms with the same chemical properties is said to exhibit", options: ["A. polymerism", "B. isotopy", "C. isomorphism", "D. allotropy"], answer: "D. allotropy", explanation: "Allotropy is the property of an element to exist in two or more different physical forms (e.g., diamond and graphite for carbon)." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "The hybridization of the carbon atom in ethyne is", options: ["A. SP³", "B. SP³", "C. SP²", "D. SP"], answer: "D. SP", explanation: "In ethyne (acetylene, HC≡CH), carbon atoms are sp hybridized due to the triple bond." },
+  { subject: "Chemistry", topic: "Industrial Chemistry", question: "In the Haber process for the manufacture of ammonia, finely divided iron is used as", options: ["A. an ionizing agent", "B. a reducing agent", "C. a catalyst", "D. a dehydrating agent"], answer: "C. a catalyst", explanation: "Iron (with promoters Al₂O₃ and K₂O) acts as a catalyst in the Haber process: N₂ + 3H₂ ⇌ 2NH₃." },
+  { subject: "Chemistry", topic: "Chemistry of Non-metals", question: "Nitrogen can best be obtained from a mixture of oxygen and nitrogen by passing the mixture over", options: ["A. potassium hydroxide", "B. heated gold", "C. heated magnesium", "D. heated phosphorus"], answer: "D. heated phosphorus", explanation: "Phosphorus reacts with oxygen in the mixture, leaving behind pure nitrogen." },
+  { subject: "Chemistry", topic: "Gas Laws", question: "At STP, how many litres of hydrogen can be obtained from the reaction of 500cm³ of 0.5M H₂SO₄ with excess zinc metal?", options: ["A. 22.4dm³", "B. 11.2dm³", "C. 65dm³", "D. 5.6dm³"], answer: "D. 5.6dm³", explanation: "Zn + H₂SO₄ → ZnSO₄ + H₂. Moles H₂SO₄ = 0.5×0.5 = 0.25mol. Moles H₂ = 0.25mol. Volume = 0.25×22.4 = 5.6dm³." },
+  { subject: "Chemistry", topic: "Analytical Chemistry", question: "Tetraoxosulphate(VI) ions are confirmed using", options: ["A. acidified silver nitrate", "B. acidified barium chloride", "C. lime water", "D. dilute hydrochloric acid"], answer: "B. acidified barium chloride", explanation: "SO₄²⁻ ions give a white precipitate of BaSO₄ with acidified BaCl₂ solution — insoluble in HCl." },
+  { subject: "Chemistry", topic: "Metals", question: "Which of the following is NOT the correct product when the parent metal is heated in air?", options: ["A. calcium oxide (CaO)", "B. sodium oxide (Na₂O)", "C. copper(II) oxide (CuO)", "D. triiron tetraoxide (Fe₃O₄)"], answer: "B. sodium oxide (Na₂O)", explanation: "Sodium burns in excess air to form sodium peroxide (Na₂O₂), not sodium oxide (Na₂O)." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "Which of the following roles does sodium chloride play in soap preparation?", options: ["A. reacts with glycerol", "B. purifies the soap", "C. accelerates decomposition of fat and oil", "D. separates the soap from the glycerol"], answer: "D. separates the soap from the glycerol", explanation: "Salt (NaCl) is added to 'salt out' the soap — it causes the soap to precipitate and separate from the glycerol." },
+  { subject: "Chemistry", topic: "Organic Chemistry", question: "The function of sulphur during vulcanization of rubber is to", options: ["A. act as catalyst for polymerization", "B. convert rubber from thermosetting to thermoplastic polymer", "C. form chains which bind rubber molecules together", "D. break down rubber polymer molecule"], answer: "C. form chains which bind rubber molecules together", explanation: "Sulphur creates cross-links (sulphur bridges) between rubber polymer chains, making it harder and more elastic." },
 ]
-
-export default unibenChem2018
+export default chem2018

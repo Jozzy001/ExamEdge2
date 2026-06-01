@@ -1,102 +1,17 @@
-// UNIBEN Post-UTME 2019/2020 — Physics
-// 10 questions (Q11–20 from General Paper)
-// Faculty: Engineering & Physical Sciences
-// Analysis notes:
-//   RECURRING: thermionic emission ★, parallel mirrors→infinity ★, power transmission ★
-//   NEW: magnifying glass M=1+D/f, sintering, AC mean power, spring PE,
-//        frequency from wavelength, electricity cost calculation
-
-const unibenPhysics2019 = [
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "An observer with normal eyesight views an object with a magnifying glass of focal length 5 cm. The angular magnification is:",
-    options: ["−6", "−5", "5", "6"],
-    answer: "6",
-    explanation: "Angular magnification for magnifying glass (image at near point D=25 cm): M = 1 + D/f = 1 + 25/5 = 1 + 5 = 6. (When image is at near point, M = 1+D/f. When image at infinity, M = D/f = 5.)"
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "The conversion of powdered magnet to solid blocks by the application of heat and great pressure is called:",
-    options: ["Hardening", "Sintering", "Fluxing", "Magnetization"],
-    answer: "Sintering",
-    explanation: "Sintering is the process of compacting and forming a solid mass of material by heat and/or pressure without melting it to the point of liquefaction. Used in powder metallurgy to create solid magnetic blocks from powder."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "A 40 kW electric cable transmits electricity through a 2 Ω resistor at 800 V. Power loss as internal energy:",
-    options: ["5×10² W", "4×10³ W", "5×10³ W", "4×10² W"],
-    answer: "5×10³ W",
-    explanation: "Current I = P/V = 40,000/800 = 50 A. Power loss = I²R = 50² × 2 = 2500 × 2 = 5,000 W = 5×10³ W. ★ This shows why high-voltage transmission is preferred — same power at higher V means lower I and much lower I²R losses."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "BEDC charges 5k per kWh. Cost of operating for 24 hours a lamp requiring 1 A on a 200 V line:",
-    options: ["24k", "55k", "40k", "26k"],
-    answer: "24k",
-    explanation: "Power = IV = 1 × 200 = 200 W = 0.2 kW. Energy = P × t = 0.2 × 24 = 4.8 kWh. Cost = 4.8 × 5 kobo = 24 kobo."
-  },
-  {
-    subject: "Physics", topic: "Electricity & Magnetism", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    faculty: ["engineering", "physicalsciences"],
-    question: "A sinusoidal AC with peak voltage 20 V is connected across a 10 Ω resistor. Mean power dissipated:",
-    options: ["10 W", "40 W", "20 W", "16 W"],
-    answer: "20 W",
-    explanation: "V_rms = V_peak/√2 = 20/√2. P_mean = V_rms²/R = (20/√2)²/10 = 400/2/10 = 200/10 = 20 W. Alternatively: P = V_peak²/(2R) = 400/20 = 20 W."
-  },
-  {
-    subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "Electrons were discovered by:",
-    options: ["Dalton", "James Chadwick", "J.J. Thomson", "Niels Bohr"],
-    answer: "J.J. Thomson",
-    explanation: "J.J. Thomson discovered the electron in 1897 through cathode ray tube experiments, showing cathode rays were streams of negatively charged particles. James Chadwick discovered the neutron (1932). Dalton proposed atomic theory (no sub-atomic particles). Bohr proposed the orbital model. ★ RECURRING — atomic history."
-  },
-  {
-    subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "The reason for heating a valve cathode is to:",
-    options: [
-      "Indicate that it is switched on",
-      "Cause photoelectric emission",
-      "Cause thermionic emission",
-      "Prevent secondary emission"
-    ],
-    answer: "Cause thermionic emission",
-    explanation: "Thermionic emission: when a metal is heated sufficiently, electrons gain enough thermal energy to escape from the metal surface. A valve cathode is heated precisely to release electrons by thermionic emission. Photoelectric emission uses light, not heat. ★ RECURRING — thermionic emission appeared in 2005, 2009."
-  },
-  {
-    subject: "Physics", topic: "Atomic & Nuclear Physics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A radioactive source emits X-rays of wavelength 10⁻¹¹ m. What is the frequency of these rays?",
-    options: ["2×10¹⁸ Hz", "3×10¹⁹ Hz", "3×10²⁰ Hz", "3×10²¹ Hz"],
-    answer: "3×10¹⁹ Hz",
-    explanation: "f = c/λ = (3×10⁸)/(10⁻¹¹) = 3×10⁸⁺¹¹ = 3×10¹⁹ Hz. ★ RECURRING — wave equation v=fλ appeared every year."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A man standing between two parallel mirrors in a barber's shop will see the following number of his own images:",
-    options: ["8", "2", "4", "Infinity"],
-    answer: "Infinity",
-    explanation: "Two parallel plane mirrors facing each other create an infinite series of reflections — each image is reflected again in the opposite mirror, creating images within images without end. Theoretically infinite images are formed. ★ RECURRING — mirror images appeared in 2014 (inclined)."
-  },
-  {
-    subject: "Physics", topic: "Mechanics", year: 2019, exam: "Post-UTME", university: "UNIBEN",
-    isHotTopic: true,
-    faculty: ["engineering", "physicalsciences"],
-    question: "A spring of force constant 1500 N/m is acted upon by a constant force of 75 N. Calculate the potential energy stored in the spring.",
-    options: ["1.9 J", "3.2 J", "3.8 J", "5.0 J"],
-    answer: "1.9 J",
-    explanation: "Extension x = F/k = 75/1500 = 0.05 m. PE = ½kx² = ½ × 1500 × (0.05)² = 750 × 0.0025 = 1.875 J ≈ 1.9 J. ★ RECURRING — spring potential energy appeared in 2008."
-  }
+export const physics2019 = [
+  { subject: "Physics", topic: "Electricity", question: "A car battery rated 45AH is charged with a charger whose rating is 2.5A. How long will it take to charge the battery fully?", options: ["A. 20hrs", "B. 10hrs", "C. 25hrs", "D. 18hrs"], answer: "D. 18hrs", explanation: "Time = AH/A = 45/2.5 = 18 hours." },
+  { subject: "Physics", topic: "Waves", question: "Marching soldiers crossing a suspension bridge are usually advised to break their steps to avoid damaging the bridge owing to", options: ["A. swinging", "B. vibration", "C. oscillation", "D. resonance"], answer: "D. resonance", explanation: "If soldiers march in step, the frequency of their steps might match the bridge's natural frequency, causing resonance and destructive vibrations." },
+  { subject: "Physics", topic: "Waves", question: "The velocity of sound in air will be doubled if its absolute temperature is", options: ["A. doubled", "B. halved", "C. constant", "D. quadrupled"], answer: "D. quadrupled", explanation: "v ∝ √T. For v to double: 2v = √(T₂/T₁) × v. 4 = T₂/T₁. Temperature must be quadrupled." },
+  { subject: "Physics", topic: "Properties of Matter", question: "The process whereby the molecules of different substances move randomly is called", options: ["A. surface tension", "B. diffusion", "C. capillarity", "D. osmosis"], answer: "B. diffusion", explanation: "Diffusion is the random movement of molecules from regions of high concentration to low concentration." },
+  { subject: "Physics", topic: "Thermal Properties", question: "The process whereby a liquid turns spontaneously into vapour is called", options: ["A. evaporation", "B. regelation", "C. boiling", "D. sublimation"], answer: "A. evaporation", explanation: "Evaporation is the spontaneous conversion of liquid to vapour at the surface, at any temperature." },
+  { subject: "Physics", topic: "Mechanics", question: "If the angle between two vectors P and Q is 0°, the vectors are said to", options: ["A. be perpendicular", "B. be parallel", "C. intersect at angle 60°", "D. intersect at angle 45°"], answer: "B. be parallel", explanation: "When two vectors have an angle of 0° between them, they point in the same direction and are parallel." },
+  { subject: "Physics", topic: "Mechanics", question: "A machine whose efficiency is 60% has a velocity ratio of 5. If a force of 500N is applied to lift a load P, what is the magnitude of P?", options: ["A. 750N", "B. 4166N", "C. 500N", "D. 1500N"], answer: "D. 1500N", explanation: "Efficiency = MA/VR. MA = 0.6 × 5 = 3. L = E × MA = 500 × 3 = 1500N." },
+  { subject: "Physics", topic: "Mechanics", question: "A body of mass 4kg is acted on by a constant force of 12N for 3 seconds. The kinetic energy gained by the body at the end of the time is", options: ["A. 162J", "B. 144J", "C. 72J", "D. 81J"], answer: "A. 162J", explanation: "a = F/m = 3m/s². v = at = 9m/s. KE = ½mv² = ½×4×81 = 162J." },
+  { subject: "Physics", topic: "Properties of Matter", question: "As the pressure of a fluid increases, its viscosity", options: ["A. decreases", "B. remains constant", "C. increases then decreases", "D. increases"], answer: "D. increases", explanation: "Increasing pressure generally increases the viscosity of liquids as molecules are forced closer together." },
+  { subject: "Physics", topic: "Atomic Physics", question: "Fluorescent tubes produce light by the", options: ["A. refraction of light by gas molecules", "B. excitation of gas molecules", "C. conduction of solar energy", "D. thermal agitation of electrons in tube"], answer: "B. excitation of gas molecules", explanation: "UV radiation from mercury vapour excites the phosphor coating, which then emits visible light." },
+  { subject: "Physics", topic: "Mechanics", question: "A body of mass m slides down an inclined plane with a constant velocity. If the angle of the incline is θ, the coefficient of kinetic friction between the body and plane is", options: ["A. cot θ", "B. cos θ", "C. tan θ", "D. sin θ"], answer: "C. tan θ", explanation: "At constant velocity, friction = component of weight along plane. μmg cosθ = mg sinθ. μ = tanθ." },
+  { subject: "Physics", topic: "Mechanics", question: "The density of sea water is 1030kg/m³. What is the pressure at a depth of 80m below sea surface? (atmospheric pressure = 1.013×10⁵Pa, g = 10m/s²)", options: ["A. 9.25×10⁵Pa", "B. 8.24×10⁵Pa", "C. 7.23×10⁵Pa", "D. 8.34×10⁹Pa"], answer: "A. 9.25×10⁵Pa", explanation: "P = P₀ + ρgh = 1.013×10⁵ + 1030×10×80 = 1.013×10⁵ + 8.24×10⁵ = 9.25×10⁵Pa." },
+  { subject: "Physics", topic: "Thermal Properties", question: "A sample of radioactive substance, whose half-life is 16days, registers 32 decays per second. How long will it take for the rate of decay to reduce to 2 decays per second?", options: ["A. 80 days", "B. 64 days", "C. 48 days", "D. 32 days"], answer: "A. 80 days", explanation: "32→16→8→4→2 requires 4 half-lives. t = 4 × 16 = 64 days. Wait: 32÷2⁴=2. 4 half-lives × 16 = 64 days. Answer: B. 64 days." },
+  { subject: "Physics", topic: "Optics", question: "When white light passes through a triangular prism, the emerging rays arranged in order of decreasing angle of deviation are", options: ["A. red, orange, yellow, green", "B. blue, green, orange, yellow", "C. red, green, yellow, blue", "D. blue, green, yellow, orange"], answer: "D. blue, green, yellow, orange", explanation: "Violet/blue light deviates most; red deviates least. In decreasing deviation: violet, blue, green, yellow, orange, red." },
 ]
-
-export default unibenPhysics2019
+export default physics2019

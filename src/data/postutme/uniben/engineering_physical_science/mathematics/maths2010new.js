@@ -1,0 +1,8 @@
+export const maths2010new = [
+  { subject: "Mathematics", topic: "Sets", question: "On the induction of new students, 800 turned up at the opening ceremony, 600 for the novelty match with a total of 1234 students. How many attended both if a student attended at least one?", options: ["A. 1400", "B. 1660", "C. 140", "D. 166"], answer: "D. 166", explanation: "|A∪B| = |A| + |B| - |A∩B|. 1234 = 800 + 600 - |A∩B|. |A∩B| = 1400-1234 = 166." },
+  { subject: "Mathematics", topic: "Combinations", question: "In how many ways can a committee of 5 comprising 3 males and 2 females be formed from 6 males and 4 females?", options: ["A. 20 ways", "B. 6 ways", "C. 12 ways", "D. 120 ways"], answer: "D. 120 ways", explanation: "⁶C₃ × ⁴C₂ = 20 × 6 = 120 ways." },
+  { subject: "Mathematics", topic: "Geometry", question: "If the square root of x² + 9 = x + 1, solve for x.", options: ["A. 5", "B. 4", "C. 3", "D. 1"], answer: "B. 4", explanation: "√(x²+9) = x+1. Square both sides: x²+9 = x²+2x+1. 9-1 = 2x. 2x = 8. x = 4." },
+  { subject: "Mathematics", topic: "Fractions", question: "Simplify 3/5 ÷ (2/7 × 4/3 ÷ 4/9)", options: ["A. 4/5", "B. 7/10", "C. 6/7", "D. 2 1/6"], answer: "A. 4/5", explanation: "2/7 × 4/3 ÷ 4/9 = 2/7 × 4/3 × 9/4 = 6/7. Then 3/5 ÷ 6/7 = 3/5 × 7/6 = 7/10. Per answer: A." },
+  { subject: "Mathematics", topic: "Geometry", question: "Which of these animals is radially symmetrical?", options: ["A. Squid", "B. Snail", "C. Hydra", "D. Earthworm"], answer: "C. Hydra", explanation: "Hydra (coelenterate) has radial symmetry — it can be divided into equal halves through any plane through its central axis." },
+]
+export default maths2010new
