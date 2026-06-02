@@ -386,6 +386,50 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
           </>
         )}
 
+        {/* ===== SUBSCRIPTION & REFERRAL ===== */}
+        {sectionTitle("💎 Plan & Referral")}
+
+        {/* Plan status */}
+        {!isPaid ? (
+          <div style={{
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            borderRadius: "var(--radius-xl)", padding: 20, marginBottom: 12, color: "#fff"
+          }}>
+            <div style={{ fontSize: 32, marginBottom: 8 }}>🚀</div>
+            <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 6 }}>Upgrade to Full Access</div>
+            <div style={{ fontSize: 13, opacity: 0.85, marginBottom: 16 }}>
+              Unlock all 20 years · Hot Topics · Weak Areas · CBT History
+            </div>
+            <button onClick={() => onNavigate("upgrade")} style={{
+              background: "#fff", color: "#667eea",
+              border: "none", borderRadius: 10,
+              padding: "12px 24px", fontWeight: 700,
+              fontSize: 14, cursor: "pointer", width: "100%",
+              fontFamily: "var(--font-main)"
+            }}>
+              Get Full Access — ₦2,500
+            </button>
+          </div>
+        ) : (
+          <div style={{
+            background: "rgba(34,201,122,0.08)",
+            border: "1px solid rgba(34,201,122,0.3)",
+            borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 12,
+            display: "flex", alignItems: "center", gap: 12
+          }}>
+            <span style={{ fontSize: 28 }}>💎</span>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)" }}>Full Access</div>
+              <div style={{ fontSize: 12, color: "#15803d", fontWeight: 600 }}>
+                ✓ All features unlocked · Paid on {userData?.paidAt ? new Date(userData.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—"}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Referral card — shown to ALL users */}
+        <ReferralCard userData={userData} />
+
         {/* ===== SUPPORT ===== */}
         {sectionTitle("💬 Support")}
 

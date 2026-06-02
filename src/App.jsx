@@ -287,6 +287,8 @@ function App() {
           faculty={faculty}
           university={university}
           examType={examType}
+          isPaid={userData?.isPaid}
+          userData={userData}
         />
       )
 
