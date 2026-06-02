@@ -286,6 +286,7 @@ function App() {
           authUser={authUser}
           faculty={faculty}
           university={university}
+          examType={examType}
         />
       )
 

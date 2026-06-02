@@ -8,7 +8,7 @@ import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
 
-const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, isPaid, userData }) => {
+const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()
   const [editingUsername, setEditingUsername] = useState(false)
   const [newUsername, setNewUsername] = useState(authUser?.name || "")
@@ -561,7 +561,7 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
 
         {/* App version */}
         <div style={{ textAlign: "center", fontSize: 11, color: "var(--text3)", marginTop: 8 }}>
-          ExamEdgeNG v1.0 · Post-UTME Prep
+          ExamEdgeNG v1.0 · {examType === "jamb" ? "JAMB Prep" : examType === "postutme" ? "Post-UTME Prep" : "Exam Prep"}
         </div>
 
       </div>

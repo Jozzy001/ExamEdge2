@@ -314,7 +314,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
             <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
               <div style={{ fontSize: 56, marginBottom: 16 }}>🎓</div>
               <h2 className="ee-title">Welcome Back</h2>
-              <p className="ee-subtitle">Log in to continue your Post-UTME prep.</p>
+              <p className="ee-subtitle">Log in to continue your exam prep.</p>
             </div>
 
             <label style={labelStyle}>Email Address</label>
