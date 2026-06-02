@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { getCBTHistory, getCBTPersonalBest, deleteCBTRecord, formatDate, formatTime } from "../utils/cbtHistory"
 
-const CBTHistory = ({ onNavigate, onReview }) => {
+const CBTHistory = ({ onNavigate, onBack, onReview }) => {
   const [history, setHistory] = useState([])
   const personalBest = getCBTPersonalBest()
 
@@ -20,7 +20,7 @@ const CBTHistory = ({ onNavigate, onReview }) => {
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+        <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "16px" }}>CBT History</span>
         <span style={{ width: 60 }} />
       </header>

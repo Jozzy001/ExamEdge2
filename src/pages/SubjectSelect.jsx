@@ -27,16 +27,16 @@ const getSubjects = (questions) => {
   return [...set]
 }
 
-const SubjectSelect = ({ onNavigate, mode, examType = "jamb", university = null, allowedSubjects = null }) => {
+const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university = null, allowedSubjects = null }) => {
   const questionPool = examType === "postutme" && university
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
     : jambQuestions
 
+  // For post-utme, only show subjects relevant to the faculty
   const allSubjects = getSubjects(questionPool)
   const subjects = allowedSubjects
     ? allSubjects.filter(s => allowedSubjects.includes(s))
     : allSubjects
-
   const isCBT = mode === "cbt"
   const [selected, setSelected] = useState([])
 
@@ -64,7 +64,7 @@ const SubjectSelect = ({ onNavigate, mode, examType = "jamb", university = null,
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+        <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800 }}>{isCBT ? "CBT Mode 🧪" : "Study Mode 📚"}</span>
         <span style={{ width: 60 }} />
       </header>

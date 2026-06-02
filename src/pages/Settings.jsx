@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import { signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
-import { doc, updateDoc, collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { doc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs } from "firebase/firestore"
+import ReferralCard from "../components/ReferralCard"
+import { PageTransition } from "../components/LoadingScreen"
 import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
 
-const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
+const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, isPaid, userData }) => {
   const { dark, toggleTheme } = useTheme()
   const [editingUsername, setEditingUsername] = useState(false)
   const [newUsername, setNewUsername] = useState(authUser?.name || "")
@@ -18,9 +20,33 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
   const [showContactForm, setShowContactForm] = useState(false)
+  const [showInbox, setShowInbox] = useState(false)
   const [contactMessage, setContactMessage] = useState("")
 
+  const [myMessages, setMyMessages] = useState([])
+  const [showMessages, setShowMessages] = useState(false)
+
   const gameState = getGameState()
+
+  // Fetch user's messages and replies
+  useEffect(() => {
+    const fetchMyMessages = async () => {
+      if (!auth.currentUser?.uid) return
+      try {
+        const q = query(
+          collection(db, "messages"),
+          where("uid", "==", auth.currentUser.uid)
+        )
+        const snap = await getDocs(q)
+        const msgs = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+        msgs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0))
+        setMyMessages(msgs)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    fetchMyMessages()
+  }, [])
 
   const handleSendMessage = async () => {
     if (!contactMessage.trim()) return
@@ -88,7 +114,7 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to log out?")) {
       await signOut(auth)
-      window.location.reload()
+      // Don't reload — let onAuthStateChanged in App handle the state reset
     }
   }
 
@@ -125,9 +151,10 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
   )
 
   return (
+    <PageTransition>
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+        <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "16px" }}>Settings</span>
         <span style={{ width: 60 }} />
       </header>
@@ -362,70 +389,161 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
         {/* ===== SUPPORT ===== */}
         {sectionTitle("💬 Support")}
 
-        {!showContactForm ? (
-          <div style={{
-            display: "flex", alignItems: "center", gap: 12,
-            background: "var(--surface)", border: "1px solid var(--border)",
-            borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
-          }}>
+        {/* Support inbox */}
+        <div style={{
+          background: "var(--surface)", border: "1px solid var(--border)",
+          borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: 8
+        }}>
+          {/* Collapsed button — always visible */}
+          <div
+            onClick={() => { setShowInbox(p => !p); setShowContactForm(false) }}
+            style={{
+              padding: "14px 16px", cursor: "pointer",
+              display: "flex", alignItems: "center", gap: 12
+            }}
+          >
             <span style={{ fontSize: 20 }}>💬</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>Contact Support</div>
-              <div style={{ fontSize: 11, color: "var(--text3)" }}>Send a message to the admin</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", display: "flex", alignItems: "center", gap: 8 }}>
+                Contact Support
+                {myMessages.some(m => m.replied) && (
+                  <span style={{
+                    fontSize: 10, fontWeight: 800,
+                    background: "#22c55e", color: "#fff",
+                    padding: "2px 8px", borderRadius: 10,
+                  }}>NEW REPLY</span>
+                )}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text3)" }}>
+                {myMessages.length === 0
+                  ? "Send a message to the admin"
+                  : `${myMessages.length} message${myMessages.length !== 1 ? "s" : ""} · tap to view`}
+              </div>
             </div>
-            <button onClick={() => { setShowContactForm(true); setSuccess(""); setError("") }} style={{
-              background: "var(--primary-light)", color: "var(--primary-text)",
-              border: "none", borderRadius: "var(--radius-sm)", padding: "6px 12px",
-              fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
-            }}>Message</button>
+            <span style={{ fontSize: 16, color: "var(--text3)", transition: "transform 0.2s", transform: showInbox ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
           </div>
-        ) : (
-          <div style={{
-            background: "var(--surface)", border: "1px solid var(--border)",
-            borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
-          }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>
-              💬 Send a message
+
+          {/* Expanded inbox */}
+          {showInbox && (
+            <div style={{ borderTop: "1px solid var(--border)" }}>
+
+              {/* Messages thread */}
+              {myMessages.length > 0 && (
+                <div style={{ padding: "12px 16px" }}>
+                  {myMessages.map((msg, i) => (
+                    <div key={msg.id} style={{
+                      marginBottom: i < myMessages.length - 1 ? 16 : 0,
+                      paddingBottom: i < myMessages.length - 1 ? 16 : 0,
+                      borderBottom: i < myMessages.length - 1 ? "1px solid var(--border)" : "none"
+                    }}>
+                      {/* User's message */}
+                      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+                        <div style={{
+                          maxWidth: "85%",
+                          background: "var(--primary)", color: "#fff",
+                          borderRadius: "14px 14px 4px 14px",
+                          padding: "10px 14px", fontSize: 13, lineHeight: 1.5,
+                        }}>
+                          <div style={{ fontSize: 10, opacity: 0.75, marginBottom: 4, fontWeight: 700 }}>
+                            You · {msg.createdAt?.toDate
+                              ? msg.createdAt.toDate().toLocaleDateString("en-NG", { day: "numeric", month: "short" })
+                              : "—"}
+                          </div>
+                          {msg.message}
+                        </div>
+                      </div>
+                      {/* Admin reply */}
+                      {msg.lastReply ? (
+                        <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                          <div style={{
+                            maxWidth: "85%",
+                            background: "var(--surface2)", border: "1px solid var(--border)",
+                            borderRadius: "14px 14px 14px 4px",
+                            padding: "10px 14px", fontSize: 13, lineHeight: 1.5, color: "var(--text)"
+                          }}>
+                            <div style={{ fontSize: 10, color: "var(--primary)", marginBottom: 4, fontWeight: 800 }}>
+                              ExamEdgeNG Support · {msg.repliedAt
+                                ? new Date(msg.repliedAt).toLocaleDateString("en-NG", { day: "numeric", month: "short" })
+                                : "—"}
+                            </div>
+                            {msg.lastReply}
+                          </div>
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: 11, color: "var(--text3)", fontStyle: "italic", textAlign: "center", padding: "4px 0" }}>
+                          ⏳ We'll reply soon...
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* New message form */}
+              <div style={{ padding: "12px 16px", borderTop: myMessages.length > 0 ? "1px solid var(--border)" : "none" }}>
+                {!showContactForm ? (
+                  <button
+                    onClick={() => setShowContactForm(true)}
+                    style={{
+                      width: "100%", padding: "11px",
+                      background: "var(--primary)", color: "#fff",
+                      border: "none", borderRadius: "var(--radius-md)",
+                      fontWeight: 800, fontSize: 13,
+                      cursor: "pointer", fontFamily: "var(--font-main)"
+                    }}
+                  >
+                    + New Message
+                  </button>
+                ) : (
+                  <>
+                    <textarea
+                      value={contactMessage}
+                      onChange={e => setContactMessage(e.target.value)}
+                      placeholder="Describe your issue or question..."
+                      rows={3}
+                      style={{
+                        width: "100%", padding: "12px 14px",
+                        border: "1.5px solid var(--primary)",
+                        borderRadius: "var(--radius-md)",
+                        background: "var(--surface2)", fontSize: 13,
+                        fontFamily: "var(--font-main)", color: "var(--text)",
+                        outline: "none", boxSizing: "border-box",
+                        resize: "none", marginBottom: 8
+                      }}
+                    />
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <button
+                        onClick={handleSendMessage}
+                        disabled={loading || !contactMessage.trim()}
+                        style={{
+                          flex: 2, padding: "10px",
+                          background: loading || !contactMessage.trim() ? "#ccc" : "var(--primary)",
+                          color: "#fff", border: "none",
+                          borderRadius: "var(--radius-md)",
+                          fontWeight: 800, fontSize: 13,
+                          cursor: loading || !contactMessage.trim() ? "not-allowed" : "pointer",
+                          fontFamily: "var(--font-main)"
+                        }}
+                      >
+                        {loading ? "Sending..." : "Send →"}
+                      </button>
+                      <button
+                        onClick={() => { setShowContactForm(false); setContactMessage("") }}
+                        style={{
+                          flex: 1, padding: "10px",
+                          background: "var(--surface2)", color: "var(--text2)",
+                          border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
+                          fontWeight: 700, fontSize: 13,
+                          cursor: "pointer", fontFamily: "var(--font-main)"
+                        }}
+                      >Cancel</button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-            <textarea
-              value={contactMessage}
-              onChange={e => setContactMessage(e.target.value)}
-              placeholder="Describe your issue or question..."
-              rows={4}
-              style={{
-                width: "100%", padding: "12px 14px",
-                border: "1.5px solid var(--border)",
-                borderRadius: "var(--radius-md)",
-                background: "var(--surface2)", fontSize: 13,
-                fontFamily: "var(--font-main)", color: "var(--text)",
-                outline: "none", boxSizing: "border-box",
-                resize: "vertical", marginBottom: 10
-              }}
-            />
-            <div style={{ display: "flex", gap: 8 }}>
-              <button
-                onClick={handleSendMessage}
-                disabled={loading || !contactMessage.trim()}
-                style={{
-                  flex: 1, padding: "10px",
-                  background: "var(--primary)", color: "#fff",
-                  border: "none", borderRadius: "var(--radius-md)",
-                  fontWeight: 800, fontSize: 13,
-                  cursor: "pointer", fontFamily: "var(--font-main)"
-                }}
-              >
-                {loading ? "Sending..." : "Send →"}
-              </button>
-              <button onClick={() => { setShowContactForm(false); setContactMessage(""); setError("") }} style={{
-                flex: 1, padding: "10px",
-                background: "var(--surface2)", color: "var(--text)",
-                border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
-                fontWeight: 800, fontSize: 13,
-                cursor: "pointer", fontFamily: "var(--font-main)"
-              }}>Cancel</button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Log out */}
         <button
@@ -443,11 +561,12 @@ const Settings = ({ onNavigate, onReset, authUser, faculty, university }) => {
 
         {/* App version */}
         <div style={{ textAlign: "center", fontSize: 11, color: "var(--text3)", marginTop: 8 }}>
-          ExamEdge v1.0 · Post-UTME Prep
+          ExamEdgeNG v1.0 · Post-UTME Prep
         </div>
 
       </div>
     </div>
+    </PageTransition>
   )
 }
 

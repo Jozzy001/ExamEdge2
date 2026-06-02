@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 
-const HotTopics = ({ onNavigate, university, facultySubjects }) => {
+const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
   const [selectedSubject, setSelectedSubject] = useState(null)
 
   const questionPool = POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -40,7 +40,7 @@ const HotTopics = ({ onNavigate, university, facultySubjects }) => {
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+        <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "16px" }}>🔥 Hot Topics</span>
         <span style={{ width: 60 }} />
       </header>

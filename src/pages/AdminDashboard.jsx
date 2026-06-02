@@ -8,7 +8,7 @@ import { sendPasswordResetEmail } from "firebase/auth"
 
 const ADMIN_EMAIL = "jce680@gmail.com"
 
-const AdminDashboard = ({ onNavigate, authUser }) => {
+const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   const [users, setUsers] = useState([])
   const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(true)
@@ -17,13 +17,17 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
   const [actionMsg, setActionMsg] = useState("")
   const [actionError, setActionError] = useState("")
   const [tab, setTab] = useState("users") // users | stats | messages
+  const [planFilter, setPlanFilter] = useState("all") // all | paid | free
+  const [replyingTo, setReplyingTo] = useState(null) // message object
+  const [replyText, setReplyText] = useState("")
+  const [sendingReply, setSendingReply] = useState(false)
 
   // Redirect if not admin
   if (authUser?.email !== ADMIN_EMAIL) {
     return (
       <div className="ee-page">
         <header className="ee-header">
-          <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+          <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         </header>
         <div className="ee-content">
           <div className="ee-empty">
@@ -72,6 +76,37 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
   const handleDeleteMessage = async (msgId) => {
     await deleteDoc(doc(db, "messages", msgId))
     setMessages(prev => prev.filter(m => m.id !== msgId))
+  }
+
+  const handleReply = async (msg) => {
+    if (!replyText.trim()) return
+    setSendingReply(true)
+    try {
+      // Save reply to Firestore under the message
+      const { addDoc, serverTimestamp: st } = await import("firebase/firestore")
+      await addDoc(collection(db, "messages", msg.id, "replies"), {
+        replyText: replyText.trim(),
+        repliedAt: st(),
+        repliedBy: authUser?.email,
+      })
+      // Mark message as read
+      await updateDoc(doc(db, "messages", msg.id), {
+        status: "read",
+        replied: true,
+        lastReply: replyText.trim(),
+        repliedAt: new Date().toISOString(),
+      })
+      setMessages(prev => prev.map(m =>
+        m.id === msg.id ? { ...m, status: "read", replied: true, lastReply: replyText.trim() } : m
+      ))
+      setReplyText("")
+      setReplyingTo(null)
+      setActionMsg(`✅ Reply sent to ${msg.username}`)
+    } catch (e) {
+      console.error(e)
+      setActionError("Failed to save reply. Try again.")
+    }
+    setSendingReply(false)
   }
 
   const handlePasswordReset = async (email) => {
@@ -124,19 +159,25 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
     })
   }
 
-  const filtered = users.filter(u =>
-    u.name?.toLowerCase().includes(search.toLowerCase()) ||
-    u.email?.toLowerCase().includes(search.toLowerCase())
-  )
+  const filtered = users.filter(u => {
+    const matchesSearch = u.name?.toLowerCase().includes(search.toLowerCase()) ||
+      u.email?.toLowerCase().includes(search.toLowerCase())
+    const matchesPlan = planFilter === "all" ? true : planFilter === "paid" ? u.isPaid : !u.isPaid
+    return matchesSearch && matchesPlan
+  })
 
   // Stats
   const totalUsers = users.length
+  const paidUsers = users.filter(u => u.isPaid).length
+  const freeUsers = users.filter(u => !u.isPaid).length
   const today = new Date().toDateString()
   const activeToday = users.filter(u => {
     if (!u.lastLogin) return false
     const d = u.lastLogin.toDate ? u.lastLogin.toDate() : new Date(u.lastLogin)
     return d.toDateString() === today
   }).length
+  const totalRevenue = paidUsers * 2000 // ₦2000 after referral
+  const totalReferralOwed = users.reduce((sum, u) => sum + ((u.referralEarnings || 0) - (u.referralPaidOut || 0)), 0)
   const faculties = {}
   users.forEach(u => {
     if (u.faculty) faculties[u.faculty] = (faculties[u.faculty] || 0) + 1
@@ -145,7 +186,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
   return (
     <div className="ee-page">
       <header className="ee-header">
-        <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Back</button>
+        <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "15px" }}>🛡️ Admin</span>
         <button onClick={fetchUsers} style={{
           background: "none", border: "1px solid var(--border)",
@@ -214,12 +255,12 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
               gap: 12, marginBottom: 20
             }}>
               {[
-                { icon: "👥", label: "Total Users", value: totalUsers },
-                { icon: "🟢", label: "Active Today", value: activeToday },
-                { icon: "📚", label: "Eng & Physical", value: faculties["engineering"] || 0 },
-                { icon: "🔬", label: "Life Sciences", value: faculties["lifesciences"] || 0 },
-                { icon: "📊", label: "Management", value: faculties["management"] || 0 },
-                { icon: "🎭", label: "Arts & Law", value: faculties["arts"] || 0 },
+                { icon: "👥", label: "Total Users", value: totalUsers, color: "var(--primary)" },
+                { icon: "🟢", label: "Active Today", value: activeToday, color: "var(--primary)" },
+                { icon: "💎", label: "Paid Users", value: paidUsers, color: "#22c55e" },
+                { icon: "🆓", label: "Free Users", value: freeUsers, color: "#f59e0b" },
+                { icon: "💰", label: "Est. Revenue", value: `₦${totalRevenue.toLocaleString()}`, color: "#22c55e" },
+                { icon: "⏳", label: "Referral Owed", value: `₦${totalReferralOwed.toLocaleString()}`, color: "#ef4444" },
               ].map((s, i) => (
                 <div key={i} style={{
                   background: "var(--surface)", border: "1px solid var(--border)",
@@ -227,7 +268,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                   textAlign: "center"
                 }}>
                   <div style={{ fontSize: 28, marginBottom: 6 }}>{s.icon}</div>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: "var(--primary)" }}>{s.value}</div>
+                  <div style={{ fontSize: 22, fontWeight: 800, color: s.color }}>{s.value}</div>
                   <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
@@ -282,6 +323,25 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
               }}
             />
 
+            {/* Plan filter */}
+            <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+              {[
+                { key: "all", label: `All (${users.length})` },
+                { key: "paid", label: `💎 Paid (${paidUsers})` },
+                { key: "free", label: `🆓 Free (${freeUsers})` },
+              ].map(f => (
+                <button key={f.key} onClick={() => setPlanFilter(f.key)} style={{
+                  flex: 1, padding: "8px 4px",
+                  borderRadius: "var(--radius-md)",
+                  border: planFilter === f.key ? "2px solid var(--primary)" : "1px solid var(--border)",
+                  background: planFilter === f.key ? "var(--primary-light)" : "var(--surface)",
+                  color: planFilter === f.key ? "var(--primary-text)" : "var(--text2)",
+                  fontWeight: 800, fontSize: 11, cursor: "pointer",
+                  fontFamily: "var(--font-main)"
+                }}>{f.label}</button>
+              ))}
+            </div>
+
             {loading ? (
               <div style={{ textAlign: "center", padding: "40px 0", color: "var(--text3)" }}>
                 Loading users...
@@ -324,11 +384,18 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                       </div>
 
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)" }}>
+                        <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                           {user.name || "Unknown"}
+                          <span style={{
+                            fontSize: 9, fontWeight: 800,
+                            background: user.isPaid ? "rgba(34,201,122,0.15)" : "rgba(245,158,11,0.15)",
+                            color: user.isPaid ? "#15803d" : "#92400e",
+                            padding: "2px 7px", borderRadius: "var(--radius-pill)",
+                            border: `1px solid ${user.isPaid ? "rgba(34,201,122,0.4)" : "rgba(245,158,11,0.4)"}`,
+                          }}>{user.isPaid ? "💎 PAID" : "🆓 FREE"}</span>
                           {user.disabled && (
                             <span style={{
-                              fontSize: 9, fontWeight: 700, marginLeft: 6,
+                              fontSize: 9, fontWeight: 700,
                               background: "rgba(255,107,107,0.2)", color: "var(--accent)",
                               padding: "1px 6px", borderRadius: "var(--radius-pill)"
                             }}>DISABLED</span>
@@ -363,14 +430,20 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                         <div style={{ marginBottom: 12 }}>
                           {[
                             { label: "Email", value: user.email },
+                            { label: "Plan", value: user.isPaid ? "💎 Paid (₦2,500)" : "🆓 Free" },
+                            { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—" },
                             { label: "Faculty", value: user.faculty || "Not set" },
+                            { label: "Referral Code", value: user.referralCode || "—" },
+                            { label: "Referred By", value: user.referredBy ? "Yes" : "No" },
+                            { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
+                            { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
                             { label: "Joined", value: formatDateTime(user.createdAt) },
                             { label: "Last Login", value: formatDateTime(user.lastLogin) },
                           ].map((item, j) => (
                             <div key={j} style={{
                               display: "flex", justifyContent: "space-between",
                               fontSize: 12, padding: "4px 0",
-                              borderBottom: j < 3 ? "1px solid var(--border)" : "none"
+                              borderBottom: j < 9 ? "1px solid var(--border)" : "none"
                             }}>
                               <span style={{ color: "var(--text3)", fontWeight: 700 }}>{item.label}</span>
                               <span style={{ color: "var(--text)", fontWeight: 600 }}>{item.value}</span>
@@ -380,6 +453,31 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
 
                         {/* Action buttons */}
                         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          {/* Mark as paid manually */}
+                          {!user.isPaid && (
+                            <button
+                              onClick={async () => {
+                                await updateDoc(doc(db, "users", user.id), {
+                                  isPaid: true,
+                                  paidAt: new Date().toISOString(),
+                                  paymentRef: "manual_admin",
+                                })
+                                setActionMsg(`✅ ${user.name} marked as paid`)
+                                fetchUsers()
+                                setSelected(null)
+                              }}
+                              style={{
+                                padding: "10px", borderRadius: "var(--radius-md)",
+                                background: "rgba(34,201,122,0.1)", color: "#15803d",
+                                border: "1px solid rgba(34,201,122,0.3)",
+                                fontWeight: 800, fontSize: 13,
+                                cursor: "pointer", fontFamily: "var(--font-main)"
+                              }}
+                            >
+                              💎 Mark as Paid (Manual)
+                            </button>
+                          )}
+
                           <button
                             onClick={() => handlePasswordReset(user.email)}
                             style={{
@@ -448,40 +546,132 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                     borderRadius: "var(--radius-lg)",
                     padding: "14px 16px", marginBottom: 10
                   }}>
+                    {/* Message header */}
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <div style={{
-                          width: 32, height: 32, borderRadius: "50%",
+                          width: 36, height: 36, borderRadius: "50%",
                           background: "var(--primary-light)",
                           display: "flex", alignItems: "center", justifyContent: "center",
-                          fontSize: 14, fontWeight: 800, color: "var(--primary)"
+                          fontSize: 15, fontWeight: 800, color: "var(--primary)"
                         }}>{msg.username?.[0]?.toUpperCase() || "?"}</div>
                         <div>
-                          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)" }}>
+                          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                             {msg.username}
                             {msg.status === "unread" && (
                               <span style={{
-                                fontSize: 9, fontWeight: 800, marginLeft: 6,
+                                fontSize: 9, fontWeight: 800,
                                 background: "var(--primary)", color: "#fff",
                                 padding: "1px 6px", borderRadius: "var(--radius-pill)"
                               }}>NEW</span>
+                            )}
+                            {msg.replied && (
+                              <span style={{
+                                fontSize: 9, fontWeight: 800,
+                                background: "rgba(34,201,122,0.15)", color: "#15803d",
+                                padding: "1px 6px", borderRadius: "var(--radius-pill)",
+                                border: "1px solid rgba(34,201,122,0.3)"
+                              }}>✓ REPLIED</span>
                             )}
                           </div>
                           <div style={{ fontSize: 11, color: "var(--text3)" }}>{msg.email}</div>
                         </div>
                       </div>
-                      <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                        {formatDate(msg.createdAt)}
+                      <div style={{ fontSize: 11, color: "var(--text3)", textAlign: "right" }}>
+                        <div>{formatDate(msg.createdAt)}</div>
                       </div>
                     </div>
 
+                    {/* Message body */}
                     <p style={{
                       fontSize: 13, color: "var(--text)", lineHeight: 1.6,
                       margin: "8px 0", padding: "10px 12px",
                       background: "var(--surface2)", borderRadius: "var(--radius-md)"
                     }}>{msg.message}</p>
 
-                    <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+                    {/* Last reply preview */}
+                    {msg.lastReply && (
+                      <div style={{
+                        fontSize: 12, color: "#15803d", lineHeight: 1.5,
+                        padding: "8px 12px", marginBottom: 8,
+                        background: "rgba(34,201,122,0.06)",
+                        borderRadius: "var(--radius-md)",
+                        border: "1px solid rgba(34,201,122,0.2)",
+                        borderLeft: "3px solid #22c55e",
+                      }}>
+                        <span style={{ fontWeight: 800 }}>Your reply: </span>{msg.lastReply}
+                      </div>
+                    )}
+
+                    {/* Reply box */}
+                    {replyingTo?.id === msg.id && (
+                      <div style={{ marginBottom: 10 }}>
+                        <textarea
+                          value={replyText}
+                          onChange={e => setReplyText(e.target.value)}
+                          placeholder={`Reply to ${msg.username}...`}
+                          rows={3}
+                          style={{
+                            width: "100%", padding: "10px 12px",
+                            border: "1.5px solid var(--primary)",
+                            borderRadius: "var(--radius-md)",
+                            background: "var(--surface)",
+                            fontSize: 13, color: "var(--text)",
+                            fontFamily: "var(--font-main)",
+                            resize: "none", outline: "none",
+                            boxSizing: "border-box",
+                            marginBottom: 8,
+                          }}
+                        />
+                        <div style={{ display: "flex", gap: 8 }}>
+                          <button
+                            onClick={() => handleReply(msg)}
+                            disabled={sendingReply || !replyText.trim()}
+                            style={{
+                              flex: 2, padding: "10px",
+                              background: sendingReply || !replyText.trim() ? "#ccc" : "var(--primary)",
+                              color: "#fff", border: "none",
+                              borderRadius: "var(--radius-md)",
+                              fontWeight: 800, fontSize: 13,
+                              cursor: sendingReply || !replyText.trim() ? "not-allowed" : "pointer",
+                              fontFamily: "var(--font-main)"
+                            }}
+                          >
+                            {sendingReply ? "Saving..." : "📨 Save Reply"}
+                          </button>
+                          <button
+                            onClick={() => { setReplyingTo(null); setReplyText("") }}
+                            style={{
+                              flex: 1, padding: "10px",
+                              background: "var(--surface2)", color: "var(--text2)",
+                              border: "1px solid var(--border)",
+                              borderRadius: "var(--radius-md)",
+                              fontWeight: 700, fontSize: 13,
+                              cursor: "pointer", fontFamily: "var(--font-main)"
+                            }}
+                          >Cancel</button>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Action buttons */}
+                    <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                      <button
+                        onClick={() => {
+                          setReplyingTo(replyingTo?.id === msg.id ? null : msg)
+                          setReplyText("")
+                        }}
+                        style={{
+                          flex: 1, padding: "8px",
+                          background: replyingTo?.id === msg.id ? "var(--primary-light)" : "rgba(102,126,234,0.1)",
+                          color: "var(--primary)",
+                          border: "1px solid rgba(102,126,234,0.3)",
+                          borderRadius: "var(--radius-sm)", fontWeight: 800,
+                          fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)"
+                        }}
+                      >
+                        {replyingTo?.id === msg.id ? "✕ Cancel Reply" : "↩️ Reply"}
+                      </button>
                       {msg.status === "unread" && (
                         <button onClick={() => handleMarkRead(msg.id)} style={{
                           flex: 1, padding: "8px",
@@ -489,7 +679,7 @@ const AdminDashboard = ({ onNavigate, authUser }) => {
                           border: "1px solid rgba(34,201,122,0.3)",
                           borderRadius: "var(--radius-sm)", fontWeight: 800,
                           fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)"
-                        }}>✅ Mark as Read</button>
+                        }}>✅ Mark Read</button>
                       )}
                       <button onClick={() => handleDeleteMessage(msg.id)} style={{
                         flex: 1, padding: "8px",

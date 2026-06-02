@@ -1,26 +1,52 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useTheme } from "../context/ThemeContext"
 import { UNIBEN_FACULTIES } from "../data/postutme/uniben/faculties"
 import { XPBar } from "../components/XPBar"
+import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
+import { PageTransition } from "../components/LoadingScreen"
 
-const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, authUser }) => {
+const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
-  const [showTour, setShowTour] = useState(!isTourDone())
+  const [paywallType, setPaywallType] = useState(null)
+  const [showTour, setShowTour] = useState(false)
+
+  // Show tour on first visit
+  useEffect(() => {
+    if (!isTourDone()) {
+      const timer = setTimeout(() => setShowTour(true), 800)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  const handleLockedFeature = (type) => {
+    setPaywallType(type)
+  }
 
   const faculties = university === "UNIBEN" ? UNIBEN_FACULTIES : {}
   const facultyInfo = faculties[faculty]
 
+  const firstName = authUser?.name?.split(" ")[0] || authUser?.email?.split("@")[0] || "Student"
+
   return (
+    <PageTransition>
     <div className="ee-page">
       <header className="ee-header">
-        <span className="ee-logo">ExamEdge</span>
+        <span className="ee-logo">ExamEdgeNG</span>
         <button className="ee-theme-toggle" onClick={toggleTheme}>
           {dark ? "☀️" : "🌙"}
         </button>
       </header>
 
       <div className="ee-content">
+
+        {/* Greeting */}
+        <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>
+          Hi, {firstName}! 👋
+        </div>
+        <div style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16 }}>
+          {isPaid ? "Full Access ✅" : "Free Plan — Tap to upgrade 🔒"}
+        </div>
 
         {/* XP / Gamification Bar */}
         <XPBar onNavigate={onNavigate} />
@@ -33,9 +59,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <div style={{ fontSize: 11, fontWeight: 800, opacity: 0.75, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>
             Post-UTME Prep
           </div>
-          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>
-            {authUser?.name ? `Hi, ${authUser.name}! 👋` : "Post-UTME Prep"}
-          </div>
+          <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>{university}</div>
           <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 12 }}>
             {facultyInfo?.icon} {facultyInfo?.name}
           </div>
@@ -50,18 +74,10 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         </div>
 
-        <div className="ee-streak">
-          <span className="streak-icon">🎯</span>
-          <div>
-            <div className="streak-title">Keep studying daily!</div>
-            <div className="streak-sub">Consistent practice is the key to passing</div>
-          </div>
-        </div>
-
         <span className="ee-label">Jump into</span>
 
         <div className="ee-home-grid">
-          <button ref={null} className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
+          <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
             <span className="home-card-icon">🧪</span>
             <div>
               <div className="home-card-title">CBT Mode</div>
@@ -75,56 +91,103 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             <div className="home-card-sub">Practice by topic</div>
           </button>
 
-          <button className="ee-home-card" onClick={() => onNavigate("weak")}>
-            <span className="home-card-icon">💪</span>
-            <div className="home-card-title">Weak Areas</div>
-            <div className="home-card-sub">Fix what's holding you back</div>
+          <button className="ee-home-card" onClick={() => {
+            if (!isPaid) { handleLockedFeature("hotTopics"); return }
+            onNavigate("hotTopics")
+          }}>
+            <span className="home-card-icon">🔥</span>
+            <div>
+              <div className="home-card-title">Hot Topics {!isPaid && "🔒"}</div>
+              <div className="home-card-sub">Most repeated questions</div>
+            </div>
           </button>
 
-          <button className="ee-home-card" onClick={() => onNavigate("progress")}>
+          <button className="ee-home-card" onClick={() => {
+            if (!isPaid) { handleLockedFeature("weakAreas"); return }
+            onNavigate("weak")
+          }}>
             <span className="home-card-icon">📊</span>
-            <div className="home-card-title">My Progress</div>
-            <div className="home-card-sub">Track your performance</div>
+            <div>
+              <div className="home-card-title">Weak Areas {!isPaid && "🔒"}</div>
+              <div className="home-card-sub">Fix what's holding you back</div>
+            </div>
           </button>
 
-          <button className="ee-home-card" onClick={() => onNavigate("cbtHistory")}>
-            <span className="home-card-icon">📋</span>
-            <div className="home-card-title">CBT History</div>
-            <div className="home-card-sub">Review past exams</div>
+          {/* CBT History — full width */}
+          <button
+            className="ee-home-card"
+            onClick={() => {
+              if (!isPaid) { handleLockedFeature("cbtHistory"); return }
+              onNavigate("cbt-history")
+            }}
+          >
+            <span className="home-card-icon">🕐</span>
+            <div>
+              <div className="home-card-title">CBT History {!isPaid && "🔒"}</div>
+              <div className="home-card-sub">Review your past attempts</div>
+            </div>
           </button>
         </div>
 
-        {/* CBT History removed from here - now in grid above */}
-
-        {/* Hot Topics — full width card */}
+        <span className="ee-label">Track yourself</span>
         <button
           className="ee-home-card"
-          onClick={() => onNavigate("hotTopics")}
-          style={{
-            display: "flex", alignItems: "center", gap: "14px",
-            marginBottom: 16, width: "100%",
-            background: "linear-gradient(135deg, #fff8f0, #ffe8d6)",
-            border: "1.5px solid #ffb347"
+          onClick={() => {
+            if (!isPaid) { handleLockedFeature("progress"); return }
+            onNavigate("progress")
           }}
+          style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 20 }}
         >
-          <span style={{ fontSize: "28px" }}>🔥</span>
+          <span style={{ fontSize: "28px" }}>📈</span>
           <div>
-            <div className="home-card-title" style={{ color: "#c45e00" }}>Hot Topics</div>
-            <div className="home-card-sub">Questions that appear every year</div>
+            <div className="home-card-title">My Progress {!isPaid && "🔒"}</div>
+            <div className="home-card-sub">See your scores and weak topics</div>
           </div>
         </button>
 
-        {/* Change exam type */}
+        {/* Upgrade banner for free users */}
+        {!isPaid && (
+          <div
+            onClick={() => onNavigate("upgrade")}
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              borderRadius: "var(--radius-xl)",
+              padding: "16px 20px",
+              marginBottom: 16,
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ fontSize: 28 }}>🚀</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
+              <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
+            </div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,500 →</div>
+          </div>
+        )}
+
+        {/* Settings */}
         <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("settings")}>
           ⚙️ Settings
         </button>
+
       </div>
 
-      {/* App Tour — first time only */}
-      {showTour && (
-        <AppTour onDone={() => setShowTour(false)} />
+      {showTour && <AppTour onDone={() => setShowTour(false)} />}
+
+      {paywallType && (
+        <PaywallPrompt
+          type={paywallType}
+          onUpgrade={() => { setPaywallType(null); onNavigate("upgrade") }}
+          onClose={() => setPaywallType(null)}
+        />
       )}
     </div>
+    </PageTransition>
   )
 }
 
