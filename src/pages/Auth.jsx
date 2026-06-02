@@ -37,11 +37,14 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [checkingReferral, setCheckingReferral] = useState(false)
   const [chosenPlan, setChosenPlan] = useState(null) // "free" | "paid"
   const [pendingUserData, setPendingUserData] = useState(null)
+  const [isFreshSignup, setIsFreshSignup] = useState(false)
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
         if (!user.emailVerified) { setMode("verify"); return }
+        // Skip auto-login for fresh signups — let handleCheckVerification handle it
+        if (isFreshSignup) return
         const userDoc = await getDoc(doc(db, "users", user.uid))
         if (userDoc.exists()) {
           const data = userDoc.data()
@@ -57,7 +60,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       }
     })
     return () => unsub()
-  }, [])
+  }, [isFreshSignup])
 
   // Check referral code with debounce
   useEffect(() => {
@@ -132,6 +135,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
 
       // Store pending data for after verification
       setPendingUserData({ ...userData, uid: user.uid, wantsPaid: chosenPlan === "paid" })
+      setIsFreshSignup(true)
       setMode("verify")
     } catch (err) {
       setError(getErrorMessage(err.code))
