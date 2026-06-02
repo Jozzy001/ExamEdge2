@@ -13,14 +13,14 @@ export default function ReferralCard({ userData }) {
   const pending = earnings - paidOut
 
   const copyCode = () => {
-    const message = `Hey! I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME. It has 20 years of past questions with CBT simulation. Use my referral code ${referralCode} when you sign up to register. Download here: https://exam-edge2.vercel.app`
+    const message = `Hey! I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME. It has 20 years of past questions with CBT simulation. Use my referral code ${referralCode} when you sign up to register. Download here: https://examedgeng.site`
     navigator.clipboard.writeText(message)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   const shareCode = () => {
-    const message = `Hey! I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME. It has 20 years of past questions with CBT simulation. Use my referral code *${referralCode}* when you pay. Download here: https://exam-edge2.vercel.app`
+    const message = `Hey! I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME. It has 20 years of past questions with CBT simulation. Use my referral code *${referralCode}* when you pay. Download here: https://examedgeng.site`
     if (navigator.share) {
       navigator.share({ text: message })
     } else {

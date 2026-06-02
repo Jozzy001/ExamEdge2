@@ -20,17 +20,22 @@ import { auth, db } from "./firebase"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
 function App() {
   // Load saved onboarding choices — but only use them if authUser confirms them
+  // Version check — clear stale localStorage from old app versions
+  const APP_VERSION = "2.0"
+  const storedVersion = localStorage.getItem("ee-version")
+  if (storedVersion !== APP_VERSION) {
+    localStorage.removeItem("ee-examType")
+    localStorage.removeItem("ee-university")
+    localStorage.removeItem("ee-faculty")
+    localStorage.setItem("ee-version", APP_VERSION)
+  }
+
   const savedExamType = localStorage.getItem("ee-examType")
   const savedUniversity = localStorage.getItem("ee-university")
   const savedFaculty = localStorage.getItem("ee-faculty")
 
-  // Initialize profile from localStorage immediately to avoid flash of onboarding
   const [appLoading, setAppLoading] = useState(true)
-  const [profile, setProfile] = useState(
-    savedExamType && savedFaculty
-      ? { examType: savedExamType, university: savedUniversity || "UNIBEN", faculty: savedFaculty }
-      : null
-  )
+  const [profile, setProfile] = useState(null) // Always set by onAuthDone from Firestore
   const [page, setPage] = useState("home")
   const [pageHistory, setPageHistory] = useState([])
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -74,19 +79,24 @@ function App() {
     return <Auth onGoToUpgrade={() => setPage("upgrade")} onAuthDone={(user) => {
       setAuthUser(user)
       setUserData(user)
-      // Restore profile — check Firestore first, then localStorage
-      const examT = user.examType || localStorage.getItem("ee-examType")
-      const fac   = user.faculty   || localStorage.getItem("ee-faculty")
-      const uni   = user.university || localStorage.getItem("ee-university") || "UNIBEN"
-
-      if (examT && fac) {
-        // Save to localStorage to keep it fresh
-        localStorage.setItem("ee-examType", examT)
-        localStorage.setItem("ee-university", uni)
-        localStorage.setItem("ee-faculty", fac)
-        setProfile({ examType: examT, university: uni, faculty: fac })
+      // Restore profile from Firestore first (most reliable)
+      if (user.faculty && user.examType) {
+        const profileData = {
+          examType: user.examType,
+          university: user.university || "UNIBEN",
+          faculty: user.faculty
+        }
+        localStorage.setItem("ee-examType", profileData.examType)
+        localStorage.setItem("ee-university", profileData.university)
+        localStorage.setItem("ee-faculty", profileData.faculty)
+        setProfile(profileData)
+      } else {
+        // No faculty in Firestore — this is a fresh signup, show onboarding
+        localStorage.removeItem("ee-examType")
+        localStorage.removeItem("ee-university")
+        localStorage.removeItem("ee-faculty")
+        setProfile(null)
       }
-      // If nothing found anywhere, profile stays as-is (may already be set from useState init)
     }} />
   }
 
