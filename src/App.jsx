@@ -139,7 +139,7 @@ function App() {
 
   // Show onboarding if no profile yet
   if (!profile) {
-    return <Onboarding onDone={handleOnboardingDone} />
+    return <Onboarding onDone={handleOnboardingDone} authUser={authUser} />
   }
 
   const { examType, university, faculty } = profile

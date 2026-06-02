@@ -412,9 +412,11 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
 
                       <span style={{
                         fontSize: 10, fontWeight: 700, flexShrink: 0,
-                        background: "var(--surface2)", color: "var(--text2)",
-                        padding: "2px 8px", borderRadius: "var(--radius-pill)"
-                      }}>{user.faculty || "—"}</span>
+                        background: user.faculty ? "var(--surface2)" : "rgba(245,158,11,0.1)",
+                        color: user.faculty ? "var(--text2)" : "#92400e",
+                        padding: "2px 8px", borderRadius: "var(--radius-pill)",
+                        border: user.faculty ? "none" : "1px solid rgba(245,158,11,0.3)",
+                      }}>{user.faculty || "No faculty"}</span>
                     </div>
 
                     {/* Expanded actions */}
@@ -432,7 +434,8 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             { label: "Email", value: user.email },
                             { label: "Plan", value: user.isPaid ? "💎 Paid (₦2,500)" : "🆓 Free" },
                             { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—" },
-                            { label: "Faculty", value: user.faculty || "Not set" },
+                            { label: "Faculty", value: user.faculty || "⚠️ Not set — user hasn't completed onboarding" },
+                            { label: "Exam Type", value: user.examType || "Not set" },
                             { label: "Referral Code", value: user.referralCode || "—" },
                             { label: "Referred By", value: user.referredBy ? "Yes" : "No" },
                             { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
