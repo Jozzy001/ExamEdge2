@@ -104,10 +104,19 @@ function App() {
 
   const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null) => {
     startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
-    // Push current page to history before navigating
-    if (!NO_HISTORY_PAGES.includes(page)) {
+
+    // Don't push to history if:
+    // - current page is a no-history page
+    // - going to same page
+    // - going back to a parent (study→quiz→study creates loop)
+    const lastInHistory = pageHistory[pageHistory.length - 1]
+    const isDuplicate = lastInHistory === page
+    const isGoingBack = lastInHistory === newPage
+
+    if (!NO_HISTORY_PAGES.includes(page) && !isDuplicate && !isGoingBack) {
       setPageHistory(prev => [...prev, page])
     }
+
     setPage(newPage)
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
@@ -121,6 +130,12 @@ function App() {
       return
     }
     const prev = pageHistory[pageHistory.length - 1]
+    // Detect loop — if going back leads to current page, clear and go home
+    if (prev === page) {
+      setPageHistory([])
+      setPage("home")
+      return
+    }
     setPageHistory(h => h.slice(0, -1))
     setPage(prev)
   }
