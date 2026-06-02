@@ -226,26 +226,60 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         {/* ===== VERIFY EMAIL ===== */}
         {mode === "verify" && (
           <>
-            <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
-              <div style={{ fontSize: 56, marginBottom: 16 }}>📧</div>
-              <h2 className="ee-title">Verify your email</h2>
+            <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
+              <div style={{ fontSize: 64, marginBottom: 16 }}>📩</div>
+              <h2 className="ee-title">Check your email</h2>
               <p className="ee-subtitle">
-                We sent a verification link to <strong>{auth.currentUser?.email}</strong>.
-                Click the link in your email to continue.
+                We sent a verification link to <strong>{auth.currentUser?.email}</strong>
               </p>
             </div>
 
+            {/* Step by step instructions */}
+            <div style={{
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius-lg)",
+              padding: "16px 20px",
+              marginBottom: 16,
+            }}>
+              {[
+                { step: "1", text: "Open your email app or Gmail/Yahoo mail" },
+                { step: "2", text: `Look for an email from Firebase or noreply@examedge-2d0ce.firebaseapp.com` },
+                { step: "3", text: "Open the email and click the verification link inside it" },
+                { step: "4", text: "Come back here and tap the button below" },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: 12, alignItems: "flex-start",
+                  paddingBottom: i < 3 ? 12 : 0,
+                  marginBottom: i < 3 ? 12 : 0,
+                  borderBottom: i < 3 ? "1px solid var(--border)" : "none"
+                }}>
+                  <div style={{
+                    width: 28, height: 28, borderRadius: "50%",
+                    background: "var(--primary)", color: "#fff",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 13, fontWeight: 800, flexShrink: 0
+                  }}>{item.step}</div>
+                  <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Spam warning */}
             <div style={{
               background: "rgba(255,179,71,0.12)",
               border: "1px solid rgba(255,179,71,0.4)",
               borderRadius: "var(--radius-md)",
-              padding: "12px 14px", marginBottom: 16,
-              display: "flex", gap: 10, alignItems: "flex-start"
+              padding: "14px 16px", marginBottom: 16,
             }}>
-              <span style={{ fontSize: 18, flexShrink: 0 }}>⚠️</span>
-              <div style={{ fontSize: 12, color: "#7a4500", lineHeight: 1.6 }}>
-                <strong>Can't find the email?</strong> Check your <strong>Spam</strong> or <strong>Junk</strong> folder.
-              </div>
+              <p style={{ fontSize: 14, color: "#7a4500", lineHeight: 1.7, margin: 0 }}>
+                ⚠️ <strong>Can't find the email?</strong> It may have gone to your <strong>Spam</strong> or <strong>Junk</strong> folder.
+                Open your spam folder, find the email and click the link there.
+                <br /><br />
+                Still can't find it? Tap <strong>"Resend verification email"</strong> below.
+              </p>
             </div>
 
             {error && (
