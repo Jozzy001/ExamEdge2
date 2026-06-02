@@ -24,39 +24,42 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
 
   const handlePayment = () => {
     if (!paystackReady) {
-      alert("Payment is loading, please try again in a moment.")
+      alert("Payment is loading, please try again.")
       return
     }
+    const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY
+    if (!publicKey) {
+      alert("Payment configuration error. Please contact support.")
+      return
+    }
+
     setLoading(true)
-    const ref = `EE_${user.uid}_${Date.now()}`
 
     const handler = window.PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+      key: publicKey,
       email: user.email,
-      amount: 250000, // ₦2,500 in kobo
+      amount: 250000,
       currency: "NGN",
-      ref,
+      ref: `EE_${user.uid}_${Date.now()}`,
       metadata: {
         uid: user.uid,
         referrerId: userData?.referredBy || "none",
       },
-      callback: async (response) => {
-        try {
-          // Mark user as paid
-          await updateDoc(doc(db, "users", user.uid), {
-            isPaid: true,
-            paidAt: new Date().toISOString(),
-            paymentRef: response.reference,
-            referredBy: referrerId || null,
-          })
-
+      callback: (response) => {
+        // Use promise chain instead of async/await
+        updateDoc(doc(db, "users", user.uid), {
+          isPaid: true,
+          paidAt: new Date().toISOString(),
+          paymentRef: response.reference,
+          referredBy: userData?.referredBy || null,
+        }).then(() => {
           // Record referral if applicable
           if (userData?.referredBy) {
             const refId = userData.referredBy
-            await updateDoc(doc(db, "users", refId), {
-              referralEarnings: ((userData?.referralEarnings || 0) + 500),
+            updateDoc(doc(db, "users", refId), {
+              referralEarnings: (userData?.referralEarnings || 0) + 500,
             })
-            await setDoc(doc(db, "referrals", `${refId}_${user.uid}`), {
+            setDoc(doc(db, "referrals", `${refId}_${user.uid}`), {
               referrerId: refId,
               referredId: user.uid,
               referredName: userData?.name || user.email,
@@ -67,21 +70,22 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
               paymentRef: response.reference,
             })
           }
-
           setLoading(false)
           onSuccess()
-        } catch (e) {
+        }).catch((e) => {
           console.error(e)
           setLoading(false)
           alert("Payment received! If your account isn't unlocked, please contact support.")
-        }
+        })
       },
       onClose: () => {
         setLoading(false)
       },
     })
+
     handler.openIframe()
   }
+
 
   const features = [
     { icon: "📚", text: "All 20 years of past questions (2005–2024)" },

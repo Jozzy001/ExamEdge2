@@ -1,4 +1,5 @@
 import { useState, useRef, useMemo, useEffect } from "react"
+import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 
@@ -123,7 +124,7 @@ const Calculator = ({ onClose }) => {
 // =============================================
 // QUIZ
 // =============================================
-const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", university = null, customCounts = null, englishFirst = false }) => {
+const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0 }) => {
 
   // Get the right question pool
   const questionPool = useMemo(() => {
@@ -226,6 +227,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
   const answersMapRef = useRef({})
   const isCBT = topic === "cbt"
   const isWeak = topic === "weak"
+  const isStudyMode = !isCBT && !isWeak && topic !== "hotTopics"
+  const FREE_STUDY_LIMIT = 5
+  const [showStudyPaywall, setShowStudyPaywall] = useState(false)
   const currentQuestion = filteredQuestions[currentIndex]
 
   useEffect(() => {
@@ -414,7 +418,17 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
     }
     setFinished(true)
   }
-  const goToQuestion = (i) => { saveAnswer(); setShowExplanation(false); setCurrentIndex(i); setSelected(answersMapRef.current[i]?.selected || "") }
+  const goToQuestion = (i) => {
+    // Block free users from going past question 5 in study mode
+    if (isStudyMode && !isPaid && examType === "postutme" && i >= FREE_STUDY_LIMIT) {
+      setShowStudyPaywall(true)
+      return
+    }
+    saveAnswer()
+    setShowExplanation(false)
+    setCurrentIndex(i)
+    setSelected(answersMapRef.current[i]?.selected || "")
+  }
 
   // RESULT SCREEN
   if (finished) {
@@ -455,6 +469,34 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
 
   return (
     <div className="ee-page">
+      {/* Paywall modal */}
+      {showStudyPaywall && (
+        <PaywallPrompt
+          type="studyQuestions"
+          onUpgrade={() => { setShowStudyPaywall(false); onNavigate("upgrade") }}
+          onClose={() => { setShowStudyPaywall(false); onBack ? onBack() : onNavigate("study") }}
+        />
+      )}
+
+      {/* Free questions remaining banner */}
+      {isStudyMode && !isPaid && examType === "postutme" && !finished && (
+        <div
+          onClick={() => onNavigate("upgrade")}
+          style={{
+            background: currentIndex >= FREE_STUDY_LIMIT - 1
+              ? "linear-gradient(135deg, #667eea, #764ba2)"
+              : "rgba(102,126,234,0.1)",
+            padding: "8px 16px",
+            fontSize: 12, fontWeight: 700, textAlign: "center",
+            cursor: "pointer",
+            color: currentIndex >= FREE_STUDY_LIMIT - 1 ? "#fff" : "#667eea",
+          }}
+        >
+          {currentIndex >= FREE_STUDY_LIMIT - 1
+            ? "🔒 Last free question — Upgrade to unlock all questions"
+            : `🔓 ${FREE_STUDY_LIMIT - currentIndex} free question${FREE_STUDY_LIMIT - currentIndex !== 1 ? "s" : ""} left · Upgrade for unlimited access`}
+        </div>
+      )}
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => {
           if (isCBT) onNavigate("cbtSubjectSelect")
@@ -542,7 +584,20 @@ const Quiz = ({ topic, subject, subjects, onNavigate, examType = "jamb", univers
         <div className="ee-nav-row mt-8">
           <button className="ee-nav-btn" onClick={() => goToQuestion(Math.max(currentIndex - 1, 0))} disabled={currentIndex === 0}>← Prev</button>
           {currentIndex < filteredQuestions.length - 1 ? (
-            <button className="ee-nav-btn" onClick={() => goToQuestion(currentIndex + 1)}>Next →</button>
+            <button
+              className="ee-nav-btn"
+              onClick={() => goToQuestion(currentIndex + 1)}
+              style={{
+                background: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+                  ? "linear-gradient(135deg, #667eea, #764ba2)" : undefined,
+                color: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+                  ? "#fff" : undefined,
+              }}
+            >
+              {isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+                ? "🔒 Upgrade to continue"
+                : "Next →"}
+            </button>
           ) : isCBT ? (
             <button className="ee-nav-btn" onClick={handleSubmitExam} style={{ background: "var(--accent)", color: "#fff", border: "none" }}>Submit 🏁</button>
           ) : (
