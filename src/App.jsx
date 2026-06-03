@@ -14,6 +14,7 @@ import Settings from "./pages/Settings"
 import AdminDashboard from "./pages/AdminDashboard"
 import Upgrade from "./pages/Upgrade"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
+import Splash from "./pages/Splash"
 import { doc, onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "./firebase"
@@ -35,7 +36,8 @@ function App() {
   const savedFaculty = localStorage.getItem("ee-faculty")
 
   const [appLoading, setAppLoading] = useState(true)
-  const [profile, setProfile] = useState(null) // Always set by onAuthDone from Firestore
+  const [profile, setProfile] = useState(null)
+  const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done")) // Always set by onAuthDone from Firestore
   const [page, setPage] = useState("home")
   const [pageHistory, setPageHistory] = useState([])
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -73,6 +75,9 @@ function App() {
 
   // Show loading screen while Firebase auth resolves
   if (appLoading) return <FullPageLoader message="Starting ExamEdgeNG..." />
+
+  // Show splash/onboarding screens on first visit
+  if (showSplash) return <Splash onDone={() => { localStorage.setItem("ee-splash-done", "1"); setShowSplash(false) }} />
 
   // Show Auth screen first if not logged in
   if (!authUser) {
