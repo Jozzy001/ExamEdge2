@@ -32,7 +32,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
     <PageTransition>
     <div className="ee-page">
       <header className="ee-header">
-        <span className="ee-logo">ExamEdgeNG</span>
+        <img src="/images/logo.png" alt="ExamEdgeNG" style={{ height: 36, objectFit: "contain" }} />
         <button className="ee-theme-toggle" onClick={toggleTheme}>
           {dark ? "☀️" : "🌙"}
         </button>

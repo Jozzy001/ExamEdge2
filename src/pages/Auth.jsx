@@ -28,7 +28,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [resetSent, setResetSent] = useState(false)
-  const [checkingVerification, setCheckingVerification] = useState(false)
 
   // Step 2 fields
   const [referralCode, setReferralCode] = useState("")
@@ -36,8 +35,9 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [referrerId, setReferrerId] = useState(null)
   const [checkingReferral, setCheckingReferral] = useState(false)
   const [chosenPlan, setChosenPlan] = useState(null) // "free" | "paid"
-  const [pendingUserData, setPendingUserData] = useState(null)
   const [isFreshSignup, setIsFreshSignup] = useState(false)
+  const [pendingUserData, setPendingUserData] = useState(null)
+  const [checkingVerification, setCheckingVerification] = useState(false)
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -133,7 +133,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       }
       await setDoc(doc(db, "users", user.uid), userData)
 
-      // Store pending data for after verification
       setPendingUserData({ ...userData, uid: user.uid, wantsPaid: chosenPlan === "paid" })
       setIsFreshSignup(true)
       setMode("verify")
@@ -141,6 +140,38 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       setError(getErrorMessage(err.code))
     }
     setLoading(false)
+  }
+
+  const handleCheckVerification = async () => {
+    setCheckingVerification(true)
+    try {
+      await reload(auth.currentUser)
+      if (auth.currentUser.emailVerified) {
+        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid))
+        if (userDoc.exists()) {
+          const data = userDoc.data()
+          onAuthDone(data)
+          if (pendingUserData?.wantsPaid && onGoToUpgrade) {
+            setTimeout(() => onGoToUpgrade(), 500)
+          }
+        }
+      } else {
+        setError("Email not verified yet. Please check your inbox and click the link.")
+      }
+    } catch {
+      setError("Could not check verification. Try again.")
+    }
+    setCheckingVerification(false)
+  }
+
+  const handleResendVerification = async () => {
+    setError("")
+    try {
+      await sendEmailVerification(auth.currentUser)
+      setError("✅ Verification email resent! Check your inbox.")
+    } catch {
+      setError("Could not resend email. Try again later.")
+    }
   }
 
   const handleLogin = async () => {
@@ -168,38 +199,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setLoading(false)
   }
 
-  const handleCheckVerification = async () => {
-    setCheckingVerification(true)
-    try {
-      await reload(auth.currentUser)
-      if (auth.currentUser.emailVerified) {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid))
-        if (userDoc.exists()) {
-          const data = userDoc.data()
-          onAuthDone(data)
-          // If they chose paid plan, redirect to upgrade after login
-          if (pendingUserData?.wantsPaid && onGoToUpgrade) {
-            setTimeout(() => onGoToUpgrade(), 500)
-          }
-        }
-      } else {
-        setError("Email not verified yet. Please check your inbox and click the link.")
-      }
-    } catch {
-      setError("Could not check verification. Try again.")
-    }
-    setCheckingVerification(false)
-  }
-
-  const handleResendVerification = async () => {
-    setError("")
-    try {
-      await sendEmailVerification(auth.currentUser)
-      setError("✅ Verification email resent! Check your inbox.")
-    } catch {
-      setError("Could not resend email. Try again later.")
-    }
-  }
 
   const inputStyle = {
     width: "100%", padding: "14px 16px",
@@ -238,24 +237,19 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               </p>
             </div>
 
-            {/* Step by step instructions */}
             <div style={{
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius-lg)",
-              padding: "16px 20px",
-              marginBottom: 16,
+              background: "var(--surface)", border: "1px solid var(--border)",
+              borderRadius: "var(--radius-lg)", padding: "16px 20px", marginBottom: 16,
             }}>
               {[
-                { step: "1", text: "Open your email app or Gmail/Yahoo mail" },
-                { step: "2", text: `Look for an email from Firebase or noreply@examedge-2d0ce.firebaseapp.com` },
-                { step: "3", text: "Open the email and click the verification link inside it" },
-                { step: "4", text: "Come back here and tap the button below" },
+                { step: "1", text: "Open your email app — Gmail, Yahoo or whatever you use" },
+                { step: "2", text: "Look for an email with subject: Verify your ExamEdgeNG account" },
+                { step: "3", text: "Open the email and click the big verification button or link inside" },
+                { step: "4", text: "Come back here and tap the green button below" },
               ].map((item, i) => (
                 <div key={i} style={{
                   display: "flex", gap: 12, alignItems: "flex-start",
-                  paddingBottom: i < 3 ? 12 : 0,
-                  marginBottom: i < 3 ? 12 : 0,
+                  paddingBottom: i < 3 ? 12 : 0, marginBottom: i < 3 ? 12 : 0,
                   borderBottom: i < 3 ? "1px solid var(--border)" : "none"
                 }}>
                   <div style={{
@@ -271,16 +265,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               ))}
             </div>
 
-            {/* Spam warning */}
             <div style={{
-              background: "rgba(255,179,71,0.12)",
-              border: "1px solid rgba(255,179,71,0.4)",
-              borderRadius: "var(--radius-md)",
-              padding: "14px 16px", marginBottom: 16,
+              background: "rgba(255,179,71,0.12)", border: "1px solid rgba(255,179,71,0.4)",
+              borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 16,
             }}>
               <p style={{ fontSize: 14, color: "#7a4500", lineHeight: 1.7, margin: 0 }}>
-                ⚠️ <strong>Can't find the email?</strong> It may have gone to your <strong>Spam</strong> or <strong>Junk</strong> folder.
-                Open your spam folder, find the email and click the link there.
+                ⚠️ <strong>Can't find the email?</strong> Check your <strong>Spam</strong> or <strong>Junk</strong> folder.
+                Open it, find the email from ExamEdgeNG and click the link there.
                 <br /><br />
                 Still can't find it? Tap <strong>"Resend verification email"</strong> below.
               </p>
@@ -297,7 +288,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
             )}
 
             <button className="ee-btn ee-btn-primary" onClick={handleCheckVerification} disabled={checkingVerification}>
-              {checkingVerification ? "Checking..." : "I've verified my email ✅"}
+              {checkingVerification ? "Checking..." : "✅ I have verified my email"}
             </button>
             <button onClick={handleResendVerification} style={{
               width: "100%", padding: "12px", background: "none",
@@ -350,7 +341,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         {mode === "login" && (
           <>
             <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
-              <div style={{ fontSize: 56, marginBottom: 16 }}>🎓</div>
+              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 100, height: 100, objectFit: "contain", marginBottom: 8 }} />
               <h2 className="ee-title">Welcome Back</h2>
               <p className="ee-subtitle">Log in to continue your exam prep.</p>
             </div>
@@ -401,7 +392,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         {mode === "signup" && step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
-              <div style={{ fontSize: 56, marginBottom: 16 }}>🚀</div>
+              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 80, height: 80, objectFit: "contain", marginBottom: 8 }} />
               <h2 className="ee-title">Create Account</h2>
               <p className="ee-subtitle">Step 1 of 2 — Your details</p>
             </div>
