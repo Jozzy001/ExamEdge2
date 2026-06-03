@@ -1,4 +1,4 @@
-// EXAMEDGE — STUDY GUIDES
+// EXAMEDGENG — STUDY GUIDES
 // Mini-lessons shown before quiz in study mode
 // Keyed by topic name (must match topic in question bank exactly)
 
@@ -2511,8 +2511,936 @@ const STUDY_GUIDES = {
       { heading: "Quick Tip", type: "tip",
         content: "Sahel = drought (not locusts or harmattan). Nylon is NOT a petroleum product. Chromite ore is NOT an energy source. These distinctions are repeatedly tested." }
     ]
-  }
+  },
 
+
+  "Accounting Concepts": {
+    subject: "Accounts",
+    summary: "Accounting concepts are the fundamental principles guiding financial records. Key concepts: going concern (business continues), accruals (match income to expenses), consistency (same methods each period), prudence (don't overstate profits), materiality (only significant items recorded), entity (business separate from owner).",
+    keyPoints: ["Going concern: business will continue operating", "Accruals: match income and expenses to period", "Consistency: use same methods each year", "Prudence: don't overstate assets or profits", "Entity concept: business is separate from owner"]
+  },
+  "Branch Accounts": {
+    subject: "Accounts",
+    summary: "Branch accounts record transactions of a separate branch of a business. Head office sends goods to branch at cost or invoice price. Branch account, branch debtors account, goods sent to branch account. Loading = difference between invoice and cost price.",
+    keyPoints: ["Branch receives goods from head office", "Loading = invoice price - cost price", "Branch stock at invoice price", "Unrealised profit on closing stock must be eliminated", "Branch current account in head office books"]
+  },
+  "Capital & Drawings": {
+    subject: "Accounts",
+    summary: "Capital is owner's investment in the business. Drawings are amounts taken out by owner. Capital account increases with profit and additional capital. Decreases with losses and drawings. Capital employed = fixed assets + working capital. Net worth = assets - liabilities.",
+    keyPoints: ["Capital = owner's investment", "Drawings reduce capital", "Profit increases capital", "Capital account: opening capital + profit - drawings = closing capital", "Working capital = current assets - current liabilities"]
+  },
+  "Cash Book": {
+    subject: "Accounts",
+    summary: "Cash book records all cash and bank transactions. Two-column: cash and bank columns. Three-column: cash, bank and discount columns. Debit side: receipts. Credit side: payments. Bank reconciliation statement: reconciles cash book with bank statement.",
+    keyPoints: ["Debit side: money received", "Credit side: money paid out", "Contra entries: cash to bank or bank to cash", "Bank reconciliation: adjusts for unpresented cheques and outstanding deposits", "Discount allowed: debit discount, credit debtors"]
+  },
+  "Company Accounts": {
+    subject: "Accounts",
+    summary: "Companies issue shares (ordinary, preference) and debentures. Share capital: authorised, issued, called-up, paid-up. Retained profits go to reserves. Final accounts: trading account, P&L account, appropriation account, balance sheet.",
+    keyPoints: ["Ordinary shares: voting rights, variable dividend", "Preference shares: fixed dividend, priority on liquidation", "Debentures: loans to company with fixed interest", "Retained earnings go to general reserve", "Share premium: excess over nominal value"]
+  },
+  "Control Accounts": {
+    subject: "Accounts",
+    summary: "Control accounts summarise individual accounts in a ledger. Sales ledger control account: summarises debtors. Purchases ledger control account: summarises creditors. Used to check arithmetic accuracy. Balance = total of individual balances.",
+    keyPoints: ["Sales ledger control: total debtors", "Purchases ledger control: total creditors", "Debit: opening balance + credit sales + dishonoured cheques", "Credit: payments received + discounts + returns", "Balance should equal sum of individual debtor balances"]
+  },
+  "Costing": {
+    subject: "Accounts",
+    summary: "Costing determines cost of production. Elements: material, labour, overhead. Direct costs: traceable to product. Indirect costs (overheads): allocated to products. Job costing: each job separately costed. Process costing: continuous production.",
+    keyPoints: ["Prime cost = direct material + direct labour + direct expenses", "Factory cost = prime cost + factory overhead", "Cost of production = factory cost + opening WIP - closing WIP", "Marginal costing: only variable costs to product", "Absorption costing: all production costs to product"]
+  },
+  "Departmental Accounts": {
+    subject: "Accounts",
+    summary: "Departmental accounts show profit/loss of each department separately. Revenues and direct costs allocated to departments. Shared/indirect costs apportioned using suitable basis (floor area, sales, employees). Combined to give total business results.",
+    keyPoints: ["Each department has separate trading account", "Direct costs: directly allocated to department", "Indirect costs: apportioned on suitable basis", "Floor area for rent, heating", "Sales value for advertising costs"]
+  },
+  "Depreciation": {
+    subject: "Accounts",
+    summary: "Depreciation spreads cost of asset over useful life. Methods: straight-line (fixed amount each year), reducing balance (fixed % of book value). Causes: wear and tear, obsolescence, time passage. Accumulated depreciation shown in balance sheet.",
+    keyPoints: ["Straight-line: (Cost - Residual value) ÷ Useful life", "Reducing balance: % × book value each year", "Depreciation reduces profit and asset value", "Accumulated depreciation = total depreciation to date", "Net book value = cost - accumulated depreciation"]
+  },
+  "Incomplete Records": {
+    subject: "Accounts",
+    summary: "Incomplete records: business hasn't kept full double-entry. Find profit by comparing opening and closing capital. Net profit = closing capital + drawings - additional capital - opening capital. Use cash/bank summaries and mark-up/margin to find missing figures.",
+    keyPoints: ["Profit = closing capital + drawings - opening capital - additional capital", "Mark-up: profit as % of cost price", "Margin: profit as % of selling price", "Reconstruct figures from available information", "Use control accounts to find missing debtors/creditors"]
+  },
+  "Manufacturing Accounts": {
+    subject: "Accounts",
+    summary: "Manufacturing account shows cost of producing goods. Sections: cost of raw materials used, prime cost, factory cost, cost of production. Raw materials: opening stock + purchases - closing stock. Factory overheads added to get factory cost.",
+    keyPoints: ["Raw materials used = opening + purchases - closing", "Prime cost = materials + direct labour + direct expenses", "Factory overhead: indirect costs of production", "Cost of production transferred to trading account", "Work in progress: opening added, closing deducted"]
+  },
+  "Non-Profit Organisations": {
+    subject: "Accounts",
+    summary: "Clubs, societies and charities prepare receipts and payments account (cash basis) and income and expenditure account (accruals basis). Surplus = income > expenditure. Deficit = expenditure > income. Accumulated fund = net worth of organisation.",
+    keyPoints: ["Receipts and payments: cash book summary", "Income and expenditure: accruals basis", "Surplus = income - expenditure (not profit)", "Accumulated fund replaces capital", "Subscriptions: adjust for arrears and prepayments"]
+  },
+  "Partnership Accounts": {
+    subject: "Accounts",
+    summary: "Partnership: two or more people in business. Partnership agreement covers profit sharing, salaries, interest on capital/drawings. Appropriation account distributes profit. Current accounts show each partner's share. Capital accounts: fixed capital method.",
+    keyPoints: ["Partners share profits as agreed", "Interest on capital: reward for investment", "Partner's salary: reward for work", "Current account: running total of partner's share", "Goodwill: valued when partner joins or leaves"]
+  },
+  "Petty Cash": {
+    subject: "Accounts",
+    summary: "Petty cash handles small cash payments. Imprest system: fixed float restored to same amount periodically. Petty cash book: analysis columns for each type of expense. Vouchers support each payment. Petty cashier requests reimbursement for total spent.",
+    keyPoints: ["Imprest system: fixed float amount", "Float restored to same amount each period", "Analysis columns: stationery, postage, cleaning etc", "Vouchers: evidence for each payment", "Petty cash is an asset in balance sheet"]
+  },
+  "Prepayments & Accruals": {
+    subject: "Accounts",
+    summary: "Prepayments: expenses paid in advance (asset). Accruals: expenses incurred but not yet paid (liability). Accruals concept: match expenses to period. Charge to P&L: amount for the period, not amount paid. Adjust opening and closing figures.",
+    keyPoints: ["Prepayment: paid in advance, shown as asset", "Accrual: owed but not paid, shown as liability", "Charge to P&L = paid + opening accrual - closing accrual + closing prepayment - opening prepayment", "Accruals concept: match to accounting period", "Adjustments needed for final accounts"]
+  },
+  "Profit & Loss Account": {
+    subject: "Accounts",
+    summary: "P&L account shows net profit after deducting expenses from gross profit. Gross profit from trading account. Deduct selling, administration and finance expenses. Net profit = gross profit - expenses. Net loss if expenses exceed gross profit.",
+    keyPoints: ["Gross profit = net sales - cost of sales", "Net profit = gross profit - expenses", "Expenses: rent, wages, depreciation, bad debts", "Net profit added to capital", "GP% = gross profit/sales × 100"]
+  },
+  "Public Sector Accounting": {
+    subject: "Accounts",
+    summary: "Government accounting differs from commercial accounting. Fund accounting: each fund has separate accounts. Revenue and capital expenditure distinguished. Appropriation: amounts approved for spending. Government follows cash basis mostly. Audit by government auditor.",
+    keyPoints: ["Fund accounting: separate accounts for each purpose", "Appropriation: approved spending budget", "Surpluses go to consolidated fund", "No profit motive in government accounting", "External audit by Auditor-General"]
+  },
+  "Stock Valuation": {
+    subject: "Accounts",
+    summary: "Stock valued at lower of cost or net realisable value (SSAP 9/IAS 2). Methods: FIFO (first in first out), LIFO (last in first out), AVCO (weighted average cost). FIFO gives highest profit in rising prices. Closing stock affects profit.",
+    keyPoints: ["Value at lower of cost or net realisable value", "FIFO: oldest stock sold first", "LIFO: newest stock sold first (not allowed under IFRS)", "AVCO: weighted average of all purchases", "Higher closing stock = higher gross profit"]
+  },
+  "Suspense Account": {
+    subject: "Accounts",
+    summary: "Suspense account is temporary account for errors and unresolved items. Created when trial balance doesn't balance. Errors: omission, commission, principle, compensating, original entry, reversal. Suspense account cleared when errors corrected.",
+    keyPoints: ["Suspense account: temporary holding account", "Trial balance errors: casting, transposition", "Errors not affecting trial balance: omission, reversal, principle", "Journal entry used to correct errors", "Suspense account balance = 0 after all corrections"]
+  },
+  "Trading Account": {
+    subject: "Accounts",
+    summary: "Trading account calculates gross profit. Sales - Returns inward = Net sales. Opening stock + Purchases + Carriage inwards - Returns outward - Closing stock = Cost of sales. Gross profit = Net sales - Cost of sales.",
+    keyPoints: ["Net sales = sales - returns inward", "Cost of sales = opening stock + purchases - closing stock", "Gross profit = net sales - cost of sales", "Carriage inwards added to purchases", "Carriage outwards is P&L expense, not trading account"]
+  },
+  "Acts of the Apostles": {
+    subject: "CRK",
+    summary: "Acts records early church history after Jesus's ascension. Written by Luke. Pentecost: Holy Spirit descends, tongues of fire, 3000 converted. Peter's miracles and preaching. Paul's conversion on Damascus road. Paul's missionary journeys. Council of Jerusalem.",
+    keyPoints: ["Pentecost: Holy Spirit comes at 50 days after resurrection", "Peter heals lame man at Beautiful Gate", "Paul (Saul) converted on road to Damascus", "Three missionary journeys of Paul", "Council of Jerusalem: Gentile Christians and circumcision"]
+  },
+  "Creation & Patriarchs": {
+    subject: "CRK",
+    summary: "Genesis 1-2: God creates world in 6 days, rests on 7th. Creation order: light, sky, land/sea, plants, sun/moon/stars, animals, humans. Adam and Eve in Garden of Eden. Abraham: faith and covenant. Isaac, Jacob (Israel), Joseph in Egypt.",
+    keyPoints: ["Creation: 6 days, rest on 7th", "Humans created in God's image on day 6", "Adam and Eve: fall in Garden of Eden", "Abraham: father of faith, covenant with God", "Joseph: sold by brothers, rose to power in Egypt"]
+  },
+  "Epistles": {
+    subject: "CRK",
+    summary: "Paul's letters to churches: Romans (justification by faith), Corinthians (church problems), Galatians (grace not law), Ephesians (church as body of Christ), Philippians (joy), Colossians, Thessalonians (second coming). General epistles: James, Peter, John.",
+    keyPoints: ["Romans: justification by faith alone", "1 Corinthians: spiritual gifts, love (ch.13), resurrection", "Galatians: salvation by grace not law", "Ephesians: armour of God (ch.6)", "1 John: God is love, test the spirits"]
+  },
+  "Exodus & the Law": {
+    subject: "CRK",
+    summary: "Moses leads Israelites out of Egypt. Ten plagues: water to blood, frogs, lice, flies, livestock disease, boils, hail, locusts, darkness, death of firstborn. Passover. Crossing Red Sea. Ten Commandments at Sinai. Tabernacle construction.",
+    keyPoints: ["Ten plagues sent to free Israelites", "Passover: death angel passes over Israelite homes", "Crossing Red Sea: waters parted by Moses", "Ten Commandments: Exodus 20", "Sabbath: seventh day holy to God"]
+  },
+  "Gospel of John": {
+    subject: "CRK",
+    summary: "John's Gospel emphasizes Jesus as Son of God. Seven 'I am' sayings: bread of life, light of the world, door, good shepherd, resurrection and life, way/truth/life, true vine. Seven signs/miracles. Prologue: Word became flesh (John 1:1-14).",
+    keyPoints: ["'I am the way, truth and life' (John 14:6)", "'In the beginning was the Word' (John 1:1)", "Jesus raises Lazarus from dead", "Nicodemus: born again (John 3)", "Thomas's confession: 'My Lord and my God'"]
+  },
+  "Old Testament History": {
+    subject: "CRK",
+    summary: "Historical books: Joshua (conquest of Canaan), Judges (cycles of sin/oppression/deliverance), Samuel (Saul and David), Kings (Solomon, divided kingdom). Key events: crossing Jordan, fall of Jericho, Judges cycle, Samuel anoints Saul then David.",
+    keyPoints: ["Joshua crosses Jordan, Jericho walls fall", "Judges: Gideon, Samson, Deborah", "Samuel: last judge, anoints first kings", "Saul: first king, rejected for disobedience", "David: man after God's heart, ancestor of Jesus"]
+  },
+  "Synoptic Gospels": {
+    subject: "CRK",
+    summary: "Matthew, Mark and Luke share similar content (synoptic = same view). Matthew: Jesus as King/Messiah, 5 discourses. Mark: Jesus as servant, action-focused, shortest. Luke: Jesus as perfect man, emphasis on prayer, women, poor. Synoptic problem: shared sources.",
+    keyPoints: ["Synoptic: Matthew, Mark, Luke", "Matthew: Jesus as Messiah, fulfils Old Testament", "Mark: shortest, action-focused, Jesus as servant", "Luke: emphasis on prayer, women, outcasts", "Sermon on the Mount: Matthew 5-7"]
+  },
+  "The Monarchy": {
+    subject: "CRK",
+    summary: "Israel's monarchy: Saul (first king), David (greatest king), Solomon (wisdom and temple). After Solomon: divided kingdom - Israel (north) and Judah (south). Israel fell to Assyria (722BC). Judah fell to Babylon (586BC). Temple destroyed.",
+    keyPoints: ["Saul: first king, tall, rejected for disobedience", "David: anointed by Samuel, kills Goliath, king of all Israel", "Solomon: wisest king, built temple in Jerusalem", "Kingdom divides after Solomon: Israel and Judah", "Both kingdoms eventually conquered"]
+  },
+  "The Prophets": {
+    subject: "CRK",
+    summary: "Prophets spoke God's message. Major: Isaiah (suffering servant), Jeremiah (new covenant), Ezekiel (dry bones), Daniel. Minor: Hosea, Amos (justice), Jonah, Micah. Themes: sin and judgment, call to repentance, hope and restoration, Messiah prophecies.",
+    keyPoints: ["Isaiah: prophecies of suffering servant and Messiah", "Jeremiah: new covenant written on heart", "Amos: God demands justice for the poor", "Jonah: God's mercy extends to Gentiles (Nineveh)", "Daniel: faithfulness in captivity, apocalyptic visions"]
+  },
+  "Accounts & Finance": {
+    subject: "Commerce",
+    summary: "Business finance involves raising and managing funds. Sources: owner's capital, bank loans, overdrafts, trade credit, debentures, share issue. Short-term finance: overdraft, trade credit. Long-term: share capital, debentures, mortgages. Working capital management essential.",
+    keyPoints: ["Short-term finance: overdraft, factoring, trade credit", "Long-term finance: share capital, debentures, mortgages", "Working capital = current assets - current liabilities", "Overcapitalisation: too much capital for size", "Undercapitalisation: insufficient funds for operations"]
+  },
+  "Agency": {
+    subject: "Commerce",
+    summary: "Agency: agent acts on behalf of principal. Types: general (broad authority), special (specific task), del credere (guarantees payment). Agent's duties: obey instructions, show skill, account for money, not take bribes. Principal liable for agent's acts within authority.",
+    keyPoints: ["Agent acts on behalf of principal", "Principal bound by agent's authorised acts", "Del credere agent: guarantees buyer's payment", "Agent must not take secret profits", "Agency ends: completion of task, death, insanity"]
+  },
+  "Business Environment": {
+    subject: "Commerce",
+    summary: "Businesses operate in external environment: political (government policy), economic (interest rates, inflation), social (demographics, culture), technological (innovation), legal (laws) and ecological factors. PESTLE analysis. Internal environment: staff, resources, culture.",
+    keyPoints: ["PESTLE: Political, Economic, Social, Technological, Legal, Environmental", "Government policies affect business operations", "Inflation increases costs of production", "Technology changes production methods", "Demographics affect demand for products"]
+  },
+  "Business Organisations": {
+    subject: "Commerce",
+    summary: "Types: sole trader (one owner, unlimited liability), partnership (2-20 partners), private limited company (Ltd, limited liability), public limited company (Plc, shares on stock exchange), cooperative (owned by members), public enterprise (government owned).",
+    keyPoints: ["Sole trader: easy to set up, unlimited liability", "Partnership: shared responsibility, unlimited liability", "Ltd: limited liability, not listed on stock exchange", "Plc: listed on stock exchange, minimum share capital", "Cooperative: democratic control, profit sharing"]
+  },
+  "Capital Market": {
+    subject: "Commerce",
+    summary: "Capital market deals in long-term funds. Stock exchange: buying and selling of shares and bonds. Primary market: new issues. Secondary market: existing securities traded. NSE (Nigerian Stock Exchange). Instruments: shares, bonds, debentures, treasury bills.",
+    keyPoints: ["Capital market: long-term securities (over 1 year)", "Money market: short-term funds", "Stock exchange: secondary market for securities", "Primary market: new share issues (IPO)", "SEC: Securities and Exchange Commission regulates"]
+  },
+  "Commerce Concepts": {
+    subject: "Commerce",
+    summary: "Commerce: all activities involved in exchange of goods and services. Trade (buying/selling) + Aids to trade (banking, insurance, transport, communication, warehousing, advertising). Home trade vs foreign trade. Retail vs wholesale.",
+    keyPoints: ["Commerce = trade + aids to trade", "Home trade: within a country", "Foreign trade: between countries", "Retail: selling to final consumer", "Wholesale: selling to retailers in bulk"]
+  },
+  "Computers in Business": {
+    subject: "Commerce",
+    summary: "Computers improve business efficiency. Uses: accounting (spreadsheets), communication (email), data storage (databases), online trading (e-commerce), payroll, stock control. E-commerce: buying/selling online. Electronic funds transfer. Benefits: speed, accuracy, storage.",
+    keyPoints: ["E-commerce: buying/selling via internet", "Electronic Data Interchange (EDI): business documents electronically", "Advantages: speed, accuracy, reduced paperwork", "Barcode scanners: automatic stock control", "Online banking: reduces need for branch visits"]
+  },
+  "Consumer Rights": {
+    subject: "Commerce",
+    summary: "Consumers have rights under law: right to safety, information, choice, redress, healthy environment. Consumer Protection Council (CPC) in Nigeria. NAFDAC regulates food, drugs. SON (Standards Organisation of Nigeria) sets standards. Caveat emptor vs caveat venditor.",
+    keyPoints: ["Right to safety: products must be safe", "Right to information: accurate product information", "Right to redress: compensation for defective goods", "NAFDAC: regulates food and drugs in Nigeria", "SON: sets product standards"]
+  },
+  "Contract Law": {
+    subject: "Commerce",
+    summary: "Contract: legally binding agreement. Elements: offer, acceptance, consideration, intention, capacity, legality. Void contract: no legal effect. Voidable: one party can cancel. Types: bilateral (both parties promise), unilateral (one party promises on condition).",
+    keyPoints: ["Offer: definite proposal", "Acceptance: unconditional agreement to offer", "Consideration: something of value exchanged", "Capacity: both parties must be legally competent", "Void: no legal effect from start"]
+  },
+  "Cooperative & Thrift Societies": {
+    subject: "Commerce",
+    summary: "Cooperatives: voluntary organisations owned and run by members for mutual benefit. Types: consumer, producer, credit (thrift), marketing cooperatives. Principles: voluntary membership, democratic control, surplus distributed by patronage. Credit societies provide loans to members.",
+    keyPoints: ["Cooperative: owned by members", "Consumer cooperative: bulk buying for members", "Producer cooperative: shared production resources", "Credit/thrift cooperative: savings and loans", "Surplus distributed based on transactions, not shareholding"]
+  },
+  "Discounts": {
+    subject: "Commerce",
+    summary: "Trade discount: reduction off list price given to trade buyers. Not recorded in accounts separately. Cash discount: reduction for prompt payment. Discount allowed (seller's books): debit discount allowed, credit debtor. Discount received: credit discount received, debit creditor.",
+    keyPoints: ["Trade discount: not recorded separately in books", "Cash discount: for early payment", "Discount allowed: given to customers (expense)", "Discount received: received from suppliers (income)", "Net price = list price - trade discount"]
+  },
+  "Documents of Trade": {
+    subject: "Commerce",
+    summary: "Trade documents: enquiry, quotation, order, invoice, credit note, debit note, statement of account, receipt. Invoice: details of goods sold, request for payment. Credit note: reduces amount owed. Proforma invoice: sent before goods dispatched.",
+    keyPoints: ["Enquiry: buyer asks for price information", "Quotation: seller states price and terms", "Invoice: request for payment for goods", "Credit note: reduces amount owed by buyer", "Statement of account: summary of transactions"]
+  },
+  "Insurance": {
+    subject: "Commerce",
+    summary: "Insurance: protection against financial loss. Premium: payment for cover. Indemnity: restore to original position. Insurable interest: must have financial stake. Utmost good faith: disclose all material facts. Types: fire, marine, life, motor, accident, fidelity.",
+    keyPoints: ["Premium: payment for insurance cover", "Indemnity: restore to position before loss", "Insurable interest: must stand to lose from event", "Utmost good faith: disclose all relevant facts", "Subrogation: insurer takes over insured's rights"]
+  },
+  "Marketing": {
+    subject: "Commerce",
+    summary: "Marketing: identifying and satisfying customer needs profitably. 4Ps: Product, Price, Place, Promotion. Market research: primary (surveys) and secondary (published data). Consumer goods vs industrial goods. Mass marketing vs niche marketing.",
+    keyPoints: ["4Ps: Product, Price, Place, Promotion (marketing mix)", "Market research: find customer needs", "Primary research: surveys, interviews, observation", "Secondary research: existing published data", "USP: unique selling proposition"]
+  },
+  "Privatization & Public Enterprises": {
+    subject: "Commerce",
+    summary: "Public enterprises: government-owned businesses providing essential services. Problems: inefficiency, political interference, overstaffing. Privatisation: selling government enterprises to private sector. Commercialisation: government enterprise runs on commercial basis without selling.",
+    keyPoints: ["Public enterprise: owned and run by government", "Problems: inefficiency, political interference", "Privatisation: transfer to private ownership", "Commercialisation: run on business lines but still government-owned", "NEPA → PHCN → privatised as distribution companies"]
+  },
+  "Quality & Standards": {
+    subject: "Commerce",
+    summary: "Quality: fitness for purpose. Quality control: checking products meet standards. Quality assurance: system to ensure quality. ISO 9000: international quality standard. SON sets Nigerian standards. NAFDAC approves food/drug quality. Consumer protection ensures quality.",
+    keyPoints: ["Quality control: inspect finished products", "Quality assurance: build quality into process", "ISO 9000: international quality management standard", "SON: Standards Organisation of Nigeria", "Total Quality Management (TQM): organisation-wide quality"]
+  },
+  "Retailing": {
+    subject: "Commerce",
+    summary: "Retailer: last link in chain of distribution, sells to consumers. Types: department store (many products), supermarket (self-service food), hypermarket (very large), chain stores (many branches), mail order, e-commerce. Functions: break bulk, provide credit, advice, convenience.",
+    keyPoints: ["Retailer: sells directly to consumer", "Department store: many departments under one roof", "Supermarket: self-service, mainly food", "Chain stores: same name/layout across many locations", "Mail order: buying from catalogue or online"]
+  },
+  "Sources of Finance": {
+    subject: "Commerce",
+    summary: "Short-term: overdraft, trade credit, factoring, hire purchase deposits. Medium-term: bank loans, hire purchase, leasing. Long-term: share capital, debentures, retained profits, mortgages. Internal sources: retained profit, sale of assets. External: borrowing, share issue.",
+    keyPoints: ["Overdraft: short-term bank borrowing", "Hire purchase: pay in instalments, own at end", "Leasing: rent asset, never own it", "Debenture: long-term loan with fixed interest", "Retained profit: cheapest source, no interest"]
+  },
+  "Trade Organisations": {
+    subject: "Commerce",
+    summary: "Trade organisations promote business interests. Chambers of Commerce: represents businesses locally. Manufacturers Association (MAN). Trade unions: workers' organisations. Employers associations. WTO: world trade. ECOWAS: West African trade. OPEC: oil producers.",
+    keyPoints: ["Chamber of Commerce: local business interests", "MAN: Manufacturers Association of Nigeria", "Trade union: workers negotiate with employers", "ECOWAS: Economic Community of West African States", "WTO: regulates international trade"]
+  },
+  "Transport": {
+    subject: "Commerce",
+    summary: "Transport moves goods and people. Types: road (flexible, door-to-door), rail (bulk goods, long distance), air (fast, expensive), water (cheap, bulk, slow), pipeline (oil/gas). Choice depends on cost, speed, nature of goods, destination.",
+    keyPoints: ["Road: most flexible, door-to-door", "Rail: bulk goods, long distance, cheaper than road for bulk", "Air: fastest, most expensive", "Water: cheapest for heavy bulk goods", "Pipeline: cheapest for oil and gas"]
+  },
+  "Warehousing & Distribution": {
+    subject: "Commerce",
+    summary: "Warehouse: storage for goods between production and sale. Functions: storage, breaking bulk, grading, packaging, financing goods. Types: bonded (customs), cold storage, distribution centres. Channel of distribution: producer → wholesaler → retailer → consumer.",
+    keyPoints: ["Warehouse: stores goods between production and sale", "Bonded warehouse: goods under customs control", "Cold storage: perishable goods", "Channel of distribution: route goods take to consumer", "Breaking bulk: dividing large quantities into smaller lots"]
+  },
+  "Agriculture & Development": {
+    subject: "Economics",
+    summary: "Agriculture contributes to economic development: food supply, foreign exchange (cocoa, groundnut), employment, raw materials for industry. Problems: poor infrastructure, low capital, subsistence farming. Green revolution: improved seeds, irrigation, fertilisers.",
+    keyPoints: ["Agriculture employs majority in developing countries", "Export crops earn foreign exchange", "Subsistence farming: produce for own consumption", "Commercial farming: produce for sale", "Land reform: redistribute land to improve equity"]
+  },
+  "Consumer Theory": {
+    subject: "Economics",
+    summary: "Consumers maximize utility subject to budget constraint. Law of diminishing marginal utility: each extra unit gives less satisfaction. Indifference curves: combinations giving same utility. Budget line: what consumer can afford. Consumer equilibrium: highest indifference curve on budget line.",
+    keyPoints: ["Utility: satisfaction from consuming goods", "Marginal utility: satisfaction from one more unit", "Diminishing marginal utility: additional units give less satisfaction", "Consumer surplus: difference between willingness to pay and price paid", "Indifference curve: combinations giving equal utility"]
+  },
+  "Fiscal Policy & Public Finance": {
+    subject: "Economics",
+    summary: "Fiscal policy: government use of taxation and spending to influence economy. Expansionary: increase spending or cut taxes (stimulates economy). Contractionary: reduce spending or raise taxes (controls inflation). Budget deficit: spending > revenue. National debt accumulates deficits.",
+    keyPoints: ["Fiscal policy: government spending and taxation", "Expansionary: stimulate economy (deficit spending)", "Contractionary: reduce inflation (surplus budget)", "Budget deficit: government spends more than it earns", "Progressive tax: higher income = higher % rate"]
+  },
+  "Industry & Location": {
+    subject: "Economics",
+    summary: "Industries locate where costs are minimised. Factors: raw materials (heavy industries), labour (skilled or cheap), market (perishable goods), power, transport, government incentives. Industrial inertia: industries stay in original location despite changing factors.",
+    keyPoints: ["Raw material-oriented: heavy, bulky inputs (steel, cement)", "Market-oriented: perishable or fragile products", "Labour-oriented: needs skilled or cheap labour", "Government incentives attract industries to specific areas", "Industrial inertia: cost of moving exceeds benefit"]
+  },
+  "National Income": {
+    subject: "Economics",
+    summary: "National income measures economic output. GDP: all output in country. GNP: output by country's residents worldwide. NNP = GNP - depreciation. Methods: output, income, expenditure. Per capita income = national income ÷ population. Real vs nominal GDP.",
+    keyPoints: ["GDP: value of all goods/services produced in country", "GNP = GDP + net factor income from abroad", "NNP = GNP - capital consumption (depreciation)", "Income method: wages + profits + rent + interest", "Expenditure method: C + I + G + (X-M)"]
+  },
+  "Production & Costs": {
+    subject: "Economics",
+    summary: "Short run: at least one fixed factor. Long run: all factors variable. Fixed costs: don't change with output. Variable costs: change with output. Total cost = FC + VC. Average cost = TC/output. Marginal cost: cost of one more unit. Economies of scale: lower AC as output rises.",
+    keyPoints: ["Fixed cost: constant regardless of output", "Variable cost: changes with output", "Average total cost = TC ÷ output", "Marginal cost: change in TC from one more unit", "Economies of scale: larger production lowers average cost"]
+  },
+  "Citizenship & Rights": {
+    subject: "Government",
+    summary: "Citizens have rights and responsibilities. Fundamental rights in Nigerian constitution: life, dignity, freedom from slavery, fair hearing, privacy, freedom of thought/religion/expression/assembly, movement, freedom from discrimination. Duties: pay taxes, obey laws, defend country.",
+    keyPoints: ["Fundamental rights: life, dignity, fair hearing", "Freedom of expression, religion, movement", "Right to education and health", "Citizens' duties: pay taxes, vote, obey laws", "Rights can be limited in public interest"]
+  },
+  "Civil Service": {
+    subject: "Government",
+    summary: "Civil service: permanent, professional government employees. Headed by Head of Service. Permanent secretaries head ministries. Characteristics: permanence, neutrality, anonymity, impartiality. Recruited on merit. Problems: corruption, inefficiency, overstaffing in Nigeria.",
+    keyPoints: ["Civil servants: permanent, professional, neutral", "Political neutrality: serve any government", "Anonymity: minister takes public responsibility", "Federal Civil Service Commission: recruitment and promotion", "Problems in Nigeria: corruption, inefficiency, overstaffing"]
+  },
+  "Colonial Administration": {
+    subject: "Government",
+    summary: "British colonised Nigeria using indirect rule (Lugard). Used traditional rulers to govern. Direct rule used in south (no suitable traditional structures). Problems with indirect rule in south: different political structures. Amalgamation 1914: North and South Nigeria joined.",
+    keyPoints: ["Indirect rule: using existing traditional rulers", "Frederick Lugard: architect of indirect rule in Nigeria", "Direct rule: British officers govern directly", "Amalgamation 1914: North and South Nigeria merged", "Problems: indirect rule failed in southeastern Nigeria"]
+  },
+  "Electoral Process": {
+    subject: "Government",
+    summary: "Elections: choosing leaders through voting. Types: universal suffrage, direct/indirect. Electoral Commission (INEC in Nigeria). Constituency: electoral division. Proportional representation vs first-past-the-post. Problems: rigging, violence, voter apathy in Nigeria.",
+    keyPoints: ["INEC: Independent National Electoral Commission", "Universal suffrage: all adults can vote", "Constituency: geographical area for election", "First-past-the-post: most votes wins", "Proportional representation: seats match vote share"]
+  },
+  "Federalism": {
+    subject: "Government",
+    summary: "Federalism divides power between central and constituent governments. Features: written constitution, independent judiciary, bicameral legislature, revenue allocation, concurrent and exclusive legislative lists. Nigeria: federal, 36 states + FCT. USA: 50 states.",
+    keyPoints: ["Federal: power divided between central and state governments", "Exclusive list: only federal government legislates", "Concurrent list: both federal and state governments", "Residual powers: state governments", "Advantages: unity in diversity, protects minorities"]
+  },
+  "Government Systems": {
+    subject: "Government",
+    summary: "Types: democracy (people rule), monarchy (king/queen), republic (elected head), autocracy (absolute ruler), theocracy (religious rule), oligarchy (few rule). Presidential vs parliamentary democracy. Unitary (centralised) vs federal (divided power) systems.",
+    keyPoints: ["Democracy: government by the people", "Presidential system: executive separate from legislature", "Parliamentary: executive from legislature (PM)", "Unitary: central government dominant (UK)", "Federal: power divided between levels (Nigeria, USA)"]
+  },
+  "International Organisations": {
+    subject: "Government",
+    summary: "UN: maintains world peace, 193 members, Security Council (5 permanent). AU: African Union, replaces OAU. ECOWAS: West African economic community. Commonwealth: UK and former colonies. WTO: world trade. IMF: financial stability. World Bank: development loans.",
+    keyPoints: ["UN: United Nations, founded 1945", "Security Council: 5 permanent members with veto", "AU: African Union, replaced OAU in 2002", "ECOWAS: Economic Community of West African States", "IMF: International Monetary Fund, balance of payments support"]
+  },
+  "Legislature": {
+    subject: "Government",
+    summary: "Legislature makes laws. Bicameral: two chambers (Senate + House of Reps in Nigeria). Unicameral: one chamber. Functions: law-making, approving budget, oversight of executive, representation, constitutional amendment. Bills become Acts after presidential assent.",
+    keyPoints: ["Bicameral: two chambers of legislature", "Senate: upper house, 109 senators in Nigeria", "House of Representatives: 360 members", "Bill: proposed law before it is passed", "Presidential assent: president signs bill into law"]
+  },
+  "Local Government": {
+    subject: "Government",
+    summary: "Third tier of government in Nigeria. 774 local government areas. Functions: primary education, primary health care, local roads, markets, birth/death registration. Revenue: federal allocation, local levies. Chairman heads local government. Elected councillors.",
+    keyPoints: ["Nigeria has 774 local government areas", "Third tier of government", "Functions: primary education, health, local roads", "Revenue from federation account and local taxes", "Chairman: head of local government executive"]
+  },
+  "Military Rule in Nigeria": {
+    subject: "Government",
+    summary: "Nigeria's military coups: 1966 (Ironsi), 1966 (Gowon), 1975 (Murtala), 1976 (Obasanjo), 1983 (Buhari), 1985 (Babangida), 1993 (Abacha), 1998 (Abubakar). Military suspended constitution, ruled by decree. Return to democracy 1999.",
+    keyPoints: ["First coup: January 1966, Major Nzeogwu", "Counter coup: July 1966, Gowon", "Murtala Mohammed: assassinated 1976", "Babangida: annulled June 12 1993 election", "Return to democracy: May 29, 1999, Obasanjo"]
+  },
+  "Nigerian Constitutional History": {
+    subject: "Government",
+    summary: "Nigerian constitutions: Clifford (1922), Richards (1946), Macpherson (1951), Lyttleton (1954-federalism), Independence (1960), Republic (1963), 1979 (presidential), 1999 (current). 1954 introduced true federalism. 1979 introduced presidential system.",
+    keyPoints: ["Clifford 1922: first legislative council with elected members", "Richards 1946: regionalism introduced", "Macpherson 1951: increased Nigerian participation", "Lyttleton 1954: true federal structure", "1999 Constitution: current operating constitution"]
+  },
+  "Nigerian Federalism": {
+    subject: "Government",
+    summary: "Nigeria became federal state in 1954 (Lyttleton Constitution). Currently: Federal Government + 36 states + FCT + 774 LGAs. Revenue sharing: federation account shared by formula. Fiscal federalism: revenue allocation between tiers. Derivation principle for oil states.",
+    keyPoints: ["Nigeria has 36 states and FCT (Abuja)", "774 local government areas", "Revenue Mobilisation Allocation and Fiscal Commission (RMAFC)", "Derivation: 13% to oil-producing states", "Exclusive, concurrent and residual legislative lists"]
+  },
+  "Nigerian Foreign Policy": {
+    subject: "Government",
+    summary: "Nigeria's foreign policy principles: African centrality, non-alignment, respect for sovereignty, peaceful resolution of conflicts, support for oppressed peoples. Institutions: Ministry of Foreign Affairs. ECOWAS leadership. African Union. Nigeria contributes to UN peacekeeping.",
+    keyPoints: ["Africa as centrepiece of Nigeria's foreign policy", "Non-alignment: not committed to power blocs", "Respect for sovereignty of other nations", "Support for liberation movements (anti-apartheid)", "ECOMOG: ECOWAS military force led by Nigeria"]
+  },
+  "Nigerian Nationalism": {
+    subject: "Government",
+    summary: "Nationalism: movement for self-government and independence. Pioneers: Herbert Macaulay (NNDP 1923), Azikiwe (NCNC), Awolowo (AG), Ahmadu Bello (NPC). Nationalist newspapers, political parties, demonstrations. Independence achieved October 1, 1960.",
+    keyPoints: ["Herbert Macaulay: father of Nigerian nationalism", "NNDP: first nationalist political party (1923)", "Nnamdi Azikiwe: prominent nationalist, first president", "Awolowo: led Action Group in western Nigeria", "Independence: October 1, 1960"]
+  },
+  "Nigerian Traditional Government": {
+    subject: "Government",
+    summary: "Pre-colonial governments: Emirates (Hausa-Fulani, centralised, Emir rules), Yoruba kingdoms (Oba with council of chiefs), Igbo system (village democracy, council of elders, no single ruler). Different systems required different colonial approaches.",
+    keyPoints: ["Hausa-Fulani: centralised emirate system, Emir rules", "Yoruba: Oba (king) with Oyo Mesi council", "Igbo: acephalous, council of elders, no paramount chief", "Benin kingdom: powerful centralised monarchy", "Age grades system in Igbo society"]
+  },
+  "Political Parties": {
+    subject: "Government",
+    summary: "Political parties: organisations contesting elections. Functions: political education, recruitment of leaders, linking government and people, forming government. Nigeria's major parties: NPC, NCNC, AG (first republic); NPN, UPN (second); PDP, APC (current). Party system: two-party, multiparty, one-party.",
+    keyPoints: ["Political party: organised group seeking political power", "Functions: recruit leaders, educate public, form government", "APC and PDP: major Nigerian parties currently", "Party primaries: internal election to choose candidates", "Proportional representation helps smaller parties"]
+  },
+  "Literary Appreciation": {
+    subject: "Literature",
+    summary: "Literary appreciation: analysing and evaluating literature. Elements: plot (sequence of events), character, setting, theme, style, point of view. Figures of speech: metaphor, simile, personification, alliteration. Tone and mood. Symbolism and imagery.",
+    keyPoints: ["Plot: sequence of events with conflict and resolution", "Character: protagonist (hero), antagonist (villain)", "Setting: time and place of story", "Theme: central idea or message", "Figures of speech: metaphor, simile, personification"]
+  },
+  "Literary Principles": {
+    subject: "Literature",
+    summary: "Literature: creative writing with artistic merit. Forms: prose (novel, short story), poetry, drama. Literary devices: foreshadowing, flashback, irony (verbal, dramatic, situational), allegory, satire. Narrative perspective: first person, third person omniscient/limited.",
+    keyPoints: ["Prose: novel, short story, essay", "Poetry: lyric, narrative, dramatic", "Drama: tragedy, comedy, tragicomedy", "Irony: saying/showing opposite of what is meant", "Satire: using humour to criticise"]
+  },
+  "Nineteen Eighty-Four": {
+    subject: "Literature",
+    summary: "George Orwell's dystopian novel. Winston Smith rebels against totalitarian Party led by Big Brother. Themes: totalitarianism, surveillance, propaganda, doublethink, Newspeak. Room 101: torture chamber. Thoughtcrime: illegal thinking. Warning against totalitarian government.",
+    keyPoints: ["Author: George Orwell (1949)", "Big Brother: symbol of totalitarian control", "Doublethink: holding two contradictory beliefs", "Newspeak: language designed to limit thought", "Themes: freedom, oppression, truth, power"]
+  },
+  "Poetry": {
+    subject: "Literature",
+    summary: "Poetry uses language artistically. Elements: rhythm, rhyme, metre, imagery, diction. Forms: sonnet (14 lines), ode, ballad, elegy, lyric, epic. Devices: simile, metaphor, personification, alliteration, onomatopoeia, assonance. Free verse: no fixed rhyme or metre.",
+    keyPoints: ["Simile: comparison using 'like' or 'as'", "Metaphor: direct comparison", "Personification: giving human qualities to non-human things", "Alliteration: repeated consonant sounds", "Onomatopoeia: words that sound like what they describe"]
+  },
+  "Romeo and Juliet": {
+    subject: "Literature",
+    summary: "Shakespeare's tragedy of young love. Romeo (Montague) and Juliet (Capulet) fall in love despite family feud. Key characters: Mercutio, Tybalt, Friar Lawrence, Nurse. Themes: love, fate, family conflict, youth vs age. Ends in double suicide. Setting: Verona, Italy.",
+    keyPoints: ["Author: William Shakespeare", "Setting: Verona, Italy", "Families: Montagues (Romeo) and Capulets (Juliet)", "Friar Lawrence: plans secret marriage", "Theme: love conquers hate, but fate is cruel"]
+  },
+  "Sons and Daughters": {
+    subject: "Literature",
+    summary: "J.C. de Graft's play about conflict between traditional values and Western education. Lawyer Ababio wants children to maintain traditional values. Children want modern professions. Themes: generation conflict, tradition vs modernity, parental expectations, identity.",
+    keyPoints: ["Author: J.C. de Graft (Ghanaian)", "Main character: Lawyer Ababio and his children", "Conflict: tradition vs Western education", "Themes: generation gap, cultural identity", "Resolution: compromise between old and new values"]
+  },
+  "The Joys of Motherhood": {
+    subject: "Literature",
+    summary: "Buchi Emecheta's novel about Nnu Ego, a Nigerian woman whose worth is measured by children. Moves to Lagos, struggles with poverty, cowife. Children become westernised, abandon her. Themes: women's oppression, colonialism's impact, motherhood as burden, identity.",
+    keyPoints: ["Author: Buchi Emecheta (Nigerian)", "Protagonist: Nnu Ego", "Setting: Lagos, colonial Nigeria", "Theme: women's identity and suffering", "Irony: children she sacrificed for abandon her"]
+  },
+  "The Old Man and the Medal": {
+    subject: "Literature",
+    summary: "Ferdinand Oyono's satirical novel. Meka, a Cameroonian elder, sacrifices for French colonisers (land, sons die in war). Awarded medal as reward. Medal ceremony humiliating. Themes: colonial exploitation, African dignity, hypocrisy of colonialism, disillusionment.",
+    keyPoints: ["Author: Ferdinand Oyono (Cameroonian)", "Protagonist: Meka, old Christian convert", "Medal: symbol of colonial manipulation", "Themes: colonialism, betrayal, African dignity", "Meka's disillusionment with colonial system"]
+  },
+  "International Affairs": {
+    subject: "Current Affairs",
+    summary: "International affairs covers global political and economic issues. Key organisations: UN, AU, ECOWAS, WTO, IMF, World Bank. Conflicts, diplomacy, trade agreements. Nigeria plays leadership role in Africa. Climate change is global challenge.",
+    keyPoints: ["UN: 193 member states, maintains peace", "Security Council: 5 permanent members", "Nigeria: largest economy in Africa", "ECOWAS: 15 West African member states", "Climate change: global challenge requiring cooperation"]
+  },
+  "Nigerian Government": {
+    subject: "Current Affairs",
+    summary: "Nigeria operates presidential democracy. Three tiers: federal, state, local government. Three arms: executive (president), legislature (National Assembly), judiciary (Supreme Court). 36 states + FCT. 774 LGAs. Independent electoral commission (INEC).",
+    keyPoints: ["Presidential democracy since 1999", "36 states and FCT (Abuja)", "National Assembly: Senate + House of Representatives", "INEC: conducts elections", "Supreme Court: highest court in Nigeria"]
+  },
+  "UNIBEN History": {
+    subject: "Current Affairs",
+    summary: "University of Benin founded 1970. Started as Institute of Technology 1970. Full university status 1971. Located in Benin City, Edo State. Known for Medicine, Law, Engineering faculties. Post-UTME exam for admission. Cut-off marks vary by faculty.",
+    keyPoints: ["Founded: 1970 as Institute of Technology", "University status: 1971", "Location: Benin City, Edo State", "Known for Medicine, Law, Engineering", "Post-UTME determines admission alongside JAMB"]
+  },
+
+  "Nutrition": {
+    subject: "Biology",
+    summary: "Nutrition provides energy and materials for growth. Autotrophs make their own food via photosynthesis. Heterotrophs consume other organisms. Essential nutrients: carbohydrates (energy), proteins (growth/repair), fats (energy/insulation), vitamins, minerals, water, fibre. Malnutrition causes deficiency diseases.",
+    keyPoints: ["Autotrophs: make own food (plants)", "Heterotrophs: consume other organisms", "Carbohydrates: main energy source", "Proteins: growth and repair of tissues", "Vitamins: organic substances needed in small amounts"]
+  },
+  "Animal Diversity & Evolution": {
+    subject: "Biology",
+    summary: "Animals classified into vertebrates (backbone) and invertebrates (no backbone). Evolution by natural selection: variation exists, struggle for survival, fittest survive and reproduce. Evidence: fossils, comparative anatomy, embryology. Darwin's theory explains biodiversity.",
+    keyPoints: ["Vertebrates: fish, amphibians, reptiles, birds, mammals", "Invertebrates: insects, worms, molluscs", "Natural selection: survival of the fittest", "Fossils: evidence of extinct organisms", "Adaptation: features that help survival"]
+  },
+  "Circulatory System": {
+    subject: "Biology",
+    summary: "Blood circulates through heart, arteries, veins, capillaries. Double circulation: pulmonary (heart-lungs-heart) and systemic (heart-body-heart). Heart: 4 chambers (2 atria, 2 ventricles). Arteries carry blood from heart; veins carry to heart. Blood components: plasma, red/white cells, platelets.",
+    keyPoints: ["Double circulation in mammals", "Arteries: thick walls, carry blood from heart", "Veins: thin walls, valves, carry blood to heart", "Capillaries: one cell thick, gas exchange", "Red blood cells: carry oxygen via haemoglobin"]
+  },
+  "Respiration": {
+    subject: "Biology",
+    summary: "Aerobic respiration: C6H12O6 + 6O2 → 6CO2 + 6H2O + 38ATP. Anaerobic (yeast): glucose → ethanol + CO2 + 2ATP. Anaerobic (muscle): glucose → lactic acid + 2ATP. Mitochondria is site of aerobic respiration. Breathing movements ventilate lungs.",
+    keyPoints: ["Aerobic: needs oxygen, produces 38ATP", "Anaerobic: no oxygen, produces 2ATP only", "Yeast: glucose → ethanol + CO2", "Muscle: glucose → lactic acid (fatigue)", "Mitochondria: powerhouse of the cell"]
+  },
+  "Excretion & Homeostasis": {
+    subject: "Biology",
+    summary: "Excretion removes metabolic waste. Kidneys: urea in urine. Lungs: CO2 and water vapour. Skin: sweat. Homeostasis maintains internal balance. Kidney regulates water (osmoregulation). ADH controls water reabsorption. Blood glucose regulated by insulin and glucagon from pancreas.",
+    keyPoints: ["Kidney: main excretory and osmoregulatory organ", "ADH: antidiuretic hormone, increases water reabsorption", "Insulin: lowers blood glucose (from pancreas)", "Glucagon: raises blood glucose", "Negative feedback: maintains homeostasis"]
+  },
+  "Nervous System & Coordination": {
+    subject: "Biology",
+    summary: "Nervous system coordinates responses. CNS: brain and spinal cord. PNS: peripheral nerves. Neurones transmit impulses. Reflex arc bypasses brain for fast response. Hormones: slower but longer lasting than nerve impulses. Auxins coordinate plant responses (tropisms).",
+    keyPoints: ["CNS: brain and spinal cord", "Reflex arc: receptor → sensory → relay → motor → effector", "Hormones: slower, longer lasting than nerves", "Auxin: promotes cell elongation in plants", "Phototropism: shoot grows toward light (auxin redistribution)"]
+  },
+  "Reproduction": {
+    subject: "Biology",
+    summary: "Asexual: one parent, identical offspring. Sexual: two parents, genetic variation. Asexual methods: binary fission (bacteria), budding (yeast), spores (fungi), vegetative propagation (plants). Human reproductive system. Menstrual cycle. Fertilisation and development.",
+    keyPoints: ["Asexual: no variation, rapid, one parent", "Sexual: variation, slower, two parents", "Binary fission: bacteria reproduce asexually", "Budding: yeast, hydra", "Menstrual cycle: approximately 28 days"]
+  },
+  "Musculoskeletal System": {
+    subject: "Biology",
+    summary: "Skeleton: support, protection, movement, blood cell production, mineral storage. Joints: ball and socket (hip), hinge (knee), pivot (neck), gliding (wrist). Antagonistic muscles: biceps/triceps. Tendons: muscle to bone. Ligaments: bone to bone.",
+    keyPoints: ["Ball and socket: widest movement range (hip, shoulder)", "Hinge joint: one plane movement (knee, elbow)", "Tendons: connect muscle to bone", "Ligaments: connect bone to bone", "Antagonistic muscles work in pairs"]
+  },
+  "Disease & Health": {
+    subject: "Biology",
+    summary: "Diseases: infectious (pathogens) or non-infectious. Bacteria cause: cholera, tuberculosis, gonorrhoea. Viruses cause: malaria (no), HIV, measles, polio. Malaria: Plasmodium parasite, Anopheles mosquito vector. Antibiotics kill bacteria, not viruses. Vaccines prevent diseases.",
+    keyPoints: ["Malaria: Plasmodium (parasite), Anopheles mosquito (vector)", "HIV: attacks immune system", "Cholera: contaminated water, caused by Vibrio cholerae", "Antibiotics: kill bacteria only", "Vaccines: create immunity without causing disease"]
+  },
+  "Genetics & Heredity": {
+    subject: "Biology",
+    summary: "Mendel's laws of inheritance. Dominant allele expressed over recessive. Monohybrid cross F2 ratio: 3:1. Dihybrid F2: 9:3:3:1. Sex determination: XX female, XY male. Sex-linked traits (e.g. haemophilia, colour blindness) on X chromosome. Mutations: changes in DNA.",
+    keyPoints: ["Dominant masks recessive allele", "Homozygous: AA or aa; Heterozygous: Aa", "F2 monohybrid ratio: 3 dominant : 1 recessive", "Sex-linked: gene on X chromosome", "Colour blindness and haemophilia: sex-linked, more common in males"]
+  },
+  "Classification": {
+    subject: "Biology",
+    summary: "Taxonomy classifies organisms. Binomial nomenclature: Genus species (italic/underlined). Five kingdoms: Monera (bacteria), Protista (amoeba), Fungi, Plantae, Animalia. Kingdom → Phylum → Class → Order → Family → Genus → Species. Dichotomous key for identification.",
+    keyPoints: ["Binomial nomenclature: two-part Latin name", "Kingdom is broadest category", "Species is most specific category", "Five kingdoms: Monera, Protista, Fungi, Plantae, Animalia", "Dichotomous key: yes/no questions to identify organism"]
+  },
+  "Nitrogen Cycle": {
+    subject: "Biology",
+    summary: "Nitrogen cycles between atmosphere and organisms. Fixation: Rhizobium (in legume root nodules) converts N2 to ammonia. Nitrification: Nitrosomonas (ammonia→nitrites), Nitrobacter (nitrites→nitrates). Plants absorb nitrates. Denitrification: returns N2 to air.",
+    keyPoints: ["Rhizobium: fixes atmospheric N2 in root nodules", "Nitrosomonas: converts ammonia to nitrites", "Nitrobacter: converts nitrites to nitrates", "Plants absorb nitrates for protein synthesis", "Denitrifying bacteria return N2 to atmosphere"]
+  },
+  "Environmental Science": {
+    subject: "Biology",
+    summary: "Human activities cause pollution. Air: CO (combustion), SO2 (acid rain), NOx, CFCs (ozone depletion). Water: sewage, fertilisers (eutrophication), oil spills. Soil: pesticides, heavy metals. Deforestation: soil erosion, climate change, loss of biodiversity.",
+    keyPoints: ["SO2 + H2O → H2SO4 (acid rain)", "Eutrophication: excess nutrients cause algal bloom", "Ozone depletion: CFCs break down ozone", "Deforestation: soil erosion and climate change", "Biological control: use of natural predators"]
+  },
+  "Sense Organs": {
+    subject: "Biology",
+    summary: "Eye: cornea (refracts), lens (focuses), retina (rods-dim light, cones-colour), optic nerve. Ear: pinna collects sound, ossicles amplify (malleus, incus, stapes), cochlea converts to impulse. Skin: touch, pain, temperature. Nose: smell. Tongue: taste (sweet-tip, bitter-back, sour-sides, salty-front sides).",
+    keyPoints: ["Cornea: first refracts light", "Lens: adjusts focus (accommodation)", "Rods: dim light, no colour; Cones: bright light, colour", "Ossicles: malleus, incus, stapes amplify sound", "Cochlea: converts vibrations to nerve impulse"]
+  },
+  "Homeostasis": {
+    subject: "Biology",
+    summary: "Homeostasis: maintaining constant internal environment. Examples: temperature (37°C), blood glucose (80-120mg/100cm³), blood pH (7.35-7.45), water balance. Mechanism: negative feedback detects deviation, corrects it. Hypothalamus: body's thermostat. Pancreas: blood glucose control.",
+    keyPoints: ["Normal body temperature: 37°C in humans", "Insulin: lowers blood glucose (beta cells)", "Glucagon: raises blood glucose (alpha cells)", "ADH: kidney tubules reabsorb more water", "Negative feedback: automatic correction mechanism"]
+  },
+  "Biotechnology": {
+    subject: "Biology",
+    summary: "Biotechnology uses living organisms for useful products. GMOs: genes inserted to improve organisms. Fermentation: yeast produces alcohol, bacteria produce yoghurt/cheese. Monoclonal antibodies: identical antibodies for diagnosis/treatment. Genetic engineering: cut-and-paste DNA technique.",
+    keyPoints: ["Fermentation: yeast converts glucose to alcohol", "Yoghurt: bacteria ferment milk", "Insulin: now made by GM bacteria", "GMO crops: pest-resistant or higher yielding", "Restriction enzymes: cut DNA at specific points"]
+  },
+  "Metamorphosis": {
+    subject: "Biology",
+    summary: "Complete metamorphosis (holometabolous): egg→larva→pupa→adult. Examples: butterfly, mosquito, housefly, bee. Incomplete metamorphosis (hemimetabolous): egg→nymph→adult. Examples: grasshopper, cockroach, locust. Nymph resembles small wingless adult.",
+    keyPoints: ["Complete: 4 stages - egg, larva, pupa, adult", "Butterfly and mosquito: complete metamorphosis", "Incomplete: 3 stages - egg, nymph, adult", "Grasshopper and cockroach: incomplete", "Nymph: looks like adult but smaller and wingless"]
+  },
+  "Plant Reproduction": {
+    subject: "Biology",
+    summary: "Sexual: flowers produce seeds. Pollination: transfer of pollen (wind or insect). Fertilisation: pollen tube grows to ovule, nuclei fuse. Seed dispersal: wind, water, animal, self-dispersal. Asexual: runners (strawberry), tubers (yam), bulbs (onion), rhizomes (ginger), cuttings.",
+    keyPoints: ["Pollination: transfer of pollen to stigma", "Wind-pollinated: light pollen, feathery stigma", "Insect-pollinated: coloured petals, nectar, sticky pollen", "Double fertilisation in angiosperms", "Vegetative propagation: runners, tubers, bulbs"]
+  },
+  "Plant Physiology": {
+    subject: "Biology",
+    summary: "Photosynthesis: 6CO2 + 6H2O + light → C6H12O6 + 6O2. Occurs in chloroplasts. Factors limiting photosynthesis: light, CO2, temperature. Transpiration: water evaporation from leaves through stomata. Translocation: phloem transports sugars. Tropisms controlled by auxins.",
+    keyPoints: ["Photosynthesis: light + CO2 + water → glucose + oxygen", "Chlorophyll: absorbs red and blue light", "Guard cells control stomata opening/closing", "Transpiration increases with temperature, light, wind", "Auxin: promotes cell elongation on shaded side"]
+  },
+  "Health": {
+    subject: "Biology",
+    summary: "WHO definition: complete physical, mental and social wellbeing, not just absence of disease. Determinants: nutrition, exercise, sleep, hygiene, environment, healthcare access. Public health: immunisation, clean water, sanitation. Personal hygiene prevents disease spread.",
+    keyPoints: ["WHO: health = physical + mental + social wellbeing", "Balanced diet prevents nutritional deficiency", "Regular exercise: heart health, weight management", "Immunisation: prevents infectious diseases", "Safe water and sanitation reduce disease burden"]
+  },
+  "Cell Division": {
+    subject: "Biology",
+    summary: "Mitosis: one division → 2 identical diploid cells (growth/repair). Stages: prophase (chromosomes condense), metaphase (align at equator), anaphase (chromatids separate), telophase (new nuclei form). Meiosis: two divisions → 4 haploid cells (gametes). Introduces variation.",
+    keyPoints: ["Mitosis: 2 identical daughter cells", "Meiosis: 4 genetically different cells (gametes)", "Prophase: chromosomes become visible", "Metaphase: chromosomes align at cell equator", "Meiosis halves chromosome number (46→23 in humans)"]
+  },
+  "Excretion": {
+    subject: "Biology",
+    summary: "Excretion: removal of metabolic waste products. Kidneys: filter blood, produce urine (urea, salts, water). Lungs: excrete CO2 and water vapour. Skin: sweat (water, salts, urea). Liver: produces urea from excess amino acids (deamination). Plants excrete via stomata and lenticels.",
+    keyPoints: ["Kidney: main excretory organ, produces urine", "Urea: made in liver from deamination of amino acids", "Lungs: excrete CO2 and water vapour", "Skin: minor excretory organ via sweat", "Deamination: removal of amino group from amino acids"]
+  },
+  "Fruits": {
+    subject: "Biology",
+    summary: "Fruit develops from fertilised ovary. True fruit: from ovary only (mango, orange). False fruit: includes receptacle (apple, strawberry). Dispersal mechanisms: wind (light/feathery - dandelion), water (coconut), animals (fleshy fruits, hooks), explosive (peas, rubber). Seed inside fruit.",
+    keyPoints: ["True fruit: develops from ovary wall only", "False fruit: includes receptacle (cashew, apple)", "Wind dispersal: light seeds, wings or parachutes", "Animal dispersal: fleshy edible fruits or hooks", "Explosive: pod bursts, scatters seeds (Pterocarpus)"]
+  },
+  "Parasitology": {
+    subject: "Biology",
+    summary: "Parasites live on/in host causing harm. Tapeworm: attaches to intestine wall, no digestive system, absorbs digested food, proglottids contain eggs. Roundworm: in intestine. Malaria: Plasmodium falciparum in red blood cells, transmitted by female Anopheles mosquito. Life cycle important.",
+    keyPoints: ["Tapeworm: scolex (head) with suckers and hooks", "Tapeworm: no digestive system, absorbs host's food", "Malaria: Plasmodium falciparum (most deadly species)", "Female Anopheles: only the vector for malaria", "Liver fluke: affects cattle and sheep"]
+  },
+  "Plant Anatomy": {
+    subject: "Biology",
+    summary: "Root: absorption, anchorage. Root hair cells: increase surface area. Stem: support, transport. Leaf: photosynthesis. Xylem: dead cells, thick walls, transports water upward. Phloem: living cells, transports sugars. Cambium: meristematic tissue between xylem and phloem.",
+    keyPoints: ["Root hairs: increase surface area for absorption", "Xylem: dead cells, transports water upward", "Phloem: living cells, transports sugars both ways", "Stomata: pores in leaf for gas exchange", "Cambium: produces new xylem and phloem"]
+  },
+  "Digestion": {
+    subject: "Biology",
+    summary: "Digestion breaks down food chemically and physically. Mouth: amylase (starch→maltose). Stomach: pepsin/HCl (proteins). Small intestine: lipase (fats), trypsin (proteins), maltase. Bile (liver) emulsifies fats. Absorption in small intestine (ileum). Large intestine: water reabsorption.",
+    keyPoints: ["Salivary amylase: starch → maltose (mouth)", "HCl: kills bacteria, activates pepsin (stomach)", "Bile: emulsifies fats (not an enzyme)", "Trypsin: digests proteins in small intestine", "Ileum: main site of nutrient absorption"]
+  },
+  "Fish Biology": {
+    subject: "Biology",
+    summary: "Fish: cold-blooded (ectothermic) aquatic vertebrates. Gills for gas exchange in water. Lateral line: detects pressure/vibrations. Swim bladder: buoyancy control. Fins for locomotion. Cartilaginous fish (sharks, rays): no swim bladder, must swim. Bony fish: most common.",
+    keyPoints: ["Ectothermic: body temperature matches environment", "Gills: gas exchange underwater", "Lateral line: detects water pressure changes", "Swim bladder: controls buoyancy in bony fish", "Sharks: cartilaginous skeleton, no swim bladder"]
+  },
+  "Germination": {
+    subject: "Biology",
+    summary: "Germination: seed sprouts into seedling. Conditions: water (activates enzymes), oxygen (aerobic respiration), warmth (enzyme activity). Light not needed. Epigeal: cotyledons above ground (bean, pumpkin). Hypogeal: cotyledons remain below ground (maize, groundnut).",
+    keyPoints: ["Water: needed to activate dormant enzymes", "Oxygen: for aerobic respiration during germination", "Temperature: affects enzyme activity", "Epigeal: cotyledons emerge above soil (bean)", "Hypogeal: cotyledons stay below soil (maize)"]
+  },
+  "Mammals": {
+    subject: "Biology",
+    summary: "Mammals: warm-blooded (homoiothermic) vertebrates. Characteristics: hair/fur, mammary glands, live birth (mostly), four-chambered heart, diaphragm. Subclasses: monotremes (egg-laying - platypus), marsupials (pouch - kangaroo), placental (most mammals). Largest class.",
+    keyPoints: ["Warm-blooded: constant body temperature", "Mammary glands: feed young with milk", "Hair/fur: insulation and protection", "Four-chambered heart: complete separation of blood", "Placental mammals: young develop in uterus"]
+  },
+  "Birds": {
+    subject: "Biology",
+    summary: "Birds: warm-blooded vertebrates with feathers. Adaptations for flight: hollow bones, streamlined body, forelimbs as wings, keeled sternum (for flight muscles), no teeth, one ovary. Four-chambered heart. All birds lay eggs. Descended from reptiles.",
+    keyPoints: ["Warm-blooded (homoiothermic)", "Hollow bones reduce weight for flight", "Forelimbs modified as wings", "Keeled sternum: attachment for flight muscles", "All birds are oviparous (lay eggs)"]
+  },
+  "Biochemistry": {
+    subject: "Biology",
+    summary: "Biochemistry studies chemicals in living organisms. Carbohydrates: CnH2nOn, energy source (glucose, starch, glycogen). Proteins: amino acids, enzymes/structure. Lipids: fats and oils, energy/insulation. Nucleic acids: DNA (double helix, deoxyribose) and RNA. Enzymes: protein catalysts.",
+    keyPoints: ["Carbohydrates: CHO in 1:2:1 ratio", "Glucose: C6H12O6, primary energy source", "Proteins: polymers of amino acids", "Enzymes: biological catalysts, specific, reusable", "DNA: double helix, contains genetic code"]
+  },
+  "Plant Excretion": {
+    subject: "Biology",
+    summary: "Plants excrete metabolic waste products. Through stomata: CO2 (night, during respiration), O2 (day, during photosynthesis), water vapour. Through lenticels in stems. Some plants store waste: tannins (bark/leaves), latex (rubber tree), resins, gums, alkaloids (stored in cells).",
+    keyPoints: ["Stomata: main route for gaseous excretion", "CO2: excreted during respiration", "O2: excreted during photosynthesis", "Tannins stored in bark and leaves", "Latex: milky fluid from rubber trees"]
+  },
+  "Carbon Cycle": {
+    subject: "Biology",
+    summary: "Carbon cycles continuously. Photosynthesis removes CO2 from atmosphere. Respiration (all organisms) releases CO2. Decomposition releases CO2. Combustion of fossil fuels and wood adds CO2. Carbon stored in limestone, fossil fuels, living organisms. Human activities increasing atmospheric CO2 causing global warming.",
+    keyPoints: ["Photosynthesis: removes CO2 from air", "Respiration: releases CO2 to air", "Decomposition: dead matter releases CO2", "Combustion: burning fuels releases stored carbon", "Increasing CO2: greenhouse effect, global warming"]
+  },
+  "Plant Kingdom": {
+    subject: "Biology",
+    summary: "Plant classification: Algae (no true tissues), Bryophytes (mosses - non-vascular, need water to reproduce), Pteridophytes (ferns - vascular, spores), Gymnosperms (naked seeds, no fruit - conifers, cycads), Angiosperms (seeds in fruit, flowering plants - most advanced).",
+    keyPoints: ["Algae: simplest, no roots/stems/leaves", "Mosses/Liverworts: non-vascular, need water for reproduction", "Ferns: vascular, reproduce by spores", "Gymnosperms: seeds not enclosed (pine, cycad)", "Angiosperms: seeds in fruit, most complex plants"]
+  },
+  "Osmosis": {
+    subject: "Biology",
+    summary: "Osmosis: movement of water molecules through semi-permeable membrane from region of low solute concentration to high. Turgid: cell full of water (plant cells - firm). Flaccid: plant cell limp from water loss. Plasmolysis: protoplasm pulls away from wall. Haemolysis: RBC bursts in water.",
+    keyPoints: ["Osmosis: water moves from dilute to concentrated solution", "Semi-permeable membrane: allows water, not solute", "Turgid: plant cell firm with water", "Plasmolysis: cell shrinks in hypertonic solution", "Haemolysis: red blood cell bursts in hypotonic solution"]
+  },
+  "Plant Nutrition": {
+    subject: "Biology",
+    summary: "Plants need mineral salts from soil. Nitrogen (N): protein/chlorophyll synthesis - deficiency causes yellowing. Phosphorus (P): ATP/DNA - poor root growth if deficient. Potassium (K): enzyme activation - weak stems. Magnesium (Mg): chlorophyll - yellowing between veins. Iron: enzyme cofactor.",
+    keyPoints: ["Nitrogen: needed for protein and chlorophyll", "Nitrogen deficiency: yellowing of older leaves", "Magnesium: central atom in chlorophyll molecule", "Phosphorus: ATP synthesis and root development", "Calcium: cell wall formation"]
+  },
+  "Soil Science": {
+    subject: "Biology",
+    summary: "Soil types: sandy (large particles, good drainage, poor nutrients), clay (small particles, waterlogged, poor aeration), loam (best mixture of sand + silt + clay). Soil profile: topsoil (humus, organisms), subsoil (minerals), bedrock. Earthworms improve soil fertility and aeration.",
+    keyPoints: ["Sandy: drains fast, poor water retention", "Clay: waterlogged, poor drainage and aeration", "Loam: best for agriculture (mix of sand, silt, clay)", "Humus: decomposed organic matter, improves fertility", "Earthworms: improve aeration and mix soil layers"]
+  },
+  "Plant Tissues": {
+    subject: "Biology",
+    summary: "Meristematic tissue: dividing cells, in growing regions (shoot/root tips). Permanent tissues: non-dividing. Parenchyma: storage/photosynthesis (large, thin walls). Collenchyma: flexible support (corners thickened). Sclerenchyma: rigid support (dead, thick walls). Xylem and phloem: vascular tissues.",
+    keyPoints: ["Meristem: dividing cells at growing tips", "Parenchyma: storage, thin walls, most common", "Collenchyma: flexible support in young stems", "Sclerenchyma: dead cells, very thick walls", "Xylem: dead cells, water transport; Phloem: living, sugar transport"]
+  },
+  "Nervous System": {
+    subject: "Biology",
+    summary: "CNS: brain (cerebrum-thinking, cerebellum-balance, medulla-involuntary) and spinal cord. Neuron: cell body + dendrites + axon. Synapse: gap between neurons, chemical transmission. Reflex action: fast automatic response. Reflex arc: receptor→sensory→relay→motor→effector.",
+    keyPoints: ["Cerebrum: conscious thought and memory", "Cerebellum: balance and coordination", "Medulla oblongata: breathing, heartbeat", "Synapse: chemical transmission between neurons", "Reflex: automatic response, does not involve brain"]
+  },
+  "Food Tests": {
+    subject: "Biology",
+    summary: "Biochemical food tests identify nutrients. Starch: iodine solution → blue-black. Reducing sugar: Benedict's solution + heat → brick red precipitate. Protein: Biuret reagent → purple/violet. Fat: Sudan III → red layer OR ethanol emulsion test → milky white. Vitamin C: DCPIP → decolourises.",
+    keyPoints: ["Starch + iodine solution → blue-black colour", "Reducing sugar + Benedict's + heat → brick red", "Protein + Biuret reagent → purple/violet", "Fat + Sudan III → red layer", "Grease spot test: fat leaves translucent spot"]
+  },
+  "Algae": {
+    subject: "Biology",
+    summary: "Algae are photosynthetic protists or simple plants. Types: green (Spirogyra, Chlamydomonas), brown (Sargassum), red. Spirogyra: filamentous, spiral chloroplasts, reproduces by conjugation. Chlamydomonas: unicellular, flagella, eyespot. Euglena: both plant-like (chloroplasts) and animal-like (no cell wall). Important in aquatic food chains.",
+    keyPoints: ["Spirogyra: filamentous, spiral chloroplasts", "Conjugation: sexual reproduction in Spirogyra", "Chlamydomonas: unicellular, two flagella", "Euglena: plant AND animal characteristics", "Algae: base of aquatic food chains"]
+  },
+  "Thermoregulation": {
+    subject: "Biology",
+    summary: "Warm-blooded animals regulate body temperature. Too hot: vasodilation (blood vessels widen), sweating, panting. Too cold: vasoconstriction, shivering (generates heat), piloerection (hair stands up), reduced blood to skin. Hypothalamus: body's thermostat in mammals.",
+    keyPoints: ["Hypothalamus: detects and controls body temperature", "Vasodilation: more blood to skin, loses heat", "Vasoconstriction: less blood to skin, conserves heat", "Sweating: evaporation cools the body", "Shivering: rapid muscle contractions generate heat"]
+  },
+  "Chemical Energetics": {
+    subject: "Chemistry",
+    summary: "Enthalpy change (ΔH): heat content change. Exothermic: heat released, ΔH negative (combustion, neutralisation). Endothermic: heat absorbed, ΔH positive (photosynthesis, dissolving ammonium nitrate). Activation energy: minimum energy to start reaction. Bond energy calculations.",
+    keyPoints: ["Exothermic: ΔH negative, heat released", "Endothermic: ΔH positive, heat absorbed", "Activation energy: energy barrier to reaction", "Catalyst: lowers activation energy", "Bond breaking: endothermic; bond forming: exothermic"]
+  },
+  "Chemical Reactions": {
+    subject: "Chemistry",
+    summary: "Types: synthesis (A+B→AB), decomposition (AB→A+B), single displacement (A+BC→AC+B), double displacement (AB+CD→AD+CB), redox (electron transfer), acid-base (neutralisation). Rate affected by: concentration, temperature, surface area, catalyst, pressure (gases).",
+    keyPoints: ["Synthesis: two substances combine", "Decomposition: one substance breaks apart", "Displacement: more reactive element displaces less reactive", "Factors affecting rate: concentration, temperature, surface area", "Catalyst: speeds reaction, not consumed"]
+  },
+  "Solutions & Mixtures": {
+    subject: "Chemistry",
+    summary: "Solution: homogeneous mixture (solute in solvent). Solubility: mass dissolving in 100g solvent at temperature. Saturated: maximum dissolved. Unsaturated: more can dissolve. Supersaturated: unstable, more than normal. Concentration: mol/dm³ or g/dm³. Solubility of most solids increases with temperature.",
+    keyPoints: ["Solubility: mass of solute in 100g solvent", "Saturated: no more solute dissolves", "Solubility of solids: increases with temperature", "Solubility of gases: decreases with temperature", "Concentration (molarity) = moles ÷ volume in dm³"]
+  },
+  "Periodic Table & Elements": {
+    subject: "Chemistry",
+    summary: "Elements arranged by increasing atomic number. Groups: vertical columns, same valence electrons, similar properties. Periods: horizontal rows. Group 1 (alkali metals): most reactive metals. Group 7 (halogens): most reactive non-metals. Group 0 (noble gases): full shells, very unreactive.",
+    keyPoints: ["Atomic number increases across periods", "Elements in same group have similar properties", "Reactivity of metals increases down Group 1", "Reactivity of halogens decreases down Group 7", "Noble gases: full outer shells, inert"]
+  },
+  "Nuclear Chemistry": {
+    subject: "Chemistry",
+    summary: "Radioactivity: spontaneous emission from unstable nuclei. Alpha (α): ⁴₂He, least penetrating, stopped by paper. Beta (β): ⁰₋₁e, stopped by aluminium. Gamma (γ): electromagnetic, stopped by thick lead. Half-life: time for half atoms to decay. Nuclear equations must balance mass and charge numbers.",
+    keyPoints: ["Alpha: 2 protons + 2 neutrons emitted", "Beta: neutron → proton + electron (emitted)", "Gamma: electromagnetic radiation, no mass/charge", "Half-life: constant for each radioactive isotope", "Nuclear fission: splitting uranium-235"]
+  },
+  "Alloys & Metals": {
+    subject: "Chemistry",
+    summary: "Metals: malleable, ductile, lustrous, good conductors. Reactivity series: K>Na>Ca>Mg>Al>Zn>Fe>Pb>H>Cu>Ag>Au. Alloys are mixtures of metals. Bronze (Cu+Sn), Brass (Cu+Zn), Steel (Fe+C). Corrosion: oxidation of metals. Rusting: iron + water + oxygen → hydrated iron(III) oxide.",
+    keyPoints: ["Reactivity series: K, Na, Ca, Mg, Al, Zn, Fe, Pb, H, Cu, Ag, Au", "More reactive metal displaces less reactive from solution", "Rusting: requires both water AND oxygen", "Alloys harder/stronger than pure metals", "Galvanising: coating iron with zinc to prevent rust"]
+  },
+  "Physical & Chemical Changes": {
+    subject: "Chemistry",
+    summary: "Physical change: no new substance formed, reversible (melting, boiling, dissolving). Chemical change: new substance, usually irreversible (burning, rusting, neutralisation). Signs of chemical change: colour change, gas produced, precipitate formed, heat/light produced, smell change.",
+    keyPoints: ["Physical: no new substance, reversible", "Chemical: new substance, usually irreversible", "Burning: always a chemical change", "Dissolving: usually physical (reversible by evaporation)", "Electrolysis: chemical change (new substances at electrodes"]
+  },
+  "Stoichiometry": {
+    subject: "Chemistry",
+    summary: "Stoichiometry: calculating quantities in reactions. Use balanced equation for mole ratios. Moles = mass/Mr. At STP: 1 mole gas = 22.4 dm³. Limiting reagent: runs out first, limits product. Percentage yield = (actual/theoretical) × 100. Empirical formula: simplest whole number ratio.",
+    keyPoints: ["Balance equation first", "Mole ratio from balanced equation", "Limiting reagent: controls amount of product", "% yield = actual/theoretical × 100", "Empirical formula from % composition or combustion data"]
+  },
+  "Carbon & Its Compounds": {
+    subject: "Chemistry",
+    summary: "Carbon allotropes: diamond (tetrahedral, hardest, insulator), graphite (layers, conductor, lubricant), fullerene (C60). Organic compounds: hydrocarbons (alkanes CnH2n+2, alkenes CnH2n). Functional groups: -OH (alcohol), -COOH (acid), -NH2 (amine). Petroleum: mixture of hydrocarbons.",
+    keyPoints: ["Diamond: tetrahedral, hardest, insulator", "Graphite: hexagonal layers, conducts electricity", "Alkanes: saturated, substitution reactions with Cl2", "Alkenes: unsaturated, addition reactions with Br2", "Test for unsaturation: decolourises bromine water"]
+  },
+  "Metals": {
+    subject: "Chemistry",
+    summary: "Properties: high melting points, malleable, ductile, conduct electricity and heat, lustrous. Extraction: electrolysis (reactive metals), reduction by carbon (moderate), found native (unreactive). Sodium: extracted by Down's process. Aluminium: by electrolysis of alumina in molten cryolite.",
+    keyPoints: ["Reactive metals (K,Na,Ca,Mg,Al): extracted by electrolysis", "Moderate metals (Zn,Fe,Pb): reduced by carbon/coke", "Unreactive metals (Cu,Ag,Au): found native or easily reduced", "Blast furnace: iron extraction using coke", "Thermite reaction: Al reduces Fe2O3"]
+  },
+  "Volumetric Analysis": {
+    subject: "Chemistry",
+    summary: "Titration: measures volume to react with known solution. Acid-base: CAVA/CBVB = nA/nB. Indicator: phenolphthalein (acid-colourless, alkali-pink), methyl orange (acid-red, alkali-yellow). Primary standard: stable, pure, high Mr. Burette for measuring volume added.",
+    keyPoints: ["Burette: measures exact volume dispensed", "Pipette: measures exact fixed volume", "CAVA/CBVB = nA/nB for titration calculations", "Phenolphthalein: colourless in acid, pink in alkali", "End point: indicator changes colour permanently"]
+  },
+  "Redox Chemistry": {
+    subject: "Chemistry",
+    summary: "Oxidation: loss of electrons, gain of oxygen, increase in oxidation state. Reduction: gain of electrons, loss of oxygen, decrease in oxidation state. OIL RIG. Oxidising agent: accepts electrons (gets reduced). Reducing agent: donates electrons (gets oxidised). Balance using half-equations.",
+    keyPoints: ["OIL RIG: Oxidation Is Loss, Reduction Is Gain", "Oxidising agent: accepts electrons, gets reduced", "Reducing agent: donates electrons, gets oxidised", "Oxidation state of O = -2 (usually)", "Oxidation state of H = +1 (usually)"]
+  },
+  "Industrial Chemistry": {
+    subject: "Chemistry",
+    summary: "Haber process: N2 + 3H2 ⇌ 2NH3 (450°C, 200atm, iron catalyst). Contact process for H2SO4: S→SO2→SO3→H2SO4 (V2O5 catalyst, 450°C). Solvay process: Na2CO3 from NaCl. Brine electrolysis → NaOH + Cl2 + H2. Fractional distillation of petroleum.",
+    keyPoints: ["Haber: iron catalyst, 450°C, 200atm for ammonia", "Contact: V2O5 catalyst, 450°C for SO3", "SO3 absorbed in H2SO4 to form oleum", "Solvay: makes sodium carbonate (washing soda)", "Brine electrolysis: Cl2 (anode), H2 (cathode), NaOH (solution)"]
+  },
+  "Chemistry of Non-metals": {
+    subject: "Chemistry",
+    summary: "Non-metals: poor conductors (except graphite), brittle. Halogens: Group 7, diatomic, reactivity decreases down group (F>Cl>Br>I). Sulphur: burns blue to form SO2. Nitrogen: 78% of air, used in fertilisers (Haber). Phosphorus: white (reactive/poisonous) and red (less reactive) allotropes.",
+    keyPoints: ["Fluorine: most reactive element", "Chlorine: yellow-green gas, bleach, water purification", "Sulphur: burns with blue flame → SO2", "Nitrogen: 78% of air, very unreactive", "Phosphorus: white (spontaneously flammable), red (stable)"]
+  },
+  "Gas Laws": {
+    subject: "Chemistry",
+    summary: "Boyle's: P1V1 = P2V2 (constant T). Charles': V1/T1 = V2/T2 (constant P, T in Kelvin). Gay-Lussac's: P1/T1 = P2/T2 (constant V). Combined: P1V1/T1 = P2V2/T2. Ideal gas: PV = nRT. At STP: T=273K, P=1atm, 1 mole gas = 22.4dm³.",
+    keyPoints: ["Boyle's: pressure inversely proportional to volume", "Charles': volume directly proportional to temperature (Kelvin)", "STP: 273K (0°C) and 1 atm pressure", "1 mole gas at STP = 22.4 dm³", "PV = nRT for ideal gas calculations"]
+  },
+  "Analytical Chemistry": {
+    subject: "Chemistry",
+    summary: "Qualitative analysis identifies substances. Flame tests: Li-red, Na-yellow, K-lilac/violet, Ca-brick red, Ba-apple green, Cu-blue-green. Anion tests: CO3²⁻ (CO2 with acid), Cl⁻ (white ppt AgNO3), SO4²⁻ (white ppt BaCl2), NO3⁻ (brown ring test).",
+    keyPoints: ["Sodium: yellow/orange flame", "Potassium: lilac/violet flame", "Calcium: brick red flame", "Copper: blue-green flame", "Chloride: white precipitate with AgNO3 (soluble in NH3)"]
+  },
+  "Atomic Structure": {
+    subject: "Chemistry",
+    summary: "Atom: protons (+, in nucleus), neutrons (neutral, in nucleus), electrons (-, shells). Atomic number = protons. Mass number = protons + neutrons. Isotopes: same protons, different neutrons. Electron configuration: shells 2,8,8,18. Valence electrons determine chemical properties.",
+    keyPoints: ["Atomic number = protons (identifies element)", "Mass number = protons + neutrons", "Isotopes: same element, different mass numbers", "Electronic configuration: 2,8,8... from inside out", "Valence electrons = Group number (for main groups)"]
+  },
+  "Acid-Base Chemistry": {
+    subject: "Chemistry",
+    summary: "Arrhenius: acids produce H+, bases produce OH-. Bronsted-Lowry: acid donates H+, base accepts H+. Strong acids fully dissociate (HCl, H2SO4, HNO3). Weak: partial dissociation (CH3COOH). pH = -log[H+]. Neutralisation: acid + base → salt + water. Buffer resists pH change.",
+    keyPoints: ["Strong acid: completely dissociates in water", "Weak acid: partially dissociates", "pH = -log[H+]; pH 7 = neutral", "Neutralisation: acid + base → salt + water", "Indicator changes colour at specific pH"]
+  },
+  "Physical Changes": {
+    subject: "Chemistry",
+    summary: "Physical changes: no new chemical substance formed. State changes: melting (solid→liquid), boiling (liquid→gas), condensation (gas→liquid), freezing (liquid→solid), sublimation (solid→gas). All reversible. Dissolving is usually physical. No change in chemical formula.",
+    keyPoints: ["No new substance formed in physical change", "State changes are physical changes", "Sublimation: solid→gas (iodine, dry ice, ammonium chloride)", "Dissolving: reversible physical change", "No change in chemical bonds or composition"]
+  },
+  "Halogens": {
+    subject: "Chemistry",
+    summary: "Group 7: F, Cl, Br, I, At. Diatomic molecules. Reactivity decreases down group: F2 most reactive, I2 least. Cl2: yellow-green gas, bleaching, water purification. Displacement: Cl2 displaces Br- and I-; Br2 displaces I- only. Halide ions: F-, Cl-, Br-, I-.",
+    keyPoints: ["Fluorine: most reactive non-metal", "All halogens are diatomic molecules", "More reactive halogen displaces less reactive from solution", "Cl2 + 2KBr → 2KCl + Br2", "Halide identification: AgNO3 solution (Cl-white, Br-cream, I-yellow ppt)"]
+  },
+  "Colloids": {
+    subject: "Chemistry",
+    summary: "Colloids: dispersed particles (1-1000nm) in medium. Types: sol (solid/liquid), emulsion (liquid/liquid), foam (gas/liquid), aerosol (liquid/gas). Tyndall effect: scattering of light. Brownian motion: random movement. Stable due to electrostatic repulsion. Can be coagulated by heat or electrolyte.",
+    keyPoints: ["Colloid particle size: 1-1000 nm", "Tyndall effect: beam visible in colloid, not solution", "Sol: solid dispersed in liquid (paint, starch)", "Emulsion: liquid in liquid (milk, mayonnaise)", "Coagulation: adding electrolyte destabilises colloid"]
+  },
+  "Chemical Bonding": {
+    subject: "Chemistry",
+    summary: "Ionic: electron transfer, usually metal+non-metal, high MP, conducts when molten. Covalent: electron sharing, usually non-metal+non-metal, lower MP, poor conductor. Dative/coordinate: both electrons from one atom (NH4+, H3O+). Metallic: sea of delocalised electrons.",
+    keyPoints: ["Ionic: electron transfer forms ions", "Covalent: electrons shared between atoms", "Ionic compounds: conduct electricity when molten or dissolved", "Covalent compounds: mostly poor conductors", "Metallic bonding: explains conductivity and malleability"]
+  },
+  "Mole Concept": {
+    subject: "Chemistry",
+    summary: "Mole: 6.02×10²³ particles (Avogadro's number). Molar mass: mass of one mole in grams. Moles = mass/Mr. At STP: moles of gas = volume/22.4. Concentration (mol/dm³) = moles/volume. Empirical formula: simplest ratio. Molecular formula: actual number of atoms.",
+    keyPoints: ["1 mole = 6.02×10²³ particles (Avogadro)", "Moles = mass ÷ molar mass", "At STP: 1 mole gas = 22.4 dm³", "Molarity = moles ÷ volume (dm³)", "Empirical formula: simplest whole number ratio"]
+  },
+  "States of Matter": {
+    subject: "Chemistry",
+    summary: "Solid: fixed shape/volume, particles vibrate in fixed positions, strong forces. Liquid: fixed volume, takes shape of container, particles move freely. Gas: no fixed shape/volume, particles move randomly at high speed, weak/no forces. Kinetic theory explains properties. Changes of state involve energy.",
+    keyPoints: ["Solid: fixed shape, particles vibrate", "Liquid: fixed volume, particles flow", "Gas: no fixed volume, fills container", "Melting: solid→liquid, latent heat of fusion", "Boiling: liquid→gas, latent heat of vaporisation"]
+  },
+  "Chemical Laws": {
+    subject: "Chemistry",
+    summary: "Law of Conservation of Mass: total mass unchanged in reaction. Law of Definite Proportions: compound always same composition by mass. Law of Multiple Proportions: elements combine in simple ratios. Gay-Lussac's Law of Combining Volumes: gases react in simple volume ratios.",
+    keyPoints: ["Conservation of mass: matter not created or destroyed", "Definite proportions: H2O always 2:1 hydrogen:oxygen", "Multiple proportions: CO and CO2 show 1:2 oxygen ratio", "Avogadro's hypothesis: equal volumes, equal molecules (same T,P)", "Gay-Lussac: 2H2 + O2 → 2H2O (2:1:2 volume ratio)"]
+  },
+  "Optics": {
+    subject: "Physics",
+    summary: "Reflection: angle of incidence = angle of reflection. Refraction: light bends at boundary, n = sin i/sin r (Snell's law). Critical angle: total internal reflection when i > critical angle. Convex lens: converging, real image (usually). Concave: diverging. Lens formula: 1/f = 1/v + 1/u.",
+    keyPoints: ["Reflection: i = r (angles measured from normal)", "Snell's law: n1 sin θ1 = n2 sin θ2", "Total internal reflection: when angle > critical angle", "Convex lens: converges light, used in magnifying glass", "1/f = 1/v + 1/u (lens formula)"]
+  },
+  "Sound & Waves": {
+    subject: "Physics",
+    summary: "Sound: longitudinal mechanical wave, needs medium. Speed in air ≈ 330 m/s. Higher speed in solids > liquids > gases. Frequency = pitch, amplitude = loudness. Echo = reflected sound. Resonance: forced vibration at natural frequency. Ultrasound > 20kHz (medical imaging, sonar).",
+    keyPoints: ["Sound: longitudinal, needs medium to travel", "Cannot travel in vacuum", "Speed: solids > liquids > gases", "Frequency determines pitch; amplitude determines loudness", "Ultrasound: frequency above 20,000 Hz"]
+  },
+  "Properties of Matter": {
+    subject: "Physics",
+    summary: "Matter has mass and volume. Density = mass/volume. Pressure = force/area. Pressure in fluid = hρg. Surface tension: liquid acts as elastic skin. Viscosity: resistance to flow. Archimedes' principle: upthrust = weight of fluid displaced. Capillarity: liquid rises in narrow tubes.",
+    keyPoints: ["Density = mass ÷ volume (kg/m³)", "Pressure = force ÷ area (Pa or N/m²)", "Liquid pressure = hρg", "Archimedes: upthrust = weight of fluid displaced", "Capillarity: water rises, mercury falls in glass tubes"]
+  },
+  "Heat & Thermodynamics": {
+    subject: "Physics",
+    summary: "Heat: energy transferred due to temperature difference. Transfer: conduction (collisions in solids), convection (fluid movement), radiation (electromagnetic). Specific heat capacity Q = mcΔT. Latent heat: energy for state change. Thermodynamics: laws of heat and work conversion.",
+    keyPoints: ["Conduction: particle vibration, best in metals", "Convection: movement of fluid particles", "Radiation: electromagnetic waves, no medium needed", "Q = mcΔT (heat = mass × SHC × temp change)", "Latent heat: energy for state change, no temp change"]
+  },
+  "Wave Properties": {
+    subject: "Physics",
+    summary: "All waves: reflection, refraction, diffraction, interference. Diffraction: spreading through gaps (significant when gap ≈ wavelength). Interference: superposition (constructive: in phase, destructive: out of phase). Polarisation: transverse waves only. Doppler effect: frequency change due to relative motion.",
+    keyPoints: ["Diffraction: maximum when gap ≈ wavelength", "Constructive interference: waves in phase, amplitude adds", "Destructive interference: waves out of phase, cancel", "Polarisation: only transverse waves can be polarised", "Doppler: source approaching = higher frequency observed"]
+  },
+  "Nuclear Physics": {
+    subject: "Physics",
+    summary: "Nuclear fission: heavy nucleus splits into lighter nuclei + energy (U-235 in reactors). Fusion: light nuclei combine to form heavier + energy (sun's energy). Half-life: constant time for activity to halve. Radiation: alpha (α), beta (β), gamma (γ). Einstein: E = mc².",
+    keyPoints: ["Fission: heavy nucleus splits, used in nuclear reactors", "Fusion: light nuclei combine, powers the sun", "Half-life: time for half the atoms to decay", "E = mc²: mass-energy equivalence", "Chain reaction: each fission triggers more fissions"]
+  },
+  "Waves": {
+    subject: "Physics",
+    summary: "Wave: energy transfer without matter transfer. Transverse: vibration perpendicular to direction (light, water waves). Longitudinal: vibration parallel (sound). v = fλ. Electromagnetic spectrum (longest to shortest wavelength): radio, microwave, IR, visible, UV, X-rays, gamma rays. All EM waves travel at 3×10⁸ m/s in vacuum.",
+    keyPoints: ["Transverse: vibration ⊥ to direction of travel", "Longitudinal: vibration ∥ to direction of travel", "Wave equation: v = fλ", "EM waves: 3×10⁸ m/s in vacuum", "EM spectrum: radio → micro → IR → visible → UV → X → gamma"]
+  },
+  "Electricity": {
+    subject: "Physics",
+    summary: "Ohm's Law: V = IR. Series circuit: same current, voltages add, resistances add. Parallel: same voltage, currents add, 1/R = 1/R1 + 1/R2. Power P = IV = I²R = V²/R. Energy = Power × time. Domestic electricity: 240V AC in Nigeria. Fuse protects against overload.",
+    keyPoints: ["Ohm's Law: V = IR", "Series: Rtotal = R1 + R2 + ...", "Parallel: 1/Rtotal = 1/R1 + 1/R2", "Power = IV = I²R = V²/R", "Kilowatt-hour (kWh): unit of electrical energy"]
+  },
+  "Thermal Properties": {
+    subject: "Physics",
+    summary: "Linear expansivity (α): ΔL = LαΔT. Cubical (volume) expansivity = 3α. Anomalous expansion: water contracts when heated from 0-4°C, maximum density at 4°C (why lakes freeze from top). Thermostat uses bimetallic strip. Thermometers use thermometric properties.",
+    keyPoints: ["Linear expansion: ΔL = LαΔT", "Volume (cubic) expansivity = 3 × linear expansivity", "Water: maximum density at 4°C", "Bimetallic strip: two metals with different expansivities", "Thermostat: bimetallic strip breaks circuit when hot"]
+  },
+  "Atomic Physics": {
+    subject: "Physics",
+    summary: "Photoelectric effect: light ejects electrons from metal surface. E = hf (h = Planck's constant). Cathode rays: streams of electrons. X-rays produced when fast electrons hit metal target. Bohr's model: electrons in fixed energy shells, emit/absorb photons when changing shells.",
+    keyPoints: ["Photoelectric effect: photon energy must exceed work function", "E = hf (energy = Planck's constant × frequency)", "Cathode rays: electrons, bent by magnetic/electric fields", "X-rays: short wavelength, high frequency EM radiation", "Bohr: electrons emit photons when dropping to lower shell"]
+  },
+  "Thermometry": {
+    subject: "Physics",
+    summary: "Temperature scales: Celsius (°C), Kelvin (K), Fahrenheit (°F). K = °C + 273. Thermometric properties: expansion of liquid (mercury), change in resistance (thermistor), thermoelectric EMF (thermocouple). Clinical thermometer: 35-43°C, constriction prevents mercury falling. Absolute zero: 0K = -273°C.",
+    keyPoints: ["K = °C + 273; Absolute zero = 0K = -273°C", "Mercury thermometer: range -39 to 357°C", "Clinical thermometer: has constriction to keep reading", "Thermocouple: measures very high or low temperatures", "Resistance thermometer: uses change in resistance"]
+  },
+  "Matrices & Determinants": {
+    subject: "Mathematics",
+    summary: "Matrix: rectangular array. Addition/subtraction: same order only. Multiplication: rows × columns, order matters. Determinant of 2×2: |A| = ad - bc. Inverse: A⁻¹ = (1/|A|)×adj(A). Singular matrix: determinant = 0, no inverse. Used to solve simultaneous equations.",
+    keyPoints: ["Matrix order: rows × columns", "Multiplication: (m×n) × (n×p) = (m×p)", "Determinant 2×2: ad - bc", "Singular: determinant = 0 (no inverse)", "A⁻¹ × A = I (identity matrix)"]
+  },
+  "Sets": {
+    subject: "Mathematics",
+    summary: "Set: well-defined collection. Union (A∪B): all elements. Intersection (A∩B): common elements. Complement (A'): not in A. Subset: all elements of A in B. Empty set: ∅. Universal set: all elements under consideration. n(A∪B) = n(A) + n(B) - n(A∩B). Venn diagrams.",
+    keyPoints: ["Union: elements in A OR B", "Intersection: elements in A AND B", "Complement: elements NOT in A", "n(AUB) = n(A) + n(B) - n(A∩B)", "De Morgan: (A∪B)' = A'∩B'"]
+  },
+  "Combinations": {
+    subject: "Mathematics",
+    summary: "Combination: selection without regard to order. nCr = n!/[r!(n-r)!]. Permutation: arrangement with order. nPr = n!/(n-r)!. nC0 = nCn = 1. Pascal's triangle gives combination values. Binomial expansion: (a+b)ⁿ = ΣnCr·aⁿ⁻ʳ·bʳ.",
+    keyPoints: ["nCr: combinations (order doesn't matter)", "nPr: permutations (order matters)", "nCr = n!/r!(n-r)!", "nPr = n!/(n-r)!", "nC0 = nCn = 1 always"]
+  },
+  "Geometry": {
+    subject: "Mathematics",
+    summary: "Lines, angles and shapes. Triangle: angle sum 180°. Exterior angle = sum of opposite interior angles. Polygon: interior angles sum = (n-2)×180°. Circle theorems: angle at centre = 2× angle at circumference. Pythagoras: c² = a² + b². Similar triangles: equal angles, proportional sides.",
+    keyPoints: ["Triangle angles: sum = 180°", "Polygon interior angles: (n-2) × 180°", "Exterior angle of triangle: sum of two non-adjacent angles", "Angles in same segment are equal", "Angle at centre = 2 × angle at circumference"]
+  },
+  "Fractions": {
+    subject: "Mathematics",
+    summary: "Add/subtract: common denominator. Multiply: numerator × numerator, denominator × denominator. Divide: multiply by reciprocal. Mixed numbers: convert to improper fractions first. Simplify: divide by HCF. BODMAS applies. Decimal to fraction: place over appropriate power of 10.",
+    keyPoints: ["Common denominator needed for addition/subtraction", "Multiply fractions: straight across", "Divide: multiply by reciprocal (flip second fraction)", "Simplify: divide numerator and denominator by HCF", "Mixed number → improper: (whole × denominator) + numerator"]
+  },
+  "Integration": {
+    subject: "Mathematics",
+    summary: "Integration: anti-differentiation. ∫xⁿdx = xⁿ⁺¹/(n+1) + C. ∫(ax+b)ⁿdx: use substitution. Definite integral: substitute limits. ∫ᵃᵇf(x)dx = F(b) - F(a). Area under curve = ∫ᵃᵇ|f(x)|dx. Integration by parts: ∫udv = uv - ∫vdu.",
+    keyPoints: ["∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n ≠ -1)", "Definite integral: substitute limits and subtract", "Area under curve: definite integral", "∫sin x = -cos x + C", "∫cos x = sin x + C"]
+  },
+  "Statistics": {
+    subject: "Mathematics",
+    summary: "Mean = Σx/n (sum/count). For grouped data: mean = Σfx/Σf. Median: middle value (order first). Mode: most frequent. Range = max - min. Standard deviation: √[Σ(x-x̄)²/n]. Cumulative frequency for median. Histogram: area = frequency. Ogive: cumulative frequency curve.",
+    keyPoints: ["Mean = sum of values ÷ number of values", "Median: middle value when arranged in order", "Mode: most frequently occurring value", "Range = highest value - lowest value", "Standard deviation: measures spread from mean"]
+  },
+  "Probability": {
+    subject: "Mathematics",
+    summary: "P(event) = favourable outcomes/total outcomes. 0 ≤ P(A) ≤ 1. P(A') = 1 - P(A). Mutually exclusive: P(A or B) = P(A) + P(B). Independent: P(A and B) = P(A) × P(B). Conditional: P(A|B) = P(A∩B)/P(B). Tree diagrams for combined events.",
+    keyPoints: ["P(event) = favourable ÷ total outcomes", "P(A') = 1 - P(A) (complementary events)", "Mutually exclusive: cannot both occur", "Independent: occurrence of one doesn't affect other", "Tree diagram: systematic listing of outcomes"]
+  },
+  "Sequences": {
+    subject: "Mathematics",
+    summary: "Arithmetic Progression (AP): constant difference d. nth term = a + (n-1)d. Sum Sn = n/2[2a + (n-1)d] = n/2(a+l). Geometric Progression (GP): constant ratio r. nth term = arⁿ⁻¹. Sum Sn = a(rⁿ-1)/(r-1). Sum to infinity (|r|<1): S∞ = a/(1-r).",
+    keyPoints: ["AP: same difference between consecutive terms", "AP nth term: a + (n-1)d", "GP: constant ratio between consecutive terms", "GP nth term: arⁿ⁻¹", "GP infinite sum: a/(1-r) when |r| < 1"]
+  },
+  "Mensuration": {
+    subject: "Mathematics",
+    summary: "Areas: rectangle lw, triangle ½bh, circle πr², trapezium ½(a+b)h. Volumes: cuboid lwh, cylinder πr²h, cone ⅓πr²h, sphere ⁴⁄₃πr³. Surface areas. Arc length = rθ. Sector area = ½r²θ (θ in radians). 1 radian = 180°/π ≈ 57.3°.",
+    keyPoints: ["Circle area = πr²; circumference = 2πr", "Sphere volume = (4/3)πr³", "Cone volume = (1/3)πr²h", "Cylinder volume = πr²h", "Arc length = rθ; Sector area = ½r²θ (θ in radians)"]
+  },
+  "Indices": {
+    subject: "Mathematics",
+    summary: "Laws: aᵐ×aⁿ=aᵐ⁺ⁿ, aᵐ÷aⁿ=aᵐ⁻ⁿ, (aᵐ)ⁿ=aᵐⁿ, a⁰=1, a⁻ⁿ=1/aⁿ, a^(1/n)=ⁿ√a, a^(m/n)=(ⁿ√a)ᵐ. Surds: irrational root. Simplify: √12=2√3. Rationalise denominator: multiply by conjugate.",
+    keyPoints: ["aᵐ × aⁿ = aᵐ⁺ⁿ (same base)", "aᵐ ÷ aⁿ = aᵐ⁻ⁿ", "(aᵐ)ⁿ = aᵐⁿ", "a⁰ = 1 for any non-zero a", "a^(1/n) = ⁿ√a (nth root)"]
+  },
+  "Number Theory": {
+    subject: "Mathematics",
+    summary: "Prime numbers: divisible only by 1 and itself (2,3,5,7,11...). HCF: largest factor common to all numbers. LCM: smallest multiple common to all. HCF × LCM = product of two numbers. Factors, multiples, prime factorisation (express as product of primes).",
+    keyPoints: ["2 is the only even prime number", "HCF: largest common factor", "LCM: smallest common multiple", "HCF × LCM = product of the two numbers", "Prime factorisation: express as product of primes"]
+  },
+  "Commercial Maths": {
+    subject: "Mathematics",
+    summary: "Profit/Loss: selling price vs cost price. %Profit = Profit/CP × 100. Simple Interest: SI = PRT/100. Compound Interest: A = P(1+r/100)ⁿ. Depreciation: value reduces each year. Hire purchase: deposit + instalments. VAT: value added tax on goods.",
+    keyPoints: ["% Profit = (SP - CP)/CP × 100", "Simple interest: I = PRT/100", "Compound: A = P(1 + r/100)ⁿ", "Discount: reduction from marked/list price", "Hire purchase: total cost = deposit + all instalments"]
+  },
+  "Simultaneous Equations": {
+    subject: "Mathematics",
+    summary: "Solve two equations with two unknowns. Methods: elimination (make coefficients equal, add/subtract), substitution (express one variable, substitute). For linear-quadratic: substitute linear into quadratic, solve quadratic. Check by substituting back into both equations.",
+    keyPoints: ["Elimination: multiply equations to match coefficients", "Substitution: express one variable then substitute", "Linear-quadratic: substitute to get quadratic equation", "Always check by substituting into original equations", "Infinite solutions: equations represent same line"]
+  },
+  "Errors": {
+    subject: "Mathematics",
+    summary: "Measurement always has error. Absolute error: |measured - true|. Relative error = absolute error/true value. Percentage error = relative error × 100. Maximum absolute error = ½ × least count. Rounding: to significant figures or decimal places. Truncation vs rounding.",
+    keyPoints: ["Absolute error = |measured value - true value|", "Relative error = absolute error ÷ true value", "Percentage error = relative error × 100%", "Maximum error = half of smallest scale division", "Rounding: look at next digit, ≥5 round up"]
+  },
+  "Equations": {
+    subject: "Mathematics",
+    summary: "Linear: ax + b = c, isolate x. Quadratic: ax² + bx + c = 0, factorize or formula. Formula: x = (-b ± √(b²-4ac))/2a. Discriminant b²-4ac: >0 two real roots, =0 equal roots, <0 no real roots. Sum of roots = -b/a. Product = c/a.",
+    keyPoints: ["Quadratic formula: x = (-b ± √(b²-4ac))/2a", "b²-4ac > 0: two distinct real roots", "b²-4ac = 0: two equal real roots", "b²-4ac < 0: no real roots (complex)", "Sum of roots = -b/a; Product = c/a"]
+  },
+  "Number Bases": {
+    subject: "Mathematics",
+    summary: "Denary (base 10): digits 0-9. Binary (base 2): digits 0-1. Octal (base 8): digits 0-7. Hex (base 16): 0-9, A-F. Convert to base 10: multiply digits by powers of base. Convert from base 10: repeated division by new base. Binary addition: 1+1=10, 1+1+1=11.",
+    keyPoints: ["Binary: only 0 and 1", "Convert to denary: positional values", "Convert from denary: repeated division", "Binary addition: 1+1=10 (carry 1)", "Hexadecimal: uses A(10) to F(15)"]
+  },
+  "Ratio & Proportion": {
+    subject: "Mathematics",
+    summary: "Ratio: comparison of quantities (a:b). Proportion: two equal ratios. Direct proportion: y∝x, y=kx (double x, double y). Inverse proportion: y∝1/x, y=k/x (double x, halve y). Divide in ratio: total ÷ sum × each part. Maps use scale ratios.",
+    keyPoints: ["Direct proportion: y = kx", "Inverse proportion: y = k/x", "Divide in ratio a:b: total × a/(a+b) and total × b/(a+b)", "Scale factor: ratio of drawing to actual", "k = constant of proportionality"]
+  },
+  "Sets & Algebra": {
+    subject: "Mathematics",
+    summary: "Combining set notation with algebra. Set builder notation: {x : x > 3}. Cartesian product A×B: all ordered pairs. Venn diagrams with algebraic expressions. Boolean algebra: AND, OR, NOT operations. Apply set operations to solve problems.",
+    keyPoints: ["Set builder: {x : condition on x}", "Cartesian product: all possible ordered pairs", "|A| or n(A): number of elements in set A", "Power set: set of all subsets of A", "De Morgan's laws apply in algebra and logic"]
+  },
+  "Grammar": {
+    subject: "English",
+    summary: "Parts of speech: noun, verb, adjective, adverb, pronoun, preposition, conjunction, interjection. Subject-verb agreement: singular subject takes singular verb. Tenses: 12 forms. Reported speech: changes tense and pronouns. Active/passive voice. Conditional sentences: if...then structures.",
+    keyPoints: ["Collective nouns (group, team): often take singular verb", "Neither...nor: verb agrees with nearer subject", "Each/every: always singular", "Reported speech: present → past tense", "Passive: object becomes subject + 'be' + past participle"]
+  },
+  "Idioms": {
+    subject: "English",
+    summary: "Idioms: phrases with meanings different from literal words. Examples: 'kick the bucket' (die), 'bite the bullet' (endure hardship), 'let the cat out of the bag' (reveal secret), 'break a leg' (good luck), 'hit the nail on the head' (be exactly right), 'spill the beans' (reveal secret).",
+    keyPoints: ["Idioms cannot be understood from individual words alone", "Context is key to understanding idioms", "'Under the weather' = feeling ill", "'Beat around the bush' = avoid the main topic", "'Cost an arm and a leg' = very expensive"]
+  },
+  "Phonetics": {
+    subject: "English",
+    summary: "Phonetics studies speech sounds. Vowels: 12 pure vowels, 8 diphthongs. Consonants: voiced (vocal cords vibrate) and voiceless. Stress: primary (') and secondary (,) stress. Syllables: units of pronunciation. Intonation: rising (questions), falling (statements). IPA: international phonetic alphabet.",
+    keyPoints: ["Pure vowels: 12 in standard British English", "Diphthongs: glide from one vowel to another (8 total)", "Voiced: /b,d,g,v,z,m,n,l,r/", "Voiceless: /p,t,k,f,s,h/", "Word stress: one syllable receives primary stress"]
+  },
+  "Science History": {
+    subject: "Current Affairs",
+    summary: "Key scientific discoveries: Newton (gravity, laws of motion), Darwin (evolution), Einstein (relativity, E=mc²), Watson & Crick (DNA structure), Pasteur (germ theory), Marie Curie (radioactivity), Fleming (penicillin), Faraday (electromagnetic induction).",
+    keyPoints: ["Newton: gravity and laws of motion (17th century)", "Darwin: evolution by natural selection (1859)", "Einstein: theory of relativity (1905)", "Watson & Crick: DNA double helix (1953)", "Fleming: discovered penicillin (1928)"]
+  },
+
+  "Alloys": {
+    subject: "Chemistry",
+    summary: "Alloys are mixtures of metals (or metal with non-metal). Bronze: copper + tin. Brass: copper + zinc. Steel: iron + carbon. Stainless steel: iron + chromium + nickel. Solder: lead + tin. Duralumin: aluminium + copper. Alloys are harder and stronger than pure component metals.",
+    keyPoints: ["Bronze: copper + tin (weapons and tools)", "Brass: copper + zinc (musical instruments, fittings)", "Steel: iron + carbon (construction)", "Stainless steel: iron + chromium + nickel (cutlery, surgery)", "Alloys: harder and stronger than pure metals"]
+  },
 }
 
 export default STUDY_GUIDES
