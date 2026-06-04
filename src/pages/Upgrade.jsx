@@ -46,37 +46,51 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
         referrerId: userData?.referredBy || "none",
       },
       callback: (response) => {
-        // Use promise chain instead of async/await
-        updateDoc(doc(db, "users", user.uid), {
-          isPaid: true,
-          paidAt: new Date().toISOString(),
-          paymentRef: response.reference,
-          referredBy: userData?.referredBy || null,
-        }).then(() => {
-          // Record referral if applicable
-          if (userData?.referredBy) {
-            const refId = userData.referredBy
-            updateDoc(doc(db, "users", refId), {
-              referralEarnings: (userData?.referralEarnings || 0) + 500,
-            })
-            setDoc(doc(db, "referrals", `${refId}_${user.uid}`), {
-              referrerId: refId,
-              referredId: user.uid,
-              referredName: userData?.name || user.email,
-              referredEmail: user.email,
-              paidAt: new Date().toISOString(),
-              amount: 500,
-              referralPaid: false,
-              paymentRef: response.reference,
-            })
-          }
-          setLoading(false)
-          onSuccess()
-        }).catch((e) => {
-          console.error(e)
-          setLoading(false)
-          alert("Payment received! If your account isn't unlocked, please contact support.")
-        })
+        // Retry Firestore update up to 3 times to handle network issues
+        const updateWithRetry = (attempts) => {
+          updateDoc(doc(db, "users", user.uid), {
+            isPaid: true,
+            paidAt: new Date().toISOString(),
+            paymentRef: response.reference,
+            referredBy: userData?.referredBy || null,
+          }).then(() => {
+            // Record referral if applicable
+            if (userData?.referredBy) {
+              const refId = userData.referredBy
+              updateDoc(doc(db, "users", refId), {
+                referralEarnings: (userData?.referralEarnings || 0) + 500,
+              }).catch(() => {})
+              setDoc(doc(db, "referrals", `${refId}_${user.uid}`), {
+                referrerId: refId,
+                referredId: user.uid,
+                referredName: userData?.name || user.email,
+                referredEmail: user.email,
+                paidAt: new Date().toISOString(),
+                amount: 500,
+                referralPaid: false,
+                paymentRef: response.reference,
+              }).catch(() => {})
+            }
+            setLoading(false)
+            onSuccess()
+          }).catch((e) => {
+            if (attempts > 1) {
+              // Retry after 2 seconds
+              setTimeout(() => updateWithRetry(attempts - 1), 2000)
+            } else {
+              // All retries failed — store payment ref locally so admin can fix
+              localStorage.setItem("ee_pending_payment", JSON.stringify({
+                uid: user.uid,
+                ref: response.reference,
+                amount: 2500,
+                time: new Date().toISOString(),
+              }))
+              setLoading(false)
+              alert("✅ Payment received! Your account is being unlocked. If not unlocked in 5 minutes, please contact support with reference: " + response.reference)
+            }
+          })
+        }
+        updateWithRetry(3)
       },
       onClose: () => {
         setLoading(false)

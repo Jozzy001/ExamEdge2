@@ -51,6 +51,27 @@ function App() {
   const startIndexRef = useRef(0)
 
   // Listen to auth state — handle logout cleanly
+
+  // Recover any pending payments that failed to write to Firestore
+  useEffect(() => {
+    const pending = localStorage.getItem("ee_pending_payment")
+    if (pending && authUser) {
+      try {
+        const { uid, ref } = JSON.parse(pending)
+        if (uid === authUser.uid) {
+          updateDoc(doc(db, "users", uid), {
+            isPaid: true,
+            paymentRef: ref,
+            paidAt: new Date().toISOString(),
+          }).then(() => {
+            localStorage.removeItem("ee_pending_payment")
+            console.log("Pending payment recovered!")
+          }).catch(() => {})
+        }
+      } catch(e) {}
+    }
+  }, [authUser])
+
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (!user) {

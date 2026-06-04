@@ -17,7 +17,8 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   const [actionMsg, setActionMsg] = useState("")
   const [actionError, setActionError] = useState("")
   const [tab, setTab] = useState("users") // users | stats | messages
-  const [planFilter, setPlanFilter] = useState("all") // all | paid | free
+  const [planFilter, setPlanFilter] = useState("all")
+  const [searchQuery, setSearchQuery] = useState("") // all | paid | free
   const [replyingTo, setReplyingTo] = useState(null) // message object
   const [replyText, setReplyText] = useState("")
   const [sendingReply, setSendingReply] = useState(false)
@@ -456,30 +457,31 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
 
                         {/* Action buttons */}
                         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                          {/* Mark as paid manually */}
-                          {!user.isPaid && (
-                            <button
-                              onClick={async () => {
-                                await updateDoc(doc(db, "users", user.id), {
-                                  isPaid: true,
-                                  paidAt: new Date().toISOString(),
-                                  paymentRef: "manual_admin",
-                                })
-                                setActionMsg(`✅ ${user.name} marked as paid`)
-                                fetchUsers()
-                                setSelected(null)
-                              }}
-                              style={{
-                                padding: "10px", borderRadius: "var(--radius-md)",
-                                background: "rgba(34,201,122,0.1)", color: "#15803d",
-                                border: "1px solid rgba(34,201,122,0.3)",
-                                fontWeight: 800, fontSize: 13,
-                                cursor: "pointer", fontFamily: "var(--font-main)"
-                              }}
-                            >
-                              💎 Mark as Paid (Manual)
-                            </button>
-                          )}
+                          {/* Unlock / Lock toggle */}
+                          <button
+                            onClick={async () => {
+                              const newStatus = !user.isPaid
+                              if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
+                              await updateDoc(doc(db, "users", user.id), {
+                                isPaid: newStatus,
+                                paidAt: newStatus ? new Date().toISOString() : null,
+                                paymentRef: newStatus ? "manual_admin" : null,
+                              })
+                              setActionMsg(newStatus ? `✅ ${user.name} unlocked successfully` : `🔒 ${user.name} access revoked`)
+                              fetchUsers()
+                              setSelected(null)
+                            }}
+                            style={{
+                              padding: "10px", borderRadius: "var(--radius-md)",
+                              background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)",
+                              color: user.isPaid ? "#dc2626" : "#15803d",
+                              border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`,
+                              fontWeight: 800, fontSize: 13,
+                              cursor: "pointer", fontFamily: "var(--font-main)"
+                            }}
+                          >
+                            {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
+                          </button>
 
                           <button
                             onClick={() => handlePasswordReset(user.email)}
