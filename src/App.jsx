@@ -73,6 +73,24 @@ function App() {
     })
     return () => unsub()
   }, [authUser?.uid])
+  // Hardware/browser back button support (Android back button, browser back)
+  useEffect(() => {
+    // Always maintain TWO history entries so popstate always fires
+    // Entry 1: the "dummy" entry we can pop back to
+    // Entry 2: the current page entry (always on top)
+    window.history.replaceState({ appPage: page, index: 1 }, "", window.location.pathname)
+    window.history.pushState({ appPage: page, index: 2 }, "", window.location.pathname)
+
+    const handlePopState = (e) => {
+      // User pressed hardware back — call our app's back handler
+      handleBack()
+    }
+
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [page])
+
+
 
   // Show loading screen while Firebase auth resolves
   if (appLoading) return <FullPageLoader message="Starting ExamEdgeNG..." />
