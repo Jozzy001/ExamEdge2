@@ -74,6 +74,14 @@ import { chem2019 } from "./chemistry/chem2019"
 import { chem2022 } from "./chemistry/chem2022"
 import { chem2023 } from "./chemistry/chem2023"
 import { chem2024 } from "./chemistry/chem2024"
+import { maths2024extra } from "./mathematics/maths2024_extra"
+import { physics2024extra } from "./physics/physics2024_extra"
+import { chem2024extra } from "./chemistry/chem2024_extra"
+import { englishSentenceInterpExtra } from "../english/english_sentence_interp_extra"
+import { chemExtra2 } from "./chemistry/chem_extra2"
+import { physicsExtra2 } from "./physics/physics_extra2"
+import { mathsExtra2 } from "./mathematics/maths_extra2"
+
 
 const flattenPassages = (arr) => {
   if (!arr) return []
@@ -117,6 +125,11 @@ const allQuestions = [
   ...unibenChem2009, ...unibenChem2010, ...unibenChem2011, ...unibenChem2012,
   ...unibenChem2014, ...unibenChem2017, ...unibenChem2020,
   ...chem2018, ...chem2019, ...chem2022, ...chem2023, ...chem2024,
+  ...maths2024extra, ...physics2024extra, ...chem2024extra,
+  ...englishSentenceInterpExtra,
+  ...chemExtra2,
+  ...physicsExtra2,
+  ...mathsExtra2,
 ]
 
 export default allQuestions

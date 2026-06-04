@@ -128,11 +128,10 @@ export default function Splash({ onDone }) {
       }}>
         {/* Logo or Emoji */}
         {slide.logo ? (
-          <img
-            src="/images/logo.png"
-            alt="ExamEdgeNG"
-            style={{ width: 140, height: 140, objectFit: "contain", marginBottom: 24 }}
-          />
+          <picture>
+              <source srcSet="/images/logo.webp" type="image/webp" />
+              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 140, height: 140, objectFit: "contain", marginBottom: 24 }} />
+            </picture>
         ) : (
           <div style={{
             fontSize: 80, marginBottom: 24,

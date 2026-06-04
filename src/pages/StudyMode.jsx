@@ -52,93 +52,105 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null }) => {
             background: "var(--primary)", borderRadius: "var(--radius-xl)",
             padding: "20px", marginBottom: 24, color: "#fff"
           }}>
-            <div style={{ fontSize: 36, marginBottom: 10 }}>{guide.icon}</div>
+            <div style={{ fontSize: 36, marginBottom: 10 }}>{guide.icon || "📖"}</div>
             <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.75, marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.07em" }}>
               {subject} · {selectedTopic}
             </div>
-            <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 8 }}>{guide.title}</div>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              background: "rgba(255,255,255,0.2)", padding: "4px 12px",
-              borderRadius: "var(--radius-pill)", fontSize: 12, fontWeight: 700
-            }}>
-              ⏱ {guide.estimatedTime}
-            </div>
+            <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 8 }}>{guide.title || selectedTopic}</div>
+            {guide.estimatedTime && (
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                background: "rgba(255,255,255,0.2)", padding: "4px 12px",
+                borderRadius: "var(--radius-pill)", fontSize: 12, fontWeight: 700
+              }}>
+                ⏱ {guide.estimatedTime}
+              </div>
+            )}
           </div>
 
-          {/* Sections */}
-          {guide.sections.map((section, i) => (
-            <div key={i} style={{ marginBottom: 24 }}>
-              {section.heading && (
-                <h3 style={{
-                  fontSize: 13, fontWeight: 800, color: "var(--text)",
-                  marginBottom: 12, textTransform: "uppercase",
-                  letterSpacing: "0.05em", opacity: 0.65
-                }}>{section.heading}</h3>
-              )}
-
-              {section.type === "text" && (
-                <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.75 }}>{section.content}</p>
-              )}
-
-              {section.type === "steps" && section.items.map((item, j) => (
-                <div key={j} style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-                  <div style={{
-                    width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
-                    background: "var(--primary)", color: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 12, fontWeight: 800
-                  }}>{j + 1}</div>
-                  <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, paddingTop: 3 }}>{item}</p>
-                </div>
-              ))}
-
-              {section.type === "cards" && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {section.items.map((card, j) => (
-                    <div key={j} style={{
-                      background: "var(--surface2)", borderRadius: "var(--radius-md)",
-                      padding: "12px 14px", borderLeft: "3px solid var(--primary)"
-                    }}>
-                      <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary-text)", marginBottom: 4 }}>{card.title}</div>
-                      <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>{card.body}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {section.type === "warning" && (
-                <div style={{
-                  background: "var(--accent-light)", borderRadius: "var(--radius-md)",
-                  padding: "14px 16px", border: "1px solid rgba(255,107,107,0.25)"
-                }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 10 }}>
-                    ⚠️ Watch Out For
+          {/* Guide content — supports both old (sections) and new (summary+keyPoints) format */}
+          {guide.sections ? (
+            guide.sections.map((section, i) => (
+              <div key={i} style={{ marginBottom: 24 }}>
+                {section.heading && (
+                  <h3 style={{
+                    fontSize: 13, fontWeight: 800, color: "var(--text)",
+                    marginBottom: 12, textTransform: "uppercase",
+                    letterSpacing: "0.05em", opacity: 0.65
+                  }}>{section.heading}</h3>
+                )}
+                {section.type === "text" && (
+                  <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.75 }}>{section.content}</p>
+                )}
+                {section.type === "steps" && section.items?.map((item, j) => (
+                  <div key={j} style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+                    <div style={{
+                      width: 26, height: 26, borderRadius: "50%", flexShrink: 0,
+                      background: "var(--primary)", color: "#fff",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 12, fontWeight: 800
+                    }}>{j + 1}</div>
+                    <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, paddingTop: 3 }}>{item}</p>
                   </div>
-                  {section.items.map((item, j) => (
-                    <div key={j} style={{ display: "flex", gap: 8, marginBottom: j < section.items.length - 1 ? 8 : 0 }}>
-                      <span style={{ color: "var(--accent)", fontSize: 14, flexShrink: 0 }}>✗</span>
-                      <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6 }}>{item}</p>
+                ))}
+                {section.type === "cards" && (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {section.items?.map((card, j) => (
+                      <div key={j} style={{
+                        background: "var(--surface2)", borderRadius: "var(--radius-md)",
+                        padding: "12px 14px", borderLeft: "3px solid var(--primary)"
+                      }}>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary-text)", marginBottom: 4 }}>{card.title}</div>
+                        <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>{card.body}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <>
+              {/* Summary */}
+              {guide.summary && (
+                <div style={{
+                  background: "var(--surface)", borderRadius: "var(--radius-lg)",
+                  padding: "16px", marginBottom: 20,
+                  border: "1px solid var(--border)"
+                }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 10 }}>
+                    📖 Overview
+                  </div>
+                  <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.75, margin: 0 }}>{guide.summary}</p>
+                </div>
+              )}
+
+              {/* Key Points */}
+              {guide.keyPoints && guide.keyPoints.length > 0 && (
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 12 }}>
+                    🎯 Key Points to Remember
+                  </div>
+                  {guide.keyPoints.map((point, i) => (
+                    <div key={i} style={{
+                      display: "flex", gap: 10, marginBottom: 10,
+                      background: "var(--surface)", borderRadius: "var(--radius-md)",
+                      padding: "10px 14px", border: "1px solid var(--border)"
+                    }}>
+                      <span style={{
+                        width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
+                        background: "var(--primary)", color: "#fff",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: 11, fontWeight: 800
+                      }}>{i + 1}</span>
+                      <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{point}</p>
                     </div>
                   ))}
                 </div>
               )}
+            </>
+          )}
 
-              {section.type === "tip" && (
-                <div style={{
-                  background: "var(--success-light)", borderRadius: "var(--radius-md)",
-                  padding: "14px 16px", border: "1px solid rgba(34,201,122,0.25)",
-                  display: "flex", gap: 12
-                }}>
-                  <span style={{ fontSize: 20, flexShrink: 0 }}>💡</span>
-                  <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.65, fontWeight: 600 }}>
-                    <span style={{ color: "var(--success)", fontWeight: 800 }}>Quick Tip: </span>
-                    {section.content}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+          {/* Action buttons */}
 
           {/* Action buttons */}
           <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("quiz", selectedTopic, subject)}>

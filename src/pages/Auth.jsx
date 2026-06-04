@@ -341,7 +341,10 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         {mode === "login" && (
           <>
             <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
-              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 100, height: 100, objectFit: "contain", marginBottom: 8 }} />
+              <picture>
+                <source srcSet="/images/logo.webp" type="image/webp" />
+                <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 100, height: 100, objectFit: "contain", marginBottom: 8 }} />
+              </picture>
               <h2 className="ee-title">Welcome Back</h2>
               <p className="ee-subtitle">Log in to continue your exam prep.</p>
             </div>
@@ -392,7 +395,10 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         {mode === "signup" && step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
-              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 80, height: 80, objectFit: "contain", marginBottom: 8 }} />
+              <picture>
+                <source srcSet="/images/logo.webp" type="image/webp" />
+                <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 80, height: 80, objectFit: "contain", marginBottom: 8 }} />
+              </picture>
               <h2 className="ee-title">Create Account</h2>
               <p className="ee-subtitle">Step 1 of 2 — Your details</p>
             </div>

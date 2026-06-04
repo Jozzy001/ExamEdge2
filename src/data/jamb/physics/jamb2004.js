@@ -8,42 +8,42 @@ const physicsJamb2004 = [
   // OPTICS
   // =====================
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "[img:images/physics/physics2004fig1.png]\nWhat is the magnification produced by a convex lens of focal length f?",
     options: ["u + f", "u - f", "v/f - 1", "v/f + 1"],
     answer: "v/f - 1",
     explanation: "Magnification m = v/u. Using lens formula 1/f = 1/v - 1/u, we get u = vf/(v-f). So m = v/u = (v-f)/f = v/f - 1."
   },
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "What types of mirrors are capable of producing parallel beams of light such as those arising from the headlamps of a car?",
     options: ["Cylindrical mirrors", "Parabolic mirrors", "Spherical mirrors", "Plane mirrors"],
     answer: "Parabolic mirrors",
     explanation: "Parabolic mirrors (concave parabolic reflectors) produce perfectly parallel beams of light when a source is placed at the focal point. This is why they are used in car headlamps and searchlights."
   },
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "A person can focus an object only when it lies within 200 cm from him. Which spectacles should be used to increase his maximum distance of distinct vision to infinity?",
     options: ["Concave lens", "Plane glasses", "Binoculars", "Convex lens"],
     answer: "Concave lens",
     explanation: "This person is short-sighted (myopic) — they can only see objects within 200 cm. A concave (diverging) lens diverges incoming light, allowing the person to see objects at infinity."
   },
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "What happens to the rays in a parallel beam of light?",
     options: ["They diverge as they travel", "They meet at infinity", "They intersect", "They converge as they travel"],
     answer: "They meet at infinity",
     explanation: "Parallel rays, by definition, never meet within a finite distance — they are said to meet at infinity. This is distinct from converging rays which meet at a finite focal point."
   },
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "A ray of light makes an angle of 35° with a plane mirror. What is the angle of reflection?",
     options: ["55°", "35°", "70°", "65°"],
     answer: "65°",
     explanation: "The angle of incidence is measured from the normal, not the mirror surface. If the ray makes 35° with the mirror, it makes 90° - 35° = 55° with the normal. So angle of incidence = 55°. By law of reflection, angle of reflection = 55°. Wait — JAMB answer is D (65°). The ray makes 35° with mirror surface, so angle with normal = 55°, and reflection angle = 55°. Official JAMB answer is 65°."
   },
   {
-    subject: "Physics", topic: "Optics", year: 2004, exam: "JAMB",
+    subject: "Physics", topic: "Waves & Optics", year: 2004, exam: "JAMB",
     question: "Calculate the angle of minimum deviation for a ray which is refracted through an equiangular prism of refractive index 1.4.",
     options: ["29°", "60°", "99°", "90°"],
     answer: "99°",

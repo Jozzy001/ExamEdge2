@@ -3395,11 +3395,6 @@ const STUDY_GUIDES = {
     summary: "Measurement always has error. Absolute error: |measured - true|. Relative error = absolute error/true value. Percentage error = relative error × 100. Maximum absolute error = ½ × least count. Rounding: to significant figures or decimal places. Truncation vs rounding.",
     keyPoints: ["Absolute error = |measured value - true value|", "Relative error = absolute error ÷ true value", "Percentage error = relative error × 100%", "Maximum error = half of smallest scale division", "Rounding: look at next digit, ≥5 round up"]
   },
-  "Equations": {
-    subject: "Mathematics",
-    summary: "Linear: ax + b = c, isolate x. Quadratic: ax² + bx + c = 0, factorize or formula. Formula: x = (-b ± √(b²-4ac))/2a. Discriminant b²-4ac: >0 two real roots, =0 equal roots, <0 no real roots. Sum of roots = -b/a. Product = c/a.",
-    keyPoints: ["Quadratic formula: x = (-b ± √(b²-4ac))/2a", "b²-4ac > 0: two distinct real roots", "b²-4ac = 0: two equal real roots", "b²-4ac < 0: no real roots (complex)", "Sum of roots = -b/a; Product = c/a"]
-  },
   "Number Bases": {
     subject: "Mathematics",
     summary: "Denary (base 10): digits 0-9. Binary (base 2): digits 0-1. Octal (base 8): digits 0-7. Hex (base 16): 0-9, A-F. Convert to base 10: multiply digits by powers of base. Convert from base 10: repeated division by new base. Binary addition: 1+1=10, 1+1+1=11.",
@@ -3440,6 +3435,19 @@ const STUDY_GUIDES = {
     subject: "Chemistry",
     summary: "Alloys are mixtures of metals (or metal with non-metal). Bronze: copper + tin. Brass: copper + zinc. Steel: iron + carbon. Stainless steel: iron + chromium + nickel. Solder: lead + tin. Duralumin: aluminium + copper. Alloys are harder and stronger than pure component metals.",
     keyPoints: ["Bronze: copper + tin (weapons and tools)", "Brass: copper + zinc (musical instruments, fittings)", "Steel: iron + carbon (construction)", "Stainless steel: iron + chromium + nickel (cutlery, surgery)", "Alloys: harder and stronger than pure metals"]
+  },
+
+  "Animal Diversity": {
+    subject: "Biology",
+    summary: "Animals classified into vertebrates (backbone) and invertebrates (no backbone). Evolution by natural selection: variation exists, struggle for survival, fittest survive and reproduce. Evidence: fossils, comparative anatomy, embryology. Darwin's theory explains biodiversity.",
+    keyPoints: ["Vertebrates: fish, amphibians, reptiles, birds, mammals", "Invertebrates: insects, worms, molluscs", "Natural selection: survival of the fittest", "Fossils: evidence of extinct organisms", "Adaptation: features that help survival"]
+  },
+
+
+  "Equations": {
+    subject: "Mathematics",
+    summary: "Linear equations: isolate the variable (ax + b = c → x = (c-b)/a). Quadratic equations: ax² + bx + c = 0. Methods: factorisation, completing the square, quadratic formula x = (-b ± √(b²-4ac))/2a. Discriminant b²-4ac determines nature of roots.",
+    keyPoints: ["Linear: rearrange to isolate x", "Quadratic formula: x = (-b ± √(b²-4ac))/2a", "b²-4ac > 0: two distinct real roots", "b²-4ac = 0: equal roots (one solution)", "b²-4ac < 0: no real roots"]
   },
 }
 

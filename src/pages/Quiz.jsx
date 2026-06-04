@@ -324,7 +324,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       { label: "1.5 hrs", seconds: 5400 },
       { label: "2 hours", seconds: 7200 },
     ]
-    const totalQ = subjectList.reduce((t, s) => t + (qCounts[s] ?? getDefaultCount(s)), 0)
+    const totalQ = subjectList.reduce((t, s) => t + (customCounts?.[s] ?? qCounts[s] ?? getDefaultCount(s)), 0)
 
     return (
       <div className="ee-page">
@@ -342,31 +342,22 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             </div>
           </div>
 
-          {/* Per-subject question count */}
-          <span className="ee-label" style={{ marginTop: 16, display: "block" }}>Questions per subject</span>
-          {subjectList.map(subj => {
-            const defaultCount = getDefaultCount(subj)
-            const count = qCounts[subj] ?? defaultCount
-            return (
-              <div key={subj} style={{
-                background: "var(--surface)", border: "1px solid var(--border)",
-                borderRadius: "var(--radius-md)", padding: "12px 16px", marginBottom: 10,
-                display: "flex", alignItems: "center", justifyContent: "space-between"
-              }}>
-                <div>
-                  <div style={{ fontWeight: 800, fontSize: 14, color: "var(--text)" }}>{subj}</div>
-                  <div style={{ fontSize: 11, color: "var(--text3)" }}>Default: {defaultCount}q</div>
+          {/* Subject summary */}
+          <div style={{ marginBottom: 16 }}>
+            {subjectList.map(subj => {
+              const count = customCounts?.[subj] ?? qCounts[subj] ?? getDefaultCount(subj)
+              return (
+                <div key={subj} style={{
+                  background: "var(--surface)", border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-md)", padding: "10px 16px", marginBottom: 8,
+                  display: "flex", alignItems: "center", justifyContent: "space-between"
+                }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "var(--text)" }}>{subj}</div>
+                  <div style={{ fontWeight: 800, fontSize: 14, color: "var(--primary)" }}>{count} questions</div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.max(5, (p[subj] ?? defaultCount) - 5) }))}
-                    style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>−</button>
-                  <span style={{ fontWeight: 800, fontSize: 16, color: "var(--primary)", minWidth: 30, textAlign: "center" }}>{count}</span>
-                  <button onClick={() => setQCounts(p => ({ ...p, [subj]: Math.min(60, (p[subj] ?? defaultCount) + 5) }))}
-                    style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", border: "1.5px solid var(--border)", background: "var(--surface2)", fontWeight: 800, fontSize: 18, cursor: "pointer", color: "var(--text)" }}>+</button>
-                </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
 
           {/* Time selector */}
           <span className="ee-label" style={{ marginTop: 8, display: "block" }}>Time limit</span>

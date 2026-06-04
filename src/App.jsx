@@ -43,6 +43,7 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedSubjects, setSelectedSubjects] = useState([])
+  const [cbtCounts, setCbtCounts] = useState(null)
   const [selectedStartIndex, setSelectedStartIndex] = useState(0)
   const [reviewRecord, setReviewRecord] = useState(null)
   const [authUser, setAuthUser] = useState(null)
@@ -117,7 +118,7 @@ function App() {
   // Pages that should NOT be pushed to history (no back needed)
   const NO_HISTORY_PAGES = ["home", "auth", "onboarding"]
 
-  const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null) => {
+  const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null, customCounts = null) => {
     startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
 
     // Don't push to history if:
@@ -135,7 +136,7 @@ function App() {
     setPage(newPage)
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
-    if (Array.isArray(subjectsOrIndex)) setSelectedSubjects(subjectsOrIndex)
+    if (Array.isArray(subjectsOrIndex)) { setSelectedSubjects(subjectsOrIndex); setCbtCounts(customCounts) }
     setSelectedStartIndex(typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0)
   }
 
@@ -176,6 +177,7 @@ function App() {
   const facultySubjects = getFacultySubjects()
 
   const renderPage = () => {
+    // Wrap lazy-loaded pages in Suspense
     // ===================== JAMB =====================
     if (examType === "jamb") {
       if (page === "home") return <Home onNavigate={handleNavigate} onReset={resetOnboarding} />
@@ -185,7 +187,7 @@ function App() {
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
       if (page === "weak") return <Quiz topic="weak" onNavigate={handleNavigate} onBack={handleBack} examType="jamb" />
-      if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" />
+      if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
       if (page === "cbtHistory") return (
         <CBTHistory
           onNavigate={handleNavigate}
@@ -268,6 +270,8 @@ function App() {
           examType="postutme"
           university={university}
           englishFirst={true}
+          customCounts={cbtCounts}
+          isPaid={userData?.isPaid}
         />
       )
       if (page === "cbtHistory") return (

@@ -32,8 +32,8 @@ export const english2024 = [
   { subject: "English", topic: "Antonyms", question: "Ben will soon get to the **zenith** of his career.", options: ["A. peak", "B. low", "C. nadir", "D. bottom"], answer: "C. nadir", explanation: "The antonym of 'zenith' (highest point) is 'nadir' (lowest point)." },
   { subject: "English", topic: "Antonyms", question: "The antonym of the word **verbose** is?", options: ["A. lose", "B. concise", "C. intractable", "D. overdue"], answer: "B. concise", explanation: "'Verbose' means using too many words; 'concise' means using few words effectively." },
   // Grammar
-  { subject: "English", topic: "Grammar", question: "You …… to know better than an illiterate farmer", options: ["A. are suppose", "B. are supposed", "C. suppose", "D. may suppose"], answer: "B. are supposed", explanation: "'Are supposed to' is the correct passive construction." },
-  { subject: "English", topic: "Grammar", question: "The passenger waited patiently whilst they transferred his ……. from the taxi to the bus.", options: ["A. properties", "B. baggages", "C. baggage", "D. property"], answer: "C. baggage", explanation: "'Baggage' is uncountable and cannot be pluralized as 'baggages'." },
+  { subject: "English", topic: "Vocabulary", question: "You …… to know better than an illiterate farmer", options: ["A. are suppose", "B. are supposed", "C. suppose", "D. may suppose"], answer: "B. are supposed", explanation: "'Are supposed to' is the correct passive construction." },
+  { subject: "English", topic: "Vocabulary", question: "The passenger waited patiently whilst they transferred his ……. from the taxi to the bus.", options: ["A. properties", "B. baggages", "C. baggage", "D. property"], answer: "C. baggage", explanation: "'Baggage' is uncountable and cannot be pluralized as 'baggages'." },
 ]
 
 export default english2024

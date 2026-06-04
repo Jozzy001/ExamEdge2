@@ -48,6 +48,9 @@ import unibenLifeMaths2021 from "./mathematics/maths2021"
 import { maths2013 } from "../engineering_physical_science/mathematics/maths2013"
 import { maths2019 } from "../engineering_physical_science/mathematics/maths2019"
 import { maths2022 } from "../engineering_physical_science/mathematics/maths2022"
+import { biology2024extra } from "./biology/biology2024_extra"
+import { englishSentenceInterpExtra } from "../english/english_sentence_interp_extra"
+import { biologyExtra2 } from "./biology/biology_extra2"
 
 const flattenPassages = (arr) => {
   if (!arr) return []
@@ -86,6 +89,9 @@ const allQuestions = [
 
   ...unibenLifeMaths2010, ...unibenLifeMaths2011, ...unibenLifeMaths2021,
   ...maths2013, ...maths2019, ...maths2022,
+  ...biology2024extra,
+  ...englishSentenceInterpExtra,
+  ...biologyExtra2,
 ]
 
 export default allQuestions
