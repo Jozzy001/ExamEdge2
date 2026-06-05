@@ -6,7 +6,7 @@ const UNIVERSITIES = [
   { id: "UNIBEN", name: "University of Benin", icon: "🏛️", location: "Benin City, Edo State" },
 ]
 
-const Onboarding = ({ onDone }) => {
+const Onboarding = ({ onDone, authUser, startStep = 1 }) => {
   const { dark, toggleTheme } = useTheme()
   const [step, setStep] = useState(startStep) // 1=exam type, 2=university, 3=faculty
   // If starting from step 2, we already know exam type is postutme
