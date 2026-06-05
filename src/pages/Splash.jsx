@@ -37,7 +37,7 @@ const slides = [
   {
     emoji: "🚀",
     title: "Start Free Today",
-    subtitle: "2 years of questions are completely free. Upgrade to unlock all 20 years for just ₦2,500.",
+    subtitle: "2 years of questions are completely free. Upgrade to unlock all 20 years for just ₦3,000.",
     bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     accent: "#fff",
     cta: true,

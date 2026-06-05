@@ -123,7 +123,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
 
         {/* Price */}
         <div style={{ marginBottom: 16 }}>
-          <span style={{ fontSize: 28, fontWeight: 800, color: '#667eea' }}>₦2,500</span>
+          <span style={{ fontSize: 28, fontWeight: 800, color: '#667eea' }}>₦3,000</span>
           <span style={{ fontSize: 13, color: '#888', marginLeft: 8 }}>one-time payment</span>
         </div>
 
@@ -142,7 +142,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
             marginBottom: 12,
           }}
         >
-          {config.cta} — ₦2,500
+          {config.cta} — ₦3,000
         </button>
 
         <button
