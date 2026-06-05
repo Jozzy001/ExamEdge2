@@ -9,7 +9,7 @@ import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
 
-const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, isPaid, userData, examType }) => {
+const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()
   const [editingUsername, setEditingUsername] = useState(false)
   const [newUsername, setNewUsername] = useState(userData?.name || authUser?.name || "")
@@ -114,6 +114,8 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
 
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to log out?")) {
+      // Show loading immediately to prevent flash
+      if (onLogout) onLogout()
       // Clear all cached data on logout
       localStorage.removeItem("ee-cached-user")
       localStorage.removeItem("ee-cached-userdata")

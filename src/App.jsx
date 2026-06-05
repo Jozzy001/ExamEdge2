@@ -63,6 +63,7 @@ function App() {
   })
   const [onboardingStartStep, setOnboardingStartStep] = useState(1)
   const [profileLoading, setProfileLoading] = useState(false)
+  const [loggingOut, setLoggingOut] = useState(false)
   const startIndexRef = useRef(0)
 
   // Listen to auth state — handle logout cleanly
@@ -114,6 +115,7 @@ function App() {
             return
           } catch(e) {}
         }
+        setLoggingOut(false)
         setAuthUser(null)
         setUserData(null)
         setProfile(null)
@@ -316,8 +318,8 @@ function App() {
     setProfile(null)
   }
 
-  // Show loading screen while profile is being set after login
-  if (profileLoading) return <FullPageLoader message="Loading your profile..." />
+  // Show loading screen while profile is being set after login or logout
+  if (profileLoading || loggingOut) return <FullPageLoader message="Please wait..." />
 
   // Show onboarding if no profile yet
   if (!profile) {
@@ -464,6 +466,7 @@ function App() {
           onNavigate={handleNavigate}
           onBack={handleBack}
           onReset={resetOnboarding}
+          onLogout={() => setLoggingOut(true)}
           authUser={authUser}
           faculty={faculty}
           university={university}
