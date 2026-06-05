@@ -3,6 +3,7 @@ import { auth, db } from "../firebase"
 import { signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
 import { doc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs } from "firebase/firestore"
 import ReferralCard from "../components/ReferralCard"
+import BankDetailsForm from "../components/BankDetailsForm"
 import { PageTransition } from "../components/LoadingScreen"
 import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
@@ -429,6 +430,37 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
 
         {/* Referral card — shown to ALL users */}
         <ReferralCard userData={userData} />
+        {/* Bank details — only shown when user has pending referral earnings */}
+        {((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)) > 0 && (
+          <div style={{
+            background: "rgba(245,158,11,0.08)", border: "1.5px solid rgba(245,158,11,0.3)",
+            borderRadius: "var(--radius-lg)", padding: "16px", margin: "12px 16px"
+          }}>
+            <div style={{ fontSize: 14, fontWeight: 800, color: "#d97706", marginBottom: 8 }}>
+              🏦 Add Bank Details to Receive Payment
+            </div>
+            <p style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.6, marginBottom: 12 }}>
+              You have <strong style={{ color: "#d97706" }}>₦{((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}</strong> pending.
+              Add your bank details so we can pay you.
+            </p>
+            {userData?.bankDetails ? (
+              <div style={{
+                background: "var(--surface)", borderRadius: "var(--radius-md)",
+                padding: "10px 12px", marginBottom: 10,
+                border: "1px solid var(--border)"
+              }}>
+                <div style={{ fontSize: 12, color: "var(--text2)" }}>Saved bank details:</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginTop: 4 }}>
+                  {userData.bankDetails.bankName} · {userData.bankDetails.accountNumber}
+                </div>
+                <div style={{ fontSize: 12, color: "var(--text2)" }}>{userData.bankDetails.accountName}</div>
+              </div>
+            ) : null}
+            <BankDetailsForm userData={userData} userId={user?.uid} />
+          </div>
+        )}
+
+
 
         {/* ===== SUPPORT ===== */}
         {sectionTitle("💬 Support")}

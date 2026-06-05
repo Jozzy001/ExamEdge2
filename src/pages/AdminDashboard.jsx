@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import {
-  collection, getDocs, orderBy, query,
-  doc, updateDoc, deleteDoc
+  collection, getDocs, orderBy, query, where,
+  doc, updateDoc, deleteDoc, setDoc
 } from "firebase/firestore"
 import { sendPasswordResetEmail } from "firebase/auth"
 
@@ -161,10 +161,20 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   }
 
   const filtered = users.filter(u => {
-    const matchesSearch = u.name?.toLowerCase().includes(search.toLowerCase()) ||
+    const matchesSearch = !search || 
+      u.name?.toLowerCase().includes(search.toLowerCase()) ||
       u.email?.toLowerCase().includes(search.toLowerCase())
     const matchesPlan = planFilter === "all" ? true : planFilter === "paid" ? u.isPaid : !u.isPaid
     return matchesSearch && matchesPlan
+  }).sort((a, b) => {
+    // 1. Users with pending referral earnings (referrers) first
+    const aPending = (a.referralEarnings || 0) - (a.referralPaidOut || 0)
+    const bPending = (b.referralEarnings || 0) - (b.referralPaidOut || 0)
+    if (aPending !== bPending) return bPending - aPending
+    // 2. Paid users with no referrals next
+    if (a.isPaid !== b.isPaid) return b.isPaid ? 1 : -1
+    // 3. Free users last — sorted by join date (newest first)
+    return new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
   })
 
   // Stats
@@ -441,6 +451,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             { label: "Referred By", value: user.referredBy ? "Yes" : "No" },
                             { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
                             { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
+                            { label: "Bank", value: user.bankDetails ? `${user.bankDetails.bankName} · ${user.bankDetails.accountNumber} (${user.bankDetails.accountName})` : "❌ Not provided" },
                             { label: "Joined", value: formatDateTime(user.createdAt) },
                             { label: "Last Login", value: formatDateTime(user.lastLogin) },
                           ].map((item, j) => (
@@ -482,6 +493,46 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           >
                             {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
                           </button>
+
+                          {/* Pay Referral button — only shows if there's pending amount */}
+                          {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
+                            <button
+                              onClick={async () => {
+                                const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
+                                if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?\n\nThis will:\n• Set their pending balance to ₦0\n• Mark all their referrals as paid out`)) return
+                                
+                                // Update user's paidOut to match earnings (clears pending)
+                                await updateDoc(doc(db, "users", user.id), {
+                                  referralPaidOut: user.referralEarnings || 0,
+                                  referralPaidOutAt: new Date().toISOString(),
+                                })
+
+                                // Mark all their referral documents as paid
+                                const referralQuery = query(
+                                  collection(db, "referrals"),
+                                  where("referrerId", "==", user.id)
+                                )
+                                const referralSnap = await getDocs(referralQuery)
+                                const updates = referralSnap.docs.map(d =>
+                                  updateDoc(doc(db, "referrals", d.id), { referralPaid: true, paidAt: new Date().toISOString() })
+                                )
+                                await Promise.all(updates)
+
+                                setActionMsg(`✅ ₦${owed.toLocaleString()} referral payment marked as paid to ${user.name}`)
+                                fetchUsers()
+                                setSelected(null)
+                              }}
+                              style={{
+                                padding: "10px", borderRadius: "var(--radius-md)",
+                                background: "rgba(34,197,94,0.1)", color: "#15803d",
+                                border: "1px solid rgba(34,197,94,0.3)",
+                                fontWeight: 800, fontSize: 13,
+                                cursor: "pointer", fontFamily: "var(--font-main)"
+                              }}
+                            >
+                              💸 Pay Referral — ₦{((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}
+                            </button>
+                          )}
 
                           <button
                             onClick={() => handlePasswordReset(user.email)}

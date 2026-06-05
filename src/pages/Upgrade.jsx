@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { doc, updateDoc, setDoc } from "firebase/firestore"
+import { doc, updateDoc, setDoc, increment } from "firebase/firestore"
 import { db } from "../firebase"
 import { formatNaira } from "../utils/subscription"
 
@@ -57,8 +57,9 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
             // Record referral if applicable
             if (userData?.referredBy) {
               const refId = userData.referredBy
+              // Use Firestore increment to safely add 500 to referrer's earnings
               updateDoc(doc(db, "users", refId), {
-                referralEarnings: (userData?.referralEarnings || 0) + 500,
+                referralEarnings: increment(500),
               }).catch(() => {})
               setDoc(doc(db, "referrals", `${refId}_${user.uid}`), {
                 referrerId: refId,
