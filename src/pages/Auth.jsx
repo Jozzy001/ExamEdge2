@@ -154,6 +154,20 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
           if (pendingUserData?.wantsPaid && onGoToUpgrade) {
             setTimeout(() => onGoToUpgrade(), 500)
           }
+        } else {
+          // Doc doesn't exist yet — create it and proceed
+          const fallbackData = {
+            uid: auth.currentUser.uid,
+            email: auth.currentUser.email,
+            name: auth.currentUser.displayName || auth.currentUser.email.split("@")[0],
+            isPaid: false,
+            createdAt: new Date().toISOString(),
+          }
+          await setDoc(doc(db, "users", auth.currentUser.uid), fallbackData)
+          onAuthDone(fallbackData)
+          if (pendingUserData?.wantsPaid && onGoToUpgrade) {
+            setTimeout(() => onGoToUpgrade(), 500)
+          }
         }
       } else {
         setError("Email not verified yet. Please check your inbox and click the link.")
