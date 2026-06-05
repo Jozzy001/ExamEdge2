@@ -112,7 +112,15 @@ function App() {
         setPage("home")
         setPageHistory([])
       } else {
-        // User is logged in — set authUser
+        // User is logged in
+        // Check email verification
+        if (!user.emailVerified) {
+          // Not verified — show auth screen in verify mode
+          setAuthUser(null)
+          setAppLoading(false)
+          return
+        }
+        // Set authUser so app knows someone is logged in
         setAuthUser(user)
         // Cache user for offline use
         localStorage.setItem("ee-cached-user", JSON.stringify({
@@ -121,6 +129,34 @@ function App() {
           displayName: user.displayName,
           emailVerified: user.emailVerified
         }))
+        // Load full user data from Firestore to get real name, faculty etc
+        getDoc(doc(db, "users", user.uid)).then(snap => {
+          if (snap.exists()) {
+            const data = snap.data()
+            setUserData(data)
+            localStorage.setItem("ee-cached-userdata", JSON.stringify(data))
+            // Restore profile from Firestore data
+            if (data.faculty && data.examType) {
+              const profileData = {
+                examType: data.examType,
+                university: data.university || "UNIBEN",
+                faculty: data.faculty
+              }
+              localStorage.setItem("ee-examType", profileData.examType)
+              localStorage.setItem("ee-university", profileData.university)
+              localStorage.setItem("ee-faculty", profileData.faculty)
+              setProfile(profileData)
+            }
+          } else {
+            // No Firestore doc — use cached data if available
+            const cached = localStorage.getItem("ee-cached-userdata")
+            if (cached) try { setUserData(JSON.parse(cached)) } catch(e) {}
+          }
+        }).catch(() => {
+          // Offline — use cached data
+          const cached = localStorage.getItem("ee-cached-userdata")
+          if (cached) try { setUserData(JSON.parse(cached)) } catch(e) {}
+        })
       }
       // Auth has resolved — hide loading screen
       setAppLoading(false)

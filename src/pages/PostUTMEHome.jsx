@@ -27,7 +27,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
   const faculties = university === "UNIBEN" ? UNIBEN_FACULTIES : {}
   const facultyInfo = faculties[faculty]
 
-  const firstName = authUser?.name?.split(" ")[0] || authUser?.email?.split("@")[0] || "Student"
+  const firstName = userData?.name?.split(" ")[0] || authUser?.displayName?.split(" ")[0] || authUser?.email?.split("@")[0] || "Student"
 
   return (
     <PageTransition>
@@ -198,7 +198,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* WhatsApp Channel — for everyone */}
         <div
-          onClick={() => window.open("https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
+          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
             borderRadius: "var(--radius-lg)", padding: "14px 18px",
