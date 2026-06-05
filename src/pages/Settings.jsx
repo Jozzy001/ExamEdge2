@@ -12,7 +12,7 @@ import { getGameState } from "../utils/gamification"
 const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()
   const [editingUsername, setEditingUsername] = useState(false)
-  const [newUsername, setNewUsername] = useState(authUser?.name || "")
+  const [newUsername, setNewUsername] = useState(userData?.name || authUser?.name || "")
   const [changingPassword, setChangingPassword] = useState(false)
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
@@ -55,7 +55,7 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
     try {
       await addDoc(collection(db, "messages"), {
         uid: auth.currentUser.uid,
-        username: authUser?.name || "Unknown",
+        username: userData?.name || authUser?.name || "Unknown",
         email: authUser?.email || auth.currentUser?.email || "Unknown",
         message: contactMessage.trim(),
         status: "unread",
@@ -201,12 +201,12 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
                 {loading ? "Saving..." : "Save"}
               </button>
               <button className="ee-btn ee-btn-secondary" onClick={() => {
-                setEditingUsername(false); setNewUsername(authUser?.name || ""); setError("")
+                setEditingUsername(false); setNewUsername(userData?.name || authUser?.name || ""); setError("")
               }} style={{ flex: 1, padding: "10px" }}>Cancel</button>
             </div>
           </div>
         ) : (
-          row("😊", "Username", authUser?.name || "—",
+          row("😊", "Username", userData?.name || authUser?.name || "—",
             <button onClick={() => { setEditingUsername(true); setSuccess(""); setError("") }}
               style={{
                 background: "var(--primary-light)", color: "var(--primary-text)",
@@ -420,7 +420,7 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
               fontSize: 14, cursor: "pointer", width: "100%",
               fontFamily: "var(--font-main)"
             }}>
-              Get Full Access — ₦2,500
+              Get Full Access — ₦3,000
             </button>
           </div>
         ) : (
