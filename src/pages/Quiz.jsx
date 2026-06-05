@@ -323,7 +323,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
   }, [finished])
 
   // EDGE CASES
-  if (filteredQuestions.length === 0 && started) {
+  if (filteredQuestions.length === 0 && (started || isWeak)) {
     return (
       <div className="ee-page">
         <header className="ee-header">
