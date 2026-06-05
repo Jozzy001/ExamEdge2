@@ -5,7 +5,7 @@ const slides = [
     emoji: null,
     logo: true,
     title: "Welcome to ExamEdgeNG",
-    subtitle: "The smartest way to prepare for your Post-UTME and JAMB exams",
+    subtitle: "The smartest way to prepare for your Post-UTME and JAMB exams — works offline after login!",
     bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     accent: "#fff",
   },
@@ -16,6 +16,7 @@ const slides = [
     bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
     accent: "#fff",
     stat: "3,000+ Questions",
+    offline: true,
   },
   {
     emoji: "🧪",

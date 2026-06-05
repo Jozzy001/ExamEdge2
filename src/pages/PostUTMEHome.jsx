@@ -118,7 +118,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             className="ee-home-card"
             onClick={() => {
               if (!isPaid) { handleLockedFeature("cbtHistory"); return }
-              onNavigate("cbt-history")
+              onNavigate("cbtHistory")
             }}
           >
             <span className="home-card-icon">🕐</span>
