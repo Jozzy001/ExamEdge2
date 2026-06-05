@@ -62,6 +62,7 @@ function App() {
     } catch(e) { return null }
   })
   const [onboardingStartStep, setOnboardingStartStep] = useState(1)
+  const [profileLoading, setProfileLoading] = useState(false)
   const startIndexRef = useRef(0)
 
   // Listen to auth state — handle logout cleanly
@@ -218,6 +219,7 @@ function App() {
   // Show Auth screen first if not logged in
   if (!authUser) {
     return <Auth onGoToUpgrade={() => setPage("upgrade")} onAuthDone={(user) => {
+      setProfileLoading(true)
       setAuthUser(user)
       setUserData(user)
       // Restore profile from Firestore first (most reliable)
@@ -238,6 +240,7 @@ function App() {
         localStorage.removeItem("ee-faculty")
         setProfile(null)
       }
+      setProfileLoading(false)
     }} />
   }
 
@@ -304,6 +307,9 @@ function App() {
     setOnboardingStartStep(startStep)
     setProfile(null)
   }
+
+  // Show loading screen while profile is being set after login
+  if (profileLoading) return <FullPageLoader message="Loading your profile..." />
 
   // Show onboarding if no profile yet
   if (!profile) {
