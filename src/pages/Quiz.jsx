@@ -252,6 +252,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
   const [finished, setFinished] = useState(false)
   const [started, setStarted] = useState(false)
   const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
+  const [examDuration, setExamDuration] = useState(examType === "jamb" ? 3600 : 1800)
   const [showCalc, setShowCalc] = useState(false)
   // Custom counts state for start screen
   const [qCounts, setQCounts] = useState({})
@@ -505,33 +506,103 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     const pct = Math.round((score / total) * 100)
     const emoji = pct >= 70 ? "🌟" : pct >= 50 ? "👍" : "💪"
     const msg = pct >= 70 ? "Excellent! Keep it up." : pct >= 50 ? "Good effort! Review your mistakes." : "Don't give up — practice more!"
+
+    // Calculate Post-UTME equivalent (typically scored over 100 or 400 for JAMB)
+    const postUtmeEquiv = Math.round(pct) // same as percentage for Post-UTME
+    const jambEquiv = Math.round(pct * 4) // JAMB is /400
+
+    // Subject breakdown for CBT
+    const subjectBreakdown = {}
+    filteredQuestions.forEach((q, i) => {
+      const subj = q.subject || "General"
+      if (!subjectBreakdown[subj]) subjectBreakdown[subj] = { score: 0, total: 0 }
+      subjectBreakdown[subj].total++
+      if (answersMapRef.current[i]?.selected === q.answer) subjectBreakdown[subj].score++
+    })
+
     return (
       <div className="ee-page">
         <header className="ee-header">
           <button className="ee-back-btn" onClick={() => onNavigate("home")}>← Home</button>
-          <span style={{ fontWeight: 800, fontSize: "16px" }}>Result</span>
+          <span style={{ fontWeight: 800, fontSize: "16px" }}>Your Result 🎯</span>
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
-          <div className="ee-result-score">
-            <span className="result-emoji">{emoji}</span>
-            <div className="result-fraction">{score} / {total}</div>
-            <div className={`result-percent ${pct >= 70 ? "color-success" : pct >= 50 ? "color-warning" : "color-danger"}`}>{pct}%</div>
-            <div className="result-msg">{msg}</div>
+
+          {/* Score card */}
+          <div style={{
+            background: `linear-gradient(135deg, ${pct >= 70 ? "#16a34a" : pct >= 50 ? "#d97706" : "#dc2626"}, ${pct >= 70 ? "#15803d" : pct >= 50 ? "#b45309" : "#b91c1c"})`,
+            borderRadius: "var(--radius-xl)", padding: "28px 20px",
+            marginBottom: 20, color: "#fff", textAlign: "center"
+          }}>
+            <div style={{ fontSize: 56, marginBottom: 8 }}>{emoji}</div>
+            <div style={{ fontSize: 52, fontWeight: 900, lineHeight: 1 }}>{score}</div>
+            <div style={{ fontSize: 18, opacity: 0.85, marginBottom: 4 }}>out of {total}</div>
+            <div style={{ fontSize: 32, fontWeight: 800, marginBottom: 8 }}>{pct}%</div>
+            <div style={{ fontSize: 14, opacity: 0.9 }}>{msg}</div>
           </div>
+
+          {/* Post-UTME equivalent */}
+          {isCBT && examType === "postutme" && (
+            <div style={{
+              background: "var(--surface)", border: "1.5px solid var(--primary)",
+              borderRadius: "var(--radius-lg)", padding: "14px 16px",
+              marginBottom: 16, textAlign: "center"
+            }}>
+              <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 4, fontWeight: 700 }}>
+                📊 POST-UTME EQUIVALENT SCORE
+              </div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "var(--primary)" }}>
+                {postUtmeEquiv} / 100
+              </div>
+              <div style={{ fontSize: 12, color: "var(--text2)", marginTop: 4 }}>
+                {pct >= 70 ? "🟢 Strong performance — above average" :
+                 pct >= 50 ? "🟡 Average performance — keep practicing" :
+                 "🔴 Below average — focus on weak areas"}
+              </div>
+            </div>
+          )}
+
+          {/* Subject breakdown for CBT */}
+          {isCBT && Object.keys(subjectBreakdown).length > 1 && (
+            <div style={{
+              background: "var(--surface)", border: "1px solid var(--border)",
+              borderRadius: "var(--radius-lg)", padding: "14px 16px",
+              marginBottom: 16
+            }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>
+                📚 Subject Breakdown
+              </div>
+              {Object.entries(subjectBreakdown).map(([subj, stats]) => {
+                const subjPct = Math.round((stats.score / stats.total) * 100)
+                const color = subjPct >= 70 ? "#16a34a" : subjPct >= 50 ? "#d97706" : "#dc2626"
+                return (
+                  <div key={subj} style={{ marginBottom: 10 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{subj}</span>
+                      <span style={{ fontSize: 13, fontWeight: 800, color }}>{stats.score}/{stats.total} ({subjPct}%)</span>
+                    </div>
+                    <div style={{ height: 6, borderRadius: 3, background: "var(--border)" }}>
+                      <div style={{ height: "100%", width: `${subjPct}%`, borderRadius: 3, background: color }} />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Action buttons */}
           <div className="ee-btn-row">
-            {isCBT && <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtResult")}>Review Answers 📖</button>}
-            <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>View Progress 📊</button>
-            <button className="ee-btn ee-btn-outline" onClick={() => onNavigate("subjectSelect")}>Study More 📚</button>
+            {isCBT && <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtResult")}>📖 Review Answers</button>}
+            <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>📊 View Progress</button>
+            <button className="ee-btn ee-btn-outline" onClick={() => isCBT ? onNavigate("cbtSubjectSelect") : onNavigate("subjectSelect")}>🔄 Try Again</button>
           </div>
         </div>
       </div>
     )
   }
 
-  if (!currentQuestion) return null
-
-  // MAIN QUIZ UI
+  // MAIN QUIZ UI — only return null if not finished
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
