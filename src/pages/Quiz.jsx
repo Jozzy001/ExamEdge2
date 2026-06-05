@@ -124,7 +124,7 @@ const Calculator = ({ onClose }) => {
 // =============================================
 // QUIZ
 // =============================================
-const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0 }) => {
+const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0, hotTopicFilter = null }) => {
 
   // Get the right question pool
   const questionPool = useMemo(() => {
@@ -192,23 +192,32 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         )
         return weakTopics.includes(q.topic) && (!subjectList || subjectList.includes(q.subject))
       }).sort(() => Math.random() - 0.5)
-    } else if (topic === "hotTopics") {
-      // Filter by isHotTopic flag AND subject
-      base = questionPool.filter(q => {
-        if (q.passage && q.questions) return q.questions.some(inner =>
-          inner.isHotTopic === true && (!subject || inner.subject === subject)
-        )
-        return q.isHotTopic === true && (!subject || q.subject === subject)
-      }).sort(() => Math.random() - 0.5)
-      // If no isHotTopic questions, fall back to most recent 2 years for that subject
-      if (base.length === 0 && subject) {
-        const recentYears = [2024, 2023, 2022]
+    } else if (topic === "hotTopics" || hotTopicFilter) {
+      // Filter by specific topic AND subject
+      const filterTopic = hotTopicFilter || topic
+      if (hotTopicFilter) {
+        // Specific topic selected from Hot Topics screen
         base = questionPool.filter(q => {
           if (q.passage && q.questions) return q.questions.some(inner =>
-            inner.subject === subject && recentYears.includes(inner.year)
+            inner.topic === filterTopic && (!subject || inner.subject === subject)
           )
-          return q.subject === subject && recentYears.includes(q.year)
-        }).sort(() => Math.random() - 0.5).slice(0, 30)
+          return q.topic === filterTopic && (!subject || q.subject === subject)
+        }).sort(() => Math.random() - 0.5)
+      } else {
+        // General hot topics — filter by isHotTopic OR fall back to all for subject
+        base = questionPool.filter(q => {
+          if (q.passage && q.questions) return q.questions.some(inner =>
+            inner.isHotTopic === true && (!subject || inner.subject === subject)
+          )
+          return q.isHotTopic === true && (!subject || q.subject === subject)
+        }).sort(() => Math.random() - 0.5)
+        // Fallback to subject questions if no isHotTopic found
+        if (base.length === 0 && subject) {
+          base = questionPool.filter(q => {
+            if (q.passage && q.questions) return q.questions.some(inner => inner.subject === subject)
+            return q.subject === subject
+          }).sort(() => Math.random() - 0.5).slice(0, 30)
+        }
       }
     } else {
       base = questionPool.filter(q => {

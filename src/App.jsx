@@ -333,13 +333,14 @@ function App() {
       )
       if (page === "hotTopicsQuiz") return (
         <Quiz
-          topic="hotTopics"
+          topic={cbtCounts?.topic || "hotTopics"}
           subject={selectedSubject}
           onNavigate={handleNavigate}
           onBack={() => { setPage("hotTopics"); setPageHistory([]) }}
           examType="postutme"
           university={university}
           isPaid={userData?.isPaid}
+          hotTopicFilter={cbtCounts?.topic}
         />
       )
     }
