@@ -16,13 +16,9 @@ const SUBJECT_META = {
   Accounts:    { icon: "🧾", desc: "Financial Accounting, Costing, Auditing" },
 }
 
-// Default Post-UTME counts per subject
 const POSTUTME_DEFAULTS = {
-  English: 15,
-  Mathematics: 10,
-  Physics: 10,
-  Chemistry: 10,
-  Biology: 10,
+  English: 15, Mathematics: 10, Physics: 10,
+  Chemistry: 10, Biology: 10,
 }
 
 const getSubjects = (questions) => {
@@ -47,11 +43,11 @@ const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university
     : allSubjects
 
   const isCBT = mode === "cbt"
+  const maxSubjects = examType === "jamb" ? 4 : subjects.length
+
   const [selected, setSelected] = useState([])
   const [counts, setCounts] = useState({})
-  const [showCounts, setShowCounts] = useState(false)
-
-  const maxSubjects = examType === "jamb" ? 4 : subjects.length
+  const [showCustomise, setShowCustomise] = useState(false)
 
   const getDefaultCount = (subj) => {
     if (examType === "postutme") return POSTUTME_DEFAULTS[subj] || 10
@@ -71,20 +67,15 @@ const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university
     setCounts(prev => ({ ...prev, [subj]: num }))
   }
 
-  const getFinalCounts = () => {
-    const result = {}
-    selected.forEach(subj => {
-      result[subj] = counts[subj] ?? getDefaultCount(subj)
-    })
-    return result
-  }
+  const getCount = (subj) => counts[subj] ?? getDefaultCount(subj)
 
   const getTotalQuestions = () =>
-    selected.reduce((sum, subj) => sum + (counts[subj] ?? getDefaultCount(subj)), 0)
+    selected.reduce((sum, subj) => sum + getCount(subj), 0)
 
   const handleStartCBT = () => {
     if (selected.length === 0) return
-    const finalCounts = getFinalCounts()
+    const finalCounts = {}
+    selected.forEach(subj => { finalCounts[subj] = getCount(subj) })
     onNavigate("cbt", null, null, selected, university, finalCounts)
   }
 
@@ -108,11 +99,12 @@ const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university
 
         {isCBT ? (
           <>
+            {/* Info card */}
             <div className="ee-card" style={{ marginBottom: 16 }}>
-              <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
+              <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>
                 {examType === "jamb"
                   ? <><strong style={{ color: "var(--text)" }}>JAMB format:</strong> English + 3 other subjects</>
-                  : <><strong style={{ color: "var(--text)" }}>Post-UTME:</strong> Select subjects and set question counts.</>
+                  : <><strong style={{ color: "var(--text)" }}>Post-UTME:</strong> Select your subjects below.</>
                 }
                 {selected.length > 0 && (
                   <span style={{ color: "var(--primary)", fontWeight: 800 }}> {selected.length}/{maxSubjects} selected</span>
@@ -120,121 +112,97 @@ const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university
               </p>
             </div>
 
-            {/* Subject selection */}
+            {/* Subject selection — simple clean cards */}
             {subjects.map((subject, index) => {
               const meta = SUBJECT_META[subject] || { icon: "📚", desc: "" }
               const isSelected = selected.includes(subject)
               const isDisabled = !isSelected && selected.length >= maxSubjects
-              const count = counts[subject] ?? getDefaultCount(subject)
+              const count = getCount(subject)
               return (
-                <div key={index} style={{ marginBottom: 10 }}>
-                  <button onClick={() => !isDisabled && toggleSubject(subject)} style={{
+                <button
+                  key={index}
+                  onClick={() => !isDisabled && toggleSubject(subject)}
+                  style={{
                     display: "flex", alignItems: "center", gap: 16,
                     width: "100%", padding: "14px 18px",
-                    borderRadius: isSelected && showCounts ? "var(--radius-lg) var(--radius-lg) 0 0" : "var(--radius-lg)",
+                    borderRadius: "var(--radius-lg)", marginBottom: 8,
                     borderTop: isSelected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
                     borderLeft: isSelected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
                     borderRight: isSelected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
-                    borderBottom: isSelected && showCounts ? "1px solid var(--border)" : isSelected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
+                    borderBottom: isSelected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
                     background: isSelected ? "var(--primary-light)" : "var(--surface)",
                     cursor: isDisabled ? "not-allowed" : "pointer",
                     opacity: isDisabled ? 0.4 : 1,
-                    transition: "all 0.15s", fontFamily: "var(--font-main)", textAlign: "left"
-                  }}>
-                    <span style={{ fontSize: 26 }}>{meta.icon}</span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: isSelected ? "var(--primary-text)" : "var(--text)" }}>{subject}</div>
-                      <div style={{ fontSize: 12, color: "var(--text2)" }}>{meta.desc}</div>
+                    fontFamily: "var(--font-main)", textAlign: "left",
+                    transition: "all 0.15s"
+                  }}
+                >
+                  <span style={{ fontSize: 26 }}>{meta.icon}</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: isSelected ? "var(--primary-text)" : "var(--text)" }}>
+                      {subject}
                     </div>
-                    {isSelected && showCounts && (
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "var(--primary)", marginRight: 8 }}>
-                        {count}q
-                      </div>
-                    )}
-                    <div style={{
-                      width: 22, height: 22, borderRadius: "50%",
-                      border: isSelected ? "none" : "1.5px solid var(--border-strong)",
-                      background: isSelected ? "var(--primary)" : "transparent",
-                      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0
-                    }}>
-                      {isSelected && <span style={{ color: "#fff", fontSize: 12 }}>✓</span>}
-                    </div>
-                  </button>
-
-                  {/* Question count input - shows when subject selected and showCounts is on */}
-                  {isSelected && showCounts && (
-                    <div style={{
-                      padding: "12px 18px",
-                      background: "var(--primary-light)",
-                      border: "2px solid var(--primary)",
-                      borderTop: "none",
-                      borderRadius: "0 0 var(--radius-lg) var(--radius-lg)",
-                      display: "flex", alignItems: "center", gap: 12
-                    }}>
-                      <span style={{ fontSize: 12, color: "var(--text2)", flex: 1 }}>Questions for {subject}:</span>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); updateCount(subject, count - 5) }}
-                          style={{
-                            width: 28, height: 28, borderRadius: "50%",
-                            border: "1.5px solid var(--primary)", background: "var(--surface)",
-                            color: "var(--primary)", fontWeight: 900, fontSize: 16,
-                            cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center"
-                          }}>−</button>
-                        <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text)", minWidth: 28, textAlign: "center" }}>
-                          {count}
-                        </span>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); updateCount(subject, count + 5) }}
-                          style={{
-                            width: 28, height: 28, borderRadius: "50%",
-                            border: "1.5px solid var(--primary)", background: "var(--surface)",
-                            color: "var(--primary)", fontWeight: 900, fontSize: 16,
-                            cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center"
-                          }}>+</button>
-                      </div>
+                    <div style={{ fontSize: 12, color: "var(--text2)" }}>{meta.desc}</div>
+                  </div>
+                  {isSelected && (
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "var(--primary)" }}>
+                      {count}q
                     </div>
                   )}
-                </div>
+                  <div style={{
+                    width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
+                    border: isSelected ? "none" : "1.5px solid var(--border-strong)",
+                    background: isSelected ? "var(--primary)" : "transparent",
+                    display: "flex", alignItems: "center", justifyContent: "center"
+                  }}>
+                    {isSelected && <span style={{ color: "#fff", fontSize: 12 }}>✓</span>}
+                  </div>
+                </button>
               )
             })}
 
-            {/* Customise counts toggle + total */}
+            {/* Bottom action bar */}
             {selected.length > 0 && (
               <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                padding: "12px 16px", marginBottom: 12,
-                background: "var(--surface)", borderRadius: "var(--radius-lg)",
-                border: "1.5px solid var(--border)"
+                position: "sticky", bottom: 0,
+                background: "var(--bg)", paddingTop: 12,
+                borderTop: "1px solid var(--border)",
+                marginTop: 8
               }}>
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>
-                    Total: <span style={{ color: "var(--primary)" }}>{getTotalQuestions()} questions</span>
+                {/* Total + customise row */}
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "10px 14px", marginBottom: 10,
+                  background: "var(--surface)", borderRadius: "var(--radius-lg)",
+                  border: "1.5px solid var(--border)"
+                }}>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>
+                      Total: <span style={{ color: "var(--primary)" }}>{getTotalQuestions()} questions</span>
+                    </div>
+                    <div style={{ fontSize: 11, color: "var(--text2)" }}>
+                      {selected.join(" + ")}
+                    </div>
                   </div>
-                  <div style={{ fontSize: 11, color: "var(--text2)" }}>
-                    {selected.join(" + ")}
-                  </div>
+                  <button
+                    onClick={() => setShowCustomise(true)}
+                    style={{
+                      padding: "6px 14px", borderRadius: 20,
+                      border: "1.5px solid var(--primary)",
+                      background: "transparent", color: "var(--primary)",
+                      fontSize: 12, fontWeight: 700, cursor: "pointer",
+                      fontFamily: "var(--font-main)"
+                    }}
+                  >
+                    ✏️ Customise
+                  </button>
                 </div>
-                <button
-                  onClick={() => setShowCounts(prev => !prev)}
-                  style={{
-                    padding: "6px 12px", borderRadius: 20,
-                    border: "1.5px solid var(--primary)",
-                    background: showCounts ? "var(--primary)" : "transparent",
-                    color: showCounts ? "#fff" : "var(--primary)",
-                    fontSize: 12, fontWeight: 700, cursor: "pointer",
-                    fontFamily: "var(--font-main)"
-                  }}>
-                  {showCounts ? "✓ Custom" : "Customise"}
+
+                <button className="ee-btn ee-btn-primary" onClick={handleStartCBT}>
+                  Start CBT — {getTotalQuestions()} questions ▶
                 </button>
               </div>
             )}
-
-            <div style={{ position: "sticky", bottom: 20, marginTop: 8 }}>
-              <button className="ee-btn ee-btn-primary" onClick={handleStartCBT} disabled={selected.length === 0}>
-                Start CBT — {getTotalQuestions()} questions ▶
-              </button>
-            </div>
           </>
         ) : (
           subjects.map((subject, index) => {
@@ -253,6 +221,107 @@ const SubjectSelect = ({ onNavigate, onBack, mode, examType = "jamb", university
           })
         )}
       </div>
+
+      {/* Customise modal — slides up from bottom */}
+      {showCustomise && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 1000,
+          background: "rgba(0,0,0,0.5)",
+          display: "flex", alignItems: "flex-end"
+        }}
+          onClick={(e) => { if (e.target === e.currentTarget) setShowCustomise(false) }}
+        >
+          <div style={{
+            background: "var(--bg)", width: "100%",
+            borderRadius: "20px 20px 0 0",
+            padding: "20px 20px 40px",
+            maxHeight: "85vh", overflowY: "auto"
+          }}>
+            {/* Handle */}
+            <div style={{
+              width: 40, height: 4, borderRadius: 2,
+              background: "var(--border)", margin: "0 auto 20px"
+            }} />
+
+            <div style={{
+              display: "flex", alignItems: "center",
+              justifyContent: "space-between", marginBottom: 20
+            }}>
+              <h3 style={{ fontSize: 16, fontWeight: 800, color: "var(--text)", margin: 0 }}>
+                Customise Questions
+              </h3>
+              <button
+                onClick={() => setShowCustomise(false)}
+                style={{
+                  background: "var(--surface2)", border: "none",
+                  borderRadius: "50%", width: 32, height: 32,
+                  fontSize: 16, cursor: "pointer", color: "var(--text)"
+                }}
+              >✕</button>
+            </div>
+
+            <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 16 }}>
+              Set how many questions per subject. Min: 5, Max: 50.
+            </p>
+
+            {selected.map(subj => {
+              const count = getCount(subj)
+              const meta = SUBJECT_META[subj] || { icon: "📚" }
+              return (
+                <div key={subj} style={{
+                  display: "flex", alignItems: "center", gap: 12,
+                  padding: "14px 0",
+                  borderBottom: "1px solid var(--border)"
+                }}>
+                  <span style={{ fontSize: 22 }}>{meta.icon}</span>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{subj}</div>
+                    <div style={{ fontSize: 11, color: "var(--text2)" }}>Default: {getDefaultCount(subj)}q</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <button
+                      onClick={() => updateCount(subj, count - 5)}
+                      style={{
+                        width: 36, height: 36, borderRadius: "50%",
+                        border: "1.5px solid var(--primary)",
+                        background: "var(--surface)", color: "var(--primary)",
+                        fontSize: 20, fontWeight: 900, cursor: "pointer",
+                        display: "flex", alignItems: "center", justifyContent: "center"
+                      }}>−</button>
+                    <span style={{ fontSize: 18, fontWeight: 800, color: "var(--text)", minWidth: 32, textAlign: "center" }}>
+                      {count}
+                    </span>
+                    <button
+                      onClick={() => updateCount(subj, count + 5)}
+                      style={{
+                        width: 36, height: 36, borderRadius: "50%",
+                        border: "1.5px solid var(--primary)",
+                        background: "var(--primary)", color: "#fff",
+                        fontSize: 20, fontWeight: 900, cursor: "pointer",
+                        display: "flex", alignItems: "center", justifyContent: "center"
+                      }}>+</button>
+                  </div>
+                </div>
+              )
+            })}
+
+            <div style={{ marginTop: 20 }}>
+              <div style={{
+                fontSize: 14, fontWeight: 800, color: "var(--primary)",
+                textAlign: "center", marginBottom: 16
+              }}>
+                Total: {getTotalQuestions()} questions
+              </div>
+              <button
+                className="ee-btn ee-btn-primary"
+                onClick={() => setShowCustomise(false)}
+              >
+                ✓ Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
