@@ -115,6 +115,7 @@ function App() {
         }
         setAuthUser(null)
         setUserData(null)
+        setProfile(null)
         setPage("home")
         setPageHistory([])
       } else {

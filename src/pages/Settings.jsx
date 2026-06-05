@@ -114,8 +114,13 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
 
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to log out?")) {
+      // Clear all cached data on logout
+      localStorage.removeItem("ee-cached-user")
+      localStorage.removeItem("ee-cached-userdata")
+      localStorage.removeItem("ee-examType")
+      localStorage.removeItem("ee-university")
+      localStorage.removeItem("ee-faculty")
       await signOut(auth)
-      // Don't reload — let onAuthStateChanged in App handle the state reset
     }
   }
 
