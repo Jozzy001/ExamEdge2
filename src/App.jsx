@@ -54,7 +54,13 @@ function App() {
   const [selectedStartIndex, setSelectedStartIndex] = useState(0)
   const [reviewRecord, setReviewRecord] = useState(null)
   const [authUser, setAuthUser] = useState(null)
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(() => {
+    // Initialize from cache to avoid name flash on load
+    try {
+      const cached = localStorage.getItem("ee-cached-userdata")
+      return cached ? JSON.parse(cached) : null
+    } catch(e) { return null }
+  })
   const [onboardingStartStep, setOnboardingStartStep] = useState(1)
   const startIndexRef = useRef(0)
 
