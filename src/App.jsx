@@ -16,7 +16,7 @@ import Upgrade from "./pages/Upgrade"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
-import { doc, onSnapshot, getDoc } from "firebase/firestore"
+import { doc, onSnapshot, getDoc, updateDoc } from "firebase/firestore"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "./firebase"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
@@ -298,6 +298,14 @@ function App() {
   const handleOnboardingDone = (data) => {
     setProfile(data)
     setPage("home")
+    // Save faculty/examType to Firestore so it persists across logins
+    if (authUser?.uid && data.faculty && data.examType) {
+      updateDoc(doc(db, "users", authUser.uid), {
+        examType: data.examType,
+        university: data.university || "UNIBEN",
+        faculty: data.faculty,
+      }).catch(() => {})
+    }
   }
 
   const resetOnboarding = (startStep = 1) => {
