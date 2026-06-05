@@ -247,16 +247,19 @@ function App() {
     setPage("home")
   }
 
-  const resetOnboarding = () => {
+  const [onboardingStartStep, setOnboardingStartStep] = useState(1)
+
+  const resetOnboarding = (startStep = 1) => {
     localStorage.removeItem("ee-examType")
     localStorage.removeItem("ee-university")
     localStorage.removeItem("ee-faculty")
+    setOnboardingStartStep(startStep)
     setProfile(null)
   }
 
   // Show onboarding if no profile yet
   if (!profile) {
-    return <Onboarding onDone={handleOnboardingDone} authUser={authUser} />
+    return <Onboarding onDone={handleOnboardingDone} authUser={authUser} startStep={onboardingStartStep} />
   }
 
   const { examType, university, faculty } = profile

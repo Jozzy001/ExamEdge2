@@ -295,7 +295,7 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
               Object.keys(localStorage).forEach(key => {
                 if (!keysToKeep.includes(key)) localStorage.removeItem(key)
               })
-              onReset()
+              onReset(2) // Start at step 2 (university) not step 1
             }
           }} style={{
             background: "rgba(239,68,68,0.1)", color: "#dc2626",
