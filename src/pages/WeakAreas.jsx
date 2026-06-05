@@ -12,31 +12,44 @@ const WeakAreas = ({ onNavigate, onBack }) => {
 
   const history = getCBTHistory()
 
-  // Get all failed questions from CBT history
+  // Get failed questions from CBT history
+  // A question is "failed" if the user got it wrong in their most recent attempt
+  // If they got it RIGHT in the latest CBT, remove it from weak areas
   const failedQuestions = []
-  const seen = new Set()
+  const questionStatus = {} // question key -> {failed: bool, lastAttempt: date}
 
-  history.forEach(record => {
+  // Process history oldest to newest so latest attempt wins
+  const sortedHistory = [...history].sort((a, b) => new Date(a.date) - new Date(b.date))
+  
+  sortedHistory.forEach(record => {
     if (!record.answers) return
     record.answers.forEach(a => {
-      if (!a.isCorrect && a.question) {
-        // Deduplicate by question text
-        const key = a.question.trim().slice(0, 50)
-        if (!seen.has(key)) {
-          seen.add(key)
-          failedQuestions.push({
-            question: a.question,
-            options: a.options || [],
-            answer: a.correct || a.answer,
-            explanation: a.explanation || "",
-            topic: a.topic || "General",
-            subject: a.subject || "General",
-            selected: a.selected, // what user answered wrong
-            year: a.year,
-          })
-        }
+      if (!a.question) return
+      const key = a.question.trim().slice(0, 60)
+      questionStatus[key] = {
+        failed: !a.isCorrect,
+        question: a.question,
+        options: a.options || [],
+        answer: a.correct || a.answer,
+        explanation: a.explanation || "",
+        topic: a.topic || "General",
+        subject: a.subject || "General",
+        selected: a.selected,
+        year: a.year,
       }
     })
+  })
+
+  // Only include questions where the LATEST attempt was wrong
+  const seen = new Set()
+  Object.values(questionStatus).forEach(q => {
+    if (q.failed) {
+      const key = q.question.trim().slice(0, 60)
+      if (!seen.has(key)) {
+        seen.add(key)
+        failedQuestions.push(q)
+      }
+    }
   })
 
   // Group by subject then topic

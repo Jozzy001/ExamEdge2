@@ -396,7 +396,7 @@ const Progress = ({ onNavigate, onBack }) => {
             <button
               className="ee-btn ee-btn-danger"
               style={{ marginTop: 12 }}
-              onClick={() => onNavigate("weak")}
+              onClick={() => onNavigate("weak", null, null, null, null, null)}
             >
               Practice Weak Areas 🔥
             </button>

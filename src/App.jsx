@@ -201,7 +201,7 @@ function App() {
   }
 
   // Pages that should NOT be pushed to history (no back needed)
-  const NO_HISTORY_PAGES = ["home", "auth", "onboarding", "hotTopicsQuiz"]
+  const NO_HISTORY_PAGES = ["home", "auth", "onboarding", "hotTopicsQuiz", "weak"]
 
   const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null, customCounts = null) => {
     startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
@@ -340,14 +340,7 @@ function App() {
         />
       )
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return (
-        <Quiz
-          topic="weak"
-          onNavigate={handleNavigate}
-          examType="postutme"
-          university={university}
-        />
-      )
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} />
       if (page === "cbt") return (
         <Quiz
           topic="cbt"
