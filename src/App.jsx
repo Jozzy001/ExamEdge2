@@ -51,6 +51,7 @@ function App() {
   const [reviewRecord, setReviewRecord] = useState(null)
   const [authUser, setAuthUser] = useState(null)
   const [userData, setUserData] = useState(null)
+  const [onboardingStartStep, setOnboardingStartStep] = useState(1)
   const startIndexRef = useRef(0)
 
   // Listen to auth state — handle logout cleanly
@@ -246,8 +247,6 @@ function App() {
     setProfile(data)
     setPage("home")
   }
-
-  const [onboardingStartStep, setOnboardingStartStep] = useState(1)
 
   const resetOnboarding = (startStep = 1) => {
     localStorage.removeItem("ee-examType")
