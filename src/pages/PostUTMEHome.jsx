@@ -198,7 +198,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* WhatsApp Channel — for everyone */}
         <div
-          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
+          onClick={() => window.open("https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
             borderRadius: "var(--radius-lg)", padding: "14px 18px",

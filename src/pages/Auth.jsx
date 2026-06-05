@@ -596,8 +596,8 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 15, fontWeight: 800, color: "var(--text)" }}>
-                    Full Access <span style={{ fontSize: 13, color: "#667eea", fontWeight: 700 }}>— ₦2,500</span>
-                    <span style={{ fontSize: 11, color: "#888", marginLeft: 6, textDecoration: "line-through" }}>₦5,000</span>
+                    Full Access <span style={{ fontSize: 13, color: "#667eea", fontWeight: 700 }}>— ₦3,000</span>
+                    <span style={{ fontSize: 11, color: "#888", marginLeft: 6, textDecoration: "line-through" }}>₦6,000</span>
                   </div>
                   <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4, lineHeight: 1.5 }}>
                     ✓ All 20 years of questions (2005–2024){"\n"}
@@ -615,7 +615,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)" }}>{error}</div>}
 
             <button className="ee-btn ee-btn-primary" onClick={handleSignup} disabled={loading || !chosenPlan}>
-              {loading ? <><ButtonSpinner />Creating account...</> : chosenPlan === "paid" ? "Create Account & Pay ₦2,500 🚀" : "Create Free Account →"}
+              {loading ? <><ButtonSpinner />Creating account...</> : chosenPlan === "paid" ? "Create Account & Pay ₦3,000 🚀" : "Create Free Account →"}
             </button>
 
             <button onClick={() => { setStep(1); setError("") }} style={{
