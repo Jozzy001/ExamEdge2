@@ -508,7 +508,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       )}
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => {
-          if (isCBT) onNavigate("cbtSubjectSelect")
+          if (onBack) onBack()
+          else if (isCBT) onNavigate("cbtSubjectSelect")
           else if (isWeak) onNavigate("progress")
           else onNavigate("study")
         }}>← Exit</button>

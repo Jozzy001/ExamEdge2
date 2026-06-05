@@ -155,7 +155,7 @@ function App() {
   }
 
   // Pages that should NOT be pushed to history (no back needed)
-  const NO_HISTORY_PAGES = ["home", "auth", "onboarding"]
+  const NO_HISTORY_PAGES = ["home", "auth", "onboarding", "hotTopicsQuiz"]
 
   const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null, customCounts = null) => {
     startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
@@ -336,8 +336,10 @@ function App() {
           topic="hotTopics"
           subject={selectedSubject}
           onNavigate={handleNavigate}
+          onBack={() => { setPage("hotTopics"); setPageHistory([]) }}
           examType="postutme"
           university={university}
+          isPaid={userData?.isPaid}
         />
       )
     }
