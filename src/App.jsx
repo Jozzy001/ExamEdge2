@@ -15,6 +15,7 @@ import AdminDashboard from "./pages/AdminDashboard"
 import Upgrade from "./pages/Upgrade"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
+import WeakAreas from "./pages/WeakAreas"
 import { doc, onSnapshot } from "firebase/firestore"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "./firebase"
@@ -271,7 +272,7 @@ function App() {
       if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return <Quiz topic="weak" onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} examType="jamb" />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
       if (page === "cbtHistory") return (
         <CBTHistory
