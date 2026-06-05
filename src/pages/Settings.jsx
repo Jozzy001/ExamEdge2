@@ -285,9 +285,21 @@ const Settings = ({ onNavigate, onBack, onReset, authUser, faculty, university, 
             <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>Change Faculty</div>
             <div style={{ fontSize: 11, color: "var(--text3)" }}>Switch to a different department</div>
           </div>
-          <button onClick={onReset} style={{
-            background: "var(--primary-light)", color: "var(--primary-text)",
-            border: "none", borderRadius: "var(--radius-sm)", padding: "6px 12px",
+          <button onClick={() => {
+            const confirmed = window.confirm(
+              "⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure you want to continue?"
+            )
+            if (confirmed) {
+              // Clear all local data
+              const keysToKeep = ["ee-version", "ee-cached-user", "ee-cached-userdata", "ee-splash-done", "ee-read-notifs"]
+              Object.keys(localStorage).forEach(key => {
+                if (!keysToKeep.includes(key)) localStorage.removeItem(key)
+              })
+              onReset()
+            }
+          }} style={{
+            background: "rgba(239,68,68,0.1)", color: "#dc2626",
+            border: "1px solid rgba(239,68,68,0.3)", borderRadius: "var(--radius-sm)", padding: "6px 12px",
             fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
           }}>Change</button>
         </div>
