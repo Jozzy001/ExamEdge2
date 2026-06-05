@@ -106,6 +106,33 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null }) => {
                     ))}
                   </div>
                 )}
+                {section.type === "warning" && (
+                  <div style={{
+                    background: "rgba(255,107,107,0.08)", borderRadius: "var(--radius-md)",
+                    padding: "14px 16px", border: "1px solid rgba(255,107,107,0.25)"
+                  }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 10 }}>
+                      ⚠️ Trap Answers to Avoid
+                    </div>
+                    {section.items?.map((item, j) => (
+                      <div key={j} style={{ display: "flex", gap: 8, marginBottom: j < section.items.length - 1 ? 8 : 0 }}>
+                        <span style={{ color: "#dc2626", fontSize: 14, flexShrink: 0 }}>✗</span>
+                        <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {(section.type === "quicktip" || section.type === "tip") && (
+                  <div style={{
+                    background: "rgba(34,197,94,0.08)", borderRadius: "var(--radius-md)",
+                    padding: "14px 16px", border: "1px solid rgba(34,197,94,0.25)"
+                  }}>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 6 }}>
+                      💡 Quick Tip
+                    </div>
+                    <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{section.content}</p>
+                  </div>
+                )}
               </div>
             ))
           ) : (
@@ -148,6 +175,29 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null }) => {
                 </div>
               )}
             </>
+          )}
+
+          {/* Smart tip for new-format guides that have no tip section */}
+          {!guide.sections && (
+            <div style={{
+              background: "rgba(34,197,94,0.08)", borderRadius: "var(--radius-md)",
+              padding: "14px 16px", border: "1px solid rgba(34,197,94,0.25)",
+              marginBottom: 16
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: "#16a34a", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 6 }}>
+                💡 Quick Tip
+              </div>
+              <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>
+                {guide.tip || (
+                  subject === "Mathematics" ? "Always show your working — partial marks are awarded in some exams even if the final answer is wrong. Practice speed by timing yourself on past questions." :
+                  subject === "Physics" ? "Learn the key formulas by heart. In the exam, identify what you're given and what you need to find, then pick the right formula." :
+                  subject === "Chemistry" ? "Pay attention to units and balance equations before calculating. Many marks are lost to careless arithmetic, not lack of knowledge." :
+                  subject === "Biology" ? "Use diagrams to remember processes like the nitrogen cycle and cell division. Drawing it out helps more than reading it." :
+                  subject === "English" ? "For comprehension, always find the answer in the passage. Never use outside knowledge — the passage is your only source." :
+                  "Focus on understanding the concept, not just memorising. If you understand WHY something works, you can answer any variation of the question."
+                )}
+              </p>
+            </div>
           )}
 
           {/* Action buttons */}
