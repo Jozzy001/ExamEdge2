@@ -35,9 +35,22 @@ const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
       .map(([topic, count]) => ({ topic, count }))
   }
 
-  // Get questions for a specific topic (repeated ones)
+  // Get questions for a specific topic (repeated ones) - flatten passages
   const getTopicQuestions = (subject, topic) => {
-    return questionPool.filter(q => q.subject === subject && q.topic === topic)
+    const questions = []
+    questionPool.forEach(q => {
+      if (q.passage && q.questions) {
+        // Passage-based questions
+        q.questions.forEach(inner => {
+          if (inner.subject === subject && inner.topic === topic) {
+            questions.push({ ...inner, passage: q.passage })
+          }
+        })
+      } else if (q.subject === subject && q.topic === topic) {
+        questions.push(q)
+      }
+    })
+    return questions
   }
 
   // Get subject stats
@@ -97,28 +110,71 @@ const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
             <div key={i} style={{
               background: "var(--surface)", border: "1px solid var(--border)",
               borderRadius: "var(--radius-md)", padding: "14px 16px",
-              marginBottom: 10
+              marginBottom: 12
             }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: meta.color, marginBottom: 6 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: meta.color, marginBottom: 8 }}>
                 Q{i + 1} · {q.year || "Past Exam"}
               </div>
-              <div style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, marginBottom: 10 }}>
+
+              {/* Show passage if exists */}
+              {q.passage && (
+                <div style={{
+                  background: "var(--surface2)", borderRadius: "var(--radius-sm)",
+                  padding: "10px 12px", marginBottom: 10,
+                  borderLeft: `3px solid ${meta.color}`,
+                  fontSize: 12, color: "var(--text2)", lineHeight: 1.7
+                }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, color: meta.color, marginBottom: 4, textTransform: "uppercase" }}>
+                    📖 Passage
+                  </div>
+                  {q.passage}
+                </div>
+              )}
+
+              <div style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, marginBottom: 10, fontWeight: 600 }}>
                 {q.question}
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+
+              {/* Options */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: q.explanation ? 10 : 0 }}>
                 {q.options?.map((opt, j) => (
-                  <span key={j} style={{
-                    fontSize: 12, padding: "4px 10px",
-                    borderRadius: 20,
+                  <div key={j} style={{
+                    fontSize: 12, padding: "8px 12px",
+                    borderRadius: "var(--radius-sm)",
                     background: opt === q.answer ? "rgba(34,197,94,0.15)" : "var(--surface2)",
                     border: `1px solid ${opt === q.answer ? "rgba(34,197,94,0.4)" : "var(--border)"}`,
                     color: opt === q.answer ? "#16a34a" : "var(--text2)",
-                    fontWeight: opt === q.answer ? 700 : 400
+                    fontWeight: opt === q.answer ? 700 : 400,
+                    display: "flex", alignItems: "center", gap: 6
                   }}>
-                    {opt === q.answer ? "✓ " : ""}{opt}
-                  </span>
+                    <span style={{
+                      width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
+                      background: opt === q.answer ? "#16a34a" : "var(--border)",
+                      color: opt === q.answer ? "#fff" : "var(--text3)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 10, fontWeight: 800
+                    }}>{["A","B","C","D"][j]}</span>
+                    {opt}
+                    {opt === q.answer && <span style={{ marginLeft: "auto" }}>✓</span>}
+                  </div>
                 ))}
               </div>
+
+              {/* Explanation */}
+              {q.explanation && (
+                <div style={{
+                  background: "rgba(102,126,234,0.08)", borderRadius: "var(--radius-sm)",
+                  padding: "10px 12px", marginTop: 8,
+                  borderLeft: "3px solid var(--primary)"
+                }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, color: "var(--primary)", marginBottom: 4, textTransform: "uppercase" }}>
+                    💡 Why this answer is correct
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.7 }}>
+                    {q.explanation}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -44,6 +44,7 @@ function App() {
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedSubjects, setSelectedSubjects] = useState([])
   const [cbtCounts, setCbtCounts] = useState(null)
+  const [hotTopicTopic, setHotTopicTopic] = useState(null)
   const [selectedStartIndex, setSelectedStartIndex] = useState(0)
   const [reviewRecord, setReviewRecord] = useState(null)
   const [authUser, setAuthUser] = useState(null)
@@ -176,6 +177,7 @@ function App() {
     if (topic !== null) setSelectedTopic(topic)
     if (subject !== null) setSelectedSubject(subject)
     if (Array.isArray(subjectsOrIndex)) { setSelectedSubjects(subjectsOrIndex); setCbtCounts(customCounts) }
+    if (newPage === "hotTopicsQuiz" && customCounts?.topic) { setHotTopicTopic(customCounts.topic) }
     setSelectedStartIndex(typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0)
   }
 
@@ -333,14 +335,14 @@ function App() {
       )
       if (page === "hotTopicsQuiz") return (
         <Quiz
-          topic={cbtCounts?.topic || "hotTopics"}
+          topic={hotTopicTopic || "hotTopics"}
           subject={selectedSubject}
           onNavigate={handleNavigate}
           onBack={() => { setPage("hotTopics"); setPageHistory([]) }}
           examType="postutme"
           university={university}
           isPaid={userData?.isPaid}
-          hotTopicFilter={cbtCounts?.topic}
+          hotTopicFilter={hotTopicTopic}
         />
       )
     }
