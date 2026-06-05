@@ -125,6 +125,37 @@ const Onboarding = ({ onDone }) => {
                 <span style={{ color: "var(--text3)", fontSize: 20, marginTop: 4 }}>→</span>
               </button>
             ))}
+
+            {/* JAMB — Coming Soon */}
+            <div style={{
+              display: "flex", alignItems: "flex-start", gap: 16,
+              width: "100%", marginBottom: 12, padding: "18px 20px",
+              borderRadius: "var(--radius-lg)", textAlign: "left",
+              border: "1.5px dashed var(--border)",
+              background: "var(--surface2)",
+              position: "relative", cursor: "not-allowed",
+              opacity: 0.65
+            }}>
+              <span style={{ fontSize: 32, marginTop: 2 }}>🇳🇬</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ fontWeight: 800, fontSize: 16, color: "var(--text)" }}>JAMB / UTME</span>
+                  <span style={{
+                    fontSize: 11, fontWeight: 800, padding: "2px 10px",
+                    borderRadius: 20, background: "var(--primary)", color: "#fff"
+                  }}>Coming Soon 🚧</span>
+                </div>
+                <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 6 }}>
+                  Joint Admissions and Matriculation Board exam
+                </div>
+                <div style={{
+                  fontSize: 11, fontWeight: 700, color: "var(--text3)",
+                  background: "var(--border)", padding: "3px 10px",
+                  borderRadius: 20, display: "inline-block"
+                }}>English (60q) + up to 3 subjects (40q each)</div>
+              </div>
+            </div>
+
           </>
         )}
 
@@ -206,6 +237,37 @@ const Onboarding = ({ onDone }) => {
                 <span style={{ color: "var(--text3)", fontSize: 20, marginTop: 4 }}>→</span>
               </button>
             ))}
+
+            {/* JAMB — Coming Soon */}
+            <div style={{
+              display: "flex", alignItems: "flex-start", gap: 16,
+              width: "100%", marginBottom: 12, padding: "18px 20px",
+              borderRadius: "var(--radius-lg)", textAlign: "left",
+              border: "1.5px dashed var(--border)",
+              background: "var(--surface2)",
+              position: "relative", cursor: "not-allowed",
+              opacity: 0.65
+            }}>
+              <span style={{ fontSize: 32, marginTop: 2 }}>🇳🇬</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ fontWeight: 800, fontSize: 16, color: "var(--text)" }}>JAMB / UTME</span>
+                  <span style={{
+                    fontSize: 11, fontWeight: 800, padding: "2px 10px",
+                    borderRadius: 20, background: "var(--primary)", color: "#fff"
+                  }}>Coming Soon 🚧</span>
+                </div>
+                <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 6 }}>
+                  Joint Admissions and Matriculation Board exam
+                </div>
+                <div style={{
+                  fontSize: 11, fontWeight: 700, color: "var(--text3)",
+                  background: "var(--border)", padding: "3px 10px",
+                  borderRadius: 20, display: "inline-block"
+                }}>English (60q) + up to 3 subjects (40q each)</div>
+              </div>
+            </div>
+
           </>
         )}
 
