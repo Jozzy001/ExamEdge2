@@ -196,26 +196,26 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         )}
 
-        {/* WhatsApp Community */}
+        {/* WhatsApp Channel — for everyone */}
         <div
-          onClick={() => window.open("https://chat.whatsapp.com/YOUR_GROUP_LINK", "_blank")}
+          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
-            borderRadius: "var(--radius-lg)", padding: "16px 18px",
-            marginBottom: 10, cursor: "pointer", color: "#fff",
+            borderRadius: "var(--radius-lg)", padding: "14px 18px",
+            marginBottom: 8, cursor: "pointer", color: "#fff",
             display: "flex", alignItems: "center", gap: 14
           }}
         >
-          <span style={{ fontSize: 28 }}>💬</span>
+          <span style={{ fontSize: 26 }}>📢</span>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 2 }}>
-              Join Our WhatsApp Community
+            <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>
+              Follow Our WhatsApp Channel
             </div>
             <div style={{ fontSize: 12, opacity: 0.9, lineHeight: 1.5 }}>
-              Exam tips, updates and connect with other students
+              Get exam news, app updates and study tips
             </div>
           </div>
-          <span style={{ fontSize: 18, opacity: 0.8 }}>→</span>
+          <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
         </div>
 
         {/* Settings */}

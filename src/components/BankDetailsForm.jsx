@@ -15,6 +15,7 @@ export default function BankDetailsForm({ userData, userId }) {
   const [bankName, setBankName] = useState(existing.bankName || "")
   const [accountNumber, setAccountNumber] = useState(existing.accountNumber || "")
   const [accountName, setAccountName] = useState(existing.accountName || "")
+  const [whatsapp, setWhatsapp] = useState(existing.whatsapp || "")
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [editing, setEditing] = useState(!existing.bankName)
@@ -31,7 +32,7 @@ export default function BankDetailsForm({ userData, userId }) {
     setSaving(true)
     try {
       await updateDoc(doc(db, "users", userId), {
-        bankDetails: { bankName, accountNumber, accountName, savedAt: new Date().toISOString() }
+        bankDetails: { bankName, accountNumber, accountName, whatsapp: whatsapp.trim() || null, savedAt: new Date().toISOString() }
       })
       setSaved(true)
       setEditing(false)
@@ -107,6 +108,27 @@ export default function BankDetailsForm({ userData, userId }) {
           boxSizing: "border-box"
         }}
       />
+
+      {/* Optional WhatsApp number */}
+      <div style={{ position: "relative" }}>
+        <input
+          type="tel"
+          placeholder="WhatsApp number (optional)"
+          value={whatsapp}
+          onChange={e => setWhatsapp(e.target.value)}
+          style={{
+            width: "100%", padding: "10px 12px",
+            borderRadius: "var(--radius-md)",
+            border: "1.5px solid var(--border)",
+            background: "var(--surface)", color: "var(--text)",
+            fontSize: 13, fontFamily: "var(--font-main)",
+            boxSizing: "border-box"
+          }}
+        />
+        <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>
+          📱 So we can add you to our referral partners group (optional)
+        </div>
+      </div>
 
       <button
         onClick={handleSave}

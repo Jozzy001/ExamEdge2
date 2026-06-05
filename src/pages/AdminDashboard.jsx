@@ -533,7 +533,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                         <div style={{ marginBottom: 12 }}>
                           {[
                             { label: "Email", value: user.email },
-                            { label: "Plan", value: user.isPaid ? "💎 Paid (₦2,500)" : user.subscriptionExpired ? "⏰ Expired" : "🆓 Free" },
+                            { label: "Plan", value: user.isPaid ? "💎 Paid (₦3,000)" : user.subscriptionExpired ? "⏰ Expired" : "🆓 Free" },
                             { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", {day:"numeric",month:"short",year:"numeric"}) : "—" },
                             { label: "Expires", value: user.isPaid && user.paidAt ? new Date(new Date(user.paidAt).getTime() + 30*24*60*60*1000).toLocaleDateString("en-NG", {day:"numeric",month:"short",year:"numeric"}) : "—" },
                             { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—" },
@@ -544,6 +544,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
                             { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
                             { label: "Bank", value: user.bankDetails ? `${user.bankDetails.bankName} · ${user.bankDetails.accountNumber} (${user.bankDetails.accountName})` : "❌ Not provided" },
+                            { label: "WhatsApp", value: user.bankDetails?.whatsapp || "—" },
                             { label: "Joined", value: formatDateTime(user.createdAt) },
                             { label: "Last Login", value: formatDateTime(user.lastLogin) },
                           ].map((item, j) => (
