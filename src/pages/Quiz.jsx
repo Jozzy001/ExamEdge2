@@ -334,8 +334,37 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         <div className="ee-content">
           <div className="ee-empty">
             <span className="ee-empty-icon">{isWeak ? "🎉" : "📭"}</span>
-            <p>{isWeak ? "No weak areas found! You're doing great." : `No questions found for: ${topic}`}</p>
-            <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>Study Mode 📚</button>
+            {isWeak ? (
+              <>
+                {JSON.parse(localStorage.getItem("progress") || "[]").length === 0 ? (
+                  <>
+                    <p style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>No CBT test taken yet!</p>
+                    <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, marginBottom: 16 }}>
+                      Take CBT tests regularly so we can monitor your performance and identify your weak areas.
+                      The more tests you take, the better we can help you improve! 📊
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>No weak areas found!</p>
+                    <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
+                      You're scoring above 50% in all topics. Keep it up! 🎉
+                    </p>
+                  </>
+                )}
+              </>
+            ) : (
+              <p>{`No questions found for: ${topic}`}</p>
+            )}
+            {isWeak && JSON.parse(localStorage.getItem("progress") || "[]").length === 0 ? (
+              <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtSubjectSelect")}>
+                Take a CBT Test 🧪
+              </button>
+            ) : (
+              <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("subjectSelect")}>
+                Study Mode 📚
+              </button>
+            )}
           </div>
         </div>
       </div>
