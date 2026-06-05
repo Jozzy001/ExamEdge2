@@ -381,10 +381,10 @@ const Progress = ({ onNavigate, onBack }) => {
             <div style={{ fontSize: 14, fontWeight: 800, color: "#dc2626", marginBottom: 12 }}>
               ⚠️ Weak Areas ({weakAreas.length} topics below 50%)
             </div>
-            {weakAreas.slice(0, 5).map(({ subject, topic, pct }, i) => (
+            {weakAreas.map(({ subject, topic, pct }, i) => (
               <div key={i} style={{
                 display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "8px 0", borderBottom: i < Math.min(weakAreas.length, 5) - 1 ? "1px solid rgba(239,68,68,0.1)" : "none"
+                padding: "8px 0", borderBottom: i < weakAreas.length - 1 ? "1px solid rgba(239,68,68,0.1)" : "none"
               }}>
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{topic}</div>
