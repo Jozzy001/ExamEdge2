@@ -301,14 +301,28 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     })
     const score = answers.filter(a => a.isCorrect).length
     const total = filteredQuestions.length
-    if (isCBT) {
-      localStorage.setItem("cbtReport", JSON.stringify({
-        score, total, percentage: Math.round((score / total) * 100),
-        subjects: subjects || (subject ? [subject] : []),
-        examType, university,
-        answers
-      }))
+    const timeTaken = isCBT ? (examDuration - examTimeLeft) : 0
+    const reportData = {
+      score, total, percentage: Math.round((score / total) * 100),
+      subjects: subjects || (subject ? [subject] : []),
+      examType, university, answers,
+      timeTaken,
     }
+
+    if (isCBT) {
+      // Save cbtReport for CBTResult page
+      localStorage.setItem("cbtReport", JSON.stringify(reportData))
+
+      // Save directly to ee-cbtHistory (don't rely on CBTResult being visited)
+      try {
+        const history = JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]")
+        const record = { ...reportData, id: `cbt_${Date.now()}`, date: new Date().toISOString() }
+        const updated = [record, ...history].slice(0, 50)
+        localStorage.setItem("ee-cbtHistory", JSON.stringify(updated))
+      } catch(e) {}
+    }
+
+    // Update progress — APPEND not overwrite
     const existing = JSON.parse(localStorage.getItem("progress")) || []
     if (isCBT || isWeak) {
       const topicGroups = {}
@@ -321,7 +335,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       const newEntries = Object.values(topicGroups).map(s => ({
         topic: s.topic, subject: s.subject, score: s.score, total: s.total, date: new Date().toISOString()
       }))
-      localStorage.setItem("progress", JSON.stringify(newEntries))
+      // Append new entries to existing progress
+      localStorage.setItem("progress", JSON.stringify([...existing, ...newEntries]))
     } else {
       const newEntry = { topic, subject: subject || "General", score, total, date: new Date().toISOString() }
       localStorage.setItem("progress", JSON.stringify([...existing, newEntry]))
