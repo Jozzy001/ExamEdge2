@@ -40,6 +40,28 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
       <div className="ee-content">
 
+        {/* Subscription expiry warning */}
+        {userData?.isPaid && userData?.paidAt && (() => {
+          const expiryDate = new Date(new Date(userData.paidAt).getTime() + 30*24*60*60*1000)
+          const daysLeft = Math.ceil((expiryDate - new Date()) / (1000*60*60*24))
+          if (daysLeft > 7) return null
+          return (
+            <div style={{
+              background: daysLeft <= 3 ? "rgba(239,68,68,0.1)" : "rgba(245,158,11,0.1)",
+              border: `1px solid ${daysLeft <= 3 ? "rgba(239,68,68,0.3)" : "rgba(245,158,11,0.3)"}`,
+              borderRadius: "var(--radius-md)", padding: "10px 14px",
+              marginBottom: 12, fontSize: 13,
+              color: daysLeft <= 3 ? "#dc2626" : "#d97706",
+              fontWeight: 600
+            }}>
+              ⏰ Your subscription expires in <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""}</strong>.
+              {daysLeft <= 3 ? " Renew now to keep full access!" : " Renew soon to avoid losing access."}
+            </div>
+          )
+        })()}
+
+
+
         {/* Greeting */}
         <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>
           Hi, {firstName}! 👋

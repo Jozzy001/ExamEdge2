@@ -46,6 +46,39 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     fetchMessages()
   }, [])
 
+  const handleResetExpiredSubscriptions = async () => {
+    const now = new Date()
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+    
+    const expired = users.filter(u => {
+      if (!u.isPaid || !u.paidAt) return false
+      const paidDate = new Date(u.paidAt)
+      return paidDate < thirtyDaysAgo
+    })
+
+    if (expired.length === 0) {
+      setActionMsg("✅ No expired subscriptions found!")
+      return
+    }
+
+    if (!window.confirm(`Reset ${expired.length} expired subscription(s)?\n\nThese users paid more than 30 days ago:\n${expired.map(u => u.name).join(", ")}`)) return
+
+    setActionMsg("⏳ Resetting expired subscriptions...")
+    let count = 0
+    for (const u of expired) {
+      try {
+        await updateDoc(doc(db, "users", u.id), {
+          isPaid: false,
+          subscriptionExpired: true,
+          expiredAt: now.toISOString(),
+        })
+        count++
+      } catch(e) {}
+    }
+    setActionMsg(`✅ Reset ${count} expired subscription(s)`)
+    fetchUsers()
+  }
+
   const fetchUsers = async () => {
     setLoading(true)
     try {
@@ -403,7 +436,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             color: user.isPaid ? "#15803d" : "#92400e",
                             padding: "2px 7px", borderRadius: "var(--radius-pill)",
                             border: `1px solid ${user.isPaid ? "rgba(34,201,122,0.4)" : "rgba(245,158,11,0.4)"}`,
-                          }}>{user.isPaid ? "💎 PAID" : "🆓 FREE"}</span>
+                          }}>{user.isPaid ? `💎 PAID${user.paidAt ? ` · expires ${new Date(new Date(user.paidAt).getTime() + 30*24*60*60*1000).toLocaleDateString("en-NG", {day:"numeric",month:"short"})}` : ""}` : user.subscriptionExpired ? "⏰ EXPIRED" : "🆓 FREE"}</span>
                           {user.disabled && (
                             <span style={{
                               fontSize: 9, fontWeight: 700,
@@ -443,7 +476,9 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                         <div style={{ marginBottom: 12 }}>
                           {[
                             { label: "Email", value: user.email },
-                            { label: "Plan", value: user.isPaid ? "💎 Paid (₦2,500)" : "🆓 Free" },
+                            { label: "Plan", value: user.isPaid ? "💎 Paid (₦2,500)" : user.subscriptionExpired ? "⏰ Expired" : "🆓 Free" },
+                            { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", {day:"numeric",month:"short",year:"numeric"}) : "—" },
+                            { label: "Expires", value: user.isPaid && user.paidAt ? new Date(new Date(user.paidAt).getTime() + 30*24*60*60*1000).toLocaleDateString("en-NG", {day:"numeric",month:"short",year:"numeric"}) : "—" },
                             { label: "Paid On", value: user.paidAt ? new Date(user.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—" },
                             { label: "Faculty", value: user.faculty || "⚠️ Not set — user hasn't completed onboarding" },
                             { label: "Exam Type", value: user.examType || "Not set" },

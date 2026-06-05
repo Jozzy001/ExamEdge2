@@ -632,7 +632,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
           return (
             <button key={i} className={cls} onClick={() => !showExplanation && handleSelectOption(opt)} disabled={showExplanation}>
               <span className="opt-badge">{String.fromCharCode(65 + i)}</span>
-              <span className="opt-label">{opt}</span>
+              <span className="opt-label">{opt.replace(/^[A-D][\.\)\s]+/, "")}</span>
             </button>
           )
         })}
