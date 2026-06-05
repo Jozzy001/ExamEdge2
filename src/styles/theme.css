@@ -547,6 +547,7 @@ body {
 
 .exp-body {
   font-size: 24px;
+  font-weight: 700;
   color: var(--text);
   line-height: 1.55;
 }
