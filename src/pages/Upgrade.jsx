@@ -5,6 +5,7 @@ import { formatNaira } from "../utils/subscription"
 
 export default function Upgrade({ user, userData, onSuccess, onBack }) {
   const [loading, setLoading] = useState(false)
+  const [paymentProcessing, setPaymentProcessing] = useState(false)
   const [paystackReady, setPaystackReady] = useState(false)
 
   // Load Paystack script dynamically
@@ -46,6 +47,8 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
         referrerId: userData?.referredBy || "none",
       },
       callback: (response) => {
+        setPaymentProcessing(true)
+        setLoading(false)
         // Retry Firestore update up to 3 times to handle network issues
         const updateWithRetry = (attempts) => {
           updateDoc(doc(db, "users", user.uid), {
