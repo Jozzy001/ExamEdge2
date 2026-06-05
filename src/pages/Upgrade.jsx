@@ -39,7 +39,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
     const handler = window.PaystackPop.setup({
       key: publicKey,
       email: user.email,
-      amount: 250000,
+      amount: 300000,
       currency: "NGN",
       ref: `EE_${user.uid}_${Date.now()}`,
       metadata: {
@@ -153,7 +153,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
         {/* Price */}
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: 14, color: "#888", textDecoration: "line-through" }}>₦5,000</div>
-          <div style={{ fontSize: 42, fontWeight: 800, color: "#667eea" }}>₦2,500</div>
+          <div style={{ fontSize: 42, fontWeight: 800, color: "#667eea" }}>₦3,000</div>
           <div style={{
             background: "#fff3cd", color: "#856404",
             padding: "4px 12px", borderRadius: 20,
@@ -191,7 +191,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
             cursor: loading || !paystackReady ? "not-allowed" : "pointer",
           }}
         >
-          {!paystackReady ? "⏳ Loading payment..." : loading ? "⏳ Processing..." : "Pay ₦2,500 — Get Full Access"}
+          {!paystackReady ? "⏳ Loading payment..." : loading ? "⏳ Processing..." : "Pay ₦3,000 — Get Full Access"}
         </button>
 
         <p style={{ fontSize: 11, color: "#aaa", textAlign: "center", marginTop: 12 }}>

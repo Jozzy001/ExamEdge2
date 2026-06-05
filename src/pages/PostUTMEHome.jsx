@@ -192,7 +192,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
               <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,500 →</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>₦3,000 →</div>
           </div>
         )}
 
