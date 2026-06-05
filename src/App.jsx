@@ -272,7 +272,7 @@ function App() {
       if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} university={university} />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
       if (page === "cbtHistory") return (
         <CBTHistory
@@ -340,7 +340,7 @@ function App() {
         />
       )
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("progress"); setPageHistory([]) }} university={university} />
       if (page === "cbt") return (
         <Quiz
           topic="cbt"
