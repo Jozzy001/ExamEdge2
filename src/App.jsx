@@ -112,6 +112,8 @@ function App() {
         setPage("home")
         setPageHistory([])
       } else {
+        // User is logged in — set authUser
+        setAuthUser(user)
         // Cache user for offline use
         localStorage.setItem("ee-cached-user", JSON.stringify({
           uid: user.uid,
