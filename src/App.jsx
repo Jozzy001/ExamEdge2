@@ -36,6 +36,7 @@ function App() {
   const savedFaculty = localStorage.getItem("ee-faculty")
 
   const [appLoading, setAppLoading] = useState(true)
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
   const [profile, setProfile] = useState(null)
   const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done")) // Always set by onAuthDone from Firestore
   const [page, setPage] = useState("home")
@@ -73,13 +74,45 @@ function App() {
     }
   }, [authUser])
 
+  // Online/offline detection
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true)
+    const handleOffline = () => setIsOnline(false)
+    window.addEventListener("online", handleOnline)
+    window.addEventListener("offline", handleOffline)
+    return () => {
+      window.removeEventListener("online", handleOnline)
+      window.removeEventListener("offline", handleOffline)
+    }
+  }, [])
+
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (!user) {
+        // Check if we have cached user data for offline use
+        const cachedUser = localStorage.getItem("ee-cached-user")
+        const cachedUserData = localStorage.getItem("ee-cached-userdata")
+        if (cachedUser && !navigator.onLine) {
+          // Offline but previously logged in — restore from cache
+          try {
+            setAuthUser(JSON.parse(cachedUser))
+            setUserData(JSON.parse(cachedUserData))
+            setAppLoading(false)
+            return
+          } catch(e) {}
+        }
         setAuthUser(null)
         setUserData(null)
         setPage("home")
         setPageHistory([])
+      } else {
+        // Cache user for offline use
+        localStorage.setItem("ee-cached-user", JSON.stringify({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          emailVerified: user.emailVerified
+        }))
       }
       // Auth has resolved — hide loading screen
       setAppLoading(false)
@@ -91,7 +124,18 @@ function App() {
   useEffect(() => {
     if (!authUser?.uid) return
     const unsub = onSnapshot(doc(db, "users", authUser.uid), (snap) => {
-      if (snap.exists()) setUserData(snap.data())
+      if (snap.exists()) {
+        const data = snap.data()
+        setUserData(data)
+        // Cache userData for offline use
+        localStorage.setItem("ee-cached-userdata", JSON.stringify(data))
+      }
+    }, (error) => {
+      // Offline — try to use cached data
+      const cached = localStorage.getItem("ee-cached-userdata")
+      if (cached) {
+        try { setUserData(JSON.parse(cached)) } catch(e) {}
+      }
     })
     return () => unsub()
   }, [authUser?.uid])
