@@ -34,7 +34,7 @@ const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
 
   // If subject selected, go straight to quiz with hot topics filter
   const handleSubjectSelect = (subject) => {
-    onNavigate("hotTopicsQuiz", subject)
+    onNavigate("hotTopicsQuiz", null, subject)
   }
 
   return (
