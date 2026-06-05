@@ -38,7 +38,11 @@ function App() {
 
   const [appLoading, setAppLoading] = useState(true)
   const [isOnline, setIsOnline] = useState(navigator.onLine)
-  const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState(
+    savedExamType && savedUniversity && savedFaculty
+      ? { examType: savedExamType, university: savedUniversity, faculty: savedFaculty }
+      : null
+  )
   const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done")) // Always set by onAuthDone from Firestore
   const [page, setPage] = useState("home")
   const [pageHistory, setPageHistory] = useState([])
