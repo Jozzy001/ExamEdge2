@@ -175,15 +175,21 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
 
     let base
     if (topic === "weak") {
-      const progress = JSON.parse(localStorage.getItem("progress")) || []
+      // Read from CBT history for accurate weak area detection
+      const cbtHistory = JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]")
       const grouped = {}
-      progress.forEach(item => {
-        if (!grouped[item.topic]) grouped[item.topic] = { score: 0, total: 0 }
-        grouped[item.topic].score += item.score
-        grouped[item.topic].total += item.total
+      cbtHistory.forEach(record => {
+        if (!record.answers) return
+        record.answers.forEach(a => {
+          const key = a.topic
+          if (!key) return
+          if (!grouped[key]) grouped[key] = { score: 0, total: 0 }
+          grouped[key].total++
+          if (a.isCorrect) grouped[key].score++
+        })
       })
       const weakTopics = Object.entries(grouped)
-        .filter(([_, s]) => s.total > 0 && (s.score / s.total) * 100 < 50)
+        .filter(([_, s]) => s.total >= 2 && (s.score / s.total) * 100 < 50)
         .map(([t]) => t)
       if (weakTopics.length === 0) return []
       base = questionPool.filter(q => {
@@ -336,7 +342,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             <span className="ee-empty-icon">{isWeak ? "🎉" : "📭"}</span>
             {isWeak ? (
               <>
-                {JSON.parse(localStorage.getItem("progress") || "[]").length === 0 ? (
+                {JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]").length === 0 ? (
                   <>
                     <p style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>No CBT test taken yet!</p>
                     <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, marginBottom: 16 }}>
@@ -356,7 +362,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             ) : (
               <p>{`No questions found for: ${topic}`}</p>
             )}
-            {isWeak && JSON.parse(localStorage.getItem("progress") || "[]").length === 0 ? (
+            {isWeak && JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]").length === 0 ? (
               <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtSubjectSelect")}>
                 Take a CBT Test 🧪
               </button>
