@@ -15,6 +15,11 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState(null)
   const [actionMsg, setActionMsg] = useState("")
+  const [notifTitle, setNotifTitle] = useState("")
+  const [notifBody, setNotifBody] = useState("")
+  const [notifType, setNotifType] = useState("feature")
+  const [sendingNotif, setSendingNotif] = useState(false)
+  const [suggestions, setSuggestions] = useState([])
   const [actionError, setActionError] = useState("")
   const [tab, setTab] = useState("users") // users | stats | messages
   const [planFilter, setPlanFilter] = useState("all")
@@ -45,6 +50,58 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     fetchUsers()
     fetchMessages()
   }, [])
+
+  const sendNotification = async () => {
+    if (!notifTitle.trim() || !notifBody.trim()) {
+      alert("Please fill in title and message")
+      return
+    }
+    setSendingNotif(true)
+    try {
+      const { addDoc, collection: col, serverTimestamp: st } = await import("firebase/firestore")
+      await addDoc(col(db, "notifications"), {
+        title: notifTitle.trim(),
+        body: notifBody.trim(),
+        type: notifType,
+        createdAt: st(),
+        sentBy: "admin"
+      })
+      setNotifTitle("")
+      setNotifBody("")
+      setActionMsg("✅ Notification sent to all users!")
+    } catch(e) {
+      setActionMsg("❌ Failed to send notification")
+    }
+    setSendingNotif(false)
+  }
+
+  const fetchSuggestions = async () => {
+    try {
+      const { getDocs: gd, collection: col, query: q, orderBy: ob, limit: lim } = await import("firebase/firestore")
+      const snap = await gd(q(col(db, "suggestions"), ob("createdAt", "desc"), lim(20)))
+      setSuggestions(snap.docs.map(d => ({ id: d.id, ...d.data() })))
+    } catch(e) {}
+  }
+
+  const handleResetUnpaidReferrals = async () => {
+    const thirtyDaysAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000)
+    const toReset = users.filter(u => {
+      const pending = (u.referralEarnings || 0) - (u.referralPaidOut || 0)
+      const earnedDate = u.referralEarnedAt ? new Date(u.referralEarnedAt) : null
+      return pending > 0 && !u.bankDetails && earnedDate && earnedDate < thirtyDaysAgo
+    })
+    if (toReset.length === 0) { setActionMsg("✅ No referral balances to reset!"); return }
+    if (!window.confirm(`Reset referral balance for ${toReset.length} user(s) who have no bank details after 14 days?`)) return
+    for (const u of toReset) {
+      await updateDoc(doc(db, "users", u.id), {
+        referralEarnings: 0, referralPaidOut: 0,
+        referralResetAt: new Date().toISOString(),
+        referralResetReason: "No bank details provided within 14 days"
+      })
+    }
+    setActionMsg(`✅ Reset ${toReset.length} unpaid referral balance(s)`)
+    fetchUsers()
+  }
 
   const handleResetExpiredSubscriptions = async () => {
     const now = new Date()

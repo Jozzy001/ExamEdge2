@@ -5,6 +5,7 @@ import { XPBar } from "../components/XPBar"
 import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
+import NotificationBell from "../components/NotificationBell"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
@@ -33,9 +34,12 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
     <div className="ee-page">
       <header className="ee-header">
         <span className="ee-logo">ExamEdgeNG</span>
-        <button className="ee-theme-toggle" onClick={toggleTheme}>
-          {dark ? "☀️" : "🌙"}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <NotificationBell userId={authUser?.uid} onNavigate={onNavigate} />
+          <button className="ee-theme-toggle" onClick={toggleTheme}>
+            {dark ? "☀️" : "🌙"}
+          </button>
+        </div>
       </header>
 
       <div className="ee-content">

@@ -419,7 +419,24 @@ function App() {
     return <h2>Page not found</h2>
   }
 
-  return <div>{renderPage()}</div>
+  return (
+    <>
+      {!isOnline && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999,
+          background: "#f59e0b", color: "#fff",
+          textAlign: "center", padding: "8px 16px",
+          fontSize: 13, fontWeight: 700,
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 8
+        }}>
+          📡 You are offline — questions and progress still work!
+        </div>
+      )}
+      <div style={{ paddingTop: isOnline ? 0 : 36 }}>
+        {renderPage()}
+      </div>
+    </>
+  )
 }
 
 export default App
