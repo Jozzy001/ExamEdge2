@@ -124,37 +124,62 @@ const WeakAreas = ({ onNavigate, onBack }) => {
           </div>
 
           {/* Options */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
-            {q.options?.map((opt, i) => {
-              const isCorrect = opt === q.answer
-              const isWrong = opt === q.selected && !isCorrect
-              return (
-                <div key={i} style={{
-                  padding: "12px 14px", borderRadius: "var(--radius-md)",
-                  background: isCorrect ? "rgba(34,197,94,0.1)" : isWrong ? "rgba(239,68,68,0.08)" : "var(--surface)",
-                  border: `1.5px solid ${isCorrect ? "rgba(34,197,94,0.4)" : isWrong ? "rgba(239,68,68,0.3)" : "var(--border)"}`,
-                  display: "flex", alignItems: "center", gap: 10
-                }}>
-                  <span style={{
-                    width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
-                    background: isCorrect ? "#16a34a" : isWrong ? "#dc2626" : "var(--border)",
-                    color: isCorrect || isWrong ? "#fff" : "var(--text3)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 11, fontWeight: 800
+          {q.options && q.options.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+              {q.options.map((opt, i) => {
+                const cleanOpt = opt.replace(/^[A-D][\.\)\s]+/, "")
+                const cleanAnswer = (q.answer || "").replace(/^[A-D][\.\)\s]+/, "")
+                const cleanSelected = (q.selected || "").replace(/^[A-D][\.\)\s]+/, "")
+                const isCorrect = opt === q.answer || cleanOpt === cleanAnswer
+                const isWrong = (opt === q.selected || cleanOpt === cleanSelected) && !isCorrect
+                return (
+                  <div key={i} style={{
+                    padding: "12px 14px", borderRadius: "var(--radius-md)",
+                    background: isCorrect ? "rgba(34,197,94,0.1)" : isWrong ? "rgba(239,68,68,0.08)" : "var(--surface)",
+                    border: `1.5px solid ${isCorrect ? "rgba(34,197,94,0.4)" : isWrong ? "rgba(239,68,68,0.3)" : "var(--border)"}`,
+                    display: "flex", alignItems: "flex-start", gap: 10
                   }}>
-                    {isCorrect ? "✓" : isWrong ? "✗" : String.fromCharCode(65 + i)}
-                  </span>
-                  <span style={{
-                    fontSize: 13, color: isCorrect ? "#16a34a" : isWrong ? "#dc2626" : "var(--text)",
-                    fontWeight: isCorrect ? 700 : 400
-                  }}>
-                    {opt.replace(/^[A-D][\.\)\s]+/, "")}
-                  </span>
-                  {isCorrect && <span style={{ marginLeft: "auto", fontSize: 11, fontWeight: 800, color: "#16a34a" }}>✓ Correct</span>}
-                </div>
-              )
-            })}
-          </div>
+                    <span style={{
+                      width: 24, height: 24, borderRadius: "50%", flexShrink: 0, marginTop: 1,
+                      background: isCorrect ? "#16a34a" : isWrong ? "#dc2626" : "var(--border)",
+                      color: isCorrect || isWrong ? "#fff" : "var(--text3)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 11, fontWeight: 800
+                    }}>
+                      {isCorrect ? "✓" : isWrong ? "✗" : String.fromCharCode(65 + i)}
+                    </span>
+                    <div style={{ flex: 1 }}>
+                      <span style={{
+                        fontSize: 13, color: isCorrect ? "#16a34a" : isWrong ? "#dc2626" : "var(--text)",
+                        fontWeight: isCorrect || isWrong ? 700 : 400, lineHeight: 1.5
+                      }}>
+                        {cleanOpt}
+                      </span>
+                      {isCorrect && (
+                        <div style={{ fontSize: 11, color: "#16a34a", marginTop: 2 }}>✓ This is the correct answer</div>
+                      )}
+                      {isWrong && (
+                        <div style={{ fontSize: 11, color: "#dc2626", marginTop: 2 }}>✗ This is what you chose</div>
+                      )}
+                      {!isCorrect && !isWrong && (
+                        <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>— Incorrect option</div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <div style={{
+              background: "rgba(34,197,94,0.1)", borderRadius: "var(--radius-md)",
+              padding: "12px 14px", marginBottom: 16, border: "1.5px solid rgba(34,197,94,0.4)"
+            }}>
+              <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 4 }}>Correct Answer:</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#16a34a" }}>
+                ✓ {(q.answer || "").replace(/^[A-D][\.\)\s]+/, "")}
+              </div>
+            </div>
+          )}
 
           {/* Show/Hide explanation */}
           <button

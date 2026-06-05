@@ -297,6 +297,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         question: q.question, topic: q.topic || "General",
         subject: q.subject || subject || "General",
         selected: a.selected || "skipped", correct: q.answer,
+        options: q.options || [],
         explanation: q.explanation || "", isCorrect: a.selected === q.answer
       }
     })
