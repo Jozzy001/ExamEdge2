@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { getCBTHistory, getCBTPersonalBest, deleteCBTRecord, formatDate, formatTime } from "../utils/cbtHistory"
+import PageTour, { TOURS } from "../components/PageTour"
 
 const CBTHistory = ({ onNavigate, onBack, onReview }) => {
   const [history, setHistory] = useState([])
@@ -19,6 +20,7 @@ const CBTHistory = ({ onNavigate, onBack, onReview }) => {
 
   return (
     <div className="ee-page">
+      <PageTour tourKey="cbtHistory" steps={TOURS.cbtHistory} />
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "16px" }}>CBT History</span>

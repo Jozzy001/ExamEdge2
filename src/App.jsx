@@ -193,26 +193,23 @@ function App() {
     })
     return () => unsub()
   }, [authUser?.uid])
-  // Keep handleBack in a ref so popstate always has the latest version
-  const handleBackRef = useRef(handleBack)
-  useEffect(() => { handleBackRef.current = handleBack }, [page, pageHistory])
-
-  // Hardware/browser back button support (Android back button, browser back)
+  // Hardware/browser back button support
   useEffect(() => {
-    // Push a state so we always have something to pop
     window.history.pushState({ appPage: page }, "", window.location.pathname)
-
     const handlePopState = () => {
-      handleBackRef.current()
-      // Re-push state so back button keeps firing on next press
+      setPage(prev => {
+        const history = pageHistory
+        if (history.length === 0) return "home"
+        return history[history.length - 1]
+      })
+      setPageHistory(prev => prev.slice(0, -1))
       setTimeout(() => {
         window.history.pushState({ appPage: page }, "", window.location.pathname)
       }, 100)
     }
-
     window.addEventListener("popstate", handlePopState)
     return () => window.removeEventListener("popstate", handlePopState)
-  }, [page])
+  }, [page, pageHistory])
 
 
 

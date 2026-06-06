@@ -8,6 +8,7 @@ import { PageTransition } from "../components/LoadingScreen"
 import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
+import PageTour, { TOURS } from "../components/PageTour"
 
 const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()

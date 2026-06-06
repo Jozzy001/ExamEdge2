@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { getCBTHistory, formatDate, formatTime } from "../utils/cbtHistory"
+import PageTour, { TOURS } from "../components/PageTour"
 
 const SUBJECT_COLORS = {
   "English":     "#4a90d9",
@@ -119,6 +120,7 @@ const Progress = ({ onNavigate, onBack }) => {
 
   return (
     <div className="ee-page">
+      <PageTour tourKey="progress" steps={TOURS.progress} />
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("home")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: 16 }}>My Progress 📊</span>

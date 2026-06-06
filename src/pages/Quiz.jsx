@@ -2,6 +2,7 @@ import { useState, useRef, useMemo, useEffect } from "react"
 import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
+import PageTour, { TOURS } from "../components/PageTour"
 
 // =============================================
 // IMAGE RENDERER
@@ -647,6 +648,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         <span style={{ fontWeight: 800, fontSize: "15px" }}>
           {isCBT ? "CBT Mode" : isWeak ? "Weak Areas" : topic}
         </span>
+        {isCBT && <PageTour tourKey="cbt" steps={TOURS.cbt} />}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <button onClick={() => setShowCalc(p => !p)} style={{
             background: showCalc ? "var(--primary)" : "var(--surface2)",

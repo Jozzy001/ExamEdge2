@@ -3,9 +3,9 @@
 
 import { useState } from "react"
 import { getCBTHistory } from "../utils/cbtHistory"
-import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
+import PageTour, { TOURS } from "../components/PageTour"
 
-const WeakAreas = ({ onNavigate, onBack, university }) => {
+const WeakAreas = ({ onNavigate, onBack }) => {
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -13,17 +13,7 @@ const WeakAreas = ({ onNavigate, onBack, university }) => {
 
   const history = getCBTHistory()
 
-  // Build question lookup from pool for finding missing options
-  const questionPool = university ? (POST_UTME_UNIVERSITIES[university]?.questions || []) : []
-  const questionLookup = {}
-  questionPool.forEach(q => {
-    if (q.question) questionLookup[q.question.trim().slice(0, 60)] = q
-    if (q.passage && q.questions) {
-      q.questions.forEach(inner => {
-        if (inner.question) questionLookup[inner.question.trim().slice(0, 60)] = inner
-      })
-    }
-  })
+
 
   // Get failed questions from CBT history
   // A question is "failed" if the user got it wrong in their most recent attempt
@@ -60,12 +50,9 @@ const WeakAreas = ({ onNavigate, onBack, university }) => {
       const key = q.question.trim().slice(0, 60)
       if (!seen.has(key)) {
         seen.add(key)
-        // Try to get options from question pool if not saved
-        const poolQ = questionLookup[key]
         failedQuestions.push({
           ...q,
-          options: q._savedOptions?.length > 0 ? q._savedOptions : (poolQ?.options || []),
-          explanation: q.explanation || poolQ?.explanation || "",
+          options: q._savedOptions || [],
         })
       }
     }
@@ -101,6 +88,7 @@ const WeakAreas = ({ onNavigate, onBack, university }) => {
 
     return (
       <div className="ee-page">
+        <PageTour tourKey="weak" steps={TOURS.weak} />
         <header className="ee-header">
           <button className="ee-back-btn" onClick={handleBack}>← Back</button>
           <span style={{ fontWeight: 800, fontSize: 14 }}>{selectedTopic}</span>
@@ -264,6 +252,7 @@ const WeakAreas = ({ onNavigate, onBack, university }) => {
     const topics = bySubject[selectedSubject]
     return (
       <div className="ee-page">
+        <PageTour tourKey="weak" steps={TOURS.weak} />
         <header className="ee-header">
           <button className="ee-back-btn" onClick={handleBack}>← Back</button>
           <span style={{ fontWeight: 800, fontSize: 15 }}>⚠️ {selectedSubject}</span>
@@ -309,6 +298,7 @@ const WeakAreas = ({ onNavigate, onBack, university }) => {
   if (totalFailed === 0) {
     return (
       <div className="ee-page">
+        <PageTour tourKey="weak" steps={TOURS.weak} />
         <header className="ee-header">
           <button className="ee-back-btn" onClick={handleBack}>← Back</button>
           <span style={{ fontWeight: 800, fontSize: 15 }}>⚠️ Weak Areas</span>

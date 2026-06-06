@@ -2,6 +2,7 @@ import { useState } from "react"
 import questions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import STUDY_GUIDES from "../data/studyGuides"
+import PageTour, { TOURS } from "../components/PageTour"
 
 const StudyMode = ({ subject, onNavigate, onBack, university = null }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -217,6 +218,7 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null }) => {
   // Topic list
   return (
     <div className="ee-page">
+      <PageTour tourKey="study" steps={TOURS.study} />
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => onBack ? onBack() : onNavigate("subjectSelect")}>← Back</button>
         <span style={{ fontWeight: 800, fontSize: "16px" }}>{subject} 📚</span>
