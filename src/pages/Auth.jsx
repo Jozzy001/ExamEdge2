@@ -151,9 +151,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         if (userDoc.exists()) {
           const data = userDoc.data()
           onAuthDone(data)
-          if (pendingUserData?.wantsPaid && onGoToUpgrade) {
-            setTimeout(() => onGoToUpgrade(), 500)
-          }
+          // Don't auto-redirect to upgrade — let user complete onboarding first
         } else {
           // Doc doesn't exist yet — create it and proceed
           const fallbackData = {
@@ -165,9 +163,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
           }
           await setDoc(doc(db, "users", auth.currentUser.uid), fallbackData)
           onAuthDone(fallbackData)
-          if (pendingUserData?.wantsPaid && onGoToUpgrade) {
-            setTimeout(() => onGoToUpgrade(), 500)
-          }
+          // Don't auto-redirect to upgrade — let user complete onboarding first
         }
       } else {
         setError("Email not verified yet. Please check your inbox and click the link.")
