@@ -194,6 +194,23 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
           {!paystackReady ? "⏳ Loading payment..." : loading ? "⏳ Processing..." : "Pay ₦3,000 — Get Full Access"}
         </button>
 
+        {/* Internet connection warning */}
+        <div style={{
+          display: "flex", alignItems: "flex-start", gap: 8,
+          background: "rgba(245,158,11,0.1)", borderRadius: "var(--radius-md)",
+          padding: "10px 14px", marginTop: 8,
+          border: "1px solid rgba(245,158,11,0.3)"
+        }}>
+          <span style={{ fontSize: 16, flexShrink: 0 }}>⚠️</span>
+          <p style={{ fontSize: 12, color: "#92400e", margin: 0, lineHeight: 1.6 }}>
+            Please make sure you have a <strong>stable internet connection</strong> before
+            making payment. If your account is not unlocked after payment, contact us at{" "}
+            <a href="mailto:jce680@gmail.com" style={{ color: "#b45309", fontWeight: 700 }}>
+              jce680@gmail.com
+            </a>
+          </p>
+        </div>
+
         <p style={{ fontSize: 11, color: "#aaa", textAlign: "center", marginTop: 12 }}>
           🔒 Secure payment via Paystack · Card, Bank Transfer, USSD
         </p>

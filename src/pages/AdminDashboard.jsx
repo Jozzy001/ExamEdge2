@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import {
-  collection, getDocs, orderBy, query, where,
-  doc, updateDoc, deleteDoc, setDoc
+  collection, getDocs, orderBy, query, where, limit,
+  doc, updateDoc, deleteDoc, setDoc, addDoc, serverTimestamp
 } from "firebase/firestore"
 import { sendPasswordResetEmail } from "firebase/auth"
 
@@ -58,12 +58,11 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     }
     setSendingNotif(true)
     try {
-      const { addDoc, collection: col, serverTimestamp: st } = await import("firebase/firestore")
-      await addDoc(col(db, "notifications"), {
+      await addDoc(collection(db, "notifications"), {
         title: notifTitle.trim(),
         body: notifBody.trim(),
         type: notifType,
-        createdAt: st(),
+        createdAt: serverTimestamp(),
         sentBy: "admin"
       })
       setNotifTitle("")
@@ -77,8 +76,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
 
   const fetchSuggestions = async () => {
     try {
-      const { getDocs: gd, collection: col, query: q, orderBy: ob, limit: lim } = await import("firebase/firestore")
-      const snap = await gd(q(col(db, "suggestions"), ob("createdAt", "desc"), lim(20)))
+      const snap = await getDocs(query(collection(db, "suggestions"), orderBy("createdAt", "desc"), limit(20)))
       setSuggestions(snap.docs.map(d => ({ id: d.id, ...d.data() })))
     } catch(e) {}
   }
@@ -547,7 +545,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             { label: "Faculty", value: user.faculty || "⚠️ Not set — user hasn't completed onboarding" },
                             { label: "Exam Type", value: user.examType || "Not set" },
                             { label: "Referral Code", value: user.referralCode || "—" },
-                            { label: "Referred By", value: user.referredBy ? "Yes" : "No" },
+                            { label: "Referred By", value: user.referredBy ? (users.find(u => u.id === user.referredBy)?.name || user.referredBy) : "No" },
                             { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
                             { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
                             { label: "Bank", value: user.bankDetails ? `${user.bankDetails.bankName} · ${user.bankDetails.accountNumber} (${user.bankDetails.accountName})` : "❌ Not provided" },
@@ -614,6 +612,13 @@ Options:
                                 paidAt: newStatus ? new Date().toISOString() : null,
                                 paymentRef: newStatus ? "manual_admin" : null,
                               })
+                              // If unlocking and user was referred, credit the referrer
+                              if (newStatus && user.referredBy) {
+                                const { increment } = await import("firebase/firestore")
+                                await updateDoc(doc(db, "users", user.referredBy), {
+                                  referralEarnings: increment(500)
+                                }).catch(() => {})
+                              }
                               setActionMsg(newStatus ? `✅ ${user.name} unlocked successfully` : `🔒 ${user.name} access revoked`)
                               fetchUsers()
                               setSelected(null)

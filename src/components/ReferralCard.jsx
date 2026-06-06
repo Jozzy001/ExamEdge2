@@ -10,8 +10,9 @@ export default function ReferralCard({ userData }) {
   const [loadingReferrals, setLoadingReferrals] = useState(false)
 
   const referralCode = userData?.referralCode || ''
-  const earnings = userData?.referralEarnings || 0
   const paidOut = userData?.referralPaidOut || 0
+  // Calculate earnings from actual paid referrals (most accurate)
+  const [earnings, setEarnings] = useState(userData?.referralEarnings || 0)
   const pending = earnings - paidOut
 
   // Fetch users who used this referral code

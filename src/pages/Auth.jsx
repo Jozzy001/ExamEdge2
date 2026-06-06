@@ -397,6 +397,28 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 background: "none", border: "none", color: "var(--primary)",
                 fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)"
               }}>Sign up free</button>
+
+              {/* App Store notice */}
+              <div style={{
+                textAlign: "center", marginTop: 16, padding: "10px 14px",
+                borderRadius: "var(--radius-md)",
+                background: "var(--surface2)", border: "1px solid var(--border)"
+              }}>
+                <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.6 }}>
+                  📱 <strong style={{ color: "var(--text)" }}>Coming soon on</strong> Google Play & App Store
+                </div>
+                <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>
+                  For now, open <strong>examedgeng.site</strong> in your browser
+                </div>
+              </div>
+
+              <p style={{ textAlign: "center", fontSize: 12, color: "var(--text3)", marginTop: 10 }}>
+                Need help?{" "}
+                <a href="mailto:jce680@gmail.com" style={{
+                  color: "var(--primary)", fontWeight: 700, textDecoration: "none"
+                }}>Contact us</a>
+              </p>
+
             </div>
           </>
         )}
