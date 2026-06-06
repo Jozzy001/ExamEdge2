@@ -12,7 +12,9 @@ export default function ReferralCard({ userData }) {
   const referralCode = userData?.referralCode || ''
   const paidOut = userData?.referralPaidOut || 0
   // Calculate earnings from actual paid referrals (most accurate)
-  const [earnings, setEarnings] = useState(userData?.referralEarnings || 0)
+  // Uses max of Firestore value vs calculated from referred users
+  const calculatedFromUsers = referredUsers.filter(u => u.isPaid).length * 500
+  const earnings = Math.max(userData?.referralEarnings || 0, calculatedFromUsers)
   const pending = earnings - paidOut
 
   // Fetch users who used this referral code
