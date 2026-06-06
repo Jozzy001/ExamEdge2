@@ -475,7 +475,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                 <div style={{ fontSize: 12, color: "var(--text2)" }}>{userData.bankDetails.accountName}</div>
               </div>
             ) : null}
-            <BankDetailsForm userData={userData} userId={user?.uid} />
+            <BankDetailsForm userData={userData} userId={authUser?.uid} />
           </div>
         )}
 
