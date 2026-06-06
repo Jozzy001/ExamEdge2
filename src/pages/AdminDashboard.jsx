@@ -277,8 +277,14 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     const d = u.lastLogin.toDate ? u.lastLogin.toDate() : new Date(u.lastLogin)
     return d.toDateString() === today
   }).length
-  const totalRevenue = paidUsers * 2000 // ₦2000 after referral
+  const PRICE = 3000
+  const PAYSTACK_FEE = 145 // 1.5% + ₦100 approx
+  const REFERRAL_AMOUNT = 500
   const totalReferralOwed = users.reduce((sum, u) => sum + ((u.referralEarnings || 0) - (u.referralPaidOut || 0)), 0)
+  const totalReferralPaid = users.reduce((sum, u) => sum + (u.referralPaidOut || 0), 0)
+  // Revenue = (price - paystack fee) per paid user - referral payouts already made
+  const grossRevenue = paidUsers * (PRICE - PAYSTACK_FEE)
+  const totalRevenue = grossRevenue - totalReferralPaid
   const faculties = {}
   users.forEach(u => {
     if (u.faculty) faculties[u.faculty] = (faculties[u.faculty] || 0) + 1
@@ -360,8 +366,9 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                 { icon: "🟢", label: "Active Today", value: activeToday, color: "var(--primary)" },
                 { icon: "💎", label: "Paid Users", value: paidUsers, color: "#22c55e" },
                 { icon: "🆓", label: "Free Users", value: freeUsers, color: "#f59e0b" },
-                { icon: "💰", label: "Est. Revenue", value: `₦${totalRevenue.toLocaleString()}`, color: "#22c55e" },
+                { icon: "💰", label: "Net Revenue", value: `₦${totalRevenue.toLocaleString()}`, color: "#22c55e" },
                 { icon: "⏳", label: "Referral Owed", value: `₦${totalReferralOwed.toLocaleString()}`, color: "#ef4444" },
+                { icon: "🏦", label: "Gross (after Paystack)", value: `₦${grossRevenue.toLocaleString()}`, color: "#667eea" },
               ].map((s, i) => (
                 <div key={i} style={{
                   background: "var(--surface)", border: "1px solid var(--border)",
@@ -561,6 +568,42 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
 
                         {/* Action buttons */}
                         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          {/* Set Faculty manually */}
+                          {!user.faculty && (
+                            <button
+                              onClick={async () => {
+                                const faculty = window.prompt(
+                                  `Set faculty for ${user.name}:
+
+Options:
+- engineering
+- lifesciences
+- management
+- arts`,
+                                  "engineering"
+                                )
+                                if (!faculty) return
+                                await updateDoc(doc(db, "users", user.id), {
+                                  faculty: faculty.trim().toLowerCase(),
+                                  examType: "postutme",
+                                  university: "UNIBEN"
+                                })
+                                setActionMsg(`✅ Faculty set for ${user.name}`)
+                                fetchUsers()
+                                setSelected(null)
+                              }}
+                              style={{
+                                padding: "10px", borderRadius: "var(--radius-md)",
+                                background: "rgba(102,126,234,0.1)", color: "#667eea",
+                                border: "1px solid rgba(102,126,234,0.3)",
+                                fontWeight: 800, fontSize: 13,
+                                cursor: "pointer", fontFamily: "var(--font-main)"
+                              }}
+                            >
+                              🎓 Set Faculty
+                            </button>
+                          )}
+
                           {/* Unlock / Lock toggle */}
                           <button
                             onClick={async () => {

@@ -300,13 +300,19 @@ function App() {
   const handleOnboardingDone = (data) => {
     setProfile(data)
     setPage("home")
-    // Save faculty/examType to Firestore so it persists across logins
-    if (authUser?.uid && data.faculty && data.examType) {
-      updateDoc(doc(db, "users", authUser.uid), {
+    // Save faculty/examType to Firestore — use auth.currentUser directly
+    // because authUser state may not be set yet for new signups
+    const uid = authUser?.uid || auth.currentUser?.uid
+    if (uid && data.faculty && data.examType) {
+      updateDoc(doc(db, "users", uid), {
         examType: data.examType,
         university: data.university || "UNIBEN",
         faculty: data.faculty,
-      }).catch(() => {})
+      }).catch((e) => {
+        console.log("Faculty save error:", e)
+      })
+    } else {
+      console.log("No uid available - faculty not saved. authUser:", authUser?.uid, "currentUser:", auth.currentUser?.uid)
     }
   }
 
