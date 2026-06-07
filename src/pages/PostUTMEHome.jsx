@@ -6,6 +6,7 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
+import FirstCBTPrompt from "../components/FirstCBTPrompt"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
@@ -217,6 +218,12 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
           <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
         </div>
+
+        {/* First CBT Prompt */}
+        <FirstCBTPrompt
+          isPaid={isPaid}
+          onTakeCBT={() => onNavigate("cbtSubjectSelect")}
+        />
 
         {/* Settings */}
         <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("settings")}>

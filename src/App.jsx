@@ -345,11 +345,12 @@ function App() {
       if (page === "cbtSubjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="cbt" examType="jamb" />
       if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
-      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} />
+      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={userData?.isPaid} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={userData?.isPaid} />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
       if (page === "cbtHistory") return (
         <CBTHistory
+          isPaid={userData?.isPaid}
           onNavigate={handleNavigate}
           onBack={handleBack}
           onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}
@@ -413,8 +414,8 @@ function App() {
           isPaid={userData?.isPaid}
         />
       )
-      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} />
+      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={userData?.isPaid} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={userData?.isPaid} />
       if (page === "cbt") return (
         <Quiz
           topic="cbt"
@@ -429,6 +430,7 @@ function App() {
       )
       if (page === "cbtHistory") return (
         <CBTHistory
+          isPaid={userData?.isPaid}
           onNavigate={handleNavigate}
           onBack={handleBack}
           onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}

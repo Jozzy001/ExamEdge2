@@ -546,8 +546,17 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             { label: "Exam Type", value: user.examType || "Not set" },
                             { label: "Referral Code", value: user.referralCode || "—" },
                             { label: "Referred By", value: user.referredBy ? (users.find(u => u.id === user.referredBy)?.name || user.referredBy) : "No" },
-                            { label: "Referral Earned", value: `₦${(user.referralEarnings || 0).toLocaleString()}` },
-                            { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
+                            { label: "Referral Earned", value: (() => {
+                              const fromFirestore = user.referralEarnings || 0
+                              const fromUsers = users.filter(u => u.referredBy === user.id && u.isPaid).length * 500
+                              return `₦${Math.max(fromFirestore, fromUsers).toLocaleString()}`
+                            })() },
+                            { label: "Referral Owed", value: (() => {
+                              const fromFirestore = user.referralEarnings || 0
+                              const fromUsers = users.filter(u => u.referredBy === user.id && u.isPaid).length * 500
+                              const earned = Math.max(fromFirestore, fromUsers)
+                              return `₦${(earned - (user.referralPaidOut || 0)).toLocaleString()}`
+                            })() },
                             { label: "Bank", value: user.bankDetails ? `${user.bankDetails.bankName} · ${user.bankDetails.accountNumber} (${user.bankDetails.accountName})` : "❌ Not provided" },
                             { label: "WhatsApp", value: user.bankDetails?.whatsapp || "—" },
                             { label: "Joined", value: formatDateTime(user.createdAt) },
@@ -639,7 +648,10 @@ Options:
                           {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
                             <button
                               onClick={async () => {
-                                const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
+                                const fromFirestore = user.referralEarnings || 0
+                                const fromUsers = users.filter(u => u.referredBy === user.id && u.isPaid).length * 500
+                                const earned = Math.max(fromFirestore, fromUsers)
+                                const owed = earned - (user.referralPaidOut || 0)
                                 if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?\n\nThis will:\n• Set their pending balance to ₦0\n• Mark all their referrals as paid out`)) return
                                 
                                 // Update user's paidOut to match earnings (clears pending)
@@ -671,7 +683,7 @@ Options:
                                 cursor: "pointer", fontFamily: "var(--font-main)"
                               }}
                             >
-                              💸 Pay Referral — ₦{((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}
+                              💸 Pay Referral — ₦{Math.max(user.referralEarnings || 0, users.filter(u => u.referredBy === user.id && u.isPaid).length * 500) - (user.referralPaidOut || 0)}
                             </button>
                           )}
 

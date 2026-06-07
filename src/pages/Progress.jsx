@@ -19,7 +19,7 @@ const SUBJECT_COLORS = {
 const getScoreColor = (pct) => pct >= 70 ? "#16a34a" : pct >= 50 ? "#d97706" : "#dc2626"
 const getScoreBg = (pct) => pct >= 70 ? "rgba(34,197,94,0.1)" : pct >= 50 ? "rgba(245,158,11,0.1)" : "rgba(239,68,68,0.1)"
 
-const Progress = ({ onNavigate, onBack }) => {
+const Progress = ({ onNavigate, onBack, isPaid }) => {
   const [expandedSubject, setExpandedSubject] = useState(null)
   const history = getCBTHistory()
   const hasAny = history.length > 0

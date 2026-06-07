@@ -5,7 +5,7 @@ import { useState } from "react"
 import { getCBTHistory } from "../utils/cbtHistory"
 import PageTour, { TOURS } from "../components/PageTour"
 
-const WeakAreas = ({ onNavigate, onBack }) => {
+const WeakAreas = ({ onNavigate, onBack, isPaid }) => {
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -81,6 +81,34 @@ const WeakAreas = ({ onNavigate, onBack }) => {
   }
 
   // ===== SCREEN 3: Questions for selected topic =====
+  // Free users see paywall instead of questions
+  if (selectedSubject && selectedTopic && !isPaid) {
+    return (
+      <div className="ee-page">
+        <header className="ee-header">
+          <button className="ee-back-btn" onClick={handleBack}>← Back</button>
+          <span style={{ fontWeight: 800, fontSize: 15 }}>⚠️ Weak Areas</span>
+          <span style={{ width: 60 }} />
+        </header>
+        <div className="ee-content">
+          <div style={{ textAlign: "center", padding: "40px 20px" }}>
+            <div style={{ fontSize: 52, marginBottom: 16 }}>🔒</div>
+            <h3 style={{ fontSize: 18, fontWeight: 900, color: "var(--text)", marginBottom: 12 }}>
+              Upgrade to Review Weak Areas
+            </h3>
+            <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 24 }}>
+              You have weak areas in <strong>{selectedTopic}</strong>. Upgrade to see the exact questions you got wrong and learn from them.
+            </p>
+            <button
+              className="ee-btn ee-btn-primary"
+              onClick={() => onNavigate("upgrade")}
+            >Unlock for ₦3,000 🚀</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (selectedSubject && selectedTopic) {
     const questions = bySubject[selectedSubject][selectedTopic]
     const q = questions[currentIndex]

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { getCBTHistory, getCBTPersonalBest, deleteCBTRecord, formatDate, formatTime } from "../utils/cbtHistory"
 import PageTour, { TOURS } from "../components/PageTour"
 
-const CBTHistory = ({ onNavigate, onBack, onReview }) => {
+const CBTHistory = ({ onNavigate, onBack, isPaid, onReview }) => {
   const [history, setHistory] = useState([])
   const personalBest = getCBTPersonalBest()
 
