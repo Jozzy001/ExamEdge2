@@ -363,6 +363,12 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "For 'make x the subject' questions, isolate x step by step — move everything else to the other side using inverse operations."
+      },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "algebra",
+        content: "Key formulas, patterns and RECURRING question types from UNIBEN past papers for this topic."
       }
     ]
   },
@@ -414,6 +420,12 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "Always add + C (constant of integration) for indefinite integrals. Forgetting C is one of the most common errors in Post-UTME."
+      },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "calculus",
+        content: "Key formulas, patterns and RECURRING question types from UNIBEN past papers for this topic."
       }
     ]
   },
@@ -625,7 +637,13 @@ const STUDY_GUIDES = {
         "% error = (35/250) x 100 = 14%."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "ALWAYS convert through base 10 as the middle step. Never go directly from base 5 to base 8 — always: base 5 to base 10, then base 10 to base 8." }
+        content: "ALWAYS convert through base 10 as the middle step. Never go directly from base 5 to base 8 — always: base 5 to base 10, then base 10 to base 8." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "numbers",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -663,7 +681,13 @@ const STUDY_GUIDES = {
         "Variance uses SQUARED deviations — square before averaging."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Memorise: P(prime from 20 to 30 inclusive) = 2/11. This exact question appeared in 2011 AND 2019 and will appear again. The only primes in that range are 23 and 29." }
+        content: "Memorise: P(prime from 20 to 30 inclusive) = 2/11. This exact question appeared in 2011 AND 2019 and will appear again. The only primes in that range are 23 and 29." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "stats",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -698,7 +722,13 @@ const STUDY_GUIDES = {
         { title: "Polygon sum", body: "(n-2) x 180 degrees total interior angles." }
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Sector PERIMETER = arc + 2r. Never just calculate the arc — you must add both radii (straight sides). This is the most common mistake in sector questions." }
+        content: "Sector PERIMETER = arc + 2r. Never just calculate the arc — you must add both radii (straight sides). This is the most common mistake in sector questions." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "geometry",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -730,7 +760,13 @@ const STUDY_GUIDES = {
         { title: "Q4 (270 to 360)", body: "COS positive only." }
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "sec²θ + tan²θ = 3 → θ = 45°. The key step is replacing sec²θ with (1+tan²θ) to get 2tan²θ = 2, then tanθ = 1, then θ = 45°. Do not attempt to solve it any other way." }
+        content: "sec²θ + tan²θ = 3 → θ = 45°. The key step is replacing sec²θ with (1+tan²θ) to get 2tan²θ = 2, then tanθ = 1, then θ = 45°. Do not attempt to solve it any other way." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "trig",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -760,7 +796,13 @@ const STUDY_GUIDES = {
         "Verify: substitute (1,2): 1 - 4 + 3 = 0. Correct!"
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Parallel lines have the SAME gradient. Perpendicular lines have gradients that multiply to -1. If m₁ = 1/2, then m₂ = -2 (flip and negate the gradient)." }
+        content: "Parallel lines have the SAME gradient. Perpendicular lines have gradients that multiply to -1. If m₁ = 1/2, then m₂ = -2 (flip and negate the gradient)." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "coordinate",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -788,7 +830,13 @@ const STUDY_GUIDES = {
         "The 10th term is 29."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "AP: subtract consecutive terms to find d. GP: divide consecutive terms to find r. Always check the type first before applying formulas." }
+        content: "AP: subtract consecutive terms to find d. GP: divide consecutive terms to find r. Always check the type first before applying formulas." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "sequences",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -816,7 +864,13 @@ const STUDY_GUIDES = {
         "Example: log(x) + log(x-3) = 1 means log[x(x-3)] = 1 means x(x-3) = 10."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "log without a base written means log base 10. ln means natural log (base e). Memorise: log(1)=0, log(10)=1, log(100)=2, log(1000)=3. These shortcuts appear regularly." }
+        content: "log without a base written means log base 10. ln means natural log (base e). Memorise: log(1)=0, log(10)=1, log(100)=2, log(1000)=3. These shortcuts appear regularly." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "logs",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -877,7 +931,13 @@ const STUDY_GUIDES = {
         "n(M∪E) = 30+25-10 = 45. n(neither) = 50-45 = 5."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "For neither questions: always use the union formula first to find n(A∪B), then subtract from the Universal set total. Do not try to guess from the Venn diagram alone." }
+        content: "For neither questions: always use the union formula first to find n(A∪B), then subtract from the Universal set total. Do not try to guess from the Venn diagram alone." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "sets",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 
@@ -924,7 +984,13 @@ const STUDY_GUIDES = {
         "Try x = 1, -1, 2, -2 first — these are the most common roots in exam questions."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Always try x = 1 and x = -1 first when hunting for factors. These work surprisingly often in Post-UTME questions and save a lot of time." }
+        content: "Always try x = 1 and x = -1 first when hunting for factors. These work surprisingly often in Post-UTME questions and save a lot of time." },
+      {
+        heading: "Formula & Tricks Vault",
+        type: "maths_vault",
+        tab: "polynomials",
+        content: "Key formulas, RECURRING patterns and exam tricks for this topic from UNIBEN past papers."
+      }
     ]
   },
 

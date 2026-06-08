@@ -7,6 +7,8 @@ import AntonymsVault from "../components/AntonymsVault"
 import IdiomsVault from "../components/IdiomsVault"
 import SynonymsVault from "../components/SynonymsVault"
 import VocabularyVault from "../components/VocabularyVault"
+import EnglishSkillsVault from "../components/EnglishSkillsVault"
+import MathsVault from "../components/MathsVault"
 
 const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -14,6 +16,8 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
   const [showIdiomsVault, setShowIdiomsVault] = useState(false)
   const [showSynonymsVault, setShowSynonymsVault] = useState(false)
   const [showVocabVault, setShowVocabVault] = useState(false)
+  const [skillsVaultTab, setSkillsVaultTab] = useState(null)
+  const [mathsVaultTab, setMathsVaultTab] = useState(null)
 
   const questionPool = university
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -61,6 +65,22 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
             isPaid={isPaid}
             onClose={() => setShowIdiomsVault(false)}
             onUpgrade={() => { setShowIdiomsVault(false); onNavigate("upgrade") }}
+          />
+        )}
+        {mathsVaultTab && (
+          <MathsVault
+            isPaid={isPaid}
+            initialTab={mathsVaultTab}
+            onClose={() => setMathsVaultTab(null)}
+            onUpgrade={() => { setMathsVaultTab(null); onNavigate("upgrade") }}
+          />
+        )}
+        {skillsVaultTab && (
+          <EnglishSkillsVault
+            isPaid={isPaid}
+            initialTab={skillsVaultTab}
+            onClose={() => setSkillsVaultTab(null)}
+            onUpgrade={() => { setSkillsVaultTab(null); onNavigate("upgrade") }}
           />
         )}
         {showVocabVault && (
@@ -177,6 +197,52 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
                       }}
                     >
                       📖 View All 99 Tested Antonyms
+                      {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
+                    </button>
+                  </div>
+                )}
+
+                {section.type === "maths_vault" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                      {section.content}
+                    </div>
+                    <button
+                      onClick={() => setMathsVaultTab(section.tab || "algebra")}
+                      style={{
+                        width: "100%", padding: "14px",
+                        background: "linear-gradient(135deg, #7c3aed, #059669)",
+                        color: "#fff", border: "none",
+                        borderRadius: "var(--radius-lg)",
+                        fontSize: 14, fontWeight: 800,
+                        cursor: "pointer", fontFamily: "var(--font-main)",
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: 8
+                      }}
+                    >
+                      🧮 Open Maths Formula Vault
+                      {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
+                    </button>
+                  </div>
+                )}
+
+                {section.type === "english_skills_vault" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                      {section.content}
+                    </div>
+                    <button
+                      onClick={() => setSkillsVaultTab(section.tab || "sentences")}
+                      style={{
+                        width: "100%", padding: "14px",
+                        background: "linear-gradient(135deg, #1d4ed8, #7c3aed)",
+                        color: "#fff", border: "none",
+                        borderRadius: "var(--radius-lg)",
+                        fontSize: 14, fontWeight: 800,
+                        cursor: "pointer", fontFamily: "var(--font-main)",
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: 8
+                      }}
+                    >
+                      🎯 Open Skills Vault
                       {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
                     </button>
                   </div>
