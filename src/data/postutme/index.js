@@ -1,13 +1,9 @@
-import unibenEngQuestions from "./engineering_physical_science/questions"
-import unibenLifeQuestions from "./life_science_medicine/questions"
-import unibenMgtQuestions from "./management_social_science/questions"
-import unibenArtsQuestions from "./arts_law_humanities/questions"
+import unibenQuestions from "./uniben/index"
 
-const unibenQuestions = [
-  ...unibenEngQuestions,
-  ...unibenLifeQuestions,
-  ...unibenMgtQuestions,
-  ...unibenArtsQuestions,
-]
-
-export default unibenQuestions
+export const POST_UTME_UNIVERSITIES = {
+  UNIBEN: {
+    name: "University of Benin",
+    short: "UNIBEN",
+    questions: unibenQuestions
+  }
+}
