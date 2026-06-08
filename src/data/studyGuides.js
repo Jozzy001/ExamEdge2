@@ -543,7 +543,12 @@ const STUDY_GUIDES = {
         "Context matters: figure can mean a number OR a body shape — always read the full sentence."
       ]},
       { heading: "Quick Tip", type: "tip",
-        content: "Keep a vocabulary notebook. Write every unfamiliar word from past questions with its meaning, synonym, and antonym. Review it every night — consistency beats cramming." }
+        content: "Keep a vocabulary notebook. Write every unfamiliar word from past questions with its meaning, synonym, and antonym. Review it every night — consistency beats cramming." },
+      {
+        heading: "View All UNIBEN-Tested Synonyms",
+        type: "synonyms_vault",
+        content: "See every synonym word UNIBEN has tested in the last 20 years — with meanings and the correct answer."
+      }
     ]
   },
 
