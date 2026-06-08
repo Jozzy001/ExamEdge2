@@ -396,6 +396,7 @@ function App() {
       )
       if (page === "study") return (
         <StudyMode
+          isPaid={userData?.isPaid}
           subject={selectedSubject}
           onNavigate={handleNavigate}
           onBack={handleBack}

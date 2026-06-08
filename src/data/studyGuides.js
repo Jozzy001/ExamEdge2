@@ -99,6 +99,11 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "Build your vocabulary daily. The more words you know, the easier antonym questions become. Read newspapers, novels, and past questions regularly."
+      },
+      {
+        heading: "View All 99 Tested Antonyms",
+        type: "antonyms_vault",
+        content: "See every antonym word UNIBEN has tested in the last 20 years — with meanings, opposites and explanations."
       }
     ]
   },
