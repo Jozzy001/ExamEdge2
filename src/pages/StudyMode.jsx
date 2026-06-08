@@ -6,12 +6,14 @@ import PageTour, { TOURS } from "../components/PageTour"
 import AntonymsVault from "../components/AntonymsVault"
 import IdiomsVault from "../components/IdiomsVault"
 import SynonymsVault from "../components/SynonymsVault"
+import VocabularyVault from "../components/VocabularyVault"
 
 const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [showVault, setShowVault] = useState(false)
   const [showIdiomsVault, setShowIdiomsVault] = useState(false)
   const [showSynonymsVault, setShowSynonymsVault] = useState(false)
+  const [showVocabVault, setShowVocabVault] = useState(false)
 
   const questionPool = university
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -59,6 +61,13 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
             isPaid={isPaid}
             onClose={() => setShowIdiomsVault(false)}
             onUpgrade={() => { setShowIdiomsVault(false); onNavigate("upgrade") }}
+          />
+        )}
+        {showVocabVault && (
+          <VocabularyVault
+            isPaid={isPaid}
+            onClose={() => setShowVocabVault(false)}
+            onUpgrade={() => { setShowVocabVault(false); onNavigate("upgrade") }}
           />
         )}
         {showSynonymsVault && (
@@ -168,6 +177,29 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
                       }}
                     >
                       📖 View All 99 Tested Antonyms
+                      {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
+                    </button>
+                  </div>
+                )}
+
+                {section.type === "vocab_vault" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                      {section.content}
+                    </div>
+                    <button
+                      onClick={() => setShowVocabVault(true)}
+                      style={{
+                        width: "100%", padding: "14px",
+                        background: "linear-gradient(135deg, #10b981, #059669)",
+                        color: "#fff", border: "none",
+                        borderRadius: "var(--radius-lg)",
+                        fontSize: 14, fontWeight: 800,
+                        cursor: "pointer", fontFamily: "var(--font-main)",
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: 8
+                      }}
+                    >
+                      📖 View All UNIBEN-Tested Vocabulary
                       {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
                     </button>
                   </div>
