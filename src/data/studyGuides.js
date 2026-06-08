@@ -251,6 +251,11 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "Most idiom questions have one obviously literal answer (wrong) and one figurative answer (right). If you see an option that interprets words literally, it's almost never correct."
+      },
+      {
+        heading: "View All UNIBEN-Tested Idioms",
+        type: "idioms_vault",
+        content: "See every idiom UNIBEN has tested in the last 20 years — with meanings and real exam examples."
       }
     ]
   },

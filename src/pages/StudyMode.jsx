@@ -4,10 +4,12 @@ import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import STUDY_GUIDES from "../data/studyGuides"
 import PageTour, { TOURS } from "../components/PageTour"
 import AntonymsVault from "../components/AntonymsVault"
+import IdiomsVault from "../components/IdiomsVault"
 
 const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) => {
   const [selectedTopic, setSelectedTopic] = useState(null)
   const [showVault, setShowVault] = useState(false)
+  const [showIdiomsVault, setShowIdiomsVault] = useState(false)
 
   const questionPool = university
     ? POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -48,6 +50,13 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
             isPaid={isPaid}
             onClose={() => setShowVault(false)}
             onUpgrade={() => { setShowVault(false); onNavigate("upgrade") }}
+          />
+        )}
+        {showIdiomsVault && (
+          <IdiomsVault
+            isPaid={isPaid}
+            onClose={() => setShowIdiomsVault(false)}
+            onUpgrade={() => { setShowIdiomsVault(false); onNavigate("upgrade") }}
           />
         )}
         <header className="ee-header">
@@ -150,6 +159,29 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
                       }}
                     >
                       📖 View All 99 Tested Antonyms
+                      {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
+                    </button>
+                  </div>
+                )}
+
+                {section.type === "idioms_vault" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                      {section.content}
+                    </div>
+                    <button
+                      onClick={() => setShowIdiomsVault(true)}
+                      style={{
+                        width: "100%", padding: "14px",
+                        background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                        color: "#fff", border: "none",
+                        borderRadius: "var(--radius-lg)",
+                        fontSize: 14, fontWeight: 800,
+                        cursor: "pointer", fontFamily: "var(--font-main)",
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: 8
+                      }}
+                    >
+                      💬 View All UNIBEN-Tested Idioms
                       {!isPaid && <span style={{ fontSize: 12, opacity: 0.85 }}>🔒</span>}
                     </button>
                   </div>
