@@ -54,7 +54,9 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "If you're stuck between two answers, re-read the relevant paragraph. The correct answer will be the one you can point to in the text."
-      }
+      },
+      { heading: "Skills Vault — Strategies & Traps", type: "english_skills_vault", tab: "comprehension",
+        content: "See proven strategies and the most common traps in UNIBEN comprehension questions." }
     ]
   },
 
@@ -157,7 +159,9 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "When you see 'instead of' or 'not...but', the answer is almost always the opposite of the word already in the sentence."
-      }
+      },
+      { heading: "Skills Vault — Signal Words & Traps", type: "english_skills_vault", tab: "lexis",
+        content: "Master signal words and collocations that UNIBEN keeps testing year after year." }
     ]
   },
 
@@ -314,7 +318,9 @@ const STUDY_GUIDES = {
         heading: "Quick Tip",
         type: "tip",
         content: "When in doubt, say the word in a sentence. The syllable that sounds wrong if you stress it is not the stressed one — your ear will guide you."
-      }
+      },
+      { heading: "Skills Vault — Sounds & Stress Patterns", type: "english_skills_vault", tab: "phonetics",
+        content: "Every vowel sound and stress emphasis question UNIBEN has tested — with explanations." }
     ]
   },
 
