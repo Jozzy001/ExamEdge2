@@ -14,6 +14,8 @@ const SUBJECT_META = {
   Commerce:    { icon: "💼", desc: "Trade, Insurance, Banking, Business" },
   CRK:         { icon: "✝️", desc: "Old & New Testament, Christian Living" },
   Accounts:    { icon: "🧾", desc: "Financial Accounting, Costing, Auditing" },
+  "Visual Arts": { icon: "🎨", desc: "Painting, Sculpture, Design, Art History" },
+  IRK:         { icon: "☪️", desc: "Islamic Religious Knowledge" },
 }
 
 const POSTUTME_DEFAULTS = {

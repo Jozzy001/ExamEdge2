@@ -13,6 +13,8 @@ const SUBJECT_META = {
   "Literature":  { icon: "📝", color: "#805ad5", bg: "#faf5ff" },
   "CRK":         { icon: "✝️", color: "#b7791f", bg: "#fffbeb" },
   "Accounts":    { icon: "🧾", color: "#2d3748", bg: "#f7fafc" },
+  "Visual Arts": { icon: "🎨", color: "#d53f8c", bg: "#fff5f7" },
+  "IRK":         { icon: "☪️", color: "#276749", bg: "#f0fff4" },
 }
 
 const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {

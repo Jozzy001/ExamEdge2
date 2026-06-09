@@ -3536,6 +3536,213 @@ const STUDY_GUIDES = {
     summary: "Linear equations: isolate the variable (ax + b = c → x = (c-b)/a). Quadratic equations: ax² + bx + c = 0. Methods: factorisation, completing the square, quadratic formula x = (-b ± √(b²-4ac))/2a. Discriminant b²-4ac determines nature of roots.",
     keyPoints: ["Linear: rearrange to isolate x", "Quadratic formula: x = (-b ± √(b²-4ac))/2a", "b²-4ac > 0: two distinct real roots", "b²-4ac = 0: equal roots (one solution)", "b²-4ac < 0: no real roots"]
   },
+
+  // ==========================================
+  // ENGLISH — PHONOLOGY
+  // ==========================================
+  "Phonology": {
+    subject: "English", title: "Phonology — Vowel & Consonant Sounds",
+    icon: "🔊", estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Phonology?", type: "text",
+        content: "Phonology studies how sounds function in a language. UNIBEN tests your ability to identify words that share the same vowel or consonant sound — regardless of spelling. The key rule: judge by SOUND, never by spelling." },
+      { heading: "Common Vowel Sounds Tested", type: "cards", items: [
+        { title: "/ʌ/ — short UH sound", body: "sun, cup, run, fun, love, blood, come, done, enough, rough, comfort, money, country." },
+        { title: "/ɑː/ — long AH sound", body: "car, far, bar, calm, palm, bath, class, heart, father, aunt, laugh." },
+        { title: "/ɔː/ — long AW sound", body: "door, floor, more, corn, born, law, saw, caught, thought, walk, talk, call." },
+        { title: "/iː/ — long EE sound", body: "beat, heat, meat, feet, seat, creek, week, sweet, treat, receive, believe." },
+        { title: "/ɪ/ — short I sound", body: "bit, hit, sit, tip, chip, live, give, busy, women, build, guilt." },
+        { title: "/ʊ/ — short OO sound", body: "book, cook, look, foot, good, wood, pull, full, could, should, would." },
+        { title: "/uː/ — long OO sound", body: "food, moon, soon, blue, true, shoe, through, fruit, juice, move, prove." },
+        { title: "/e/ — short E sound", body: "bed, red, fed, head, bread, said, friend, many, any, again, bury." },
+      ]},
+      { heading: "Tricky Same-Sound Groups", type: "cards", items: [
+        { title: "Words sounding like /ʌ/", body: "sun, son, done, won, fun, run, come, some, love, above, enough, tough, rough, blood, flood." },
+        { title: "Words sounding like /iː/", body: "see, sea, me, key, quay, be, fee, free, tree, receive, believe, machine, people." },
+        { title: "Words sounding like /eɪ/", body: "cake, lake, take, great, break, weigh, they, eight, straight, vein, reign, suede." },
+        { title: "Silent letter traps", body: "know/no/now — know and no share /nəʊ/. Through/threw — both /θruː/. Cough/tough — DIFFERENT sounds (/kɒf/ vs /tʌf/)!" },
+      ]},
+      { heading: "Strategy", type: "steps", items: [
+        "Say each word aloud in your head — rely on sound, never spelling.",
+        "Isolate only the vowel sound being tested (usually underlined).",
+        "Find all options that have that exact same vowel sound.",
+        "The odd-one-out is the one whose vowel sound is different.",
+        "Watch out for traps: 'cough', 'through', 'thought', 'tough' all look similar but sound different.",
+      ]},
+      { heading: "Watch Out!", type: "warning", items: [
+        "'Cough' (/kɒf/), 'though' (/ðəʊ/), 'through' (/θruː/), 'tough' (/tʌf/), 'thought' (/θɔːt/) — same spelling pattern, 5 completely different sounds.",
+        "'Sun' and 'son' sound identical (/sʌn/) — same sound, different meaning.",
+        "'Read' (present) = /riːd/. 'Read' (past) = /red/. Same spelling, different sounds!",
+        "Spelling with 'ou' can be /ʌ/ (enough), /uː/ (through), /ɔː/ (thought), /aʊ/ (out) — always sound it out.",
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "For every phonology question, say the word in your head first. The moment you read with your eyes instead of your ears, you'll fall into spelling traps. Sound always beats spelling." },
+    ]
+  },
+
+  // ==========================================
+  // ENGLISH — SENTENCE ANALYSIS
+  // ==========================================
+  "Sentence Analysis": {
+    subject: "English", title: "Sentence Analysis — SVO, SVC & Clause Patterns",
+    icon: "🔣", estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Sentence Analysis?", type: "text",
+        content: "Sentence Analysis breaks a sentence into its grammatical components: Subject (S), Verb (V), Object (O), Complement (C), and Adverbial (A). You must identify the correct pattern — SVO, SVC, SVOA, SVOO, SVOC, or SVA." },
+      { heading: "The 6 Sentence Patterns", type: "cards", items: [
+        { title: "SV — Subject + Verb", body: "'The baby cried.' / 'She ran.' No object, no complement. The verb is intransitive and complete on its own." },
+        { title: "SVC — Subject + Verb + Complement", body: "'She is a nurse.' / 'He became angry.' Complement describes or renames the subject. Linking verbs: is, are, was, were, become, seem, appear, feel, look, sound." },
+        { title: "SVO — Subject + Verb + Object", body: "'She kicked the ball.' / 'He reads novels.' Object receives the action. Ask 'what?' or 'whom?' after the verb." },
+        { title: "SVA — Subject + Verb + Adverbial", body: "'She came when the rain fell.' / 'He sat on the chair.' Adverbial tells when, where, how, or why." },
+        { title: "SVOO — Subject + Verb + Indirect Object + Direct Object", body: "'She gave me a meal.' / 'He sent her a letter.' Two objects: indirect (me, her) + direct (meal, letter)." },
+        { title: "SVOA — Subject + Verb + Object + Adverbial", body: "'He shut the door before leaving.' / 'She put the book on the table.' Object + adverbial clause or phrase." },
+      ]},
+      { heading: "How to Identify Each Part", type: "steps", items: [
+        "SUBJECT: who or what performs the action. Usually before the verb.",
+        "VERB: the action or state word.",
+        "OBJECT: what receives the action. Ask 'what?' or 'whom?' after the verb.",
+        "COMPLEMENT: describes/renames the subject after a linking verb (is, become, seem). It IS the subject.",
+        "ADVERBIAL: tells when, where, how, why. Usually a phrase or clause starting with when, before, after, on, in, etc.",
+        "If you have TWO objects (indirect + direct) → SVOO.",
+      ]},
+      { heading: "Quick Reference Examples", type: "cards", items: [
+        { title: "SV", body: "'The baby has been crying.' S=The baby, V=has been crying. Nothing else." },
+        { title: "SVC", body: "'She is a nurse.' S=She, V=is, C=a nurse. 'A nurse' = subject complement." },
+        { title: "SVO", body: "'He reads novels.' S=He, V=reads, O=novels." },
+        { title: "SVA", body: "'She came when the rain fell.' S=She, V=came, A=when the rain fell." },
+        { title: "SVOO", body: "'She gave me a meal.' S=She, V=gave, IO=me, DO=a meal." },
+        { title: "SVOA", body: "'He shut the door before leaving.' S=He, V=shut, O=the door, A=before leaving." },
+      ]},
+      { heading: "SVC vs SVO — Most Confused Pair", type: "warning", items: [
+        "SVC: the complement DESCRIBES or IS the subject. 'She is a teacher' — teacher IS her.",
+        "SVO: the object RECEIVES the action and is different from the subject. 'She teaches students' — students receive the teaching.",
+        "Test: can you replace the verb with '=' ? 'She = a teacher' ✓ (SVC). 'She = students' ✗ (SVO).",
+        "Linking verbs (is, become, seem, appear, feel, look) always lead to SVC — never SVO.",
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Start by finding the verb. Then ask: is it a linking verb (is/become/seem)? → SVC. Does it have two objects? → SVOO. Does it have an adverbial clause (when/before/after)? → SVA or SVOA. No object at all? → SV." },
+    ]
+  },
+
+  // ==========================================
+  // CRS — BIBLE KNOWLEDGE
+  // ==========================================
+  "Bible Knowledge": {
+    subject: "CRS", title: "Bible Knowledge — Old & New Testament",
+    icon: "✝️", estimatedTime: "4 min read",
+    sections: [
+      { heading: "What is Tested", type: "text",
+        content: "UNIBEN CRS questions cover key events, characters, and teachings from both the Old and New Testaments. Focus areas: Creation and patriarchs, the Exodus, the Monarchy (Saul/David/Solomon), the prophets, the life of Jesus, and the early church in Acts." },
+      { heading: "Old Testament — Must Know", type: "cards", items: [
+        { title: "Creation (Genesis 1-2)", body: "God created in 6 days, rested on 7th. Humans created on Day 6 in God's image. Two accounts: Genesis 1 (Elohist) and Genesis 2 (Yahwist). The four rivers from Eden: Pishon, Gihon, Tigris, Euphrates." },
+        { title: "The Patriarchs", body: "Abraham: covenant sealed by circumcision (Gen 17). Isaac: nearly sacrificed at Moriah. Jacob (Israel): 12 sons. Joseph: sold by brothers, rose to power in Egypt, settled family in GOSHEN." },
+        { title: "The Exodus", body: "Moses led Israelites from Egypt. Ten plagues. Passover: death angel passed over Israelite homes marked with blood. Crossing Red Sea. Ten Commandments at Sinai. Manna in the wilderness." },
+        { title: "Judges & Monarchy", body: "Saul: first king, rejected for disobedience at Amalek. David: man after God's heart, anointed by Samuel. Nathan rebuked David for Bathsheba/Uriah. Solomon: built the temple. Kingdom divided after Solomon." },
+        { title: "The Prophets", body: "Elijah vs Baal prophets at Mount Carmel. Jeremiah: new covenant written on the heart. Amos: social justice. Isaiah: suffering servant prophecy. Jonah: God's mercy extends to Nineveh." },
+      ]},
+      { heading: "New Testament — Must Know", type: "cards", items: [
+        { title: "Life of Jesus", body: "Birth in Bethlehem, raised in Nazareth. Baptism by John. Temptation in wilderness. 12 disciples. Miracles: healing, nature, exorcism, resurrection (Lazarus). Transfiguration: Moses and Elijah discussed His death." },
+        { title: "Parables", body: "Kingdom parables: Sower, Mustard Seed, Wheat & Tares. Love parables: Prodigal Son, Good Samaritan. Stewardship: Ten Talents. The Prodigal Son best illustrates God's unconditional love and forgiveness." },
+        { title: "Passion & Resurrection", body: "Last Supper. Gethsemane prayer. Arrested by Judas. Tried by Caiaphas (false charge: destroy temple in 3 days). Tried by Pilate. Crucifixion. Resurrection on third day. Women found empty tomb." },
+        { title: "Acts of the Apostles", body: "Pentecost: Holy Spirit descends, tongues of fire, 3000 converted. Peter heals lame man. Stephen: first martyr. Paul converted on Damascus road. Three missionary journeys. Jerusalem Council: Gentiles and circumcision." },
+        { title: "Pauline Epistles", body: "Romans: justification by faith. 1 Corinthians: spiritual gifts, love (ch.13). Galatians: grace not law (before faith, law was custodian). Ephesians: armour of God. Philippians: joy. 1 John: God is love." },
+      ]},
+      { heading: "High-Frequency Facts", type: "cards", items: [
+        { title: "Who said what", body: "'My soul magnifies the Lord' = Mary (Magnificat). 'Nunc Dimittis' = Simeon. 'You brood of vipers' = John the Baptist (Luke) / Jesus (Matthew). 'Deal gently with Absalom' = David." },
+        { title: "Numbers to remember", body: "New Testament books: 27. Rivers from Eden: 4. Days of creation: 6 + 1 rest. Disciples: 12. Plagues: 10. Commandments: 10. Missionary journeys of Paul: 3. Flood duration: 150 days." },
+        { title: "Key locations", body: "Joseph settled family in GOSHEN. Abraham asked to sacrifice at MORIAH. Jesus raised in NAZARETH (Luke 4:16). Peter's confession: CAESAREA PHILIPPI. Jesus arrested at GETHSEMANE." },
+        { title: "Firsts", body: "First martyr: Stephen. First king: Saul. First miracle at Cana (water to wine). First apostle to deny Jesus: Peter. First missionary journey companion: Barnabas." },
+      ]},
+      { heading: "Strategy", type: "steps", items: [
+        "Focus on WHO did WHAT and WHERE — location and actor questions are most common.",
+        "Know the parables and what each one teaches — the Prodigal Son (God's love), Sower (hearing the Word).",
+        "Learn the Pauline letter themes: Romans=faith, Galatians=grace, Corinthians=gifts/love.",
+        "For Old Testament: know the sequence — Creation → Patriarchs → Exodus → Judges → Kings → Prophets.",
+        "For question about who said a quote — context is everything. Same words spoken by different people in different Gospels.",
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "The most commonly tested passage is Galatians 3:24 ('before faith came, the law was our custodian') and John 6:35 ('I am the bread of life'). Memorise the Seven I AM sayings of Jesus in John's Gospel — they appear repeatedly." },
+    ]
+  },
+
+  // ==========================================
+  // IRK — ISLAMIC KNOWLEDGE
+  // ==========================================
+  "Islamic Knowledge": {
+    subject: "IRK", title: "Islamic Religious Knowledge",
+    icon: "☪️", estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Tested", type: "text",
+        content: "UNIBEN IRK questions cover the five pillars of Islam, the Qur'an, Hadith, Islamic calendar, key figures, and Islamic practices. Questions are straightforward — focus on definitions, numbers, and key facts." },
+      { heading: "The Five Pillars of Islam", type: "cards", items: [
+        { title: "1. Shahada — Declaration of Faith", body: "There is no god but Allah and Muhammad is His prophet. The fundamental statement of Islamic belief." },
+        { title: "2. Salat — Prayer", body: "Five daily prayers: Fajr (dawn), Dhuhr (midday), Asr (afternoon), Maghrib (sunset), Isha (night). Second pillar of Islam. RECURRING!" },
+        { title: "3. Zakat — Almsgiving", body: "Obligatory charity given to the poor and needy. A religious obligation treated as a form of tax. Third pillar, after Salat in Qur'anic ranking. RECURRING!" },
+        { title: "4. Sawm — Fasting", body: "Fasting during the month of Ramadan (9th month of Islamic calendar). Teenagers and travellers are among those exempted. RECURRING!" },
+        { title: "5. Hajj — Pilgrimage", body: "Pilgrimage to Makkah during Zul-Hijjah (12th and final month of Islamic calendar). Obligatory once in a lifetime for those who are able." },
+      ]},
+      { heading: "Key Islamic Facts", type: "cards", items: [
+        { title: "The Qur'an", body: "Holy book of Islam. Revealed to Prophet Muhammad. Written in Arabic. Contains guidance for all aspects of life. The mother of Jesus is referred to as MARYAM in the Qur'an." },
+        { title: "Islamic Calendar", body: "Al-taqwin al-hijiri (Hijri calendar). Contains 12 months. Begins with Muharram, ends with Zul-Hijjah. Lunar calendar — about 11 days shorter than solar calendar." },
+        { title: "Greetings", body: "Assalamu Alaikum = 'Peace be upon you'. Response: Wa alaikum assalam. Used as a method of greeting among Muslims. RECURRING!" },
+        { title: "Hijab", body: "A veil traditionally worn by Muslim women in the presence of adult males outside their immediate family. Covers head and chest." },
+        { title: "Prophets in Islam", body: "Moses = MUSA. Jesus = ISA. Abraham = IBRAHIM. Joseph = YUSUF. Noah = NUH. John the Baptist = YAHYA. The Qur'an refers to Moses as Musa. RECURRING!" },
+      ]},
+      { heading: "Hadith", type: "cards", items: [
+        { title: "What is Hadith?", body: "Sayings, actions, and approvals of Prophet Muhammad (PBUH). Second source of Islamic law after the Qur'an." },
+        { title: "Six Compilers of Hadith", body: "Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasai, Ibn Majah. Tirmidhi became blind before his death. RECURRING!" },
+        { title: "Hadith 9 of An-Nawawi", body: "Refers to the people of the book (Quraysh) who were destroyed by asking unnecessary questions. RECURRING!" },
+      ]},
+      { heading: "Islamic Prohibitions & Permissions", type: "cards", items: [
+        { title: "Prohibited (Haram)", body: "Alcohol consumption. Pork meat, dog meat, dead animals, and blood. Begging (Islam encourages dignity of labour instead). RECURRING!" },
+        { title: "Marriage in Islam", body: "According to the Holy Qur'an, Muslims are allowed to marry up to FOUR wives, subject to conditions of fairness and equal treatment." },
+        { title: "Ramadan exemptions", body: "Those exempted from fasting: the sick, travellers, pregnant/nursing women, and TEENAGERS (young children). RECURRING!" },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "The most tested IRK facts: 5 pillars (in order), Salat = 5 daily prayers, Ramadan = 9th month, Zul-Hijjah = month of Hajj, Islamic calendar = 12 months, Maryam = Mary in Qur'an, Assalamu Alaikum = peace be upon you. Learn these 7 facts and you'll answer most IRK questions." },
+    ]
+  },
+
+  // ==========================================
+  // VISUAL ARTS
+  // ==========================================
+  "Visual Arts": {
+    subject: "Visual Arts", title: "Visual Arts — Elements, Techniques & History",
+    icon: "🎨", estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Tested", type: "text",
+        content: "UNIBEN Visual Arts questions cover the elements and principles of design, art techniques (drawing, painting, sculpture, ceramics, printmaking, textiles), Nigerian and African art history, and major artists. Questions are knowledge-based — learn the definitions and key facts." },
+      { heading: "Elements of Art & Design", type: "cards", items: [
+        { title: "Elements of Design", body: "Line, Shape, Form, Space, Texture, Colour, Value (tone). These are the basic building blocks of all visual art. RECURRING!" },
+        { title: "Principles of Design", body: "Balance, Contrast, Emphasis, Movement, Pattern, Rhythm, Unity, Variety. These govern how elements are arranged." },
+        { title: "Warm vs Cool Colours", body: "WARM colours (red, orange, yellow): appear to advance/come forward in a painting. COOL colours (blue, green, violet): appear to recede/go back. RECURRING!" },
+        { title: "Colour mixing", body: "Primary: red, yellow, blue. Secondary: orange, green, violet. Tint = colour + white (lighter). Shade = colour + black (darker). Complementary colours are opposite on colour wheel." },
+        { title: "Line", body: "The element of art that records the movement of the hand describing objects. Most basic element. RECURRING!" },
+      ]},
+      { heading: "Art Techniques", type: "cards", items: [
+        { title: "Sculpture techniques", body: "Armature: the metal framework/skeleton inside a modelled sculpture. RECURRING! Carving: subtractive (removes material). Modelling: additive (adds material). Casting: pours molten material into mould." },
+        { title: "Ceramics", body: "Throwing: shaping clay on a potter's wheel. Biscuit/Bisque ware: ceramic fired once but NOT yet glazed. RECURRING! Glazing: applying glass-like coating before second firing." },
+        { title: "Printmaking", body: "Silk screen printing uses a STENCIL to block ink from passing through the mesh. RECURRING! Types: relief (lino, wood), intaglio (etching), planographic (lithography), stencil (screen printing)." },
+        { title: "Textiles", body: "Warp and weft: terms used in FABRIC WEAVING (warp = vertical, weft = horizontal). Tie-dye and batik are RESIST techniques. Resist = wax/binding prevents dye penetration. RECURRING!" },
+        { title: "Perspective", body: "Aerial perspective: how atmosphere changes colours at distance. Leonardo da Vinci solved perspective problems through mathematical means. Vanishing point: where parallel lines appear to meet. Horizon: where sky and earth meet." },
+      ]},
+      { heading: "Nigerian & African Art", type: "cards", items: [
+        { title: "Nigerian art centres", body: "Ife: naturalistic terracotta and bronze heads. Benin: bronzes looted by British in 1897 Punitive Expedition. Igbo Ukwu: oldest bronzes in West Africa (9th century). Nok: earliest terracotta figures in Nigeria." },
+        { title: "Famous Nigerian artists", body: "Aina Onabolu: pioneer of modern Nigerian art, created the Sango sculpture at PHCN HQ Lagos. Ben Enwonwu: sculptor and painter. Susanne Wenger (Adunni Olorisa): revived Oshogbo arts festival." },
+        { title: "African art uses", body: "Masks used for social dances and ritual ceremonies. Akwaba dolls: fertility figures made by the ASHANTI of Ghana. Fulani nomads' most cherished arts: body and calabash decoration." },
+        { title: "Art movements", body: "Mosaic art flourished in ROMANESQUE period (6th-15th centuries). Abstract art: does not represent visual reality — uses distorted forms, shapes, and colours. Cubism was directly influenced by African masks and sculpture." },
+        { title: "Craft traditions", body: "Hausa people: renowned for leather work. Bida (Niger State): most famous centre for bead-making in Nigeria. Weaving, pottery, bronze casting are major Nigerian craft traditions." },
+      ]},
+      { heading: "Key Definitions", type: "cards", items: [
+        { title: "Abstract art", body: "Art that does NOT attempt to represent visual reality — uses shapes, colours, forms, and gestural marks to achieve its effect. Opposite of realism/naturalism." },
+        { title: "Naturalistic art", body: "Art that realistically represents the natural world. IFE art is famous for its naturalistic bronze and terracotta heads." },
+        { title: "Poster design", body: "The most essential quality of a good poster is LEGIBILITY — it must be easily readable from a distance." },
+        { title: "Human proportion", body: "In a proportionate drawing, a RULER is used as the standard measuring unit. The head height is the standard unit." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Most tested facts: Armature = metal framework for sculpture. Biscuit = unglazed fired ceramic. Warm colours advance, cool colours recede. Warp and weft = weaving. Igbo Ukwu = oldest bronzes in West Africa. Akwaba = Ashanti Ghana. Cubism influenced by African art." },
+    ]
+  },
 }
 
 export default STUDY_GUIDES

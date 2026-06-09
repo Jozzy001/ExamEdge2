@@ -27,7 +27,7 @@ export const UNIBEN_FACULTIES = {
     name: "Arts, Law & Humanities",
     icon: "🎭",
     desc: "Law, Literature, History, Philosophy, Religious Studies, Accounting",
-    subjects: ["English", "Economics", "Government", "Literature"],
+    subjects: ["English", "Literature", "Government", "CRS", "Visual Arts", "IRK"],
     englishFirst: true,
   },
 }

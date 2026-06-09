@@ -54,6 +54,7 @@ function App() {
   const [selectedStartIndex, setSelectedStartIndex] = useState(0)
   const [reviewRecord, setReviewRecord] = useState(null)
   const [authUser, setAuthUser] = useState(null)
+  const [freeAccessMode, setFreeAccessMode] = useState(false)
   const [userData, setUserData] = useState(() => {
     // Initialize from cache to avoid name flash on load
     try {
@@ -193,6 +194,15 @@ function App() {
     })
     return () => unsub()
   }, [authUser?.uid])
+  // Listen to global freeAccessMode from appSettings/global
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, "appSettings", "global"), (snap) => {
+      if (snap.exists()) setFreeAccessMode(snap.data().freeAccessMode === true)
+      else setFreeAccessMode(false)
+    }, () => setFreeAccessMode(false))
+    return () => unsub()
+  }, [])
+
   // Hardware/browser back button support
   useEffect(() => {
     window.history.pushState({ appPage: page }, "", window.location.pathname)
@@ -334,6 +344,9 @@ function App() {
   }
 
   const { examType, university, faculty } = profile
+  // freeAccessMode gives everyone full access without touching user records
+  // Paid users stay paid regardless; free users get access when mode is on
+  const effectiveIsPaid = userData?.isPaid || freeAccessMode
   const facultySubjects = getFacultySubjects()
 
   const renderPage = () => {
@@ -345,12 +358,12 @@ function App() {
       if (page === "cbtSubjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="cbt" examType="jamb" />
       if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
-      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={userData?.isPaid} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={userData?.isPaid} />
+      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={effectiveIsPaid} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={effectiveIsPaid} />
       if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
       if (page === "cbtHistory") return (
         <CBTHistory
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           onNavigate={handleNavigate}
           onBack={handleBack}
           onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}
@@ -370,7 +383,7 @@ function App() {
           faculty={faculty}
           facultySubjects={facultySubjects}
           authUser={authUser}
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           userData={userData}
         />
       )
@@ -396,7 +409,7 @@ function App() {
       )
       if (page === "study") return (
         <StudyMode
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           subject={selectedSubject}
           onNavigate={handleNavigate}
           onBack={handleBack}
@@ -412,11 +425,11 @@ function App() {
           examType="postutme"
           university={university}
           startFromIndex={startIndexRef.current}
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
         />
       )
-      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={userData?.isPaid} />
-      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={userData?.isPaid} />
+      if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={effectiveIsPaid} />
+      if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={effectiveIsPaid} />
       if (page === "cbt") return (
         <Quiz
           topic="cbt"
@@ -426,12 +439,12 @@ function App() {
           university={university}
           englishFirst={true}
           customCounts={cbtCounts}
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
         />
       )
       if (page === "cbtHistory") return (
         <CBTHistory
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           onNavigate={handleNavigate}
           onBack={handleBack}
           onReview={(record) => { setReviewRecord(record); handleNavigate("cbtResult") }}
@@ -456,7 +469,7 @@ function App() {
           onBack={() => { setPage("hotTopics"); setPageHistory([]) }}
           examType="postutme"
           university={university}
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           hotTopicFilter={hotTopicTopic}
         />
       )
@@ -481,7 +494,7 @@ function App() {
           faculty={faculty}
           university={university}
           examType={examType}
-          isPaid={userData?.isPaid}
+          isPaid={effectiveIsPaid}
           userData={userData}
         />
       )

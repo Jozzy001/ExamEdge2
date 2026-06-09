@@ -27,6 +27,22 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   const [replyingTo, setReplyingTo] = useState(null) // message object
   const [replyText, setReplyText] = useState("")
   const [sendingReply, setSendingReply] = useState(false)
+  const [freeAccessMode, setFreeAccessModeLocal] = useState(false)
+  const [freeAccessLoading, setFreeAccessLoading] = useState(false)
+  const [dmTarget, setDmTarget] = useState(null) // user object being DM'd
+  const [dmText, setDmText] = useState("")
+  const [sendingDm, setSendingDm] = useState(false)
+
+  // Load current freeAccessMode on mount
+  useEffect(() => {
+    const loadFreeAccess = async () => {
+      try {
+        const snap = await import("firebase/firestore").then(({ getDoc, doc: d }) => getDoc(d(db, "appSettings", "global")))
+        if (snap.exists()) setFreeAccessModeLocal(snap.data().freeAccessMode === true)
+      } catch(e) {}
+    }
+    loadFreeAccess()
+  }, [])
 
   // Redirect if not admin
   if (authUser?.email !== ADMIN_EMAIL) {
@@ -99,6 +115,55 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     }
     setActionMsg(`✅ Reset ${toReset.length} unpaid referral balance(s)`)
     fetchUsers()
+  }
+
+  const handleSendDm = async (user) => {
+    if (!dmText.trim()) return
+    setSendingDm(true)
+    try {
+      await addDoc(collection(db, "messages"), {
+        uid: user.id,
+        username: user.name || "User",
+        email: user.email || "",
+        message: dmText.trim(),
+        createdAt: serverTimestamp(),
+        status: "read",          // admin-sent — no need to mark unread on admin side
+        fromAdmin: true,
+        lastReply: dmText.trim(), // show it as a reply in user's inbox immediately
+        replied: true,
+        repliedAt: new Date().toISOString(),
+      })
+      setActionMsg(`✅ Message sent to ${user.name}`)
+      setDmText("")
+      setDmTarget(null)
+    } catch(e) {
+      setActionError("Failed to send message. Try again.")
+    }
+    setSendingDm(false)
+  }
+
+  const handleToggleFreeAccess = async () => {
+    const newMode = !freeAccessMode
+    const msg = newMode
+      ? "Enable FREE ACCESS MODE? All users (free and paid) will get full access until you turn it off. Paid users are unaffected."
+      : "Disable FREE ACCESS MODE? Free users will return to the paywall. Paid users are unaffected."
+    if (!window.confirm(msg)) return
+    setFreeAccessLoading(true)
+    try {
+      await setDoc(doc(db, "appSettings", "global"), {
+        freeAccessMode: newMode,
+        updatedAt: serverTimestamp(),
+        updatedBy: authUser?.email,
+      }, { merge: true })
+      setFreeAccessModeLocal(newMode)
+      setActionMsg(newMode
+        ? "🎉 Free Access Mode ENABLED — all users now have full access!"
+        : "🔒 Free Access Mode DISABLED — paywall is back on for free users."
+      )
+    } catch(e) {
+      setActionError("Failed to update free access mode.")
+    }
+    setFreeAccessLoading(false)
   }
 
   const handleResetExpiredSubscriptions = async () => {
@@ -355,6 +420,53 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
         {/* ===== STATS TAB ===== */}
         {tab === "stats" && (
           <>
+            {/* Free Access Mode Toggle */}
+            <div style={{
+              background: freeAccessMode ? "rgba(34,197,94,0.08)" : "var(--surface)",
+              border: `2px solid ${freeAccessMode ? "#22c55e" : "var(--border)"}`,
+              borderRadius: "var(--radius-lg)", padding: "16px 18px",
+              marginBottom: 20,
+            }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 8 }}>
+                    {freeAccessMode ? "🟢" : "🔴"} Free Access Mode
+                    {freeAccessMode && (
+                      <span style={{
+                        fontSize: 10, fontWeight: 800, padding: "2px 8px",
+                        background: "#22c55e", color: "#fff", borderRadius: 20
+                      }}>ACTIVE</span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--text2)", marginTop: 3, lineHeight: 1.5 }}>
+                    {freeAccessMode
+                      ? "All users currently have full access. Paid users are unaffected."
+                      : "Paywall is active. Only paid users have full access."
+                    }
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={handleToggleFreeAccess}
+                disabled={freeAccessLoading}
+                style={{
+                  width: "100%", padding: "12px",
+                  background: freeAccessMode ? "rgba(239,68,68,0.1)" : "rgba(34,197,94,0.1)",
+                  color: freeAccessMode ? "#dc2626" : "#15803d",
+                  border: `1.5px solid ${freeAccessMode ? "rgba(239,68,68,0.4)" : "rgba(34,197,94,0.4)"}`,
+                  borderRadius: "var(--radius-md)",
+                  fontWeight: 800, fontSize: 14, cursor: freeAccessLoading ? "not-allowed" : "pointer",
+                  fontFamily: "var(--font-main)", opacity: freeAccessLoading ? 0.6 : 1,
+                }}
+              >
+                {freeAccessLoading ? "Updating..." : freeAccessMode
+                  ? "🔒 Disable Free Access — Restore Paywall"
+                  : "🎉 Enable Free Access — Give Everyone Full Access"
+                }
+              </button>
+            </div>
+
+
             <div style={{
               display: "grid", gridTemplateColumns: "1fr 1fr",
               gap: 12, marginBottom: 20
@@ -687,7 +799,70 @@ Options:
                             </button>
                           )}
 
-                          <button
+                          {/* Direct Message */}
+                          {dmTarget?.id === user.id ? (
+                            <div>
+                              <textarea
+                                value={dmText}
+                                onChange={e => setDmText(e.target.value)}
+                                placeholder={`Type your message to ${user.name}...`}
+                                rows={3}
+                                style={{
+                                  width: "100%", padding: "10px 12px",
+                                  border: "1.5px solid var(--primary)",
+                                  borderRadius: "var(--radius-md)",
+                                  background: "var(--surface)",
+                                  fontSize: 13, color: "var(--text)",
+                                  fontFamily: "var(--font-main)",
+                                  resize: "none", outline: "none",
+                                  boxSizing: "border-box", marginBottom: 8,
+                                }}
+                              />
+                              <div style={{ display: "flex", gap: 8 }}>
+                                <button
+                                  onClick={() => handleSendDm(user)}
+                                  disabled={sendingDm || !dmText.trim()}
+                                  style={{
+                                    flex: 2, padding: "10px",
+                                    background: sendingDm || !dmText.trim() ? "#ccc" : "#7c3aed",
+                                    color: "#fff", border: "none",
+                                    borderRadius: "var(--radius-md)",
+                                    fontWeight: 800, fontSize: 13,
+                                    cursor: sendingDm || !dmText.trim() ? "not-allowed" : "pointer",
+                                    fontFamily: "var(--font-main)"
+                                  }}
+                                >
+                                  {sendingDm ? "Sending..." : "📨 Send Message"}
+                                </button>
+                                <button
+                                  onClick={() => { setDmTarget(null); setDmText("") }}
+                                  style={{
+                                    flex: 1, padding: "10px",
+                                    background: "var(--surface2)", color: "var(--text2)",
+                                    border: "1px solid var(--border)",
+                                    borderRadius: "var(--radius-md)",
+                                    fontWeight: 700, fontSize: 13,
+                                    cursor: "pointer", fontFamily: "var(--font-main)"
+                                  }}
+                                >Cancel</button>
+                              </div>
+                            </div>
+                          ) : (
+                            <button
+                              onClick={() => { setDmTarget(user); setDmText("") }}
+                              style={{
+                                padding: "10px", borderRadius: "var(--radius-md)",
+                                background: "rgba(124,58,237,0.1)", color: "#7c3aed",
+                                border: "1px solid rgba(124,58,237,0.3)",
+                                fontWeight: 800, fontSize: 13,
+                                cursor: "pointer", fontFamily: "var(--font-main)"
+                              }}
+                            >
+                              💬 Send Direct Message
+                            </button>
+                          )}
+
+                                                    <button
                             onClick={() => handlePasswordReset(user.email)}
                             style={{
                               padding: "10px", borderRadius: "var(--radius-md)",

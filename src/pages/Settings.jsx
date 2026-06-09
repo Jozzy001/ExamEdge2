@@ -502,7 +502,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", display: "flex", alignItems: "center", gap: 8 }}>
                 Contact Support
-                {myMessages.some(m => m.replied) && (
+                {myMessages.some(m => m.replied || m.fromAdmin) && (
                   <span style={{
                     fontSize: 10, fontWeight: 800,
                     background: "#22c55e", color: "#fff",
@@ -532,24 +532,26 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                       paddingBottom: i < myMessages.length - 1 ? 16 : 0,
                       borderBottom: i < myMessages.length - 1 ? "1px solid var(--border)" : "none"
                     }}>
-                      {/* User's message */}
-                      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
-                        <div style={{
-                          maxWidth: "85%",
-                          background: "var(--primary)", color: "#fff",
-                          borderRadius: "14px 14px 4px 14px",
-                          padding: "10px 14px", fontSize: 13, lineHeight: 1.5,
-                        }}>
-                          <div style={{ fontSize: 10, opacity: 0.75, marginBottom: 4, fontWeight: 700 }}>
-                            You · {msg.createdAt?.toDate
-                              ? msg.createdAt.toDate().toLocaleDateString("en-NG", { day: "numeric", month: "short" })
-                              : "—"}
+                      {/* User's message — hide for admin-initiated DMs */}
+                      {!msg.fromAdmin && (
+                        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+                          <div style={{
+                            maxWidth: "85%",
+                            background: "var(--primary)", color: "#fff",
+                            borderRadius: "14px 14px 4px 14px",
+                            padding: "10px 14px", fontSize: 13, lineHeight: 1.5,
+                          }}>
+                            <div style={{ fontSize: 10, opacity: 0.75, marginBottom: 4, fontWeight: 700 }}>
+                              You · {msg.createdAt?.toDate
+                                ? msg.createdAt.toDate().toLocaleDateString("en-NG", { day: "numeric", month: "short" })
+                                : "—"}
+                            </div>
+                            {msg.message}
                           </div>
-                          {msg.message}
                         </div>
-                      </div>
-                      {/* Admin reply */}
-                      {msg.lastReply ? (
+                      )}
+                      {/* Admin reply / admin-initiated DM */}
+                      {(msg.lastReply || msg.fromAdmin) ? (
                         <div style={{ display: "flex", justifyContent: "flex-start" }}>
                           <div style={{
                             maxWidth: "85%",
@@ -558,11 +560,14 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                             padding: "10px 14px", fontSize: 13, lineHeight: 1.5, color: "var(--text)"
                           }}>
                             <div style={{ fontSize: 10, color: "var(--primary)", marginBottom: 4, fontWeight: 800 }}>
-                              ExamEdgeNG Support · {msg.repliedAt
-                                ? new Date(msg.repliedAt).toLocaleDateString("en-NG", { day: "numeric", month: "short" })
+                              ExamEdgeNG Support · {(msg.repliedAt || msg.createdAt)
+                                ? new Date(msg.fromAdmin
+                                    ? (msg.createdAt?.toDate ? msg.createdAt.toDate() : new Date(msg.createdAt))
+                                    : msg.repliedAt
+                                  ).toLocaleDateString("en-NG", { day: "numeric", month: "short" })
                                 : "—"}
                             </div>
-                            {msg.lastReply}
+                            {msg.fromAdmin ? msg.message : msg.lastReply}
                           </div>
                         </div>
                       ) : (

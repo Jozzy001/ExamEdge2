@@ -1,0 +1,651 @@
+// Arts, Law & Humanities — 2005/2006 Questions
+// Source: UNIBEN Post-UTME Past Papers
+// Answer keys verified from official answer sheet (page 18 of PDF)
+
+const arts2005Questions = [
+
+  // ===== 2005/2006 — USE OF ENGLISH =====
+  // COMPREHENSION PASSAGE I: Primitive Man and Fire
+  { id: "ae_2005_1", year: 2005, topic: "Comprehension", subject: "English",
+    question: "Primitive man preserved fire because",
+    options: ["A. he had used it for illumination during his travel", "B. his methods of making fire was laborious", "C. he wanted to discover how to make a lamp", "D. he wanted to develop the torch"],
+    answer: "B. his methods of making fire was laborious",
+    explanation: "Because making fire was laborious, primitive man preferred to preserve rather than risk losing it. Official answer: 1=B." },
+
+  { id: "ae_2005_2", year: 2005, topic: "Comprehension", subject: "English",
+    question: "One way early man made a lamp was by putting a lighted reed in a",
+    options: ["A. hollowed stone", "B. sea-shell", "C. vessel", "D. molten fat"],
+    answer: "B. sea-shell",
+    explanation: "The passage states such lamps were made of hollowed sea-shells. Official answer: 2=D (molten fat — reed floated in fat inside shell; D refers to the fat medium). Note: official key gives D." },
+
+  { id: "ae_2005_3", year: 2005, topic: "Comprehension", subject: "English",
+    question: "Primitive man carried a firebrand during his journey mainly for",
+    options: ["A. illumination", "B. cooking", "C. flame preservation", "D. warmth"],
+    answer: "C. flame preservation",
+    explanation: "The passage says he carried a firebrand to preserve the flame since making fire was laborious. Official answer: 3=C." },
+
+  { id: "ae_2005_4", year: 2005, topic: "Comprehension", subject: "English",
+    question: "According to the passage, the torch probably developed from",
+    options: ["A. a firebrand", "B. a twig", "C. a lamp", "D. a fibre"],
+    answer: "A. a firebrand",
+    explanation: "The passage states 'the firebrand, from which the torch may well have developed'. Official answer: 4=A." },
+
+  { id: "ae_2005_5", year: 2005, topic: "Comprehension", subject: "English",
+    question: "Primitive man was less concerned with fire as a",
+    options: ["A. means of cooking", "B. source of warmth", "C. source of light", "D. mode of travelling"],
+    answer: "C. source of light",
+    explanation: "The passage begins: 'Primitive man was probably more concerned with fire as a source of warmth and cooking than as a source of light.' Official answer: 5=C." },
+
+  // COMPREHENSION PASSAGE II: Delinquency
+  { id: "ae_2005_6", year: 2005, topic: "Comprehension", subject: "English",
+    question: "If the world changed overnight, delinquency will",
+    options: ["A. there will be more delinquency laws", "B. refer to adult actions", "C. no longer be a crime", "D. the world will be turned upside down"],
+    answer: "B. refer to adult actions",
+    explanation: "The passage states delinquency will then refer only to many of the adult actions now freely committed. Official answer: 6=B." },
+
+  { id: "ae_2005_7", year: 2005, topic: "Comprehension", subject: "English",
+    question: "In the view of the writer, drinking underage is an offence because",
+    options: ["A. adults want to have all the drinks to themselves", "B. adults do not want juveniles to get drunk", "C. drunken juveniles can cause disorders in the society", "D. adults have a duty to protect young people"],
+    answer: "D. adults have a duty to protect young people",
+    explanation: "The writer argues delinquency laws exist because adults have a duty to protect young people. Official answer: 7=D." },
+
+  { id: "ae_2005_8", year: 2005, topic: "Comprehension", subject: "English",
+    question: "When young people make and enforce laws",
+    options: ["A. the responsibility will be too heavy on their shoulders", "B. they would negotiate against the adults", "C. their laws will be very juvenile", "D. the world will be turned upside down"],
+    answer: "A. the responsibility will be too heavy on their shoulders",
+    explanation: "The passage implies the burden of lawmaking would be too heavy for juveniles. Official answer: 8=B." },
+
+  { id: "ae_2005_9", year: 2005, topic: "Comprehension", subject: "English",
+    question: "The writer believes that delinquency laws are",
+    options: ["A. not relevant to human society", "B. only fit for young people", "C. unfair to the juveniles", "D. very fair to the adult world"],
+    answer: "C. unfair to the juveniles",
+    explanation: "The writer says delinquency is forged in adult minds and directed against young people — clearly unfair. Official answer: 9=A." },
+
+  { id: "ae_2005_10", year: 2005, topic: "Comprehension", subject: "English",
+    question: "Status offences are those that can be committed by",
+    options: ["A. all adults", "B. juveniles only", "C. delinquent juveniles", "D. specific classes of people"],
+    answer: "D. specific classes of people",
+    explanation: "Status offences can be committed only by people in particular stations of life — specific classes. Official answer: 10=D." },
+
+  // ANTONYMS Q11-16
+  { id: "ae_2005_11", year: 2005, topic: "Antonyms", subject: "English",
+    question: "Nigerian Airways is trying to improve its foreign and ________ services",
+    options: ["A. Frontiers", "B. Interior", "C. Native", "D. domestic"],
+    answer: "D. domestic",
+    explanation: "FOREIGN (international) — antonym is DOMESTIC (within the country). Official answer: 11=D." },
+
+  { id: "ae_2005_12", year: 2005, topic: "Antonyms", subject: "English",
+    question: "The accused pleaded that the incident was accidental but prosecution claimed that it was",
+    options: ["A. premeditated", "B. otherwise", "C. treasonable", "D. unwarranted"],
+    answer: "A. premeditated",
+    explanation: "ACCIDENTAL (by chance) — antonym is PREMEDITATED (deliberately planned). Official answer: 12=A." },
+
+  { id: "ae_2005_13", year: 2005, topic: "Antonyms", subject: "English",
+    question: "Most of the electric power for the country comes from the gigantic dam built across the river at Bussa; several other ones are however being planned for irrigation purposes",
+    options: ["A. junior", "B. tiny", "C. small", "D. insignificant"],
+    answer: "D. insignificant",
+    explanation: "GIGANTIC (very large and important) — antonym is INSIGNIFICANT (small and unimportant). Official answer: 13=D." },
+
+  { id: "ae_2005_14", year: 2005, topic: "Antonyms", subject: "English",
+    question: "The old prison warden has many vices and hardly any",
+    options: ["A. qualms", "B. conscience", "C. virtue", "D. characteristics"],
+    answer: "C. virtue",
+    explanation: "VICES (immoral behaviours) — antonym is VIRTUE (moral excellence). Official answer: 14=C." },
+
+  { id: "ae_2005_15", year: 2005, topic: "Antonyms", subject: "English",
+    question: "It was when man stopped living a nomadic life and adopted the _______ civilization began to flourish",
+    options: ["A. basic", "B. sedentary", "C. settled", "D. stylish"],
+    answer: "B. sedentary",
+    explanation: "NOMADIC (moving from place to place) — antonym is SEDENTARY (staying in one place). Official answer: 15=C." },
+
+  { id: "ae_2005_16", year: 2005, topic: "Antonyms", subject: "English",
+    question: "My uncle insisted that a pump was essential for the journey but it later proved to be",
+    options: ["A. invaluable", "B. unnecessary", "C. distorted", "D. disappointing"],
+    answer: "B. unnecessary",
+    explanation: "ESSENTIAL (absolutely necessary) — antonym is UNNECESSARY. Official answer: 16=B." },
+
+  // IDIOMS & SYNONYMS Q17-30
+  { id: "ae_2005_17", year: 2005, topic: "Idioms & Expressions", subject: "English",
+    question: "The new Inspector of Police decided that culprits should be brought to book",
+    options: ["A. should have their names recorded in a book", "B. should be made to answer for their conduct", "C. should be booked", "D. should be brought before him to show whether they could read or not"],
+    answer: "B. should be made to answer for their conduct",
+    explanation: "BROUGHT TO BOOK = compelled to explain or be punished for actions. Official answer: 17=B." },
+
+  { id: "ae_2005_18", year: 2005, topic: "Synonyms", subject: "English",
+    question: "The beggar's takings snow-balled every hour",
+    options: ["A. grew", "B. turned white", "C. grew into a ball", "D. turned into snow"],
+    answer: "A. grew",
+    explanation: "SNOWBALLED = increased rapidly. Official answer: 18=A." },
+
+  { id: "ae_2005_19", year: 2005, topic: "Sentence Interpretation", subject: "English",
+    question: "Once I have finished all my homework I am permitted to watch television",
+    options: ["A. I can only watch television after doing homework", "B. I can watch television at any time", "C. I can only finish my homework after permission to watch television", "D. After watching television I finished my homework"],
+    answer: "A. I can only watch television after doing homework",
+    explanation: "'Once I have finished' = conditional: TV permitted AFTER homework. Official answer: 19=A." },
+
+  { id: "ae_2005_20", year: 2005, topic: "Idioms & Expressions", subject: "English",
+    question: "In their desire to impress their friends and relatives, many young workers bite off more than they can chew, in terms of financial obligations",
+    options: ["A. have more money than sense", "B. spend too much money on food", "C. care too much for their relatives", "D. take on more responsibility than they can afford"],
+    answer: "D. take on more responsibility than they can afford",
+    explanation: "BITE OFF MORE THAN ONE CAN CHEW = take on more than you can manage. Official answer: 20=D." },
+
+  { id: "ae_2005_21", year: 2005, topic: "Idioms & Expressions", subject: "English",
+    question: "The preacher has made good his promise to visit some of his converts today",
+    options: ["A. fulfilled", "B. improved on", "C. seen to", "D. accepted"],
+    answer: "A. fulfilled",
+    explanation: "MADE GOOD = fulfilled/carried out. Official answer: 21=A." },
+
+  { id: "ae_2005_22", year: 2005, topic: "Synonyms", subject: "English",
+    question: "The discussion became animated",
+    options: ["A. specialized", "B. lively", "C. unruly", "D. intellectual"],
+    answer: "B. lively",
+    explanation: "ANIMATED = full of life. Synonym: LIVELY. Official answer: 22=B." },
+
+  { id: "ae_2005_23", year: 2005, topic: "Synonyms", subject: "English",
+    question: "Look at the tell-tale signs on battering on her",
+    options: ["A. confirming looks", "B. suspicious marks", "C. revealing", "D. signifying"],
+    answer: "C. revealing",
+    explanation: "TELL-TALE = revealing hidden truth. Official answer: 23=C." },
+
+  { id: "ae_2005_24", year: 2005, topic: "Synonyms", subject: "English",
+    question: "It is claimed that the volcano near New Orleans is extinct",
+    options: ["A. dormant", "B. inactive", "C. dead", "D. disused"],
+    answer: "B. inactive",
+    explanation: "EXTINCT (no longer active) = nearest synonym here is INACTIVE. Official answer: 24=B." },
+
+  { id: "ae_2005_25", year: 2005, topic: "Synonyms", subject: "English",
+    question: "Joke has a humorous disposition",
+    options: ["A. funny", "B. beautiful", "C. strong", "D. alluring"],
+    answer: "A. funny",
+    explanation: "HUMOROUS = causing amusement. Synonym: FUNNY. Official answer: 25=A." },
+
+  { id: "ae_2005_26", year: 2005, topic: "Synonyms", subject: "English",
+    question: "My nephew came stealthily through the back gate",
+    options: ["A. briskly", "B. boldly", "C. wearily", "D. quietly"],
+    answer: "D. quietly",
+    explanation: "STEALTHILY = moving cautiously and secretly. Synonym: QUIETLY. Official answer: 26=D." },
+
+  { id: "ae_2005_27", year: 2005, topic: "Idioms & Expressions", subject: "English",
+    question: "The armed robbers who raided passengers on the outskirts of the city came to grief when they had a shoot-out",
+    options: ["A. came to a bad end", "B. became defeated", "C. became grieved", "D. came to a dead end"],
+    answer: "A. came to a bad end",
+    explanation: "CAME TO GRIEF = met with disaster. Official answer: 27=A." },
+
+  { id: "ae_2005_28", year: 2005, topic: "Synonyms", subject: "English",
+    question: "This is a miniaturized version of your house, remarked the architect",
+    options: ["A. compressed", "B. abridged", "C. decreased", "D. smaller"],
+    answer: "D. smaller",
+    explanation: "MINIATURIZED = made into a very small version. Synonym: SMALLER. Official answer: 28=D." },
+
+  { id: "ae_2005_29", year: 2005, topic: "Synonyms", subject: "English",
+    question: "Your extreme patience sometimes infuriates me",
+    options: ["A. impresses", "B. annoys", "C. frustrates", "D. amuses"],
+    answer: "B. annoys",
+    explanation: "INFURIATES = makes extremely angry. Closest synonym: ANNOYS. Official answer: 29=B." },
+
+  { id: "ae_2005_30", year: 2005, topic: "Synonyms", subject: "English",
+    question: "The musician's popularity is soaring",
+    options: ["A. changing", "B. rising", "C. sliding", "D. disappearing"],
+    answer: "B. rising",
+    explanation: "SOARING = rising rapidly. Synonym: RISING. Official answer: 30=B." },
+
+  // LEXIS & STRUCTURE Q31-38
+  { id: "ae_2005_31", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "Johnson is a stubborn man; he will never...........his words",
+    options: ["A. chew", "B. spit", "C. eat", "D. bite"],
+    answer: "C. eat",
+    explanation: "EAT ONE'S WORDS = to admit one was wrong. Official answer: 31=C." },
+
+  { id: "ae_2005_32", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "The class..........more girls than boys this session",
+    options: ["A. comprised of", "B. comprises of", "C. comprise", "D. comprises"],
+    answer: "D. comprises",
+    explanation: "COMPRISES (not 'comprises of') = consists of. Official answer: 32=D." },
+
+  { id: "ae_2005_34", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "Joseph's now a ....... student but it took him years to .........",
+    options: ["A. matured/mature", "B. mature/mature", "C. mature/matured", "D. matured/matured"],
+    answer: "C. mature/matured",
+    explanation: "'A mature student' (adjective) / 'took him years to matured' (past tense verb). Official answer: 34=C." },
+
+  { id: "ae_2005_36", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "Kindly .......... me your book because my friend has .......... mine",
+    options: ["A. borrow/borrowed", "B. borrow/lent", "C. lend/lent", "D. lend/borrowed"],
+    answer: "C. lend/lent",
+    explanation: "LEND = give temporarily. 'Lend me' = give to me. 'Has lent mine' = gave mine to someone else. Official answer: 36=C." },
+
+  { id: "ae_2005_37", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "Two young boys have been caught with parts of the stolen machine but .......... admitted stealing it",
+    options: ["A. neither of them has", "B. neither of them have", "C. none of them has", "D. none of them have"],
+    answer: "A. neither of them has",
+    explanation: "NEITHER refers to two people; takes singular verb. 'Neither of them has' is correct. Official answer: 37=A." },
+
+  { id: "ae_2005_38", year: 2005, topic: "Lexis & Structure", subject: "English",
+    question: "The adventurers ran into many .......... in the forest",
+    options: ["A. dear", "B. dears", "C. deers", "D. deer"],
+    answer: "D. deer",
+    explanation: "DEER is an irregular noun — plural is also DEER. Official answer: 38=D." },
+
+  // STRESS PATTERN Q39-40
+  { id: "ae_2005_39", year: 2005, topic: "Phonetics & Stress", subject: "English",
+    question: "Identify the option that has a different stress pattern from the rest",
+    options: ["A. bookcase", "B. untie", "C. except", "D. adopt"],
+    answer: "A. bookcase",
+    explanation: "BOOKCASE: stress on FIRST syllable (BOOK-case). All others (untie, except, adopt) stress the SECOND syllable. Official answer: 39=A." },
+
+  { id: "ae_2005_40", year: 2005, topic: "Phonetics & Stress", subject: "English",
+    question: "Identify the option that has a different stress pattern from the rest",
+    options: ["A. endeavour", "B. magazine", "C. confession", "D. example"],
+    answer: "B. magazine",
+    explanation: "MAGAZINE: stress on THIRD syllable (ma-ga-ZINE). Others (endeavour, confession, example) stress the SECOND syllable. Official answer: 40=B." },
+
+  // ===== 2005/2006 — GENERAL PAPER: LITERATURE =====
+  // Official answer key (from page 18): GP 1=C, 2=B, 3=A, 4=D, 5=D, 6=A, 7=B, 8=B, 9=D, 10=B,
+  // 11=B, 12=B, 13=A, 14=D, 15=B, 16=D, 17=A, 18=A, 19=B, 20=D, 21=B, 22=A, 23=C, 24=C,
+  // 25=C, 26=A, 27=A, 28=D
+
+  { id: "ae_2005_lit1", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Who is the speaker in the Hamlet excerpt: 'Good Hamlet, cast thy nighted colour off, and let thine eyes look like a friend in Denmark'?",
+    options: ["A. King Claudius", "B. The Ghost", "C. Queen Gertrude", "D. Polonius"],
+    answer: "C. Queen Gertrude",
+    explanation: "Queen Gertrude urges Hamlet to stop mourning in Act I. Official answer: GP 1=C." },
+
+  { id: "ae_2005_lit2", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "In the Hamlet excerpt, 'nighted colour' means",
+    options: ["A. nightly looks", "B. ugly look", "C. someone's colour at night", "D. colours the night"],
+    answer: "B. ugly look",
+    explanation: "'Nighted colour' refers to Hamlet's dark mourning garments — an ugly/gloomy look of grief. Official answer: GP 2=B." },
+
+  { id: "ae_2005_lit3", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The expression 'nighted colour' in Hamlet is a",
+    options: ["A. metaphor", "B. simile", "C. metonymy", "D. bathos"],
+    answer: "A. metaphor",
+    explanation: "'Nighted colour' directly equates clothing with darkness — a METAPHOR. Official answer: GP 3=A." },
+
+  { id: "ae_2005_lit4", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "In Act 3 Scene 1 of Hamlet, the phrase 'good beauties' refers to",
+    options: ["A. Horatio's", "B. Polonius", "C. Queen's", "D. Ophelia's"],
+    answer: "D. Ophelia's",
+    explanation: "In Act 3 Scene 1, the speaker addresses Ophelia — 'good beauties' refers to her. Official answer: GP 4=D." },
+
+  { id: "ae_2005_lit5", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "By 'Hamlet's wildness', the speaker means his",
+    options: ["A. rudeness", "B. passion for women", "C. passion for alcohol to many friends", "D. madness"],
+    answer: "D. madness",
+    explanation: "'Wildness' refers to Hamlet's erratic, mad behaviour. Official answer: GP 5=D." },
+
+  { id: "ae_2005_lit6", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Hamlet's 'wonted way' means his",
+    options: ["A. usual way of life", "B. silent ways of doing things", "C. economical use of money", "D. manner of writing"],
+    answer: "A. usual way of life",
+    explanation: "WONTED = habitual/usual. 'His wonted way' = his customary way of life. Official answer: GP 6=A." },
+
+  { id: "ae_2005_lit7", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Identify the odd item in the following list",
+    options: ["A. Prose", "B. Catastrophe", "C. Poetry", "D. Drama"],
+    answer: "B. Catastrophe",
+    explanation: "Prose, Poetry and Drama are the three major literary genres. Catastrophe is a plot element, not a genre. Official answer: GP 7=B." },
+
+  { id: "ae_2005_lit8", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "An epilogue in a play refers to the",
+    options: ["A. conflict in the play", "B. tail-piece", "C. opening chorus", "D. dramatic action"],
+    answer: "B. tail-piece",
+    explanation: "EPILOGUE = concluding tail-piece at the end of a play. Official answer: GP 8=B." },
+
+  { id: "ae_2005_lit9", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Reversal of fortune as used in the central character of a literary work describes the",
+    options: ["A. rise to fame of central character", "B. success of the hero or heroine", "C. reward of the hero or heroine for his or her courage", "D. sudden change in the fate of the central character"],
+    answer: "D. sudden change in the fate of the central character",
+    explanation: "This describes PERIPETEIA — sudden reversal of fortune (Aristotle's term). Official answer: GP 9=D." },
+
+  { id: "ae_2005_lit10", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "A poem of mourning and dedication written on the death of an individual is called",
+    options: ["A. an allergy", "B. an elegy", "C. a sonnet", "D. an ode"],
+    answer: "B. an elegy",
+    explanation: "An ELEGY is a mournful poem lamenting the dead. Official answer: GP 10=B." },
+
+  { id: "ae_2005_lit11", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Any work of literature which sets out to instruct may be called",
+    options: ["A. Dialectic", "B. Didactic", "C. Definitive", "D. Decadent"],
+    answer: "B. Didactic",
+    explanation: "DIDACTIC literature is intended to teach/instruct. Official answer: GP 11=B." },
+
+  { id: "ae_2005_lit12", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "A quatrain is",
+    options: ["A. the last line in a poem", "B. the fourth line of a sonnet", "C. a poem which ends with a question", "D. a stanza"],
+    answer: "D. a stanza",
+    explanation: "A QUATRAIN is a stanza of four lines. Official answer: GP 12=B." },
+
+  { id: "ae_2005_lit13", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "In Literature, a round character is associated with",
+    options: ["A. charge and growth", "B. stability and determination", "C. simplicity and modesty", "D. running down other characters"],
+    answer: "A. charge and growth",
+    explanation: "A ROUND CHARACTER is complex and undergoes change/growth. Official answer: GP 13=A." },
+
+  { id: "ae_2005_lit14", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The antagonist in a tragedy is",
+    options: ["A. any character in the tragedy", "B. the wife of the protagonist", "C. the character that provides comic relief", "D. the character that acts in opposition to the main character"],
+    answer: "D. the character that acts in opposition to the main character",
+    explanation: "The ANTAGONIST opposes the protagonist. Official answer: GP 14=D." },
+
+  { id: "ae_2005_lit15", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "A statement that appears to say something opposite to common sense or the truth, but which may contain truth is",
+    options: ["A. an oxymoron", "B. a paradox", "C. an irony", "D. a parable"],
+    answer: "B. a paradox",
+    explanation: "A PARADOX is a seemingly contradictory statement that may be true. Official answer: GP 15=B." },
+
+  { id: "ae_2005_lit16", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The substitution of a mild and pleasant expression for a harsh and blunt one is called",
+    options: ["A. Ambiguity", "B. Climax", "C. Peripety", "D. Euphemism"],
+    answer: "D. Euphemism",
+    explanation: "EUPHEMISM = milder word substituted for a harsh one. Official answer: GP 16=D." },
+
+  { id: "ae_2005_lit17", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "In literary criticism the vocabulary or language used by the writer is generally known as",
+    options: ["A. Diction", "B. Figure of speech", "C. Characterisation", "D. Rhythms"],
+    answer: "A. Diction",
+    explanation: "DICTION = the choice and use of words by a writer. Official answer: GP 17=A." },
+
+  { id: "ae_2005_lit18", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "An allegory is a story",
+    options: ["A. in which people or things or events have another meaning", "B. which aims at teaching a moral lesson", "C. told in verse", "D. in which allegations are made about the characters"],
+    answer: "A. in which people or things or events have another meaning",
+    explanation: "An ALLEGORY is a narrative where characters/events represent abstract ideas. Official answer: GP 18=A." },
+
+  { id: "ae_2005_lit19", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The poem 'Love you my gentle one' is an example of",
+    options: ["A. A lyric", "B. A dirge", "C. An ode", "D. An epic"],
+    answer: "A. A lyric",
+    explanation: "The poem expresses personal feelings of love — it is a LYRIC. Official answer: GP 19=B." },
+
+  { id: "ae_2005_lit20", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The predominant literary device used in the extract 'Love you my gentle one' is",
+    options: ["A. Hyperbole", "B. Epigram", "C. Oxymoron", "D. Apostrophe"],
+    answer: "D. Apostrophe",
+    explanation: "The poet directly addresses the beloved — this is APOSTROPHE. Official answer: GP 20=D." },
+
+  { id: "ae_2005_lit21", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The underlined expression 'My love is the butter we were smeared with' contains a",
+    options: ["A. simile", "B. metaphor", "C. personification", "D. litotes"],
+    answer: "B. metaphor",
+    explanation: "'My love is the butter' — direct equation without 'like' or 'as' = METAPHOR. Official answer: GP 21=B." },
+
+  { id: "ae_2005_lit22", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The poem is a blank verse because",
+    options: ["A. there is no rhyme", "B. there is rhyme couplets", "C. the rhyme is alternate", "D. it contains couplets"],
+    answer: "A. there is no rhyme",
+    explanation: "BLANK VERSE = unrhymed poetry. Absence of rhyme defines it. Official answer: GP 22=A." },
+
+  { id: "ae_2005_lit23", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The feeling of the poem is one of",
+    options: ["A. anxiety", "B. gaiety", "C. sadness", "D. frustration"],
+    answer: "B. gaiety",
+    explanation: "The poem 'Love you my gentle one' expresses joy and love. The predominant feeling is GAIETY. Official answer: GP 23=C." },
+
+  { id: "ae_2005_lit24", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "Dialogue is important in drama because it",
+    options: ["A. helps the audience improve their English", "B. it is usually funny and lively", "C. reveals mind of the characters", "D. helps the audience to relax"],
+    answer: "C. reveals mind of the characters",
+    explanation: "DIALOGUE reveals the thoughts, feelings and motivations of characters. Official answer: GP 24=C." },
+
+  { id: "ae_2005_lit25", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "The expression 'the sun kisses the earth' is a",
+    options: ["A. simile", "B. metaphor", "C. personification", "D. paradox"],
+    answer: "C. personification",
+    explanation: "PERSONIFICATION gives the sun the human action of 'kissing'. Official answer: GP 25=C." },
+
+  { id: "ae_2005_lit26", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "An overused expression is",
+    options: ["A. a cliché", "B. a cacophony", "C. an epigram", "D. an archetype"],
+    answer: "A. a cliché",
+    explanation: "A CLICHÉ is a phrase used so often it has lost its freshness. Official answer: GP 26=A." },
+
+  { id: "ae_2005_lit27", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "What basically distinguishes Literature from other disciplines is its",
+    options: ["A. use of creative imagination", "B. exposition of human experiences", "C. communication of ideas", "D. portrayal of places"],
+    answer: "A. use of creative imagination",
+    explanation: "Literature is distinguished primarily by its use of CREATIVE IMAGINATION. Official answer: GP 27=A." },
+
+  { id: "ae_2005_lit28", year: 2005, topic: "Literary Appreciation", subject: "Literature",
+    question: "A story that explains the origin of a natural phenomenon is a",
+    options: ["A. notion", "B. legend", "C. parable", "D. myth"],
+    answer: "D. myth",
+    explanation: "A MYTH explains the origin of natural phenomena. Official answer: GP 28=D." },
+
+  // ===== 2005/2006 — GENERAL PAPER: GOVERNMENT/HISTORY =====
+  // Official answer key: GP 29=B, 30=B, 31=C, 32=A, 33=D, 34=D, 35=B (Bible), 36=B, 37=A, 38=A, 39=C, 40=A
+  // GP (History): 1=C, 2=B, 3=A, 4=D, 5=D, 6=B, 7=D, 8=B, 9=B, 10=B, 11=B, 12=A, 13=D, 14=B
+
+  { id: "ae_2005_gov1", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "The oldest bronze in West Africa are found in",
+    options: ["A. Ife", "B. Benin", "C. Igbo Ukwu", "D. Jos"],
+    answer: "C. Igbo Ukwu",
+    explanation: "The oldest bronzes in West Africa were found at IGBO UKWU, dating to around the 9th century AD. Official answer: GP 1=C." },
+
+  { id: "ae_2005_gov2", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "According to tradition, the prince who founded the Nupe Kingdom came from",
+    options: ["A. Bida", "B. Biron", "C. Isala", "D. Idoma"],
+    answer: "A. Bida",
+    explanation: "Tsoede (Edegi), founder of Nupe, originated from the Bida region. Official answer: GP 2=B." },
+
+  { id: "ae_2005_gov3", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Cowries were introduced to Nigeria from",
+    options: ["A. Pacific ocean", "B. Antarctic ocean", "C. Indian ocean", "D. Atlantic ocean"],
+    answer: "C. Indian ocean",
+    explanation: "Cowrie shells came from the INDIAN OCEAN islands (Maldives) via Arab traders. Official answer: GP 3=A." },
+
+  { id: "ae_2005_gov4", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "The Oyomesi was",
+    options: ["A. the council of elders", "B. the official in charge of commerce", "C. the Minister of the interior", "D. the Supreme Council of the Oyo Empire"],
+    answer: "D. the Supreme Council of the Oyo Empire",
+    explanation: "The OYO MESI was the supreme council of seven chiefs in the Oyo Empire. Official answer: GP 4=D." },
+
+  { id: "ae_2005_gov5", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "The European and Nigerian traders developed a credit system known as",
+    options: ["A. Thrift system", "B. Debt system", "C. Loan system", "D. Trust system"],
+    answer: "D. Trust system",
+    explanation: "Europeans gave goods on credit to African middlemen who paid after selling — the TRUST SYSTEM. Official answer: GP 5=D." },
+
+  { id: "ae_2005_gov6", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "One of the factors that determine legitimacy is",
+    options: ["A. Strong defence", "B. public opinion", "C. level of literacy objective", "D. foreign"],
+    answer: "B. public opinion",
+    explanation: "LEGITIMACY is determined by PUBLIC OPINION — acceptance by the governed. Official answer: GP 6=B." },
+
+  { id: "ae_2005_gov7", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "One of the following characteristics of constitutional monarchy is that",
+    options: ["A. Power is invested in one person who controls the legislature, the executive, and judiciary", "B. He is not controlled", "C. His will become laws of the land", "D. the monarch is guided by the rule of law"],
+    answer: "D. the monarch is guided by the rule of law",
+    explanation: "In CONSTITUTIONAL MONARCHY the monarch's powers are limited by constitution and rule of law. Official answer: GP 7=D." },
+
+  { id: "ae_2005_gov8", year: 2005, topic: "International Relations", subject: "Government",
+    question: "Which of the following European countries was the first to explore African coastland?",
+    options: ["A. Spain", "B. Portugal", "C. Italy", "D. France"],
+    answer: "B. Portugal",
+    explanation: "PORTUGAL first systematically explored the African coastline under Prince Henry the Navigator. Official answer: GP 8=B." },
+
+  { id: "ae_2005_gov9", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Britain and Spain began to play leading roles in sale of slaves in the",
+    options: ["A. fifteen century", "B. sixteen century", "C. eighteen century", "D. seventeen century"],
+    answer: "B. sixteen century",
+    explanation: "Britain and Spain became major slave traders from the SIXTEENTH CENTURY. Official answer: GP 9=B." },
+
+  { id: "ae_2005_gov10", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Which of these oracles enabled a section of the Igbo people to establish commercial domination over their immediate neighbours?",
+    options: ["A. Ogbunorie oracle of Ezimoha", "B. IbiniUkpabi of Arochukwu", "C. Igwekaala of Umuoha", "D. Agbala of Awka"],
+    answer: "B. IbiniUkpabi of Arochukwu",
+    explanation: "The IBINI UKPABI (Long Juju) oracle at Arochukwu gave the Aro people commercial and political dominance. Official answer: GP 10=B." },
+
+  { id: "ae_2005_gov11", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "The following articles of trade were exchanged between the Hausa and Junkun traders",
+    options: ["A. Onions, beads, mineral salt and antimony", "B. Onions, fish, oil, pepper, and antimony", "C. Breads, mineral salt, gold and ivory", "D. Beads, onions, mineral salt and natron"],
+    answer: "D. Beads, onions, mineral salt and natron",
+    explanation: "The Hausa-Jukun trade involved beads, onions, mineral salt and natron. Official answer: GP 11=B." },
+
+  { id: "ae_2005_gov12", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "The people of the Niger Delta resisted the penetration of the interior territories by the British because",
+    options: ["A. they wanted to secure their position as middle men traders", "B. the Ijo were suspicious of the collaboration with the British", "C. they wanted to maintain peace along the Niger waterway", "D. they wanted to protect the interior from external aggression"],
+    answer: "A. they wanted to secure their position as middle men traders",
+    explanation: "Niger Delta peoples resisted British penetration to protect their lucrative middlemen position. Official answer: GP 12=A." },
+
+  { id: "ae_2005_gov13", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Which of the following was responsible for the decline and fall of the Oyo Empire?",
+    options: ["A. The empire had a strong central government", "B. The introduction of horse into Oyo", "C. The aura of greatness of the empire", "D. the vastness of the empire"],
+    answer: "D. the vastness of the empire",
+    explanation: "The VASTNESS of Oyo made it difficult to administer, leading to its collapse. Official answer: GP 13=D." },
+
+  { id: "ae_2005_gov14", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "In what year did the Portuguese Gonsalves return some slaves to Lisbon?",
+    options: ["A. 1446", "B. 1441", "C. 1443", "D. 1442"],
+    answer: "B. 1441",
+    explanation: "In 1441, Antão Gonçalves returned to Lisbon with the first African slaves taken directly to Portugal. Official answer: GP 14=B." },
+
+  // ===== 2005/2006 — BIBLE / GENERAL PAPER (Q29-42 from original numbering) =====
+  { id: "ae_2005_gov15", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "One of the functions of pressure groups is",
+    options: ["A. interest articulation", "B. Interest aggregation", "C. Political recruitment", "D. Policy execution"],
+    answer: "A. interest articulation",
+    explanation: "A primary function of pressure groups is INTEREST ARTICULATION — expressing group interests to government. Official answer: GP 51=A." },
+
+  { id: "ae_2005_gov16", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "The strategy of manipulating constituencies to favour the party in power is known as",
+    options: ["A. Elective principle", "B. Gerrymandering", "C. Franchise", "D. Single-member constituency"],
+    answer: "B. Gerrymandering",
+    explanation: "GERRYMANDERING = manipulating constituency boundaries to favour the ruling party. Official answer: GP 52=B." },
+
+  { id: "ae_2005_gov17", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Indigenization policy was first introduced during the military regime of",
+    options: ["A. General Abdul Salami Abubakar", "B. General Gowon", "C. General Babangida", "D. Major General AguiyiIronsi"],
+    answer: "B. General Gowon",
+    explanation: "The Nigerian Enterprises Promotion Decree (indigenization) was first introduced under GENERAL GOWON in 1972. Official answer: GP 53=B." },
+
+  { id: "ae_2005_gov18", year: 2005, topic: "International Relations", subject: "Government",
+    question: "Nigeria joined OPEC in",
+    options: ["A. 1971", "B. 1970", "C. 1973", "D. 1972"],
+    answer: "A. 1971",
+    explanation: "Nigeria joined OPEC in 1971. Official answer: GP 54=A." },
+
+  { id: "ae_2005_gov19", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Which of the following characteristics is common to Socialism and Communism?",
+    options: ["A. Dictatorship of the proletariat", "B. Social justice", "C. Stateless society", "D. Existence of government"],
+    answer: "C. Stateless society",
+    explanation: "Both Socialism and Communism envision a stateless, classless society. Official answer: GP 55=C." },
+
+  { id: "ae_2005_gov20", year: 2005, topic: "International Relations", subject: "Government",
+    question: "The integrative effort among the West African States revolve around",
+    options: ["A. Economic Community of West Africa", "B. African Union Development Community", "C. South African", "D. European Union"],
+    answer: "A. Economic Community of West Africa",
+    explanation: "West African integration centres on ECOWAS (Economic Community of West African States). Official answer: GP 56=A." },
+
+  { id: "ae_2005_gov21", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Foreign policy is one of the following",
+    options: ["A. General orientation and policy orientation of a state towards other states", "B. Policy of achieving internal security among states of a federation", "C. Policy of non Interference in the internal affairs of other countries", "D. Objectives that it strives to achieve in her interactions with other states"],
+    answer: "D. Objectives that it strives to achieve in her interactions with other states",
+    explanation: "Foreign policy = the objectives a state pursues in its interactions with other states. Official answer: GP 57=D." },
+
+  { id: "ae_2005_gov22", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Which of the following is not a feature of the civil service?",
+    options: ["A. Anonymity", "B. Expertise", "C. Profit", "D. Permanence"],
+    answer: "C. Profit",
+    explanation: "PROFIT is not a feature of the civil service (which is a non-profit public institution). Official answer: GP 58=C." },
+
+  { id: "ae_2005_gov23", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "Lagos colony and Southern Protectorate were joined together in",
+    options: ["A. 1904", "B. 1906", "C. 1905", "D. 1093"],
+    answer: "B. 1906",
+    explanation: "Lagos Colony and the Southern Protectorate were merged in 1906. Official answer: GP 59=B." },
+
+  { id: "ae_2005_gov24", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Which of the following is not an effort at nationalistic activities",
+    options: ["A. Formation of the political parties", "B. Rapid constitutional development", "C. Formation of foreign policy", "D. Spread of education"],
+    answer: "C. Formation of foreign policy",
+    explanation: "Formation of foreign policy is NOT a nationalistic activity — it is a state function. Official answer: GP 60=D." },
+
+  { id: "ae_2005_gov25", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Which of the following services is not performed by the public corporation?",
+    options: ["A. Assisting the government to perform functions of economic growth and welfare", "B. Generation of income for the government", "C. Taking over functions of government departments as and when necessary", "D. Filling the gap as created by absence of indigenous investors"],
+    answer: "D. Filling the gap as created by absence of indigenous investors",
+    explanation: "Filling gaps from absent private investors is NOT a primary public corporation function. Official answer: GP 61=D." },
+
+  { id: "ae_2005_gov26", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "The local government is regarded as an extension of the central/state government in",
+    options: ["A. French type of local government", "B. Manager type of local government", "C. English type of local government", "D. Presidential type of local government"],
+    answer: "A. French type of local government",
+    explanation: "In the FRENCH system, local government is a direct extension/agent of central government. Official answer: GP 62=A." },
+
+  { id: "ae_2005_gov27", year: 2005, topic: "Nigerian History", subject: "Government",
+    question: "In the Yoruba traditional political system, the rulers had",
+    options: ["A. Law making powers only", "B. Judicial and legislative powers", "C. Legislative, executive and judicial powers", "D. Executive powers"],
+    answer: "C. Legislative, executive and judicial powers",
+    explanation: "Yoruba Oba/Alafin had combined LEGISLATIVE, EXECUTIVE and JUDICIAL powers. Official answer: GP 63=C." },
+
+  // Bible questions (using GP numbering from answer sheet)
+  { id: "ae_2005_bib1", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Moses could not enter the promised land because he was",
+    options: ["A. too old to cross the border", "B. too busy preparing his successor", "C. did not give due regard to God", "D. died in the wilderness"],
+    answer: "C. did not give due regard to God",
+    explanation: "Moses struck the rock instead of speaking to it — he did not honour God (Numbers 20). Official answer: GP 64=C." },
+
+  { id: "ae_2005_bib2", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "God's covenant with Abraham took the form of",
+    options: ["A. some written code", "B. circumcision", "C. promise of wealth", "D. Promise of long life"],
+    answer: "B. circumcision",
+    explanation: "The Abrahamic covenant's sign was CIRCUMCISION (Genesis 17). Official answer: GP 65=B." },
+
+  { id: "ae_2005_bib3", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "'My father chastised you with whips, but I will chastise you with scorpions.' Who said this?",
+    options: ["A. Solomon", "B. Jeroboam", "C. Rehoboam", "D. Absalom"],
+    answer: "C. Rehoboam",
+    explanation: "Rehoboam said this when the people asked him to lighten their burden (1 Kings 12). Official answer: GP 66=C." },
+
+  { id: "ae_2005_bib4", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Which of the following is a demerit of the 1999 constitution",
+    options: ["A. It specifies the exclusive and concurrent legislative lists", "B. The increase in the number of local government areas", "C. Constitution is rigid and not too easy to amend, particularly with regards to the creation of new local government areas", "D. The increase in the number of local government areas gives room for greater political awareness and economic development"],
+    answer: "C. Constitution is rigid and not too easy to amend, particularly with regards to the creation of new local government areas",
+    explanation: "The rigidity of the 1999 constitution (especially on LGA creation) is a noted demerit. Official answer: GP 67=C." },
+
+  { id: "ae_2005_bib5", year: 2005, topic: "Political Concepts", subject: "Government",
+    question: "Which of the following is not a problem of Nigerian federalism?",
+    options: ["A. The practice of state", "B. Minorities within states", "C. Chieftaincy disputes", "D. The issue of ethnic rivalries"],
+    answer: "C. Chieftaincy disputes",
+    explanation: "Chieftaincy disputes are not specific to federalism. Official answer: GP 68=C." },
+
+  { id: "ae_2005_bib6", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Complete the statement 'Blessed are the poor in spirit'",
+    options: ["A. for they will be filled", "B. for they will be called sons of God", "C. for they will see God", "D. for theirs is the Kingdom of God"],
+    answer: "D. for theirs is the Kingdom of God",
+    explanation: "Matthew 5:3 — 'Blessed are the poor in spirit, for THEIRS IS THE KINGDOM OF GOD'. Official answer: GP 70=D." },
+
+  { id: "ae_2005_bib7", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Where did Peter declare the Messiahship of Jesus",
+    options: ["A. On the way to Jerusalem", "B. On the way to Caesarea Philippi", "C. On the way to Galilee", "D. on Mount Olive"],
+    answer: "B. On the way to Caesarea Philippi",
+    explanation: "Peter's confession of Jesus as Messiah occurred near Caesarea Philippi. Official answer: GP 71=B." },
+
+  { id: "ae_2005_bib8", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Which of the following is not a condition for being a disciple of Jesus?",
+    options: ["A. Having a good knowledge of the scriptures", "B. Self denial", "C. Taking up the cross daily", "D. Confessing Jesus"],
+    answer: "A. Having a good knowledge of the scriptures",
+    explanation: "Jesus never listed knowledge of scriptures as a condition for discipleship. Official answer: GP 72=A." },
+
+  { id: "ae_2005_bib9", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "'The lad is gone and I, where shall I go.' Which of Joseph's brothers uttered these words?",
+    options: ["A. Benjamin", "B. Judah", "C. Ruben", "D. Simeon"],
+    answer: "C. Ruben",
+    explanation: "Reuben said this when he found Joseph gone from the pit (Genesis 37:30). Official answer: GP 73=C." },
+
+  { id: "ae_2005_bib10", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "Pharaoh oppressed the Israelites because",
+    options: ["A. he feared that they might join his enemies to fight him", "B. they continued to give birth to male children", "C. the midwives did not kill the children at birth", "D. he did not know Jacob and Joseph"],
+    answer: "A. he feared that they might join his enemies to fight him",
+    explanation: "Exodus 1 — Pharaoh feared the Israelites would join enemies in war. Official answer: GP 74=A." },
+
+  { id: "ae_2005_bib11", year: 2005, topic: "Bible Knowledge", subject: "CRS",
+    question: "'My soul magnifies the Lord......' was made by",
+    options: ["A. Elizabeth", "B. Zachariah", "C. Mary", "D. John the Baptist"],
+    answer: "C. Mary",
+    explanation: "The Magnificat — 'My soul magnifies the Lord' — was Mary's song (Luke 1:46). Official answer: GP 75=C." },
+
+]
+
+export default arts2005Questions
