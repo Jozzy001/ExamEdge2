@@ -77,8 +77,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           )
         })()}
 
-
-
         {/* Greeting */}
         <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>
           Hi, {firstName}! 👋
@@ -161,7 +159,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
-          {/* CBT History — full width */}
+          {/* CBT History */}
           <button
             className="ee-home-card"
             onClick={() => {
@@ -173,6 +171,22 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             <div>
               <div className="home-card-title">CBT History {!isPaid && "🔒"}</div>
               <div className="home-card-sub">Review your past attempts</div>
+            </div>
+          </button>
+
+          {/* AI Tutor — available to everyone */}
+          <button
+            className="ee-home-card"
+            onClick={() => onNavigate("aiTutor")}
+            style={{
+              background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
+              border: "1.5px solid rgba(102,126,234,0.3)",
+            }}
+          >
+            <span className="home-card-icon">🎓</span>
+            <div>
+              <div className="home-card-title" style={{ color: "var(--primary)" }}>AI Tutor</div>
+              <div className="home-card-sub">Your personal study coach</div>
             </div>
           </button>
         </div>
@@ -220,8 +234,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
         )}
-
-        {/* Referral Card - REMOVED, now on referrals page */}
 
         {/* Upgrade banner for free users */}
         {!isPaid && (

@@ -16,6 +16,7 @@ import Upgrade from "./pages/Upgrade"
 import Leaderboard from "./pages/Leaderboard"
 import Referrals from "./pages/Referrals"
 import AccountDetails from "./pages/AccountDetails"
+import AITutor from "./pages/AITutor"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
@@ -23,9 +24,8 @@ import { doc, onSnapshot, getDoc, updateDoc } from "firebase/firestore"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth, db } from "./firebase"
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
+
 function App() {
-  // Load saved onboarding choices — but only use them if authUser confirms them
-  // Version check — clear stale localStorage from old app versions
   const APP_VERSION = "2.0"
   const storedVersion = localStorage.getItem("ee-version")
   if (storedVersion !== APP_VERSION) {
@@ -46,7 +46,7 @@ function App() {
       ? { examType: savedExamType, university: savedUniversity, faculty: savedFaculty }
       : null
   )
-  const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done")) // Always set by onAuthDone from Firestore
+  const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done"))
   const [page, setPage] = useState("home")
   const [pageHistory, setPageHistory] = useState([])
   const [selectedTopic, setSelectedTopic] = useState(null)
@@ -59,7 +59,6 @@ function App() {
   const [authUser, setAuthUser] = useState(null)
   const [freeAccessMode, setFreeAccessMode] = useState(false)
   const [userData, setUserData] = useState(() => {
-    // Initialize from cache to avoid name flash on load
     try {
       const cached = localStorage.getItem("ee-cached-userdata")
       return cached ? JSON.parse(cached) : null
@@ -69,8 +68,6 @@ function App() {
   const [profileLoading, setProfileLoading] = useState(false)
   const [loggingOut, setLoggingOut] = useState(false)
   const startIndexRef = useRef(0)
-
-  // Listen to auth state — handle logout cleanly
 
   // Recover any pending payments that failed to write to Firestore
   useEffect(() => {
@@ -85,7 +82,6 @@ function App() {
             paidAt: new Date().toISOString(),
           }).then(() => {
             localStorage.removeItem("ee_pending_payment")
-            console.log("Pending payment recovered!")
           }).catch(() => {})
         }
       } catch(e) {}
@@ -107,11 +103,9 @@ function App() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        // Check if we have cached user data for offline use
         const cachedUser = localStorage.getItem("ee-cached-user")
         const cachedUserData = localStorage.getItem("ee-cached-userdata")
         if (cachedUser && !navigator.onLine) {
-          // Offline but previously logged in — restore from cache
           try {
             setAuthUser(JSON.parse(cachedUser))
             setUserData(JSON.parse(cachedUserData))
@@ -126,30 +120,23 @@ function App() {
         setPage("home")
         setPageHistory([])
       } else {
-        // User is logged in
-        // Check email verification
         if (!user.emailVerified) {
-          // Not verified — show auth screen in verify mode
           setAuthUser(null)
           setAppLoading(false)
           return
         }
-        // Set authUser so app knows someone is logged in
         setAuthUser(user)
-        // Cache user for offline use
         localStorage.setItem("ee-cached-user", JSON.stringify({
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           emailVerified: user.emailVerified
         }))
-        // Load full user data from Firestore to get real name, faculty etc
         getDoc(doc(db, "users", user.uid)).then(snap => {
           if (snap.exists()) {
             const data = snap.data()
             setUserData(data)
             localStorage.setItem("ee-cached-userdata", JSON.stringify(data))
-            // Restore profile from Firestore data
             if (data.faculty && data.examType) {
               const profileData = {
                 examType: data.examType,
@@ -162,17 +149,14 @@ function App() {
               setProfile(profileData)
             }
           } else {
-            // No Firestore doc — use cached data if available
             const cached = localStorage.getItem("ee-cached-userdata")
             if (cached) try { setUserData(JSON.parse(cached)) } catch(e) {}
           }
         }).catch(() => {
-          // Offline — use cached data
           const cached = localStorage.getItem("ee-cached-userdata")
           if (cached) try { setUserData(JSON.parse(cached)) } catch(e) {}
         })
       }
-      // Auth has resolved — hide loading screen
       setAppLoading(false)
     })
     return () => unsub()
@@ -185,11 +169,9 @@ function App() {
       if (snap.exists()) {
         const data = snap.data()
         setUserData(data)
-        // Cache userData for offline use
         localStorage.setItem("ee-cached-userdata", JSON.stringify(data))
       }
-    }, (error) => {
-      // Offline — try to use cached data
+    }, () => {
       const cached = localStorage.getItem("ee-cached-userdata")
       if (cached) {
         try { setUserData(JSON.parse(cached)) } catch(e) {}
@@ -197,7 +179,8 @@ function App() {
     })
     return () => unsub()
   }, [authUser?.uid])
-  // Listen to global freeAccessMode from appSettings/global
+
+  // Listen to global freeAccessMode
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "appSettings", "global"), (snap) => {
       if (snap.exists()) setFreeAccessMode(snap.data().freeAccessMode === true)
@@ -224,21 +207,14 @@ function App() {
     return () => window.removeEventListener("popstate", handlePopState)
   }, [page, pageHistory])
 
-
-
-  // Show loading screen while Firebase auth resolves
   if (appLoading) return <FullPageLoader message="Starting ExamEdgeNG..." />
-
-  // Show splash/onboarding screens on first visit
   if (showSplash) return <Splash onDone={() => { localStorage.setItem("ee-splash-done", "1"); setShowSplash(false) }} />
 
-  // Show Auth screen first if not logged in
   if (!authUser) {
     return <Auth onGoToUpgrade={() => setPage("upgrade")} onAuthDone={(user) => {
       setProfileLoading(true)
       setAuthUser(user)
       setUserData(user)
-      // Restore profile from Firestore first (most reliable)
       if (user.faculty && user.examType) {
         const profileData = {
           examType: user.examType,
@@ -250,7 +226,6 @@ function App() {
         localStorage.setItem("ee-faculty", profileData.faculty)
         setProfile(profileData)
       } else {
-        // No faculty in Firestore — this is a fresh signup, show onboarding
         localStorage.removeItem("ee-examType")
         localStorage.removeItem("ee-university")
         localStorage.removeItem("ee-faculty")
@@ -260,7 +235,6 @@ function App() {
     }} />
   }
 
-  // Get faculty subjects for post-utme
   const getFacultySubjects = () => {
     if (!profile?.faculty || !profile?.university) return []
     if (profile.university === "UNIBEN") {
@@ -269,16 +243,11 @@ function App() {
     return []
   }
 
-  // Pages that should NOT be pushed to history (no back needed)
   const NO_HISTORY_PAGES = ["home", "auth", "onboarding", "hotTopicsQuiz", "weak"]
 
   const handleNavigate = (newPage, topic = null, subject = null, subjectsOrIndex = null, uni = null, customCounts = null) => {
     startIndexRef.current = typeof subjectsOrIndex === "number" ? subjectsOrIndex : 0
 
-    // Don't push to history if:
-    // - current page is a no-history page
-    // - going to same page
-    // - going back to a parent (study→quiz→study creates loop)
     const lastInHistory = pageHistory[pageHistory.length - 1]
     const isDuplicate = lastInHistory === page
     const isGoingBack = lastInHistory === newPage
@@ -301,7 +270,6 @@ function App() {
       return
     }
     const prev = pageHistory[pageHistory.length - 1]
-    // Detect loop — if going back leads to current page, clear and go home
     if (prev === page) {
       setPageHistory([])
       setPage("home")
@@ -314,8 +282,6 @@ function App() {
   const handleOnboardingDone = (data) => {
     setProfile(data)
     setPage("home")
-    // Save faculty/examType to Firestore — use auth.currentUser directly
-    // because authUser state may not be set yet for new signups
     const uid = authUser?.uid || auth.currentUser?.uid
     if (uid && data.faculty && data.examType) {
       updateDoc(doc(db, "users", uid), {
@@ -325,8 +291,6 @@ function App() {
       }).catch((e) => {
         console.log("Faculty save error:", e)
       })
-    } else {
-      console.log("No uid available - faculty not saved. authUser:", authUser?.uid, "currentUser:", auth.currentUser?.uid)
     }
   }
 
@@ -338,22 +302,17 @@ function App() {
     setProfile(null)
   }
 
-  // Show loading screen while profile is being set after login or logout
   if (profileLoading || loggingOut) return <FullPageLoader message="Please wait..." />
 
-  // Show onboarding if no profile yet
   if (!profile) {
     return <Onboarding onDone={handleOnboardingDone} authUser={authUser} startStep={onboardingStartStep} />
   }
 
   const { examType, university, faculty } = profile
-  // freeAccessMode gives everyone full access without touching user records
-  // Paid users stay paid regardless; free users get access when mode is on
   const effectiveIsPaid = userData?.isPaid || freeAccessMode
   const facultySubjects = getFacultySubjects()
 
   const renderPage = () => {
-    // Wrap lazy-loaded pages in Suspense
     // ===================== JAMB =====================
     if (examType === "jamb") {
       if (page === "home") return <Home onNavigate={handleNavigate} onReset={resetOnboarding} />
@@ -373,6 +332,17 @@ function App() {
         />
       )
       if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} onBack={handleBack} record={reviewRecord} />
+      if (page === "aiTutor") return (
+        <AITutor
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          userData={userData}
+          authUser={authUser}
+          isPaid={effectiveIsPaid}
+          faculty={faculty}
+          facultySubjects={facultySubjects}
+        />
+      )
     }
 
     // ===================== POST-UTME =====================
@@ -504,39 +474,52 @@ function App() {
           authUser={authUser}
         />
       )
+
+      // ── AI TUTOR ──
+      if (page === "aiTutor") return (
+        <AITutor
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          userData={userData}
+          authUser={authUser}
+          isPaid={effectiveIsPaid}
+          faculty={faculty}
+          facultySubjects={facultySubjects}
+        />
+      )
     }
 
-      if (page === "upgrade") return (
-        <Upgrade
-          user={authUser}
-          userData={userData}
-          onSuccess={() => { setPageHistory([]); setPage("home") }}
-          onBack={handleBack}
-        />
-      )
+    if (page === "upgrade") return (
+      <Upgrade
+        user={authUser}
+        userData={userData}
+        onSuccess={() => { setPageHistory([]); setPage("home") }}
+        onBack={handleBack}
+      />
+    )
 
-      if (page === "settings") return (
-        <Settings
-          onNavigate={handleNavigate}
-          onBack={handleBack}
-          onReset={resetOnboarding}
-          onLogout={() => setLoggingOut(true)}
-          authUser={authUser}
-          faculty={faculty}
-          university={university}
-          examType={examType}
-          isPaid={effectiveIsPaid}
-          userData={userData}
-        />
-      )
+    if (page === "settings") return (
+      <Settings
+        onNavigate={handleNavigate}
+        onBack={handleBack}
+        onReset={resetOnboarding}
+        onLogout={() => setLoggingOut(true)}
+        authUser={authUser}
+        faculty={faculty}
+        university={university}
+        examType={examType}
+        isPaid={effectiveIsPaid}
+        userData={userData}
+      />
+    )
 
-      if (page === "admin") return (
-        <AdminDashboard
-          onNavigate={handleNavigate}
-          onBack={handleBack}
-          authUser={authUser}
-        />
-      )
+    if (page === "admin") return (
+      <AdminDashboard
+        onNavigate={handleNavigate}
+        onBack={handleBack}
+        authUser={authUser}
+      />
+    )
 
     return <h2>Page not found</h2>
   }
