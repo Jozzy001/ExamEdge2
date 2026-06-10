@@ -24,7 +24,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
   const [showContactForm, setShowContactForm] = useState(false)
   const [showInbox, setShowInbox] = useState(false)
   const [contactMessage, setContactMessage] = useState("")
-
   const [myMessages, setMyMessages] = useState([])
   const [showMessages, setShowMessages] = useState(false)
 
@@ -82,7 +81,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
       })
       setSuccess("Username updated!")
       setEditingUsername(false)
-      // Update local authUser
       authUser.name = newUsername.trim()
     } catch (err) {
       setError("Failed to update username. Try again.")
@@ -94,7 +92,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
     if (!currentPassword) { setError("Enter your current password"); return }
     if (newPassword.length < 6) { setError("New password must be at least 6 characters"); return }
     if (newPassword !== confirmPassword) { setError("Passwords do not match"); return }
-
     setLoading(true); setError(""); setSuccess("")
     try {
       const credential = EmailAuthProvider.credential(auth.currentUser.email, currentPassword)
@@ -115,9 +112,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
 
   const handleLogout = async () => {
     if (window.confirm("Are you sure you want to log out?")) {
-      // Show loading immediately to prevent flash
       if (onLogout) onLogout()
-      // Clear all cached data on logout
       localStorage.removeItem("ee-cached-user")
       localStorage.removeItem("ee-cached-userdata")
       localStorage.removeItem("ee-examType")
@@ -189,7 +184,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         {/* ===== ACCOUNT ===== */}
         {sectionTitle("👤 Account")}
 
-        {/* Username */}
         {editingUsername ? (
           <div style={{
             background: "var(--surface)", border: "1px solid var(--border)",
@@ -298,12 +292,11 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               "⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure you want to continue?"
             )
             if (confirmed) {
-              // Clear all local data
               const keysToKeep = ["ee-version", "ee-cached-user", "ee-cached-userdata", "ee-splash-done", "ee-read-notifs"]
               Object.keys(localStorage).forEach(key => {
                 if (!keysToKeep.includes(key)) localStorage.removeItem(key)
               })
-              onReset(2) // Start at step 2 (university) not step 1
+              onReset(2)
             }
           }} style={{
             background: "rgba(239,68,68,0.1)", color: "#dc2626",
@@ -333,7 +326,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         {/* ===== SECURITY ===== */}
         {sectionTitle("🔒 Security")}
 
-        {/* Change password */}
         {changingPassword ? (
           <div style={{
             background: "var(--surface)", border: "1px solid var(--border)",
@@ -448,13 +440,91 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
-        {/* Referral card — shown to ALL users */}
-        <ReferralCard userData={userData} />
+
+
+        {/* Referral Earnings Card — visible to all users */}
+        <div style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-lg)",
+          padding: "16px", marginBottom: 12
+        }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 14, display: "flex", alignItems: "center", gap: 8 }}>
+            💰 Your Referral Earnings
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
+            {[
+              {
+                label: "Total Earned",
+                value: `₦${(userData?.referralEarnings || 0).toLocaleString()}`,
+                color: "#15803d",
+                bg: "rgba(34,197,94,0.08)",
+                border: "rgba(34,197,94,0.2)"
+              },
+              {
+                label: "Paid Out",
+                value: `₦${(userData?.referralPaidOut || 0).toLocaleString()}`,
+                color: "var(--primary)",
+                bg: "var(--primary-light)",
+                border: "rgba(102,126,234,0.2)"
+              },
+              {
+                label: "Pending",
+                value: `₦${((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}`,
+                color: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "#d97706" : "var(--text3)",
+                bg: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "rgba(245,158,11,0.08)" : "var(--surface2)",
+                border: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "rgba(245,158,11,0.3)" : "var(--border)"
+              },
+            ].map((s, i) => (
+              <div key={i} style={{
+                background: s.bg,
+                border: `1px solid ${s.border}`,
+                borderRadius: "var(--radius-md)",
+                padding: "10px 8px", textAlign: "center"
+              }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: s.color }}>{s.value}</div>
+                <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 3 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Pending payout note */}
+          {(userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? (
+            <div style={{
+              background: "rgba(245,158,11,0.08)",
+              border: "1px solid rgba(245,158,11,0.25)",
+              borderRadius: "var(--radius-md)",
+              padding: "10px 12px",
+              fontSize: 12, color: "#92400e", lineHeight: 1.6
+            }}>
+              ⏳ <strong>₦{((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}</strong> will be paid to your account every weekend. Make sure your bank details are saved below.
+            </div>
+          ) : (userData?.referralEarnings || 0) === 0 ? (
+            <div style={{
+              fontSize: 12, color: "var(--text3)", lineHeight: 1.6,
+              padding: "8px 0"
+            }}>
+              Share your referral code from the home screen to start earning ₦500 per friend who pays.
+            </div>
+          ) : (
+            <div style={{
+              background: "rgba(34,197,94,0.08)",
+              border: "1px solid rgba(34,197,94,0.2)",
+              borderRadius: "var(--radius-md)",
+              padding: "10px 12px",
+              fontSize: 12, color: "#15803d", lineHeight: 1.6
+            }}>
+              ✅ All earnings have been paid out. Keep referring to earn more!
+            </div>
+          )}
+        </div>
+
         {/* Bank details — only shown when user has pending referral earnings */}
         {((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)) > 0 && (
           <div style={{
             background: "rgba(245,158,11,0.08)", border: "1.5px solid rgba(245,158,11,0.3)",
-            borderRadius: "var(--radius-lg)", padding: "16px", margin: "12px 16px"
+            borderRadius: "var(--radius-lg)", padding: "16px", margin: "12px 0"
           }}>
             <div style={{ fontSize: 14, fontWeight: 800, color: "#d97706", marginBottom: 8 }}>
               🏦 Add Bank Details to Receive Payment
@@ -480,17 +550,13 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
-
-
         {/* ===== SUPPORT ===== */}
         {sectionTitle("💬 Support")}
 
-        {/* Support inbox */}
         <div style={{
           background: "var(--surface)", border: "1px solid var(--border)",
           borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: 8
         }}>
-          {/* Collapsed button — always visible */}
           <div
             onClick={() => { setShowInbox(p => !p); setShowContactForm(false) }}
             style={{
@@ -519,11 +585,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             <span style={{ fontSize: 16, color: "var(--text3)", transition: "transform 0.2s", transform: showInbox ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
           </div>
 
-          {/* Expanded inbox */}
           {showInbox && (
             <div style={{ borderTop: "1px solid var(--border)" }}>
-
-              {/* Messages thread */}
               {myMessages.length > 0 && (
                 <div style={{ padding: "12px 16px" }}>
                   {myMessages.map((msg, i) => (
@@ -532,7 +595,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                       paddingBottom: i < myMessages.length - 1 ? 16 : 0,
                       borderBottom: i < myMessages.length - 1 ? "1px solid var(--border)" : "none"
                     }}>
-                      {/* User's message — hide for admin-initiated DMs */}
                       {!msg.fromAdmin && (
                         <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
                           <div style={{
@@ -550,7 +612,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                           </div>
                         </div>
                       )}
-                      {/* Admin reply / admin-initiated DM */}
                       {(msg.lastReply || msg.fromAdmin) ? (
                         <div style={{ display: "flex", justifyContent: "flex-start" }}>
                           <div style={{
@@ -580,7 +641,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                 </div>
               )}
 
-              {/* New message form */}
               <div style={{ padding: "12px 16px", borderTop: myMessages.length > 0 ? "1px solid var(--border)" : "none" }}>
                 {!showContactForm ? (
                   <button
@@ -660,7 +720,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           🚪 Log Out
         </button>
 
-        {/* App version */}
         <div style={{ textAlign: "center", fontSize: 11, color: "var(--text3)", marginTop: 8 }}>
           ExamEdgeNG v1.0 · {examType === "jamb" ? "JAMB Prep" : examType === "postutme" ? "Post-UTME Prep" : "Exam Prep"}
         </div>
