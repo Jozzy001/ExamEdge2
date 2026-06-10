@@ -7,11 +7,23 @@ import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
 import FirstCBTPrompt from "../components/FirstCBTPrompt"
+import { requestNotificationPermission, smartNotificationScheduler } from "../utils/notifications"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
   const [paywallType, setPaywallType] = useState(null)
   const [showTour, setShowTour] = useState(false)
+
+  // Request notifications permission
+  useEffect(() => {
+    if (authUser?.uid) {
+      requestNotificationPermission().then(granted => {
+        if (granted) {
+          smartNotificationScheduler(authUser.uid, { streak: 0, goal: { done: 0, target: 50 } })
+        }
+      }).catch(e => console.error("Notification error:", e))
+    }
+  }, [authUser?.uid])
 
   // Show tour on first visit
   useEffect(() => {
@@ -74,6 +86,15 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         <div style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16 }}>
           {isPaid ? "Full Access ✅" : "Free Plan — Tap to upgrade 🔒"}
         </div>
+
+        {/* Leaderboard Button */}
+        <button className="ee-home-card" onClick={() => onNavigate("leaderboard")} style={{ marginBottom: 16 }}>
+          <span className="home-card-icon">🏆</span>
+          <div>
+            <div className="home-card-title">Leaderboard</div>
+            <div className="home-card-sub">See how you rank</div>
+          </div>
+        </button>
 
         {/* XP / Gamification Bar */}
         <XPBar onNavigate={onNavigate} />
@@ -171,6 +192,36 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             <div className="home-card-sub">See your scores and weak topics</div>
           </div>
         </button>
+
+        {/* Referral Button - Small & Attractive */}
+        {!isPaid && (
+          <button
+            onClick={() => onNavigate("referrals")}
+            style={{
+              background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+              borderRadius: "var(--radius-lg)",
+              padding: "12px 16px",
+              marginBottom: 16,
+              color: "#fff",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              width: "100%",
+              fontSize: 14,
+              fontWeight: 700
+            }}
+          >
+            <span style={{ fontSize: 20 }}>🎁</span>
+            <div style={{ flex: 1, textAlign: "left" }}>
+              <div>Earn Free Access</div>
+              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Invite friends & get rewards →</div>
+            </div>
+          </button>
+        )}
+
+        {/* Referral Card - REMOVED, now on referrals page */}
 
         {/* Upgrade banner for free users */}
         {!isPaid && (

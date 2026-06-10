@@ -13,6 +13,9 @@ import HotTopics from "./pages/HotTopics"
 import Settings from "./pages/Settings"
 import AdminDashboard from "./pages/AdminDashboard"
 import Upgrade from "./pages/Upgrade"
+import Leaderboard from "./pages/Leaderboard"
+import Referrals from "./pages/Referrals"
+import AccountDetails from "./pages/AccountDetails"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
@@ -471,6 +474,34 @@ function App() {
           university={university}
           isPaid={effectiveIsPaid}
           hotTopicFilter={hotTopicTopic}
+        />
+      )
+
+      // ── LEADERBOARD ──
+      if (page === "leaderboard") return (
+        <Leaderboard
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          university={university}
+          isPaid={effectiveIsPaid}
+        />
+      )
+
+      // ── REFERRALS ──
+      if (page === "referrals") return (
+        <Referrals
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          authUser={authUser}
+        />
+      )
+
+      // ── ACCOUNT DETAILS ──
+      if (page === "accountDetails") return (
+        <AccountDetails
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          authUser={authUser}
         />
       )
     }

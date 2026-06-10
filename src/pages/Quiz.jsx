@@ -1,4 +1,6 @@
 import { useState, useRef, useMemo, useEffect } from "react"
+import { doc, updateDoc } from "firebase/firestore"
+import { db } from "../firebase"
 import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
@@ -125,7 +127,7 @@ const Calculator = ({ onClose }) => {
 // =============================================
 // QUIZ
 // =============================================
-const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0, hotTopicFilter = null }) => {
+const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0, hotTopicFilter = null, authUser = null }) => {
 
   // Get the right question pool
   const questionPool = useMemo(() => {
@@ -290,6 +292,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     return () => clearTimeout(t)
   }, [examTimeLeft, started, finished, isCBT])
 
+  // SAVE QUIZ RESULTS AND CALCULATE AVERAGE SCORE
   useEffect(() => {
     if (!finished || filteredQuestions.length === 0) return
     const answers = filteredQuestions.map((q, i) => {
@@ -339,10 +342,58 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         topic: s.topic, subject: s.subject, score: s.score, total: s.total, date: new Date().toISOString()
       }))
       // Append new entries to existing progress
-      localStorage.setItem("progress", JSON.stringify([...existing, ...newEntries]))
+      const allProgress = [...existing, ...newEntries]
+      localStorage.setItem("progress", JSON.stringify(allProgress))
+
+      // SAVE AVERAGE SCORE TO FIRESTORE
+      if (authUser?.uid) {
+        try {
+          const totalScore = allProgress.reduce((sum, quiz) => sum + (quiz.score || 0), 0)
+          const totalQuestions = allProgress.reduce((sum, quiz) => sum + (quiz.total || 0), 0)
+          const averageScore = totalQuestions > 0 
+            ? Math.round((totalScore / totalQuestions) * 100) 
+            : 0
+
+          updateDoc(doc(db, "users", authUser.uid), {
+            averageScore: averageScore,
+            totalQuizzesCompleted: allProgress.length,
+            lastQuizAt: new Date().toISOString()
+          }).then(() => {
+            console.log("✅ Average score saved to Firestore:", averageScore)
+          }).catch(e => {
+            console.error("❌ Error saving to Firestore:", e)
+          })
+        } catch(e) {
+          console.error("Error calculating average:", e)
+        }
+      }
     } else {
       const newEntry = { topic, subject: subject || "General", score, total, date: new Date().toISOString() }
-      localStorage.setItem("progress", JSON.stringify([...existing, newEntry]))
+      const allProgress = [...existing, newEntry]
+      localStorage.setItem("progress", JSON.stringify(allProgress))
+
+      // SAVE AVERAGE SCORE TO FIRESTORE
+      if (authUser?.uid) {
+        try {
+          const totalScore = allProgress.reduce((sum, quiz) => sum + (quiz.score || 0), 0)
+          const totalQuestions = allProgress.reduce((sum, quiz) => sum + (quiz.total || 0), 0)
+          const averageScore = totalQuestions > 0 
+            ? Math.round((totalScore / totalQuestions) * 100) 
+            : 0
+
+          updateDoc(doc(db, "users", authUser.uid), {
+            averageScore: averageScore,
+            totalQuizzesCompleted: allProgress.length,
+            lastQuizAt: new Date().toISOString()
+          }).then(() => {
+            console.log("✅ Average score saved to Firestore:", averageScore)
+          }).catch(e => {
+            console.error("❌ Error saving to Firestore:", e)
+          })
+        } catch(e) {
+          console.error("Error calculating average:", e)
+        }
+      }
     }
   }, [finished])
 
