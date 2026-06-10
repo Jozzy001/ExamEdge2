@@ -105,7 +105,9 @@ export const XPBar = ({ onNavigate }) => {
             fontSize: 11, fontWeight: 700,
             color: daysToExam <= 7 ? "var(--accent)" : "var(--text3)"
           }}>
-            {daysToExam === 0 ? "🎓 Exam day!" : `📅 ${daysToExam} day${daysToExam !== 1 ? "s" : ""} to exam`}
+            {daysToExam === 0
+              ? "🎓 Post-UTME day! Good luck!"
+              : `📅 ${daysToExam} day${daysToExam !== 1 ? "s" : ""} to Post-UTME`}
           </div>
         )}
       </div>
@@ -168,6 +170,22 @@ export const XPBar = ({ onNavigate }) => {
                   <div style={{ fontSize: 10, color: "var(--text3)" }}>{stat.label}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Post-UTME date info banner */}
+            <div style={{
+              background: "rgba(102,126,234,0.08)",
+              border: "1px solid rgba(102,126,234,0.2)",
+              borderRadius: "var(--radius-md)",
+              padding: "10px 14px",
+              marginBottom: 16,
+              fontSize: 12,
+              color: "var(--text2)",
+              lineHeight: 1.6
+            }}>
+              📋 <strong style={{ color: "var(--primary)" }}>UNIBEN Post-UTME 2026</strong> holds from{" "}
+              <strong>July 27 – August 1, 2026</strong>. Your countdown is set automatically.
+              You can change it below if needed.
             </div>
 
             {/* Daily goal target */}
@@ -240,7 +258,6 @@ export const XPBar = ({ onNavigate }) => {
                     </div>
                   : null
                 }
-                {/* All badges — earned + locked */}
                 {Array.from({ length: 12 }).map((_, i) => {
                   const BADGE_IDS = ["first_quiz","perfect_score","streak_3","streak_7","streak_30","century","hot_streak","night_owl","early_bird","level_5","top_scorer","dedicated"]
                   const badge = ALL_BADGES.find(b => b.id === BADGE_IDS[i])

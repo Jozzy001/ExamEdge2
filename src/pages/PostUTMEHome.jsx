@@ -14,6 +14,14 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
   const [paywallType, setPaywallType] = useState(null)
   const [showTour, setShowTour] = useState(false)
 
+  // Auto-set UNIBEN 2026 Post-UTME exam date if not already set
+  useEffect(() => {
+    const existing = localStorage.getItem("ee-examDate")
+    if (!existing) {
+      localStorage.setItem("ee-examDate", "2026-07-27")
+    }
+  }, [])
+
   // Request notifications permission
   useEffect(() => {
     if (authUser?.uid) {
@@ -207,33 +215,33 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         </button>
 
-        {/* Referral Button - Small & Attractive */}
-        {!isPaid && (
-          <button
-            onClick={() => onNavigate("referrals")}
-            style={{
-              background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-              borderRadius: "var(--radius-lg)",
-              padding: "12px 16px",
-              marginBottom: 16,
-              color: "#fff",
-              border: "none",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              width: "100%",
-              fontSize: 14,
-              fontWeight: 700
-            }}
-          >
-            <span style={{ fontSize: 20 }}>🎁</span>
-            <div style={{ flex: 1, textAlign: "left" }}>
-              <div>Earn Free Access</div>
-              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Invite friends & get rewards →</div>
-            </div>
-          </button>
-        )}
+        {/* Referral Button — visible to ALL users */}
+        <button
+          onClick={() => onNavigate("referrals")}
+          style={{
+            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            borderRadius: "var(--radius-lg)",
+            padding: "14px 16px",
+            marginBottom: 16,
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            width: "100%",
+            fontSize: 14,
+            fontWeight: 700,
+            boxShadow: "0 4px 14px rgba(16,185,129,0.3)"
+          }}
+        >
+          <span style={{ fontSize: 24 }}>💰</span>
+          <div style={{ flex: 1, textAlign: "left" }}>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>Earn ₦500 Per Referral</div>
+            <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Invite friends → they pay → you get paid every weekend</div>
+          </div>
+          <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
+        </button>
 
         {/* Upgrade banner for free users */}
         {!isPaid && (
@@ -260,7 +268,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         )}
 
-        {/* WhatsApp Channel — for everyone */}
+        {/* WhatsApp Channel */}
         <div
           onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
           style={{
