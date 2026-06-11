@@ -11,14 +11,12 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
 
   useEffect(() => {
     if (authUser?.uid) {
-      // Load referral stats
       getReferralStats(authUser.uid).then(stats => {
         setReferralStats(stats)
       }).catch(e => {
         console.error("Error loading referral stats:", e)
       })
 
-      // Load user data for pending earnings and account details
       getDoc(doc(db, "users", authUser.uid)).then(snap => {
         if (snap.exists()) {
           setUserData(snap.data())
@@ -36,7 +34,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
       <div className="ee-page">
         <header className="ee-header">
           <button className="ee-back-btn" onClick={onBack}>← Back</button>
-          <span style={{ fontWeight: 800, fontSize: 15 }}>💰 Referrals & Earnings</span>
+          <span style={{ fontWeight: 800, fontSize: 15 }}>🎁 Referrals</span>
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content" style={{ textAlign: "center", paddingTop: 40 }}>
@@ -51,7 +49,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
       <div className="ee-page">
         <header className="ee-header">
           <button className="ee-back-btn" onClick={onBack}>← Back</button>
-          <span style={{ fontWeight: 800, fontSize: 15 }}>💰 Referrals & Earnings</span>
+          <span style={{ fontWeight: 800, fontSize: 15 }}>🎁 Referrals</span>
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content" style={{ textAlign: "center", paddingTop: 40, color: "var(--text3)" }}>
@@ -71,259 +69,221 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
   const handleShareWhatsApp = () => {
     const link = getReferralLink(referralStats.referralCode)
     const text = encodeURIComponent(
-      `🎓 ExamEdgeNG helped me prepare for my UNIBEN Post-UTME! Join me and get free access.\n\n${link}`
+      `🎓 I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME! It has 20 years of past questions, CBT simulation and an AI tutor. Sign up with my code to get started.\n\n${link}`
     )
     window.open(`https://wa.me/?text=${text}`, "_blank")
   }
 
-  const nextMilestone = referralStats.nextMilestone
-  const progressPct = Math.round((referralStats.referralCount / nextMilestone.target) * 100)
-  const pendingEarnings = userData?.pendingEarnings || 0
-  const hasAccountDetails = userData?.accountDetails && userData.accountDetails.accountNumber
-  const paymentHistory = userData?.paymentHistory || []
+  const friendsReferred = referralStats.referralCount || 0
+  const paidFriends = Math.round((userData?.referralEarnings || 0) / 500)
 
   return (
     <div className="ee-page">
       <header className="ee-header">
         <button className="ee-back-btn" onClick={onBack}>← Back</button>
-        <span style={{ fontWeight: 800, fontSize: 15 }}>💰 Referrals & Earnings</span>
+        <span style={{ fontWeight: 800, fontSize: 15 }}>🎁 Referrals</span>
         <span style={{ width: 60 }} />
       </header>
 
       <div className="ee-content">
-        {/* Pending Earnings Card */}
-        {pendingEarnings > 0 && (
-          <div style={{
-            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-            borderRadius: "var(--radius-xl)",
-            padding: "20px",
-            marginBottom: 20,
-            color: "#fff"
-          }}>
-            <div style={{ fontSize: 12, opacity: 0.9, marginBottom: 6 }}>Pending Earnings</div>
-            <div style={{ fontSize: 32, fontWeight: 900, marginBottom: 12 }}>₦{pendingEarnings.toLocaleString()}</div>
-            <div style={{ fontSize: 12, opacity: 0.85, marginBottom: 14 }}>
-              Earned from {referralStats.referralCount} referrals • Paid every weekend
-            </div>
-            
-            {!hasAccountDetails ? (
-              <button
-                onClick={() => onNavigate("accountDetails")}
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  background: "#fff",
-                  color: "#059669",
-                  border: "none",
-                  borderRadius: "var(--radius-md)",
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontSize: 13
-                }}
-              >
-                Add Account Details
-              </button>
-            ) : (
-              <div style={{
-                background: "rgba(255,255,255,0.2)",
-                padding: "12px",
-                borderRadius: "var(--radius-md)",
-                fontSize: 12,
-                textAlign: "center"
-              }}>
-                ✅ Account details saved • Awaiting payout
-              </div>
-            )}
-          </div>
-        )}
 
-        {pendingEarnings === 0 && (
-          <div style={{
-            background: "rgba(100, 116, 139, 0.1)",
-            borderRadius: "var(--radius-lg)",
-            padding: "16px",
-            marginBottom: 20,
-            border: "1px solid rgba(100, 116, 139, 0.2)",
-            fontSize: 13,
-            color: "var(--text3)",
-            textAlign: "center"
-          }}>
-            No pending earnings yet. Share your code to start earning! 🚀
-          </div>
-        )}
-
-        {/* Referral Card */}
+        {/* ── COMING SOON BANNER ── */}
         <div style={{
           background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
           borderRadius: "var(--radius-xl)",
-          padding: "24px",
+          padding: "24px 20px",
+          marginBottom: 20,
+          color: "#fff",
+          textAlign: "center"
+        }}>
+          <div style={{ fontSize: 44, marginBottom: 12 }}>🚀</div>
+          <div style={{ fontSize: 18, fontWeight: 900, marginBottom: 8 }}>
+            Earn ₦500 Per Referral
+          </div>
+          <div style={{
+            display: "inline-block",
+            background: "rgba(255,255,255,0.2)",
+            borderRadius: 20, padding: "4px 14px",
+            fontSize: 12, fontWeight: 700,
+            border: "1px solid rgba(255,255,255,0.3)",
+            marginBottom: 12
+          }}>
+            ⏳ Launching Soon
+          </div>
+          <p style={{ fontSize: 13, opacity: 0.9, lineHeight: 1.7, margin: 0 }}>
+            When we fully launch, every friend who pays ₦3,000 earns you
+            <strong> ₦500 cash</strong> — paid directly to your bank account every weekend.
+          </p>
+        </div>
+
+        {/* ── WHAT TO DO NOW ── */}
+        <div style={{
+          background: "rgba(16,185,129,0.08)",
+          border: "1.5px solid rgba(16,185,129,0.25)",
+          borderRadius: "var(--radius-lg)",
+          padding: "16px",
+          marginBottom: 20
+        }}>
+          <div style={{ fontSize: 14, fontWeight: 800, color: "#059669", marginBottom: 10 }}>
+            ✅ What you can do right now
+          </div>
+          <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.7, margin: "0 0 12px" }}>
+            Start sharing your referral code today. Every friend who signs up using your
+            code is registered under your name. When payouts go live, you'll be paid for
+            every one of them — including the ones you referred before launch.
+          </p>
+          <div style={{
+            background: "rgba(16,185,129,0.1)",
+            borderRadius: "var(--radius-md)",
+            padding: "10px 12px",
+            fontSize: 12, color: "#059669", fontWeight: 700
+          }}>
+            🎯 The earlier you refer, the more you earn when we launch.
+          </div>
+        </div>
+
+        {/* ── FRIENDS REFERRED SO FAR ── */}
+        <div style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-lg)",
+          padding: "16px",
+          marginBottom: 20
+        }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 14 }}>
+            📊 Your Referral Stats
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div style={{
+              background: "rgba(102,126,234,0.08)",
+              border: "1px solid rgba(102,126,234,0.2)",
+              borderRadius: "var(--radius-md)",
+              padding: "14px 10px", textAlign: "center"
+            }}>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "var(--primary)" }}>
+                {friendsReferred}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>
+                Friends signed up
+              </div>
+            </div>
+            <div style={{
+              background: "rgba(16,185,129,0.08)",
+              border: "1px solid rgba(16,185,129,0.2)",
+              borderRadius: "var(--radius-md)",
+              padding: "14px 10px", textAlign: "center"
+            }}>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#059669" }}>
+                ₦{(friendsReferred * 500).toLocaleString()}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>
+                Potential earnings
+              </div>
+            </div>
+          </div>
+          {friendsReferred > 0 && (
+            <div style={{
+              marginTop: 12, padding: "10px 12px",
+              background: "rgba(245,158,11,0.08)",
+              border: "1px solid rgba(245,158,11,0.2)",
+              borderRadius: "var(--radius-md)",
+              fontSize: 12, color: "#92400e", lineHeight: 1.6
+            }}>
+              🎉 You've referred <strong>{friendsReferred} friend{friendsReferred !== 1 ? "s" : ""}</strong> so far.
+              Keep sharing — your earnings grow with every new signup!
+            </div>
+          )}
+        </div>
+
+        {/* ── SHARE YOUR CODE ── */}
+        <div style={{
+          background: "linear-gradient(135deg, #1e293b, #334155)",
+          borderRadius: "var(--radius-xl)",
+          padding: "22px",
           marginBottom: 20,
           color: "#fff"
         }}>
-          {/* Header */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-            <span style={{ fontSize: 40 }}>🎁</span>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800 }}>Refer & Earn ₦500</div>
-              <div style={{ fontSize: 13, opacity: 0.85 }}>Per friend that pays</div>
-            </div>
+          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>
+            🔗 Your Referral Code
+          </div>
+          <div style={{
+            fontSize: 28, fontWeight: 900, letterSpacing: "0.12em",
+            marginBottom: 16, color: "#a5f3fc"
+          }}>
+            {referralStats.referralCode}
           </div>
 
-          {/* Milestone progress */}
-          <div style={{ marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 8 }}>
-              <span>Friends signed up</span>
-              <span style={{ fontWeight: 700 }}>{referralStats.referralCount}</span>
-            </div>
-            <div style={{ height: 10, background: "rgba(255,255,255,0.2)", borderRadius: 5, overflow: "hidden" }}>
-              <div
-                style={{
-                  height: "100%",
-                  background: "#fff",
-                  width: `${Math.min((referralStats.referralCount / 10) * 100, 100)}%`,
-                  transition: "width 0.3s"
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Share buttons */}
           <div style={{ display: "flex", gap: 10 }}>
-            <button
-              onClick={handleCopyLink}
-              style={{
-                flex: 1,
-                padding: "12px",
-                background: "#fff",
-                color: "#667eea",
-                border: "none",
-                borderRadius: "var(--radius-md)",
-                fontWeight: 700,
-                cursor: "pointer",
-                fontSize: 13
-              }}
-            >
+            <button onClick={handleCopyLink} style={{
+              flex: 1, padding: "12px",
+              background: "rgba(255,255,255,0.12)",
+              color: "#fff", border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: "var(--radius-md)",
+              fontWeight: 700, cursor: "pointer", fontSize: 13,
+              fontFamily: "var(--font-main)"
+            }}>
               {copied ? "✅ Copied!" : "📋 Copy link"}
             </button>
-            <button
-              onClick={handleShareWhatsApp}
-              style={{
-                flex: 1,
-                padding: "12px",
-                background: "#25d366",
-                color: "#fff",
-                border: "none",
-                borderRadius: "var(--radius-md)",
-                fontWeight: 700,
-                cursor: "pointer",
-                fontSize: 13
-              }}
-            >
-              💬 Share
+            <button onClick={handleShareWhatsApp} style={{
+              flex: 1, padding: "12px",
+              background: "#25d366", color: "#fff",
+              border: "none", borderRadius: "var(--radius-md)",
+              fontWeight: 700, cursor: "pointer", fontSize: 13,
+              fontFamily: "var(--font-main)"
+            }}>
+              💬 WhatsApp
             </button>
           </div>
-
-          {/* Code display */}
-          <div style={{
-            background: "rgba(0,0,0,0.2)",
-            borderRadius: "var(--radius-md)",
-            padding: "12px",
-            textAlign: "center",
-            fontSize: 13,
-            marginTop: 12
-          }}>
-            Your code: <strong style={{ fontSize: 15, letterSpacing: "0.1em" }}>{referralStats.referralCode}</strong>
-          </div>
         </div>
 
-        {/* How it works */}
+        {/* ── HOW IT WILL WORK ── */}
         <div style={{ marginBottom: 20 }}>
-          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 12, color: "var(--text)" }}>How it works:</div>
-          <div style={{
-            background: "var(--surface)",
-            borderRadius: "var(--radius-lg)",
-            padding: "12px",
-            marginBottom: 8,
-            display: "flex",
-            gap: 12
-          }}>
-            <span style={{ fontSize: 20 }}>1️⃣</span>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>Share your code</div>
-              <div style={{ fontSize: 12, color: "var(--text3)" }}>Send link to friends</div>
-            </div>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>
+            How it will work at launch
           </div>
-          <div style={{
-            background: "var(--surface)",
-            borderRadius: "var(--radius-lg)",
-            padding: "12px",
-            marginBottom: 8,
-            display: "flex",
-            gap: 12
-          }}>
-            <span style={{ fontSize: 20 }}>2️⃣</span>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>They sign up & pay</div>
-              <div style={{ fontSize: 12, color: "var(--text3)" }}>Using your code</div>
-            </div>
-          </div>
-          <div style={{
-            background: "var(--surface)",
-            borderRadius: "var(--radius-lg)",
-            padding: "12px",
-            display: "flex",
-            gap: 12
-          }}>
-            <span style={{ fontSize: 20 }}>3️⃣</span>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2 }}>You earn ₦500</div>
-              <div style={{ fontSize: 12, color: "var(--text3)" }}>Per paying friend</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Payout info */}
-        <div style={{
-          background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-          borderRadius: "var(--radius-lg)",
-          padding: "14px",
-          marginBottom: 20,
-          color: "#fff"
-        }}>
-          <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 6 }}>💳 Payout Schedule</div>
-          <div style={{ fontSize: 12, lineHeight: 1.5 }}>
-            Payments are processed every <strong>weekend</strong>. Add your bank details above to receive your earnings automatically.
-          </div>
-        </div>
-
-        {/* Payment History */}
-        {paymentHistory && paymentHistory.length > 0 && (
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 12, color: "var(--text)" }}>Payment History:</div>
-            {paymentHistory.map((payment, idx) => (
-              <div
-                key={idx}
-                style={{
-                  background: "var(--surface)",
-                  borderRadius: "var(--radius-md)",
-                  padding: "12px",
-                  marginBottom: 8,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center"
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>₦{payment.amount.toLocaleString()}</div>
-                  <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                    {new Date(payment.date).toLocaleDateString()}
-                  </div>
-                </div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#10b981" }}>✅ Paid</div>
+          {[
+            { icon: "1️⃣", title: "Share your code now", sub: "Friends who sign up using your code are already registered under your name." },
+            { icon: "2️⃣", title: "They pay ₦3,000", sub: "When a friend upgrades to full access, ₦500 is credited to your account." },
+            { icon: "3️⃣", title: "You get paid every weekend", sub: "Once payouts are live, we'll send your earnings directly to your bank account." },
+          ].map((step, i) => (
+            <div key={i} style={{
+              background: "var(--surface)",
+              borderRadius: "var(--radius-lg)",
+              padding: "12px 14px", marginBottom: 8,
+              display: "flex", gap: 12,
+              border: "1px solid var(--border)"
+            }}>
+              <span style={{ fontSize: 22 }}>{step.icon}</span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginBottom: 2 }}>{step.title}</div>
+                <div style={{ fontSize: 12, color: "var(--text3)" }}>{step.sub}</div>
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
+
+        {/* ── FOLLOW FOR LAUNCH UPDATES ── */}
+        <div
+          onClick={() => window.open("https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
+          style={{
+            background: "linear-gradient(135deg, #25d366, #128c7e)",
+            borderRadius: "var(--radius-lg)", padding: "14px 18px",
+            marginBottom: 16, cursor: "pointer", color: "#fff",
+            display: "flex", alignItems: "center", gap: 14
+          }}
+        >
+          <span style={{ fontSize: 26 }}>📢</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>
+              Follow Our WhatsApp Channel
+            </div>
+            <div style={{ fontSize: 12, opacity: 0.9, lineHeight: 1.5 }}>
+              We'll announce when payouts go live — be the first to know
+            </div>
           </div>
-        )}
+          <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
+        </div>
+
       </div>
     </div>
   )

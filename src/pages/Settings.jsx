@@ -2,8 +2,6 @@ import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import { signOut, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth"
 import { doc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs } from "firebase/firestore"
-import ReferralCard from "../components/ReferralCard"
-import BankDetailsForm from "../components/BankDetailsForm"
 import { PageTransition } from "../components/LoadingScreen"
 import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
@@ -25,11 +23,9 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
   const [showInbox, setShowInbox] = useState(false)
   const [contactMessage, setContactMessage] = useState("")
   const [myMessages, setMyMessages] = useState([])
-  const [showMessages, setShowMessages] = useState(false)
 
   const gameState = getGameState()
 
-  // Fetch user's messages and replies
   useEffect(() => {
     const fetchMyMessages = async () => {
       if (!auth.currentUser?.uid) return
@@ -165,7 +161,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
 
       <div className="ee-content">
 
-        {/* Success / Error messages */}
         {success && (
           <div style={{
             background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)",
@@ -189,17 +184,10 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             background: "var(--surface)", border: "1px solid var(--border)",
             borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
           }}>
-            <div style={{ fontSize: 11, color: "var(--text3)", fontWeight: 700, marginBottom: 8 }}>
-              USERNAME
-            </div>
-            <input
-              type="text" value={newUsername}
-              onChange={e => setNewUsername(e.target.value)}
-              style={inputStyle} autoFocus
-            />
+            <div style={{ fontSize: 11, color: "var(--text3)", fontWeight: 700, marginBottom: 8 }}>USERNAME</div>
+            <input type="text" value={newUsername} onChange={e => setNewUsername(e.target.value)} style={inputStyle} autoFocus />
             <div style={{ display: "flex", gap: 8 }}>
-              <button className="ee-btn ee-btn-primary" onClick={handleSaveUsername}
-                disabled={loading} style={{ flex: 1, padding: "10px" }}>
+              <button className="ee-btn ee-btn-primary" onClick={handleSaveUsername} disabled={loading} style={{ flex: 1, padding: "10px" }}>
                 {loading ? "Saving..." : "Save"}
               </button>
               <button className="ee-btn ee-btn-secondary" onClick={() => {
@@ -209,24 +197,20 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         ) : (
           row("😊", "Username", userData?.name || authUser?.name || "—",
-            <button onClick={() => { setEditingUsername(true); setSuccess(""); setError("") }}
-              style={{
-                background: "var(--primary-light)", color: "var(--primary-text)",
-                border: "none", borderRadius: "var(--radius-sm)", padding: "6px 12px",
-                fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
-              }}>Edit</button>
+            <button onClick={() => { setEditingUsername(true); setSuccess(""); setError("") }} style={{
+              background: "var(--primary-light)", color: "var(--primary-text)",
+              border: "none", borderRadius: "var(--radius-sm)", padding: "6px 12px",
+              fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
+            }}>Edit</button>
           )
         )}
 
         {row("📧", "Email", authUser?.email || auth.currentUser?.email || "—", null)}
         {row("🎓", "Faculty", faculty || "—", null)}
 
-        {/* Stats */}
+        {/* ===== STATS ===== */}
         {sectionTitle("📊 Your Stats")}
-        <div style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-          gap: 8, marginBottom: 8
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 8 }}>
           {[
             { icon: gameState.levelInfo.current.emoji, label: "Level", value: gameState.levelInfo.current.title },
             { icon: "⭐", label: "Total XP", value: `${gameState.xp} XP` },
@@ -257,9 +241,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         }}>
           <span style={{ fontSize: 20 }}>{dark ? "🌙" : "☀️"}</span>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>
-              {dark ? "Dark Mode" : "Light Mode"}
-            </div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{dark ? "Dark Mode" : "Light Mode"}</div>
             <div style={{ fontSize: 11, color: "var(--text3)" }}>Tap to toggle</div>
           </div>
           <button onClick={toggleTheme} style={{
@@ -269,8 +251,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           }}>
             <div style={{
               width: 22, height: 22, borderRadius: "50%", background: "#fff",
-              position: "absolute", top: 3,
-              left: dark ? 23 : 3, transition: "all 0.2s",
+              position: "absolute", top: 3, left: dark ? 23 : 3, transition: "all 0.2s",
               boxShadow: "0 1px 3px rgba(0,0,0,0.2)"
             }} />
           </button>
@@ -331,23 +312,16 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             background: "var(--surface)", border: "1px solid var(--border)",
             borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
           }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>
-              Change Password
-            </div>
-            <input type="password" placeholder="Current password" value={currentPassword}
-              onChange={e => setCurrentPassword(e.target.value)} style={inputStyle} />
-            <input type="password" placeholder="New password (min 6 chars)" value={newPassword}
-              onChange={e => setNewPassword(e.target.value)} style={inputStyle} />
-            <input type="password" placeholder="Confirm new password" value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)} style={inputStyle} />
+            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>Change Password</div>
+            <input type="password" placeholder="Current password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} style={inputStyle} />
+            <input type="password" placeholder="New password (min 6 chars)" value={newPassword} onChange={e => setNewPassword(e.target.value)} style={inputStyle} />
+            <input type="password" placeholder="Confirm new password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} style={inputStyle} />
             <div style={{ display: "flex", gap: 8 }}>
-              <button className="ee-btn ee-btn-primary" onClick={handleChangePassword}
-                disabled={loading} style={{ flex: 1, padding: "10px" }}>
+              <button className="ee-btn ee-btn-primary" onClick={handleChangePassword} disabled={loading} style={{ flex: 1, padding: "10px" }}>
                 {loading ? "Saving..." : "Save"}
               </button>
               <button className="ee-btn ee-btn-secondary" onClick={() => {
-                setChangingPassword(false); setCurrentPassword(""); setNewPassword("");
-                setConfirmPassword(""); setError("")
+                setChangingPassword(false); setCurrentPassword(""); setNewPassword(""); setConfirmPassword(""); setError("")
               }} style={{ flex: 1, padding: "10px" }}>Cancel</button>
             </div>
           </div>
@@ -370,39 +344,30 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
-        {/* Admin access — only visible to admin */}
+        {/* Admin access */}
         {authUser?.email === "jce680@gmail.com" && (
           <>
             {sectionTitle("🛡️ Admin")}
-            <button
-              onClick={() => onNavigate("admin")}
-              style={{
-                width: "100%", padding: "14px 16px",
-                background: "linear-gradient(135deg, var(--primary), var(--primary-dark, var(--primary)))",
-                color: "#fff", border: "none",
-                borderRadius: "var(--radius-md)",
-                fontWeight: 800, fontSize: 14,
-                cursor: "pointer", fontFamily: "var(--font-main)",
-                display: "flex", alignItems: "center", gap: 10,
-                marginBottom: 8
-              }}
-            >
+            <button onClick={() => onNavigate("admin")} style={{
+              width: "100%", padding: "14px 16px",
+              background: "linear-gradient(135deg, var(--primary), var(--primary-dark, var(--primary)))",
+              color: "#fff", border: "none", borderRadius: "var(--radius-md)",
+              fontWeight: 800, fontSize: 14, cursor: "pointer", fontFamily: "var(--font-main)",
+              display: "flex", alignItems: "center", gap: 10, marginBottom: 8
+            }}>
               <span>🛡️</span>
               <div style={{ textAlign: "left" }}>
                 <div>Admin Dashboard</div>
-                <div style={{ fontSize: 11, opacity: 0.8, fontWeight: 600 }}>
-                  Manage users & monitor app
-                </div>
+                <div style={{ fontSize: 11, opacity: 0.8, fontWeight: 600 }}>Manage users & monitor app</div>
               </div>
               <span style={{ marginLeft: "auto" }}>→</span>
             </button>
           </>
         )}
 
-        {/* ===== SUBSCRIPTION & REFERRAL ===== */}
-        {sectionTitle("💎 Plan & Referral")}
+        {/* ===== PLAN ===== */}
+        {sectionTitle("💎 Plan")}
 
-        {/* Plan status */}
         {!isPaid ? (
           <div style={{
             background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
@@ -414,19 +379,16 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               Unlock all 20 years · Hot Topics · Weak Areas · CBT History
             </div>
             <button onClick={() => onNavigate("upgrade")} style={{
-              background: "#fff", color: "#667eea",
-              border: "none", borderRadius: 10,
-              padding: "12px 24px", fontWeight: 700,
-              fontSize: 14, cursor: "pointer", width: "100%",
-              fontFamily: "var(--font-main)"
+              background: "#fff", color: "#667eea", border: "none", borderRadius: 10,
+              padding: "12px 24px", fontWeight: 700, fontSize: 14, cursor: "pointer",
+              width: "100%", fontFamily: "var(--font-main)"
             }}>
               Get Full Access — ₦3,000
             </button>
           </div>
         ) : (
           <div style={{
-            background: "rgba(34,201,122,0.08)",
-            border: "1px solid rgba(34,201,122,0.3)",
+            background: "rgba(34,201,122,0.08)", border: "1px solid rgba(34,201,122,0.3)",
             borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 12,
             display: "flex", alignItems: "center", gap: 12
           }}>
@@ -440,35 +402,39 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
+        {/* ===== REFERRALS & EARNINGS — link to dedicated page ===== */}
+        {sectionTitle("💰 Referrals & Earnings")}
 
-
-        {/* Referral Earnings Card — visible to all users */}
-        <div style={{
-          background: "var(--surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius-lg)",
-          padding: "16px", marginBottom: 12
-        }}>
-          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 14, display: "flex", alignItems: "center", gap: 8 }}>
-            💰 Your Referral Earnings
+        <button
+          onClick={() => onNavigate("referrals")}
+          style={{
+            width: "100%", display: "flex", alignItems: "center", gap: 14,
+            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            borderRadius: "var(--radius-lg)", padding: "16px 18px",
+            border: "none", cursor: "pointer", marginBottom: 12,
+            color: "#fff", fontFamily: "var(--font-main)",
+            boxShadow: "0 4px 14px rgba(16,185,129,0.25)"
+          }}
+        >
+          <span style={{ fontSize: 28 }}>💰</span>
+          <div style={{ flex: 1, textAlign: "left" }}>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>View Earnings & Referrals</div>
+            <div style={{ fontSize: 12, opacity: 0.9 }}>
+              Total earned · Pending · Payment history · Share your code
+            </div>
           </div>
+          <span style={{ fontSize: 18, opacity: 0.8 }}>→</span>
+        </button>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
+        {/* Quick earnings preview */}
+        {(userData?.referralEarnings || 0) > 0 && (
+          <div style={{
+            display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+            gap: 8, marginBottom: 12
+          }}>
             {[
-              {
-                label: "Total Earned",
-                value: `₦${(userData?.referralEarnings || 0).toLocaleString()}`,
-                color: "#15803d",
-                bg: "rgba(34,197,94,0.08)",
-                border: "rgba(34,197,94,0.2)"
-              },
-              {
-                label: "Paid Out",
-                value: `₦${(userData?.referralPaidOut || 0).toLocaleString()}`,
-                color: "var(--primary)",
-                bg: "var(--primary-light)",
-                border: "rgba(102,126,234,0.2)"
-              },
+              { label: "Total Earned", value: `₦${(userData?.referralEarnings || 0).toLocaleString()}`, color: "#15803d", bg: "rgba(34,197,94,0.08)", border: "rgba(34,197,94,0.2)" },
+              { label: "Paid Out", value: `₦${(userData?.referralPaidOut || 0).toLocaleString()}`, color: "var(--primary)", bg: "var(--primary-light)", border: "rgba(102,126,234,0.2)" },
               {
                 label: "Pending",
                 value: `₦${((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}`,
@@ -478,75 +444,13 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               },
             ].map((s, i) => (
               <div key={i} style={{
-                background: s.bg,
-                border: `1px solid ${s.border}`,
-                borderRadius: "var(--radius-md)",
-                padding: "10px 8px", textAlign: "center"
+                background: s.bg, border: `1px solid ${s.border}`,
+                borderRadius: "var(--radius-md)", padding: "10px 6px", textAlign: "center"
               }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: s.color }}>{s.value}</div>
-                <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 3 }}>{s.label}</div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: s.color }}>{s.value}</div>
+                <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 2 }}>{s.label}</div>
               </div>
             ))}
-          </div>
-
-          {/* Pending payout note */}
-          {(userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? (
-            <div style={{
-              background: "rgba(245,158,11,0.08)",
-              border: "1px solid rgba(245,158,11,0.25)",
-              borderRadius: "var(--radius-md)",
-              padding: "10px 12px",
-              fontSize: 12, color: "#92400e", lineHeight: 1.6
-            }}>
-              ⏳ <strong>₦{((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}</strong> will be paid to your account every weekend. Make sure your bank details are saved below.
-            </div>
-          ) : (userData?.referralEarnings || 0) === 0 ? (
-            <div style={{
-              fontSize: 12, color: "var(--text3)", lineHeight: 1.6,
-              padding: "8px 0"
-            }}>
-              Share your referral code from the home screen to start earning ₦500 per friend who pays.
-            </div>
-          ) : (
-            <div style={{
-              background: "rgba(34,197,94,0.08)",
-              border: "1px solid rgba(34,197,94,0.2)",
-              borderRadius: "var(--radius-md)",
-              padding: "10px 12px",
-              fontSize: 12, color: "#15803d", lineHeight: 1.6
-            }}>
-              ✅ All earnings have been paid out. Keep referring to earn more!
-            </div>
-          )}
-        </div>
-
-        {/* Bank details — only shown when user has pending referral earnings */}
-        {((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)) > 0 && (
-          <div style={{
-            background: "rgba(245,158,11,0.08)", border: "1.5px solid rgba(245,158,11,0.3)",
-            borderRadius: "var(--radius-lg)", padding: "16px", margin: "12px 0"
-          }}>
-            <div style={{ fontSize: 14, fontWeight: 800, color: "#d97706", marginBottom: 8 }}>
-              🏦 Add Bank Details to Receive Payment
-            </div>
-            <p style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.6, marginBottom: 12 }}>
-              You have <strong style={{ color: "#d97706" }}>₦{((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}</strong> pending.
-              Add your bank details so we can pay you.
-            </p>
-            {userData?.bankDetails ? (
-              <div style={{
-                background: "var(--surface)", borderRadius: "var(--radius-md)",
-                padding: "10px 12px", marginBottom: 10,
-                border: "1px solid var(--border)"
-              }}>
-                <div style={{ fontSize: 12, color: "var(--text2)" }}>Saved bank details:</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginTop: 4 }}>
-                  {userData.bankDetails.bankName} · {userData.bankDetails.accountNumber}
-                </div>
-                <div style={{ fontSize: 12, color: "var(--text2)" }}>{userData.bankDetails.accountName}</div>
-              </div>
-            ) : null}
-            <BankDetailsForm userData={userData} userId={authUser?.uid} />
           </div>
         )}
 
@@ -559,10 +463,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         }}>
           <div
             onClick={() => { setShowInbox(p => !p); setShowContactForm(false) }}
-            style={{
-              padding: "14px 16px", cursor: "pointer",
-              display: "flex", alignItems: "center", gap: 12
-            }}
+            style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", gap: 12 }}
           >
             <span style={{ fontSize: 20 }}>💬</span>
             <div style={{ flex: 1 }}>
@@ -570,9 +471,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                 Contact Support
                 {myMessages.some(m => m.replied || m.fromAdmin) && (
                   <span style={{
-                    fontSize: 10, fontWeight: 800,
-                    background: "#22c55e", color: "#fff",
-                    padding: "2px 8px", borderRadius: 10,
+                    fontSize: 10, fontWeight: 800, background: "#22c55e", color: "#fff",
+                    padding: "2px 8px", borderRadius: 10
                   }}>NEW REPLY</span>
                 )}
               </div>
@@ -598,15 +498,11 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                       {!msg.fromAdmin && (
                         <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
                           <div style={{
-                            maxWidth: "85%",
-                            background: "var(--primary)", color: "#fff",
-                            borderRadius: "14px 14px 4px 14px",
-                            padding: "10px 14px", fontSize: 13, lineHeight: 1.5,
+                            maxWidth: "85%", background: "var(--primary)", color: "#fff",
+                            borderRadius: "14px 14px 4px 14px", padding: "10px 14px", fontSize: 13, lineHeight: 1.5
                           }}>
                             <div style={{ fontSize: 10, opacity: 0.75, marginBottom: 4, fontWeight: 700 }}>
-                              You · {msg.createdAt?.toDate
-                                ? msg.createdAt.toDate().toLocaleDateString("en-NG", { day: "numeric", month: "short" })
-                                : "—"}
+                              You · {msg.createdAt?.toDate ? msg.createdAt.toDate().toLocaleDateString("en-NG", { day: "numeric", month: "short" }) : "—"}
                             </div>
                             {msg.message}
                           </div>
@@ -615,10 +511,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                       {(msg.lastReply || msg.fromAdmin) ? (
                         <div style={{ display: "flex", justifyContent: "flex-start" }}>
                           <div style={{
-                            maxWidth: "85%",
-                            background: "var(--surface2)", border: "1px solid var(--border)",
-                            borderRadius: "14px 14px 14px 4px",
-                            padding: "10px 14px", fontSize: 13, lineHeight: 1.5, color: "var(--text)"
+                            maxWidth: "85%", background: "var(--surface2)", border: "1px solid var(--border)",
+                            borderRadius: "14px 14px 14px 4px", padding: "10px 14px", fontSize: 13, lineHeight: 1.5, color: "var(--text)"
                           }}>
                             <div style={{ fontSize: 10, color: "var(--primary)", marginBottom: 4, fontWeight: 800 }}>
                               ExamEdgeNG Support · {(msg.repliedAt || msg.createdAt)
@@ -643,16 +537,11 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
 
               <div style={{ padding: "12px 16px", borderTop: myMessages.length > 0 ? "1px solid var(--border)" : "none" }}>
                 {!showContactForm ? (
-                  <button
-                    onClick={() => setShowContactForm(true)}
-                    style={{
-                      width: "100%", padding: "11px",
-                      background: "var(--primary)", color: "#fff",
-                      border: "none", borderRadius: "var(--radius-md)",
-                      fontWeight: 800, fontSize: 13,
-                      cursor: "pointer", fontFamily: "var(--font-main)"
-                    }}
-                  >
+                  <button onClick={() => setShowContactForm(true)} style={{
+                    width: "100%", padding: "11px", background: "var(--primary)", color: "#fff",
+                    border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13,
+                    cursor: "pointer", fontFamily: "var(--font-main)"
+                  }}>
                     + New Message
                   </button>
                 ) : (
@@ -664,40 +553,28 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                       rows={3}
                       style={{
                         width: "100%", padding: "12px 14px",
-                        border: "1.5px solid var(--primary)",
-                        borderRadius: "var(--radius-md)",
-                        background: "var(--surface2)", fontSize: 13,
-                        fontFamily: "var(--font-main)", color: "var(--text)",
-                        outline: "none", boxSizing: "border-box",
+                        border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)",
+                        background: "var(--surface2)", fontSize: 13, fontFamily: "var(--font-main)",
+                        color: "var(--text)", outline: "none", boxSizing: "border-box",
                         resize: "none", marginBottom: 8
                       }}
                     />
                     <div style={{ display: "flex", gap: 8 }}>
-                      <button
-                        onClick={handleSendMessage}
-                        disabled={loading || !contactMessage.trim()}
-                        style={{
-                          flex: 2, padding: "10px",
-                          background: loading || !contactMessage.trim() ? "#ccc" : "var(--primary)",
-                          color: "#fff", border: "none",
-                          borderRadius: "var(--radius-md)",
-                          fontWeight: 800, fontSize: 13,
-                          cursor: loading || !contactMessage.trim() ? "not-allowed" : "pointer",
-                          fontFamily: "var(--font-main)"
-                        }}
-                      >
+                      <button onClick={handleSendMessage} disabled={loading || !contactMessage.trim()} style={{
+                        flex: 2, padding: "10px",
+                        background: loading || !contactMessage.trim() ? "#ccc" : "var(--primary)",
+                        color: "#fff", border: "none", borderRadius: "var(--radius-md)",
+                        fontWeight: 800, fontSize: 13,
+                        cursor: loading || !contactMessage.trim() ? "not-allowed" : "pointer",
+                        fontFamily: "var(--font-main)"
+                      }}>
                         {loading ? "Sending..." : "Send →"}
                       </button>
-                      <button
-                        onClick={() => { setShowContactForm(false); setContactMessage("") }}
-                        style={{
-                          flex: 1, padding: "10px",
-                          background: "var(--surface2)", color: "var(--text2)",
-                          border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
-                          fontWeight: 700, fontSize: 13,
-                          cursor: "pointer", fontFamily: "var(--font-main)"
-                        }}
-                      >Cancel</button>
+                      <button onClick={() => { setShowContactForm(false); setContactMessage("") }} style={{
+                        flex: 1, padding: "10px", background: "var(--surface2)", color: "var(--text2)",
+                        border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
+                        fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)"
+                      }}>Cancel</button>
                     </div>
                   </>
                 )}
@@ -707,16 +584,11 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         </div>
 
         {/* Log out */}
-        <button
-          onClick={handleLogout}
-          className="ee-btn"
-          style={{
-            width: "100%", marginTop: 8, marginBottom: 8,
-            background: "rgba(255,107,107,0.1)",
-            border: "1px solid rgba(255,107,107,0.3)",
-            color: "var(--accent)", fontWeight: 800
-          }}
-        >
+        <button onClick={handleLogout} className="ee-btn" style={{
+          width: "100%", marginTop: 8, marginBottom: 8,
+          background: "rgba(255,107,107,0.1)", border: "1px solid rgba(255,107,107,0.3)",
+          color: "var(--accent)", fontWeight: 800
+        }}>
           🚪 Log Out
         </button>
 

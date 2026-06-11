@@ -4,46 +4,74 @@ const TOUR_KEY = "ee-tourDone"
 
 const STEPS = [
   {
-    emoji: "🌱",
-    title: "Your Progress Bar",
-    desc: "Tap the bar at the top to see your XP, level, badges, daily goal and set your exam countdown."
+    emoji: "🎓",
+    title: "Welcome to ExamEdgeNG",
+    desc: "The smartest way to prepare for your UNIBEN Post-UTME. Built from 20 years of past questions — let's get you ready to pass.",
+    highlight: null,
+    color: "#667eea",
+    bg: "linear-gradient(135deg, #667eea, #764ba2)",
   },
   {
     emoji: "🧪",
     title: "CBT Mode",
-    desc: "Simulates the real Post-UTME exam — timed, all subjects together. Just like the actual test."
+    desc: "Simulate the real Post-UTME exam. Timed, all subjects together — exactly like the actual test. The more you practice, the calmer you'll be on exam day.",
+    highlight: "📅 46 days to Post-UTME",
+    color: "#3b82f6",
+    bg: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
   },
   {
-    emoji: "📚",
-    title: "Study Mode",
-    desc: "Practice one topic at a time. Get instant explanations after each answer. Best for learning."
+    emoji: "🎓",
+    title: "Your AI Tutor",
+    desc: "This is your secret weapon. It knows your CBT scores, weak topics, streak and exam countdown — and gives you a personalised plan every single day. No other app has this.",
+    highlight: "✨ Available to everyone — free",
+    color: "#7c3aed",
+    bg: "linear-gradient(135deg, #7c3aed, #667eea)",
   },
   {
-    emoji: "💪",
-    title: "Weak Areas",
-    desc: "We automatically track topics where you score below 50% and bring them here for focused practice."
+    emoji: "🔥",
+    title: "Hot Topics",
+    desc: "We analysed every UNIBEN past question from 2005 to 2024. These are the topics that repeat every year — master them and you're already ahead of 80% of candidates.",
+    highlight: "🎯 Most repeated questions identified",
+    color: "#ef4444",
+    bg: "linear-gradient(135deg, #ef4444, #f97316)",
   },
   {
     emoji: "📊",
-    title: "My Progress",
-    desc: "See how you're improving across all subjects over time. Your stats are saved automatically."
+    title: "Weak Areas",
+    desc: "Every question you get wrong is saved here automatically. Review them, understand why you failed, and watch your score climb. Students who use this improve 2x faster.",
+    highlight: "⚡ Auto-updates after every CBT",
+    color: "#d97706",
+    bg: "linear-gradient(135deg, #d97706, #f59e0b)",
   },
   {
-    emoji: "🎉",
-    title: "You're all set!",
-    desc: "Start with CBT Mode to simulate the real exam, or use Study Mode to learn topic by topic. Good luck!"
+    emoji: "💰",
+    title: "Earn ₦500 Per Referral",
+    desc: "Invite your friends to ExamEdgeNG. Every time one of them pays, you earn ₦500 cash — paid directly to your bank account every weekend. No limit.",
+    highlight: "🏦 Real cash, every weekend",
+    color: "#10b981",
+    bg: "linear-gradient(135deg, #10b981, #059669)",
+  },
+  {
+    emoji: "🚀",
+    title: "You're Ready to Begin!",
+    desc: "Start with a CBT test right now to get your baseline score. Then your AI Tutor will build you a personalised study plan. Your Post-UTME is in 46 days — let's go!",
+    highlight: null,
+    color: "#667eea",
+    bg: "linear-gradient(135deg, #667eea, #764ba2)",
   },
 ]
 
 const AppTour = ({ onDone }) => {
   const [step, setStep] = useState(0)
   const [animIn, setAnimIn] = useState(true)
+  const [direction, setDirection] = useState("forward")
 
   const current = STEPS[step]
   const isLast = step === STEPS.length - 1
 
   const goNext = () => {
     setAnimIn(false)
+    setDirection("forward")
     setTimeout(() => {
       if (isLast) {
         localStorage.setItem(TOUR_KEY, "1")
@@ -65,69 +93,118 @@ const AppTour = ({ onDone }) => {
       position: "fixed", inset: 0, zIndex: 500,
       display: "flex", flexDirection: "column",
       justifyContent: "flex-end",
-      background: "rgba(0,0,0,0.55)",
-      backdropFilter: "blur(2px)"
+      background: "rgba(0,0,0,0.65)",
+      backdropFilter: "blur(3px)"
     }}>
-
-      {/* Bottom sheet */}
       <div style={{
-        background: "var(--surface)",
+        background: "var(--bg)",
         borderRadius: "24px 24px 0 0",
-        padding: "24px 20px 40px",
-        transform: animIn ? "translateY(0)" : "translateY(20px)",
+        overflow: "hidden",
+        transform: animIn ? "translateY(0)" : "translateY(24px)",
         opacity: animIn ? 1 : 0,
         transition: "all 0.25s ease"
       }}>
-        {/* Step dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 20 }}>
-          {STEPS.map((_, i) => (
-            <div key={i} style={{
-              width: i === step ? 20 : 7, height: 7,
-              borderRadius: 4,
-              background: i === step ? "var(--primary)" :
-                          i < step ? "var(--primary-light)" : "var(--surface3)",
-              transition: "all 0.3s"
-            }} />
-          ))}
-        </div>
 
-        {/* Content */}
-        <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>{current.emoji}</div>
-          <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>
+        {/* Coloured header banner */}
+        <div style={{
+          background: current.bg,
+          padding: "32px 24px 28px",
+          textAlign: "center",
+          position: "relative"
+        }}>
+          {/* Skip button */}
+          {!isLast && (
+            <button onClick={skip} style={{
+              position: "absolute", top: 16, right: 16,
+              background: "rgba(255,255,255,0.2)",
+              border: "none", borderRadius: 20,
+              padding: "5px 14px", color: "#fff",
+              fontSize: 12, fontWeight: 700,
+              cursor: "pointer", fontFamily: "var(--font-main)"
+            }}>Skip</button>
+          )}
+
+          {/* Step counter */}
+          <div style={{
+            position: "absolute", top: 16, left: 16,
+            fontSize: 11, fontWeight: 800, color: "rgba(255,255,255,0.7)",
+            letterSpacing: "0.05em"
+          }}>
+            {step + 1} / {STEPS.length}
+          </div>
+
+          {/* Emoji */}
+          <div style={{
+            fontSize: 56, marginBottom: 14,
+            filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.2))",
+            lineHeight: 1
+          }}>
+            {current.emoji}
+          </div>
+
+          {/* Title */}
+          <div style={{
+            fontSize: 22, fontWeight: 900, color: "#fff",
+            marginBottom: 10, lineHeight: 1.2,
+            textShadow: "0 2px 8px rgba(0,0,0,0.15)"
+          }}>
             {current.title}
           </div>
-          <div style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, maxWidth: 300, margin: "0 auto" }}>
-            {current.desc}
-          </div>
+
+          {/* Highlight badge */}
+          {current.highlight && (
+            <div style={{
+              display: "inline-block",
+              background: "rgba(255,255,255,0.2)",
+              borderRadius: 20, padding: "5px 14px",
+              fontSize: 12, fontWeight: 700, color: "#fff",
+              border: "1px solid rgba(255,255,255,0.3)"
+            }}>
+              {current.highlight}
+            </div>
+          )}
         </div>
 
-        {/* Buttons */}
-        <button
-          onClick={goNext}
-          style={{
-            width: "100%", padding: "14px",
-            background: "var(--primary)", color: "#fff",
-            border: "none", borderRadius: "var(--radius-lg)",
+        {/* Bottom content */}
+        <div style={{ padding: "20px 24px 36px" }}>
+
+          {/* Description */}
+          <p style={{
+            fontSize: 14, color: "var(--text2)", lineHeight: 1.75,
+            textAlign: "center", margin: "0 0 24px",
+            maxWidth: 320, marginLeft: "auto", marginRight: "auto"
+          }}>
+            {current.desc}
+          </p>
+
+          {/* Step dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 20 }}>
+            {STEPS.map((_, i) => (
+              <div key={i} style={{
+                width: i === step ? 24 : 7, height: 7,
+                borderRadius: 4,
+                background: i === step ? current.color :
+                            i < step ? `${current.color}60` : "var(--surface3)",
+                transition: "all 0.3s ease"
+              }} />
+            ))}
+          </div>
+
+          {/* Next button */}
+          <button onClick={goNext} style={{
+            width: "100%", padding: "15px",
+            background: current.bg,
+            color: "#fff", border: "none",
+            borderRadius: "var(--radius-lg)",
             fontWeight: 800, fontSize: 15,
             cursor: "pointer", fontFamily: "var(--font-main)",
-            marginBottom: 10
-          }}
-        >
-          {isLast ? "Let's go! 🚀" : "Next →"}
-        </button>
-
-        {!isLast && (
-          <button onClick={skip} style={{
-            width: "100%", padding: "10px",
-            background: "none", border: "none",
-            color: "var(--text3)", fontSize: 13,
-            fontWeight: 700, cursor: "pointer",
-            fontFamily: "var(--font-main)"
+            boxShadow: `0 4px 16px ${current.color}40`,
+            transition: "all 0.2s"
           }}>
-            Skip tour
+            {isLast ? "Take My First CBT Test 🚀" : "Next →"}
           </button>
-        )}
+
+        </div>
       </div>
     </div>
   )

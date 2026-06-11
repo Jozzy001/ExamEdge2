@@ -93,15 +93,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           {isPaid ? "Full Access ✅" : "Free Plan — Tap to upgrade 🔒"}
         </div>
 
-        {/* Leaderboard Button */}
-        <button className="ee-home-card" onClick={() => onNavigate("leaderboard")} style={{ marginBottom: 16 }}>
-          <span className="home-card-icon">🏆</span>
-          <div>
-            <div className="home-card-title">Leaderboard</div>
-            <div className="home-card-sub">See how you rank</div>
-          </div>
-        </button>
-
         {/* XP / Gamification Bar */}
         <XPBar onNavigate={onNavigate} />
 
@@ -130,7 +121,28 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         <span className="ee-label">Jump into</span>
 
+        {/* AI Tutor — full width, prominent at top */}
+        <button
+          className="ee-home-card"
+          onClick={() => onNavigate("aiTutor")}
+          style={{
+            display: "flex", alignItems: "center", gap: 14,
+            width: "100%", padding: "16px 18px", marginBottom: 12,
+            background: "linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15))",
+            border: "1.5px solid rgba(102,126,234,0.35)",
+            borderRadius: "var(--radius-lg)",
+          }}
+        >
+          <span style={{ fontSize: 32 }}>🎓</span>
+          <div style={{ flex: 1 }}>
+            <div className="home-card-title" style={{ color: "var(--primary)", fontSize: 15 }}>AI Tutor</div>
+            <div className="home-card-sub">Ask me what to study today — I know your weak areas</div>
+          </div>
+          <span style={{ fontSize: 18, color: "var(--primary)", opacity: 0.7 }}>→</span>
+        </button>
+
         <div className="ee-home-grid">
+          {/* 1. CBT Mode */}
           <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
             <span className="home-card-icon">🧪</span>
             <div>
@@ -139,12 +151,14 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
+          {/* 2. Study Mode */}
           <button className="ee-home-card" onClick={() => onNavigate("subjectSelect")}>
             <span className="home-card-icon">📚</span>
             <div className="home-card-title">Study Mode</div>
             <div className="home-card-sub">Practice by topic</div>
           </button>
 
+          {/* 3. Hot Topics */}
           <button className="ee-home-card" onClick={() => {
             if (!isPaid) { handleLockedFeature("hotTopics"); return }
             onNavigate("hotTopics")
@@ -156,6 +170,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
+          {/* 4. Weak Areas */}
           <button className="ee-home-card" onClick={() => {
             if (!isPaid) { handleLockedFeature("weakAreas"); return }
             onNavigate("weak")
@@ -167,7 +182,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
-          {/* CBT History */}
+          {/* 5. CBT History */}
           <button
             className="ee-home-card"
             onClick={() => {
@@ -181,22 +196,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               <div className="home-card-sub">Review your past attempts</div>
             </div>
           </button>
-
-          {/* AI Tutor — available to everyone */}
-          <button
-            className="ee-home-card"
-            onClick={() => onNavigate("aiTutor")}
-            style={{
-              background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
-              border: "1.5px solid rgba(102,126,234,0.3)",
-            }}
-          >
-            <span className="home-card-icon">🎓</span>
-            <div>
-              <div className="home-card-title" style={{ color: "var(--primary)" }}>AI Tutor</div>
-              <div className="home-card-sub">Your personal study coach</div>
-            </div>
-          </button>
         </div>
 
         <span className="ee-label">Track yourself</span>
@@ -206,12 +205,24 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             if (!isPaid) { handleLockedFeature("progress"); return }
             onNavigate("progress")
           }}
-          style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 20 }}
+          style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 10 }}
         >
           <span style={{ fontSize: "28px" }}>📈</span>
           <div>
             <div className="home-card-title">My Progress {!isPaid && "🔒"}</div>
             <div className="home-card-sub">See your scores and weak topics</div>
+          </div>
+        </button>
+
+        <button
+          className="ee-home-card"
+          onClick={() => onNavigate("leaderboard")}
+          style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 20 }}
+        >
+          <span style={{ fontSize: "28px" }}>🏆</span>
+          <div>
+            <div className="home-card-title">Leaderboard</div>
+            <div className="home-card-sub">See how you rank against others</div>
           </div>
         </button>
 
@@ -237,8 +248,8 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         >
           <span style={{ fontSize: 24 }}>💰</span>
           <div style={{ flex: 1, textAlign: "left" }}>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>Earn ₦500 Per Referral</div>
-            <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Invite friends → they pay → you get paid every weekend</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>Refer Friends — Earn ₦500 at Launch 🚀</div>
+            <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Share your code now · Get paid when we fully launch</div>
           </div>
           <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
         </button>
@@ -270,7 +281,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* WhatsApp Channel */}
         <div
-          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
+          onClick={() => window.open(" https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
             borderRadius: "var(--radius-lg)", padding: "14px 18px",
