@@ -6,7 +6,6 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
-import FirstCBTPrompt from "../components/FirstCBTPrompt"
 import { requestNotificationPermission, smartNotificationScheduler } from "../utils/notifications"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
@@ -281,7 +280,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* WhatsApp Channel */}
         <div
-          onClick={() => window.open(" https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
+          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
             borderRadius: "var(--radius-lg)", padding: "14px 18px",
@@ -301,12 +300,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
         </div>
 
-        {/* First CBT Prompt */}
-        <FirstCBTPrompt
-          isPaid={isPaid}
-          onTakeCBT={() => onNavigate("cbtSubjectSelect")}
-        />
-
         {/* Settings */}
         <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("settings")}>
           ⚙️ Settings
@@ -314,7 +307,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
       </div>
 
-      {showTour && <AppTour onDone={() => setShowTour(false)} />}
+      {showTour && <AppTour onDone={() => setShowTour(false)} onNavigate={onNavigate} />}
 
       {paywallType && (
         <PaywallPrompt

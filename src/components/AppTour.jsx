@@ -61,7 +61,7 @@ const STEPS = [
   },
 ]
 
-const AppTour = ({ onDone }) => {
+const AppTour = ({ onDone, onNavigate }) => {
   const [step, setStep] = useState(0)
   const [animIn, setAnimIn] = useState(true)
   const [direction, setDirection] = useState("forward")
@@ -76,6 +76,7 @@ const AppTour = ({ onDone }) => {
       if (isLast) {
         localStorage.setItem(TOUR_KEY, "1")
         onDone()
+        if (onNavigate) onNavigate("cbtSubjectSelect")
       } else {
         setStep(s => s + 1)
         setAnimIn(true)

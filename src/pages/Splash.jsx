@@ -1,46 +1,57 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 
 const slides = [
   {
     emoji: null,
     logo: true,
     title: "Welcome to ExamEdgeNG",
-    subtitle: "The smartest way to prepare for your Post-UTME and JAMB exams — works offline after login!",
+    subtitle: "The smartest way to prepare for your Post-UTME exam — built from 20+ years of real past questions.",
     bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    accent: "#fff",
+    stat: null,
   },
   {
     emoji: "📚",
-    title: "20 Years of Past Questions",
-    subtitle: "Practice with real past questions from 2005 to 2024. Know exactly what to expect on exam day.",
+    title: "20+ Years of Past Questions",
+    subtitle: "Practice with real Post-UTME past questions from 2005 till date. Know exactly what to expect on exam day.",
     bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    accent: "#fff",
     stat: "3,000+ Questions",
-    offline: true,
   },
   {
     emoji: "🧪",
     title: "Real CBT Simulation",
-    subtitle: "Practice in timed exam conditions — same format as the actual exam.",
+    subtitle: "Timed, all subjects together — exactly like the actual Post-UTME. The more you practice, the calmer you'll be on exam day.",
     bg: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-    accent: "#fff",
     stat: "Timed & Scored",
+  },
+  {
+    emoji: "🎓",
+    title: "Your Personal AI Tutor",
+    subtitle: "Knows your weak areas, your streak and your exam countdown. Gives you a personalised study plan every single day — no other app has this.",
+    bg: "linear-gradient(135deg, #7c3aed 0%, #667eea 100%)",
+    stat: "Only on ExamEdgeNG",
   },
   {
     emoji: "🔥",
     title: "Hot Topics & Weak Areas",
-    subtitle: "Know the most repeated questions and focus on exactly what you're struggling with.",
+    subtitle: "We identified which topics repeat every year. Master them and you're already ahead of 80% of candidates.",
     bg: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-    accent: "#fff",
     stat: "Smart Analytics",
   },
   {
-    emoji: "🚀",
-    title: "Start Free Today",
-    subtitle: "2 years of questions are completely free. Upgrade to unlock all 20 years for just ₦3,000.",
-    bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    accent: "#fff",
+    emoji: "💰",
+    title: "Refer Friends — Earn ₦500",
+    subtitle: "Share your referral code now. Every friend who signs up is registered under your name — when payouts launch, you get paid for all of them.",
+    bg: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+    stat: "Coming Soon",
+  },
+  {
+    emoji: null,
+    logo: false,
     cta: true,
+    title: "100% Free — Start Now",
+    subtitle: "No credit card. No subscription. Everything is free right now. Just sign up and start preparing.",
+    bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    stat: null,
   },
 ]
 
@@ -67,7 +78,6 @@ export default function Splash({ onDone }) {
     if (current > 0) goTo(current - 1)
   }
 
-  // Touch/swipe support
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX
   }
@@ -83,6 +93,7 @@ export default function Splash({ onDone }) {
   }
 
   const slide = slides[current]
+  const isLast = current === slides.length - 1
 
   return (
     <div
@@ -101,8 +112,20 @@ export default function Splash({ onDone }) {
         overflow: "hidden",
       }}
     >
+      {/* Decorative circles */}
+      <div style={{
+        position: "absolute", top: -60, right: -60,
+        width: 220, height: 220, borderRadius: "50%",
+        background: "rgba(255,255,255,0.06)", pointerEvents: "none"
+      }} />
+      <div style={{
+        position: "absolute", bottom: -40, left: -40,
+        width: 160, height: 160, borderRadius: "50%",
+        background: "rgba(255,255,255,0.05)", pointerEvents: "none"
+      }} />
+
       {/* Skip button */}
-      {current < slides.length - 1 && (
+      {!isLast && (
         <button
           onClick={onDone}
           style={{
@@ -118,37 +141,55 @@ export default function Splash({ onDone }) {
         </button>
       )}
 
+      {/* Step counter */}
+      <div style={{
+        position: "absolute", top: 26, left: 24,
+        fontSize: 11, fontWeight: 800,
+        color: "rgba(255,255,255,0.6)",
+        letterSpacing: "0.05em"
+      }}>
+        {current + 1} / {slides.length}
+      </div>
+
       {/* Main content */}
       <div style={{
         flex: 1, display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        textAlign: "center", opacity: animating ? 0 : 1,
-        transform: animating ? "translateY(10px)" : "translateY(0)",
+        textAlign: "center",
+        opacity: animating ? 0 : 1,
+        transform: animating ? "translateY(12px)" : "translateY(0)",
         transition: "opacity 0.2s, transform 0.2s",
         width: "100%", maxWidth: 400,
       }}>
+
         {/* Logo or Emoji */}
         {slide.logo ? (
           <picture>
-              <source srcSet="/images/logo.webp" type="image/webp" />
-              <img src="/images/logo.png" alt="ExamEdgeNG" style={{ width: 140, height: 140, objectFit: "contain", marginBottom: 24 }} />
-            </picture>
-        ) : (
+            <source srcSet="/images/logo.webp" type="image/webp" />
+            <img
+              src="/images/logo.png"
+              alt="ExamEdgeNG"
+              style={{ width: 130, height: 130, objectFit: "contain", marginBottom: 24 }}
+            />
+          </picture>
+        ) : slide.emoji ? (
           <div style={{
-            fontSize: 80, marginBottom: 24,
+            fontSize: 84, marginBottom: 24,
             filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.2))",
+            lineHeight: 1
           }}>
             {slide.emoji}
           </div>
-        )}
+        ) : null}
 
         {/* Stat badge */}
         {slide.stat && (
           <div style={{
-            background: "rgba(255,255,255,0.25)",
-            borderRadius: 20, padding: "6px 16px",
-            fontSize: 13, fontWeight: 800, color: "#fff",
-            marginBottom: 16, letterSpacing: 0.5,
+            background: "rgba(255,255,255,0.22)",
+            borderRadius: 20, padding: "6px 18px",
+            fontSize: 12, fontWeight: 800, color: "#fff",
+            marginBottom: 18, letterSpacing: 0.5,
+            border: "1px solid rgba(255,255,255,0.3)"
           }}>
             ✨ {slide.stat}
           </div>
@@ -166,7 +207,7 @@ export default function Splash({ onDone }) {
         {/* Subtitle */}
         <p style={{
           fontSize: 16, color: "rgba(255,255,255,0.9)",
-          lineHeight: 1.6, margin: 0, maxWidth: 320,
+          lineHeight: 1.65, margin: 0, maxWidth: 320,
         }}>
           {slide.subtitle}
         </p>
@@ -174,19 +215,20 @@ export default function Splash({ onDone }) {
 
       {/* Bottom section */}
       <div style={{ width: "100%", maxWidth: 400 }}>
+
         {/* Dots */}
         <div style={{
           display: "flex", justifyContent: "center",
-          gap: 8, marginBottom: 32,
+          gap: 7, marginBottom: 28,
         }}>
           {slides.map((_, i) => (
             <div
               key={i}
               onClick={() => goTo(i)}
               style={{
-                width: i === current ? 24 : 8,
-                height: 8, borderRadius: 4,
-                background: i === current ? "#fff" : "rgba(255,255,255,0.4)",
+                width: i === current ? 24 : 7,
+                height: 7, borderRadius: 4,
+                background: i === current ? "#fff" : "rgba(255,255,255,0.35)",
                 transition: "all 0.3s ease",
                 cursor: "pointer",
               }}
@@ -194,7 +236,7 @@ export default function Splash({ onDone }) {
           ))}
         </div>
 
-        {/* CTA buttons on last slide */}
+        {/* CTA on last slide */}
         {slide.cta ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <button
@@ -203,9 +245,9 @@ export default function Splash({ onDone }) {
                 width: "100%", padding: "16px",
                 background: "#fff", color: "#667eea",
                 border: "none", borderRadius: 14,
-                fontSize: 16, fontWeight: 800,
+                fontSize: 16, fontWeight: 900,
                 cursor: "pointer", fontFamily: "var(--font-main)",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
               }}
             >
               Get Started — It's Free 🚀
@@ -214,9 +256,9 @@ export default function Splash({ onDone }) {
               onClick={onDone}
               style={{
                 width: "100%", padding: "14px",
-                background: "rgba(255,255,255,0.2)",
+                background: "rgba(255,255,255,0.15)",
                 color: "#fff",
-                border: "1px solid rgba(255,255,255,0.4)",
+                border: "1px solid rgba(255,255,255,0.35)",
                 borderRadius: 14,
                 fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "var(--font-main)",
@@ -230,9 +272,9 @@ export default function Splash({ onDone }) {
             onClick={next}
             style={{
               width: "100%", padding: "16px",
-              background: "rgba(255,255,255,0.25)",
+              background: "rgba(255,255,255,0.22)",
               color: "#fff",
-              border: "1px solid rgba(255,255,255,0.4)",
+              border: "1px solid rgba(255,255,255,0.35)",
               borderRadius: 14,
               fontSize: 16, fontWeight: 800,
               cursor: "pointer", fontFamily: "var(--font-main)",
