@@ -425,6 +425,8 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
             <label style={labelStyle}>Choose Your Plan</label>
 
             {/* Free plan */}
+            {/*
+
             <div
               onClick={() => setChosenPlan("free")}
               style={{
@@ -458,6 +460,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 </div>
               </div>
             </div>
+            */}
 
             {/* Paid plan */}
             <div
@@ -502,7 +505,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> 
 
             {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12,
               background: "rgba(255,107,107,0.1)", padding: "10px 14px",
