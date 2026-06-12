@@ -3743,6 +3743,2566 @@ const STUDY_GUIDES = {
         content: "Most tested facts: Armature = metal framework for sculpture. Biscuit = unglazed fired ceramic. Warm colours advance, cool colours recede. Warp and weft = weaving. Igbo Ukwu = oldest bronzes in West Africa. Akwaba = Ashanti Ghana. Cubism influenced by African art." },
     ]
   },
+
+    // ============================================================
+// STUDY GUIDES ADDITIONS
+// Paste these entries into your existing STUDY_GUIDES object
+// in src/data/studyGuides.js — add before the closing }
+// ============================================================
+// HOW TO ADD:
+// 1. Open src/data/studyGuides.js
+// 2. Find the last entry (before the closing })
+// 3. Add a comma after it
+// 4. Paste all entries below
+// ============================================================
+
+  // ==========================================
+  // GOVERNMENT — NEW ENTRIES
+  // ==========================================
+
+  "Sovereignty": {
+    subject: "Government",
+    title: "Sovereignty — Types and Concepts",
+    icon: "⚖️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Sovereignty?", type: "text",
+        content: "Sovereignty is the supreme, absolute power of the state to govern itself without interference from outside. It is the highest authority within a state — no individual, group or foreign power can override it." },
+      { heading: "Types of Sovereignty", type: "cards", items: [
+        { title: "Internal sovereignty", body: "Supreme authority over all people and groups WITHIN the state. The government's right to make and enforce laws domestically." },
+        { title: "External sovereignty", body: "Independence from foreign control — the ability to deal with other states as equals. Also called independence." },
+        { title: "Legal sovereignty", body: "The body with the LEGAL RIGHT to make laws — Parliament/Legislature. In Nigeria, the National Assembly has legal sovereignty." },
+        { title: "Political sovereignty", body: "The body that ACTUALLY controls political power — in a democracy this is the ELECTORATE (voters). The people are the political sovereign." },
+        { title: "De jure sovereignty", body: "Sovereignty by LAW or RIGHT — even if not effectively exercised. A recognised government has de jure sovereignty even if rebels control some areas." },
+        { title: "De facto sovereignty", body: "Sovereignty in ACTUAL PRACTICE — effective control even without legal right. A military coup leader may have de facto power but lacks de jure authority." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "De jure sovereignty means:", body: "Sovereignty based on LAW and RIGHT. Not actual control (de facto), not military, not foreign." },
+        { title: "The electorate is the:", body: "POLITICAL sovereign. Parliament = legal sovereign. President = executive authority." },
+        { title: "A state CANNOT exist without:", body: "SOVEREIGNTY. A nation can exist without a state, but a state requires sovereignty by definition." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Jean Bodin (16th century) first developed the concept of sovereignty — argued it should reside with the KING. Rousseau argued sovereignty belongs to the PEOPLE (popular sovereignty). De jure = by law/right. De facto = in actual practice." }
+    ]
+  },
+
+  "Constitutions": {
+    subject: "Government",
+    title: "Constitutions — Types and Features",
+    icon: "📜",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is a Constitution?", type: "text",
+        content: "A constitution is the fundamental law of a state. It defines the structure of government, distributes power between the arms of government, guarantees citizens' rights, and is the supreme law that all other laws must conform to." },
+      { heading: "Types of Constitutions", type: "cards", items: [
+        { title: "Written constitution", body: "Contained in one formal CODIFIED document. Examples: USA, Nigeria, Germany." },
+        { title: "Unwritten constitution", body: "NOT in one single document — based on conventions, traditions, statutes. Example: UK. Not that it was never written — it is not CODIFIED." },
+        { title: "Rigid constitution", body: "Difficult to amend — requires special procedure. Nigeria requires 2/3 of National Assembly + 2/3 of state Houses of Assembly." },
+        { title: "Flexible constitution", body: "Easy to amend — changed by ordinary legislative process. Example: UK Parliament can change any law by simple majority." },
+        { title: "Federal constitution", body: "Divides power between central govt and component units. Examples: Nigeria, USA, Germany." },
+        { title: "Unitary constitution", body: "Power concentrated in central government — local governments subordinate. Examples: UK, France, Ghana." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Nigeria's constitution is:", body: "WRITTEN and RIGID. Written = in one document. Rigid = requires special majority to amend." },
+        { title: "UK constitution is unwritten because:", body: "Not contained in a SINGLE CODIFIED document. Exists in Acts of Parliament, common law, conventions — but not one document." },
+        { title: "Constitutional supremacy means:", body: "All laws must conform to the constitution — any inconsistent law is VOID. Courts can strike down any law contradicting the constitution." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Nigeria = WRITTEN + RIGID + FEDERAL. UK = UNWRITTEN + FLEXIBLE + UNITARY. These contrasts appear every year. Any law inconsistent with Nigeria's constitution is void to the extent of inconsistency." }
+    ]
+  },
+
+  "Separation of Powers": {
+    subject: "Government",
+    title: "Separation of Powers and Checks and Balances",
+    icon: "⚖️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Separation of Powers", type: "text",
+        content: "Separation of powers is the doctrine that the three arms of government (executive, legislature, judiciary) should be SEPARATE and INDEPENDENT. Proposed by MONTESQUIEU in 'The Spirit of Laws' (1748) — he argued separation prevents tyranny." },
+      { heading: "Checks and Balances in Nigeria", type: "cards", items: [
+        { title: "Executive checks Legislature", body: "President can VETO bills passed by the National Assembly. NA can override veto with 2/3 majority." },
+        { title: "Legislature checks Executive", body: "Senate confirms presidential appointments. National Assembly can IMPEACH the President for gross misconduct." },
+        { title: "Legislature checks Judiciary", body: "Senate confirms Supreme Court appointments. Legislature sets judicial budget." },
+        { title: "Judiciary checks Legislature", body: "Can declare laws UNCONSTITUTIONAL and void (judicial review)." },
+        { title: "Judiciary checks Executive", body: "Can nullify executive actions that violate the constitution or law." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Separation of powers propounded by:", body: "Baron de MONTESQUIEU. In 'The Spirit of Laws' (1748). Locke = natural rights. Rousseau = general will. Hobbes = Leviathan." },
+        { title: "President withholding assent to a bill is called:", body: "VETO. National Assembly can override with 2/3 majority vote." },
+        { title: "Impeachment is a check on:", body: "The EXECUTIVE. Legislature uses impeachment to remove the President for gross misconduct." },
+        { title: "Judicial review is the power to:", body: "Declare laws unconstitutional and VOID. Most powerful check of judiciary on other arms." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Montesquieu = separation of powers. Dicey = rule of law. Bodin = sovereignty. Locke = social contract and natural rights. VETO = executive check on legislature. IMPEACHMENT = legislative check on executive. JUDICIAL REVIEW = judicial check on both." }
+    ]
+  },
+
+  "Federal vs Unitary Systems": {
+    subject: "Government",
+    title: "Federal, Unitary and Confederate Systems",
+    icon: "🗺️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Federal System", type: "text",
+        content: "Federalism is a system where power is constitutionally DIVIDED between a central government and component units (states/regions). Both levels have their own areas of authority guaranteed by the constitution. Examples: Nigeria, USA, Germany." },
+      { heading: "Comparing the Three Systems", type: "cards", items: [
+        { title: "Federalism features", body: "Written constitution, division of powers (exclusive/concurrent/residual), independent judiciary, bicameral legislature, revenue sharing. Both levels guaranteed by constitution." },
+        { title: "Unitary system", body: "Power concentrated in CENTRAL government. Local governments SUBORDINATE — created, altered or abolished by the centre. Examples: UK, France, Ghana, Japan." },
+        { title: "Confederate system", body: "Loose union of SOVEREIGN STATES coming together for specific purposes. Central body very weak — cannot directly enforce laws on citizens. Example: USA under Articles of Confederation (1781-1789)." },
+        { title: "Nigeria's legislative lists", body: "EXCLUSIVE list: federal only (defence, currency, immigration). CONCURRENT list: both federal and state. RESIDUAL: states only." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "NOT a feature of federalism:", body: "SINGLE CENTRALISED GOVERNMENT. That describes a UNITARY system. Written constitution, division of powers, independent judiciary — all federal features." },
+        { title: "Exclusive list in Nigeria legislated by:", body: "FEDERAL GOVERNMENT ONLY. Defence, immigration, currency, foreign affairs. Concurrent = both levels. Residual = states." },
+        { title: "In a unitary state, local governments:", body: "Created and controlled by the CENTRAL GOVERNMENT. No guaranteed constitutional powers unlike federal states." },
+        { title: "A confederation is:", body: "Loose union of SOVEREIGN STATES retaining their sovereignty. Central body cannot directly enforce laws on citizens." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Federal: both levels guaranteed by constitution (Nigeria, USA). Unitary: centre dominant, locals subordinate (UK, Ghana). Confederate: states sovereign, centre weak (early USA). Exclusive list = federal ONLY. Concurrent = both. Residual = states only." }
+    ]
+  },
+
+  "Democracy": {
+    subject: "Government",
+    title: "Democracy — Types, Features and Rule of Law",
+    icon: "🗳️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "What is Democracy?", type: "text",
+        content: "Democracy is government of the people, by the people, for the people — Abraham Lincoln's definition from the Gettysburg Address, 1863. Political power ultimately rests with the PEOPLE." },
+      { heading: "Types of Democracy", type: "cards", items: [
+        { title: "Direct democracy", body: "Citizens participate DIRECTLY in decision-making. No representatives. Ancient Athens, Swiss referenda. Impractical for large modern states." },
+        { title: "Representative democracy", body: "Citizens elect REPRESENTATIVES to make decisions on their behalf. Modern democracies — Nigeria, UK, USA. Most practical for large states." },
+        { title: "Liberal democracy", body: "Representative democracy WITH protection of individual rights, rule of law, and limits on government power." },
+        { title: "Social democracy", body: "Combines democratic politics with strong welfare state. Government provides healthcare, education. Scandinavian countries." },
+      ]},
+      { heading: "Conditions for Democracy", type: "cards", items: [
+        { title: "Free and fair elections", body: "Regular elections where all eligible citizens can vote without coercion or manipulation." },
+        { title: "Universal suffrage", body: "All adult citizens have the right to vote regardless of race, gender or class." },
+        { title: "Rule of law (A.V. Dicey 1885)", body: "Supremacy of law, equality before the law, rights protected by courts. No one above the law." },
+        { title: "Independent judiciary", body: "Courts free from political interference — can check executive and legislature." },
+        { title: "Political parties (multiple)", body: "Competing parties giving voters REAL choice. ONE-PARTY RULE is NOT democracy." },
+        { title: "Free press", body: "Media can report and criticise without censorship. The 'Fourth Estate'." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Lincoln defined democracy as:", body: "'Government of the people, by the people, for the people.' Gettysburg Address, 1863. Most tested definition." },
+        { title: "Modern democracy mainly practised as:", body: "REPRESENTATIVE (indirect) democracy. Direct democracy impractical for large states." },
+        { title: "NOT a condition for democracy:", body: "ONE-PARTY RULE. Democracy requires MULTIPLE parties. One-party rule is the antithesis of democracy." },
+        { title: "Rule of Law developed by:", body: "A.V. DICEY, 1885. Three pillars: supremacy of law, equality before law, rights from courts not just written in constitution." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Lincoln = democracy definition (1863). Dicey = Rule of Law (1885). Montesquieu = separation of powers (1748). Democracy needs multiple parties. Modern democracies are REPRESENTATIVE not direct. One-party = dictatorship not democracy." }
+    ]
+  },
+
+  "Pressure Groups": {
+    subject: "Government",
+    title: "Pressure Groups and the Mass Media",
+    icon: "📢",
+    estimatedTime: "2 min read",
+    sections: [
+      { heading: "What are Pressure Groups?", type: "text",
+        content: "Pressure groups are organised groups that seek to INFLUENCE government policy WITHOUT seeking to control government themselves. They differ from political parties — parties want POWER; pressure groups want INFLUENCE." },
+      { heading: "Types and Methods", type: "cards", items: [
+        { title: "Sectional groups", body: "Represent specific sections of society. NLC (labour), NBA (lawyers), NMA (doctors), ASUU (university teachers), TUC." },
+        { title: "Promotional/Cause groups", body: "Promote a particular cause — Amnesty International, environmental groups, human rights organisations." },
+        { title: "Methods used", body: "Lobbying politicians, strikes and protests, media campaigns, litigation (court action), financial support to candidates." },
+      ]},
+      { heading: "The Mass Media", type: "cards", items: [
+        { title: "Information", body: "Inform citizens about government activities, policies and decisions." },
+        { title: "Watchdog (Fourth Estate)", body: "Expose corruption and government abuses. Called 'Fourth Estate' — unofficial check on the three branches." },
+        { title: "Agenda setting", body: "Determine what issues the public discusses and considers important." },
+        { title: "Political socialisation", body: "Shape political values, opinions and civic participation." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Difference between pressure group and political party:", body: "Pressure groups seek to INFLUENCE policy WITHOUT seeking political power. Parties contest elections to WIN government. NLC wants better wages — not to govern Nigeria." },
+        { title: "Media called 'Fourth Estate' because:", body: "Powerful unofficial check on the three branches of government. Free press is essential to democracy." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Party = wants POWER (wins elections, forms government). Pressure group = wants INFLUENCE (lobbies those in power). NLC, NBA, NMA, ASUU = pressure groups. PDP, APC = political parties. This distinction appears almost every year." }
+    ]
+  },
+
+  "UN and AU": {
+    subject: "Government",
+    title: "United Nations, African Union and ECOWAS",
+    icon: "🌍",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "The United Nations", type: "text",
+        content: "The UN was founded on October 24, 1945 after World War II, replacing the League of Nations (1919). Headquarters: New York, USA. Currently 193 member states." },
+      { heading: "UN Principal Organs", type: "cards", items: [
+        { title: "General Assembly", body: "All 193 member states. Each has ONE vote. Discusses all world issues. Resolutions are NOT binding — only recommendations." },
+        { title: "Security Council", body: "15 members: 5 PERMANENT (USA, UK, France, Russia, China) + 10 rotating. VETO power for P5. Makes BINDING resolutions. Maintains international peace and security." },
+        { title: "International Court of Justice (ICJ)", body: "Settles legal disputes between states. Headquarters: The Hague, Netherlands." },
+        { title: "Secretariat", body: "Administrative arm. Headed by Secretary-General (António Guterres, Portugal)." },
+      ]},
+      { heading: "AU, ECOWAS and Commonwealth", type: "cards", items: [
+        { title: "African Union (AU)", body: "Established July 9, 2002, replacing OAU (founded 1963). Headquarters: Addis Ababa, Ethiopia. Broader powers than OAU including intervention in member states." },
+        { title: "ECOWAS", body: "Established by Treaty of Lagos, May 28, 1975. Headquarters: Abuja, Nigeria. 15 West African member states. ECOMOG = peacekeeping force." },
+        { title: "Commonwealth", body: "56 member states, mostly former British territories. London HQ. Nigeria suspended 1995 (Abacha executed Ken Saro-Wiwa and Ogoni activists), readmitted 1999." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "UN founded in:", body: "October 24, 1945. League of Nations = 1919 (after WWI). UN = 1945 (after WWII)." },
+        { title: "UN organ with binding resolutions:", body: "SECURITY COUNCIL. General Assembly = recommendations only. P5 each have veto power." },
+        { title: "AU replaced:", body: "Organisation of African Unity (OAU). OAU founded 1963, renamed AU on July 9, 2002." },
+        { title: "ECOWAS established by:", body: "TREATY OF LAGOS, May 28, 1975. Nigeria drove its establishment. HQ: Abuja." },
+        { title: "Nigeria suspended from Commonwealth in 1995 due to:", body: "Execution of Ken Saro-Wiwa and Ogoni activists by Abacha. Readmitted 1999 under Obasanjo." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "UN = 1945, New York, Security Council = BINDING decisions, 5 permanent members with veto. AU = July 9 2002, Addis Ababa, replaced OAU (1963). ECOWAS = May 28 1975, Treaty of Lagos, Abuja HQ, 15 members. Nigeria suspended from Commonwealth 1995, readmitted 1999." }
+    ]
+  },
+
+  "Nigerian Presidents": {
+    subject: "Government",
+    title: "Nigerian Leaders and Constitutional History",
+    icon: "🇳🇬",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Nigerian Constitutions Timeline", type: "cards", items: [
+        { title: "Clifford 1922", body: "First constitution with elections. Lagos and Calabar got elected seats. Led to NNDP (Herbert Macaulay, 1923) — Nigeria's first political party." },
+        { title: "Richards 1946", body: "Introduced regionalism — North, East, West. First time Nigeria treated as one political unit. Nationalists criticised it as unilaterally imposed." },
+        { title: "Macpherson 1951", body: "Greater Nigerian participation in drafting. Introduced regional governments. Broke down when NPC walked out over self-government motion." },
+        { title: "Lyttleton 1954", body: "Full federation established. Three regions became fully autonomous. Clear federal structure — building block for independence." },
+        { title: "Independence 1960 + Republic 1963", body: "Independence October 1, 1960 (Balewa PM). Republic October 1, 1963 (Azikiwe = first President). Parliamentary system." },
+        { title: "1979 + 1999 Constitutions", body: "1979: 2nd Republic, PRESIDENTIAL system introduced (Shagari). 1999: Current constitution, May 29, 4th Republic (Obasanjo)." },
+      ]},
+      { heading: "Key Leaders", type: "cards", items: [
+        { title: "Tafawa Balewa", body: "First Prime Minister (1960-1966). Killed in first military coup, January 15, 1966." },
+        { title: "Nnamdi Azikiwe", body: "First President (1963-1966). Ceremonial role — Balewa had executive power." },
+        { title: "Yakubu Gowon", body: "Military head 1966-1975. Led Nigeria through Civil War (1967-1970). Overthrown 1975." },
+        { title: "Murtala Muhammed", body: "Military head 1975-1976. Announced Abuja as new capital. Assassinated February 13, 1976." },
+        { title: "Ibrahim Babangida", body: "Military ruler 1985-1993. Annulled June 12, 1993 election won by Abiola. Now Democracy Day." },
+        { title: "Sani Abacha", body: "Military ruler 1993-1998. Executed Ken Saro-Wiwa 1995. Died in office June 8, 1998." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "First constitution with elections:", body: "CLIFFORD 1922. Led to NNDP by Herbert Macaulay, 1923." },
+        { title: "Nigeria became a Republic in:", body: "1963. Independence = 1960. Republic = October 1, 1963. Azikiwe = first President." },
+        { title: "Introduced regionalism:", body: "RICHARDS Constitution 1946. Three regions: North, East, West." },
+        { title: "First military coup:", body: "January 15, 1966. Led by Nzeogwu. Killed Balewa and Ahmadu Bello." },
+        { title: "June 12, 1993 election annulled by:", body: "IBRAHIM BABANGIDA. Abiola of SDP won. Now Democracy Day." },
+        { title: "Nigeria's first President:", body: "NNAMDI AZIKIWE. Ceremonial role. Balewa was Prime Minister with executive power." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Clifford 1922=elections. Richards 1946=regionalism. Lyttleton 1954=federation. Independence=1960 parliamentary. Republic=1963. 1979=presidential. 1999=current. Civil War=1967-1970. June 12 annulled by Babangida. First coup=January 15 1966." }
+    ]
+  },
+
+  // ==========================================
+  // CHEMISTRY — NEW CALCULATION ENTRIES
+  // ==========================================
+
+  "Gas Laws Calculations": {
+    subject: "Chemistry",
+    title: "Gas Laws — Worked Calculations",
+    icon: "💨",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Boyle's Law (constant T)", body: "P₁V₁ = P₂V₂. Pressure × Volume = constant. When pressure doubles, volume halves." },
+        { title: "Charles' Law (constant P)", body: "V₁/T₁ = V₂/T₂. ALWAYS convert °C to Kelvin (add 273) before using." },
+        { title: "Combined Gas Law", body: "P₁V₁/T₁ = P₂V₂/T₂. Use when both pressure and temperature change." },
+        { title: "Graham's Law of Diffusion", body: "Rate ∝ 1/√(vapour density). Rate_A/Rate_B = √(VD_B/VD_A). Lighter gas diffuses faster." },
+      ]},
+      { heading: "Worked Example — Graham's Law", type: "steps", items: [
+        "30cm³ of oxygen diffuses in 7 seconds. How long for 60cm³ of chlorine? (VD: O₂=16, Cl₂=36)",
+        "Step 1: Rate_O₂/Rate_Cl₂ = √(VD_Cl₂/VD_O₂) = √(36/16) = 6/4 = 3/2",
+        "Step 2: Rate_Cl₂ = (2/3) × (30/7) = 20/7 cm³/s",
+        "Step 3: Time for 60cm³ = 60 ÷ (20/7) = 60 × 7/20 = 21 seconds",
+        "Answer: 21 seconds. Cl₂ is heavier so it diffuses SLOWER."
+      ]},
+      { heading: "Worked Example — Charles' Law", type: "steps", items: [
+        "Gas occupies 2dm³, heated at constant pressure to expand to 6dm³. Ratio T_initial:T_final?",
+        "Charles' Law: V₁/T₁ = V₂/T₂. Rearrange: T₁/T₂ = V₁/V₂ = 2/6 = 1:3",
+        "Answer: T_initial:T_final = 1:3. Temperature must triple to triple the volume."
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Increasing pressure of a gas:", body: "INCREASES DENSITY. Same mass compressed into smaller volume = higher density. Volume decreases. KE depends on temperature not pressure." },
+        { title: "Why gas collisions are elastic:", body: "NO LOSS OF ENERGY after collision. Kinetic energy is conserved. Total momentum also conserved." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Graham's Law: heavier gas diffuses SLOWER. Rate ratio = square root of OPPOSITE VD ratio. Boyle: P up → V down. Charles: T up → V up. ALWAYS use Kelvin for Charles' Law and combined gas law — never Celsius." }
+    ]
+  },
+
+  "Mole Calculations": {
+    subject: "Chemistry",
+    title: "Mole Calculations — Worked Examples",
+    icon: "⚗️",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Moles from mass", body: "Moles = mass ÷ molar mass. e.g. 0.9g Al (M=27): moles = 0.9÷27 = 1/30 mol." },
+        { title: "Particles from moles", body: "Particles = moles × 6.02×10²³. e.g. 1/30 mol × 6×10²³ = 2×10²² atoms." },
+        { title: "Volume at STP", body: "1 mole of any gas = 22.4 dm³ at STP. Moles = volume(dm³) ÷ 22.4." },
+        { title: "Percentage composition", body: "% = (mass of part ÷ total molar mass) × 100." },
+      ]},
+      { heading: "Worked Example 1 — Atoms in a Sample", type: "steps", items: [
+        "How many atoms in 0.9g of aluminium? (Al=27)",
+        "Moles of Al = 0.9 ÷ 27 = 1/30 mol",
+        "Number of atoms = (1/30) × 6×10²³ = 2×10²² atoms",
+        "Answer: 2.0×10²² atoms."
+      ]},
+      { heading: "Worked Example 2 — % Water of Crystallisation", type: "steps", items: [
+        "Find % water of crystallisation in CuSO₄·5H₂O (Cu=64, S=32, O=16, H=1)",
+        "Molar mass = 64 + 32 + (4×16) + (5×18) = 64+32+64+90 = 250 g/mol",
+        "Mass of water = 5×18 = 90g",
+        "% water = (90÷250)×100 = 36%",
+        "Answer: 36%."
+      ]},
+      { heading: "Worked Example 3 — Empirical Formula", type: "steps", items: [
+        "An oxide of nitrogen: 30.4% nitrogen. Find empirical formula. (N=14, O=16)",
+        "N = 30.4%, O = 69.6%",
+        "Mole ratio: N = 30.4÷14 = 2.17, O = 69.6÷16 = 4.35",
+        "Divide by smallest: N = 1, O = 4.35÷2.17 = 2",
+        "Empirical formula = NO₂."
+      ]},
+      { heading: "Worked Example 4 — Combustion Volumes", type: "steps", items: [
+        "Minimum oxygen for complete combustion of 20cm³ CO + 20cm³ H₂?",
+        "2CO + O₂ → 2CO₂: ratio 2:1, so 20cm³ CO needs 10cm³ O₂",
+        "2H₂ + O₂ → 2H₂O: ratio 2:1, so 20cm³ H₂ needs 10cm³ O₂",
+        "Total O₂ = 10 + 10 = 20cm³",
+        "Answer: 20cm³."
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Always: (1) write balanced equation, (2) find mole ratio, (3) calculate. CuSO₄·5H₂O = 250 g/mol, 36% water. 0.9g Al = 2×10²² atoms. Empirical formula: divide by smallest mole ratio. These calculations appear every year." }
+    ]
+  },
+
+  "Titration Calculations": {
+    subject: "Chemistry",
+    title: "Titration and Concentration Calculations",
+    icon: "🧪",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formula", type: "text",
+        content: "C_A × V_A / n_A = C_B × V_B / n_B. Where C = concentration (mol/dm³), V = volume, n = mole ratio from balanced equation. Convert cm³ to dm³ by dividing by 1000." },
+      { heading: "Worked Example 1 — Volume of Base Needed", type: "steps", items: [
+        "What volume of 0.5M NaOH neutralises 10cm³ of 1.25M H₂SO₄?",
+        "Equation: H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. Mole ratio 1:2.",
+        "Moles H₂SO₄ = 1.25 × (10/1000) = 0.0125 mol",
+        "Moles NaOH needed = 2 × 0.0125 = 0.025 mol",
+        "Volume NaOH = 0.025 ÷ 0.5 = 0.05 dm³ = 50 cm³",
+        "Answer: 50cm³."
+      ]},
+      { heading: "Worked Example 2 — Concentration from Mass", type: "steps", items: [
+        "Find concentration of 5.3g AgNO₃ in 50cm³ solution. (Ag=108, N=14, O=16)",
+        "Molar mass AgNO₃ = 108+14+(3×16) = 170 g/mol",
+        "Moles = 5.3 ÷ 170 = 0.0312 mol",
+        "Volume = 50 ÷ 1000 = 0.05 dm³",
+        "Concentration = 0.0312 ÷ 0.05 = 0.623 mol/dm³",
+        "Answer: 0.623 mol/dm³."
+      ]},
+      { heading: "Worked Example 3 — Heat of Reaction", type: "steps", items: [
+        "1.1g CaCl₂ in 50cm³ water, temperature rises 3.4°C. Find ΔH. (CaCl₂ M=111)",
+        "Q = mcΔT = 50 × 4.18 × 3.4 = 710J",
+        "Moles = 1.1 ÷ 111 = 0.0099 mol",
+        "ΔH = -Q/moles = -710 ÷ 0.0099 = -71,700 J/mol = -71.1 kJ/mol",
+        "Negative because exothermic (temperature rose). Answer: -71.1 kJ/mol."
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "For titration: write balanced equation first to get mole ratio. H₂SO₄ is DIBASIC (mole ratio 1:2 with NaOH). Q=mcΔT: use mass of solution (not solute), c=4.18 J/g°C for water. Negative ΔH = exothermic (temperature rose)." }
+    ]
+  },
+
+  "Faraday Calculations": {
+    subject: "Chemistry",
+    title: "Faraday's Laws — Electrolysis Calculations",
+    icon: "⚡",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Charge", body: "Q = I × t (current in amperes, time in SECONDS). Q in coulombs." },
+        { title: "Moles of electrons", body: "Moles e⁻ = Q ÷ F = (I×t) ÷ 96500." },
+        { title: "Moles deposited", body: "Moles deposited = moles e⁻ ÷ charge on ion. Cu²⁺ needs 2e⁻, Ag⁺ needs 1e⁻, Al³⁺ needs 3e⁻." },
+        { title: "Electrochemical equivalent", body: "Z = mass deposited ÷ charge (Q). M = ZIt." },
+      ]},
+      { heading: "Worked Example 1 — Electricity for 64g Copper", type: "steps", items: [
+        "How much electricity deposits 64g copper from CuCl₂? (Cu=64, F=96500C)",
+        "Cu²⁺ + 2e⁻ → Cu. Each Cu needs 2 electrons.",
+        "64g Cu = 1 mole Cu → needs 2 moles of electrons",
+        "Charge = 2 × 96500 = 193,000C = 1.93×10⁵C",
+        "Answer: 1.93×10⁵C."
+      ]},
+      { heading: "Worked Example 2 — Partial Faraday", type: "steps", items: [
+        "0.1 Faraday through copper(II) solution. Mass of copper deposited?",
+        "Cu²⁺ + 2e⁻ → Cu. 2 Faradays deposits 64g of copper.",
+        "0.1 Faraday deposits = 64 × (0.1÷2) = 64 × 0.05 = 3.2g",
+        "Answer: 3.2g."
+      ]},
+      { heading: "Worked Example 3 — Electrochemical Equivalent", type: "steps", items: [
+        "Cathode weighs 5g. After 5A for 50s, weighs 5.01g. Find Z.",
+        "Mass deposited = 5.01 - 5 = 0.01g",
+        "Charge Q = 5 × 50 = 250 coulombs",
+        "Z = 0.01 ÷ 250 = 0.00004 g/C = 4×10⁻⁵ g/C",
+        "Answer: 4×10⁻⁵ g/C."
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Cu²⁺ needs 2e⁻. Al³⁺ needs 3e⁻. Ag⁺ needs 1e⁻. Always identify ion charge first. 1 Faraday = 96500C = 1 mole electrons. CATHODE = reduction = metal deposits. ANODE = oxidation. Memory: An Ox, Red Cat." }
+    ]
+  },
+
+  "Oxidation States Calculations": {
+    subject: "Chemistry",
+    title: "Oxidation States — Rules and Worked Examples",
+    icon: "🔢",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Rules for Oxidation States", type: "cards", items: [
+        { title: "Free element", body: "Oxidation state = 0. Na(s), O₂, Fe = all zero." },
+        { title: "Oxygen in compounds", body: "Usually -2. Exception: peroxides = -1. In F₂O = +2." },
+        { title: "Hydrogen in compounds", body: "Usually +1. Exception: metal hydrides (NaH) = -1." },
+        { title: "In neutral compound", body: "Sum of all oxidation states = 0." },
+        { title: "In ion", body: "Sum of oxidation states = charge of the ion." },
+      ]},
+      { heading: "Worked Example 1 — KMnO₄", type: "steps", items: [
+        "Find oxidation state of Mn in KMnO₄.",
+        "K = +1, O = -2 each. Equation: +1 + Mn + 4(-2) = 0",
+        "1 + Mn - 8 = 0 → Mn = +7",
+        "Answer: Mn = +7."
+      ]},
+      { heading: "Worked Example 2 — KClO₃", type: "steps", items: [
+        "Find oxidation state of Cl in KClO₃.",
+        "K = +1, O = -2 each. Equation: +1 + Cl + 3(-2) = 0",
+        "1 + Cl - 6 = 0 → Cl = +5",
+        "Answer: Cl = +5."
+      ]},
+      { heading: "Worked Example 3 — Balancing Redox", type: "steps", items: [
+        "In Cr₂O₇²⁻ + 8H⁺ + ne⁻ → 2Cr³⁺ + 4H₂O. Find n.",
+        "Cr in Cr₂O₇²⁻ = +6. Cr in Cr³⁺ = +3.",
+        "Change per Cr = 6 - 3 = 3 electrons gained.",
+        "Two Cr atoms: total = 3 × 2 = 6 electrons.",
+        "Answer: n = 6."
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Oxidising agent in H₂S + Br₂ → 2HBr + S:", body: "Br₂. Br₂ is REDUCED (Br: 0 → -1). The oxidising agent = substance that gets REDUCED." },
+        { title: "In Zn + Cu²⁺ → Zn²⁺ + Cu:", body: "Zn is the REDUCING AGENT. Zn is OXIDISED (0→+2). The reducing agent = substance that gets OXIDISED." },
+        { title: "Oxidation is:", body: "LOSS of electrons. OIL RIG: Oxidation Is Loss, Reduction Is Gain." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "KMnO₄: Mn = +7. K₂Cr₂O₇: Cr = +6. These two appear almost every year. OIL RIG. OXIDISING agent gets REDUCED. REDUCING agent gets OXIDISED. These sound backwards — memorise the rule." }
+    ]
+  },
+
+  "Organic Reactions": {
+    subject: "Chemistry",
+    title: "Organic Reactions — Types and Named Processes",
+    icon: "🧪",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Organic Reactions", type: "cards", items: [
+        { title: "Substitution", body: "One atom/group REPLACES another. Alkanes + halogens in UV light. Benzene also undergoes substitution despite double bonds." },
+        { title: "Addition", body: "Two molecules COMBINE to form one. Alkenes and alkynes. Alkene + Br₂ → dibromoalkane (decolourises bromine water)." },
+        { title: "Elimination", body: "Small molecule REMOVED to form double bond. Dehydration of alcohols → alkene." },
+        { title: "Saponification", body: "Fat + NaOH → SOAP + GLYCEROL. By-product = glycerol. NaCl salts out the soap from glycerol solution." },
+        { title: "Esterification", body: "Carboxylic acid + alcohol → ester + water. Conc. H₂SO₄ = CATALYST (primary role). Reversible." },
+      ]},
+      { heading: "Key Rule", type: "text",
+        content: "Alkanes → SUBSTITUTION. Alkenes → ADDITION. Aromatic (benzene) → SUBSTITUTION (not addition — the ring is stabilised). Carbonyl compounds (C=O in aldehydes/ketones) → ADDITION. This rule is tested repeatedly." },
+      { heading: "Dehydration Temperatures", type: "cards", items: [
+        { title: "140°C with conc H₂SO₄", body: "Two alcohol molecules join → DIETHYL ETHER. Intermolecular dehydration." },
+        { title: "170°C with conc H₂SO₄", body: "One alcohol molecule loses water → ETHENE (alkene). Intramolecular dehydration." },
+        { title: "Oxidation of alcohols", body: "Primary → aldehyde → carboxylic acid. Secondary → KETONE. Tertiary → NOT easily oxidised. Butan-2-ol (secondary) → butan-2-ONE." },
+        { title: "Photochlorination of ethanoic acid", body: "CH₃COOH + Cl₂ (UV) → ClCH₂COOH + HCl. Cl replaces H on methyl group → chloroethanoic acid." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Benzene undergoes:", body: "SUBSTITUTION. Not addition — stable aromatic ring preserved by substitution reactions." },
+        { title: "Role of conc H₂SO₄ in esterification:", body: "CATALYST. Primary role is catalyst (also dehydrating agent but catalyst is the answer)." },
+        { title: "By-product of soap making:", body: "GLYCEROL. Fat + NaOH → soap + glycerol. NaCl salts out the soap." },
+        { title: "Excess ethanol at 145°C with conc H₂SO₄:", body: "DIETHYL ETHER. Two molecules join at ~140°C. At 170°C = ethene (one molecule dehydrated)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "140°C = ether, 170°C = ethene. Secondary alcohol → ketone (not acid). Soap by-product = glycerol. Benzene = substitution always. These reaction types and temperatures appear repeatedly in UNIBEN papers." }
+    ]
+  },
+
+  "Hybridisation": {
+    subject: "Chemistry",
+    title: "Hybridisation and Molecular Shapes",
+    icon: "🔬",
+    estimatedTime: "2 min read",
+    sections: [
+      { heading: "What is Hybridisation?", type: "text",
+        content: "Hybridisation describes how atomic orbitals mix to form new hybrid orbitals. Carbon's shape depends on whether it forms single, double or triple bonds." },
+      { heading: "Types of Hybridisation", type: "cards", items: [
+        { title: "sp³ hybridisation", body: "4 single bonds. TETRAHEDRAL shape (109.5°). Examples: methane (CH₄), ethane, all saturated alkanes, water (O), ammonia (N)." },
+        { title: "sp² hybridisation", body: "3 bonds including ONE double bond. TRIGONAL PLANAR (120°). Examples: ethene (CH₂=CH₂), propene, benzene, carbonyl compounds." },
+        { title: "sp hybridisation", body: "2 bonds including ONE triple bond. LINEAR (180°). Examples: ethyne (HC≡CH), propyne, CO₂, HCN." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Hybridisation of carbon in ethyne:", body: "SP (linear). Ethyne HC≡CH has triple bond. sp = 2 regions of electron density = linear." },
+        { title: "Hybridisation of carbon in propene:", body: "sp². Propene has double bond between C2 and C3. The CH₃ carbon is sp³." },
+        { title: "sp³ hybridisation gives:", body: "TETRAHEDRAL shape. Bond angle ~109.5°. 4 equivalent bonds." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Count electron regions on carbon: 4 single bonds = sp³ (tetrahedral). Double bond = sp² (trigonal planar). Triple bond = sp (linear). Or remember: sp = linear, sp² = flat triangle, sp³ = 3D tetrahedron." }
+    ]
+  },
+
+  "Atomic Structure Calculations": {
+    subject: "Chemistry",
+    title: "Atomic Structure — Worked Calculations",
+    icon: "⚛️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Neutrons", body: "Neutrons = Mass number - Atomic number. ²³⁸₉₂U: neutrons = 238-92 = 146." },
+        { title: "Isotope percentage", body: "Mean mass = (% × mass₁ + % × mass₂) ÷ 100. Set up equation and solve for unknown %." },
+        { title: "Electronic configuration", body: "Fill shells: 1s²2s²2p⁶3s²3p⁶4s²3d... Hund's rule: fill orbitals singly before pairing." },
+      ]},
+      { heading: "Worked Example 1 — Neutrons in ²³⁸U", type: "steps", items: [
+        "Find number of neutrons in ²³⁸₉₂U.",
+        "Neutrons = Mass number - Atomic number = 238 - 92 = 146.",
+        "Answer: 146."
+      ]},
+      { heading: "Worked Example 2 — Chlorine Isotope Percentage", type: "steps", items: [
+        "Chlorine isotopes ³⁵Cl and ³⁷Cl. Mean atomic mass = 35.5. Find % of ³⁵Cl.",
+        "Let % of ³⁵Cl = x, so % of ³⁷Cl = (100-x)",
+        "35.5 = [35x + 37(100-x)] ÷ 100",
+        "3550 = 35x + 3700 - 37x",
+        "3550 = 3700 - 2x → 2x = 150 → x = 75%",
+        "Answer: 75% ³⁵Cl, 25% ³⁷Cl."
+      ]},
+      { heading: "Worked Example 3 — Unpaired Electrons", type: "steps", items: [
+        "Configuration 1s²2s²2p⁶3s²3p³. How many unpaired electrons?",
+        "The 3p subshell has 3 orbitals and 3 electrons.",
+        "By Hund's rule: one electron in each orbital before pairing.",
+        "All 3 p electrons are UNPAIRED.",
+        "Answer: 3 unpaired electrons."
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Element X: 127 neutrons, 82 electrons. Atomic number?", body: "82. Atomic number = electrons = 82. Mass number = 82+127 = 209." },
+        { title: "Elements P(6e), Q(11e), R(15e), S(17e). Ionic bond with S?", body: "Q (2,8,1 = metal-like). Metal + non-metal = ionic bond. S has config 2,8,7 (non-metal)." },
+        { title: "Atomic radius order for Li, Be, B, C:", body: "C < B < Be < Li. Radius DECREASES left to right across a period." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Neutrons = A - Z. Atomic number = electrons (neutral atom). Chlorine: 75% ³⁵Cl, 25% ³⁷Cl → mean = 35.5. Hund's rule: fill singly first. Atomic radius DECREASES across a period (left to right). These calculations appear every single year." }
+    ]
+  },
+
+  // ============================================================
+// STUDY GUIDES ADDITIONS — BATCH 2
+// Physics, Mathematics and English Language
+// Paste these entries into STUDY_GUIDES in src/data/studyGuides.js
+// Add after existing entries (before the closing })
+// ============================================================
+
+  // ==========================================
+  // PHYSICS — NEW CALCULATION ENTRIES
+  // ==========================================
+
+  "Dimensions and Units": {
+    subject: "Physics",
+    title: "Dimensions and Units — MLT System",
+    icon: "📐",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "What Are Dimensions?", type: "text",
+        content: "Dimensions describe the physical nature of a quantity in terms of Mass (M), Length (L) and Time (T). They are different from units. Units tell you the scale (kg, m, s). Dimensions tell you the TYPE of quantity." },
+      { heading: "Key Dimension Derivations", type: "cards", items: [
+        { title: "Force", body: "F = ma. Acceleration = LT⁻². Force = M × LT⁻² = MLT⁻²." },
+        { title: "Pressure", body: "P = F/Area. Force = MLT⁻². Area = L². Pressure = MLT⁻²/L² = ML⁻¹T⁻²." },
+        { title: "Energy/Work", body: "W = F × d = MLT⁻² × L = ML²T⁻². Energy, work, heat, torque all share ML²T⁻²." },
+        { title: "Power", body: "P = Work/Time = ML²T⁻²/T = ML²T⁻³." },
+        { title: "Young's Modulus", body: "Stress/Strain. Stress = Force/Area = ML⁻¹T⁻². Strain is dimensionless. Young's modulus = ML⁻¹T⁻². So X=1, Y=-1, Z=-2." },
+        { title: "Momentum", body: "p = mv = M × LT⁻¹ = MLT⁻¹. Impulse = Force × time = MLT⁻² × T = MLT⁻¹ (same)." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Dimensions of Young's modulus M^X L^Y T^Z. Find X,Y,Z:", body: "X=1, Y=-1, Z=-2. Answer: (A). Young's modulus = ML⁻¹T⁻². Same as pressure." },
+        { title: "Dimension of Power:", body: "ML²T⁻³. Answer: (C). Power = Work/Time = ML²T⁻²/T = ML²T⁻³." },
+        { title: "Which pair has equivalent units?", body: "Work done and moment (torque). Answer: (A). Both = Force × distance = N·m = J. Same dimensions ML²T⁻²." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Work, Energy, Heat and Torque all have dimensions ML²T⁻². Pressure and Young's modulus both have ML⁻¹T⁻². Power = ML²T⁻³. Momentum = MLT⁻¹. These four facts cover 90% of dimension questions." }
+    ]
+  },
+
+  "Equations of Motion": {
+    subject: "Physics",
+    title: "Equations of Motion — Worked Calculations",
+    icon: "🚀",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "The Four Equations", type: "cards", items: [
+        { title: "v = u + at", body: "Final velocity = initial velocity + (acceleration × time)." },
+        { title: "s = ut + ½at²", body: "Displacement = initial velocity × time + half × acceleration × time²." },
+        { title: "v² = u² + 2as", body: "Use when time is not given or needed." },
+        { title: "s_n = u + a(n - ½)", body: "Distance in the nth second specifically. Very commonly tested." },
+      ]},
+      { heading: "Worked Example 1 — Distance in nth Second", type: "steps", items: [
+        "Body starts from rest, acceleration 8m/s². Find distance in the 8th second.",
+        "Formula: s_n = u + a(n - ½)",
+        "u = 0 (starts from rest), a = 8, n = 8",
+        "s_8 = 0 + 8(8 - 0.5) = 8 × 7.5 = 60m",
+        "Answer: 60m. (D)"
+      ]},
+      { heading: "Worked Example 2 — Retardation", type: "steps", items: [
+        "Car retarded from 90km/h to rest in 10s. Find acceleration.",
+        "Convert: u = 90 × 1000/3600 = 25 m/s. v = 0.",
+        "a = (v - u)/t = (0 - 25)/10 = -2.5 m/s²",
+        "Negative = deceleration (retardation).",
+        "Answer: -2.5 m/s². (C)"
+      ]},
+      { heading: "Worked Example 3 — Free Fall", type: "steps", items: [
+        "Orange falls from 20m height. Time to reach ground? (g = 10m/s²)",
+        "s = ut + ½gt². u = 0 (falls from rest).",
+        "20 = 0 + ½ × 10 × t²",
+        "t² = 4, t = 2 seconds.",
+        "Answer: 2.0s. (A)"
+      ]},
+      { heading: "Projectile Motion", type: "cards", items: [
+        { title: "Maximum range at:", body: "45° to the horizontal. Fixed rule — always 45° for maximum range." },
+        { title: "Horizontal component", body: "vx = u·cosθ (constant — no acceleration horizontally)." },
+        { title: "Vertical component", body: "vy = u·sinθ - gt (changes with time due to gravity)." },
+        { title: "Projectile at 60m/s, 30°, after 2s (g=10):", body: "vx = 60cos30° = 30√3. vy = 60sin30° - 20 = 10. Resultant = √(2700+100) = √2800 = 20√7 m/s." },
+      ]},
+      { heading: "Velocity-Time Graphs", type: "cards", items: [
+        { title: "Gradient of v-t graph", body: "= Acceleration (or retardation if negative slope)." },
+        { title: "Area under v-t graph", body: "= Distance travelled. Cannot find work, power or pressure from v-t graph." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "s_n = u + a(n - ½) is the formula for distance in the nth second ONLY. For total distance use s = ut + ½at². Always convert km/h to m/s (÷3.6). Maximum projectile range = 45°. Free fall: u=0, a=g=10m/s²." }
+    ]
+  },
+
+  "Machines Calculations": {
+    subject: "Physics",
+    title: "Machines — VR, MA and Efficiency Calculations",
+    icon: "⚙️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Velocity Ratio (VR)", body: "VR = distance moved by effort ÷ distance moved by load. Fixed by design of the machine." },
+        { title: "Mechanical Advantage (MA)", body: "MA = Load ÷ Effort. Actual ratio of load lifted to effort applied." },
+        { title: "Efficiency", body: "Efficiency = (MA/VR) × 100% = (Work output/Work input) × 100%." },
+        { title: "Finding Effort or Load", body: "MA = Efficiency × VR. Then Load = MA × Effort. Or Effort = Load/MA." },
+      ]},
+      { heading: "Worked Example 1 — Find Load", type: "steps", items: [
+        "Machine: efficiency 60%, VR = 5, effort = 500N. Find load P.",
+        "Step 1: MA = Efficiency × VR = 0.60 × 5 = 3",
+        "Step 2: MA = Load/Effort → Load = MA × Effort = 3 × 500 = 1500N",
+        "Answer: 1500N. (D)"
+      ]},
+      { heading: "Worked Example 2 — Screw Jack VR", type: "steps", items: [
+        "Screw jack: pitch 4mm, handle radius 21cm (π=22/7). Find VR.",
+        "Distance effort moves (one full turn) = 2πr = 2 × (22/7) × 21 = 132cm",
+        "Distance load moves (one turn) = pitch = 4mm = 0.4cm",
+        "VR = 132 ÷ 0.4 = 330",
+        "Answer: 330. (D)"
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Machine 800J input raises load through 1m with VR=6. Efficiency?", body: "If load=640N: Work output=640J. Efficiency=640/800×100=80%. Answer: (C)." },
+        { title: "VR=5, efficiency=75%. Effort to lift 10N load?", body: "MA=0.75×5=3.75. Effort=10/3.75=2.67N. Always use: Effort=Load/MA." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Three-step method: (1) Find MA = Efficiency × VR. (2) Load = MA × Effort OR Effort = Load/MA. (3) VR of screw = circumference ÷ pitch. Always convert mm to cm or cm to m — keep units consistent." }
+    ]
+  },
+
+  "Pendulum and SHM": {
+    subject: "Physics",
+    title: "Simple Pendulum — Period Calculations",
+    icon: "🕰️",
+    estimatedTime: "2 min read",
+    sections: [
+      { heading: "Pendulum Formula", type: "text",
+        content: "Period of a simple pendulum: T = 2π√(L/g). The period depends ONLY on length and g — NOT on mass and NOT on amplitude (for small angles)." },
+      { heading: "Key Rules", type: "cards", items: [
+        { title: "T depends on:", body: "LENGTH of pendulum and GRAVITY only. NOT mass, NOT amplitude." },
+        { title: "T ∝ √L", body: "If length doubles: T increases by factor √2. If length quadruples: T doubles." },
+        { title: "Comparing two pendulums", body: "T₁/T₂ = √(L₁/L₂). Rearrange: T₂ = T₁ × √(L₂/L₁)." },
+      ]},
+      { heading: "Worked Example 1", type: "steps", items: [
+        "Pendulum has period 1.2s when length = 40cm. Find period when length = 90cm.",
+        "T₂ = T₁ × √(L₂/L₁) = 1.2 × √(90/40) = 1.2 × √2.25 = 1.2 × 1.5 = 1.8s",
+        "Answer: 1.8s. (C)"
+      ]},
+      { heading: "Worked Example 2", type: "steps", items: [
+        "Pendulum has period 2.0s. Length is doubled. Find new period.",
+        "T₂ = T₁ × √(L₂/L₁) = 2.0 × √(2L/L) = 2.0 × √2 = 2.0 × 1.414 = 2.83s",
+        "Answer: 2.83s. (D)"
+      ]},
+      { heading: "Circular Motion", type: "cards", items: [
+        { title: "Angular velocity", body: "ω = 2πf = 2π/T. Unit: rad/s." },
+        { title: "Centripetal force", body: "F = mv²/r = mω²r. Always directed TOWARDS the centre." },
+        { title: "1000kg car, radius 30m, velocity 9m/s:", body: "F = mv²/r = 1000×81/30 = 2700N." },
+        { title: "Stone 35cm rope, 15 rev in 4s:", body: "f = 15/4 = 3.75 rev/s. ω = 2π×3.75 = 23.6 rad/s." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Pendulum shortcut: T ratio = square root of length ratio. Double length → multiply T by √2 (≈1.41). Quadruple length → double T. T does NOT change if you change the mass or swing angle (for small angles)." }
+    ]
+  },
+
+  "Archimedes Principle Calculations": {
+    subject: "Physics",
+    title: "Archimedes' Principle — Upthrust Calculations",
+    icon: "🌊",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Upthrust", body: "Upthrust = Weight of fluid displaced = ρ_fluid × V_submerged × g." },
+        { title: "Floating condition", body: "Weight of object = Upthrust. Object floats when weight = weight of fluid displaced." },
+        { title: "Relative density", body: "RD = Weight in air ÷ (Weight in air − Weight in water) = Upthrust in liquid ÷ Upthrust in water." },
+      ]},
+      { heading: "Worked Example 1 — Relative Density of Liquid", type: "steps", items: [
+        "Stone weighs 80g in air, 50g in water, 65g in liquid Y. Find relative density of Y.",
+        "Upthrust in water = 80 − 50 = 30g",
+        "Upthrust in Y = 80 − 65 = 15g",
+        "RD of Y = Upthrust in Y ÷ Upthrust in water = 15/30 = 0.5",
+        "Answer: 0.5. (C)"
+      ]},
+      { heading: "Worked Example 2 — Floating Sphere", type: "steps", items: [
+        "Plastic sphere floats in water (ρ=1000) with 0.5 volume submerged. Floats in oil with 0.4 submerged. Find density of oil.",
+        "In water: ρ_sphere × V = ρ_water × 0.5V → ρ_sphere = 500 kg/m³",
+        "In oil: ρ_sphere × V = ρ_oil × 0.4V",
+        "500 = ρ_oil × 0.4 → ρ_oil = 500/0.4 = 1250 kg/m³",
+        "Answer: 1250 kg/m³. (C)"
+      ]},
+      { heading: "Worked Example 3 — Loss in Weight", type: "steps", items: [
+        "Object relative density 9, weighs 25N when completely immersed. Find loss in weight.",
+        "RD = W_air/Upthrust = W_air/Loss",
+        "W_air − Loss = 25N (weight when immersed)",
+        "W_air(1 − 1/9) = 25 → W_air × 8/9 = 25 → W_air = 28.125N",
+        "Loss = 28.125/9 ≈ 3.1N",
+        "Answer: 3.1N. (C)"
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Upthrust always = weight of FLUID displaced (not weight of object). Floating = weight equals upthrust. RD = weight in air ÷ loss in water. Denser liquid = more upthrust per unit volume submerged." }
+    ]
+  },
+
+  "Optics Calculations": {
+    subject: "Physics",
+    title: "Mirrors and Lenses — Formula Calculations",
+    icon: "🔭",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Mirror/lens formula", body: "1/f = 1/v + 1/u. Real is positive convention." },
+        { title: "Magnification", body: "m = v/u. If m>1 = magnified. If m<1 = diminished." },
+        { title: "Refraction (Snell's Law)", body: "n₁sinθ₁ = n₂sinθ₂. n = sin(incident)/sin(refracted)." },
+        { title: "Critical angle", body: "sinC = 1/n. Used when light goes from dense to less dense medium." },
+        { title: "Real depth/apparent depth", body: "n = real depth ÷ apparent depth." },
+        { title: "Power of lens", body: "P = 1/f (f in metres). Unit: dioptres (D)." },
+      ]},
+      { heading: "Worked Example 1 — Concave Mirror", type: "steps", items: [
+        "Object 20cm from concave mirror, radius of curvature 30cm. Describe image.",
+        "f = R/2 = 30/2 = 15cm",
+        "1/v = 1/f − 1/u = 1/15 − 1/20 = 4/60 − 3/60 = 1/60",
+        "v = 60cm (positive = REAL image). m = 60/20 = 3 (magnified).",
+        "Image is real, magnified and inverted. Answer: (A)"
+      ]},
+      { heading: "Worked Example 2 — Convex Mirror", type: "steps", items: [
+        "Object 18cm in front of convex mirror, image 6cm behind mirror. Find focal length.",
+        "u = +18. v = −6 (virtual image, behind mirror).",
+        "1/f = 1/v + 1/u = 1/(−6) + 1/18 = −3/18 + 1/18 = −2/18 = −1/9",
+        "f = −9cm (negative confirms convex mirror).",
+        "Answer: −9.0cm. (D)"
+      ]},
+      { heading: "Worked Example 3 — Refractive Index", type: "steps", items: [
+        "Water appears 12m deep when viewed from above. Refractive index = 4/3. Find real depth.",
+        "n = real depth ÷ apparent depth",
+        "4/3 = real depth ÷ 12",
+        "Real depth = 12 × 4/3 = 16m.",
+        "Answer: 16m. (A)"
+      ]},
+      { heading: "Critical Angle and Eye Defects", type: "cards", items: [
+        { title: "Refractive index √2. Critical angle?", body: "sinC = 1/√2 = 0.707. C = 45°. Answer: (A)." },
+        { title: "Polarising angle 49°. Refractive index?", body: "Brewster's Law: n = tan(49°) = 1.15. Answer: (A)." },
+        { title: "Myopia (short-sighted):", body: "Eyeball too long. Rays focus IN FRONT of retina. Corrected by CONCAVE (diverging) lens." },
+        { title: "Hypermetropia (long-sighted):", body: "Eyeball too short. Rays focus BEHIND retina. Corrected by CONVEX (converging) lens." },
+        { title: "Lens power: radius of curvature 16cm:", body: "f = R/2 = 8cm = 0.08m. P = 1/0.08 = 12.5D. Answer: (A)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Concave mirror/convex lens = can give real images. Convex mirror/concave lens = ALWAYS virtual, upright, diminished. Same-size image from concave mirror: object at 2f. Myopia = concave lens. Hypermetropia = convex lens." }
+    ]
+  },
+
+  "Electricity Calculations": {
+    subject: "Physics",
+    title: "Circuits, EMF and Resistance Calculations",
+    icon: "⚡",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Ohm's Law", body: "V = IR. Series: R_T = R₁+R₂. Parallel: 1/R_T = 1/R₁+1/R₂." },
+        { title: "Power", body: "P = IV = I²R = V²/R." },
+        { title: "Resistivity", body: "R = ρL/A (ρ=resistivity, L=length, A=cross-section area)." },
+        { title: "EMF and internal resistance", body: "ε = I(R+r). Terminal voltage V = ε − Ir." },
+      ]},
+      { heading: "Worked Example 1 — Parallel Resistors", type: "steps", items: [
+        "Three 3Ω resistors in parallel. Find equivalent resistance.",
+        "1/R = 1/3 + 1/3 + 1/3 = 1",
+        "R = 1Ω",
+        "Answer: 1Ω. (B)"
+      ]},
+      { heading: "Worked Example 2 — Lamp Resistance", type: "steps", items: [
+        "Lamp rated 240V, 60W. Find resistance of filament.",
+        "P = V²/R → R = V²/P = 240²/60 = 57600/60 = 960Ω",
+        "Answer: 960Ω. (A)"
+      ]},
+      { heading: "Worked Example 3 — Internal Resistance", type: "steps", items: [
+        "Cell delivers 0.2A through 10Ω. When R=6Ω, current=0.3A. Find internal resistance r.",
+        "Case 1: ε = 0.2(10 + r)",
+        "Case 2: ε = 0.3(6 + r)",
+        "Set equal: 0.2(10+r) = 0.3(6+r)",
+        "2 + 0.2r = 1.8 + 0.3r → 0.2 = 0.1r → r = 2Ω",
+        "Answer: 2.0Ω. (A)"
+      ]},
+      { heading: "Worked Example 4 — Potentiometer", type: "steps", items: [
+        "Unknown EMF balances at 80cm. Daniell cell (1.08V) balances at 48cm. Find EMF.",
+        "EMF/1.08 = 80/48",
+        "EMF = 1.08 × 80/48 = 1.8V",
+        "Answer: 1.8V. (B)"
+      ]},
+      { heading: "Power Transmission and AC", type: "cards", items: [
+        { title: "Power loss in transmission cable:", body: "P_loss = I²R. Find I = P/V first. E.g. 40kW at 800V: I=50A. Loss=50²×2=5000W=5×10³W." },
+        { title: "AC peak and RMS voltage:", body: "V_rms = V₀/√2. Mean power P = V₀²/2R. E.g. V₀=20V, R=10Ω: P=400/20=20W." },
+        { title: "Cigarette lighter 12V, 33W:", body: "R = V²/P = 144/33 = 4.36Ω." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Parallel: SAME voltage, different currents. Series: SAME current, different voltages. P=V²/R when only V and R given. P=I²R when only I and R given. For internal resistance: set up two equations from two situations and solve simultaneously." }
+    ]
+  },
+
+  "Transformers and Capacitors": {
+    subject: "Physics",
+    title: "Transformers and Capacitors — Calculations",
+    icon: "🔌",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Transformer Equations", type: "cards", items: [
+        { title: "Turns ratio", body: "V₁/V₂ = N₁/N₂ = I₂/I₁. Current ratio is INVERSE of voltage/turns ratio." },
+        { title: "Efficiency", body: "η = (V₂I₂)/(V₁I₁) × 100%. Output power ÷ input power." },
+        { title: "Step-up transformer", body: "N₂>N₁, so V₂>V₁ and I₂<I₁. Increases voltage, decreases current." },
+        { title: "Step-down transformer", body: "N₂<N₁, so V₂<V₁ and I₂>I₁. Decreases voltage, increases current." },
+      ]},
+      { heading: "Worked Example — Transformer Efficiency", type: "steps", items: [
+        "Transformer: 400 primary turns, 200 secondary. V₁=240V, I₁=3A, I₂=5A. Find efficiency.",
+        "Step 1: V₂ = V₁ × N₂/N₁ = 240 × 200/400 = 120V",
+        "Step 2: Output power = V₂I₂ = 120 × 5 = 600W",
+        "Step 3: Input power = V₁I₁ = 240 × 3 = 720W",
+        "Step 4: η = 600/720 × 100 = 83%",
+        "Answer: 83%. (C)"
+      ]},
+      { heading: "Capacitor Rules", type: "cards", items: [
+        { title: "Capacitors in parallel", body: "C_T = C₁ + C₂ + C₃. Adds directly. Same as resistors in series." },
+        { title: "Capacitors in series", body: "1/C_T = 1/C₁ + 1/C₂. Inverse sum. Same as resistors in parallel." },
+        { title: "Energy stored", body: "E = ½CV². C in farads, V in volts, E in joules." },
+      ]},
+      { heading: "Worked Example — Capacitor Combination", type: "steps", items: [
+        "Two 2μF in parallel, then that combination in series with 6μF. Net capacitance?",
+        "Step 1: Parallel: C = 2 + 2 = 4μF",
+        "Step 2: Series with 6μF: C_T = (4 × 6)/(4 + 6) = 24/10 = 2.4μF",
+        "Answer: 2.4μF. (D)"
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "CAPACITORS: parallel = add. Series = inverse sum. RESISTORS: series = add. Parallel = inverse sum. They are opposite — this is a classic trick question. Transformer current ratio is INVERSE of voltage ratio. 83% efficiency means 17% lost as heat." }
+    ]
+  },
+
+  "Radioactivity Calculations": {
+    subject: "Physics",
+    title: "Radioactivity — Half-Life and Nuclear Equations",
+    icon: "☢️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Three Types of Radiation", type: "cards", items: [
+        { title: "Alpha (α)", body: "Helium nucleus: 2 protons + 2 neutrons. Charge +2. Stopped by paper. Least penetrating. Deflected by fields." },
+        { title: "Beta (β)", body: "Fast electron. Charge -1. Stopped by thin aluminium. Deflected by fields (opposite to alpha)." },
+        { title: "Gamma (γ)", body: "High-energy EM wave. No charge. Stopped by thick lead. NOT deflected by magnetic or electric fields." },
+      ]},
+      { heading: "Half-Life Calculations", type: "cards", items: [
+        { title: "Formula", body: "N = N₀ × (1/2)ⁿ where n = number of half-lives = time ÷ half-life." },
+        { title: "Counting half-lives method", body: "Start → ÷2 → ÷2 → count how many steps needed. Faster and less error-prone." },
+      ]},
+      { heading: "Worked Example 1 — Find Half-Life", type: "steps", items: [
+        "Radioactive substance: 8×10¹⁶ atoms → 2×10¹⁶ atoms in 64 minutes. Find half-life.",
+        "8×10¹⁶ → 4×10¹⁶ → 2×10¹⁶",
+        "That is 2 half-lives in 64 minutes.",
+        "Half-life = 64/2 = 32 minutes.",
+        "Answer: 32 minutes. (D)"
+      ]},
+      { heading: "Worked Example 2 — Find Time", type: "steps", items: [
+        "Half-life 16 days, initial decay rate 32/s. Time for rate to reach 2/s.",
+        "32 → 16 → 8 → 4 → 2 = 4 half-lives.",
+        "Time = 4 × 16 = 64 days.",
+        "Answer: 64 days. (B)"
+      ]},
+      { heading: "Worked Example 3 — Remaining Mass", type: "steps", items: [
+        "Half-life 12hrs, initial mass 50g. Mass after 2 days (48 hours).",
+        "Number of half-lives = 48/12 = 4.",
+        "Mass = 50 × (1/2)⁴ = 50/16 = 3.125g.",
+        "Answer: 3.125g. (A)"
+      ]},
+      { heading: "Nuclear Equations", type: "cards", items: [
+        { title: "Conservation rules", body: "BOTH mass number (top) AND atomic number (bottom) must balance on both sides." },
+        { title: "¹⁴₇N + X → ¹⁷₈O + ¹₁H. Find X:", body: "Mass: 14+4=18=17+1 ✓. Atomic: 7+2=9=8+1 ✓. X = ⁴₂He = alpha particle." },
+        { title: "²³⁸₉₂U → ²³⁴₉₀Th + X:", body: "Mass difference=4, atomic number difference=2. X = ⁴₂He = alpha particle." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Gamma rays are NOT deflected by fields — no charge. Alpha and beta ARE deflected (opposite directions). Half-life counting: just keep dividing by 2 until you reach the target. Nuclear equations: top numbers balance, bottom numbers balance." }
+    ]
+  },
+
+  "Photoelectric Effect": {
+    subject: "Physics",
+    title: "Photoelectric Effect and Modern Physics",
+    icon: "🔆",
+    estimatedTime: "2 min read",
+    sections: [
+      { heading: "Photoelectric Effect", type: "text",
+        content: "Light hits a metal surface and ejects electrons IF the frequency is above a THRESHOLD FREQUENCY. Energy of emitted electrons depends on FREQUENCY, not intensity. Discovered by Hertz, explained by Einstein." },
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Photon energy", body: "E = hf = hc/λ. h = 6.6×10⁻³⁴ Js. c = 3×10⁸ m/s." },
+        { title: "Colour with highest KE:", body: "BLUE (highest frequency in visible spectrum listed). Violet even higher but often not in options." },
+      ]},
+      { heading: "Worked Example — Photon Energy", type: "steps", items: [
+        "Find energy of photon with wavelength 3.30×10⁻⁷m. (h=6.6×10⁻³⁴, c=3×10⁸)",
+        "E = hc/λ = (6.6×10⁻³⁴ × 3×10⁸) / (3.30×10⁻⁷)",
+        "= 19.8×10⁻²⁶ / 3.30×10⁻⁷ = 6.0×10⁻¹⁹ J",
+        "Answer: 6.0×10⁻¹⁹J. (B)"
+      ]},
+      { heading: "Key Facts", type: "cards", items: [
+        { title: "X-rays discovered by:", body: "Wilhelm Röntgen in 1895. Not deflected by fields. Affect photographic film. Penetrate soft tissue." },
+        { title: "Radioactivity discovered by:", body: "Henri Becquerel in 1896." },
+        { title: "Bohr's model — success:", body: "Explains line spectra of HYDROGEN only. Limitation: cannot explain multi-electron atom spectra." },
+        { title: "Franck-Hertz experiment:", body: "Confirms quantised energy levels in atoms. Electrons transfer only discrete amounts of energy." },
+        { title: "Lenz's Law:", body: "Application of conservation of energy. Induced current opposes the change causing it." },
+        { title: "DC motor uses:", body: "SPLIT RINGS (commutator). AC generator uses SLIP RINGS. Key distinction tested every year." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "E = hf = hc/λ. h = 6.6×10⁻³⁴. Shorter wavelength = higher frequency = more energy. Blue light has more energy than red. Gamma has most energy. DC motor = split rings. AC generator = slip rings. Lenz's Law = conservation of energy." }
+    ]
+  },
+
+  // ==========================================
+  // MATHEMATICS — NEW CALCULATION ENTRIES
+  // ==========================================
+
+  "Profit and Loss Calculations": {
+    subject: "Mathematics",
+    title: "Profit, Loss and Discount — Worked Examples",
+    icon: "💰",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Profit and Loss %", body: "Profit% = (Profit/CP) × 100. Loss% = (Loss/CP) × 100. ALWAYS divide by COST PRICE, never selling price." },
+        { title: "Find SP from profit%", body: "SP = CP × (100 + profit%)/100. E.g. 18% profit: SP = CP × 118/100." },
+        { title: "Find CP from SP", body: "CP = SP × 100/(100 + profit%). E.g. SP=81000 at 8% profit: CP = 81000×100/108 = 75000." },
+        { title: "Discount", body: "Price after discount = Original × (100 − discount%)/100." },
+      ]},
+      { heading: "Worked Example 1 — Chain Transactions", type: "steps", items: [
+        "TV sold for ₦18,700 giving 10% profit. Find SP for 18% profit.",
+        "Step 1: Find CP. 18700 = CP × 110/100 → CP = 18700×100/110 = ₦17,000",
+        "Step 2: New SP = 17000 × 118/100 = ₦20,060",
+        "Answer: ≈₦20,000. (C)"
+      ]},
+      { heading: "Worked Example 2 — Double Transaction", type: "steps", items: [
+        "A sold radio to B at 10% profit. B sold for ₦2612.50 at 5% loss. Find A's cost.",
+        "A's cost = P. B's cost = P × 1.10.",
+        "B sells: ₦2612.50 = P × 1.10 × 0.95 = P × 1.045",
+        "P = 2612.50/1.045 = ₦2,500",
+        "Answer: ₦2,500. (C)"
+      ]},
+      { heading: "Worked Example 3 — Discount", type: "steps", items: [
+        "Shirts sold at 15% discount. Ojo paid ₦76.50. Original price?",
+        "76.50 = Original × 85/100",
+        "Original = 76.50/0.85 = ₦90",
+        "Answer: ₦90. (B)"
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Profit% and Loss% are ALWAYS on COST PRICE — never selling price. This is the most common mistake. For chain transactions: work through each step. If profit then loss: multiply by (1+p/100) then (1-l/100)." }
+    ]
+  },
+
+  "Simple and Compound Interest": {
+    subject: "Mathematics",
+    title: "Simple and Compound Interest — Worked Examples",
+    icon: "🏦",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Simple Interest (SI)", body: "SI = PRT/100. P=principal, R=rate%, T=time in YEARS." },
+        { title: "Amount (SI)", body: "Amount = P + SI = P(1 + RT/100)." },
+        { title: "Compound Interest (CI)", body: "Amount = P(1 + R/100)ⁿ. CI = Amount − P." },
+        { title: "Time conversion", body: "Months → years: divide by 12. Days → years: divide by 365." },
+      ]},
+      { heading: "Worked Example 1 — Simple Interest", type: "steps", items: [
+        "Find SI on ₦20,000 for 2 years at 13% p.a.",
+        "SI = PRT/100 = 20000 × 13 × 2/100 = ₦5,200",
+        "Answer: ₦5,200. (A)"
+      ]},
+      { heading: "Worked Example 2 — Find Principal", type: "steps", items: [
+        "Man took loan at 4% p.a. After 5 years paid back ₦720. Find principal P.",
+        "Amount = P(1 + RT/100) = P(1 + 4×5/100) = P × 1.2",
+        "1.2P = 720 → P = ₦600",
+        "Answer: ₦600. (D)"
+      ]},
+      { heading: "Worked Example 3 — Compound Interest", type: "steps", items: [
+        "Find compound interest on ₦2,000 for 2 years at 10% p.a.",
+        "Year 1: 2000 × 1.1 = ₦2,200",
+        "Year 2: 2200 × 1.1 = ₦2,420",
+        "CI = 2420 − 2000 = ₦420",
+        "Answer: ₦420. (A)"
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Simple interest: same amount each year (doesn't compound). Compound interest: grows because each year's interest is added to principal before next year. For CI with two years: just multiply by (1+r%) twice. For more years: use (1+r/100)ⁿ." }
+    ]
+  },
+
+  "Probability Calculations": {
+    subject: "Mathematics",
+    title: "Probability — Rules and Worked Examples",
+    icon: "🎲",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Rules", type: "cards", items: [
+        { title: "Addition rule", body: "P(A or B) = P(A) + P(B) − P(A and B). Subtract intersection to avoid double counting." },
+        { title: "Multiplication rule (independent)", body: "P(A and B) = P(A) × P(B). Both events occur." },
+        { title: "Without replacement", body: "Second draw depends on first. Denominator decreases by 1 each draw." },
+        { title: "Combinations nCr", body: "nCr = n! / [r!(n−r)!]. Number of ways to choose r from n." },
+      ]},
+      { heading: "Worked Example 1 — Without Replacement", type: "steps", items: [
+        "Bag: 3 red, 5 white. Two drawn without replacement. Find P(same colour).",
+        "P(RR) = 3/8 × 2/7 = 6/56",
+        "P(WW) = 5/8 × 4/7 = 20/56",
+        "P(same) = 6/56 + 20/56 = 26/56 = 13/28",
+        "Answer: 13/28. (B)"
+      ]},
+      { heading: "Worked Example 2 — Both Failing", type: "steps", items: [
+        "P(X passing) = 1/4, P(Y passing) = 3/5. Find P(both failing).",
+        "P(X fails) = 1 − 1/4 = 3/4",
+        "P(Y fails) = 1 − 3/5 = 2/5",
+        "P(both fail) = 3/4 × 2/5 = 6/20 = 3/10",
+        "Answer: 3/10. (B)"
+      ]},
+      { heading: "Worked Example 3 — Divisibility", type: "steps", items: [
+        "Number selected from 1-30. P(divisible by 2 or 5)?",
+        "Divisible by 2: 15 numbers. By 5: 6 numbers. By both (10): 3 numbers.",
+        "Union = 15 + 6 − 3 = 18.",
+        "P = 18/30 = 3/5",
+        "Answer: 3/5. (B)"
+      ]},
+      { heading: "Arrangements and Combinations", type: "cards", items: [
+        { title: "Choose 3 footballers from 12:", body: "C(12,3) = 12×11×10/6 = 220 ways." },
+        { title: "Arrangements of LETTERS:", body: "7 letters, 2 pairs (T and E repeated). 7!/2!2! = 5040/4 = 1260." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Without replacement: denominator reduces by 1 each time. P(A or B) = P(A) + P(B) − P(both). P(both) = P(A) × P(B) for independent events. P(not A) = 1 − P(A). Always check if events are mutually exclusive." }
+    ]
+  },
+
+  "AP and GP Series": {
+    subject: "Mathematics",
+    title: "Arithmetic and Geometric Progressions",
+    icon: "📊",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Arithmetic Progressions (AP)", type: "cards", items: [
+        { title: "nth term", body: "Tₙ = a + (n−1)d. a = first term, d = common difference." },
+        { title: "Sum of n terms", body: "Sₙ = n/2 [2a + (n−1)d] = n/2 (first + last)." },
+        { title: "Common difference", body: "d = T₂ − T₁ = any term minus the previous term." },
+      ]},
+      { heading: "AP Worked Examples", type: "cards", items: [
+        { title: "29th term of 3, 8, 13, 18...:", body: "a=3, d=5. T₂₉ = 3 + 28×5 = 3 + 140 = 143." },
+        { title: "Sum of first 20 terms of 5, 9, 13...:", body: "a=5, d=4. S₂₀ = 10×[10+76] = 10×86 = 860." },
+        { title: "Sum of first 21 terms of -10, -8, -6...:", body: "a=-10, d=2. S₂₁ = 21/2×[-20+40] = 21/2×20 = 210." },
+      ]},
+      { heading: "Geometric Progressions (GP)", type: "cards", items: [
+        { title: "nth term", body: "Tₙ = arⁿ⁻¹. a = first term, r = common ratio." },
+        { title: "Sum of n terms", body: "Sₙ = a(rⁿ−1)/(r−1) when r>1. Or a(1−rⁿ)/(1−r) when r<1." },
+        { title: "Common ratio", body: "r = T₂/T₁ = any term divided by the previous term." },
+      ]},
+      { heading: "GP Worked Examples", type: "cards", items: [
+        { title: "3rd term=63, 5th term=567. Sum of first 6:", body: "r²=567/63=9, r=3. a=63/9=7. S₆=7(3⁶−1)/2=7×728/2=2548." },
+        { title: "11th term of 4, 8, 16...:", body: "a=4=2², r=2. T₁₁=2²×2¹⁰=2¹²." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "AP: add same number each time (d). GP: multiply by same number each time (r). To find r: divide consecutive terms. To find d: subtract consecutive terms. S = n/2×(first + last) works for AP only." }
+    ]
+  },
+
+  "Statistics Calculations": {
+    subject: "Mathematics",
+    title: "Statistics — Mean, Variance and Standard Deviation",
+    icon: "📈",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Formulas", type: "cards", items: [
+        { title: "Mean", body: "Mean = Σx/n (sum of all values ÷ number of values)." },
+        { title: "Variance", body: "Variance = Σ(x − mean)²/n. Find each deviation, square it, average them." },
+        { title: "Standard deviation", body: "SD = √Variance. Same units as the original data." },
+      ]},
+      { heading: "Worked Example 1 — SD Calculation", type: "steps", items: [
+        "Find standard deviation of -1, 5, 0, 2, 9.",
+        "Mean = (-1+5+0+2+9)/5 = 15/5 = 3",
+        "Deviations: -4, 2, -3, -1, 6. Squared: 16, 4, 9, 1, 36.",
+        "Variance = (16+4+9+1+36)/5 = 66/5 = 13.2",
+        "SD = √13.2 ≈ 3.6",
+        "Answer: 3.6. (C)"
+      ]},
+      { heading: "Worked Example 2 — Variance of k, k+1, k+2", type: "steps", items: [
+        "Find variance of k, k+1, k+2.",
+        "Mean = (k + k+1 + k+2)/3 = (3k+3)/3 = k+1",
+        "Deviations: -1, 0, +1. Squared: 1, 0, 1.",
+        "Variance = (1+0+1)/3 = 2/3",
+        "Answer: 2/3. (A)"
+      ]},
+      { heading: "Working Backwards with Mean", type: "cards", items: [
+        { title: "Mean age of 20 students is 12. Teacher added, mean becomes 13. Teacher's age?", body: "Total with teacher = 21×13 = 273. Without = 20×12 = 240. Teacher = 273−240 = 33." },
+        { title: "30 sellers average ₦27. 12 girls average ₦18. Boys' average?", body: "Total=810. Girls=216. Boys total=810−216=594. Boys average=594/18=₦33." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Variance = average of SQUARED deviations. SD = square root of variance. For 'working backwards': (new total) − (old total) = the new item's value. SD stays the same if you add or subtract the same number to all values." }
+    ]
+  },
+
+  // ==========================================
+  // ENGLISH — NEW ENTRIES
+  // ==========================================
+
+  "Emphatic Stress": {
+    subject: "English",
+    title: "Emphatic Stress — Management Paper Questions",
+    icon: "🗣️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "What Is Emphatic Stress?", type: "text",
+        content: "These questions give you a statement with one word in CAPITALS (the emphasised word) and ask which question that statement best answers. The capitalised word is the KEY — it tells you what the question must be asking about." },
+      { heading: "The Rule", type: "cards", items: [
+        { title: "Step 1", body: "Find the CAPITALISED word in the statement — that is the emphatic word." },
+        { title: "Step 2", body: "Ask yourself: what question would I be answering if I emphasised that word?" },
+        { title: "Step 3", body: "The correct question is the one where the CAPITALISED word provides the essential new information." },
+        { title: "Step 4", body: "Wrong answers usually change the person, change the action, or ask about a different part of the sentence." },
+      ]},
+      { heading: "Worked Examples", type: "cards", items: [
+        { title: "'Tomi loves DODO for dinner.' Question?", body: "DODO is capitalised — question asks WHAT she loves. Correct: 'Does Tomi love fried rice for dinner?' (asking about the food, which DODO answers)." },
+        { title: "'Adamu RARELY visits his old friends.' Question?", body: "RARELY is capitalised — question asks about FREQUENCY. Correct: 'Does Adamu rarely visit his old friends?' Wrong: 'Who rarely visits?' (that emphasises Adamu)." },
+        { title: "'John BOUGHT the book yesterday.' Question?", body: "BOUGHT is capitalised — question asks HOW he got it. Correct: 'Did John win the book?' (contrasts with another way of getting it)." },
+        { title: "'She SINGS in the choir.' Question?", body: "SINGS is capitalised — question asks about the ACTION. Correct: 'Does she dance in the choir?' (contrasts another action). Wrong: 'Who sings in the choir?' (that emphasises WHO)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "The capitalised word is what is being CONTRASTED or CONFIRMED. The correct question is the one that would NEED that specific word as its answer. Wrong options either change the person, the time, or the action to something irrelevant." }
+    ]
+  },
+
+  "Conditional Sentences": {
+    subject: "English",
+    title: "Interpretation of Conditional Sentences",
+    icon: "🔀",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "The Three Conditionals", type: "cards", items: [
+        { title: "Type 1 — Real (possible)", body: "'If + present, will + base.' Something that CAN happen. 'If Musa applies, he will get in' = Musa HAS THE OPPORTUNITY to apply." },
+        { title: "Type 2 — Unreal present", body: "'If + past, would + base.' Hypothetical, not true now. 'If I were you, I would...' = I am NOT you." },
+        { title: "Type 3 — Unreal past", body: "'If + had+pp, would have+pp.' Something that did NOT happen in the past. BOTH parts are the OPPOSITE of reality." },
+      ]},
+      { heading: "Type 3 — The Reversal Rule", type: "text",
+        content: "In Type 3 conditional, BOTH parts describe what did NOT happen. The condition is the reverse of reality. This is the most tested interpretation in UNIBEN." },
+      { heading: "Type 3 Worked Examples", type: "cards", items: [
+        { title: "'Had they not spoken to their Uncle, they could have stayed in the room.'", body: "Reverse: They DID speak → they are NOT in the room. Meaning: BECAUSE they spoke to their uncle, they are now elsewhere." },
+        { title: "'We would never have followed his advice if we had known his reputation.'", body: "Reverse: We did NOT know → we DID follow. Meaning: we followed his advice BECAUSE we did not know his reputation." },
+        { title: "'If I had known he was a robber, I would not have married him.'", body: "Reverse: She did NOT know → she DID marry him. Meaning: she married him because she did not know." },
+        { title: "'Had her father not died, Ede would have left for London.'", body: "Reverse: Father DID die → Ede did NOT leave. Meaning: Ede stayed because her father died." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "'If Musa applies for a scholarship, he will be able to go to law school.' Musa:", body: "HAS THE OPPORTUNITY of attending law school. Answer: (B). Type 1 = real possibility. He has NOT yet applied." },
+        { title: "'We would never have followed his advice if we had known him.' Means:", body: "We followed his advice BECAUSE we did not know him well. Answer: (C)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Type 3 = BOTH parts are the opposite of reality. 'Had I known' = I did NOT know. 'Would not have done' = I DID do it. Reverse BOTH parts to find the real meaning. This appears in almost every English paper." }
+    ]
+  },
+
+  "Idioms Master List": {
+    subject: "English",
+    title: "Idioms and Expressions — Exam Master List",
+    icon: "💬",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Strategy", type: "text",
+        content: "NEVER interpret idioms literally. The meaning is always figurative. Idioms are a group of words whose combined meaning cannot be guessed from individual words." },
+      { heading: "Money and Success Idioms", type: "cards", items: [
+        { title: "Kill the goose that lays the golden egg", body: "Destroy the source of future income for immediate gain. 'Sacrificed future profits to satisfy present needs.'" },
+        { title: "In the red", body: "Bank account overdrawn — owing money. 'Ekwansi's account is in the red' = his account is overdrawn." },
+        { title: "The game is not worth the candle", body: "The trouble/effort is greater than the reward. Not worth doing." },
+        { title: "Eye to the main chance", body: "Always looking for opportunities for personal gain or profit." },
+        { title: "Feather your own nest", body: "Use your position to make yourself rich at others' expense." },
+      ]},
+      { heading: "Secrets and Information Idioms", type: "cards", items: [
+        { title: "Spill the beans", body: "Reveal a secret that will hurt someone. 'I will reveal a secret that will hurt him.'" },
+        { title: "Tongue in cheek", body: "Not sincere, saying the opposite of what you mean, ironic. 'He did not express his true feelings.'" },
+        { title: "Laughed up his sleeve", body: "Secretly amused while appearing serious on the outside." },
+        { title: "Hand in glove", body: "Working closely together, often with suggestion of improper activity." },
+      ]},
+      { heading: "Crisis and Decision Idioms", type: "cards", items: [
+        { title: "Cross the Rubicon", body: "Make an irreversible decision — cannot go back. 'University is not changing its decision.'" },
+        { title: "Achilles' heel", body: "The one weakness of an otherwise strong person. From Greek mythology." },
+        { title: "Dyed-in-the-wool", body: "Having beliefs so deep they cannot be changed. 'Has strong opinions that will not change.'" },
+        { title: "Castles in the air", body: "Plans that will never be realised — unrealistic dreams." },
+      ]},
+      { heading: "People and Character Idioms", type: "cards", items: [
+        { title: "Man Friday", body: "A devoted and versatile helper who does everything. 'Mr. Obi slaves for the head of department.'" },
+        { title: "Bull in a china shop", body: "A clumsy, careless person who causes damage wherever they go." },
+        { title: "Black sheep", body: "The member of a group who brings shame or disgrace." },
+        { title: "Rough diamond", body: "Person of great worth but rough, unpolished exterior." },
+        { title: "Trade on someone's kindness", body: "Take unfair advantage of their good nature. 'They exploited his kindness.'" },
+      ]},
+      { heading: "Action and Effort Idioms", type: "cards", items: [
+        { title: "Wipe the floor with", body: "Defeat someone decisively, humiliate them in a contest." },
+        { title: "Give someone the bird", body: "Scorn, show contempt or dismissal toward someone." },
+        { title: "Cannot see the wood for the trees", body: "Cannot understand the main point because of too many details." },
+        { title: "Beat about the bush", body: "Avoid coming to the main point, talk around a subject." },
+        { title: "Burn the midnight oil", body: "Work or study very late at night." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Cross the Rubicon = irreversible decision (Julius Caesar crossed it — no going back). Achilles' heel = one weakness. Kill the golden goose = destroy future income. Tongue in cheek = not sincere. Man Friday = devoted helper. These 5 appear most frequently." }
+    ]
+  },
+
+  "Phonetics and Stress": {
+    subject: "English",
+    title: "Phonetics, Pronunciation and Stress Patterns",
+    icon: "🔊",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Sounds That Trick Students", type: "cards", items: [
+        { title: "The /eɪ/ sound (like 'cake')", body: "great, break, stake, weight, they — all have /eɪ/. BUT: team, beam, dream = /iː/ (different)." },
+        { title: "The 'ch' — three pronunciations", body: "/tʃ/ as in church: chant, cheat, chief. /k/ as in school: character, chemistry, chorus. /ʃ/ as in machine: chef, champagne." },
+        { title: "Silent 'b' in 'mb'", body: "lamb, comb, bomb, thumb, plumb, numb, climb, dumb — the 'b' is ALWAYS silent. Only /m/ sound heard." },
+        { title: "The /ʃ/ (sh) sound", body: "ship, shelf (sh). official, special (ci). nation, station (ti). But vision, revision = /ʒ/ (different softer sound)." },
+        { title: "The /ʒ/ sound", body: "garage (end), measure, pleasure, vision, usual, leisure — NOT the same as /ʃ/ in ship." },
+        { title: "The two 'th' sounds", body: "/θ/ voiceless: think, thick, mathematics, author. /ð/ voiced: this, that, mother, rather, breathe." },
+      ]},
+      { heading: "Stress Pattern Rules", type: "cards", items: [
+        { title: "Most 2-syllable nouns/adjectives", body: "Stress on FIRST syllable: BLACKboard, SUFfer, CALendar, THINKing." },
+        { title: "Most 2-syllable verbs", body: "Stress on SECOND syllable: beLIEVE, rePORT, sucCEED, conTROL." },
+        { title: "Words ending -tion/-sion", body: "Stress on syllable BEFORE ending: naVIgation, ediTION, teleSCOPE." },
+        { title: "Shifting stress pairs", body: "PHOtograph (noun/adj) → phoTOGraphy (noun). REcord (noun) → reCORD (verb). CONtent (adj) → conTENT (satisfied)." },
+      ]},
+      { heading: "Stress Odd-One-Out Examples", type: "cards", items: [
+        { title: "CALendar, BLACKboard, SUFfer, sucCESS:", body: "Odd one out: sucCESS — only word stressed on 2nd syllable. Others stress 1st." },
+        { title: "enDEAvour, conFESSion, exAMple, MAGazine:", body: "Odd one out: MAGazine — stresses 3rd syllable. Others stress 2nd." },
+        { title: "BOOKcase, unTIE, exCEPT, aDOPT:", body: "Odd one out: BOOKcase — stresses 1st syllable. Others stress 2nd." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Say words aloud and clap on the loud syllable. 'Chemistry' has /k/ not /tʃ/ — like 'character'. Silent letters: silent b in 'mb' (lamb), silent k in 'kn' (know), silent w in 'wr' (write). nation/station = /ʃ/ not /t/ at the 'ti'." }
+    ]
+  },
+
+  "English Vocabulary Master List": {
+    subject: "English",
+    title: "60 Must-Know Words — Synonyms and Antonyms",
+    icon: "📚",
+    estimatedTime: "5 min read",
+    sections: [
+      { heading: "Watch Out — Common Traps", type: "cards", items: [
+        { title: "INVALUABLE", body: "Means EXTREMELY VALUABLE — NOT valueless. A very common mistake. 'Invaluable advice' = advice so valuable you cannot put a price on it." },
+        { title: "NEGLIGIBLE vs NEGLIGENT", body: "Negligible = too small to matter (insignificant). Negligent = careless. They look similar but mean different things." },
+        { title: "PERFUNCTORY vs GRUDGINGLY", body: "Perfunctory = done without care (careless). Grudgingly = done unwillingly. NOT the same — careless ≠ unwilling." },
+        { title: "DEPRECATE vs DEPRECIATE", body: "Deprecate = to express disapproval (condemn). Depreciate = to decrease in value. Different meanings." },
+      ]},
+      { heading: "Personality Words", type: "cards", items: [
+        { title: "TACITURN / RETICENT", body: "Habitually silent, saying very little. Opposite: LOQUACIOUS / GARRULOUS (very talkative)." },
+        { title: "DILIGENT / ASSIDUOUS", body: "Hardworking and careful. Opposite: INDOLENT / SLOTHFUL (lazy)." },
+        { title: "PARSIMONIOUS / MISERLY", body: "Excessively stingy. Opposite: GENEROUS / EXTRAVAGANT." },
+        { title: "BELLICOSE", body: "Aggressive, warlike. Opposite: PEACEFUL, PACIFIC." },
+        { title: "CALLOUS", body: "Showing no feeling, cruel. Opposite: COMPASSIONATE, CARING." },
+      ]},
+      { heading: "Feelings and Reactions Words", type: "cards", items: [
+        { title: "TUMULTUOUS", body: "Loud and disorderly. 'Tumultuous welcome' = noisy, enthusiastic welcome." },
+        { title: "ANIMATED", body: "Lively, full of energy. Opposite: DULL, LIFELESS." },
+        { title: "PERPLEXED", body: "Confused, unable to understand. Near: PUZZLED, BAFFLED." },
+        { title: "EQUANIMITY", body: "Calmness in a difficult situation. Near: COMPOSURE." },
+        { title: "ENERVATING", body: "Draining energy, weakening. Opposite: INVIGORATING (giving energy)." },
+      ]},
+      { heading: "Truth and Validity Words", type: "cards", items: [
+        { title: "CORROBORATE", body: "To confirm or support with evidence. Opposite: CONTRADICT." },
+        { title: "VINDICATE / EXONERATE", body: "To prove innocent or right. To officially clear of blame." },
+        { title: "SPURIOUS", body: "False, not genuine. Near: COUNTERFEIT, FAKE." },
+        { title: "FUTILE", body: "Producing no result, useless. Near: VAIN, POINTLESS." },
+        { title: "REPREHENSIBLE", body: "Deserving strong condemnation. Near: DEPLORABLE, SHAMEFUL." },
+      ]},
+      { heading: "Status and Scope Words", type: "cards", items: [
+        { title: "ZENITH vs NADIR", body: "Zenith = highest point. Nadir = lowest point. Opposite of each other." },
+        { title: "VALEDICTORY vs INAUGURAL", body: "Valedictory = farewell/leaving. Inaugural = first/opening. Opposite of each other." },
+        { title: "SECULAR vs SACRED", body: "Secular = non-religious, worldly. Sacred = religious, holy." },
+        { title: "EPHEMERAL vs PERMANENT", body: "Ephemeral = lasting a very short time. Permanent = lasting forever." },
+        { title: "OBSOLETE vs MODERN", body: "Obsolete = out of date. Modern = up-to-date." },
+        { title: "VERBOSITY vs BREVITY", body: "Verbosity = using too many words. Brevity = few precise words." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Most tested pairs: diligent/indolent, extravagant/frugal, loquacious/taciturn, zenith/nadir, valedictory/inaugural, enervating/invigorating, animated/dull, corroborate/contradict. Learn each word WITH its opposite — they test both." }
+    ]
+  },
+
+  "Grammar Rules": {
+    subject: "English",
+    title: "Grammar — Tenses, Agreement and Question Tags",
+    icon: "✏️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Subject-Verb Agreement Rules", type: "cards", items: [
+        { title: "Each, every, everyone, nobody, anyone", body: "Always SINGULAR verb. 'Everyone is here.' Not 'are'." },
+        { title: "'As well as', 'together with', 'along with'", body: "Do NOT make the subject plural. 'John, as well as his friends, IS coming.' Subject = John." },
+        { title: "Collective nouns (class, team, committee)", body: "Usually SINGULAR verb. 'Three quarters of the class IS improving.'" },
+        { title: "'Neither...nor'", body: "Verb agrees with the CLOSER noun. 'Neither John nor the students ARE to blame.'" },
+      ]},
+      { heading: "Conditional Tenses", type: "cards", items: [
+        { title: "Type 2 conditional", body: "Use WERE (not was). 'If I were you, I would...' ALWAYS 'were' in formal written English." },
+        { title: "Inverted conditional", body: "'Had I known' = 'If I had known.' 'Were I to go' = 'If I were to go.' The 'if' is removed and auxiliary moves to front." },
+      ]},
+      { heading: "Question Tags", type: "cards", items: [
+        { title: "Positive statement + negative tag", body: "'She is coming, ISN'T she?' The tag verb matches the main verb tense." },
+        { title: "Negative statement + positive tag", body: "'She isn't coming, IS she?'" },
+        { title: "'I am...' → special case", body: "'I am your friend, AREN'T I?' (Not 'am I not' in spoken English)." },
+        { title: "'It's been rough, _____?'", body: "'HASN'T it?' — 'It has been' = present perfect → 'hasn't it?'" },
+        { title: "'She said you could eat there, _____?'", body: "'DIDN'T she?' — main verb is 'said' (past simple)." },
+      ]},
+      { heading: "Reported Speech Tense Changes", type: "cards", items: [
+        { title: "Direct → Reported tense shifts", body: "Present → Past. Will → Would. Can → Could. May → Might. 'Tomorrow' → 'the next day'. 'Here' → 'there'." },
+        { title: "'I will dance tomorrow,' he said →", body: "'He said he WOULD dance THE NEXT DAY.' Both 'will' and 'tomorrow' must change." },
+        { title: "Reporting verbs", body: "'Said' = no object needed. 'Told' MUST have an object ('told me', 'told him'). Never 'told that...' alone." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Question tag tense = same as main clause. 'I am...' → 'aren't I?' (special rule). Type 2 conditional: ALWAYS 'were', never 'was' in formal English. Reported speech: one tense back, 'tomorrow' → 'the next day', 'here' → 'there'." }
+    ]
+  },
+
+  // ============================================================
+// STUDY GUIDES ADDITIONS — BATCH 3
+// Geography — Complete Subject (Brand New)
+// Paste these entries into STUDY_GUIDES in src/data/studyGuides.js
+// Add after existing entries (before the closing })
+// ============================================================
+
+  // ==========================================
+  // GEOGRAPHY — ALL NEW ENTRIES
+  // ==========================================
+
+  "Solar System and Earth": {
+    subject: "Geography",
+    title: "The Solar System and Earth's Motions",
+    icon: "🌍",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "The Eight Planets (in order from Sun)", type: "cards", items: [
+        { title: "Memory aid", body: "'My Very Excellent Mother Just Served Us Noodles' — Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune." },
+        { title: "Key planet facts", body: "Jupiter = LARGEST. Venus = HOTTEST (greenhouse effect). Earth = only known life. Mars = RED planet (iron oxide). Saturn = prominent rings." },
+        { title: "Mercury", body: "Closest to sun, smallest planet. No atmosphere, extreme temperature swings." },
+        { title: "Neptune", body: "Furthest from sun, windiest planet." },
+      ]},
+      { heading: "Earth's Two Main Motions", type: "cards", items: [
+        { title: "ROTATION", body: "Earth spins on its own axis. Takes 24 hours (one day). Causes: day and night, time zones, apparent movement of sun across sky." },
+        { title: "REVOLUTION", body: "Earth orbits the sun. Takes 365¼ days (one year). Causes: SEASONS, variation in day length, equinoxes and solstices." },
+      ]},
+      { heading: "Equinoxes and Solstices", type: "cards", items: [
+        { title: "Vernal (Spring) Equinox", body: "March 21. Sun directly over Equator. Day = night everywhere on Earth." },
+        { title: "Autumnal Equinox", body: "September 23. Sun directly over Equator again." },
+        { title: "Summer Solstice", body: "June 21. Sun directly over Tropic of Cancer (23.5°N). Longest day in Northern Hemisphere." },
+        { title: "Winter Solstice", body: "December 22. Sun directly over Tropic of Capricorn (23.5°S). Shortest day in Northern Hemisphere." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Largest planet:", body: "JUPITER. Not Saturn (second largest, has best rings). Not Earth (medium-sized)." },
+        { title: "Day and night caused by:", body: "ROTATION on its axis. Not revolution (revolution causes seasons)." },
+        { title: "Seasons caused by:", body: "REVOLUTION + axial tilt (23.5°). Without the tilt, there would be no seasons." },
+        { title: "Sun directly over Tropic of Cancer:", body: "SUMMER SOLSTICE, June 21. Longest day in Northern Hemisphere." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "ROTATION = day/night (24 hours). REVOLUTION = seasons (365 days). These two are the most tested distinction. Tropic of Cancer = 23.5°N (June solstice). Tropic of Capricorn = 23.5°S (December solstice)." }
+    ]
+  },
+
+  "Latitude Longitude and Time": {
+    subject: "Geography",
+    title: "Latitude, Longitude and Time Calculations",
+    icon: "🗺️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Lines of Latitude", type: "cards", items: [
+        { title: "Equator", body: "0° latitude. Divides Earth into Northern and Southern hemispheres. Longest parallel." },
+        { title: "Tropic of Cancer", body: "23.5°N. Sun directly overhead at June 21 (summer solstice)." },
+        { title: "Tropic of Capricorn", body: "23.5°S. Sun directly overhead at December 22 (winter solstice)." },
+        { title: "Arctic/Antarctic Circles", body: "66.5°N and 66.5°S. Poles are 90°N and 90°S." },
+        { title: "Lines of latitude = PARALLELS", body: "Run east-west. Parallel to each other. Get shorter toward poles." },
+        { title: "Lines of longitude = MERIDIANS", body: "Run north-south. Converge at poles. Prime Meridian = 0° (Greenwich, London)." },
+      ]},
+      { heading: "Time Calculation Rule", type: "text",
+        content: "Earth rotates 360° in 24 hours = 15° per hour = 1° per 4 minutes. Every 15° of longitude = 1 hour time difference. EAST of Prime Meridian = AHEAD (clocks are later). WEST = BEHIND." },
+      { heading: "Worked Example 1 — Time at 60°E", type: "steps", items: [
+        "A town at 60°E. What time when Greenwich (0°) is 12 noon?",
+        "60°E is EAST → ahead of Greenwich.",
+        "Time difference = 60 ÷ 15 = 4 hours ahead.",
+        "Answer: 4:00 PM (16:00)."
+      ]},
+      { heading: "Worked Example 2 — Time Difference", type: "steps", items: [
+        "Town A is at 45°W. Town B is at 30°E. Time difference?",
+        "Total longitude difference = 45 + 30 = 75°.",
+        "Time difference = 75 ÷ 15 = 5 hours.",
+        "Town B (east) is 5 hours AHEAD of Town A.",
+        "Answer: 5 hours. (C)"
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Prime Meridian passes through:", body: "GREENWICH, LONDON, UK. Established 1884. All time zones relative to Greenwich Mean Time (GMT)." },
+        { title: "International Date Line:", body: "180° longitude. Where the calendar date changes." },
+        { title: "Equator is at:", body: "0° latitude. The starting point for measuring latitude." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "15° = 1 hour. East = ahead, West = behind. To find time difference between two places: add their longitudes if one east and one west, subtract if same direction. Divide result by 15." }
+    ]
+  },
+
+  "Maps and Cartography": {
+    subject: "Geography",
+    title: "Maps, Scale, Contours and Map Reading",
+    icon: "📍",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Map Scale", type: "cards", items: [
+        { title: "Statement scale", body: "'1cm represents 5km' — expressed in words. Easy to understand." },
+        { title: "Linear (bar) scale", body: "A drawn line divided into measured units. Works even if map is enlarged or reduced." },
+        { title: "Representative Fraction (RF)", body: "1:50,000 means 1cm on map = 50,000cm = 500m on ground. Also written as fraction 1/50,000." },
+      ]},
+      { heading: "Large Scale vs Small Scale", type: "cards", items: [
+        { title: "LARGE scale map", body: "Small RF denominator (1:5,000 or 1:10,000). Shows SMALL area in GREAT detail. Street maps, building plans." },
+        { title: "SMALL scale map", body: "Large RF denominator (1:100,000 or 1:500,000). Shows LARGE area with LESS detail. Atlas maps, country maps." },
+        { title: "Memory trick", body: "Large scale = zoom IN (large things look large). Small scale = zoom OUT (country fits on one page)." },
+      ]},
+      { heading: "Worked Example — Map Distance", type: "steps", items: [
+        "Map scale 1:50,000. Two towns 10cm apart on map. Actual distance?",
+        "1:50,000 means 1cm = 50,000cm = 500m.",
+        "10cm × 500m = 5,000m = 5km.",
+        "Answer: 5km."
+      ]},
+      { heading: "Contour Lines", type: "cards", items: [
+        { title: "What are contours?", body: "Lines connecting points of EQUAL altitude (height above sea level). Show the shape of the land (relief)." },
+        { title: "Close contours", body: "= STEEP slope. Land rises sharply over short distance." },
+        { title: "Widely spaced contours", body: "= GENTLE slope. Land rises slowly." },
+        { title: "V-shapes pointing UPHILL", body: "= VALLEY or RIVER. Valley cuts into the hillside." },
+        { title: "V-shapes pointing DOWNHILL", body: "= RIDGE or SPUR. Ridge projects outward from hillside." },
+        { title: "Closed circles", body: "= HILL (if numbers increase inward) or DEPRESSION (if numbers decrease inward)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "1:50,000 = 1cm → 500m = 0.5km. 1:100,000 = 1cm → 1km. Close contours = steep. V pointing up (toward high numbers) = valley/river. V pointing down = ridge. Small RF number = large scale = more detail." }
+    ]
+  },
+
+  "Rocks and Rock Cycle": {
+    subject: "Geography",
+    title: "Rocks — Types, Formation and Economic Uses",
+    icon: "🪨",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "The Three Rock Types", type: "cards", items: [
+        { title: "Igneous rocks", body: "Formed from cooling MAGMA. INTRUSIVE (slow cooling underground) = coarse-grained: GRANITE. EXTRUSIVE (fast cooling on surface) = fine-grained: BASALT, obsidian, pumice." },
+        { title: "Sedimentary rocks", body: "Formed from compressed SEDIMENTS. Layered structure. Contains FOSSILS. Examples: sandstone, limestone, shale, coal, chalk." },
+        { title: "Metamorphic rocks", body: "Formed when rocks are changed by HEAT and PRESSURE. Limestone → MARBLE. Sandstone → QUARTZITE. Shale → SLATE. Granite → GNEISS." },
+      ]},
+      { heading: "Critical Facts", type: "cards", items: [
+        { title: "Fossils found ONLY in:", body: "SEDIMENTARY rocks. Organisms buried in sediment which hardened. Igneous and metamorphic rocks destroy fossils." },
+        { title: "Granite vs Basalt", body: "Both igneous. Granite = INTRUSIVE (slow, coarse). Basalt = EXTRUSIVE (fast, fine). This distinction is heavily tested." },
+        { title: "Limestone becomes:", body: "MARBLE (metamorphic). Used in cement production (when raw), sculpture and decorative building (as marble)." },
+      ]},
+      { heading: "Economic Uses", type: "cards", items: [
+        { title: "Limestone", body: "Main raw material for CEMENT production. Also used in iron smelting (flux) and fertiliser. Dangote Cement uses Nigerian limestone." },
+        { title: "Granite", body: "Building material, road construction, decorative purposes." },
+        { title: "Coal (sedimentary)", body: "Fuel for power generation, steel production. Enugu, Nigeria." },
+        { title: "Crude oil (sedimentary)", body: "Nigeria's main export. Petroleum products — petrol, diesel, kerosene, plastics." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Rock containing fossils:", body: "SEDIMENTARY. Not igneous (destroys fossils with heat). Not metamorphic (heat and pressure destroy fossils)." },
+        { title: "Granite is:", body: "INTRUSIVE igneous rock. Slow cooling underground = large crystals = coarse-grained." },
+        { title: "Limestone → intense heat and pressure becomes:", body: "MARBLE. Metamorphic equivalent of limestone." },
+        { title: "Main raw material for cement:", body: "LIMESTONE (calcium carbonate, CaCO₃)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Igneous = fire (from magma). Intrusive = inside (granite, coarse). Extrusive = outside (basalt, fine). Sedimentary = settled layers (fossils only here). Metamorphic = changed (limestone→marble, sandstone→quartzite, shale→slate)." }
+    ]
+  },
+
+  "Geomorphology": {
+    subject: "Geography",
+    title: "Landforms and Geomorphological Processes",
+    icon: "⛰️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Weathering", type: "cards", items: [
+        { title: "Physical (mechanical) weathering", body: "Rock broken into smaller pieces WITHOUT chemical change. Freeze-thaw (frost action), exfoliation (onion weathering), pressure release." },
+        { title: "Chemical weathering", body: "Chemical alteration of minerals. CARBONATION = limestone dissolved by carbonic acid (most tested). Also oxidation, hydrolysis, hydration." },
+        { title: "Biological weathering", body: "Plant roots splitting rocks, burrowing animals, organic acids from decomposing plants." },
+      ]},
+      { heading: "River Landforms", type: "cards", items: [
+        { title: "Upper course", body: "Erosion dominant. V-shaped valleys, waterfalls, rapids, interlocking spurs." },
+        { title: "Middle course", body: "Meanders, river cliffs, flood plain begins." },
+        { title: "Lower course", body: "Deposition dominant. Wide flood plains, ox-bow lakes, levees, DELTA at mouth." },
+        { title: "Ox-bow lake formation", body: "Meander becomes increasingly curved → neck cut through (especially in floods) → old loop isolated = ox-bow lake." },
+        { title: "Delta formation", body: "River deposits sediment at its MOUTH (where it meets the sea). Velocity drops suddenly. Niger Delta = one of world's largest." },
+      ]},
+      { heading: "Desert (Wind) Landforms", type: "cards", items: [
+        { title: "Mushroom rocks (pedestal rocks)", body: "Wind carries more sand near ground → undercuts base of rock more than top → mushroom shape. Wind erosion concentrated at ground level." },
+        { title: "Barchans", body: "Crescent-shaped sand dunes. Horns point DOWNWIND." },
+        { title: "Seif dunes", body: "Long, parallel dunes aligned WITH the wind direction." },
+        { title: "Zeugen", body: "Table-shaped rocks — hard rock on top, soft rock below eroded by wind." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Limestone weathered mainly by:", body: "CARBONATION. Rainwater + CO₂ = carbonic acid → dissolves limestone → caves, sinkholes, karst." },
+        { title: "Ox-bow lakes formed by:", body: "Cutting off of river MEANDERS. Not glacial action, not volcanic, not wind." },
+        { title: "Delta forms at:", body: "MOUTH of river where it meets the sea. Deposition where velocity drops." },
+        { title: "Mushroom rock formed by:", body: "WIND EROSION (sandblasting) concentrated near ground level. Not rainfall or river action." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Carbonation = limestone dissolves in weak acid from rain. Ox-bow lake = cut-off meander. Delta = deposition at river mouth (Niger Delta). Mushroom rock = wind erodes base more than top. These four are the most tested landform questions." }
+    ]
+  },
+
+  "Climate and Weather": {
+    subject: "Geography",
+    title: "Climate, Weather and Types of Rainfall",
+    icon: "🌦️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Weather vs Climate", type: "text",
+        content: "WEATHER = atmospheric conditions at a specific place and time (short term — day to day). CLIMATE = average weather conditions over a long period (30+ years)." },
+      { heading: "Measuring Instruments", type: "cards", items: [
+        { title: "Barometer", body: "Measures ATMOSPHERIC PRESSURE (millibars/mb). High pressure = clear stable weather. Low pressure = clouds, wind, rain." },
+        { title: "Thermometer", body: "Measures TEMPERATURE (°C or °F)." },
+        { title: "Rain gauge", body: "Measures RAINFALL (millimetres)." },
+        { title: "Hygrometer", body: "Measures HUMIDITY (relative humidity %)." },
+        { title: "Anemometer", body: "Measures WIND SPEED." },
+        { title: "Campbell-Stokes recorder", body: "Measures SUNSHINE HOURS. Glass sphere focuses sunlight to burn a card — burned length = sunshine duration." },
+      ]},
+      { heading: "Three Types of Rainfall", type: "cards", items: [
+        { title: "Convectional rainfall", body: "Hot ground heats air → air rises, cools, condenses → heavy afternoon rain with thunder. TROPICAL areas, afternoons. Most common in equatorial regions." },
+        { title: "Relief (orographic) rainfall", body: "Moist air forced to rise over mountains → cools → rains on WINDWARD side. LEEWARD side gets rain shadow (dry). Mountains cause this." },
+        { title: "Frontal (cyclonic) rainfall", body: "Warm and cold air masses meet → warm air rises over cold → rain. Common in TEMPERATE regions (UK, Europe)." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Atmospheric pressure measured by:", body: "BAROMETER. Not thermometer (temperature), not hygrometer (humidity), not anemometer (wind speed)." },
+        { title: "Campbell-Stokes recorder measures:", body: "SUNSHINE HOURS. Glass sphere burns a card where sun shines." },
+        { title: "Tropical afternoon rainfall type:", body: "CONVECTIONAL. Hot ground → rising air → heavy afternoon thunderstorms." },
+        { title: "Leeward side of mountain is dry because:", body: "RAIN SHADOW effect. Air descends, warms, dries out after raining on windward side." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Barometer = pressure. Anemometer = wind speed. Campbell-Stokes = sunshine. Rain gauge = rainfall. Hygrometer = humidity. Convectional = tropics afternoons. Relief = mountains, windward side rains, leeward is dry. Frontal = temperate regions." }
+    ]
+  },
+
+  "Climate Types": {
+    subject: "Geography",
+    title: "World Climate Types — Equatorial, Desert, Mediterranean",
+    icon: "🌡️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Equatorial Climate", type: "cards", items: [
+        { title: "Location", body: "5°N – 5°S of Equator. Congo Basin, Amazon Basin, SE Asia." },
+        { title: "Temperature", body: "High year-round, 25-28°C. Very small annual temperature range." },
+        { title: "Rainfall", body: "Over 2,000mm/year. Rain EVERY MONTH. NO dry season. Two rainfall peaks at equinoxes." },
+        { title: "Vegetation", body: "Dense tropical RAINFOREST. Multilayered, high biodiversity." },
+      ]},
+      { heading: "Tropical Continental (Savanna) Climate", type: "cards", items: [
+        { title: "Location", body: "5°-15° N and S. West Africa interior, Sudan, Sahel zone." },
+        { title: "Rainfall", body: "500-1,500mm. ONE wet season and ONE dry season. ITCZ brings rain when overhead." },
+        { title: "Vegetation", body: "SAVANNA — grassland with scattered trees (acacia, baobab)." },
+        { title: "ITCZ", body: "Inter-Tropical Convergence Zone. Where NE and SE Trade Winds meet. Moves north/south following the sun → causes wet and dry seasons." },
+      ]},
+      { heading: "Hot Desert Climate", type: "cards", items: [
+        { title: "Location", body: "15°-30° N and S. Sahara, Arabian, Kalahari deserts." },
+        { title: "Rainfall", body: "Under 250mm/year. Very unreliable. May not rain for years." },
+        { title: "Temperature", body: "Extreme daily (diurnal) range. Very hot days (50°C+), very COLD nights." },
+        { title: "Why cold nights?", body: "NO CLOUD COVER → heat radiates rapidly into space at night. Clouds act as a blanket. Without them, deserts have extreme temperature swings." },
+        { title: "Vegetation", body: "Sparse XEROPHYTES (deep roots, waxy leaves, succulent stems to store water)." },
+      ]},
+      { heading: "Mediterranean Climate", type: "cards", items: [
+        { title: "Location", body: "30°-45° N and S. Mediterranean basin, California, SW Australia." },
+        { title: "Unique pattern", body: "HOT DRY summers (subtropical high pressure). MILD WET winters (frontal rainfall from westerlies)." },
+        { title: "Vegetation", body: "Maquis/garrigue — drought-resistant shrubs. Cork oak, olive trees, vines." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Equatorial climate:", body: "High temperatures and heavy rainfall THROUGHOUT THE YEAR with NO dry season. Not one dry season — that's savanna." },
+        { title: "Desert cold nights:", body: "Absence of CLOUD COVER allows rapid heat loss. No cloud blanket to retain warmth." },
+        { title: "Mediterranean climate:", body: "HOT DRY summers + MILD WET winters. Opposite of most climates." },
+        { title: "ITCZ responsible for:", body: "Wet and dry seasons in West Africa. Brings rain when overhead, dry when it moves away." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Equatorial = always hot, always wet, no dry season. Savanna = wet season + dry season (ITCZ). Desert = less than 250mm, extreme temperatures, cold nights (no clouds). Mediterranean = summer dry, winter wet (reversed from what you expect)." }
+    ]
+  },
+
+  "Vegetation Zones": {
+    subject: "Geography",
+    title: "World Vegetation Zones and Nigerian Vegetation",
+    icon: "🌿",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "World Vegetation Zones", type: "cards", items: [
+        { title: "Tropical rainforest", body: "Equatorial regions. Dense, multilayered. Tallest trees 50m+. Year-round growth. Congo, Amazon. Highest biodiversity." },
+        { title: "Tropical savanna", body: "Between rainforest and desert. Tall grasses with scattered acacia, baobab. Wet and dry seasons. Serengeti, West African interior." },
+        { title: "Hot desert", body: "Sahara, Arabian. Under 250mm rain. Sparse xerophytes — deep roots, waxy leaves, succulent stems." },
+        { title: "Mediterranean scrub (maquis)", body: "Drought-resistant cork oak, olive trees, maquis shrubs. Mediterranean basin." },
+        { title: "Coniferous forest (Taiga)", body: "Cold subarctic. Cone-bearing evergreen pine, spruce, fir. Canada, Russia." },
+        { title: "Tundra", body: "Arctic. No trees. Mosses, lichens, sedges. Permafrost below surface." },
+      ]},
+      { heading: "Nigerian Vegetation Zones (South to North)", type: "cards", items: [
+        { title: "1. Mangrove/Freshwater Swamp", body: "Coastal Niger Delta. Salt-tolerant mangrove trees with stilt roots and aerial roots. Adapts to tidal, brackish water." },
+        { title: "2. Tropical Rainforest", body: "Southern Nigeria — Cross River, Edo, Ondo states. Dense multilayered forest." },
+        { title: "3. Derived Savanna", body: "Transition zone. Forest cleared for farming, now secondary growth." },
+        { title: "4. Guinea Savanna", body: "Middle belt. Tall grasses, woodland trees." },
+        { title: "5. Sudan Savanna", body: "Northern Nigeria. Shorter grasses, fewer trees." },
+        { title: "6. Sahel/Sub-Desert Scrub", body: "Far north. Very sparse vegetation, trees only near watercourses." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Sahara vegetation:", body: "SPARSE XEROPHYTES and oases. Not forest, not grasses, not deciduous trees." },
+        { title: "Niger Delta vegetation zone:", body: "MANGROVE SWAMP FOREST. Salt-tolerant, stilt/prop roots, aerial roots for breathing in waterlogged soil." },
+        { title: "Xerophytes are:", body: "Plants adapted to VERY LITTLE WATER — deep roots, waxy/spiny leaves, succulent water-storing stems." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Nigeria south to north: Mangrove → Rainforest → Derived Savanna → Guinea Savanna → Sudan Savanna → Sahel. Each zone has less rainfall as you go north. Mangrove = coastal, salt water. Tundra = no trees, permafrost. Taiga = conifer trees, cold." }
+    ]
+  },
+
+  "Soils and Soil Conservation": {
+    subject: "Geography",
+    title: "Soils — Types, Profile and Conservation",
+    icon: "🌱",
+    estimatedTime: "2 min read",
+    sections: [
+      { heading: "Soil Formation Factors (CLORPT)", type: "cards", items: [
+        { title: "Climate", body: "Rainfall and temperature control weathering rate and organic matter decomposition." },
+        { title: "Organisms", body: "Plants, animals, microorganisms add organic matter." },
+        { title: "Relief/Topography", body: "Slope affects drainage and erosion. Flat areas = deeper soils." },
+        { title: "Parent material", body: "Underlying rock determines mineral content of soil." },
+        { title: "Time", body: "Soils take thousands of years to develop properly." },
+      ]},
+      { heading: "Soil Profile (Horizons)", type: "cards", items: [
+        { title: "O Horizon", body: "Surface organic layer — leaf litter, dead plant material." },
+        { title: "A Horizon (TOPSOIL)", body: "Richest in HUMUS and NUTRIENTS. Most biological activity. MOST IMPORTANT for agriculture." },
+        { title: "B Horizon (subsoil)", body: "Minerals leached from A accumulate here. Less organic matter." },
+        { title: "C Horizon", body: "Weathered parent rock (regolith)." },
+        { title: "D/R Horizon", body: "Solid bedrock." },
+      ]},
+      { heading: "Soil Conservation Methods", type: "cards", items: [
+        { title: "Terracing", body: "Cutting STEPS into hillside to reduce runoff and erosion. Ancient practice — Incas, Asian rice paddies." },
+        { title: "Contour ploughing", body: "Ploughing ACROSS slopes (following contours), not up/down. Reduces runoff." },
+        { title: "Mulching", body: "Covering soil with organic material — protects from erosion, retains moisture." },
+        { title: "Afforestation", body: "Tree planting to bind soil with roots, break wind, reduce runoff." },
+        { title: "Windbreaks/shelter belts", body: "Rows of trees to reduce WIND erosion." },
+        { title: "Crop rotation", body: "Alternating crops to restore nutrients (especially nitrogen fixation by legumes)." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Most important horizon for agriculture:", body: "A HORIZON (topsoil). Richest in humus and nutrients. Losing it through erosion is devastating." },
+        { title: "Terracing involves:", body: "Cutting STEPS into a hillside. Converts steep slopes into flat platforms that hold soil and water." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "A Horizon (topsoil) = most important for farming. Terracing = steps on hillside. Contour ploughing = across slope not down. Mulching = organic cover. Afforestation = plant trees. All conservation methods reduce EROSION and water RUNOFF." }
+    ]
+  },
+
+  "Rivers and Drainage": {
+    subject: "Geography",
+    title: "Rivers, Drainage and Major Nigerian Rivers",
+    icon: "🌊",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Drainage Terminology", type: "cards", items: [
+        { title: "Drainage basin", body: "Total area drained by a river and ALL its tributaries. Also called catchment area." },
+        { title: "Watershed (divide)", body: "Highland boundary separating one drainage basin from another." },
+        { title: "Tributary", body: "Smaller river joining a larger one." },
+        { title: "Confluence", body: "Where two rivers MEET." },
+        { title: "Source", body: "Where a river BEGINS (spring, highland area)." },
+        { title: "Mouth", body: "Where a river ENDS (empties into sea, lake or another river)." },
+      ]},
+      { heading: "Major Rivers of Nigeria", type: "cards", items: [
+        { title: "River Niger", body: "LONGEST river in West Africa. Originates in Guinea highlands. Forms Niger Delta in southern Nigeria. 4,180km total. Nigeria's most important river." },
+        { title: "River Benue", body: "Major TRIBUTARY of Niger. Meets Niger at LOKOJA (confluence). Separates northern from southern Nigeria." },
+        { title: "River Kaduna", body: "Tributary of Niger. Northern Nigeria. Shiroro Dam built on it." },
+        { title: "Cross River", body: "Drains southeastern Nigeria. Cross River State named after it." },
+      ]},
+      { heading: "Lakes and Dams", type: "cards", items: [
+        { title: "Lake Chad", body: "Shared by NIGERIA, NIGER, CHAD and CAMEROON (4 countries). Has shrunk to ~10% of 1963 size due to climate change and overuse." },
+        { title: "Kainji Lake", body: "Nigeria's largest ARTIFICIAL lake. Created by Kainji Dam on River Niger (1968, under Gowon). Nigeria's largest hydroelectric dam." },
+        { title: "Shiroro Dam", body: "Built on River Kaduna." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Confluence of Rivers Niger and Benue:", body: "LOKOJA, Kogi State. Nigeria's famous 'city at the confluence'." },
+        { title: "Lake Chad shared by:", body: "Nigeria, NIGER, CHAD and CAMEROON — 4 countries. Not 3, not just 2." },
+        { title: "Nigeria's largest hydroelectric dam:", body: "KAINJI DAM on River Niger in Niger State. Completed 1968." },
+        { title: "Area drained by a river system:", body: "DRAINAGE BASIN (catchment area). Bounded by the watershed." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Niger = longest in West Africa. Niger + Benue meet at Lokoja. Lake Chad = 4 countries (Nigeria, Niger, Chad, Cameroon). Kainji Dam = largest in Nigeria, on Niger River, 1968. Lokoja is the confluence city." }
+    ]
+  },
+
+  "Population Geography": {
+    subject: "Geography",
+    title: "Population — Distribution, Growth and Migration",
+    icon: "👥",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Population Distribution", type: "cards", items: [
+        { title: "Dense areas", body: "River valleys (Nile), fertile plains, coastal areas, industrial cities. Bangladesh, Netherlands, Lagos, Kano." },
+        { title: "Sparse areas", body: "Deserts (Sahara), mountain tops, Arctic, Amazon — hostile conditions." },
+        { title: "Why Nile Valley is dense:", body: "Fertile alluvial soil deposited by floods, reliable water supply, flat farmland — despite surrounding desert." },
+      ]},
+      { heading: "Demographic Transition Model (DTM)", type: "cards", items: [
+        { title: "Stage 1", body: "HIGH birth rate, HIGH death rate → slow growth. Pre-industrial societies." },
+        { title: "Stage 2", body: "HIGH birth rate, FALLING death rate → RAPID growth. Improving healthcare, no family planning yet. NIGERIA and most African countries are here." },
+        { title: "Stage 3", body: "FALLING birth rate, low death rate → slowing growth. Family planning, urbanisation." },
+        { title: "Stage 4", body: "LOW birth rate, LOW death rate → stable/very slow growth. Developed countries (UK, Germany)." },
+      ]},
+      { heading: "Migration Types", type: "cards", items: [
+        { title: "Rural-urban migration", body: "Movement from countryside to city. Major trend in Nigeria — cities growing rapidly." },
+        { title: "Brain drain", body: "Emigration of EDUCATED and SKILLED people (doctors, engineers, academics) to developed countries. Serious problem for Nigeria." },
+        { title: "Push factors", body: "Reasons to LEAVE: unemployment, poverty, drought, conflict, lack of services." },
+        { title: "Pull factors", body: "Attractions of DESTINATION: jobs, higher wages, education, healthcare, safety." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "High birth rate + falling death rate = DTM Stage:", body: "STAGE 2. Rapid population growth. Most African countries including Nigeria." },
+        { title: "Brain drain = ", body: "Emigration of EDUCATED and SKILLED professionals from developing to developed countries. Not studying abroad. Not internal migration." },
+        { title: "Nile Valley densely populated because:", body: "Fertile alluvial soil, reliable water, flat terrain — despite being surrounded by desert." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Nigeria = Stage 2 of DTM (high birth rate, falling death rate = rapid growth). Brain drain = skilled people leaving. Push = bad things at home. Pull = good things at destination. Rural-urban migration is Nigeria's major internal population movement." }
+    ]
+  },
+
+  "Nigerian Agriculture": {
+    subject: "Geography",
+    title: "Agriculture — Types and Nigerian Cash Crops",
+    icon: "🌾",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Agriculture", type: "cards", items: [
+        { title: "Subsistence farming", body: "Farming to feed FAMILY only — no surplus for sale. Small scale, traditional methods. Common in rural Nigeria." },
+        { title: "Commercial farming", body: "Farming for PROFIT — produce sold in market. Large scale, modern inputs." },
+        { title: "Nomadic pastoralism", body: "Herders move livestock SEASONALLY for pasture. Fulani herdsmen in Nigeria — classic example." },
+        { title: "Shifting cultivation", body: "Farmers clear, farm, exhaust land then MOVE to new plot. Traditional in forest areas." },
+        { title: "Plantation agriculture", body: "Large-scale commercial growing of ONE CROP (monoculture). Cocoa, rubber, palm oil, tea." },
+        { title: "Mixed farming", body: "Growing crops AND rearing livestock on the same farm." },
+      ]},
+      { heading: "Nigerian Cash Crops by Region", type: "cards", items: [
+        { title: "Cocoa — Southwest Nigeria", body: "Ondo, Osun, Ogun, Ekiti, Cross River states. Nigeria's top agricultural export. Once world's largest producer." },
+        { title: "Groundnut — Northern Nigeria", body: "Once Nigeria's top export before oil. Still important." },
+        { title: "Cotton — Northern Nigeria", body: "Raw material for textile industry. Kano, Kaduna." },
+        { title: "Palm oil/kernel — Southern Nigeria", body: "Palm Belt in south. Used in food, soap, margarine." },
+        { title: "Rubber — Edo, Delta, Ondo states", body: "Raw material for tyres and rubber products." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Fulani cattle herders moving seasonally practice:", body: "NOMADIC PASTORALISM. They move livestock to find fresh pasture and water." },
+        { title: "Main cash crop of southwestern Nigeria:", body: "COCOA. Groundnut and cotton are northern. Rubber is mainly Edo/Delta." },
+        { title: "Farming to feed family only:", body: "SUBSISTENCE farming. No surplus for sale. Small scale." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Cocoa = southwest (Ondo, Osun, Ogun). Groundnut and Cotton = north. Palm oil = south. Rubber = Edo/Delta/Ondo. Fulani = nomadic pastoralism (move livestock). Subsistence = family use. Commercial = for sale and profit." }
+    ]
+  },
+
+  "Nigerian Minerals and Industry": {
+    subject: "Geography",
+    title: "Mining, Energy and Industry in Nigeria",
+    icon: "⛏️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Nigeria's Key Mineral Resources", type: "cards", items: [
+        { title: "Crude oil and natural gas", body: "Niger Delta (Bayelsa, Delta, Rivers, Akwa Ibom, Cross River). Dominant export earner. Africa's largest natural gas reserves." },
+        { title: "Coal", body: "ENUGU State. Declining but large reserves. Powers railway historically." },
+        { title: "Iron ore", body: "ITAKPE, Kogi State. Used in Ajaokuta Steel Company." },
+        { title: "Tin and Columbite", body: "JOS PLATEAU, Plateau State. Historically important. Columbite used in electronics." },
+        { title: "Limestone", body: "Sokoto, Benue, Ogun, Cross River. Used for CEMENT production (Dangote, BUA)." },
+        { title: "Gold", body: "Zamfara, Kebbi, Niger, Osun states. Growing (mostly artisanal) mining." },
+        { title: "Bitumen", body: "Ondo, Lagos, Ogun, Edo states. One of world's largest deposits." },
+      ]},
+      { heading: "Energy Sources", type: "cards", items: [
+        { title: "Kainji Dam", body: "Nigeria's LARGEST hydroelectric dam. River Niger, Niger State. Completed 1968 under Gowon. Created Kainji Lake." },
+        { title: "Shiroro Dam", body: "River Kaduna. Second major hydroelectric dam." },
+        { title: "Jebba Dam", body: "River Niger. Smaller than Kainji." },
+        { title: "Petroleum", body: "Nigeria's main energy source and export. Niger Delta." },
+      ]},
+      { heading: "Industrial Location", type: "cards", items: [
+        { title: "Aluminium smelting", body: "Located near HYDROELECTRIC POWER — requires enormous electricity. Ghana's Volta Aluminium near Akosombo Dam is the classic example." },
+        { title: "Iron and steel", body: "Located near raw materials — iron ore and coal/coke. Ajaokuta uses Itakpe iron ore." },
+        { title: "Cement industry", body: "Located near LIMESTONE quarries. Dangote Cement Obajana (Kogi), BUA, WAPCO Ewekoro." },
+        { title: "Nigeria's busiest seaport", body: "APAPA PORT, Lagos. Handles majority of Nigeria's imports. Tin Can Island also in Lagos." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Tin mining concentrated in:", body: "JOS PLATEAU, Plateau State. Not Enugu, not Niger Delta." },
+        { title: "Coal deposits mainly in:", body: "ENUGU State. Udi coal mines. Supplied colonial railway." },
+        { title: "Nigeria's largest hydroelectric dam:", body: "KAINJI DAM. River Niger, Niger State. 1968." },
+        { title: "Aluminium smelting best located near:", body: "LARGE HYDROELECTRIC POWER STATIONS. Requires enormous cheap electricity." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Oil = Niger Delta. Coal = Enugu. Iron ore = Itakpe (Kogi). Tin = Jos Plateau. Limestone = cement. Kainji = largest dam (Niger State, 1968). Apapa = busiest seaport. Aluminium smelting needs hydroelectric power." }
+    ]
+  },
+
+  "Nigerian Physical Geography": {
+    subject: "Geography",
+    title: "Nigeria — Physical Features, Climate and States",
+    icon: "🇳🇬",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Nigeria's Major Landforms", type: "cards", items: [
+        { title: "Coastal Lowlands", body: "Niger Delta, mangrove swamps, beach ridges along Gulf of Guinea coast." },
+        { title: "Mambilla Plateau", body: "Taraba State. Contains Nigeria's HIGHEST POINT — Chappal Waddi (~2,419m). NOT Jos Plateau." },
+        { title: "Jos Plateau", body: "~1,200m above sea level. Temperate climate. TIN and COLUMBITE mining. Nigeria's most famous plateau." },
+        { title: "Niger-Benue Trough", body: "Central valley following the two main rivers through Nigeria." },
+        { title: "Northern Plains", body: "Flat, low plains sloping to Lake Chad basin in far north." },
+        { title: "Obudu Plateau", body: "Cross River State. Tourist destination. Famous Obudu Ranch." },
+      ]},
+      { heading: "Nigeria's Climate Features", type: "cards", items: [
+        { title: "South (coast)", body: "Hot and wet. Over 3,000mm rainfall/year. Very short dry season." },
+        { title: "Middle Belt", body: "Two wet seasons, one dry season. 1,000-1,500mm annual rainfall." },
+        { title: "North", body: "Long dry season, short wet season. Under 750mm. Harmattan wind dominates dry season." },
+        { title: "HARMATTAN WIND", body: "Dry, dusty NE Trade Wind. Blows from SAHARA toward Gulf of Guinea. November–March. Brings cool, dry, dusty conditions. Causes respiratory and skin problems." },
+      ]},
+      { heading: "Nigeria's States and Capital", type: "cards", items: [
+        { title: "States", body: "36 states + FCT Abuja. Created gradually: 3 regions (1963) → 12 (1967) → 19 (1976) → 21 (1987) → 30 (1991) → 36 (1996)." },
+        { title: "6 Geopolitical Zones", body: "North-West (7 states), North-East (6), North-Central (6+FCT), South-West (6), South-East (5), South-South (6)." },
+        { title: "Federal Capital Abuja", body: "Officially replaced Lagos on DECEMBER 12, 1991 under Babangida." },
+        { title: "Largest city", body: "LAGOS — estimated 15-20 million in metro area. Financial and commercial capital." },
+        { title: "Nigeria's area", body: "923,768 km². Africa's most populous country (200+ million, 2023 estimate)." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Nigeria's highest point:", body: "MAMBILLA PLATEAU (Chappal Waddi, ~2,419m), Taraba State. NOT Jos Plateau (1,200m)." },
+        { title: "How many states does Nigeria have:", body: "36 STATES plus FCT Abuja." },
+        { title: "Abuja became capital officially in:", body: "DECEMBER 12, 1991. Under Babangida." },
+        { title: "Harmattan blows from:", body: "SAHARA DESERT toward Gulf of Guinea. Dry, dusty NE wind. November–March." },
+        { title: "Jos Plateau known for:", body: "TIN and COLUMBITE mining. Temperate climate (~1,200m). NOT Nigeria's highest point." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Mambilla = highest (2,419m). Jos = famous plateau (1,200m, tin). Harmattan = from Sahara, November-March, dry and dusty. Abuja = capital since December 12, 1991. 36 states + FCT. Lagos = largest city. Nigeria = Africa's most populous." }
+    ]
+  },
+  
+  // ============================================================
+// STUDY GUIDES ADDITIONS — BATCH 4
+// Biology and Economics — Complete Subjects
+// Paste into STUDY_GUIDES in src/data/studyGuides.js
+// Add after existing entries (before the closing })
+// ============================================================
+
+  // ==========================================
+  // BIOLOGY — ALL NEW ENTRIES
+  // ==========================================
+
+  "Cell Biology": {
+    subject: "Biology",
+    title: "Cell Structure and Organelles",
+    icon: "🔬",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key Organelles and Functions", type: "cards", items: [
+        { title: "Nucleus", body: "Controls all cell activities. Contains DNA. Site of transcription." },
+        { title: "Mitochondria", body: "Site of AEROBIC RESPIRATION. Produces ATP (energy). More mitochondria = more energy needed." },
+        { title: "Ribosome", body: "Site of PROTEIN SYNTHESIS. Found on rough ER and free in cytoplasm." },
+        { title: "Golgi apparatus", body: "Packages and secretes proteins. Processes cell products for export." },
+        { title: "Chloroplast", body: "Site of PHOTOSYNTHESIS. Contains chlorophyll. Found only in plant cells." },
+        { title: "Cell membrane", body: "Controls movement of substances in/out of cell. SELECTIVELY PERMEABLE." },
+        { title: "Centriole", body: "Involved in cell division (mitosis). Found in ANIMAL cells only, not plant cells." },
+        { title: "Lysosome", body: "Contains digestive enzymes. Breaks down waste materials and invading bacteria." },
+      ]},
+      { heading: "Prokaryote vs Eukaryote", type: "cards", items: [
+        { title: "Prokaryotic cells", body: "NO membrane-bound nucleus. DNA floats in cytoplasm. Examples: bacteria and blue-green algae (Kingdom Monera)." },
+        { title: "Eukaryotic cells", body: "TRUE membrane-bound nucleus. All other organisms — plants, animals, fungi, protists." },
+        { title: "Key defining difference", body: "ABSENCE OF NUCLEAR MEMBRANE in prokaryotes. This is the most tested distinction." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Controls movement of substances in/out of cell:", body: "CYTOPLASMIC (plasma) MEMBRANE. Not nuclear membrane (controls nucleus only)." },
+        { title: "Cell with highest concentration of mitochondria:", body: "SPERM CELL. Needs enormous energy to swim. Red blood cells have NO mitochondria." },
+        { title: "Two organelles in mitotic division:", body: "NUCLEUS (contains chromosomes) and CENTRIOLE (forms spindle fibres)." },
+        { title: "Prokaryotic cells found in:", body: "MONERANS (bacteria and blue-green algae). No nuclear membrane." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Mitochondria = respiration (energy). Ribosome = protein synthesis. Chloroplast = photosynthesis. Centriole = animal cells only (cell division). Cell membrane = selectively permeable (controls entry/exit). These five are the most tested organelle functions." }
+    ]
+  },
+
+  "Cell Division": {
+    subject: "Biology",
+    title: "Mitosis, Meiosis and Cell Processes",
+    icon: "🧬",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Mitosis vs Meiosis", type: "cards", items: [
+        { title: "MITOSIS", body: "Produces 2 daughter cells IDENTICAL to parent. Same chromosome number (diploid→diploid). Used for growth, repair, asexual reproduction. In somatic (body) cells." },
+        { title: "MEIOSIS", body: "Produces 4 daughter cells with HALF chromosome number (diploid→haploid). Used for gamete formation. Produces genetic variation (crossing over). Two divisions." },
+        { title: "Phases of mitosis", body: "Prophase → Metaphase → Anaphase → Telophase. ANAPHASE = chromosomes move to opposite poles. Metaphase = chromosomes line up at equator." },
+      ]},
+      { heading: "Osmosis and Diffusion", type: "cards", items: [
+        { title: "Diffusion", body: "Movement of molecules from HIGH to LOW concentration. No energy needed." },
+        { title: "Osmosis", body: "Movement of WATER through semi-permeable membrane from dilute to concentrated solution." },
+        { title: "Active transport", body: "Movement AGAINST concentration gradient. Requires energy (ATP)." },
+        { title: "Plasmolysis (plant)", body: "Cell in HYPERTONIC solution → water leaves → cell shrinks from wall. Plant cells only." },
+        { title: "Crenation (animal)", body: "Red blood cells in HYPERTONIC solution → water leaves → cells shrink and become spiky." },
+        { title: "Turgid", body: "Cell in HYPOTONIC solution → water enters → cell swells. Plant cells become firm (turgid)." },
+      ]},
+      { heading: "DNA", type: "cards", items: [
+        { title: "Base pairs (Watson-Crick)", body: "A pairs with T (Adenine-Thymine). G pairs with C (Guanine-Cytosine). Double helix structure." },
+        { title: "DNA location", body: "Found in: nucleus, mitochondria, and chloroplasts. Organic molecule (contains carbon)." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Stage where chromosomes move to opposite poles:", body: "ANAPHASE. Spindle fibres shorten and pull chromatids apart." },
+        { title: "Spirogyra in strong sugar solution — cell plasmolysed:", body: "VERY STRONG sugar solution (hypertonic). External solution more concentrated than cell → water leaves → plasmolysis." },
+        { title: "Red blood cells in hypertonic solution:", body: "CRENATED (shrink and become spiky). Not plasmolysed (plant term). Not haemolysed (happens in hypotonic)." },
+        { title: "Watson-Crick base pair:", body: "T-A (Thymine pairs with Adenine). G-T, T-C, G-A are all WRONG pairings." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Mitosis = identical copies (2 cells). Meiosis = gametes, half chromosomes (4 cells). ANAPHASE = chromosomes move apart. Plasmolysis = plant + hypertonic. Crenation = animal + hypertonic. A-T, G-C are the only correct base pairs." }
+    ]
+  },
+
+  "Classification and Taxonomy": {
+    subject: "Biology",
+    title: "Classification — Kingdoms and Taxonomy",
+    icon: "🌿",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Levels of Classification", type: "text",
+        content: "From broadest to most specific: Kingdom → Phylum → Class → Order → Family → Genus → Species. Memory aid: 'King Philip Came Over For Good Soup'. SPECIES is the LOWEST level." },
+      { heading: "Five Kingdoms", type: "cards", items: [
+        { title: "Monera", body: "PROKARYOTES — bacteria and blue-green algae. No nuclear membrane. Reproduce by binary fission." },
+        { title: "Protista", body: "Simple eukaryotes — amoeba, paramecium, Euglena, algae. Unicellular mostly." },
+        { title: "Fungi", body: "Absorb food from dead matter (saprophytes) — mushrooms, Mucor, Rhizopus. Not photosynthetic." },
+        { title: "Plantae", body: "Multicellular, photosynthetic — mosses, ferns, flowering plants." },
+        { title: "Animalia", body: "Multicellular, heterotrophic — sponges, worms, insects, vertebrates." },
+      ]},
+      { heading: "Vertebrate Classes", type: "cards", items: [
+        { title: "Pisces (Fish)", body: "Cold-blooded. Gills. Scales. 2-chambered heart. Fins. Single closed circulation." },
+        { title: "Amphibia (Frogs)", body: "Cold-blooded. Moist skin. Eggs in water. 3-chambered heart. Larvae have gills." },
+        { title: "Reptilia (Reptiles)", body: "Cold-blooded. Dry scales. Eggs on land with shell. 3-chambered heart (incomplete)." },
+        { title: "Aves (Birds)", body: "WARM-blooded. Feathers. Beak. Hard-shelled eggs. 4-chambered heart. Hollow bones." },
+        { title: "Mammalia (Mammals)", body: "WARM-blooded. Hair/fur. Mammary glands. 4-chambered heart. Live birth (most)." },
+      ]},
+      { heading: "Evolutionary Sequence", type: "cards", items: [
+        { title: "Order of evolution", body: "Fish → Amphibia → Reptilia → Aves/Mammalia. From simplest to most complex." },
+        { title: "Examples", body: "Tilapia (fish) → Bufo/frog (amphibia) → Agama lizard (reptile) → Rattus/rat (mammal)." },
+        { title: "Feature linking birds to reptiles", body: "SCALES — birds have scales on legs/feet. Feathers are thought to have evolved from modified scales." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Lowest category of classification:", body: "SPECIES. Members can interbreed to produce fertile offspring." },
+        { title: "Which has mammary gland:", body: "WHALE. Dogfish, catfish and shark are fish — no mammary glands. Whale is a mammal." },
+        { title: "Fish are cold-blooded because:", body: "Body temperature DEPENDENT ON SURROUNDINGS. Cannot internally regulate temperature." },
+        { title: "Organism with homodont dentition:", body: "AGAMA LIZARD. All teeth same shape. Mammals (rat, cat, human) have heterodont (different tooth types)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "4-chambered heart = birds and mammals only (no mixing of blood). 3-chambered = amphibia and reptiles. 2-chambered = fish. Warm-blooded = birds and mammals. Mammary glands = mammals only (whales are mammals, not fish)." }
+    ]
+  },
+
+  "Genetics and Inheritance": {
+    subject: "Biology",
+    title: "Genetics — Crosses, Blood Groups and Mutations",
+    icon: "🧪",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Key Terms", type: "cards", items: [
+        { title: "Genotype", body: "GENETIC MAKE-UP of an organism (e.g. AA, Aa, aa). What the genes actually are." },
+        { title: "Phenotype", body: "PHYSICAL APPEARANCE expressed. What you can see/observe." },
+        { title: "Dominant allele", body: "Expressed when present — even ONE copy. Capital letter (A)." },
+        { title: "Recessive allele", body: "Only expressed when TWO copies present. Small letter (a)." },
+        { title: "Homozygous", body: "Same alleles — AA (dominant homozygous) or aa (recessive homozygous)." },
+        { title: "Heterozygous", body: "Different alleles — Aa. Shows dominant phenotype but carries recessive allele." },
+      ]},
+      { heading: "Monohybrid Cross — F2 Ratios", type: "cards", items: [
+        { title: "Rr × Rr cross gives:", body: "Genotype ratio: 1 RR : 2 Rr : 1 rr. Phenotype ratio: 3 Round : 1 Wrinkled (3:1)." },
+        { title: "7324 total F2 offspring:", body: "Wrinkled (rr) = 7324 × 1/4 = 1831. Round = 7324 × 3/4 = 5493." },
+      ]},
+      { heading: "Blood Groups (ABO System)", type: "cards", items: [
+        { title: "Group O", body: "Genotype ii. No antigens. Antibodies anti-A and anti-B. UNIVERSAL DONOR." },
+        { title: "Group AB", body: "Genotype IᴬIᴮ. Both antigens A and B. NO antibodies. UNIVERSAL RECIPIENT." },
+        { title: "Group A", body: "Genotype IᴬIᴬ or Iᴬi. Antigen A. Antibody anti-B." },
+        { title: "Group B", body: "Genotype IᴮIᴮ or Iᴮi. Antigen B. Antibody anti-A." },
+        { title: "Lukas (O=ii) × Mary (AB=IᴬIᴮ):", body: "Children are Iᴬi (Group A) or Iᴮi (Group B). ZERO chance of Group O. Probability = 0." },
+      ]},
+      { heading: "Sickle Cell and Sex-Linked Inheritance", type: "cards", items: [
+        { title: "Sickle cell genotypes", body: "HbAHbA = normal. HbAHbS = CARRIER/TRAIT (AS, usually healthy). HbSHbS = SICKLE CELL DISEASE." },
+        { title: "AS × AS cross gives:", body: "1 AA (normal) : 2 AS (carrier) : 1 SS (disease). 25% chance of disease." },
+        { title: "Sex-linked disease mainly in males:", body: "HAEMOPHILIA (and colour blindness). X-linked recessive. Males (XY) only need ONE defective X to have the disease." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Genetic make-up of organism:", body: "GENOTYPE. Not phenotype (that is what you can see/observe)." },
+        { title: "Universal recipient:", body: "GROUP AB. Has no antibodies → accepts all blood types." },
+        { title: "Universal donor:", body: "GROUP O. Has no antigens → no rejection reaction." },
+        { title: "Sex-linked disease mainly in males:", body: "HAEMOPHILIA. X-linked recessive. Males cannot be 'carriers' — they either have it or don't." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "F2 phenotype ratio = 3:1 (dominant:recessive). Blood groups: O = universal donor (no antigens). AB = universal recipient (no antibodies). AS = carrier (healthy). SS = sickle cell disease. Haemophilia and colour blindness = X-linked, mainly males." }
+    ]
+  },
+
+  "Ecology and Environment": {
+    subject: "Biology",
+    title: "Ecology — Food Webs, Cycles and Relationships",
+    icon: "🌍",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Ecological Relationships", type: "cards", items: [
+        { title: "Mutualism", body: "BOTH organisms benefit. Nitrogen-fixing bacteria (Rhizobium) in legume roots. Lichen (alga + fungus)." },
+        { title: "Commensalism", body: "ONE benefits, other UNAFFECTED. Barnacles on whales. Birds on rhino." },
+        { title: "Parasitism", body: "ONE benefits (parasite), other HARMED (host). Tapeworm in man. Mistletoe on tree." },
+        { title: "Saprophyte", body: "Feeds on DEAD/DECAYING organic matter. Mushrooms, Mucor, Rhizopus. Decomposers." },
+      ]},
+      { heading: "Abiotic vs Biotic Factors", type: "cards", items: [
+        { title: "Abiotic (non-living) factors", body: "Temperature, light, humidity, rainfall, pH, altitude, salinity, wind. These are ALL non-living physical factors." },
+        { title: "Biotic (living) factors", body: "Predation, competition, parasitism, mutualism, grazing. Any factor involving living organisms." },
+        { title: "Completely abiotic set:", body: "Wind, altitude, humidity, light — all four are non-living. Watch out for bacteria, plankton, corn — these are biotic." },
+      ]},
+      { heading: "Nitrogen and Carbon Cycles", type: "cards", items: [
+        { title: "Nitrogen fixation", body: "N₂ → NH₃/NH₄⁺ by Rhizobium (in legume roots), Azotobacter (free living), and LIGHTNING." },
+        { title: "Nitrification", body: "NH₄⁺ → NO₂⁻ → NO₃⁻ by Nitrosomonas and Nitrobacter bacteria." },
+        { title: "Lightning in nitrogen cycle", body: "Energy of lightning causes O₂ and N₂ to combine → forms nitrates → absorbed by plants." },
+        { title: "Photosynthesis removes CO₂", body: "Photosynthesis REMOVES CO₂ from atmosphere. Respiration, combustion, and putrefaction RELEASE CO₂." },
+      ]},
+      { heading: "Plant Adaptation Terms", type: "cards", items: [
+        { title: "Hydrophyte", body: "Adapted to AQUATIC/WET environments. Water lily, water hyacinth." },
+        { title: "Xerophyte", body: "Adapted to DRY/DESERT environments. Cactus, euphorbia. Deep roots, waxy leaves." },
+        { title: "Halophyte", body: "Adapted to SALTY environments. Salt marshes, MANGROVES. Excrete or tolerate salt." },
+        { title: "Epiphyte", body: "Grows ON OTHER PLANTS for support. Orchids, mosses. Not parasitic — doesn't take nutrients." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Nitrogen-fixing bacteria and cowpea:", body: "MUTUALISM. Rhizobium fixes N₂ for plant; plant gives shelter and food to bacteria. Both benefit." },
+        { title: "Organism feeding on dead plants:", body: "SAPROPHYTE. Not parasite (needs living host). Not commensal." },
+        { title: "Photosynthesis and CO₂:", body: "Photosynthesis DOES NOT introduce CO₂ — it REMOVES it. Respiration, breathing and putrefaction release CO₂." },
+        { title: "Plants in salty marsh:", body: "HALOPHYTES. Not hydrophytes (water), not xerophytes (dry)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Mutualism = both win. Commensalism = one wins, one neutral. Parasitism = one wins, one loses. Saprophyte = feeds on dead matter (decomposer). Rhizobium in legumes = mutualism. Photosynthesis REMOVES CO₂, does not release it." }
+    ]
+  },
+
+  "Nutrition and Digestion": {
+    subject: "Biology",
+    title: "Food Tests, Digestion and Digestive Organs",
+    icon: "🍎",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Food Tests", type: "cards", items: [
+        { title: "Starch test", body: "IODINE SOLUTION → blue-black colour. Positive = starch present." },
+        { title: "Reducing sugars test", body: "BENEDICT'S SOLUTION + heat → brick-red/orange precipitate. Positive = glucose/reducing sugar." },
+        { title: "Protein test (Biuret)", body: "NaOH + CuSO₄ (Biuret reagent) → PURPLE/VIOLET colour. Positive = protein." },
+        { title: "Fats and oils test", body: "SUDAN III → red/orange colour. OR ethanol emulsion test → white milky emulsion." },
+        { title: "Vitamin C test", body: "DCPIP solution → DECOLOURISED (turns colourless). Positive = Vitamin C present." },
+        { title: "Water test", body: "Anhydrous COBALT CHLORIDE paper: BLUE when dry → turns PINK when water present." },
+      ]},
+      { heading: "Digestive Organs and Functions", type: "cards", items: [
+        { title: "Liver", body: "PRODUCES BILE (emulsifies fats). Stores glycogen. Detoxifies blood. Produces blood proteins." },
+        { title: "Gall bladder", body: "STORES bile (does NOT produce it). This distinction is heavily tested every year." },
+        { title: "Pancreas", body: "Produces pancreatic juice: amylase (starch), lipase (fats), trypsin (proteins)." },
+        { title: "Stomach", body: "Pepsin → proteins to peptides. HCl kills bacteria and activates pepsin." },
+        { title: "Small intestine", body: "Main site of digestion AND absorption. Villi increase surface area for absorption." },
+      ]},
+      { heading: "Specific Enzymes", type: "cards", items: [
+        { title: "Rennin", body: "CURDLES MILK in stomach → converts caseinogen to solid casein. Important in infants." },
+        { title: "Invertase", body: "Breaks down SUCROSE (cane sugar) into glucose + fructose." },
+        { title: "Ptyalin (salivary amylase)", body: "Breaks starch to maltose in mouth." },
+        { title: "Lipase", body: "Breaks down FATS/OILS into fatty acids and glycerol." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Organ that produces bile:", body: "LIVER. Gall bladder only STORES bile. This is the most common trick question in Biology." },
+        { title: "Enzyme acting on milk in stomach:", body: "RENNIN. Not trypsin (works on proteins in small intestine). Rennin specifically curdles milk." },
+        { title: "Enzyme breaking down cane sugar:", body: "INVERTASE (sucrase). Not lipase (fats), not ptyalin (starch)." },
+        { title: "Water loss from leaf detected by:", body: "BLUE COBALT CHLORIDE paper turns PINK. Anhydrous cobalt chloride is the water indicator." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "LIVER produces bile. GALL BLADDER stores bile. This appears every year. Iodine = starch (blue-black). Benedict's = glucose (red). Biuret = protein (purple). Sudan III = fats. Rennin = curdles milk. Invertase = sucrose." }
+    ]
+  },
+
+  "Respiration and Circulation": {
+    subject: "Biology",
+    title: "Respiration, Heart and Blood Vessels",
+    icon: "❤️",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Respiration", type: "cards", items: [
+        { title: "Aerobic respiration", body: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + 38 ATP. In MITOCHONDRIA. More energy. Requires oxygen." },
+        { title: "Anaerobic in YEAST", body: "Glucose → ETHANOL + CO₂ + 2 ATP. FERMENTATION — used in bread making and alcohol production." },
+        { title: "Anaerobic in animals", body: "Glucose → LACTIC ACID + 2 ATP. Causes muscle fatigue during intense exercise." },
+        { title: "Glycolysis", body: "Breakdown of glucose to pyruvate in CYTOPLASM. Produces net 2 ATP. Occurs first in both aerobic and anaerobic." },
+      ]},
+      { heading: "Types of Circulation", type: "cards", items: [
+        { title: "Single/closed circulation", body: "FISH. Blood passes heart ONCE per cycle. 2-chambered heart. No mixing concerns." },
+        { title: "Double/closed circulation", body: "MAMMALS and BIRDS. Blood passes heart TWICE (pulmonary + systemic). 4-chambered heart prevents mixing of oxygenated/deoxygenated blood." },
+        { title: "Open circulation", body: "INSECTS. Blood not in closed vessels — bathes organs directly." },
+      ]},
+      { heading: "Blood Vessels", type: "cards", items: [
+        { title: "Arteries", body: "Carry blood AWAY from heart. Thick muscular elastic walls. HIGH pressure. NO valves (except at heart origin)." },
+        { title: "Veins", body: "Carry blood TO heart. Thin walls. VALVES to prevent backflow. Low pressure." },
+        { title: "Capillaries", body: "ONE CELL thick. Site of exchange — O₂ and nutrients to tissues, CO₂ and waste to blood. Slow flow for adequate exchange time." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Anaerobic respiration in yeast produces:", body: "CO₂ and ETHANOL. Not water (that's aerobic). Used in bread making and brewing." },
+        { title: "O₂ passes from alveoli to blood by:", body: "DIFFUSION. From high concentration in alveoli to low concentration in blood. Not osmosis (water only)." },
+        { title: "Feature NOT in arteries:", body: "VALVES throughout length. Arteries don't have valves — VEINS have valves to prevent backflow." },
+        { title: "Universal recipient:", body: "GROUP AB. No antibodies → accepts all blood. Universal DONOR = Group O (no antigens)." },
+        { title: "Rats died in airtight box:", body: "Used up available OXYGEN. Not nitrogen, not CO₂ (CO₂ is toxic but lack of O₂ is primary cause)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Aerobic = mitochondria, 38 ATP, needs O₂. Anaerobic yeast = ethanol + CO₂. Glycolysis = cytoplasm, 2 ATP. Arteries away from heart (no valves). Veins to heart (have valves). Fish = 2-chambered, single circulation. Mammals = 4-chambered, double circulation." }
+    ]
+  },
+
+  "Nervous System and Hormones": {
+    subject: "Biology",
+    title: "Nervous System, Reflex Arc and Hormones",
+    icon: "🧠",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Neurons", type: "cards", items: [
+        { title: "Sensory (afferent) neuron", body: "Carries impulse FROM sense organ TO brain/spinal cord." },
+        { title: "Motor (efferent) neuron", body: "Carries impulse FROM brain/spinal cord TO muscle or gland." },
+        { title: "Relay (connector) neuron", body: "Connects sensory to motor in spinal cord." },
+      ]},
+      { heading: "Reflex Arc", type: "text",
+        content: "Stimulus → RECEPTOR (skin) → SENSORY NERVE → SPINAL CORD/CNS → MOTOR NERVE → EFFECTOR (muscle) → RESPONSE. This pathway is automatic — does not require conscious thought." },
+      { heading: "Brain Regions and Functions", type: "cards", items: [
+        { title: "Cerebrum", body: "VOLUNTARY actions, conscious thought, learning, personality, decision-making. 'Deciding to run' = cerebrum." },
+        { title: "Cerebellum", body: "COORDINATION of movement, balance, posture. Damage = poor walking, ataxia." },
+        { title: "Medulla oblongata", body: "Controls INVOLUNTARY actions: heartbeat, breathing, swallowing." },
+        { title: "Hypothalamus", body: "Temperature regulation, hunger, thirst, links nervous system to endocrine system." },
+      ]},
+      { heading: "Major Hormones", type: "cards", items: [
+        { title: "Thyroxine (thyroid gland)", body: "Controls METABOLIC RATE. Requires IODINE. Deficiency → goitre (enlarged thyroid)." },
+        { title: "Adrenaline (adrenal gland)", body: "FIGHT-OR-FLIGHT response. Increases heart rate, dilates airways, releases glucose." },
+        { title: "Insulin (pancreas)", body: "LOWERS blood glucose. Promotes storage as glycogen." },
+        { title: "Glucagon (pancreas)", body: "RAISES blood glucose. Converts glycogen back to glucose." },
+        { title: "Prolactin (pituitary)", body: "Stimulates MILK PRODUCTION (lactation) in nursing mothers." },
+        { title: "Testosterone (testes)", body: "Male sexual development and characteristics." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Decision to run rather than walk:", body: "CEREBRUM (voluntary decision). Cerebellum coordinates the actual movement once decided." },
+        { title: "Damage to cerebellum affects:", body: "WALKING (coordination and balance). Not vision (cerebrum), not breathing (medulla)." },
+        { title: "Nursing mother not producing enough milk:", body: "Deficient in PROLACTIN. Not oestrogen (sexual development), not insulin (blood sugar)." },
+        { title: "Iodine needed for:", body: "THYROID GLAND (thyroxine contains iodine). Without iodine → cannot make thyroxine → goitre." },
+        { title: "Fight-or-flight response hormone:", body: "ADRENALINE from adrenal gland." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Cerebrum = voluntary. Cerebellum = coordination/balance. Medulla = involuntary (breathing, heartbeat). Reflex path: stimulus→sensory→CNS→motor→response. Prolactin = milk. Adrenaline = fight-or-flight. Thyroxine needs iodine. Insulin lowers, glucagon raises blood sugar." }
+    ]
+  },
+
+  "Plants and Photosynthesis": {
+    subject: "Biology",
+    title: "Plants — Transport, Photosynthesis and Tropisms",
+    icon: "🌱",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Xylem and Phloem", type: "cards", items: [
+        { title: "Xylem", body: "Transports WATER and mineral salts from roots to leaves. Dead cells. ONE-WAY flow UPWARD. Contains tracheids, vessels, fibres." },
+        { title: "Phloem", body: "Transports ORGANIC FOOD (sugars) from leaves to all parts. Living cells. TWO-WAY flow." },
+      ]},
+      { heading: "Photosynthesis", type: "text",
+        content: "6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. Occurs in CHLOROPLASTS. Chlorophyll absorbs RED and BLUE-VIOLET light; REFLECTS green light (which is why plants look green)." },
+      { heading: "Photosynthesis Details", type: "cards", items: [
+        { title: "Magnesium", body: "Central atom in CHLOROPHYLL molecule. Without Mg, plants cannot make chlorophyll → yellow leaves (chlorosis)." },
+        { title: "Light reaction (light-dependent)", body: "Light SPLITS WATER (photolysis) → O₂ released, ATP and NADPH made. In thylakoid membranes." },
+        { title: "Dark reaction (Calvin cycle)", body: "CO₂ fixed into glucose using ATP and NADPH. In stroma of chloroplast. Does not directly need light." },
+      ]},
+      { heading: "Plant Storage and Germination", type: "cards", items: [
+        { title: "Rhizome", body: "Horizontal underground stem. GINGER, grass, iris. Stores food." },
+        { title: "Bulb", body: "Modified leaves on underground stem. ONION, garlic, tulip." },
+        { title: "Tuber", body: "Swollen stem. POTATO, cassava." },
+        { title: "Epigeal germination", body: "Cotyledons raised ABOVE soil. GROUNDNUT, bean, castor oil." },
+        { title: "Hypogeal germination", body: "Cotyledons remain BELOW soil. MAIZE, wheat, peas." },
+      ]},
+      { heading: "Plant Tropisms", type: "cards", items: [
+        { title: "Phototropism", body: "Response to LIGHT. Shoots grow TOWARD light (positive). Roots grow away (negative)." },
+        { title: "Geotropism", body: "Response to GRAVITY. Roots grow DOWN (positive). Shoots grow UP (negative)." },
+        { title: "Hydrotropism", body: "Response to WATER. Roots grow TOWARD water (positive)." },
+        { title: "Thigmotropism", body: "Response to TOUCH. Tendrils curl around support." },
+        { title: "Klinostat", body: "Instrument that slowly rotates a plant so gravity effect is cancelled — used to study geotropic responses." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Magnesium used for:", body: "CHLOROPHYLL formation. Without Mg → cannot make chlorophyll → chlorosis (yellowing)." },
+        { title: "Light required in photosynthesis to:", body: "SPLIT WATER MOLECULES (photolysis). Not to reduce CO₂ (that happens in dark reaction)." },
+        { title: "Storage organ in ginger:", body: "RHIZOME. Not bulb (onion), not tuber (potato)." },
+        { title: "Epigeal germination found in:", body: "GROUNDNUT. Maize shows HYPOGEAL germination (stays below soil)." },
+        { title: "Curvature in response to water:", body: "HYDROTROPISM. Hydro = water." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Xylem = water upward (dead cells). Phloem = sugar both ways (living cells). Magnesium = chlorophyll. Photosynthesis removes CO₂. Light splits water (releases O₂). Ginger = rhizome. Onion = bulb. Groundnut = epigeal. Maize = hypogeal." }
+    ]
+  },
+
+  "Disease and Immunity": {
+    subject: "Biology",
+    title: "Microorganisms, Disease and Evolution",
+    icon: "🦠",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Viruses vs Bacteria", type: "cards", items: [
+        { title: "Viruses", body: "NON-LIVING. Reproduce ONLY inside living host cells. Protein coat (capsid) + nucleic acid. Cannot be treated with ANTIBIOTICS." },
+        { title: "Virus diseases", body: "Measles, polio, HIV/AIDS, rabies, yellow fever, COVID-19. Need antiviral drugs, not antibiotics." },
+        { title: "Bacterial diseases", body: "Typhoid, cholera, tetanus, tuberculosis, gonorrhoea. Treated with ANTIBIOTICS." },
+        { title: "Fungal diseases", body: "Ringworm, athlete's foot, candidiasis. Treated with ANTIFUNGALS." },
+      ]},
+      { heading: "Important Diseases", type: "cards", items: [
+        { title: "Malaria", body: "Caused by PLASMODIUM (protozoan). Vector: ANOPHELES mosquito. Destroys red blood cells." },
+        { title: "Bilharzia (Schistosomiasis)", body: "Caused by SCHISTOSOMA (flatworm). Primary host: MAN. Secondary/intermediate host: SNAIL. Blood in urine after swimming in fresh water." },
+        { title: "Onchocerciasis (River blindness)", body: "Caused by filarial worm. Vector: SIMULIUM (black fly). Causes progressive blindness." },
+        { title: "Sleeping sickness", body: "Caused by TRYPANOSOME. Vector: TSETSE FLY." },
+        { title: "Swollen shoot disease", body: "Viral disease of COCOA. Transmitted by mealybugs. Serious threat to West African cocoa production." },
+      ]},
+      { heading: "Darwin's Theory of Natural Selection", type: "cards", items: [
+        { title: "Darwin's key concepts", body: "Overproduction → Variation → Struggle for existence → Survival of the fittest → Inheritance of advantageous traits." },
+        { title: "NOT Darwin's theory", body: "USE AND DISUSE is LAMARCK's theory (organisms develop traits through use). Darwin said variation already exists by chance." },
+        { title: "Evidence for evolution", body: "Anatomy (homologous structures), Fossils, Genetics (DNA similarity). BEHAVIOUR is NOT strong evidence." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Infection unlikely to respond to antibiotics:", body: "MEASLES (viral disease). Antibiotics only kill bacteria, not viruses." },
+        { title: "Blood in urine after swimming:", body: "SCHISTOSOMIASIS (bilharzia). Larvae penetrate skin in freshwater → damage bladder." },
+        { title: "Primary and secondary hosts of bilharzia:", body: "Primary = MAN (adult worms). Secondary = SNAIL (larvae develop)." },
+        { title: "NOT in Darwin's theory:", body: "USE AND DISUSE. That is Lamarck. Darwin said variation already exists — environment selects who survives." },
+        { title: "NOT evidence for evolution:", body: "BEHAVIOUR. Anatomy, fossils and genetics are strong evidence." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Viruses = no antibiotics (use antivirals). Measles = viral. Typhoid = bacterial. Bilharzia: man + snail, blood in urine. Malaria: Plasmodium + Anopheles mosquito. Darwin: survival of fittest, NOT use/disuse (that's Lamarck). Behaviour = NOT evidence of evolution." }
+    ]
+  },
+
+  "Reproduction and Support": {
+    subject: "Biology",
+    title: "Reproduction, Skeleton and Metamorphosis",
+    icon: "🦋",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Metamorphosis", type: "cards", items: [
+        { title: "COMPLETE metamorphosis (holometabolism)", body: "Egg → LARVA → PUPA → Adult (4 stages). Butterfly, moth, bee, mosquito, housefly, beetle." },
+        { title: "INCOMPLETE metamorphosis (hemimetabolism)", body: "Egg → NYMPH → Adult (3 stages). Grasshopper, cockroach, locust, dragonfly, termite." },
+      ]},
+      { heading: "Asexual Reproduction in Plants", type: "cards", items: [
+        { title: "Sucker", body: "PLANTAIN (banana) reproduces by suckers from base of parent plant." },
+        { title: "Rhizome", body: "GINGER, grass reproduce by horizontal underground stems." },
+        { title: "Bulb", body: "ONION, garlic reproduce by modified underground leaves." },
+        { title: "Budding", body: "Hydra, yeast — offspring grows from parent's body." },
+        { title: "Binary fission", body: "Bacteria, amoeba — one organism splits into two." },
+      ]},
+      { heading: "Skeleton Types", type: "cards", items: [
+        { title: "Exoskeleton", body: "Hard OUTER covering. Arthropods (insects, crabs, spiders). Made of chitin." },
+        { title: "Endoskeleton", body: "INTERNAL skeleton. Vertebrates (fish, frogs, reptiles, birds, mammals). Bone and cartilage." },
+        { title: "Hydroskeleton", body: "FLUID-FILLED body cavity. Earthworms, sea anemones." },
+        { title: "Skeletal materials", body: "Chitin, cartilage, bone. MUSCLE is NOT a skeletal material — it provides movement, not support." },
+      ]},
+      { heading: "Excretion", type: "cards", items: [
+        { title: "Excretory organs and products", body: "Lungs: CO₂ + water vapour. Kidneys: urea, excess salts, water. Skin: sweat (water + salts + urea)." },
+        { title: "Functional unit of kidney", body: "NEPHRON. Contains Bowman's capsule, glomerulus, Loop of Henle, collecting duct. Bowman's capsule and glomerulus are PARTS of nephron." },
+        { title: "Plant excretory products", body: "Tannin, gum, alkaloid, resin, latex. SWEAT is animal excretory product — NOT a plant product." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Incomplete metamorphosis in:", body: "GRASSHOPPER (also cockroach, locust). Butterfly, mosquito, housefly = complete metamorphosis." },
+        { title: "Plantain reproduces asexually by:", body: "SUCKER. Not spores, not buds, not fragments." },
+        { title: "Longest bone in human body:", body: "FEMUR (thigh bone). Also strongest bone." },
+        { title: "Functional unit of kidney:", body: "NEPHRON. Not Bowman's capsule or glomerulus (these are PARTS of nephron)." },
+        { title: "Skeletal materials EXCEPT:", body: "MUSCLE. Chitin, cartilage and bone are skeletal materials. Muscle is for movement." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Complete = 4 stages (butterfly, fly, mosquito). Incomplete = 3 stages (grasshopper, cockroach). Plantain = sucker. Ginger = rhizome. Onion = bulb. Femur = longest bone. Nephron = kidney unit. Liver = bile production. MUSCLE is not skeletal material." }
+    ]
+  },
+
+  // ==========================================
+  // ECONOMICS — ALL NEW ENTRIES
+  // ==========================================
+
+  "Basic Economic Concepts": {
+    subject: "Economics",
+    title: "Scarcity, Choice, Opportunity Cost and Economic Systems",
+    icon: "💡",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "The Economic Problem", type: "text",
+        content: "Economics studies how societies allocate SCARCE resources to satisfy UNLIMITED wants. The fundamental problem is SCARCITY — resources (land, labour, capital) are limited but human wants are infinite." },
+      { heading: "Core Concepts", type: "cards", items: [
+        { title: "Scarcity", body: "Resources are limited relative to unlimited human wants. The root of ALL economic problems." },
+        { title: "Opportunity cost", body: "The VALUE of the NEXT BEST alternative forgone when a choice is made. NOT the money paid — the value of what you gave up." },
+        { title: "Microeconomics", body: "Studies INDIVIDUAL units — a firm, a household, a single market. Price of tomatoes, wages, firm output." },
+        { title: "Macroeconomics", body: "Studies the ECONOMY AS A WHOLE — inflation, GDP, unemployment, national income." },
+        { title: "Positive economics", body: "What IS (factual). 'Inflation is 12%'." },
+        { title: "Normative economics", body: "What OUGHT TO BE (value judgements). 'Government should reduce inflation'." },
+      ]},
+      { heading: "Economic Systems", type: "cards", items: [
+        { title: "Free market (Capitalism)", body: "Individuals own resources. Prices set by supply and demand. No government interference. USA." },
+        { title: "Command (Planned) economy", body: "Government owns and controls ALL resources. Central planning. Former USSR." },
+        { title: "Mixed economy", body: "BOTH private and government sectors operate. Most countries including NIGERIA." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Student reads instead of watching football — opportunity cost:", body: "ENJOYMENT FORGONE from the football match. The next best alternative sacrificed." },
+        { title: "Best definition of economics:", body: "Study of how scarce resources are allocated to satisfy unlimited wants." },
+        { title: "Macroeconomic concept:", body: "NATIONAL INCOME. Price of tomatoes, firm output, individual wages = microeconomics." },
+        { title: "Nigeria's economic system:", body: "MIXED ECONOMY. Both private sector and government sector operate." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Opportunity cost = next best alternative forgone (not money paid). Micro = individual (one firm, one market). Macro = whole economy (inflation, GDP). Nigeria = mixed economy. Positive = facts. Normative = opinions/should." }
+    ]
+  },
+
+  "Demand and Supply": {
+    subject: "Economics",
+    title: "Demand, Supply, Elasticity and Equilibrium",
+    icon: "📊",
+    estimatedTime: "4 min read",
+    sections: [
+      { heading: "Law of Demand and Supply", type: "cards", items: [
+        { title: "Law of Demand", body: "Price rises → quantity demanded FALLS. Price falls → quantity demanded RISES. Downward-sloping demand curve." },
+        { title: "Law of Supply", body: "Price rises → quantity supplied RISES. Price falls → quantity supplied FALLS. Upward-sloping supply curve." },
+        { title: "Exceptions to demand law", body: "Giffen goods (inferior — cassava in poor areas). Veblen goods (luxury status symbols — designer bags)." },
+      ]},
+      { heading: "Movement vs Shift of Curve", type: "cards", items: [
+        { title: "Movement ALONG the curve", body: "Caused by change in PRICE OF THE GOOD ITSELF → quantity changes. Stay on same curve." },
+        { title: "SHIFT of the curve", body: "Caused by NON-PRICE factors → entire curve moves left or right." },
+        { title: "Factors that shift demand", body: "Income, price of related goods, tastes, population, price expectations." },
+        { title: "Factors that shift supply", body: "Cost of production, technology, taxes, subsidies, number of sellers, weather." },
+      ]},
+      { heading: "Elasticity", type: "cards", items: [
+        { title: "Price Elasticity of Demand (PED)", body: "PED = % change in Qd ÷ % change in Price. >1 = elastic (luxuries). <1 = inelastic (necessities)." },
+        { title: "Demand for table salt", body: "INELASTIC — necessity with no close substitute. Price doubles but people still buy roughly same amount." },
+        { title: "Income Elasticity (YED)", body: "YED > 0 = normal good. YED < 0 = inferior good (demand falls as income rises — garri)." },
+        { title: "Perfectly inelastic supply", body: "LAND in a city — cannot produce more land regardless of price. Vertical supply curve." },
+      ]},
+      { heading: "Market Equilibrium and Price Controls", type: "cards", items: [
+        { title: "Equilibrium", body: "Price where Qdemanded = Qsupplied. Market clearing price. No tendency to change." },
+        { title: "Surplus (excess supply)", body: "Price ABOVE equilibrium → Qs > Qd → unsold stock → price falls." },
+        { title: "Shortage (excess demand)", body: "Price BELOW equilibrium → Qd > Qs → buyers can't get enough → price rises." },
+        { title: "Price ceiling (maximum price)", body: "Set BELOW equilibrium → causes SHORTAGE. E.g. fuel subsidy causing scarcity at petrol stations." },
+        { title: "Price floor (minimum price)", body: "Set ABOVE equilibrium → causes SURPLUS. E.g. minimum wage above equilibrium wage causes unemployment." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "What causes shift (not movement) of demand curve:", body: "Change in INCOME, advertising, price of substitutes. Change in price of THE GOOD ITSELF causes movement along curve." },
+        { title: "Garri is:", body: "INFERIOR GOOD. As income rises, demand for garri FALLS (people switch to 'better' food)." },
+        { title: "Government sets max price below equilibrium:", body: "SHORTAGE results. Price artificially low → consumers want more, producers supply less." },
+        { title: "Minimum wage is an example of:", body: "PRICE FLOOR. Set below which wages cannot fall." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Law of demand: price up → Qd down. Price of good itself → movement. Non-price factors → shift. Elastic > 1 (luxury). Inelastic < 1 (necessity, no substitute — salt). Ceiling below equilibrium = shortage. Floor above equilibrium = surplus." }
+    ]
+  },
+
+  "Production and Costs": {
+    subject: "Economics",
+    title: "Theory of Production, Costs and Returns",
+    icon: "🏭",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Factors of Production and Rewards", type: "cards", items: [
+        { title: "Land", body: "Natural resources. Reward = RENT." },
+        { title: "Labour", body: "Human effort. Reward = WAGES/SALARIES." },
+        { title: "Capital", body: "Man-made tools and machinery. Reward = INTEREST." },
+        { title: "Entrepreneur", body: "Risk-taker who combines other factors. Reward = PROFIT." },
+      ]},
+      { heading: "Laws of Returns", type: "cards", items: [
+        { title: "Law of Diminishing Returns (Short Run)", body: "As more VARIABLE factor (labour) added to FIXED factor (land), output eventually increases at DECREASING rate. Eventually falls." },
+        { title: "Short Run", body: "At least ONE factor is FIXED (usually capital). Cannot change factory size." },
+        { title: "Long Run", body: "ALL factors are VARIABLE. Can change everything — more workers AND bigger factory." },
+        { title: "Economies of scale", body: "As firm grows LARGER in long run, average cost per unit FALLS. Technical, financial, managerial economies." },
+      ]},
+      { heading: "Cost Types", type: "cards", items: [
+        { title: "Total Fixed Cost (TFC)", body: "Does NOT change with output. Rent, insurance, salaries. ALWAYS downward-sloping AFC when divided by Q." },
+        { title: "Total Variable Cost (TVC)", body: "Changes WITH output. Raw materials, electricity, piece-rate wages." },
+        { title: "Total Cost (TC)", body: "TC = TFC + TVC." },
+        { title: "Average Total Cost (ATC)", body: "ATC = TC/Q. U-shaped curve. MC cuts ATC at its MINIMUM point." },
+        { title: "Marginal Cost (MC)", body: "Extra cost of ONE more unit. MC = ΔTC/ΔQ. Cuts both AVC and ATC at their MINIMUM." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Reward for land:", body: "RENT. Labour=wages. Capital=interest. Entrepreneur=profit." },
+        { title: "As output increases, AFC:", body: "ALWAYS DECREASES. TFC is constant ÷ by growing Q = always falls. Never rises." },
+        { title: "TFC=₦10,000, TVC=₦5,000, Q=100 units. ATC?", body: "TC=15,000. ATC=15,000/100=₦150." },
+        { title: "Long run — all factors variable:", body: "TRUE. In long run, firm can change ALL inputs. Short run = at least one fixed." },
+        { title: "NOT an economy of scale:", body: "Poor communication as firm grows = DISECONOMY of scale (costs rise)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Land=Rent, Labour=Wages, Capital=Interest, Entrepreneur=Profit. AFC always falls as output rises. TC=TFC+TVC. Long run = all variable. Short run = at least one fixed. Economies of scale = average cost falls as firm grows bigger." }
+    ]
+  },
+
+  "Market Structures": {
+    subject: "Economics",
+    title: "Perfect Competition, Monopoly and Oligopoly",
+    icon: "🏪",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Four Market Structures", type: "cards", items: [
+        { title: "Perfect Competition", body: "MANY buyers and sellers. IDENTICAL (homogeneous) products. Free entry/exit. Perfect information. Firms are PRICE TAKERS (no power to set price)." },
+        { title: "Monopoly", body: "ONE seller. NO close substitutes. HIGH barriers to entry. Firm is PRICE MAKER. Higher price, lower output than competitive market. Supernormal profit in long run." },
+        { title: "Oligopoly", body: "FEW large firms dominate. High market concentration. HIGH barriers. INTERDEPENDENCE — each firm watches rivals. Nigerian banking, telecoms (MTN, Airtel, Glo)." },
+        { title: "Monopolistic Competition", body: "MANY firms selling DIFFERENTIATED products. Each has a mini-monopoly on its brand. Low barriers. Examples: restaurants, clothing, salons." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "NOT a characteristic of perfect competition:", body: "Firms are PRICE MAKERS. In perfect competition, firms are PRICE TAKERS. Price makers = monopoly." },
+        { title: "Best describes a monopoly:", body: "ONE seller with NO close substitutes. Two firms = duopoly (oligopoly). Not govt-controlled prices." },
+        { title: "Nigerian banking sector is:", body: "OLIGOPOLY. Few large banks dominate (Access, GTBank, Zenith, UBA, First Bank)." },
+        { title: "Many firms, differentiated products:", body: "MONOPOLISTIC COMPETITION. Perfect competition = many firms but IDENTICAL products." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Perfect competition: many sellers, identical products, price takers. Monopoly: one seller, no substitute, price maker. Oligopoly: few firms, interdependent (Nigerian banks, telecoms). Monopolistic competition: many firms, different products (restaurants, salons)." }
+    ]
+  },
+
+  "National Income": {
+    subject: "Economics",
+    title: "GDP, GNP, NNP and National Income Measurement",
+    icon: "📈",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Key National Income Concepts", type: "cards", items: [
+        { title: "GDP (Gross Domestic Product)", body: "Total value of all goods/services produced WITHIN a country's borders in a year. Regardless of WHO produces them (includes foreigners in Nigeria)." },
+        { title: "GNP (Gross National Product)", body: "Total value produced by a country's NATIONALS (citizens) wherever they are. GNP = GDP + Net factor income from abroad." },
+        { title: "NNP (Net National Product)", body: "GNP minus DEPRECIATION (wear and tear on capital). NNP = GNP − Depreciation." },
+        { title: "Per Capita Income", body: "National income ÷ total population. Measures AVERAGE standard of living." },
+      ]},
+      { heading: "Expenditure Method Formula", type: "text",
+        content: "GDP = C + I + G + (X − M). C = Consumption. I = Investment. G = Government spending. X = Exports. M = Imports. (X−M) = Net exports. Positive net exports = trade surplus." },
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "GNP differs from GDP by:", body: "Adding NET FACTOR INCOME FROM ABROAD. GNP = GDP + income Nigerians earn abroad − income foreigners earn in Nigeria." },
+        { title: "GNP=₦500bn, Depreciation=₦50bn. NNP?", body: "NNP = 500 − 50 = ₦450bn." },
+        { title: "Why value added used in output method:", body: "To AVOID DOUBLE COUNTING. Counting flour AND bread would count the flour twice." },
+        { title: "Net exports = X − M = 200 − 150:", body: "Net exports = ₦50bn SURPLUS (exports exceed imports)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "GDP = within borders (includes foreigners). GNP = by nationals (includes Nigerians abroad). GNP = GDP + net income from abroad. NNP = GNP − depreciation. Expenditure: GDP = C+I+G+(X-M). Double counting avoided by using VALUE ADDED." }
+    ]
+  },
+
+  "Money and Banking": {
+    subject: "Economics",
+    title: "Money, Commercial Banks and Central Bank",
+    icon: "🏦",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Functions of Money", type: "cards", items: [
+        { title: "Medium of exchange (PRIMARY)", body: "Accepted in payment for goods and services. Eliminates barter. This is the PRIMARY function that distinguishes money." },
+        { title: "Unit of account", body: "Common measure to compare values of all goods." },
+        { title: "Store of value", body: "Can be saved and used later (inflation erodes this)." },
+        { title: "Standard of deferred payment", body: "Allows credit and debts to be settled later." },
+      ]},
+      { heading: "Commercial Banks vs Central Bank", type: "cards", items: [
+        { title: "Commercial banks", body: "Profit-making. Accept deposits. Grant loans and overdrafts. Foreign exchange. Safe custody. CANNOT issue currency." },
+        { title: "Central Bank of Nigeria (CBN)", body: "NOT profit-seeking. Issues currency (MONOPOLY). Banker to government. Banker to commercial banks. Manages foreign exchange. Conducts monetary policy." },
+        { title: "Lender of last resort", body: "CBN lends to commercial banks when they face liquidity crisis — prevents bank collapse and systemic financial crisis." },
+      ]},
+      { heading: "Credit Creation", type: "steps", items: [
+        "Bank reserve ratio is 20%. Customer deposits ₦10,000.",
+        "Money multiplier = 1/reserve ratio = 1/0.2 = 5",
+        "Total money created = ₦10,000 × 5 = ₦50,000",
+        "Bank keeps 20% (₦2,000) as reserve, lends 80% (₦8,000).",
+        "That ₦8,000 gets deposited elsewhere and the cycle repeats."
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Primary function of money:", body: "MEDIUM OF EXCHANGE. This is what distinguishes money from other assets." },
+        { title: "NOT a function of commercial bank:", body: "ISSUING CURRENCY NOTES. Only the CENTRAL BANK can issue currency (legal tender)." },
+        { title: "Central Bank ONLY function:", body: "ISSUING CURRENCY. Commercial banks can accept deposits and do forex, but cannot print money." },
+        { title: "Lender of last resort means:", body: "CBN lends to COMMERCIAL BANKS when they are short of funds — not to the public." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Primary function of money = medium of exchange. Only CBN issues currency — not commercial banks. Money multiplier = 1÷reserve ratio. CBN = lender of last resort (to commercial banks, not public). CBN functions: issue currency, banker to govt, banker to banks, monetary policy." }
+    ]
+  },
+
+  "Inflation and Economic Policy": {
+    subject: "Economics",
+    title: "Inflation, Unemployment and Economic Policy",
+    icon: "💹",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Types of Inflation", type: "cards", items: [
+        { title: "Demand-pull inflation", body: "Too much money chasing too few goods. Excess aggregate demand. 'Too much money in the economy'." },
+        { title: "Cost-push inflation", body: "Rising PRODUCTION COSTS (wages, oil prices, raw materials) push firms to raise prices." },
+        { title: "Effects of inflation", body: "Hurts savers (money loses value). BENEFITS DEBTORS (repay with cheaper money). Hurts fixed-income earners and pensioners." },
+      ]},
+      { heading: "Types of Unemployment", type: "cards", items: [
+        { title: "Frictional", body: "Temporary — between jobs, searching for better employment. Normal in any economy." },
+        { title: "Structural", body: "TECHNOLOGY or economic changes make skills OBSOLETE permanently. Carpenter replaced by robots = structural. Solution: RETRAINING." },
+        { title: "Cyclical (demand-deficient)", body: "Caused by RECESSION — insufficient aggregate demand. Solution: expansionary fiscal/monetary policy." },
+        { title: "Seasonal", body: "Jobs available only in certain seasons — farming, tourism." },
+      ]},
+      { heading: "Fiscal and Monetary Policy", type: "cards", items: [
+        { title: "Expansionary fiscal policy", body: "INCREASE government spending OR CUT taxes → boost aggregate demand → fight recession." },
+        { title: "Contractionary fiscal policy", body: "CUT spending OR RAISE taxes → reduce aggregate demand → fight INFLATION." },
+        { title: "To reduce inflation — monetary policy:", body: "RAISE monetary policy rate (interest rate). Higher rates → less borrowing → less money in economy → less spending → inflation falls." },
+        { title: "Open Market Operations (OMO)", body: "CBN BUYS securities = injects money (expansionary). CBN SELLS securities = withdraws money (contractionary)." },
+        { title: "Cash Reserve Ratio (CRR)", body: "Higher CRR = banks must hold more as reserves = less money to lend = reduced money supply." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Cost-push inflation caused by:", body: "INCREASE IN PRODUCTION COSTS (wages, oil, raw materials). Not excess government spending (that's demand-pull)." },
+        { title: "Who benefits from inflation:", body: "DEBTORS. Repay loans with money worth less than when borrowed. Creditors, pensioners, fixed-income earners are hurt." },
+        { title: "Carpenter replaced by robots:", body: "STRUCTURAL unemployment. Permanent job loss due to technology. Retraining is the solution." },
+        { title: "To reduce structural unemployment:", body: "RETRAINING AND EDUCATION programmes. Not fiscal or monetary policy (those help cyclical unemployment)." },
+        { title: "Govt increases tax and reduces spending:", body: "CONTRACTIONARY fiscal policy. Used to reduce inflation." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Demand-pull = too much money chasing goods. Cost-push = rising production costs. Debtors benefit from inflation (repay with cheaper money). Structural unemployment = technology change, needs retraining. Raise interest rates to fight inflation. OMO: buy = inject money, sell = withdraw money." }
+    ]
+  },
+
+  "International Trade": {
+    subject: "Economics",
+    title: "Comparative Advantage, Tariffs and Trade Policy",
+    icon: "🌐",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Absolute vs Comparative Advantage", type: "cards", items: [
+        { title: "Absolute advantage", body: "Country produces a good using FEWER RESOURCES than another country." },
+        { title: "Comparative advantage", body: "Country produces at LOWER OPPORTUNITY COST than another — even if the other has absolute advantage in everything. BASIS FOR ALL TRADE." },
+        { title: "Principle of comparative advantage", body: "Countries should SPECIALISE in goods where they have the LOWEST OPPORTUNITY COST, then trade. This increases total world output." },
+      ]},
+      { heading: "Trade Policy Tools", type: "cards", items: [
+        { title: "Tariff", body: "TAX on imported goods. Raises import price. Protects domestic industry. Consumers pay more." },
+        { title: "Quota", body: "LIMIT on quantity of imports allowed." },
+        { title: "Subsidy", body: "Government payment to domestic producers — makes them price-competitive against imports." },
+        { title: "Embargo", body: "COMPLETE BAN on trade with a country." },
+      ]},
+      { heading: "Arguments for Protection", type: "cards", items: [
+        { title: "Infant industry argument", body: "NEW industries in developing countries need TEMPORARY protection until they can compete internationally. Most important argument." },
+        { title: "National security", body: "Essential industries (food, defence) must be produced domestically." },
+        { title: "Prevent dumping", body: "Foreign firms selling below cost to destroy domestic competition." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Comparative advantage says countries should:", body: "SPECIALISE in goods with LOWEST OPPORTUNITY COST. Even if one country produces everything better, trade is still beneficial." },
+        { title: "Tariff on imported rice:", body: "RAISES PRICE of imported rice → protects domestic producers. Consumers pay higher prices." },
+        { title: "Infant industry argument says:", body: "New industries need TEMPORARY PROTECTION until they can compete internationally." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Comparative advantage = lowest opportunity cost (not just being better). Tariff = tax on imports (protects domestic, hurts consumers). Quota = import quantity limit. Embargo = complete ban. Infant industry = most common argument for protectionism in developing countries." }
+    ]
+  },
+
+  "Development Economics": {
+    subject: "Economics",
+    title: "Economic Development, Population and Nigeria",
+    icon: "🇳🇬",
+    estimatedTime: "3 min read",
+    sections: [
+      { heading: "Growth vs Development", type: "cards", items: [
+        { title: "Economic growth", body: "Increase in real GDP over time. QUANTITATIVE measure. Can happen without improving welfare." },
+        { title: "Economic development", body: "BROADER — improvement in quality of life: income + health + education + poverty reduction. HDI measures this." },
+        { title: "Key distinction", body: "Growth is necessary but NOT SUFFICIENT for development. High GDP can still coexist with widespread poverty." },
+      ]},
+      { heading: "Population Economics", type: "cards", items: [
+        { title: "Natural increase formula", body: "Natural increase = Birth rate − Death rate. E.g. Birth rate 40 − Death rate 15 = 25 per 1,000 (2.5% growth)." },
+        { title: "Malthus theory", body: "Population grows GEOMETRICALLY (1,2,4,8). Food grows ARITHMETICALLY (1,2,3,4). Population would eventually outstrip food → crisis. Green Revolution largely disproved this." },
+        { title: "Optimum population", body: "Population size that MAXIMISES per capita output given existing resources and technology. Not too large, not too small." },
+        { title: "Overpopulation", body: "Population exceeds optimum → per capita income FALLS." },
+      ]},
+      { heading: "Nigeria's Economy", type: "cards", items: [
+        { title: "Dominant government revenue", body: "PETROLEUM. Since 1970s oil boom, oil dominates foreign exchange earnings and government revenue." },
+        { title: "Agriculture's role", body: "Provides food, employs over 70% of Nigerians, provides RAW MATERIALS for industry (cotton for textiles, rubber for tyres), earns foreign exchange." },
+        { title: "Problems of Nigerian agriculture", body: "Primitive tools, land tenure issues, inadequate credit, poor rural infrastructure, rural-urban migration, erosion/desertification." },
+        { title: "Import substitution (ISI)", body: "Producing DOMESTICALLY what was previously imported. Nigeria's post-independence strategy. Conserves foreign exchange." },
+      ]},
+      { heading: "Exam Questions", type: "cards", items: [
+        { title: "Natural increase = Birth rate 40, Death rate 15:", body: "Natural increase = 40 − 15 = 25 per 1,000." },
+        { title: "Malthus concluded:", body: "Population would eventually OUTSTRIP food supply leading to misery. Technology has largely disproved this." },
+        { title: "Optimum population:", body: "Population that MAXIMISES per capita output given resources. Neither too large nor too small." },
+        { title: "Nigeria's dominant revenue source:", body: "PETROLEUM. Agriculture employs more people but oil dominates revenue." },
+        { title: "Agriculture contributes to industry by:", body: "Providing RAW MATERIALS (cotton for textiles, rubber for tyres, cocoa for chocolate)." },
+      ]},
+      { heading: "Quick Tip", type: "tip",
+        content: "Development > growth (includes health, education, poverty). Natural increase = birth rate − death rate. Malthus: population grows faster than food (geometric vs arithmetic). Optimum population = maximises per capita output. Nigeria: petroleum dominates revenue. Agriculture provides raw materials for industry." }
+    ]
+  },
+
 }
 
 export default STUDY_GUIDES
