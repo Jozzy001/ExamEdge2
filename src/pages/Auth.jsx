@@ -16,7 +16,7 @@ import { ButtonSpinner } from "../components/LoadingScreen"
 const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const { dark, toggleTheme } = useTheme()
   const [mode, setMode] = useState("login") // login | signup | reset
-  const [step, setStep] = useState(1) // signup step: 1=details, 2=referral+plan
+  const [step, setStep] = useState(1) // signup step: 1=details, 2=referral
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -29,10 +29,9 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
 
   // Step 2 fields
   const [referralCode, setReferralCode] = useState("")
-  const [referralStatus, setReferralStatus] = useState(null) // null | valid | invalid
+  const [referralStatus, setReferralStatus] = useState(null)
   const [referrerId, setReferrerId] = useState(null)
   const [checkingReferral, setCheckingReferral] = useState(false)
-  const [chosenPlan, setChosenPlan] = useState(null) // "free" | "paid"
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -88,7 +87,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     }
   }
 
-  // Step 1: validate details and go to step 2
   const handleNextStep = () => {
     if (!name.trim() || name.trim().length < 2) { setError("Please enter a username"); return }
     if (!email.includes("@")) { setError("Please enter a valid email address"); return }
@@ -98,9 +96,8 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setStep(2)
   }
 
-  // Step 2: create account and proceed directly — no email verification
+  // Always creates a free account — paid option hidden for now
   const handleSignup = async () => {
-    if (!chosenPlan) { setError("Please choose a plan to continue"); return }
     setError(""); setLoading(true)
     try {
       const result = await createUserWithEmailAndPassword(auth, email.trim(), password)
@@ -123,9 +120,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         referredBy: referrerId || null,
       }
       await setDoc(doc(db, "users", user.uid), userData)
-
-      // ✅ Go straight to onboarding — no email verification required
-      onAuthDone({ ...userData, uid: user.uid, wantsPaid: chosenPlan === "paid" })
+      onAuthDone({ ...userData, uid: user.uid })
     } catch (err) {
       setError(getErrorMessage(err.code))
     }
@@ -138,7 +133,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setError(""); setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email.trim(), password)
-      // onAuthStateChanged in App.jsx handles the rest
     } catch (err) {
       setError(getErrorMessage(err.code))
     }
@@ -380,12 +374,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
           </>
         )}
 
-        {/* ===== SIGNUP STEP 2: Referral + Plan ===== */}
+        {/* ===== SIGNUP STEP 2: Referral only ===== */}
         {mode === "signup" && step === 2 && (
           <>
             <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
+              <div style={{ fontSize: 56, marginBottom: 12 }}>🎉</div>
               <h2 className="ee-title">Almost there!</h2>
-              <p className="ee-subtitle">Step 2 of 2 — Referral code & choose your plan</p>
+              <p className="ee-subtitle">Step 2 of 2 — Do you have a referral code?</p>
             </div>
 
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
@@ -405,8 +400,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 placeholder="Enter a friend's referral code"
                 maxLength={8}
                 style={{
-                  ...inputStyle, marginBottom: 0,
-                  paddingRight: 40,
+                  ...inputStyle, marginBottom: 0, paddingRight: 40,
                   border: `1.5px solid ${referralStatus === "valid" ? "#22c55e" : referralStatus === "invalid" ? "#ef4444" : "var(--border)"}`,
                   fontWeight: referralCode ? 700 : 400,
                   letterSpacing: referralCode ? 2 : 0,
@@ -416,103 +410,36 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 {checkingReferral ? "⏳" : referralStatus === "valid" ? "✅" : referralStatus === "invalid" ? "❌" : ""}
               </span>
             </div>
-            <p style={{ fontSize: 12, color: referralStatus === "valid" ? "#22c55e" : referralStatus === "invalid" ? "#ef4444" : "var(--text3)", marginBottom: 20 }}>
-              {referralStatus === "valid" ? "✓ Valid code! Your friend will earn ₦500 when you pay." :
+            <p style={{
+              fontSize: 12, marginBottom: 24,
+              color: referralStatus === "valid" ? "#22c55e" : referralStatus === "invalid" ? "#ef4444" : "var(--text3)"
+            }}>
+              {referralStatus === "valid" ? "✓ Valid code! Your friend will earn when you upgrade." :
                referralStatus === "invalid" ? "Code not found. Leave blank if you don't have one." :
-               "If a friend referred you, enter their code here."}
+               "If a friend referred you, enter their code here. Otherwise leave blank."}
             </p>
 
-            <label style={labelStyle}>Choose Your Plan</label>
-
-            {/* Free plan */}
-            {/*
-
-            <div
-              onClick={() => setChosenPlan("free")}
-              style={{
-                border: `2px solid ${chosenPlan === "free" ? "var(--primary)" : "var(--border)"}`,
-                borderRadius: "var(--radius-lg)",
-                padding: 16, marginBottom: 12, cursor: "pointer",
-                background: chosenPlan === "free" ? "var(--primary-light, rgba(102,126,234,0.08))" : "var(--surface)",
-                transition: "all 0.15s",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{
-                  width: 20, height: 20, borderRadius: 10,
-                  border: `2px solid ${chosenPlan === "free" ? "var(--primary)" : "var(--border)"}`,
-                  background: chosenPlan === "free" ? "var(--primary)" : "transparent",
-                  flexShrink: 0,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  {chosenPlan === "free" && <div style={{ width: 8, height: 8, borderRadius: 4, background: "#fff" }} />}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "var(--text)" }}>
-                    Free Plan <span style={{ fontSize: 13, color: "#22c55e", fontWeight: 700 }}>— ₦0</span>
-                  </div>
-                  <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4, lineHeight: 1.5 }}>
-                    ✓ 2 years of questions (2014 & 2015){"\n"}
-                    ✓ 5 questions per topic in Study Mode{"\n"}
-                    ✓ Basic CBT practice{"\n"}
-                    ✗ Hot Topics, Weak Areas, CBT History locked
-                  </div>
-                </div>
+            {/* Free access notice */}
+            <div style={{
+              background: "rgba(34,201,122,0.08)",
+              border: "1px solid rgba(34,201,122,0.3)",
+              borderRadius: "var(--radius-lg)",
+              padding: "16px 18px", marginBottom: 24,
+            }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803d", marginBottom: 6 }}>
+                🎓 Free Access — No payment needed
+              </div>
+              <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
+                Sign up now and get access to ExamEdgeNG completely free. Practice questions, CBT mode, study guides and more — all at no cost while we grow.
               </div>
             </div>
-            */}
-
-            {/* Paid plan */}
-            <div
-              onClick={() => setChosenPlan("paid")}
-              style={{
-                border: `2px solid ${chosenPlan === "paid" ? "#667eea" : "var(--border)"}`,
-                borderRadius: "var(--radius-lg)",
-                padding: 16, marginBottom: 20, cursor: "pointer",
-                background: chosenPlan === "paid" ? "rgba(102,126,234,0.08)" : "var(--surface)",
-                position: "relative", overflow: "hidden",
-                transition: "all 0.15s",
-              }}
-            >
-              <div style={{
-                position: "absolute", top: 0, right: 0,
-                background: "linear-gradient(135deg, #667eea, #764ba2)",
-                color: "#fff", fontSize: 10, fontWeight: 800,
-                padding: "4px 10px", borderRadius: "0 0 0 8px",
-              }}>⭐ BEST VALUE</div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{
-                  width: 20, height: 20, borderRadius: 10,
-                  border: `2px solid ${chosenPlan === "paid" ? "#667eea" : "var(--border)"}`,
-                  background: chosenPlan === "paid" ? "#667eea" : "transparent",
-                  flexShrink: 0,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  {chosenPlan === "paid" && <div style={{ width: 8, height: 8, borderRadius: 4, background: "#fff" }} />}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "var(--text)" }}>
-                    Full Access <span style={{ fontSize: 13, color: "#667eea", fontWeight: 700 }}>— ₦3,000</span>
-                    <span style={{ fontSize: 11, color: "#888", marginLeft: 6, textDecoration: "line-through" }}>₦6,000</span>
-                  </div>
-                  <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4, lineHeight: 1.5 }}>
-                    ✓ All 20 years of questions (2005–2024){"\n"}
-                    ✓ Unlimited Study Mode{"\n"}
-                    ✓ Hot Topics & Weak Areas{"\n"}
-                    ✓ CBT History & Full Progress{"\n"}
-                    ✓ One-time payment, no subscription
-                  </div>
-                </div>
-              </div>
-            </div> 
 
             {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12,
               background: "rgba(255,107,107,0.1)", padding: "10px 14px",
               borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)" }}>{error}</div>}
 
-            <button className="ee-btn ee-btn-primary" onClick={handleSignup} disabled={loading || !chosenPlan}>
-              {loading ? <><ButtonSpinner />Creating account...</> : chosenPlan === "paid" ? "Create Account & Pay ₦3,000 🚀" : "Create Free Account →"}
+            <button className="ee-btn ee-btn-primary" onClick={handleSignup} disabled={loading}>
+              {loading ? <><ButtonSpinner />Creating account...</> : "Create Free Account →"}
             </button>
 
             <button onClick={() => { setStep(1); setError("") }} style={{

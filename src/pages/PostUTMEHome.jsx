@@ -6,7 +6,6 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
-import { requestNotificationPermission, smartNotificationScheduler } from "../utils/notifications"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
@@ -20,17 +19,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
       localStorage.setItem("ee-examDate", "2026-07-27")
     }
   }, [])
-
-  // Request notifications permission
-  useEffect(() => {
-    if (authUser?.uid) {
-      requestNotificationPermission().then(granted => {
-        if (granted) {
-          smartNotificationScheduler(authUser.uid, { streak: 0, goal: { done: 0, target: 50 } })
-        }
-      }).catch(e => console.error("Notification error:", e))
-    }
-  }, [authUser?.uid])
 
   // Show tour on first visit
   useEffect(() => {
@@ -182,13 +170,10 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </button>
 
           {/* 5. CBT History */}
-          <button
-            className="ee-home-card"
-            onClick={() => {
-              if (!isPaid) { handleLockedFeature("cbtHistory"); return }
-              onNavigate("cbtHistory")
-            }}
-          >
+          <button className="ee-home-card" onClick={() => {
+            if (!isPaid) { handleLockedFeature("cbtHistory"); return }
+            onNavigate("cbtHistory")
+          }}>
             <span className="home-card-icon">🕐</span>
             <div>
               <div className="home-card-title">CBT History {!isPaid && "🔒"}</div>
@@ -225,23 +210,15 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </div>
         </button>
 
-        {/* Referral Button — visible to ALL users */}
+        {/* Referral Button */}
         <button
           onClick={() => onNavigate("referrals")}
           style={{
             background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-            borderRadius: "var(--radius-lg)",
-            padding: "14px 16px",
-            marginBottom: 16,
-            color: "#fff",
-            border: "none",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            width: "100%",
-            fontSize: 14,
-            fontWeight: 700,
+            borderRadius: "var(--radius-lg)", padding: "14px 16px",
+            marginBottom: 16, color: "#fff", border: "none",
+            cursor: "pointer", display: "flex", alignItems: "center",
+            gap: 12, width: "100%", fontSize: 14, fontWeight: 700,
             boxShadow: "0 4px 14px rgba(16,185,129,0.3)"
           }}
         >
@@ -259,14 +236,9 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             onClick={() => onNavigate("upgrade")}
             style={{
               background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              borderRadius: "var(--radius-xl)",
-              padding: "16px 20px",
-              marginBottom: 16,
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              cursor: "pointer",
+              borderRadius: "var(--radius-xl)", padding: "16px 20px",
+              marginBottom: 16, color: "#fff",
+              display: "flex", alignItems: "center", gap: 12, cursor: "pointer",
             }}
           >
             <span style={{ fontSize: 28 }}>🚀</span>
@@ -280,7 +252,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {/* WhatsApp Channel */}
         <div
-          onClick={() => window.open("https://whatsapp.com/channel/YOUR_CHANNEL_LINK", "_blank")}
+          onClick={() => window.open("https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K", "_blank")}
           style={{
             background: "linear-gradient(135deg, #25d366, #128c7e)",
             borderRadius: "var(--radius-lg)", padding: "14px 18px",
@@ -290,12 +262,8 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         >
           <span style={{ fontSize: 26 }}>📢</span>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>
-              Follow Our WhatsApp Channel
-            </div>
-            <div style={{ fontSize: 12, opacity: 0.9, lineHeight: 1.5 }}>
-              Get exam news, app updates and study tips
-            </div>
+            <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>Follow Our WhatsApp Channel</div>
+            <div style={{ fontSize: 12, opacity: 0.9, lineHeight: 1.5 }}>Get exam news, app updates and study tips</div>
           </div>
           <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
         </div>
