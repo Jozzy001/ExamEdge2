@@ -120,11 +120,7 @@ function App() {
         setPage("home")
         setPageHistory([])
       } else {
-        if (!user.emailVerified) {
-          setAuthUser(null)
-          setAppLoading(false)
-          return
-        }
+        // ✅ Email verification removed — all users proceed directly
         setAuthUser(user)
         localStorage.setItem("ee-cached-user", JSON.stringify({
           uid: user.uid,
@@ -425,7 +421,6 @@ function App() {
       )
       if (page === "cbtResult") return <CBTResult onNavigate={handleNavigate} onBack={handleBack} record={reviewRecord} />
 
-      // ── HOT TOPICS ──
       if (page === "hotTopics") return (
         <HotTopics
           onNavigate={handleNavigate}
@@ -447,7 +442,6 @@ function App() {
         />
       )
 
-      // ── LEADERBOARD ──
       if (page === "leaderboard") return (
         <Leaderboard
           onNavigate={handleNavigate}
@@ -457,7 +451,6 @@ function App() {
         />
       )
 
-      // ── REFERRALS ──
       if (page === "referrals") return (
         <Referrals
           onNavigate={handleNavigate}
@@ -466,7 +459,6 @@ function App() {
         />
       )
 
-      // ── ACCOUNT DETAILS ──
       if (page === "accountDetails") return (
         <AccountDetails
           onNavigate={handleNavigate}
@@ -475,7 +467,6 @@ function App() {
         />
       )
 
-      // ── AI TUTOR ──
       if (page === "aiTutor") return (
         <AITutor
           onNavigate={handleNavigate}

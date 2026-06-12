@@ -5,9 +5,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   sendPasswordResetEmail,
-  sendEmailVerification,
-  signOut,
-  reload
+  signOut
 } from "firebase/auth"
 import {
   doc, setDoc, getDoc, serverTimestamp, collection, query, where, getDocs
@@ -17,7 +15,7 @@ import { ButtonSpinner } from "../components/LoadingScreen"
 
 const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const { dark, toggleTheme } = useTheme()
-  const [mode, setMode] = useState("login") // login | signup | plan | reset | verify
+  const [mode, setMode] = useState("login") // login | signup | reset
   const [step, setStep] = useState(1) // signup step: 1=details, 2=referral+plan
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -35,16 +33,10 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [referrerId, setReferrerId] = useState(null)
   const [checkingReferral, setCheckingReferral] = useState(false)
   const [chosenPlan, setChosenPlan] = useState(null) // "free" | "paid"
-  const [isFreshSignup, setIsFreshSignup] = useState(false)
-  const [pendingUserData, setPendingUserData] = useState(null)
-  const [checkingVerification, setCheckingVerification] = useState(false)
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        if (!user.emailVerified) { setMode("verify"); return }
-        // Skip auto-login for fresh signups — let handleCheckVerification handle it
-        if (isFreshSignup) return
         const userDoc = await getDoc(doc(db, "users", user.uid))
         if (userDoc.exists()) {
           const data = userDoc.data()
@@ -60,7 +52,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       }
     })
     return () => unsub()
-  }, [isFreshSignup])
+  }, [])
 
   // Check referral code with debounce
   useEffect(() => {
@@ -106,14 +98,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setStep(2)
   }
 
-  // Step 2: create account then handle plan choice
+  // Step 2: create account and proceed directly — no email verification
   const handleSignup = async () => {
     if (!chosenPlan) { setError("Please choose a plan to continue"); return }
     setError(""); setLoading(true)
     try {
       const result = await createUserWithEmailAndPassword(auth, email.trim(), password)
       const user = result.user
-      await sendEmailVerification(user)
 
       const namePart = name.trim().split(" ")[0].toUpperCase().slice(0, 4)
       const uidPart = user.uid.slice(-4).toUpperCase()
@@ -133,55 +124,12 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       }
       await setDoc(doc(db, "users", user.uid), userData)
 
-      setPendingUserData({ ...userData, uid: user.uid, wantsPaid: chosenPlan === "paid" })
-      setIsFreshSignup(true)
-      setMode("verify")
+      // ✅ Go straight to onboarding — no email verification required
+      onAuthDone({ ...userData, uid: user.uid, wantsPaid: chosenPlan === "paid" })
     } catch (err) {
       setError(getErrorMessage(err.code))
     }
     setLoading(false)
-  }
-
-  const handleCheckVerification = async () => {
-    setCheckingVerification(true)
-    try {
-      await reload(auth.currentUser)
-      if (auth.currentUser.emailVerified) {
-        const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid))
-        if (userDoc.exists()) {
-          const data = userDoc.data()
-          onAuthDone(data)
-          // Don't auto-redirect to upgrade — let user complete onboarding first
-        } else {
-          // Doc doesn't exist yet — create it and proceed
-          const fallbackData = {
-            uid: auth.currentUser.uid,
-            email: auth.currentUser.email,
-            name: auth.currentUser.displayName || auth.currentUser.email.split("@")[0],
-            isPaid: false,
-            createdAt: new Date().toISOString(),
-          }
-          await setDoc(doc(db, "users", auth.currentUser.uid), fallbackData)
-          onAuthDone(fallbackData)
-          // Don't auto-redirect to upgrade — let user complete onboarding first
-        }
-      } else {
-        setError("Email not verified yet. Please check your inbox and click the link.")
-      }
-    } catch {
-      setError("Could not check verification. Try again.")
-    }
-    setCheckingVerification(false)
-  }
-
-  const handleResendVerification = async () => {
-    setError("")
-    try {
-      await sendEmailVerification(auth.currentUser)
-      setError("✅ Verification email resent! Check your inbox.")
-    } catch {
-      setError("Could not resend email. Try again later.")
-    }
   }
 
   const handleLogin = async () => {
@@ -189,8 +137,8 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     if (!password) { setError("Please enter your password"); return }
     setError(""); setLoading(true)
     try {
-      const result = await signInWithEmailAndPassword(auth, email.trim(), password)
-      if (!result.user.emailVerified) { setMode("verify") }
+      await signInWithEmailAndPassword(auth, email.trim(), password)
+      // onAuthStateChanged in App.jsx handles the rest
     } catch (err) {
       setError(getErrorMessage(err.code))
     }
@@ -208,7 +156,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     }
     setLoading(false)
   }
-
 
   const inputStyle = {
     width: "100%", padding: "14px 16px",
@@ -235,84 +182,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       </header>
 
       <div className="ee-content">
-
-        {/* ===== VERIFY EMAIL ===== */}
-        {mode === "verify" && (
-          <>
-            <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
-              <div style={{ fontSize: 64, marginBottom: 16 }}>📩</div>
-              <h2 className="ee-title">Check your email</h2>
-              <p className="ee-subtitle">
-                We sent a verification link to <strong>{auth.currentUser?.email}</strong>
-              </p>
-            </div>
-
-            <div style={{
-              background: "var(--surface)", border: "1px solid var(--border)",
-              borderRadius: "var(--radius-lg)", padding: "16px 20px", marginBottom: 16,
-            }}>
-              {[
-                { step: "1", text: "Open your email app — Gmail, Yahoo or whatever you use" },
-                { step: "2", text: "Look for an email with subject: Verify your ExamEdgeNG account" },
-                { step: "3", text: "Open the email and click the big verification button or link inside" },
-                { step: "4", text: "Come back here and tap the green button below" },
-              ].map((item, i) => (
-                <div key={i} style={{
-                  display: "flex", gap: 12, alignItems: "flex-start",
-                  paddingBottom: i < 3 ? 12 : 0, marginBottom: i < 3 ? 12 : 0,
-                  borderBottom: i < 3 ? "1px solid var(--border)" : "none"
-                }}>
-                  <div style={{
-                    width: 28, height: 28, borderRadius: "50%",
-                    background: "var(--primary)", color: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 13, fontWeight: 800, flexShrink: 0
-                  }}>{item.step}</div>
-                  <p style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{
-              background: "rgba(255,179,71,0.12)", border: "1px solid rgba(255,179,71,0.4)",
-              borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 16,
-            }}>
-              <p style={{ fontSize: 14, color: "#7a4500", lineHeight: 1.7, margin: 0 }}>
-                ⚠️ <strong>Can't find the email?</strong> Check your <strong>Spam</strong> or <strong>Junk</strong> folder.
-                Open it, find the email from ExamEdgeNG and click the link there.
-                <br /><br />
-                Still can't find it? Tap <strong>"Resend verification email"</strong> below.
-              </p>
-            </div>
-
-            {error && (
-              <div style={{
-                background: error.startsWith("✅") ? "rgba(34,201,122,0.1)" : "rgba(255,107,107,0.1)",
-                border: `1px solid ${error.startsWith("✅") ? "rgba(34,201,122,0.3)" : "rgba(255,107,107,0.3)"}`,
-                borderRadius: "var(--radius-md)", padding: "10px 14px",
-                fontSize: 13, color: error.startsWith("✅") ? "var(--success)" : "var(--accent)",
-                marginBottom: 16
-              }}>{error}</div>
-            )}
-
-            <button className="ee-btn ee-btn-primary" onClick={handleCheckVerification} disabled={checkingVerification}>
-              {checkingVerification ? "Checking..." : "✅ I have verified my email"}
-            </button>
-            <button onClick={handleResendVerification} style={{
-              width: "100%", padding: "12px", background: "none",
-              border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
-              marginTop: 10, fontSize: 13, fontWeight: 700, color: "var(--text2)",
-              cursor: "pointer", fontFamily: "var(--font-main)"
-            }}>📨 Resend verification email</button>
-            <button onClick={async () => { await signOut(auth); setMode("login"); setError("") }} style={{
-              width: "100%", padding: "10px", background: "none", border: "none",
-              fontSize: 12, fontWeight: 700, color: "var(--text3)",
-              cursor: "pointer", fontFamily: "var(--font-main)", marginTop: 8
-            }}>← Use a different account</button>
-          </>
-        )}
 
         {/* ===== RESET PASSWORD ===== */}
         {mode === "reset" && (
@@ -398,7 +267,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)"
               }}>Sign up free</button>
 
-              {/* App Store notice */}
               <div style={{
                 textAlign: "center", marginTop: 16, padding: "10px 14px",
                 borderRadius: "var(--radius-md)",
@@ -418,7 +286,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                   color: "var(--primary)", fontWeight: 700, textDecoration: "none"
                 }}>Contact us</a>
               </p>
-
             </div>
           </>
         )}
@@ -435,7 +302,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               <p className="ee-subtitle">Step 1 of 2 — Your details</p>
             </div>
 
-            {/* Step indicator */}
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
               {[1, 2].map(s => (
                 <div key={s} style={{
@@ -522,7 +388,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               <p className="ee-subtitle">Step 2 of 2 — Referral code & choose your plan</p>
             </div>
 
-            {/* Step indicator */}
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
               {[1, 2].map(s => (
                 <div key={s} style={{
@@ -532,7 +397,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               ))}
             </div>
 
-            {/* Referral code */}
             <label style={labelStyle}>Referral Code (Optional)</label>
             <div style={{ position: "relative", marginBottom: 4 }}>
               <input
@@ -558,7 +422,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                "If a friend referred you, enter their code here."}
             </p>
 
-            {/* Plan selection */}
             <label style={labelStyle}>Choose Your Plan</label>
 
             {/* Free plan */}
@@ -608,7 +471,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 transition: "all 0.15s",
               }}
             >
-              {/* Best value badge */}
               <div style={{
                 position: "absolute", top: 0, right: 0,
                 background: "linear-gradient(135deg, #667eea, #764ba2)",
