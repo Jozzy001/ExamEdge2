@@ -6,11 +6,14 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
+import { db } from "../firebase"
+import { collection, query, where, getDocs, orderBy, updateDoc, doc } from "firebase/firestore"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
   const { dark, toggleTheme } = useTheme()
   const [paywallType, setPaywallType] = useState(null)
   const [showTour, setShowTour] = useState(false)
+  const [adminMessage, setAdminMessage] = useState(null) // unread admin DM
 
   // Auto-set UNIBEN 2026 Post-UTME exam date if not already set
   useEffect(() => {
@@ -28,18 +31,119 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
     }
   }, [])
 
-  const handleLockedFeature = (type) => {
-    setPaywallType(type)
+  // Check for unread admin DMs on every load
+  useEffect(() => {
+    if (!authUser?.uid) return
+    const checkAdminMessages = async () => {
+      try {
+        const q = query(
+          collection(db, "messages"),
+          where("uid", "==", authUser.uid),
+          where("fromAdmin", "==", true),
+          where("status", "==", "unread"),
+          orderBy("createdAt", "desc")
+        )
+        const snap = await getDocs(q)
+        if (!snap.empty) {
+          // Show the most recent unread admin message
+          const msg = { id: snap.docs[0].id, ...snap.docs[0].data() }
+          setAdminMessage(msg)
+        }
+      } catch(e) {}
+    }
+    checkAdminMessages()
+  }, [authUser?.uid])
+
+  // Mark admin message as read when user dismisses
+  const handleDismissAdminMessage = async () => {
+    if (!adminMessage) return
+    try {
+      await updateDoc(doc(db, "messages", adminMessage.id), { status: "read" })
+    } catch(e) {}
+    setAdminMessage(null)
   }
+
+  const handleLockedFeature = (type) => setPaywallType(type)
 
   const faculties = university === "UNIBEN" ? UNIBEN_FACULTIES : {}
   const facultyInfo = faculties[faculty]
-
   const firstName = userData?.name?.split(" ")[0] || authUser?.displayName?.split(" ")[0] || authUser?.email?.split("@")[0] || "Student"
 
   return (
     <PageTransition>
     <div className="ee-page">
+
+      {/* ===== ADMIN MESSAGE POPUP ===== */}
+      {adminMessage && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 9999,
+          background: "rgba(0,0,0,0.65)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "24px"
+        }}>
+          <div style={{
+            background: "var(--bg)",
+            borderRadius: "var(--radius-xl)",
+            width: "100%", maxWidth: 400,
+            overflow: "hidden",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.4)"
+          }}>
+            {/* Header */}
+            <div style={{
+              background: "linear-gradient(135deg, #667eea, #764ba2)",
+              padding: "20px 20px 16px",
+              textAlign: "center"
+            }}>
+              <div style={{ fontSize: 40, marginBottom: 8 }}>📩</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#fff", marginBottom: 4 }}>
+                Message from ExamEdgeNG
+              </div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.8)" }}>
+                The team has something to tell you
+              </div>
+            </div>
+
+            {/* Message body */}
+            <div style={{ padding: "20px" }}>
+              <div style={{
+                background: "var(--surface)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-lg)",
+                padding: "16px",
+                marginBottom: 16,
+                fontSize: 14,
+                color: "var(--text)",
+                lineHeight: 1.7,
+                whiteSpace: "pre-wrap"
+              }}>
+                {adminMessage.message}
+              </div>
+
+              <div style={{
+                fontSize: 11, color: "var(--text3)",
+                textAlign: "center", marginBottom: 16
+              }}>
+                Sent by ExamEdgeNG Admin
+              </div>
+
+              <button
+                onClick={handleDismissAdminMessage}
+                style={{
+                  width: "100%", padding: "14px",
+                  background: "linear-gradient(135deg, #667eea, #764ba2)",
+                  color: "#fff", border: "none",
+                  borderRadius: "var(--radius-lg)",
+                  fontSize: 15, fontWeight: 800,
+                  cursor: "pointer", fontFamily: "var(--font-main)"
+                }}
+              >
+                Got it ✓
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="ee-header">
         <span className="ee-logo">ExamEdgeNG</span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -63,8 +167,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               border: `1px solid ${daysLeft <= 3 ? "rgba(239,68,68,0.3)" : "rgba(245,158,11,0.3)"}`,
               borderRadius: "var(--radius-md)", padding: "10px 14px",
               marginBottom: 12, fontSize: 13,
-              color: daysLeft <= 3 ? "#dc2626" : "#d97706",
-              fontWeight: 600
+              color: daysLeft <= 3 ? "#dc2626" : "#d97706", fontWeight: 600
             }}>
               ⏰ Your subscription expires in <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""}</strong>.
               {daysLeft <= 3 ? " Renew now to keep full access!" : " Renew soon to avoid losing access."}
@@ -80,7 +183,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           {isPaid ? "Full Access ✅" : "Free Plan — Tap to upgrade 🔒"}
         </div>
 
-        {/* XP / Gamification Bar */}
         <XPBar onNavigate={onNavigate} />
 
         {/* Profile card */}
@@ -108,7 +210,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         <span className="ee-label">Jump into</span>
 
-        {/* AI Tutor — full width, prominent at top */}
+        {/* AI Tutor */}
         <button
           className="ee-home-card"
           onClick={() => onNavigate("aiTutor")}
@@ -129,7 +231,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         </button>
 
         <div className="ee-home-grid">
-          {/* 1. CBT Mode */}
           <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
             <span className="home-card-icon">🧪</span>
             <div>
@@ -138,14 +239,12 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
-          {/* 2. Study Mode */}
           <button className="ee-home-card" onClick={() => onNavigate("subjectSelect")}>
             <span className="home-card-icon">📚</span>
             <div className="home-card-title">Study Mode</div>
             <div className="home-card-sub">Practice by topic</div>
           </button>
 
-          {/* 3. Hot Topics */}
           <button className="ee-home-card" onClick={() => {
             if (!isPaid) { handleLockedFeature("hotTopics"); return }
             onNavigate("hotTopics")
@@ -157,7 +256,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
-          {/* 4. Weak Areas */}
           <button className="ee-home-card" onClick={() => {
             if (!isPaid) { handleLockedFeature("weakAreas"); return }
             onNavigate("weak")
@@ -169,7 +267,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             </div>
           </button>
 
-          {/* 5. CBT History */}
           <button className="ee-home-card" onClick={() => {
             if (!isPaid) { handleLockedFeature("cbtHistory"); return }
             onNavigate("cbtHistory")
@@ -230,7 +327,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
         </button>
 
-        {/* Upgrade banner for free users */}
+        {/* Upgrade banner */}
         {!isPaid && (
           <div
             onClick={() => onNavigate("upgrade")}
@@ -268,7 +365,6 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <span style={{ fontSize: 16, opacity: 0.8 }}>→</span>
         </div>
 
-        {/* Settings */}
         <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("settings")}>
           ⚙️ Settings
         </button>

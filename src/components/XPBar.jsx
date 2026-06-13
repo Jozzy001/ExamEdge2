@@ -9,10 +9,19 @@ export const XPBar = ({ onNavigate }) => {
   const [showDetails, setShowDetails] = useState(false)
   const [examInput, setExamInput] = useState("")
   const [goalInput, setGoalInput] = useState(null)
+  const [countdownTick, setCountdownTick] = useState(0)
 
   useEffect(() => {
     setState(getGameState())
     setExamInput(localStorage.getItem("ee-examDate") || "")
+  }, [])
+
+  // Animate the countdown — pulse every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdownTick(t => t + 1)
+    }, 1000)
+    return () => clearInterval(interval)
   }, [])
 
   if (!state) return null
@@ -22,6 +31,29 @@ export const XPBar = ({ onNavigate }) => {
   const daysToExam = getDaysToExam()
   const goalPct = Math.min(100, Math.round((goal.done / goal.target) * 100))
   const goalDone = goal.done >= goal.target
+
+  // Urgency colour based on days left
+  const countdownColor =
+    daysToExam === null ? "var(--text3)"
+    : daysToExam <= 7 ? "#dc2626"
+    : daysToExam <= 30 ? "#d97706"
+    : "var(--primary)"
+
+  const countdownBg =
+    daysToExam === null ? "transparent"
+    : daysToExam <= 7 ? "rgba(220,38,38,0.08)"
+    : daysToExam <= 30 ? "rgba(217,119,6,0.08)"
+    : "rgba(102,126,234,0.08)"
+
+  const countdownBorder =
+    daysToExam === null ? "transparent"
+    : daysToExam <= 7 ? "rgba(220,38,38,0.25)"
+    : daysToExam <= 30 ? "rgba(217,119,6,0.25)"
+    : "rgba(102,126,234,0.2)"
+
+  // Pulse animation: alternates opacity every tick
+  const isPulsing = daysToExam !== null && daysToExam <= 7
+  const pulseOpacity = isPulsing ? (countdownTick % 2 === 0 ? 1 : 0.6) : 1
 
   return (
     <>
@@ -98,16 +130,69 @@ export const XPBar = ({ onNavigate }) => {
           </div>
         )}
 
-        {/* Exam countdown */}
+        {/* Animated exam countdown */}
         {daysToExam !== null && (
           <div style={{
-            marginTop: 8, textAlign: "center",
-            fontSize: 11, fontWeight: 700,
-            color: daysToExam <= 7 ? "var(--accent)" : "var(--text3)"
+            marginTop: 10,
+            background: countdownBg,
+            border: `1px solid ${countdownBorder}`,
+            borderRadius: "var(--radius-md)",
+            padding: "8px 12px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+            opacity: pulseOpacity,
+            transition: "opacity 0.4s ease",
           }}>
-            {daysToExam === 0
-              ? "🎓 Post-UTME day! Good luck!"
-              : `📅 ${daysToExam} day${daysToExam !== 1 ? "s" : ""} to Post-UTME`}
+            {/* Animated icon */}
+            <span style={{
+              fontSize: 18,
+              display: "inline-block",
+              animation: "none",
+              transform: countdownTick % 2 === 0 ? "scale(1.15)" : "scale(1)",
+              transition: "transform 0.4s ease"
+            }}>
+              {daysToExam === 0 ? "🎓" : daysToExam <= 7 ? "⚡" : daysToExam <= 30 ? "⏳" : "📅"}
+            </span>
+
+            <div style={{ textAlign: "center" }}>
+              {daysToExam === 0 ? (
+                <div style={{ fontSize: 13, fontWeight: 800, color: countdownColor }}>
+                  🎓 Post-UTME day! Good luck!
+                </div>
+              ) : (
+                <>
+                  <div style={{
+                    fontSize: 20, fontWeight: 900,
+                    color: countdownColor,
+                    letterSpacing: "-0.5px",
+                    lineHeight: 1,
+                  }}>
+                    {daysToExam}
+                    <span style={{ fontSize: 11, fontWeight: 700, marginLeft: 3 }}>
+                      day{daysToExam !== 1 ? "s" : ""}
+                    </span>
+                  </div>
+                  <div style={{
+                    fontSize: 10, fontWeight: 700,
+                    color: countdownColor, opacity: 0.75,
+                    textTransform: "uppercase", letterSpacing: "0.06em"
+                  }}>
+                    to Post-UTME
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Live indicator dot */}
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%",
+              background: countdownColor,
+              opacity: countdownTick % 2 === 0 ? 1 : 0.3,
+              transition: "opacity 0.4s ease",
+              flexShrink: 0
+            }} />
           </div>
         )}
       </div>
