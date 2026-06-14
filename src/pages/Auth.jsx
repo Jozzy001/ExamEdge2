@@ -145,25 +145,51 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setLoading(false)
   }
 
-  // Smart login — detects WhatsApp number OR email
+  // Smart login: WhatsApp number OR email
+  // Handles old email users who later added their phone number
   const handleLogin = async () => {
     if (!loginInput.trim()) { setError("Please enter your WhatsApp number or email"); return }
     if (!password) { setError("Please enter your password"); return }
     setError(""); setLoading(true)
     try {
-      let firebaseEmail
       if (isEmail(loginInput)) {
-        // Old user logging in with email
-        firebaseEmail = loginInput.trim()
+        // Direct email login - works for all old users
+        await signInWithEmailAndPassword(auth, loginInput.trim(), password)
+
       } else if (isValidPhone(loginInput)) {
-        // New user logging in with WhatsApp number
-        firebaseEmail = phoneToEmail(loginInput)
+        const digits = loginInput.replace(/\D/g, "")
+        const fakeEmail = phoneToEmail(loginInput)
+
+        try {
+          // First try: new-style login (phone converted to fake email)
+          await signInWithEmailAndPassword(auth, fakeEmail, password)
+        } catch (firstErr) {
+          if (firstErr.code === "auth/user-not-found" || firstErr.code === "auth/invalid-credential") {
+            // Second try: look up Firestore for old user who added this phone later
+            try {
+              const q = query(collection(db, "users"), where("phone", "==", digits))
+              const snap = await getDocs(q)
+              if (!snap.empty) {
+                const data = snap.docs[0].data()
+                const realEmail = data.authEmail || data.email
+                if (realEmail) {
+                  await signInWithEmailAndPassword(auth, realEmail, password)
+                } else {
+                  setError("Account found but no login email on record. Please log in with your email address.")
+                }
+              } else {
+                setError("No account found with this WhatsApp number. Try logging in with your email instead.")
+              }
+            } catch (lookupErr) {
+              setError(getErrorMessage(lookupErr.code))
+            }
+          } else {
+            setError(getErrorMessage(firstErr.code))
+          }
+        }
       } else {
         setError("Please enter a valid WhatsApp number or email address")
-        setLoading(false)
-        return
       }
-      await signInWithEmailAndPassword(auth, firebaseEmail, password)
     } catch (err) {
       setError(getErrorMessage(err.code))
     }

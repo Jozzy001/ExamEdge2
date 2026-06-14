@@ -776,7 +776,8 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                         {/* User details */}
                         <div style={{ marginBottom: 12 }}>
                           {[
-                            { label: "Email", value: user.email },
+                            { label: "WhatsApp", value: user.phone ? `0${user.phone.replace(/^0/, "")}` : "Not added" },
+                            { label: "Recovery Email", value: user.email && !user.email.includes("@examedgeng.com") ? user.email : "Not added" },
                             { label: "Plan", value: user.isPaid ? "💎 Paid" : "🆓 Free" },
                             { label: "Faculty", value: user.faculty || "⚠️ Not set" },
                             { label: "Exam Type", value: user.examType || "Not set" },

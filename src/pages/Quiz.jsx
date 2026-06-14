@@ -5,6 +5,7 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import PageTour, { TOURS } from "../components/PageTour"
+import { saveCBTRecord } from "../utils/cbtHistory"
 
 // =============================================
 // IMAGE RENDERER
@@ -129,7 +130,6 @@ const Calculator = ({ onClose }) => {
 // =============================================
 const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb", university = null, customCounts = null, englishFirst = false, isPaid = true, startFromIndex = 0, hotTopicFilter = null, authUser = null }) => {
 
-  // Get the right question pool
   const questionPool = useMemo(() => {
     if (examType === "postutme" && university) {
       return POST_UTME_UNIVERSITIES[university]?.questions || []
@@ -137,10 +137,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     return jambQuestions
   }, [examType, university])
 
-  // Default question counts per subject
   const getDefaultCount = (subj) => {
     if (examType === "jamb") return subj === "English" ? 60 : 40
-    return 40 // Post-UTME default
+    return 40
   }
 
   const filteredQuestions = useMemo(() => {
@@ -162,12 +161,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       })
       const ordered = []
       const subjectsToUse = subjectList || Object.keys(bySubject)
-
-      // English always comes first if englishFirst is true
       const sortedSubjects = englishFirst
         ? ["English", ...subjectsToUse.filter(s => s !== "English")]
         : subjectsToUse
-
       sortedSubjects.forEach(subj => {
         const pool = (bySubject[subj] || []).sort(() => Math.random() - 0.5)
         const count = customCounts?.[subj] ?? getDefaultCount(subj)
@@ -178,7 +174,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
 
     let base
     if (topic === "weak") {
-      // Read from CBT history for accurate weak area detection
       const cbtHistory = JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]")
       const grouped = {}
       cbtHistory.forEach(record => {
@@ -202,10 +197,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         return weakTopics.includes(q.topic) && (!subjectList || subjectList.includes(q.subject))
       }).sort(() => Math.random() - 0.5)
     } else if (topic === "hotTopics" || hotTopicFilter) {
-      // Filter by specific topic AND subject
       const filterTopic = hotTopicFilter || topic
       if (hotTopicFilter) {
-        // Specific topic selected from Hot Topics screen
         base = questionPool.filter(q => {
           if (q.passage && q.questions) return q.questions.some(inner =>
             inner.topic === filterTopic && (!subject || inner.subject === subject)
@@ -213,14 +206,12 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
           return q.topic === filterTopic && (!subject || q.subject === subject)
         }).sort(() => Math.random() - 0.5)
       } else {
-        // General hot topics — filter by isHotTopic OR fall back to all for subject
         base = questionPool.filter(q => {
           if (q.passage && q.questions) return q.questions.some(inner =>
             inner.isHotTopic === true && (!subject || inner.subject === subject)
           )
           return q.isHotTopic === true && (!subject || q.subject === subject)
         }).sort(() => Math.random() - 0.5)
-        // Fallback to subject questions if no isHotTopic found
         if (base.length === 0 && subject) {
           base = questionPool.filter(q => {
             if (q.passage && q.questions) return q.questions.some(inner => inner.subject === subject)
@@ -257,7 +248,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
   const [examTimeLeft, setExamTimeLeft] = useState(examType === "jamb" ? 3600 : 1800)
   const [examDuration, setExamDuration] = useState(examType === "jamb" ? 3600 : 1800)
   const [showCalc, setShowCalc] = useState(false)
-  // Custom counts state for start screen
   const [qCounts, setQCounts] = useState({})
   const [customTime, setCustomTime] = useState(examType === "jamb" ? 3600 : 1800)
 
@@ -292,7 +282,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     return () => clearTimeout(t)
   }, [examTimeLeft, started, finished, isCBT])
 
-  // SAVE QUIZ RESULTS AND CALCULATE AVERAGE SCORE
+  // SAVE QUIZ RESULTS
   useEffect(() => {
     if (!finished || filteredQuestions.length === 0) return
     const answers = filteredQuestions.map((q, i) => {
@@ -311,24 +301,18 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     const reportData = {
       score, total, percentage: Math.round((score / total) * 100),
       subjects: subjects || (subject ? [subject] : []),
-      examType, university, answers,
-      timeTaken,
+      examType, university, answers, timeTaken,
     }
 
     if (isCBT) {
       // Save cbtReport for CBTResult page
       localStorage.setItem("cbtReport", JSON.stringify(reportData))
 
-      // Save directly to ee-cbtHistory (don't rely on CBTResult being visited)
-      try {
-        const history = JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]")
-        const record = { ...reportData, id: `cbt_${Date.now()}`, date: new Date().toISOString() }
-        const updated = [record, ...history].slice(0, 50)
-        localStorage.setItem("ee-cbtHistory", JSON.stringify(updated))
-      } catch(e) {}
+      // ✅ Save to localStorage AND Firestore using saveCBTRecord
+      saveCBTRecord(reportData, authUser?.uid)
     }
 
-    // Update progress — APPEND not overwrite
+    // Update progress
     const existing = JSON.parse(localStorage.getItem("progress")) || []
     if (isCBT || isWeak) {
       const topicGroups = {}
@@ -341,63 +325,37 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       const newEntries = Object.values(topicGroups).map(s => ({
         topic: s.topic, subject: s.subject, score: s.score, total: s.total, date: new Date().toISOString()
       }))
-      // Append new entries to existing progress
       const allProgress = [...existing, ...newEntries]
       localStorage.setItem("progress", JSON.stringify(allProgress))
 
-      // SAVE AVERAGE SCORE TO FIRESTORE
       if (authUser?.uid) {
         try {
           const totalScore = allProgress.reduce((sum, quiz) => sum + (quiz.score || 0), 0)
           const totalQuestions = allProgress.reduce((sum, quiz) => sum + (quiz.total || 0), 0)
-          const averageScore = totalQuestions > 0 
-            ? Math.round((totalScore / totalQuestions) * 100) 
-            : 0
-
+          const averageScore = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0
           updateDoc(doc(db, "users", authUser.uid), {
-            averageScore: averageScore,
-            totalQuizzesCompleted: allProgress.length,
-            lastQuizAt: new Date().toISOString()
-          }).then(() => {
-            console.log("✅ Average score saved to Firestore:", averageScore)
-          }).catch(e => {
-            console.error("❌ Error saving to Firestore:", e)
-          })
-        } catch(e) {
-          console.error("Error calculating average:", e)
-        }
+            averageScore, totalQuizzesCompleted: allProgress.length, lastQuizAt: new Date().toISOString()
+          }).catch(() => {})
+        } catch(e) {}
       }
     } else {
       const newEntry = { topic, subject: subject || "General", score, total, date: new Date().toISOString() }
       const allProgress = [...existing, newEntry]
       localStorage.setItem("progress", JSON.stringify(allProgress))
 
-      // SAVE AVERAGE SCORE TO FIRESTORE
       if (authUser?.uid) {
         try {
           const totalScore = allProgress.reduce((sum, quiz) => sum + (quiz.score || 0), 0)
           const totalQuestions = allProgress.reduce((sum, quiz) => sum + (quiz.total || 0), 0)
-          const averageScore = totalQuestions > 0 
-            ? Math.round((totalScore / totalQuestions) * 100) 
-            : 0
-
+          const averageScore = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0
           updateDoc(doc(db, "users", authUser.uid), {
-            averageScore: averageScore,
-            totalQuizzesCompleted: allProgress.length,
-            lastQuizAt: new Date().toISOString()
-          }).then(() => {
-            console.log("✅ Average score saved to Firestore:", averageScore)
-          }).catch(e => {
-            console.error("❌ Error saving to Firestore:", e)
-          })
-        } catch(e) {
-          console.error("Error calculating average:", e)
-        }
+            averageScore, totalQuizzesCompleted: allProgress.length, lastQuizAt: new Date().toISOString()
+          }).catch(() => {})
+        } catch(e) {}
       }
     }
   }, [finished])
 
-  // EDGE CASES
   if (filteredQuestions.length === 0 && (started || isWeak)) {
     return (
       <div className="ee-page">
@@ -416,7 +374,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
                     <p style={{ fontWeight: 700, fontSize: 16, marginBottom: 8 }}>No CBT test taken yet!</p>
                     <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, marginBottom: 16 }}>
                       Take CBT tests regularly so we can monitor your performance and identify your weak areas.
-                      The more tests you take, the better we can help you improve! 📊
                     </p>
                   </>
                 ) : (
@@ -473,7 +430,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             </div>
           </div>
 
-          {/* Subject summary */}
           <div style={{ marginBottom: 16 }}>
             {subjectList.map(subj => {
               const count = customCounts?.[subj] ?? qCounts[subj] ?? getDefaultCount(subj)
@@ -490,7 +446,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             })}
           </div>
 
-          {/* Time selector */}
           <span className="ee-label" style={{ marginTop: 8, display: "block" }}>Time limit</span>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
             {timeOptions.map(opt => (
@@ -524,7 +479,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     )
   }
 
-  // HELPERS
   const saveAnswer = (index = currentIndex, value = selected) => {
     if (!filteredQuestions[index]) return
     answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
@@ -541,7 +495,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     setFinished(true)
   }
   const goToQuestion = (i) => {
-    // Block free users from going past question 5 in study mode
     if (isStudyMode && !isPaid && examType === "postutme" && i >= FREE_STUDY_LIMIT) {
       setShowStudyPaywall(true)
       return
@@ -559,12 +512,8 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     const pct = Math.round((score / total) * 100)
     const emoji = pct >= 70 ? "🌟" : pct >= 50 ? "👍" : "💪"
     const msg = pct >= 70 ? "Excellent! Keep it up." : pct >= 50 ? "Good effort! Review your mistakes." : "Don't give up — practice more!"
+    const postUtmeEquiv = Math.round(pct)
 
-    // Calculate Post-UTME equivalent (typically scored over 100 or 400 for JAMB)
-    const postUtmeEquiv = Math.round(pct) // same as percentage for Post-UTME
-    const jambEquiv = Math.round(pct * 4) // JAMB is /400
-
-    // Subject breakdown for CBT
     const subjectBreakdown = {}
     filteredQuestions.forEach((q, i) => {
       const subj = q.subject || "General"
@@ -581,8 +530,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
           <span style={{ width: 60 }} />
         </header>
         <div className="ee-content">
-
-          {/* Score card */}
           <div style={{
             background: `linear-gradient(135deg, ${pct >= 70 ? "#16a34a" : pct >= 50 ? "#d97706" : "#dc2626"}, ${pct >= 70 ? "#15803d" : pct >= 50 ? "#b45309" : "#b91c1c"})`,
             borderRadius: "var(--radius-xl)", padding: "28px 20px",
@@ -595,7 +542,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             <div style={{ fontSize: 14, opacity: 0.9 }}>{msg}</div>
           </div>
 
-          {/* Post-UTME equivalent */}
           {isCBT && examType === "postutme" && (
             <div style={{
               background: "var(--surface)", border: "1.5px solid var(--primary)",
@@ -616,12 +562,10 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             </div>
           )}
 
-          {/* Subject breakdown for CBT */}
           {isCBT && Object.keys(subjectBreakdown).length > 1 && (
             <div style={{
               background: "var(--surface)", border: "1px solid var(--border)",
-              borderRadius: "var(--radius-lg)", padding: "14px 16px",
-              marginBottom: 16
+              borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 16
             }}>
               <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>
                 📚 Subject Breakdown
@@ -644,7 +588,6 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             </div>
           )}
 
-          {/* Action buttons */}
           <div className="ee-btn-row">
             {isCBT && <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("cbtResult")}>📖 Review Answers</button>}
             <button className="ee-btn ee-btn-secondary" onClick={() => onNavigate("progress")}>📊 View Progress</button>
@@ -655,13 +598,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     )
   }
 
-  // MAIN QUIZ UI — only return null if not finished
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
   return (
     <div className="ee-page">
-      {/* Paywall modal */}
       {showStudyPaywall && (
         <PaywallPrompt
           type="studyQuestions"
@@ -670,25 +611,21 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         />
       )}
 
-      {/* Free questions remaining banner */}
       {isStudyMode && !isPaid && examType === "postutme" && !finished && (
-        <div
-          onClick={() => onNavigate("upgrade")}
-          style={{
-            background: currentIndex >= FREE_STUDY_LIMIT - 1
-              ? "linear-gradient(135deg, #667eea, #764ba2)"
-              : "rgba(102,126,234,0.1)",
-            padding: "8px 16px",
-            fontSize: 12, fontWeight: 700, textAlign: "center",
-            cursor: "pointer",
-            color: currentIndex >= FREE_STUDY_LIMIT - 1 ? "#fff" : "#667eea",
-          }}
-        >
+        <div onClick={() => onNavigate("upgrade")} style={{
+          background: currentIndex >= FREE_STUDY_LIMIT - 1
+            ? "linear-gradient(135deg, #667eea, #764ba2)"
+            : "rgba(102,126,234,0.1)",
+          padding: "8px 16px", fontSize: 12, fontWeight: 700, textAlign: "center",
+          cursor: "pointer",
+          color: currentIndex >= FREE_STUDY_LIMIT - 1 ? "#fff" : "#667eea",
+        }}>
           {currentIndex >= FREE_STUDY_LIMIT - 1
             ? "🔒 Last free question — Upgrade to unlock all questions"
             : `🔓 ${FREE_STUDY_LIMIT - currentIndex} free question${FREE_STUDY_LIMIT - currentIndex !== 1 ? "s" : ""} left · Upgrade for unlimited access`}
         </div>
       )}
+
       <header className="ee-header">
         <button className="ee-back-btn" onClick={() => {
           if (onBack) onBack()
@@ -778,19 +715,15 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         <div className="ee-nav-row mt-8">
           <button className="ee-nav-btn" onClick={() => goToQuestion(Math.max(currentIndex - 1, 0))} disabled={currentIndex === 0}>← Prev</button>
           {currentIndex < filteredQuestions.length - 1 ? (
-            <button
-              className="ee-nav-btn"
-              onClick={() => goToQuestion(currentIndex + 1)}
+            <button className="ee-nav-btn" onClick={() => goToQuestion(currentIndex + 1)}
               style={{
                 background: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
                   ? "linear-gradient(135deg, #667eea, #764ba2)" : undefined,
                 color: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
                   ? "#fff" : undefined,
-              }}
-            >
+              }}>
               {isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
-                ? "🔒 Upgrade to continue"
-                : "Next →"}
+                ? "🔒 Upgrade to continue" : "Next →"}
             </button>
           ) : isCBT ? (
             <button className="ee-nav-btn" onClick={handleSubmitExam} style={{ background: "var(--accent)", color: "#fff", border: "none" }}>Submit 🏁</button>

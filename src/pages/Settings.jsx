@@ -30,17 +30,12 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
     const fetchMyMessages = async () => {
       if (!auth.currentUser?.uid) return
       try {
-        const q = query(
-          collection(db, "messages"),
-          where("uid", "==", auth.currentUser.uid)
-        )
+        const q = query(collection(db, "messages"), where("uid", "==", auth.currentUser.uid))
         const snap = await getDocs(q)
         const msgs = snap.docs.map(d => ({ id: d.id, ...d.data() }))
         msgs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0))
         setMyMessages(msgs)
-      } catch (e) {
-        console.error(e)
-      }
+      } catch (e) { console.error(e) }
     }
     fetchMyMessages()
   }, [])
@@ -60,27 +55,19 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
       setSuccess("✅ Message sent! We'll get back to you soon.")
       setContactMessage("")
       setShowContactForm(false)
-    } catch (e) {
-      setError("Failed to send message. Please try again.")
-    }
+    } catch (e) { setError("Failed to send message. Please try again.") }
     setLoading(false)
   }
 
   const handleSaveUsername = async () => {
-    if (!newUsername.trim() || newUsername.trim().length < 2) {
-      setError("Username must be at least 2 characters"); return
-    }
+    if (!newUsername.trim() || newUsername.trim().length < 2) { setError("Username must be at least 2 characters"); return }
     setLoading(true); setError(""); setSuccess("")
     try {
-      await updateDoc(doc(db, "users", auth.currentUser.uid), {
-        name: newUsername.trim()
-      })
+      await updateDoc(doc(db, "users", auth.currentUser.uid), { name: newUsername.trim() })
       setSuccess("Username updated!")
       setEditingUsername(false)
       authUser.name = newUsername.trim()
-    } catch (err) {
-      setError("Failed to update username. Try again.")
-    }
+    } catch (err) { setError("Failed to update username. Try again.") }
     setLoading(false)
   }
 
@@ -99,9 +86,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
     } catch (err) {
       if (err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
         setError("Current password is incorrect.")
-      } else {
-        setError("Failed to change password. Try again.")
-      }
+      } else { setError("Failed to change password. Try again.") }
     }
     setLoading(false)
   }
@@ -120,8 +105,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
 
   const inputStyle = {
     width: "100%", padding: "12px 14px",
-    border: "1.5px solid var(--border)",
-    borderRadius: "var(--radius-md)",
+    border: "1.5px solid var(--border)", borderRadius: "var(--radius-md)",
     background: "var(--surface)", fontSize: 14,
     fontFamily: "var(--font-main)", color: "var(--text)",
     outline: "none", boxSizing: "border-box", marginBottom: 10
@@ -144,11 +128,21 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
       <span style={{ fontSize: 20, flexShrink: 0 }}>{icon}</span>
       <div style={{ flex: 1 }}>
         <div style={{ fontSize: 11, color: "var(--text3)", fontWeight: 700 }}>{label}</div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{value}</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: value === "Not added" ? "var(--text3)" : "var(--text)", fontStyle: value === "Not added" ? "italic" : "normal" }}>{value}</div>
       </div>
       {action}
     </div>
   )
+
+  // Format phone for display
+  const displayPhone = userData?.phone
+    ? (userData.phone.startsWith("0") ? userData.phone : `0${userData.phone}`)
+    : "Not added"
+
+  // Show real email only — hide fake @examedgeng.com emails
+  const displayEmail = userData?.email && !userData.email.includes("@examedgeng.com")
+    ? userData.email
+    : "Not added"
 
   return (
     <PageTransition>
@@ -205,7 +199,12 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           )
         )}
 
-        {row("📧", "Email", authUser?.email || auth.currentUser?.email || "—", null)}
+        {/* WhatsApp number — login ID */}
+        {row("📱", "WhatsApp Number", displayPhone, null)}
+
+        {/* Recovery email — real email only */}
+        {row("📧", "Recovery Email", displayEmail, null)}
+
         {row("🎓", "Faculty", faculty || "—", null)}
 
         {/* ===== STATS ===== */}
@@ -233,7 +232,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         {/* ===== PREFERENCES ===== */}
         {sectionTitle("⚙️ Preferences")}
 
-        {/* Dark mode */}
         <div style={{
           display: "flex", alignItems: "center", gap: 12,
           background: "var(--surface)", border: "1px solid var(--border)",
@@ -257,7 +255,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </button>
         </div>
 
-        {/* Change faculty */}
         <div style={{
           display: "flex", alignItems: "center", gap: 12,
           background: "var(--surface)", border: "1px solid var(--border)",
@@ -269,14 +266,10 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             <div style={{ fontSize: 11, color: "var(--text3)" }}>Switch to a different department</div>
           </div>
           <button onClick={() => {
-            const confirmed = window.confirm(
-              "⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure you want to continue?"
-            )
+            const confirmed = window.confirm("⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure?")
             if (confirmed) {
               const keysToKeep = ["ee-version", "ee-cached-user", "ee-cached-userdata", "ee-splash-done", "ee-read-notifs"]
-              Object.keys(localStorage).forEach(key => {
-                if (!keysToKeep.includes(key)) localStorage.removeItem(key)
-              })
+              Object.keys(localStorage).forEach(key => { if (!keysToKeep.includes(key)) localStorage.removeItem(key) })
               onReset(2)
             }
           }} style={{
@@ -286,7 +279,6 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           }}>Change</button>
         </div>
 
-        {/* Replay tour */}
         <div style={{
           display: "flex", alignItems: "center", gap: 12,
           background: "var(--surface)", border: "1px solid var(--border)",
@@ -345,7 +337,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         )}
 
         {/* Admin access */}
-        {authUser?.email === "jce680@gmail.com" && (
+        {(authUser?.email === "jce680@gmail.com" || authUser?.authEmail === "jce680@gmail.com") && (
           <>
             {sectionTitle("🛡️ Admin")}
             <button onClick={() => onNavigate("admin")} style={{
@@ -382,9 +374,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               background: "#fff", color: "#667eea", border: "none", borderRadius: 10,
               padding: "12px 24px", fontWeight: 700, fontSize: 14, cursor: "pointer",
               width: "100%", fontFamily: "var(--font-main)"
-            }}>
-              Get Full Access — ₦3,000
-            </button>
+            }}>Get Full Access — ₦3,000</button>
           </div>
         ) : (
           <div style={{
@@ -402,46 +392,31 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
-        {/* ===== REFERRALS & EARNINGS — link to dedicated page ===== */}
+        {/* ===== REFERRALS ===== */}
         {sectionTitle("💰 Referrals & Earnings")}
 
-        <button
-          onClick={() => onNavigate("referrals")}
-          style={{
-            width: "100%", display: "flex", alignItems: "center", gap: 14,
-            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-            borderRadius: "var(--radius-lg)", padding: "16px 18px",
-            border: "none", cursor: "pointer", marginBottom: 12,
-            color: "#fff", fontFamily: "var(--font-main)",
-            boxShadow: "0 4px 14px rgba(16,185,129,0.25)"
-          }}
-        >
+        <button onClick={() => onNavigate("referrals")} style={{
+          width: "100%", display: "flex", alignItems: "center", gap: 14,
+          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+          borderRadius: "var(--radius-lg)", padding: "16px 18px",
+          border: "none", cursor: "pointer", marginBottom: 12,
+          color: "#fff", fontFamily: "var(--font-main)",
+          boxShadow: "0 4px 14px rgba(16,185,129,0.25)"
+        }}>
           <span style={{ fontSize: 28 }}>💰</span>
           <div style={{ flex: 1, textAlign: "left" }}>
             <div style={{ fontSize: 14, fontWeight: 800 }}>View Earnings & Referrals</div>
-            <div style={{ fontSize: 12, opacity: 0.9 }}>
-              Total earned · Pending · Payment history · Share your code
-            </div>
+            <div style={{ fontSize: 12, opacity: 0.9 }}>Total earned · Pending · Payment history · Share your code</div>
           </div>
           <span style={{ fontSize: 18, opacity: 0.8 }}>→</span>
         </button>
 
-        {/* Quick earnings preview */}
         {(userData?.referralEarnings || 0) > 0 && (
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-            gap: 8, marginBottom: 12
-          }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 12 }}>
             {[
               { label: "Total Earned", value: `₦${(userData?.referralEarnings || 0).toLocaleString()}`, color: "#15803d", bg: "rgba(34,197,94,0.08)", border: "rgba(34,197,94,0.2)" },
               { label: "Paid Out", value: `₦${(userData?.referralPaidOut || 0).toLocaleString()}`, color: "var(--primary)", bg: "var(--primary-light)", border: "rgba(102,126,234,0.2)" },
-              {
-                label: "Pending",
-                value: `₦${((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}`,
-                color: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "#d97706" : "var(--text3)",
-                bg: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "rgba(245,158,11,0.08)" : "var(--surface2)",
-                border: (userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0) > 0 ? "rgba(245,158,11,0.3)" : "var(--border)"
-              },
+              { label: "Pending", value: `₦${((userData?.referralEarnings || 0) - (userData?.referralPaidOut || 0)).toLocaleString()}`, color: "#d97706", bg: "rgba(245,158,11,0.08)", border: "rgba(245,158,11,0.3)" },
             ].map((s, i) => (
               <div key={i} style={{
                 background: s.bg, border: `1px solid ${s.border}`,
@@ -461,25 +436,18 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           background: "var(--surface)", border: "1px solid var(--border)",
           borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: 8
         }}>
-          <div
-            onClick={() => { setShowInbox(p => !p); setShowContactForm(false) }}
-            style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", gap: 12 }}
-          >
+          <div onClick={() => { setShowInbox(p => !p); setShowContactForm(false) }}
+            style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "center", gap: 12 }}>
             <span style={{ fontSize: 20 }}>💬</span>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", display: "flex", alignItems: "center", gap: 8 }}>
                 Contact Support
                 {myMessages.some(m => m.replied || m.fromAdmin) && (
-                  <span style={{
-                    fontSize: 10, fontWeight: 800, background: "#22c55e", color: "#fff",
-                    padding: "2px 8px", borderRadius: 10
-                  }}>NEW REPLY</span>
+                  <span style={{ fontSize: 10, fontWeight: 800, background: "#22c55e", color: "#fff", padding: "2px 8px", borderRadius: 10 }}>NEW REPLY</span>
                 )}
               </div>
               <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                {myMessages.length === 0
-                  ? "Send a message to the admin"
-                  : `${myMessages.length} message${myMessages.length !== 1 ? "s" : ""} · tap to view`}
+                {myMessages.length === 0 ? "Send a message to the admin" : `${myMessages.length} message${myMessages.length !== 1 ? "s" : ""} · tap to view`}
               </div>
             </div>
             <span style={{ fontSize: 16, color: "var(--text3)", transition: "transform 0.2s", transform: showInbox ? "rotate(90deg)" : "rotate(0deg)" }}>›</span>
@@ -515,12 +483,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                             borderRadius: "14px 14px 14px 4px", padding: "10px 14px", fontSize: 13, lineHeight: 1.5, color: "var(--text)"
                           }}>
                             <div style={{ fontSize: 10, color: "var(--primary)", marginBottom: 4, fontWeight: 800 }}>
-                              ExamEdgeNG Support · {(msg.repliedAt || msg.createdAt)
-                                ? new Date(msg.fromAdmin
-                                    ? (msg.createdAt?.toDate ? msg.createdAt.toDate() : new Date(msg.createdAt))
-                                    : msg.repliedAt
-                                  ).toLocaleDateString("en-NG", { day: "numeric", month: "short" })
-                                : "—"}
+                              ExamEdgeNG Support
                             </div>
                             {msg.fromAdmin ? msg.message : msg.lastReply}
                           </div>
@@ -534,29 +497,22 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                   ))}
                 </div>
               )}
-
               <div style={{ padding: "12px 16px", borderTop: myMessages.length > 0 ? "1px solid var(--border)" : "none" }}>
                 {!showContactForm ? (
                   <button onClick={() => setShowContactForm(true)} style={{
                     width: "100%", padding: "11px", background: "var(--primary)", color: "#fff",
                     border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13,
                     cursor: "pointer", fontFamily: "var(--font-main)"
-                  }}>
-                    + New Message
-                  </button>
+                  }}>+ New Message</button>
                 ) : (
                   <>
-                    <textarea
-                      value={contactMessage}
-                      onChange={e => setContactMessage(e.target.value)}
-                      placeholder="Describe your issue or question..."
-                      rows={3}
+                    <textarea value={contactMessage} onChange={e => setContactMessage(e.target.value)}
+                      placeholder="Describe your issue or question..." rows={3}
                       style={{
                         width: "100%", padding: "12px 14px",
                         border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)",
                         background: "var(--surface2)", fontSize: 13, fontFamily: "var(--font-main)",
-                        color: "var(--text)", outline: "none", boxSizing: "border-box",
-                        resize: "none", marginBottom: 8
+                        color: "var(--text)", outline: "none", boxSizing: "border-box", resize: "none", marginBottom: 8
                       }}
                     />
                     <div style={{ display: "flex", gap: 8 }}>
@@ -564,12 +520,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
                         flex: 2, padding: "10px",
                         background: loading || !contactMessage.trim() ? "#ccc" : "var(--primary)",
                         color: "#fff", border: "none", borderRadius: "var(--radius-md)",
-                        fontWeight: 800, fontSize: 13,
-                        cursor: loading || !contactMessage.trim() ? "not-allowed" : "pointer",
-                        fontFamily: "var(--font-main)"
-                      }}>
-                        {loading ? "Sending..." : "Send →"}
-                      </button>
+                        fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)"
+                      }}>{loading ? "Sending..." : "Send →"}</button>
                       <button onClick={() => { setShowContactForm(false); setContactMessage("") }} style={{
                         flex: 1, padding: "10px", background: "var(--surface2)", color: "var(--text2)",
                         border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
@@ -583,14 +535,11 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           )}
         </div>
 
-        {/* Log out */}
         <button onClick={handleLogout} className="ee-btn" style={{
           width: "100%", marginTop: 8, marginBottom: 8,
           background: "rgba(255,107,107,0.1)", border: "1px solid rgba(255,107,107,0.3)",
           color: "var(--accent)", fontWeight: 800
-        }}>
-          🚪 Log Out
-        </button>
+        }}>🚪 Log Out</button>
 
         <div style={{ textAlign: "center", fontSize: 11, color: "var(--text3)", marginTop: 8 }}>
           ExamEdgeNG v1.0 · {examType === "jamb" ? "JAMB Prep" : examType === "postutme" ? "Post-UTME Prep" : "Exam Prep"}
