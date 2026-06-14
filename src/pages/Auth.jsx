@@ -13,12 +13,26 @@ import {
 import { useTheme } from "../context/ThemeContext"
 import { ButtonSpinner } from "../components/LoadingScreen"
 
+const phoneToEmail = (phone) => {
+  const digits = phone.replace(/\D/g, "")
+  return `${digits}@examedgeng.com`
+}
+
+const isValidPhone = (input) => {
+  const digits = input.replace(/\D/g, "")
+  return digits.length >= 10 && digits.length <= 14 && !input.includes("@")
+}
+
+const isEmail = (input) => input.includes("@")
+
 const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const { dark, toggleTheme } = useTheme()
-  const [mode, setMode] = useState("login") // login | signup | reset
-  const [step, setStep] = useState(1) // signup step: 1=details, 2=referral
+  const [mode, setMode] = useState("login")
+  const [step, setStep] = useState(1)
   const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
+  const [loginInput, setLoginInput] = useState("") // WhatsApp number OR email
   const [password, setPassword] = useState("")
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
@@ -26,6 +40,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [resetSent, setResetSent] = useState(false)
+  const [resetEmail, setResetEmail] = useState("")
 
   // Step 2 fields
   const [referralCode, setReferralCode] = useState("")
@@ -76,12 +91,12 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
 
   const getErrorMessage = (code) => {
     switch (code) {
-      case "auth/email-already-in-use": return "An account with this email already exists. Please log in."
-      case "auth/invalid-email": return "Please enter a valid email address."
+      case "auth/email-already-in-use": return "An account with this WhatsApp number already exists. Please log in."
+      case "auth/invalid-email": return "Please enter a valid WhatsApp number or email."
       case "auth/weak-password": return "Password must be at least 6 characters."
-      case "auth/user-not-found": return "No account found with this email."
+      case "auth/user-not-found": return "No account found. Please check your WhatsApp number or email."
       case "auth/wrong-password": return "Incorrect password. Please try again."
-      case "auth/invalid-credential": return "Incorrect email or password. Please try again."
+      case "auth/invalid-credential": return "Incorrect details. Please check and try again."
       case "auth/too-many-requests": return "Too many attempts. Please try again later."
       default: return "Something went wrong. Please try again."
     }
@@ -89,18 +104,19 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
 
   const handleNextStep = () => {
     if (!name.trim() || name.trim().length < 2) { setError("Please enter a username"); return }
-    if (!email.includes("@")) { setError("Please enter a valid email address"); return }
+    if (!isValidPhone(phone)) { setError("Please enter a valid WhatsApp number"); return }
     if (password.length < 6) { setError("Password must be at least 6 characters"); return }
     if (password !== confirmPassword) { setError("Passwords do not match"); return }
+    if (email && !email.includes("@")) { setError("Please enter a valid email address or leave it blank"); return }
     setError("")
     setStep(2)
   }
 
-  // Always creates a free account — paid option hidden for now
   const handleSignup = async () => {
     setError(""); setLoading(true)
     try {
-      const result = await createUserWithEmailAndPassword(auth, email.trim(), password)
+      const fakeEmail = phoneToEmail(phone)
+      const result = await createUserWithEmailAndPassword(auth, fakeEmail, password)
       const user = result.user
 
       const namePart = name.trim().split(" ")[0].toUpperCase().slice(0, 4)
@@ -110,7 +126,9 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
       const userData = {
         uid: user.uid,
         name: name.trim(),
-        email: user.email,
+        phone: phone.replace(/\D/g, ""),
+        email: email.trim() || null,
+        authEmail: fakeEmail,
         createdAt: serverTimestamp(),
         lastLogin: serverTimestamp(),
         isPaid: false,
@@ -127,12 +145,25 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     setLoading(false)
   }
 
+  // Smart login — detects WhatsApp number OR email
   const handleLogin = async () => {
-    if (!email.includes("@")) { setError("Please enter a valid email address"); return }
+    if (!loginInput.trim()) { setError("Please enter your WhatsApp number or email"); return }
     if (!password) { setError("Please enter your password"); return }
     setError(""); setLoading(true)
     try {
-      await signInWithEmailAndPassword(auth, email.trim(), password)
+      let firebaseEmail
+      if (isEmail(loginInput)) {
+        // Old user logging in with email
+        firebaseEmail = loginInput.trim()
+      } else if (isValidPhone(loginInput)) {
+        // New user logging in with WhatsApp number
+        firebaseEmail = phoneToEmail(loginInput)
+      } else {
+        setError("Please enter a valid WhatsApp number or email address")
+        setLoading(false)
+        return
+      }
+      await signInWithEmailAndPassword(auth, firebaseEmail, password)
     } catch (err) {
       setError(getErrorMessage(err.code))
     }
@@ -140,13 +171,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   }
 
   const handleReset = async () => {
-    if (!email.includes("@")) { setError("Please enter your email address"); return }
+    if (!resetEmail.includes("@")) { setError("Please enter your recovery email address"); return }
     setError(""); setLoading(true)
     try {
-      await sendPasswordResetEmail(auth, email.trim())
+      await sendPasswordResetEmail(auth, resetEmail.trim())
       setResetSent(true)
     } catch (err) {
-      setError(getErrorMessage(err.code))
+      setError("Could not send reset email. Contact us on WhatsApp if you need help.")
     }
     setLoading(false)
   }
@@ -183,26 +214,47 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
             <div style={{ textAlign: "center", marginBottom: 32, marginTop: 16 }}>
               <div style={{ fontSize: 56, marginBottom: 16 }}>🔑</div>
               <h2 className="ee-title">Reset Password</h2>
-              <p className="ee-subtitle">Enter your email and we'll send you a reset link.</p>
+              <p className="ee-subtitle">Enter the recovery email you provided when signing up.</p>
             </div>
             {resetSent ? (
-              <div style={{ background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)",
-                borderRadius: "var(--radius-md)", padding: "16px", textAlign: "center", marginBottom: 16 }}>
+              <div style={{
+                background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)",
+                borderRadius: "var(--radius-md)", padding: "16px", textAlign: "center", marginBottom: 16
+              }}>
                 <div style={{ fontSize: 28, marginBottom: 8 }}>✅</div>
-                <p style={{ fontSize: 14, color: "var(--success)", fontWeight: 700, margin: 0 }}>Reset link sent! Check your email.</p>
+                <p style={{ fontSize: 14, color: "var(--success)", fontWeight: 700, margin: 0 }}>
+                  Reset link sent! Check your email.
+                </p>
               </div>
             ) : (
               <>
-                <label style={labelStyle}>Email Address</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                <label style={labelStyle}>Recovery Email</label>
+                <input type="email" value={resetEmail} onChange={e => setResetEmail(e.target.value)}
                   placeholder="your@email.com" style={inputStyle} />
+
+                <div style={{
+                  background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.3)",
+                  borderRadius: "var(--radius-md)", padding: "12px 14px", marginBottom: 16,
+                  fontSize: 12, color: "#92400e", lineHeight: 1.6
+                }}>
+                  ⚠️ <strong>Didn't add a recovery email?</strong> Contact us and we'll help reset your account.{" "}
+                  <a href="https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K" target="_blank" rel="noreferrer"
+                    style={{ color: "var(--primary)", fontWeight: 700, textDecoration: "none" }}>
+                    WhatsApp us
+                  </a>
+                  {" "}or email{" "}
+                  <a href="mailto:jce680@gmail.com" style={{ color: "var(--primary)", fontWeight: 700, textDecoration: "none" }}>
+                    jce680@gmail.com
+                  </a>
+                </div>
+
                 {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12 }}>{error}</div>}
                 <button className="ee-btn ee-btn-primary" onClick={handleReset} disabled={loading}>
                   {loading ? "Sending..." : "Send Reset Link →"}
                 </button>
               </>
             )}
-            <button onClick={() => { setMode("login"); setResetSent(false); setError("") }} style={{
+            <button onClick={() => { setMode("login"); setResetSent(false); setError(""); setResetEmail("") }} style={{
               background: "none", border: "none", color: "var(--primary)", fontWeight: 700,
               fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)",
               marginTop: 12, display: "block", width: "100%", textAlign: "center"
@@ -222,10 +274,15 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               <p className="ee-subtitle">Log in to continue your exam prep.</p>
             </div>
 
-            <label style={labelStyle}>Email Address</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)}
-              placeholder="your@email.com" style={inputStyle}
-              onKeyDown={e => e.key === "Enter" && handleLogin()} />
+            <label style={labelStyle}>WhatsApp Number or Email</label>
+            <input
+              type="text"
+              value={loginInput}
+              onChange={e => setLoginInput(e.target.value)}
+              placeholder="08012345678 or your@email.com"
+              style={inputStyle}
+              onKeyDown={e => e.key === "Enter" && handleLogin()}
+            />
 
             <label style={labelStyle}>Password</label>
             <div style={{ position: "relative", marginBottom: 12 }}>
@@ -246,9 +303,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               display: "block", textAlign: "right", width: "100%", marginBottom: 16
             }}>Forgot password?</button>
 
-            {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12,
-              background: "rgba(255,107,107,0.1)", padding: "10px 14px",
-              borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)" }}>{error}</div>}
+            {error && (
+              <div style={{
+                color: "var(--accent)", fontSize: 13, marginBottom: 12,
+                background: "rgba(255,107,107,0.1)", padding: "10px 14px",
+                borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)"
+              }}>{error}</div>
+            )}
 
             <button className="ee-btn ee-btn-primary" onClick={handleLogin} disabled={loading}>
               {loading ? <><ButtonSpinner />Logging in...</> : "Log In →"}
@@ -276,15 +337,13 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
 
               <p style={{ textAlign: "center", fontSize: 12, color: "var(--text3)", marginTop: 10 }}>
                 Need help?{" "}
-                <a href="mailto:jce680@gmail.com" style={{
-                  color: "var(--primary)", fontWeight: 700, textDecoration: "none"
-                }}>Contact us</a>
+                <a href="mailto:jce680@gmail.com" style={{ color: "var(--primary)", fontWeight: 700, textDecoration: "none" }}>Contact us</a>
               </p>
             </div>
           </>
         )}
 
-        {/* ===== SIGNUP STEP 1: Details ===== */}
+        {/* ===== SIGNUP STEP 1 ===== */}
         {mode === "signup" && step === 1 && (
           <>
             <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
@@ -309,9 +368,12 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
             <input type="text" value={name} onChange={e => setName(e.target.value)}
               placeholder="e.g. chukwuemeka01" style={inputStyle} />
 
-            <label style={labelStyle}>Email Address</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)}
-              placeholder="your@email.com" style={inputStyle} />
+            <label style={labelStyle}>WhatsApp Number</label>
+            <input type="tel" value={phone} onChange={e => setPhone(e.target.value)}
+              placeholder="e.g. 08012345678" style={inputStyle} />
+            <p style={{ fontSize: 11, color: "var(--text3)", marginTop: -8, marginBottom: 14, lineHeight: 1.5 }}>
+              📌 This is your login ID. Use your active WhatsApp number.
+            </p>
 
             <label style={labelStyle}>Password</label>
             <div style={{ position: "relative", marginBottom: 12 }}>
@@ -346,23 +408,42 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               }}>{showConfirmPass ? "🙈" : "👁️"}</button>
             </div>
             {confirmPassword && confirmPassword !== password && (
-              <p style={{ fontSize: 12, color: "#ef4444", margin: "-8px 0 12px", fontWeight: 600 }}>
-                ❌ Passwords do not match
-              </p>
+              <p style={{ fontSize: 12, color: "#ef4444", margin: "-8px 0 12px", fontWeight: 600 }}>❌ Passwords do not match</p>
             )}
             {confirmPassword && confirmPassword === password && (
-              <p style={{ fontSize: 12, color: "#22c55e", margin: "-8px 0 12px", fontWeight: 600 }}>
-                ✓ Passwords match
-              </p>
+              <p style={{ fontSize: 12, color: "#22c55e", margin: "-8px 0 12px", fontWeight: 600 }}>✓ Passwords match</p>
             )}
 
-            {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12,
-              background: "rgba(255,107,107,0.1)", padding: "10px 14px",
-              borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)" }}>{error}</div>}
+            {/* Optional recovery email */}
+            <div style={{
+              background: "rgba(102,126,234,0.06)",
+              border: "1px solid rgba(102,126,234,0.2)",
+              borderRadius: "var(--radius-lg)",
+              padding: "14px 16px", marginBottom: 16
+            }}>
+              <label style={{ ...labelStyle, color: "var(--primary)", marginBottom: 4 }}>
+                Email Address{" "}
+                <span style={{ fontWeight: 600, fontSize: 10, textTransform: "none", letterSpacing: 0, color: "var(--text3)" }}>
+                  (Optional)
+                </span>
+              </label>
+              <p style={{ fontSize: 12, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                🔒 <strong>For account recovery only.</strong> We will never use your email for marketing or share it with anyone. Only needed if you forget your password.
+              </p>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                placeholder="your@email.com (optional)"
+                style={{ ...inputStyle, marginBottom: 0, background: "var(--bg)" }} />
+            </div>
 
-            <button className="ee-btn ee-btn-primary" onClick={handleNextStep}>
-              Next →
-            </button>
+            {error && (
+              <div style={{
+                color: "var(--accent)", fontSize: 13, marginBottom: 12,
+                background: "rgba(255,107,107,0.1)", padding: "10px 14px",
+                borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)"
+              }}>{error}</div>
+            )}
+
+            <button className="ee-btn ee-btn-primary" onClick={handleNextStep}>Next →</button>
 
             <div style={{ textAlign: "center", marginTop: 20, fontSize: 13, color: "var(--text2)" }}>
               Already have an account?{" "}
@@ -374,7 +455,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
           </>
         )}
 
-        {/* ===== SIGNUP STEP 2: Referral only ===== */}
+        {/* ===== SIGNUP STEP 2 ===== */}
         {mode === "signup" && step === 2 && (
           <>
             <div style={{ textAlign: "center", marginBottom: 24, marginTop: 16 }}>
@@ -419,7 +500,6 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                "If a friend referred you, enter their code here. Otherwise leave blank."}
             </p>
 
-            {/* Free access notice */}
             <div style={{
               background: "rgba(34,201,122,0.08)",
               border: "1px solid rgba(34,201,122,0.3)",
@@ -430,13 +510,17 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 🎓 Free Access — No payment needed
               </div>
               <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
-                Sign up now and get access to ExamEdgeNG completely free. Practice questions, CBT mode, study guides and more — all at no cost while we grow.
+                Sign up now and get full access to ExamEdgeNG completely free. Practice questions, CBT mode, study guides and more.
               </div>
             </div>
 
-            {error && <div style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12,
-              background: "rgba(255,107,107,0.1)", padding: "10px 14px",
-              borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)" }}>{error}</div>}
+            {error && (
+              <div style={{
+                color: "var(--accent)", fontSize: 13, marginBottom: 12,
+                background: "rgba(255,107,107,0.1)", padding: "10px 14px",
+                borderRadius: "var(--radius-md)", border: "1px solid rgba(255,107,107,0.3)"
+              }}>{error}</div>
+            )}
 
             <button className="ee-btn ee-btn-primary" onClick={handleSignup} disabled={loading}>
               {loading ? <><ButtonSpinner />Creating account...</> : "Create Free Account →"}

@@ -21,8 +21,10 @@ import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/Loadi
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
 import { doc, onSnapshot, getDoc, updateDoc } from "firebase/firestore"
-import { onAuthStateChanged } from "firebase/auth"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 import { auth, db } from "./firebase"
+
+const INACTIVITY_LIMIT = 60 * 60 * 1000 // 60 minutes in ms
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
 
 function App() {
@@ -99,6 +101,32 @@ function App() {
       window.removeEventListener("offline", handleOffline)
     }
   }, [])
+
+  // ── Inactivity logout — 60 minutes ──
+  useEffect(() => {
+    if (!authUser) return // only track when logged in
+
+    let inactivityTimer
+
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer)
+      inactivityTimer = setTimeout(async () => {
+        await signOut(auth)
+        localStorage.removeItem("ee-cached-user")
+        localStorage.removeItem("ee-cached-userdata")
+      }, INACTIVITY_LIMIT)
+    }
+
+    // Track any user interaction
+    const events = ["mousemove", "mousedown", "keydown", "touchstart", "scroll", "click"]
+    events.forEach(e => window.addEventListener(e, resetTimer))
+    resetTimer() // start the timer immediately
+
+    return () => {
+      clearTimeout(inactivityTimer)
+      events.forEach(e => window.removeEventListener(e, resetTimer))
+    }
+  }, [authUser])
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
