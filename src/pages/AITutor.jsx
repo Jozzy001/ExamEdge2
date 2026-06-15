@@ -4,7 +4,7 @@ import { getGameState, getDaysToExam } from "../utils/gamification"
 import STUDY_GUIDES from "../data/studyGuides"
 
 // ============================================================
-// HELPERS — extract clean text from study guide sections
+// HELPERS
 // ============================================================
 
 const SKIP_TYPES = ["antonyms_vault","synonyms_vault","idioms_vault","english_skills_vault","maths_vault","physics_vault","chemistry_vault","biology_vault"]
@@ -12,8 +12,14 @@ const SKIP_TYPES = ["antonyms_vault","synonyms_vault","idioms_vault","english_sk
 const extractGuideText = (guide) => {
   if (!guide) return null
   const lines = []
-  lines.push(`📘 ${guide.title}`)
-  if (guide.sections) {
+
+  // Support both old format (sections[]) and new format (keyPoints[], examQuestions[])
+  const title = guide.title || guide.topic || "Study Guide"
+  const subject = guide.subject || ""
+  lines.push(`📘 ${subject ? subject + " — " : ""}${title}`)
+
+  // OLD format: guide.sections array
+  if (guide.sections && guide.sections.length > 0) {
     guide.sections.forEach(section => {
       if (SKIP_TYPES.includes(section.type)) return
       if (section.heading) lines.push(`\n<strong>${section.heading}</strong>`)
@@ -31,15 +37,33 @@ const extractGuideText = (guide) => {
       }
     })
   }
-  if (guide.summary) lines.push(guide.summary)
-  if (guide.keyPoints) {
+
+  // NEW format: guide.summary, guide.keyPoints[], guide.examTips[], guide.examQuestions[]
+  if (guide.summary) lines.push(`\n${guide.summary}`)
+
+  if (guide.keyPoints && guide.keyPoints.length > 0) {
     lines.push("\n<strong>Key Points:</strong>")
-    guide.keyPoints.slice(0, 5).forEach(p => lines.push(`• ${p}`))
+    guide.keyPoints.slice(0, 6).forEach(p => lines.push(`• ${p}`))
   }
+
+  if (guide.examTips && guide.examTips.length > 0) {
+    lines.push("\n<strong>Exam Tips:</strong>")
+    guide.examTips.slice(0, 3).forEach(t => lines.push(`💡 ${t}`))
+  }
+
+  if (guide.examQuestions && guide.examQuestions.length > 0) {
+    lines.push("\n<strong>Sample Exam Questions:</strong>")
+    guide.examQuestions.slice(0, 3).forEach(q => {
+      lines.push(`❓ ${q.q}`)
+      lines.push(`✅ Answer: <strong>${q.a}</strong>`)
+      if (q.why) lines.push(`💡 ${q.why}`)
+    })
+  }
+
   return lines.join("\n")
 }
 
-// Find matching study guide for a topic name (fuzzy match)
+// Find matching study guide (fuzzy match)
 const findGuide = (topicQuery) => {
   if (!topicQuery) return null
   const q = topicQuery.toLowerCase().trim()
@@ -49,25 +73,46 @@ const findGuide = (topicQuery) => {
 
   if (!q || q.length < 2) return null
 
-  // Exact match first
+  // Exact match
   const exact = Object.keys(STUDY_GUIDES).find(k => k.toLowerCase() === q)
   if (exact) return { key: exact, guide: STUDY_GUIDES[exact] }
 
-  // Partial match — guide key contains query or query contains guide key
+  // Match against title field too (for new format guides)
+  const titleMatch = Object.entries(STUDY_GUIDES).find(([, g]) =>
+    g.title?.toLowerCase().includes(q) || q.includes(g.title?.toLowerCase() || "")
+  )
+  if (titleMatch) return { key: titleMatch[0], guide: titleMatch[1] }
+
+  // Match against topic field
+  const topicMatch = Object.entries(STUDY_GUIDES).find(([, g]) =>
+    g.topic?.toLowerCase().includes(q) || q.includes(g.topic?.toLowerCase() || "")
+  )
+  if (topicMatch) return { key: topicMatch[0], guide: topicMatch[1] }
+
+  // Partial key match
   const partial = Object.keys(STUDY_GUIDES).find(k =>
     k.toLowerCase().includes(q) || q.includes(k.toLowerCase())
   )
   if (partial) return { key: partial, guide: STUDY_GUIDES[partial] }
 
-  // Word match — any significant word in query matches guide key
+  // Word match on key
   const words = q.split(/\s+/).filter(w => w.length > 3)
   const wordMatch = Object.keys(STUDY_GUIDES).find(k =>
     words.some(w => k.toLowerCase().includes(w))
   )
   if (wordMatch) return { key: wordMatch, guide: STUDY_GUIDES[wordMatch] }
 
-  // Content search — look inside guide sections for the query word
-  const contentMatch = Object.entries(STUDY_GUIDES).find(([key, guide]) => {
+  // Word match on title/topic fields
+  const fieldWordMatch = Object.entries(STUDY_GUIDES).find(([, g]) =>
+    words.some(w =>
+      g.title?.toLowerCase().includes(w) ||
+      g.topic?.toLowerCase().includes(w)
+    )
+  )
+  if (fieldWordMatch) return { key: fieldWordMatch[0], guide: fieldWordMatch[1] }
+
+  // Content search — look inside sections
+  const contentMatch = Object.entries(STUDY_GUIDES).find(([, guide]) => {
     if (!guide.sections) return false
     return guide.sections.some(section => {
       if (section.type === "cards" && section.items) {
@@ -81,7 +126,13 @@ const findGuide = (topicQuery) => {
   })
   if (contentMatch) return { key: contentMatch[0], guide: contentMatch[1] }
 
-  // Single word search — any word matches any word in guide key
+  // Content search — keyPoints of new format
+  const kpMatch = Object.entries(STUDY_GUIDES).find(([, g]) =>
+    g.keyPoints?.some(kp => kp.toLowerCase().includes(q))
+  )
+  if (kpMatch) return { key: kpMatch[0], guide: kpMatch[1] }
+
+  // Single word prefix match on key
   const singleWords = q.split(/\s+/).filter(w => w.length > 2)
   const singleMatch = Object.keys(STUDY_GUIDES).find(k =>
     singleWords.some(w => k.toLowerCase().split(/\s+/).some(kw => kw.startsWith(w) || w.startsWith(kw)))
@@ -95,7 +146,7 @@ const findGuide = (topicQuery) => {
 const getSubjectTopics = (subject) => {
   return Object.entries(STUDY_GUIDES)
     .filter(([, g]) => g.subject === subject || g.subject?.toLowerCase() === subject?.toLowerCase())
-    .map(([key]) => key)
+    .map(([key, g]) => g.title || g.topic || key)
 }
 
 // ============================================================
@@ -150,14 +201,13 @@ const buildStudentContext = (userData, cbtHistory, gameState, faculty, facultySu
 }
 
 // ============================================================
-// SMART RESPONSE ENGINE — now powered by your study guides
+// SMART RESPONSE ENGINE
 // ============================================================
 
 const getSmartResponse = (userMsg, ctx, mode, lastIntent, setLastIntent) => {
   const msg = userMsg.toLowerCase().trim()
   const { name, avgScore, weakTopics, strongTopics, streak, daysToExam, subjects, totalCBTs, trend } = ctx
 
-  // ── YES / NO FOLLOW-UP HANDLING ──
   const isYes = ["yes", "yeah", "yep", "sure", "ok", "okay", "please", "go ahead", "show me", "yes please"].includes(msg)
   const isNo = ["no", "nope", "not now", "skip", "later"].includes(msg)
 
@@ -173,35 +223,23 @@ const getSmartResponse = (userMsg, ctx, mode, lastIntent, setLastIntent) => {
     return `No problem ${name}. Just ask me anything else — a topic to explain, your study plan, or how you're doing.`
   }
 
-  // ── DIRECT WORD QUESTION — antonym/synonym of a specific word ──
+  // Antonym / Synonym direct lookup
   const antonymOf = msg.match(/antonym of (\w+)/i) || msg.match(/opposite of (\w+)/i)
   const synonymOf = msg.match(/synonym of (\w+)/i) || msg.match(/meaning of (\w+)/i) || msg.match(/what does (\w+) mean/i)
 
   if (antonymOf) {
     const word = antonymOf[1]
-    // Search Antonyms guide cards for this word
     const antGuide = STUDY_GUIDES["Antonyms"]
     if (antGuide) {
       const cards = antGuide.sections?.find(s => s.type === "cards")?.items || []
       const match = cards.find(c => c.title.toLowerCase().includes(word.toLowerCase()))
       if (match) {
         if (setLastIntent) setLastIntent(null)
-        return `The antonym of <strong>${word}</strong>:\n\n${match.title}\n${match.body}\n\n💡 ${antGuide.sections?.find(s => s.type === "tip")?.content || "Build your vocabulary daily."}`
+        return `The antonym of <strong>${word}</strong>:\n\n${match.title}\n${match.body}`
       }
     }
-    // Common antonyms not in cards
-    const commonAntonyms = {
-      diligent: "lazy / indolent", loquacious: "taciturn / silent", kindle: "extinguish",
-      vacillate: "decisive", coarse: "refined", valedictory: "inaugural",
-      futile: "successful / fruitful", obsolete: "current / modern", mundane: "extraordinary",
-      perfunctory: "thorough / diligent", plausible: "implausible / unlikely"
-    }
-    const direct = commonAntonyms[word.toLowerCase()]
-    if (direct) {
-      if (setLastIntent) setLastIntent("Antonyms")
-      return `The antonym of <strong>${word}</strong> is <strong>${direct}</strong>.\n\nWant me to show you the full Antonyms guide with all the common pairs UNIBEN tests?`
-    }
-    return `I don't have a specific antonym listed for "<strong>${word}</strong>" but I can show you all the antonym pairs UNIBEN has tested. Type "explain antonyms" for the full guide.`
+    if (setLastIntent) setLastIntent("Antonyms")
+    return `I don't have a specific antonym listed for "<strong>${word}</strong>". Want me to show you the full Antonyms guide?`
   }
 
   if (synonymOf) {
@@ -210,146 +248,125 @@ const getSmartResponse = (userMsg, ctx, mode, lastIntent, setLastIntent) => {
     if (synGuide) {
       const cards = synGuide.sections?.find(s => s.type === "cards")?.items || []
       const match = cards.find(c => c.title.toLowerCase().includes(word.toLowerCase()))
-      if (match) {
-        return `<strong>${match.title}</strong>\n${match.body}\n\n💡 ${synGuide.sections?.find(s => s.type === "tip")?.content || "Build your vocabulary daily."}`
-      }
+      if (match) return `<strong>${match.title}</strong>\n${match.body}`
     }
     if (setLastIntent) setLastIntent("Synonyms")
-    return `I don't have a specific synonym entry for "<strong>${word}</strong>". Want me to show you all the high-frequency words UNIBEN tests in Synonyms?`
+    return `I don't have a specific synonym entry for "<strong>${word}</strong>". Want me to show you the full Synonyms guide?`
   }
 
-  // ── TOPIC EXPLANATION — check study guides first ──
-  const subjectKeys = ["English", "Mathematics", "Physics", "Chemistry", "Biology",
-    "Government", "Economics", "Commerce", "Accounts", "Literature", "CRS", "IRK", "Visual Arts"]
+  // How to use — check BEFORE guide match so it doesn't get swallowed
+  if ((msg.includes("how") && (msg.includes("app") || msg.includes("use") || msg.includes("feature"))) ||
+      msg.includes("show me how") || msg.includes("tour") || msg.includes("tutorial") || msg.includes("guide me")) {
+    return `Here's a quick overview of ExamEdgeNG:\n\n<strong>🏠 Home Screen</strong>\n→ Everything starts here. Tap any feature to begin.\n\n<strong>🧪 CBT Mode</strong>\nTimed exam simulation — all subjects together, exactly like the real Post-UTME. Take this daily.\n\n<strong>📚 Study Mode</strong>\nPractice topic by topic with full explanations. Great for drilling a specific weak area.\n\n<strong>🔥 Hot Topics</strong>\nQuestions that have repeated across multiple UNIBEN papers. Master these and you're ahead of 80% of candidates.\n\n<strong>📊 Weak Areas</strong>\nAutomatically tracks every wrong answer from your CBTs. The app tells you exactly what to fix.\n\n<strong>🕐 CBT History</strong>\nReview all your past attempts. See your scores, subject breakdown, and improvement over time.\n\n<strong>🎓 AI Tutor (you're here!)</strong>\nAsk me anything — a topic to explain, your study plan, your readiness score, or exam strategy.\n\n<strong>💡 Best daily routine:</strong>\n1. Ask me: "What should I study today?"\n2. Drill one weak topic in Study Mode\n3. Take a full CBT\n4. Review wrong answers before sleeping\n\nYou can also go to <strong>Settings → Replay App Tour</strong> for a visual walkthrough of every screen.`
+  }
 
-  // Try to find an exact study guide topic match
+  // Topic explanation — check study guides
   const guideMatch = findGuide(userMsg)
-  if (guideMatch && (msg.includes("explain") || msg.includes("teach") ||
-      msg.includes("what is") || msg.includes("what are") || msg.includes("what do") ||
-      msg.includes("how does") || msg.includes("how do") || msg.includes("define") ||
-      msg.includes("tell me") || msg.includes("understand") ||
-      mode === "explain" || userMsg.length < 40)) {
+  if (guideMatch && (
+    msg.includes("explain") || msg.includes("teach") ||
+    msg.includes("what is") || msg.includes("what are") ||
+    msg.includes("how does") || msg.includes("how do") ||
+    msg.includes("define") || msg.includes("tell me") ||
+    msg.includes("understand") || mode === "explain" || userMsg.length < 40
+  )) {
     const guideText = extractGuideText(guideMatch.guide)
     const studentStat = ctx.weakTopics.find(t => t.topic === guideMatch.key)
     const isWeak = studentStat && (studentStat.score / studentStat.total) < 0.5
-    return `${isWeak ? `${name}, this is one of your weak areas — good that you're working on it. ` : ""}Here's what you need to know:\n\n${guideText}\n\n${isWeak ? "\nOpen Study Mode → " + (guideMatch.guide.subject || "") + " → " + guideMatch.key + " to practice these questions." : ""}`
+    return `${isWeak ? `${name}, this is one of your weak areas — good that you're working on it.\n\n` : ""}Here's what you need to know:\n\n${guideText}`
   }
 
-  // ── SUBJECT-LEVEL QUESTION — list topics ──
+  // Subject topic list
+  const subjectKeys = ["English", "Mathematics", "Physics", "Chemistry", "Biology",
+    "Government", "Economics", "Commerce", "Accounts", "Literature", "CRS", "IRK"]
   for (const subject of subjectKeys) {
     if (msg.includes(subject.toLowerCase()) && (msg.includes("topic") || msg.includes("cover") || msg.includes("what") || msg.includes("list"))) {
       const topics = getSubjectTopics(subject)
       if (topics.length > 0) {
-        return `Here are all the <strong>${subject}</strong> topics in your study guides:\n\n${topics.map(t => `• ${t}`).join("\n")}\n\nTap any topic in Study Mode to see the full guide and practice questions. Which one do you want me to explain?`
+        return `Here are all the <strong>${subject}</strong> topics in your study guides:\n\n${topics.map(t => `• ${t}`).join("\n")}\n\nWhich one do you want me to explain?`
       }
     }
   }
 
-  // ── WEAK AREAS ──
+  // Weak areas
   if (msg.includes("weak") || msg.includes("struggling") || msg.includes("failing") || msg.includes("improve")) {
     if (totalCBTs === 0) {
-      return `${name}, I can't show you real weak areas yet because you haven't taken a CBT test. Take one now — your results will automatically appear in Weak Areas. The more CBTs you take, the more precisely I can target what's failing you.`
+      return `${name}, I can't show you real weak areas yet because you haven't taken a CBT test. Take one now — your results will automatically appear in Weak Areas.`
     }
     if (weakTopics.length === 0) {
-      return `${name}, based on your CBT history, you're scoring above 50% in all topics I've tracked so far. That's good! Keep taking CBTs regularly. Your current average is <strong>${avgScore}%</strong>.`
+      return `${name}, based on your CBT history, you're scoring above 50% in all topics. Your current average is <strong>${avgScore}%</strong>. Keep taking CBTs regularly.`
     }
     const list = weakTopics.map((t, i) => {
       const pct = Math.round((t.score / t.total) * 100)
       const match = findGuide(t.topic)
-      const tip = match?.guide?.sections?.find(s => s.type === "tip")?.content ||
-                  match?.guide?.keyPoints?.[0] || "Practice this in Study Mode."
-      return `<strong>${i+1}. ${t.topic}</strong> (${t.subject}) — ${pct}% accuracy\n💡 ${tip}`
+      const tip = match?.guide?.examTips?.[0] || match?.guide?.keyPoints?.[0] ||
+                  match?.guide?.sections?.find(s => s.type === "tip")?.content || "Practice this in Study Mode."
+      return `<strong>${i+1}. ${t.topic}</strong> (${t.subject}) — ${pct}%\n💡 ${tip}`
     }).join("\n\n")
-
-    return `${name}, here are your ${weakTopics.length} weak areas from your CBT history:\n\n${list}\n\nFix the first one before moving to the second. Want me to explain any of these topics?`
+    return `${name}, here are your ${weakTopics.length} weak areas:\n\n${list}\n\nWant me to explain any of these?`
   }
 
-  // ── STUDY PLAN / TODAY ──
+  // Study plan
   if (msg.includes("plan") || msg.includes("today") || msg.includes("what should") || msg.includes("study")) {
     if (totalCBTs === 0) {
-      return `${name}, you haven't taken a CBT test yet, so I can't personalise your plan fully.\n\n<strong>Step 1 (now):</strong> Take a full CBT with all your subjects.\n<strong>Step 2 (after):</strong> Come back here and I'll build you a precise daily plan based on exactly what you got wrong.\n\nMost students waste time studying topics they already know. Your CBT result tells me exactly what to focus on.`
+      return `${name}, you haven't taken a CBT test yet, so I can't personalise your plan.\n\n<strong>Step 1 (now):</strong> Take a full CBT with all your subjects.\n<strong>Step 2:</strong> Come back here and I'll build you a precise daily plan based on your results.`
     }
-
     const topWeak = weakTopics.slice(0, 2)
     const dayPlan = daysToExam !== null && daysToExam <= 7
       ? `⚠️ Only <strong>${daysToExam} days left</strong>. No new topics — drill weak areas only.`
-      : daysToExam
-      ? `You have <strong>${daysToExam} days</strong>. Enough time if you stay consistent.`
-      : "Set your exam date in the XP bar so I can give you better timing advice."
-
+      : daysToExam ? `You have <strong>${daysToExam} days</strong>. Enough time if you stay consistent.`
+      : "Set your exam date in the XP bar for a better plan."
     const planItems = topWeak.length > 0
       ? topWeak.map((t, i) => {
           const label = i === 0 ? "Morning (30-40 mins)" : "Afternoon (20-30 mins)"
           const pct = Math.round((t.score / t.total) * 100)
-          return `<strong>${label}:</strong>\n→ Drill <strong>${t.topic}</strong> in Study Mode (${t.subject}) — you're at ${pct}% here`
+          return `<strong>${label}:</strong>\n→ Drill <strong>${t.topic}</strong> (${t.subject}) — you're at ${pct}%`
         }).join("\n\n")
-      : `<strong>Morning:</strong>\n→ Open Study Mode and drill your strongest subject's hardest topics`
-
-    return `${name}, here's your plan for today:\n\n${dayPlan}\n\n${planItems}\n\n<strong>Evening (25 mins):</strong>\n→ Full CBT with all subjects. Target: beat your current ${avgScore}%.\n\n<strong>Rule for today:</strong> Review every wrong answer in CBT History before sleeping.`
+      : `<strong>Morning:</strong>\n→ Open Study Mode and drill your hardest topics`
+    return `${name}, here's your plan for today:\n\n${dayPlan}\n\n${planItems}\n\n<strong>Evening:</strong>\n→ Full CBT. Target: beat your current ${avgScore}%.`
   }
 
-  // ── READINESS / SCORE ──
+  // Readiness
   if (msg.includes("ready") || msg.includes("predict") || msg.includes("pass") || msg.includes("chance") || msg.includes("score")) {
     if (totalCBTs === 0) {
-      return `${name}, I can't predict your score yet — you haven't taken any CBT tests. Take at least 3 CBTs first, then come back for a realistic readiness assessment.`
+      return `${name}, I can't predict your score yet. Take at least 3 CBTs first, then come back for a realistic readiness assessment.`
     }
     const predicted = Math.min(Math.max(avgScore + (trend === "improving" ? 5 : trend === "declining" ? -3 : 0), 0), 100)
-    const statusText = predicted >= 65
-      ? `🟢 <strong>Strong position.</strong> You're likely to pass based on current performance.`
-      : predicted >= 55
-      ? `🟡 <strong>Borderline.</strong> You can pass but need consistent improvement.`
-      : `🔴 <strong>At risk.</strong> Focused drilling of weak areas is essential right now.`
-
-    return `${name}, here's your honest readiness assessment:\n\n<strong>Predicted Post-UTME score: ${predicted}%</strong>\n\n${statusText}\n\n<strong>Your data:</strong>\n• Average across ${totalCBTs} CBT${totalCBTs !== 1 ? "s" : ""}: ${avgScore}%\n• Score trend: ${trend}\n• Weak topics: ${weakTopics.length}\n\n${weakTopics.slice(0, 2).map(t => `→ Fix ${t.topic} — your biggest opportunity`).join("\n") || "→ Keep drilling all subjects daily"}\n\n${daysToExam ? `<strong>${daysToExam} days left.</strong> Stay consistent.` : "Set your exam date for a countdown plan."}`
+    const statusText = predicted >= 65 ? `🟢 <strong>Strong position.</strong> Likely to pass.`
+      : predicted >= 55 ? `🟡 <strong>Borderline.</strong> Keep improving.`
+      : `🔴 <strong>At risk.</strong> Focus on weak areas urgently.`
+    return `${name}, readiness assessment:\n\n<strong>Predicted score: ${predicted}%</strong>\n\n${statusText}\n\n• Average across ${totalCBTs} CBTs: ${avgScore}%\n• Trend: ${trend}\n• Weak topics: ${weakTopics.length}\n\n${daysToExam ? `<strong>${daysToExam} days left.</strong>` : ""}`
   }
 
-  // ── STREAK / MOTIVATION ──
+  // Streak / Motivation
   if (msg.includes("streak") || msg.includes("motivat") || msg.includes("tired") || msg.includes("give up")) {
     if (streak === 0) {
-      return `${name}, your streak is at 0. That's okay — but students who study daily improve 10–15% faster than those who cram.\n\nStart fresh today. One CBT or one Study Mode session. That's it. Tomorrow will be easier.`
+      return `${name}, your streak is at 0. Start fresh today — one CBT or one Study Mode session. Tomorrow will be easier.`
     }
-    return `${name}, you're on a <strong>${streak}-day streak</strong>. That's genuine consistency — most students give up before day 7.\n\nYour average is <strong>${avgScore}%</strong>. Keep going.`
+    return `${name}, you're on a <strong>${streak}-day streak</strong>. Most students give up before day 7. Your average is <strong>${avgScore}%</strong>. Keep going.`
   }
 
-  // ── EXAM COUNTDOWN ──
+  // Countdown
   if (msg.includes("day") || msg.includes("countdown") || msg.includes("time left") || msg.includes("exam date")) {
     if (!daysToExam && daysToExam !== 0) {
-      return `${name}, you haven't set your exam date yet. Tap the XP bar at the top of the home screen and set it. Once set, I can give you a precise countdown plan.`
+      return `${name}, you haven't set your exam date yet. Tap the XP bar at the top of the home screen and set it.`
     }
     const intensity = daysToExam <= 3 ? "FINAL SPRINT" : daysToExam <= 7 ? "LAST WEEK" : daysToExam <= 14 ? "TWO WEEKS OUT" : "STEADY PREP"
-    const dailyTarget = daysToExam <= 7 ? "2 CBTs per day + weak area drills" : "1 CBT per day + 1 weak topic"
-    return `<strong>${intensity} — ${daysToExam} days to go.</strong>\n\nYour daily target: <strong>${dailyTarget}</strong>\n\n${daysToExam > 7
-      ? `• Drill your weak topics one by one\n• Take a full CBT daily\n• Review every wrong answer before sleeping\n• Last 3 days: Hot Topics only`
-      : `• Each day: weak topic drill + full CBT\n• Review EVERY wrong answer\n• Final 2 days: Hot Topics revision only`}\n\nCurrent average: <strong>${avgScore}%</strong>. ${avgScore >= 60 ? "Good position. Stay consistent." : "Focus on weak areas — that's where marks are lost."}`
+    return `<strong>${intensity} — ${daysToExam} days to go.</strong>\n\nCurrent average: <strong>${avgScore}%</strong>. ${avgScore >= 60 ? "Good position. Stay consistent." : "Focus on weak areas."}`
   }
 
-  // ── HOT TOPICS ──
-  if (msg.includes("hot topic") || msg.includes("repeated") || msg.includes("common") || msg.includes("likely")) {
-    const subjectTips = subjects.slice(0, 4).map(subj => {
-      const topics = getSubjectTopics(subj)
-      if (topics.length === 0) return null
-      const top = topics[0]
-      const guide = STUDY_GUIDES[top]
-      const tip = guide?.sections?.find(s => s.type === "tip")?.content || guide?.keyPoints?.[0] || ""
-      return `<strong>${subj}:</strong> ${top}${tip ? `\n💡 ${tip.slice(0, 100)}...` : ""}`
-    }).filter(Boolean).join("\n\n")
-
-    return `${name}, here are the highest-priority topics from your study guides:\n\n${subjectTips}\n\nOpen Hot Topics from the home screen for past questions that repeated across multiple UNIBEN papers.`
-  }
-
-  // ── HOW TO USE APP ──
+  // How to use
   if (msg.includes("how") && (msg.includes("app") || msg.includes("use") || msg.includes("feature"))) {
-    return `Here's how to get maximum value from ExamEdgeNG:\n\n<strong>Daily routine that works:</strong>\n1. Ask me: "What should I study today?" → get your personalised plan\n2. Open Study Mode → drill one weak topic (20 mins)\n3. Take a full CBT with all subjects (timed)\n4. Review every wrong answer in CBT History\n\n<strong>Best features:</strong>\n• <strong>Hot Topics</strong> — questions that repeated across multiple UNIBEN papers\n• <strong>Weak Areas</strong> — auto-tracks every wrong answer\n• <strong>CBT History</strong> — review past attempts, spot your patterns\n• <strong>Study Mode</strong> — full guides + explanations before questions\n\nConsistency beats cramming. One CBT daily + reviewing answers = the fastest path to a passing score.`
+    return `Here's a quick overview of ExamEdgeNG:\n\n<strong>🏠 Home Screen</strong>\n→ Everything starts here. Tap any feature to begin.\n\n<strong>🧪 CBT Mode</strong>\nTimed exam simulation — all subjects together, exactly like the real Post-UTME. Take this daily.\n\n<strong>📚 Study Mode</strong>\nPractice topic by topic with full explanations. Great for drilling a specific weak area.\n\n<strong>🔥 Hot Topics</strong>\nQuestions that have repeated across multiple UNIBEN papers. Master these and you're already ahead of 80% of candidates.\n\n<strong>📊 Weak Areas</strong>\nAutomatically tracks every wrong answer from your CBTs. The app tells you exactly what to fix.\n\n<strong>🕐 CBT History</strong>\nReview all your past attempts. See your scores, subject breakdown, and improvement over time.\n\n<strong>🎓 AI Tutor (you're here!)</strong>\nAsk me anything — a topic to explain, your study plan, your readiness score, or exam strategy.\n\n<strong>💡 Best daily routine:</strong>\n1. Ask me: "What should I study today?"\n2. Drill one weak topic in Study Mode\n3. Take a full CBT\n4. Review wrong answers before sleeping\n\nYou can also go to <strong>Settings → Replay App Tour</strong> for a visual walkthrough of every screen.`
   }
 
-  // ── DEFAULT — suggest topic explanation ──
+  // Default
   const contextHint = totalCBTs === 0
-    ? `You haven't taken a CBT yet — that's the single most important first step.`
+    ? "You haven't taken a CBT yet — that's the single most important first step."
     : weakTopics.length > 0
     ? `Your biggest opportunity right now is <strong>${weakTopics[0].topic}</strong> (${weakTopics[0].subject}) where you're at ${Math.round((weakTopics[0].score/weakTopics[0].total)*100)}%.`
     : `Your average is <strong>${avgScore}%</strong> — keep drilling to push higher.`
 
-  return `${name}, I'm ready to help. ${contextHint}\n\nJust name any topic — like "Trigonometry", "Comprehension", "Organic Chemistry", "Ecology" — and I'll pull up the full study guide for it with exam tips and UNIBEN-specific advice.`
+  return `${name}, I'm ready to help. ${contextHint}\n\nJust name any topic — "Trigonometry", "Comprehension", "Organic Chemistry", "Literary Terms", "Hamlet", "Demand and Supply" — and I'll pull up the full study guide.`
 }
 
 // ============================================================
@@ -363,7 +380,7 @@ const AITutor = ({ onNavigate, onBack, userData, authUser, isPaid, faculty, facu
   const [mode, setMode] = useState("coach")
   const [studentCtx, setStudentCtx] = useState(null)
   const [quickBtns, setQuickBtns] = useState([])
-  const [lastIntent, setLastIntent] = useState(null) // tracks follow-up context
+  const [lastIntent, setLastIntent] = useState(null)
   const chatEndRef = useRef(null)
 
   useEffect(() => {
@@ -386,12 +403,11 @@ const AITutor = ({ onNavigate, onBack, userData, authUser, isPaid, faculty, facu
     const welcomes = {
       coach: c.totalCBTs === 0
         ? `Hi ${c.name}! 👋 I'm your personal Post-UTME tutor. I've studied every topic in your study guides. Before I can help you properly, take a CBT test first — that gives me your real data to work with. Want to start one now?`
-        : `Hi ${c.name}! 👋 I can see your data — you're at <strong>${c.avgScore}%</strong> average${c.daysToExam !== null ? ` with <strong>${c.daysToExam} days</strong> to your exam` : ""}. ${c.weakTopics.length > 0 ? `You have <strong>${c.weakTopics.length} weak topic${c.weakTopics.length !== 1 ? "s" : ""}</strong> that could cost you marks.` : "Your scores look solid — let's push higher."} What do you need?`,
-      explain: `Which topic should I explain? I have detailed guides for every subject — English, Maths, Physics, Chemistry, Biology, Government, Economics and more. Just name a topic and I'll teach it to you.`,
-      ready: `Let me assess your exam readiness honestly. ${c.totalCBTs === 0 ? "You'll need to take at least one CBT first so I have real data." : `Based on your ${c.totalCBTs} CBT${c.totalCBTs !== 1 ? "s" : ""}, I can predict your likely Post-UTME score.`}`,
+        : `Hi ${c.name}! 👋 You're at <strong>${c.avgScore}%</strong> average${c.daysToExam !== null ? ` with <strong>${c.daysToExam} days</strong> to your exam` : ""}. ${c.weakTopics.length > 0 ? `You have <strong>${c.weakTopics.length} weak topic${c.weakTopics.length !== 1 ? "s" : ""}</strong> that could cost you marks.` : "Your scores look solid — let's push higher."} What do you need?`,
+      explain: `Which topic should I explain? I have detailed guides for English, Maths, Physics, Chemistry, Biology, Government, Economics, Literature and more. Just name a topic.`,
+      ready: `Let me assess your exam readiness honestly. ${c.totalCBTs === 0 ? "You'll need to take at least one CBT first." : `Based on your ${c.totalCBTs} CBT${c.totalCBTs !== 1 ? "s" : ""}, I can predict your likely Post-UTME score.`}`,
     }
 
-    const allTopics = Object.keys(STUDY_GUIDES).slice(0, 6)
     const btns = {
       coach: c.totalCBTs === 0
         ? [
@@ -466,7 +482,7 @@ const AITutor = ({ onNavigate, onBack, userData, authUser, isPaid, faculty, facu
 
       <div className="ee-content" style={{ paddingBottom: 0, display: "flex", flexDirection: "column", height: "calc(100vh - 56px)" }}>
 
-        {/* Student Stats Bar */}
+        {/* Stats Bar */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 6, marginBottom: 12, flexShrink: 0 }}>
           {[
             { label: "Average", value: `${studentCtx.avgScore}%`, color: studentCtx.avgScore >= 60 ? "#15803d" : studentCtx.avgScore >= 50 ? "#d97706" : "#dc2626" },
@@ -585,7 +601,7 @@ const AITutor = ({ onNavigate, onBack, userData, authUser, isPaid, faculty, facu
           </div>
         )}
 
-        {/* Input Row */}
+        {/* Input */}
         <div style={{ display: "flex", gap: 8, flexShrink: 0, paddingBottom: 12 }}>
           <input
             value={input}

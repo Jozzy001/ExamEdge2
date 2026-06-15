@@ -232,7 +232,12 @@ function App() {
   }, [page, pageHistory])
 
   if (appLoading) return <FullPageLoader message="Starting ExamEdgeNG..." />
-  if (showSplash) return <Splash onDone={() => { localStorage.setItem("ee-splash-done", "1"); setShowSplash(false) }} />
+  if (showSplash) return <Splash onDone={(destination) => {
+    localStorage.setItem("ee-splash-done", "1")
+    setShowSplash(false)
+    // Pass destination (signup/login) to Auth via localStorage
+    if (destination) localStorage.setItem("ee-splash-destination", destination)
+  }} />
 
   if (!authUser) {
     return <Auth onGoToUpgrade={() => setPage("upgrade")} onAuthDone={(user) => {

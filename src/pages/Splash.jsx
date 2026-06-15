@@ -71,7 +71,7 @@ export default function Splash({ onDone }) {
 
   const next = () => {
     if (current < slides.length - 1) goTo(current + 1)
-    else onDone()
+    else onDone("signup")
   }
 
   const prev = () => {
@@ -127,7 +127,7 @@ export default function Splash({ onDone }) {
       {/* Skip button */}
       {!isLast && (
         <button
-          onClick={onDone}
+          onClick={() => onDone("signup")}
           style={{
             position: "absolute", top: 20, right: 20,
             background: "rgba(255,255,255,0.2)",
@@ -161,7 +161,6 @@ export default function Splash({ onDone }) {
         transition: "opacity 0.2s, transform 0.2s",
         width: "100%", maxWidth: 400,
       }}>
-
         {/* Logo or Emoji */}
         {slide.logo ? (
           <picture>
@@ -240,7 +239,7 @@ export default function Splash({ onDone }) {
         {slide.cta ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <button
-              onClick={onDone}
+              onClick={() => onDone("signup")}
               style={{
                 width: "100%", padding: "16px",
                 background: "#fff", color: "#667eea",
@@ -253,7 +252,7 @@ export default function Splash({ onDone }) {
               Get Started — It's Free 🚀
             </button>
             <button
-              onClick={onDone}
+              onClick={() => onDone("login")}
               style={{
                 width: "100%", padding: "14px",
                 background: "rgba(255,255,255,0.15)",
