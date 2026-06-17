@@ -337,7 +337,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 border: "none", borderRadius: "var(--radius-md)",
                 fontWeight: 800, fontSize: 15, cursor: "pointer",
                 fontFamily: "var(--font-main)"
-              }}>✨ Sign Up Free — No Payment Needed</button>
+              }}>✨ Create Free Account — Start Preparing</button>
             </div>
 
             <div style={{
@@ -520,17 +520,58 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                "If a friend referred you, enter their code here. Otherwise leave blank."}
             </p>
 
+            {/* Free vs Paid breakdown */}
             <div style={{
-              background: "rgba(34,201,122,0.08)",
-              border: "1px solid rgba(34,201,122,0.3)",
+              border: "1.5px solid rgba(34,201,122,0.4)",
               borderRadius: "var(--radius-lg)",
-              padding: "16px 18px", marginBottom: 24,
+              overflow: "hidden", marginBottom: 24,
             }}>
-              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803d", marginBottom: 6 }}>
-                🎓 Free Access — No payment needed
+              {/* Free tier */}
+              <div style={{
+                background: "rgba(34,201,122,0.08)",
+                padding: "14px 16px",
+                borderBottom: "1px solid rgba(34,201,122,0.2)"
+              }}>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#15803d", marginBottom: 8 }}>
+                  ✅ Your Free Account Includes:
+                </div>
+                {[
+                  "📅 2 years of past questions (2014 & 2015)",
+                  "🧪 CBT simulation mode",
+                  "📚 Study guides for all topics",
+                  "🎓 AI Tutor access",
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    fontSize: 13, color: "#166534", fontWeight: 600,
+                    padding: "3px 0", display: "flex", alignItems: "center", gap: 6
+                  }}>{item}</div>
+                ))}
               </div>
-              <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
-                Sign up now and get full access to ExamEdgeNG completely free. Practice questions, CBT mode, study guides and more.
+              {/* Paid tier */}
+              <div style={{
+                background: "rgba(102,126,234,0.06)",
+                padding: "14px 16px"
+              }}>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary)", marginBottom: 8 }}>
+                  🔒 Upgrade for ₦2,500 to Unlock:
+                </div>
+                {[
+                  "📚 All 20 years of questions (2005–2024)",
+                  "🔥 Hot Topics — most repeated questions",
+                  "📊 Weak Areas & full progress tracking",
+                  "🕐 CBT History — review past attempts",
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    fontSize: 13, color: "var(--text2)", fontWeight: 600,
+                    padding: "3px 0", display: "flex", alignItems: "center", gap: 6
+                  }}>{item}</div>
+                ))}
+                <div style={{
+                  marginTop: 10, fontSize: 11, color: "var(--text3)",
+                  fontWeight: 700, textAlign: "center"
+                }}>
+                  One-time payment · No subscription · No hidden fees
+                </div>
               </div>
             </div>
 

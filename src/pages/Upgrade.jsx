@@ -16,12 +16,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
     script.onload = () => setPaystackReady(true)
     script.onerror = () => console.error("Paystack script failed to load")
     document.head.appendChild(script)
-    return () => {
-      // don't remove — keep for reuse
-    }
   }, [])
-
-
 
   const handlePayment = () => {
     if (!paystackReady) {
@@ -39,7 +34,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
     const handler = window.PaystackPop.setup({
       key: publicKey,
       email: user.email,
-      amount: 300000,
+      amount: 250000, // ₦2,500 in kobo
       currency: "NGN",
       ref: `EE_${user.uid}_${Date.now()}`,
       metadata: {
@@ -60,7 +55,6 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
             // Record referral if applicable
             if (userData?.referredBy) {
               const refId = userData.referredBy
-              // Use Firestore increment to safely add 500 to referrer's earnings
               updateDoc(doc(db, "users", refId), {
                 referralEarnings: increment(500),
               }).catch(() => {})
@@ -79,10 +73,8 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
             onSuccess()
           }).catch((e) => {
             if (attempts > 1) {
-              // Retry after 2 seconds
               setTimeout(() => updateWithRetry(attempts - 1), 2000)
             } else {
-              // All retries failed — store payment ref locally so admin can fix
               localStorage.setItem("ee_pending_payment", JSON.stringify({
                 uid: user.uid,
                 ref: response.reference,
@@ -103,7 +95,6 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
 
     handler.openIframe()
   }
-
 
   const features = [
     { icon: "📚", text: "All 20 years of past questions (2005–2024)" },
@@ -153,7 +144,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
         {/* Price */}
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: 14, color: "#888", textDecoration: "line-through" }}>₦5,000</div>
-          <div style={{ fontSize: 42, fontWeight: 800, color: "#667eea" }}>₦3,000</div>
+          <div style={{ fontSize: 42, fontWeight: 800, color: "#667eea" }}>₦2,500</div>
           <div style={{
             background: "#fff3cd", color: "#856404",
             padding: "4px 12px", borderRadius: 20,
@@ -177,8 +168,6 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
           ))}
         </div>
 
-
-
         {/* Pay button */}
         <button
           onClick={handlePayment}
@@ -191,7 +180,7 @@ export default function Upgrade({ user, userData, onSuccess, onBack }) {
             cursor: loading || !paystackReady ? "not-allowed" : "pointer",
           }}
         >
-          {!paystackReady ? "⏳ Loading payment..." : loading ? "⏳ Processing..." : "Pay ₦3,000 — Get Full Access"}
+          {!paystackReady ? "⏳ Loading payment..." : loading ? "⏳ Processing..." : "Pay ₦2,500 — Get Full Access"}
         </button>
 
         {/* Internet connection warning */}

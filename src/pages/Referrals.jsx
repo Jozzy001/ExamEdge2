@@ -111,7 +111,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
             ⏳ Launching Soon
           </div>
           <p style={{ fontSize: 13, opacity: 0.9, lineHeight: 1.7, margin: 0 }}>
-            When we fully launch, every friend who pays ₦3,000 earns you
+            When we fully launch, every friend who pays <strong>₦2,500</strong> earns you
             <strong> ₦500 cash</strong> — paid directly to your bank account every weekend.
           </p>
         </div>
@@ -243,7 +243,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
           </div>
           {[
             { icon: "1️⃣", title: "Share your code now", sub: "Friends who sign up using your code are already registered under your name." },
-            { icon: "2️⃣", title: "They pay ₦3,000", sub: "When a friend upgrades to full access, ₦500 is credited to your account." },
+            { icon: "2️⃣", title: "They pay ₦2,500", sub: "When a friend upgrades to full access, ₦500 is credited to your account." },
             { icon: "3️⃣", title: "You get paid every weekend", sub: "Once payouts are live, we'll send your earnings directly to your bank account." },
           ].map((step, i) => (
             <div key={i} style={{

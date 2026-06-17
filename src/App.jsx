@@ -90,6 +90,140 @@ function App() {
     }
   }, [authUser])
 
+  // Auto-send welcome DM 45 mins after first sign up
+  useEffect(() => {
+    if (!authUser?.uid || !userData) return
+
+    // Only for accounts created in the last 2 hours
+    const createdAt = userData.createdAt?.toDate
+      ? userData.createdAt.toDate()
+      : new Date(userData.createdAt || 0)
+    const ageMs = Date.now() - createdAt.getTime()
+    const twoHours = 2 * 60 * 60 * 1000
+    if (ageMs > twoHours) return // account too old, skip
+
+    // Check if welcome already sent
+    const alreadySentKey = `ee-welcome-sent-${authUser.uid}`
+    if (localStorage.getItem(alreadySentKey)) return
+
+    // Schedule welcome DM for 45 minutes after app load
+    const DELAY = 45 * 60 * 1000 // 45 minutes
+    const timer = setTimeout(async () => {
+      try {
+        const { collection: col, addDoc: add, getDocs: get, query: q, where: w, serverTimestamp: st } = await import("firebase/firestore")
+        // Check Firestore — did they already get one?
+        const existing = await get(q(col(db, "messages"), w("uid", "==", authUser.uid), w("fromAdmin", "==", true)))
+        if (!existing.empty) {
+          localStorage.setItem(alreadySentKey, "1")
+          return
+        }
+        const firstName = userData.name?.split(" ")[0] || "Student"
+        const welcomeMessage = `Welcome to ExamEdgeNG! 🎉
+
+Hi ${firstName}! We're so glad you joined us. We are the ExamEdgeNG team and we built this app specifically for UNIBEN Post-UTME candidates like you.
+
+Here's how to get the most out of the app:
+
+Step 1 — Take a CBT test first 🧪
+Go to CBT Mode and do a full timed test. This gives the AI Tutor real data about you so it can tell you exactly what to focus on.
+
+Step 2 — Ask the AI Tutor 🎓
+After your CBT, open AI Tutor and ask: "What should I study today?" It will build you a personalised plan based on your actual weak areas.
+
+Step 3 — Study daily 📚
+Even 30 minutes a day consistently beats cramming. The app tracks your streak and XP to keep you motivated.
+
+Hot Topics 🔥 are your secret weapon — questions that have repeated across multiple UNIBEN papers. Master them and you're already ahead of most candidates.
+
+📢 Join our WhatsApp Channel for exam updates, app news and study tips:
+https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K
+
+If you ever have questions, go to Settings → Contact Support. We respond personally.
+
+You've got this. UNIBEN is waiting. 🚀
+
+— The ExamEdgeNG Team`
+
+        await add(col(db, "messages"), {
+          uid: authUser.uid,
+          username: userData.name || "User",
+          email: userData.email || "",
+          message: welcomeMessage,
+          createdAt: st(),
+          status: "unread",
+          fromAdmin: true,
+        })
+        localStorage.setItem(alreadySentKey, "1")
+      } catch(e) {}
+    }, DELAY)
+
+    return () => clearTimeout(timer)
+  }, [authUser?.uid, userData])
+
+  // ── AUTO-SEND WELCOME DM 45 MINS AFTER FIRST USE ──
+  useEffect(() => {
+    if (!authUser?.uid || !userData) return
+
+    // Only for accounts created in the last 2 hours
+    const createdAt = userData.createdAt?.toDate
+      ? userData.createdAt.toDate()
+      : new Date(userData.createdAt || 0)
+    const ageMs = Date.now() - createdAt.getTime()
+    if (ageMs > 2 * 60 * 60 * 1000) return // older than 2 hours — skip
+
+    // Don't send twice
+    const sentKey = `ee-welcome-sent-${authUser.uid}`
+    if (localStorage.getItem(sentKey)) return
+
+    const DELAY = 45 * 60 * 1000 // 45 minutes
+    const timer = setTimeout(async () => {
+      try {
+        const { collection: col, addDoc: add, getDocs: get, query: q, where: w, serverTimestamp: st } = await import("firebase/firestore")
+        // Check Firestore in case they already got one from admin bulk send
+        const existing = await get(q(col(db, "messages"), w("uid", "==", authUser.uid), w("fromAdmin", "==", true)))
+        if (!existing.empty) { localStorage.setItem(sentKey, "1"); return }
+
+        const firstName = userData.name?.split(" ")[0] || "Student"
+        await add(col(db, "messages"), {
+          uid: authUser.uid,
+          username: userData.name || "User",
+          email: userData.email || "",
+          message: `Welcome to ExamEdgeNG! 🎉
+
+Hi ${firstName}! We're so glad you joined us. We are the ExamEdgeNG team and we built this app specifically for UNIBEN Post-UTME candidates like you.
+
+Here's how to get the most out of the app:
+
+Step 1 — Take a CBT test first 🧪
+Go to CBT Mode and do a full timed test. This gives the AI Tutor real data about you so it can tell you exactly what to focus on.
+
+Step 2 — Ask the AI Tutor 🎓
+After your CBT, open AI Tutor and ask: "What should I study today?" It will build you a personalised plan based on your actual weak areas.
+
+Step 3 — Study daily 📚
+Even 30 minutes a day consistently beats cramming. The app tracks your streak and XP to keep you motivated.
+
+Hot Topics 🔥 are your secret weapon — questions that have repeated across multiple UNIBEN papers. Master them and you're already ahead of most candidates.
+
+📢 Join our WhatsApp Channel — don't miss exam updates, app news and study tips:
+https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K
+
+If you ever have questions, go to Settings → Contact Support. We respond personally.
+
+You've got this. UNIBEN is waiting. 🚀
+
+— The ExamEdgeNG Team`,
+          createdAt: st(),
+          status: "unread",
+          fromAdmin: true,
+        })
+        localStorage.setItem(sentKey, "1")
+      } catch(e) {}
+    }, DELAY)
+
+    return () => clearTimeout(timer)
+  }, [authUser?.uid, userData?.uid])
+
   // Online/offline detection
   useEffect(() => {
     const handleOnline = () => setIsOnline(true)

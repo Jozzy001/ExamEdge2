@@ -15,6 +15,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
   const [paywallType, setPaywallType] = useState(null)
   const [showTour, setShowTour] = useState(false)
   const [adminMessage, setAdminMessage] = useState(null)
+  const [showFullMessage, setShowFullMessage] = useState(false)
 
   // WhatsApp number prompt for existing users
   const [showPhonePrompt, setShowPhonePrompt] = useState(false)
@@ -39,18 +40,27 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
     if (!authUser?.uid) return
     const checkAdminMessages = async () => {
       try {
+        // Simplified query — no orderBy to avoid needing a composite index
         const q = query(
           collection(db, "messages"),
           where("uid", "==", authUser.uid),
           where("fromAdmin", "==", true),
-          where("status", "==", "unread"),
-          orderBy("createdAt", "desc")
+          where("status", "==", "unread")
         )
         const snap = await getDocs(q)
         if (!snap.empty) {
-          setAdminMessage({ id: snap.docs[0].id, ...snap.docs[0].data() })
+          // Get the most recent one manually
+          const msgs = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+          msgs.sort((a, b) => {
+            const aTime = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt || 0)
+            const bTime = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt || 0)
+            return bTime - aTime
+          })
+          setAdminMessage(msgs[0])
         }
-      } catch(e) {}
+      } catch(e) {
+        console.error("Admin message check failed:", e)
+      }
     }
     checkAdminMessages()
   }, [authUser?.uid])
@@ -72,6 +82,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
       await updateDoc(doc(db, "messages", adminMessage.id), { status: "read" })
     } catch(e) {}
     setAdminMessage(null)
+    setShowFullMessage(false)
   }
 
   const handleSavePhone = async () => {
@@ -101,8 +112,52 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
     <PageTransition>
     <div className="ee-page">
 
-      {/* ===== ADMIN MESSAGE POPUP ===== */}
-      {adminMessage && (
+      {/* ===== ADMIN MESSAGE NOTIFICATION PROMPT ===== */}
+      {adminMessage && !showFullMessage && (
+        <div style={{
+          position: "fixed", bottom: 24, left: 16, right: 16, zIndex: 9999,
+          background: "var(--bg)",
+          border: "2px solid var(--primary)",
+          borderRadius: "var(--radius-xl)",
+          padding: "16px 18px",
+          boxShadow: "0 8px 32px rgba(102,126,234,0.25)",
+          display: "flex", alignItems: "center", gap: 12
+        }}>
+          <div style={{
+            width: 42, height: 42, borderRadius: "50%", flexShrink: 0,
+            background: "linear-gradient(135deg, #667eea, #764ba2)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 20
+          }}>📩</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 2 }}>
+              New message from ExamEdgeNG
+            </div>
+            <div style={{ fontSize: 11, color: "var(--text3)" }}>
+              The team sent you a message
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, flexShrink: 0 }}>
+            <button onClick={() => setShowFullMessage(true)} style={{
+              padding: "7px 14px",
+              background: "var(--primary)", color: "#fff",
+              border: "none", borderRadius: "var(--radius-md)",
+              fontSize: 12, fontWeight: 800, cursor: "pointer",
+              fontFamily: "var(--font-main)"
+            }}>View</button>
+            <button onClick={handleDismissAdminMessage} style={{
+              padding: "7px 14px",
+              background: "none", color: "var(--text3)",
+              border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
+              fontSize: 12, fontWeight: 700, cursor: "pointer",
+              fontFamily: "var(--font-main)"
+            }}>Skip</button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== ADMIN MESSAGE FULL VIEW ===== */}
+      {adminMessage && showFullMessage && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 9999,
           background: "rgba(0,0,0,0.65)",
@@ -373,7 +428,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
               <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>₦3,000 →</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,500 →</div>
           </div>
         )}
 
