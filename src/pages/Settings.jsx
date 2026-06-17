@@ -374,7 +374,10 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               background: "#fff", color: "#667eea", border: "none", borderRadius: 10,
               padding: "12px 24px", fontWeight: 700, fontSize: 14, cursor: "pointer",
               width: "100%", fontFamily: "var(--font-main)"
-            }}>Get Full Access — ₦3,000</button>
+            }}>
+              <span style={{ textDecoration: "line-through", opacity: 0.6, marginRight: 6, fontSize: 12 }}>₦5,000</span>
+              Get Full Access — ₦2,500 🎉
+            </button>
           </div>
         ) : (
           <div style={{

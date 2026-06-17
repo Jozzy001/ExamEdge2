@@ -8,6 +8,7 @@ import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
 import DailyQuote from "../components/DailyQuote"
 import { db } from "../firebase"
+import { getCBTHistory } from "../utils/cbtHistory"
 import { collection, query, where, getDocs, orderBy, updateDoc, doc } from "firebase/firestore"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
@@ -16,12 +17,41 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
   const [showTour, setShowTour] = useState(false)
   const [adminMessage, setAdminMessage] = useState(null)
   const [showFullMessage, setShowFullMessage] = useState(false)
+  const [cbtCount, setCbtCount] = useState(0)
+  const [showFreePrompt, setShowFreePrompt] = useState(false)
+  // Nudge resets every 3 CBTs so it re-appears at 2, 5, 8, 11...
+  const nudgeMilestone = Math.floor(cbtCount / 3)
+  const [nudgeDismissed, setNudgeDismissed] = useState(
+    () => localStorage.getItem("ee-upgrade-nudge-dismissed") === String(nudgeMilestone)
+  )
 
   // WhatsApp number prompt for existing users
   const [showPhonePrompt, setShowPhonePrompt] = useState(false)
   const [phoneInput, setPhoneInput] = useState("")
   const [savingPhone, setSavingPhone] = useState(false)
   const [phoneError, setPhoneError] = useState("")
+
+  useEffect(() => {
+    // Load CBT count for upgrade nudge
+    try {
+      const history = getCBTHistory()
+      setCbtCount(history.length)
+    } catch(e) {}
+  }, [])
+
+  // Show free user prompt once per session on login
+  useEffect(() => {
+    if (isPaid) return
+    const sessionKey = "ee-free-prompt-shown"
+    if (!sessionStorage.getItem(sessionKey)) {
+      // Small delay so it doesn't stack with other popups
+      const t = setTimeout(() => {
+        setShowFreePrompt(true)
+        sessionStorage.setItem(sessionKey, "1")
+      }, 1500)
+      return () => clearTimeout(t)
+    }
+  }, [isPaid])
 
   useEffect(() => {
     const existing = localStorage.getItem("ee-examDate")
@@ -203,6 +233,125 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         </div>
       )}
 
+      {/* ===== FREE USER LOGIN PROMPT ===== */}
+      {showFreePrompt && !isPaid && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 9997,
+          background: "rgba(0,0,0,0.6)",
+          display: "flex", alignItems: "flex-end",
+          justifyContent: "center"
+        }}>
+          <div style={{
+            background: "var(--bg)",
+            borderRadius: "24px 24px 0 0",
+            width: "100%", maxWidth: 480,
+            overflow: "hidden",
+            boxShadow: "0 -8px 40px rgba(0,0,0,0.3)"
+          }}>
+            {/* Header */}
+            <div style={{
+              background: "linear-gradient(135deg, #667eea, #764ba2)",
+              padding: "20px 20px 16px",
+              textAlign: "center"
+            }}>
+              <div style={{ fontSize: 36, marginBottom: 6 }}>🔓</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: "#fff", marginBottom: 2 }}>
+                You're on the Free Plan
+              </div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.8)" }}>
+                Here's what you're missing out on
+              </div>
+            </div>
+
+            <div style={{ padding: "20px 20px 8px" }}>
+              {/* What they have */}
+              <div style={{
+                background: "rgba(34,201,122,0.07)",
+                border: "1px solid rgba(34,201,122,0.25)",
+                borderRadius: "var(--radius-lg)",
+                padding: "12px 14px", marginBottom: 10
+              }}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#059669", marginBottom: 8 }}>
+                  ✅ What you have now:
+                </div>
+                {[
+                  "📅 2 years of past questions (2014 & 2015)",
+                  "🧪 CBT simulation mode",
+                  "📚 Study guides for all topics",
+                  "🎓 AI Tutor",
+                ].map((item, i) => (
+                  <div key={i} style={{ fontSize: 12, color: "#166534", fontWeight: 600, padding: "2px 0" }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              {/* What they're missing */}
+              <div style={{
+                background: "rgba(102,126,234,0.06)",
+                border: "1px solid rgba(102,126,234,0.2)",
+                borderRadius: "var(--radius-lg)",
+                padding: "12px 14px", marginBottom: 16
+              }}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "var(--primary)", marginBottom: 8 }}>
+                  🔒 What you're missing — unlock for ₦2,500:
+                </div>
+                {[
+                  "📚 18 more years of questions (2005–2013, 2016–2024)",
+                  "🔥 Hot Topics — questions that repeat every year",
+                  "📊 Weak Areas — know exactly what to fix",
+                  "🕐 CBT History — review every attempt",
+                  "📈 Full Progress analytics",
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    fontSize: 12, color: "var(--text2)", fontWeight: 600,
+                    padding: "2px 0", opacity: 0.85
+                  }}>
+                    {item}
+                  </div>
+                ))}
+                <div style={{
+                  marginTop: 8, fontSize: 11, color: "var(--text3)",
+                  fontWeight: 700, textAlign: "center"
+                }}>
+                  One-time payment · No subscription · No hidden fees
+                </div>
+              </div>
+
+              {/* Buttons */}
+              <button
+                onClick={() => { setShowFreePrompt(false); onNavigate("upgrade") }}
+                style={{
+                  width: "100%", padding: "14px",
+                  background: "linear-gradient(135deg, #667eea, #764ba2)",
+                  color: "#fff", border: "none",
+                  borderRadius: "var(--radius-lg)",
+                  fontSize: 15, fontWeight: 800,
+                  cursor: "pointer", fontFamily: "var(--font-main)",
+                  marginBottom: 10
+                }}
+              >
+                Upgrade Now — ₦2,500 🚀
+              </button>
+
+              <button
+                onClick={() => setShowFreePrompt(false)}
+                style={{
+                  width: "100%", padding: "12px",
+                  background: "none", color: "var(--text3)",
+                  border: "none", borderRadius: "var(--radius-lg)",
+                  fontSize: 14, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "var(--font-main)",
+                  marginBottom: 16
+                }}
+              >
+                Continue with free plan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ===== WHATSAPP NUMBER PROMPT (for existing users) ===== */}
       {showPhonePrompt && !adminMessage && (
         <div style={{
@@ -322,6 +471,74 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         <DailyQuote />
 
         <XPBar onNavigate={onNavigate} />
+
+        {/* ── UPGRADE NUDGE — shows after 2+ CBTs for free users ── */}
+        {!isPaid && cbtCount >= 2 && !nudgeDismissed && (
+          <div style={{
+            background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
+            border: "2px solid var(--primary)",
+            borderRadius: "var(--radius-xl)",
+            padding: "16px 18px",
+            marginBottom: 16,
+            position: "relative"
+          }}>
+            {/* Dismiss button */}
+            <button
+              onClick={() => {
+                setNudgeDismissed(true)
+                localStorage.setItem("ee-upgrade-nudge-dismissed", String(Math.floor(getCBTHistory().length / 3)))
+              }}
+              style={{
+                position: "absolute", top: 10, right: 12,
+                background: "none", border: "none",
+                fontSize: 16, color: "var(--text3)",
+                cursor: "pointer", lineHeight: 1
+              }}
+            >✕</button>
+
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+              <div style={{
+                fontSize: 28, flexShrink: 0, marginTop: 2
+              }}>📊</div>
+              <div style={{ flex: 1, paddingRight: 16 }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "var(--primary)", marginBottom: 4 }}>
+                  You've taken {cbtCount} CBT{cbtCount !== 1 ? "s" : ""} — but you're only seeing 2 of 20 years
+                </div>
+                <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 12 }}>
+                  You're practicing with <strong>2014 & 2015</strong> only. Upgrade to unlock
+                  all <strong>20 years of questions</strong>, Hot Topics, Weak Areas tracking
+                  and CBT History — everything you need to actually pass.
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button
+                    onClick={() => onNavigate("upgrade")}
+                    style={{
+                      flex: 2, padding: "10px 14px",
+                      background: "var(--primary)", color: "#fff",
+                      border: "none", borderRadius: "var(--radius-md)",
+                      fontWeight: 800, fontSize: 13,
+                      cursor: "pointer", fontFamily: "var(--font-main)"
+                    }}
+                  >Unlock All 20 Years — ₦2,500 →</button>
+                  <button
+                    onClick={() => {
+                      setNudgeDismissed(true)
+                      localStorage.setItem("ee-upgrade-nudge-dismissed", String(Math.floor(getCBTHistory().length / 3)))
+                    }}
+                    style={{
+                      flex: 1, padding: "10px",
+                      background: "none", color: "var(--text3)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-md)",
+                      fontWeight: 700, fontSize: 12,
+                      cursor: "pointer", fontFamily: "var(--font-main)"
+                    }}
+                  >Not now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div style={{
           background: "var(--primary)", borderRadius: "var(--radius-xl)",

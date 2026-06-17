@@ -360,7 +360,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     const d = u.lastLogin.toDate ? u.lastLogin.toDate() : new Date(u.lastLogin)
     return d.toDateString() === today
   }).length
-  const PRICE = 3000, PAYSTACK_FEE = 145
+  const PRICE = 2575, PAYSTACK_FEE = 138 // avg of Paystack ₦2,650 and manual ₦2,500
   const totalReferralOwed = users.reduce((sum, u) => sum + ((u.referralEarnings || 0) - (u.referralPaidOut || 0)), 0)
   const totalReferralPaid = users.reduce((sum, u) => sum + (u.referralPaidOut || 0), 0)
   const totalRevenue = (paidUsers * (PRICE - PAYSTACK_FEE)) - totalReferralPaid

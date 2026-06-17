@@ -122,9 +122,20 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
         </div>
 
         {/* Price */}
-        <div style={{ marginBottom: 16 }}>
-          <span style={{ fontSize: 28, fontWeight: 800, color: '#667eea' }}>₦2,500</span>
-          <span style={{ fontSize: 13, color: '#888', marginLeft: 8 }}>one-time payment</span>
+        <div style={{ marginBottom: 16, textAlign: 'center' }}>
+          <div style={{ fontSize: 13, color: '#aaa', textDecoration: 'line-through', marginBottom: 2 }}>
+            ₦5,000
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+            <span style={{ fontSize: 32, fontWeight: 800, color: '#667eea' }}>₦2,500</span>
+            <span style={{
+              background: '#fff3cd', color: '#856404',
+              fontSize: 11, fontWeight: 700,
+              padding: '3px 10px', borderRadius: 20,
+              border: '1px solid #fde68a'
+            }}>🎉 Launch Price</span>
+          </div>
+          <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>one-time payment · no subscription</div>
         </div>
 
         <button
@@ -142,7 +153,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
             marginBottom: 12,
           }}
         >
-          {config.cta} — ₦2,500
+          {config.cta} — ₦2,500 🔓
         </button>
 
         <button
