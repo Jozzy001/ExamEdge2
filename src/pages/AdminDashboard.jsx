@@ -352,7 +352,10 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   })
 
   const totalUsers = users.length
-  const paidUsers = users.filter(u => u.isPaid).length
+  // Only count genuine payments in revenue (exclude free unlocks)
+  const FREE_REFS = ['manual_admin', 'free_unlock']
+  const paidUsers = users.filter(u => u.isPaid && u.paymentRef && !FREE_REFS.includes(u.paymentRef)).length
+  const freeUnlocked = users.filter(u => u.isPaid && (!u.paymentRef || FREE_REFS.includes(u.paymentRef))).length
   const freeUsers = users.filter(u => !u.isPaid).length
   const today = new Date().toDateString()
   const activeToday = users.filter(u => {
@@ -664,6 +667,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                 { icon: "🟢", label: "Active Today", value: activeToday, color: "var(--primary)" },
                 { icon: "💎", label: "Paid Users", value: paidUsers, color: "#22c55e" },
                 { icon: "🆓", label: "Free Users", value: freeUsers, color: "#f59e0b" },
+                { icon: "🎁", label: "Free Unlocked", value: freeUnlocked, color: "#a78bfa" },
                 { icon: "💰", label: "Net Revenue", value: `₦${totalRevenue.toLocaleString()}`, color: "#22c55e" },
                 { icon: "⏳", label: "Referral Owed", value: `₦${totalReferralOwed.toLocaleString()}`, color: "#ef4444" },
               ].map((s, i) => (
@@ -850,7 +854,11 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           <button onClick={async () => {
                             const newStatus = !user.isPaid
                             if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
-                            await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? "manual_admin" : null })
+                            const isFree = newStatus && window.confirm(`Is this a FREE unlock (no payment received)?
+
+OK = Free unlock (won't count in revenue)
+Cancel = Paid unlock (counts in revenue)`)
+                            await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
                             if (newStatus && user.referredBy) {
                               const { increment } = await import("firebase/firestore")
                               await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(500) }).catch(() => {})
