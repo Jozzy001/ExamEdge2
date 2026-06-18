@@ -18,7 +18,6 @@ const formatUserDate = (ts) => {
   } catch(e) { return "Before Jun 2026" }
 }
 
-
 const getScoreColor = (pct) => pct >= 70 ? "#16a34a" : pct >= 50 ? "#d97706" : "#dc2626"
 const getScoreBg = (pct) => pct >= 70 ? "rgba(34,197,94,0.08)" : pct >= 50 ? "rgba(245,158,11,0.08)" : "rgba(239,68,68,0.08)"
 
@@ -79,29 +78,44 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   // New user tracking
   const [markingAsSeen, setMarkingAsSeen] = useState(null)
 
-  const handleMarkAsSeen = async (user) => {
-    setMarkingAsSeen(user.id)
-    try {
-      await updateDoc(doc(db, "users", user.id), { seenByAdmin: true, seenByAdminAt: new Date().toISOString() })
-      setUsers(prev => prev.map(u => u.id === user.id ? { ...u, seenByAdmin: true } : u))
-    } catch(e) { setActionError("Failed to mark as seen.") }
-    setMarkingAsSeen(null)
-  }
-
   // Bulk welcome DM
   const [welcomeMsg, setWelcomeMsg] = useState(DEFAULT_WELCOME)
   const [sendingWelcome, setSendingWelcome] = useState(false)
   const [welcomeProgress, setWelcomeProgress] = useState("")
   const [showWelcomeEditor, setShowWelcomeEditor] = useState(false)
 
+  // Withdraw / revenue management
+  const [withdrawAmount, setWithdrawAmount] = useState("")
+  const [withdrawNote, setWithdrawNote] = useState("")
+  const [withdrawing, setWithdrawing] = useState(false)
+  const [revenueOffset, setRevenueOffset] = useState(0)
+  const [withdrawHistory, setWithdrawHistory] = useState([])
+  const [showWithdrawHistory, setShowWithdrawHistory] = useState(false)
+
   useEffect(() => {
     const loadFreeAccess = async () => {
       try {
-        const snap = await import("firebase/firestore").then(({ getDoc, doc: d }) => getDoc(d(db, "appSettings", "global")))
+        const { getDoc, doc: d } = await import("firebase/firestore")
+        const snap = await getDoc(d(db, "appSettings", "global"))
         if (snap.exists()) setFreeAccessModeLocal(snap.data().freeAccessMode === true)
       } catch(e) {}
     }
     loadFreeAccess()
+  }, [])
+
+  // Load revenue offset and withdrawal history
+  useEffect(() => {
+    const loadRevenue = async () => {
+      try {
+        const { getDoc, doc: d } = await import("firebase/firestore")
+        const snap = await getDoc(d(db, "appSettings", "revenue"))
+        if (snap.exists()) {
+          setRevenueOffset(snap.data().offset || 0)
+          setWithdrawHistory(snap.data().withdrawals || [])
+        }
+      } catch(e) {}
+    }
+    loadRevenue()
   }, [])
 
   if (authUser?.email !== ADMIN_EMAIL) {
@@ -122,6 +136,15 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   }
 
   useEffect(() => { fetchUsers(); fetchMessages() }, [])
+
+  const handleMarkAsSeen = async (user) => {
+    setMarkingAsSeen(user.id)
+    try {
+      await updateDoc(doc(db, "users", user.id), { seenByAdmin: true, seenByAdminAt: new Date().toISOString() })
+      setUsers(prev => prev.map(u => u.id === user.id ? { ...u, seenByAdmin: true } : u))
+    } catch(e) { setActionError("Failed to mark as seen.") }
+    setMarkingAsSeen(null)
+  }
 
   const handleViewProgress = async (user) => {
     setProgressUser(user)
@@ -166,59 +189,35 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     setSendingNotif(false)
   }
 
-  // ── BULK WELCOME DM ──
   const handleSendWelcomeDm = async () => {
     if (!welcomeMsg.trim()) return
-    const count = users.length
-    if (!window.confirm(`Send welcome message to all ${count} users who haven't received one yet?\n\n[Name] will be replaced with each user's first name automatically.`)) return
-
+    if (!window.confirm(`Send welcome message to all ${users.length} users who haven't received one yet?\n\n[Name] will be replaced with each user's first name automatically.`)) return
     setSendingWelcome(true)
     setWelcomeProgress("Checking who needs a welcome message...")
-
     try {
-      // Get all existing admin messages to find who already got one
-      const existingSnap = await getDocs(query(
-        collection(db, "messages"),
-        where("fromAdmin", "==", true)
-      ))
+      const existingSnap = await getDocs(query(collection(db, "messages"), where("fromAdmin", "==", true)))
       const alreadySent = new Set(existingSnap.docs.map(d => d.data().uid))
-
       const toSend = users.filter(u => !alreadySent.has(u.id))
-
       if (toSend.length === 0) {
         setActionMsg("✅ All users have already received a welcome message!")
-        setSendingWelcome(false)
-        setWelcomeProgress("")
-        return
+        setSendingWelcome(false); setWelcomeProgress(""); return
       }
-
       setWelcomeProgress(`Sending to ${toSend.length} user${toSend.length !== 1 ? "s" : ""}...`)
-
       let sent = 0
       for (const user of toSend) {
         const firstName = user.name?.split(" ")[0] || "Student"
         const personalised = welcomeMsg.replace(/\[Name\]/g, firstName)
         await addDoc(collection(db, "messages"), {
-          uid: user.id,
-          username: user.name || "User",
-          email: user.email || "",
-          message: personalised,
-          createdAt: serverTimestamp(),
-          status: "unread",
-          fromAdmin: true,
+          uid: user.id, username: user.name || "User", email: user.email || "",
+          message: personalised, createdAt: serverTimestamp(), status: "unread", fromAdmin: true,
         })
         sent++
         setWelcomeProgress(`Sent ${sent} of ${toSend.length}...`)
-        await new Promise(r => setTimeout(r, 150)) // avoid rate limits
+        await new Promise(r => setTimeout(r, 150))
       }
-
-      setActionMsg(`✅ Welcome message sent to ${sent} user${sent !== 1 ? "s" : ""}! ${users.length - sent > 0 ? `${users.length - sent} already had one.` : ""}`)
-      setWelcomeProgress("")
-      setShowWelcomeEditor(false)
-    } catch(e) {
-      setActionError("Failed to send welcome messages. Try again.")
-      setWelcomeProgress("")
-    }
+      setActionMsg(`✅ Welcome message sent to ${sent} user${sent !== 1 ? "s" : ""}!`)
+      setWelcomeProgress(""); setShowWelcomeEditor(false)
+    } catch(e) { setActionError("Failed to send welcome messages."); setWelcomeProgress("") }
     setSendingWelcome(false)
   }
 
@@ -236,6 +235,43 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       setActionMsg(newMode ? "🎉 Free Access Mode ENABLED!" : "🔒 Free Access Mode DISABLED — paywall restored.")
     } catch(e) { setActionError("Failed to update free access mode.") }
     setFreeAccessLoading(false)
+  }
+
+  const handleWithdraw = async () => {
+    const amount = parseInt(withdrawAmount)
+    if (!amount || amount <= 0) { setActionError("Please enter a valid amount"); return }
+    if (!window.confirm(`Record withdrawal of ₦${amount.toLocaleString()}?\n\nThis will be deducted from your net revenue display.`)) return
+    setWithdrawing(true)
+    try {
+      const newEntry = {
+        amount,
+        note: withdrawNote.trim() || "Withdrawal",
+        date: new Date().toISOString()
+      }
+      const newHistory = [...withdrawHistory, newEntry]
+      const newOffset = revenueOffset + amount
+      await setDoc(doc(db, "appSettings", "revenue"), {
+        offset: newOffset,
+        withdrawals: newHistory,
+        updatedAt: serverTimestamp()
+      }, { merge: true })
+      setRevenueOffset(newOffset)
+      setWithdrawHistory(newHistory)
+      setWithdrawAmount("")
+      setWithdrawNote("")
+      setActionMsg(`✅ ₦${amount.toLocaleString()} withdrawal recorded.`)
+    } catch(e) { setActionError("Failed to record withdrawal.") }
+    setWithdrawing(false)
+  }
+
+  const handleResetRevenue = async () => {
+    if (!window.confirm("Reset all withdrawal records? This only affects the revenue display — no payment data is changed.")) return
+    try {
+      await setDoc(doc(db, "appSettings", "revenue"), { offset: 0, withdrawals: [], updatedAt: serverTimestamp() }, { merge: true })
+      setRevenueOffset(0)
+      setWithdrawHistory([])
+      setActionMsg("✅ Revenue display reset.")
+    } catch(e) { setActionError("Failed to reset.") }
   }
 
   const fetchUsers = async () => {
@@ -294,8 +330,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       const personalised = dmText.replace(/\[Name\]/g, firstName)
       await addDoc(collection(db, "messages"), {
         uid: user.id, username: user.name || "User", email: user.email || "",
-        message: personalised, createdAt: serverTimestamp(),
-        status: "unread", fromAdmin: true,
+        message: personalised, createdAt: serverTimestamp(), status: "unread", fromAdmin: true,
       })
       setActionMsg(`✅ Message sent to ${user.name}`)
       setDmText(""); setDmTarget(null)
@@ -352,7 +387,6 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   })
 
   const totalUsers = users.length
-  // Only count genuine payments in revenue (exclude free unlocks)
   const FREE_REFS = ['manual_admin', 'free_unlock']
   const paidUsers = users.filter(u => u.isPaid && u.paymentRef && !FREE_REFS.includes(u.paymentRef)).length
   const freeUnlocked = users.filter(u => u.isPaid && (!u.paymentRef || FREE_REFS.includes(u.paymentRef))).length
@@ -363,10 +397,11 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     const d = u.lastLogin.toDate ? u.lastLogin.toDate() : new Date(u.lastLogin)
     return d.toDateString() === today
   }).length
-  const PRICE = 2575, PAYSTACK_FEE = 138 // avg of Paystack ₦2,650 and manual ₦2,500
+  const PRICE = 2650, PAYSTACK_FEE = 138
   const totalReferralOwed = users.reduce((sum, u) => sum + ((u.referralEarnings || 0) - (u.referralPaidOut || 0)), 0)
   const totalReferralPaid = users.reduce((sum, u) => sum + (u.referralPaidOut || 0), 0)
-  const totalRevenue = (paidUsers * (PRICE - PAYSTACK_FEE)) - totalReferralPaid
+  const grossRevenue = (paidUsers * (PRICE - PAYSTACK_FEE)) - totalReferralPaid
+  const totalRevenue = Math.max(0, grossRevenue - revenueOffset)
 
   return (
     <div className="ee-page">
@@ -381,18 +416,13 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
           }}>
             <div style={{ width: 40, height: 4, borderRadius: 2, background: "var(--border)", margin: "0 auto 16px" }} />
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-              <div style={{
-                width: 44, height: 44, borderRadius: "50%", background: "var(--primary-light)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 20, fontWeight: 800, color: "var(--primary)", flexShrink: 0
-              }}>{progressUser.name?.[0]?.toUpperCase() || "?"}</div>
+              <div style={{ width: 44, height: 44, borderRadius: "50%", background: "var(--primary-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, fontWeight: 800, color: "var(--primary)", flexShrink: 0 }}>{progressUser.name?.[0]?.toUpperCase() || "?"}</div>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text)" }}>{progressUser.name}</div>
                 <div style={{ fontSize: 12, color: "var(--text3)" }}>{progressUser.email}</div>
               </div>
               <button onClick={() => setProgressUser(null)} style={{ marginLeft: "auto", background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "var(--text3)" }}>✕</button>
             </div>
-
             {progressLoading ? (
               <div style={{ textAlign: "center", padding: "40px 0", color: "var(--text3)" }}>Loading progress...</div>
             ) : progressData.length === 0 ? (
@@ -406,18 +436,10 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               const personalBest = progressData.reduce((best, r) => (!best || r.percentage > best.percentage) ? r : best, null)
               return (
                 <>
-                  <div style={{
-                    background: `linear-gradient(135deg, ${getScoreColor(overallPct)}22, ${getScoreColor(overallPct)}11)`,
-                    border: `1.5px solid ${getScoreColor(overallPct)}44`,
-                    borderRadius: "var(--radius-xl)", padding: "16px", marginBottom: 16
-                  }}>
+                  <div style={{ background: `linear-gradient(135deg, ${getScoreColor(overallPct)}22, ${getScoreColor(overallPct)}11)`, border: `1.5px solid ${getScoreColor(overallPct)}44`, borderRadius: "var(--radius-xl)", padding: "16px", marginBottom: 16 }}>
                     <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text2)", marginBottom: 10 }}>Overall Performance</div>
                     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                      <div style={{
-                        width: 70, height: 70, borderRadius: "50%", flexShrink: 0,
-                        background: `conic-gradient(${getScoreColor(overallPct)} ${overallPct * 3.6}deg, var(--border) 0deg)`,
-                        display: "flex", alignItems: "center", justifyContent: "center"
-                      }}>
+                      <div style={{ width: 70, height: 70, borderRadius: "50%", flexShrink: 0, background: `conic-gradient(${getScoreColor(overallPct)} ${overallPct * 3.6}deg, var(--border) 0deg)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <div style={{ width: 54, height: 54, borderRadius: "50%", background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 900, color: getScoreColor(overallPct) }}>{overallPct}%</div>
                       </div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, flex: 1 }}>
@@ -435,28 +457,23 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                       </div>
                     </div>
                   </div>
-
                   {Object.keys(subjectMap).length > 0 && (
                     <>
                       <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>📚 Subject Breakdown</div>
-                      {Object.entries(subjectMap)
-                        .map(([subj, s]) => ({ subj, pct: Math.round((s.score / s.total) * 100), ...s }))
-                        .sort((a, b) => a.pct - b.pct)
-                        .map(({ subj, pct, score, total }) => (
-                          <div key={subj} style={{ background: getScoreBg(pct), border: `1px solid ${getScoreColor(pct)}33`, borderRadius: "var(--radius-md)", padding: "12px 14px", marginBottom: 8, display: "flex", alignItems: "center", gap: 12 }}>
-                            <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>{subj}</div>
-                              <div style={{ height: 5, borderRadius: 3, background: "var(--border)" }}>
-                                <div style={{ height: "100%", width: `${pct}%`, borderRadius: 3, background: getScoreColor(pct) }} />
-                              </div>
-                              <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 3 }}>{score}/{total} correct</div>
+                      {Object.entries(subjectMap).map(([subj, s]) => ({ subj, pct: Math.round((s.score / s.total) * 100), ...s })).sort((a, b) => a.pct - b.pct).map(({ subj, pct, score, total }) => (
+                        <div key={subj} style={{ background: getScoreBg(pct), border: `1px solid ${getScoreColor(pct)}33`, borderRadius: "var(--radius-md)", padding: "12px 14px", marginBottom: 8, display: "flex", alignItems: "center", gap: 12 }}>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>{subj}</div>
+                            <div style={{ height: 5, borderRadius: 3, background: "var(--border)" }}>
+                              <div style={{ height: "100%", width: `${pct}%`, borderRadius: 3, background: getScoreColor(pct) }} />
                             </div>
-                            <div style={{ fontSize: 16, fontWeight: 900, color: getScoreColor(pct), minWidth: 44, textAlign: "right" }}>{pct}%</div>
+                            <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 3 }}>{score}/{total} correct</div>
                           </div>
-                        ))}
+                          <div style={{ fontSize: 16, fontWeight: 900, color: getScoreColor(pct), minWidth: 44, textAlign: "right" }}>{pct}%</div>
+                        </div>
+                      ))}
                     </>
                   )}
-
                   {weakAreas.length > 0 && (
                     <div style={{ background: "rgba(239,68,68,0.05)", border: "1.5px solid rgba(239,68,68,0.2)", borderRadius: "var(--radius-lg)", padding: "14px", marginTop: 8, marginBottom: 16 }}>
                       <div style={{ fontSize: 13, fontWeight: 800, color: "#dc2626", marginBottom: 10 }}>⚠️ Weak Areas ({weakAreas.length} subjects below 50%)</div>
@@ -468,7 +485,6 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                       ))}
                     </div>
                   )}
-
                   <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>🕐 Recent Tests</div>
                   {progressData.slice(0, 10).map((r, i) => {
                     const color = getScoreColor(r.percentage || 0)
@@ -477,23 +493,17 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                         <div style={{ width: 44, height: 44, borderRadius: "50%", flexShrink: 0, border: `2.5px solid ${color}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900, color, background: "var(--surface2)" }}>{r.percentage}%</div>
                         <div style={{ flex: 1 }}>
                           <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)" }}>{r.score}/{r.total} correct</div>
-                          <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                            {formatDate(r.date)}
-                            {r.timeTaken && <span style={{ marginLeft: 8 }}>⏱ {formatTime(r.timeTaken)}</span>}
-                          </div>
+                          <div style={{ fontSize: 11, color: "var(--text3)" }}>{formatDate(r.date)}{r.timeTaken && <span style={{ marginLeft: 8 }}>⏱ {formatTime(r.timeTaken)}</span>}</div>
                           {r.subjects?.length > 0 && (
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 4 }}>
-                              {r.subjects.map(s => (
-                                <span key={s} style={{ fontSize: 9, fontWeight: 700, padding: "1px 6px", borderRadius: 10, background: "var(--primary-light)", color: "var(--primary-text)" }}>{s}</span>
-                              ))}
+                              {r.subjects.map(s => <span key={s} style={{ fontSize: 9, fontWeight: 700, padding: "1px 6px", borderRadius: 10, background: "var(--primary-light)", color: "var(--primary-text)" }}>{s}</span>)}
                             </div>
                           )}
                         </div>
                         <div style={{ height: 36, width: 36, position: "relative", flexShrink: 0 }}>
                           <svg viewBox="0 0 36 36" style={{ transform: "rotate(-90deg)" }}>
                             <circle cx="18" cy="18" r="15" fill="none" stroke="var(--border)" strokeWidth="3" />
-                            <circle cx="18" cy="18" r="15" fill="none" stroke={color} strokeWidth="3"
-                              strokeDasharray={`${(r.percentage / 100) * 94} 94`} strokeLinecap="round" />
+                            <circle cx="18" cy="18" r="15" fill="none" stroke={color} strokeWidth="3" strokeDasharray={`${(r.percentage / 100) * 94} 94`} strokeLinecap="round" />
                           </svg>
                         </div>
                       </div>
@@ -514,12 +524,8 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       </header>
 
       <div className="ee-content">
-        {actionMsg && (
-          <div style={{ background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--success)", marginBottom: 12, fontWeight: 700 }}>{actionMsg}</div>
-        )}
-        {actionError && (
-          <div style={{ background: "rgba(255,107,107,0.1)", border: "1px solid rgba(255,107,107,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--accent)", marginBottom: 12 }}>{actionError}</div>
-        )}
+        {actionMsg && <div style={{ background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--success)", marginBottom: 12, fontWeight: 700 }}>{actionMsg}</div>}
+        {actionError && <div style={{ background: "rgba(255,107,107,0.1)", border: "1px solid rgba(255,107,107,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--accent)", marginBottom: 12 }}>{actionError}</div>}
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
@@ -558,74 +564,93 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 12, lineHeight: 1.5 }}>
                 {freeAccessMode ? "All users currently have full access." : "Paywall is active. Only paid users have full access."}
               </div>
-              <button onClick={handleToggleFreeAccess} disabled={freeAccessLoading} style={{
-                width: "100%", padding: "12px",
-                background: freeAccessMode ? "rgba(239,68,68,0.1)" : "rgba(34,197,94,0.1)",
-                color: freeAccessMode ? "#dc2626" : "#15803d",
-                border: `1.5px solid ${freeAccessMode ? "rgba(239,68,68,0.4)" : "rgba(34,197,94,0.4)"}`,
-                borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 14,
-                cursor: freeAccessLoading ? "not-allowed" : "pointer", fontFamily: "var(--font-main)"
-              }}>
+              <button onClick={handleToggleFreeAccess} disabled={freeAccessLoading} style={{ width: "100%", padding: "12px", background: freeAccessMode ? "rgba(239,68,68,0.1)" : "rgba(34,197,94,0.1)", color: freeAccessMode ? "#dc2626" : "#15803d", border: `1.5px solid ${freeAccessMode ? "rgba(239,68,68,0.4)" : "rgba(34,197,94,0.4)"}`, borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 14, cursor: freeAccessLoading ? "not-allowed" : "pointer", fontFamily: "var(--font-main)" }}>
                 {freeAccessLoading ? "Updating..." : freeAccessMode ? "🔒 Disable Free Access" : "🎉 Enable Free Access"}
               </button>
             </div>
 
-            {/* ── BULK WELCOME DM ── */}
+            {/* ── WITHDRAW / REVENUE MANAGEMENT ── */}
+            <div style={{ background: "var(--surface)", border: "1.5px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "16px 18px", marginBottom: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)" }}>💸 Record a Withdrawal</div>
+                  <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>
+                    Keeps your net revenue accurate after you withdraw
+                  </div>
+                </div>
+                {withdrawHistory.length > 0 && (
+                  <button onClick={() => setShowWithdrawHistory(p => !p)} style={{ padding: "5px 10px", background: "var(--surface2)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", fontSize: 11, fontWeight: 700, cursor: "pointer", color: "var(--text2)", fontFamily: "var(--font-main)", flexShrink: 0 }}>
+                    {showWithdrawHistory ? "Hide" : `History (${withdrawHistory.length})`}
+                  </button>
+                )}
+              </div>
+
+              {/* Withdrawal history */}
+              {showWithdrawHistory && withdrawHistory.length > 0 && (
+                <div style={{ marginBottom: 14, background: "var(--surface2)", borderRadius: "var(--radius-md)", padding: "10px 12px" }}>
+                  {[...withdrawHistory].reverse().map((w, i) => (
+                    <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "5px 0", borderBottom: i < withdrawHistory.length - 1 ? "1px solid var(--border)" : "none" }}>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text)" }}>{w.note}</div>
+                        <div style={{ fontSize: 10, color: "var(--text3)" }}>{formatUserDate(w.date)}</div>
+                      </div>
+                      <div style={{ fontSize: 13, fontWeight: 800, color: "#dc2626" }}>-₦{w.amount?.toLocaleString()}</div>
+                    </div>
+                  ))}
+                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8, paddingTop: 8, borderTop: "1.5px solid var(--border)" }}>
+                    <span style={{ fontSize: 12, fontWeight: 800, color: "var(--text3)" }}>Total withdrawn</span>
+                    <span style={{ fontSize: 13, fontWeight: 900, color: "var(--text)" }}>₦{revenueOffset.toLocaleString()}</span>
+                  </div>
+                </div>
+              )}
+
+              <input
+                type="number"
+                value={withdrawAmount}
+                onChange={e => setWithdrawAmount(e.target.value)}
+                placeholder="Amount withdrawn e.g. 2512"
+                style={{ width: "100%", padding: "10px 12px", marginBottom: 8, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", boxSizing: "border-box" }}
+              />
+              <input
+                value={withdrawNote}
+                onChange={e => setWithdrawNote(e.target.value)}
+                placeholder="Note e.g. Paystack payout, Server cost"
+                style={{ width: "100%", padding: "10px 12px", marginBottom: 10, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", boxSizing: "border-box" }}
+              />
+              <div style={{ display: "flex", gap: 8 }}>
+                <button onClick={handleWithdraw} disabled={withdrawing || !withdrawAmount} style={{
+                  flex: 2, padding: "11px",
+                  background: withdrawing || !withdrawAmount ? "var(--surface3)" : "var(--primary)",
+                  color: withdrawing || !withdrawAmount ? "var(--text3)" : "#fff",
+                  border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13,
+                  cursor: withdrawing || !withdrawAmount ? "not-allowed" : "pointer", fontFamily: "var(--font-main)"
+                }}>
+                  {withdrawing ? "Saving..." : "💸 Record Withdrawal"}
+                </button>
+                {revenueOffset > 0 && (
+                  <button onClick={handleResetRevenue} style={{ flex: 1, padding: "11px", background: "rgba(239,68,68,0.08)", color: "#dc2626", border: "1px solid rgba(239,68,68,0.25)", borderRadius: "var(--radius-md)", fontWeight: 700, fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)" }}>
+                    Reset
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Bulk Welcome DM */}
             <div style={{ background: "linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08))", border: "2px solid rgba(102,126,234,0.3)", borderRadius: "var(--radius-lg)", padding: "16px 18px", marginBottom: 20 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)" }}>👋 Send Welcome Message</div>
-                  <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>
-                    Sends to users who haven't received one yet · [Name] auto-replaced per user
-                  </div>
+                  <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>Sends to users who haven't received one yet · [Name] auto-replaced</div>
                 </div>
-                <button onClick={() => setShowWelcomeEditor(p => !p)} style={{
-                  padding: "6px 12px", background: "var(--surface)", border: "1px solid var(--border)",
-                  borderRadius: "var(--radius-md)", fontSize: 11, fontWeight: 700,
-                  cursor: "pointer", color: "var(--text2)", fontFamily: "var(--font-main)", flexShrink: 0
-                }}>{showWelcomeEditor ? "Hide" : "Edit"}</button>
+                <button onClick={() => setShowWelcomeEditor(p => !p)} style={{ padding: "6px 12px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", fontSize: 11, fontWeight: 700, cursor: "pointer", color: "var(--text2)", fontFamily: "var(--font-main)", flexShrink: 0 }}>{showWelcomeEditor ? "Hide" : "Edit"}</button>
               </div>
-
-              {showWelcomeEditor && (
-                <textarea
-                  value={welcomeMsg}
-                  onChange={e => setWelcomeMsg(e.target.value)}
-                  rows={10}
-                  style={{
-                    width: "100%", padding: "10px 12px", marginBottom: 10,
-                    border: "1px solid var(--border)", borderRadius: "var(--radius-md)",
-                    background: "var(--surface)", color: "var(--text)", fontSize: 12,
-                    fontFamily: "var(--font-main)", outline: "none", resize: "vertical",
-                    boxSizing: "border-box", lineHeight: 1.65
-                  }}
-                />
+              {showWelcomeEditor ? (
+                <textarea value={welcomeMsg} onChange={e => setWelcomeMsg(e.target.value)} rows={10} style={{ width: "100%", padding: "10px 12px", marginBottom: 10, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface)", color: "var(--text)", fontSize: 12, fontFamily: "var(--font-main)", outline: "none", resize: "vertical", boxSizing: "border-box", lineHeight: 1.65 }} />
+              ) : (
+                <div style={{ background: "var(--surface)", borderRadius: "var(--radius-md)", padding: "10px 12px", marginBottom: 10, fontSize: 12, color: "var(--text2)", lineHeight: 1.6, maxHeight: 80, overflow: "hidden" }}>{welcomeMsg.slice(0, 180)}...</div>
               )}
-
-              {!showWelcomeEditor && (
-                <div style={{ background: "var(--surface)", borderRadius: "var(--radius-md)", padding: "10px 12px", marginBottom: 10, fontSize: 12, color: "var(--text2)", lineHeight: 1.6, maxHeight: 80, overflow: "hidden", position: "relative" }}>
-                  {welcomeMsg.slice(0, 180)}...
-                </div>
-              )}
-
-              {welcomeProgress && (
-                <div style={{ fontSize: 12, color: "var(--primary)", marginBottom: 8, fontWeight: 700, textAlign: "center" }}>
-                  ⏳ {welcomeProgress}
-                </div>
-              )}
-
-              <button
-                onClick={handleSendWelcomeDm}
-                disabled={sendingWelcome || !welcomeMsg.trim()}
-                style={{
-                  width: "100%", padding: "13px",
-                  background: sendingWelcome ? "var(--surface3)" : "linear-gradient(135deg, #667eea, #764ba2)",
-                  color: sendingWelcome ? "var(--text3)" : "#fff",
-                  border: "none", borderRadius: "var(--radius-md)",
-                  fontWeight: 800, fontSize: 14,
-                  cursor: sendingWelcome ? "not-allowed" : "pointer",
-                  fontFamily: "var(--font-main)"
-                }}
-              >
+              {welcomeProgress && <div style={{ fontSize: 12, color: "var(--primary)", marginBottom: 8, fontWeight: 700, textAlign: "center" }}>⏳ {welcomeProgress}</div>}
+              <button onClick={handleSendWelcomeDm} disabled={sendingWelcome || !welcomeMsg.trim()} style={{ width: "100%", padding: "13px", background: sendingWelcome ? "var(--surface3)" : "linear-gradient(135deg, #667eea, #764ba2)", color: sendingWelcome ? "var(--text3)" : "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 14, cursor: sendingWelcome ? "not-allowed" : "pointer", fontFamily: "var(--font-main)" }}>
                 {sendingWelcome ? "Sending..." : `👋 Send to All ${users.length} Users`}
               </button>
             </div>
@@ -635,27 +660,14 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>📢 Send Notification to All Users</div>
               <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
                 {["feature", "exam", "promo", "warning"].map(t => (
-                  <button key={t} onClick={() => setNotifType(t)} style={{
-                    flex: 1, padding: "6px 4px", borderRadius: "var(--radius-sm)",
-                    border: notifType === t ? "2px solid var(--primary)" : "1px solid var(--border)",
-                    background: notifType === t ? "var(--primary-light)" : "var(--surface2)",
-                    fontSize: 10, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)",
-                    color: notifType === t ? "var(--primary-text)" : "var(--text2)"
-                  }}>
+                  <button key={t} onClick={() => setNotifType(t)} style={{ flex: 1, padding: "6px 4px", borderRadius: "var(--radius-sm)", border: notifType === t ? "2px solid var(--primary)" : "1px solid var(--border)", background: notifType === t ? "var(--primary-light)" : "var(--surface2)", fontSize: 10, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)", color: notifType === t ? "var(--primary-text)" : "var(--text2)" }}>
                     {t === "feature" ? "🆕" : t === "exam" ? "📋" : t === "promo" ? "🎉" : "⚠️"} {t}
                   </button>
                 ))}
               </div>
-              <input value={notifTitle} onChange={e => setNotifTitle(e.target.value)} placeholder="Notification title..."
-                style={{ width: "100%", padding: "10px 12px", marginBottom: 8, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", boxSizing: "border-box" }} />
-              <textarea value={notifBody} onChange={e => setNotifBody(e.target.value)} placeholder="Notification message..." rows={3}
-                style={{ width: "100%", padding: "10px 12px", marginBottom: 10, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", resize: "none", boxSizing: "border-box", lineHeight: 1.5 }} />
-              <button onClick={sendNotification} disabled={sendingNotif || !notifTitle.trim() || !notifBody.trim()} style={{
-                width: "100%", padding: "12px", background: "var(--primary)", color: "#fff", border: "none",
-                borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 14,
-                cursor: sendingNotif ? "not-allowed" : "pointer", fontFamily: "var(--font-main)",
-                opacity: !notifTitle.trim() || !notifBody.trim() ? 0.5 : 1
-              }}>
+              <input value={notifTitle} onChange={e => setNotifTitle(e.target.value)} placeholder="Notification title..." style={{ width: "100%", padding: "10px 12px", marginBottom: 8, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", boxSizing: "border-box" }} />
+              <textarea value={notifBody} onChange={e => setNotifBody(e.target.value)} placeholder="Notification message..." rows={3} style={{ width: "100%", padding: "10px 12px", marginBottom: 10, border: "1px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface2)", color: "var(--text)", fontSize: 13, fontFamily: "var(--font-main)", outline: "none", resize: "none", boxSizing: "border-box", lineHeight: 1.5 }} />
+              <button onClick={sendNotification} disabled={sendingNotif || !notifTitle.trim() || !notifBody.trim()} style={{ width: "100%", padding: "12px", background: "var(--primary)", color: "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 14, cursor: sendingNotif ? "not-allowed" : "pointer", fontFamily: "var(--font-main)", opacity: !notifTitle.trim() || !notifBody.trim() ? 0.5 : 1 }}>
                 {sendingNotif ? "Sending..." : "📢 Send to All Users"}
               </button>
             </div>
@@ -669,6 +681,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                 { icon: "🆓", label: "Free Users", value: freeUsers, color: "#f59e0b" },
                 { icon: "🎁", label: "Free Unlocked", value: freeUnlocked, color: "#a78bfa" },
                 { icon: "💰", label: "Net Revenue", value: `₦${totalRevenue.toLocaleString()}`, color: "#22c55e" },
+                { icon: "💸", label: "Withdrawn", value: `₦${revenueOffset.toLocaleString()}`, color: "#ef4444" },
                 { icon: "⏳", label: "Referral Owed", value: `₦${totalReferralOwed.toLocaleString()}`, color: "#ef4444" },
               ].map((s, i) => (
                 <div key={i} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "16px", textAlign: "center" }}>
@@ -686,9 +699,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                 <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--primary-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "var(--primary)", flexShrink: 0 }}>{u.name?.[0]?.toUpperCase() || "?"}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{u.name || "—"}</div>
-                  <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                    {u.createdAt ? formatUserDate(u.createdAt) : u.lastLogin ? `Last seen ${formatUserDate(u.lastLogin)}` : "Early user"}
-                  </div>
+                  <div style={{ fontSize: 11, color: "var(--text3)" }}>{u.createdAt ? formatUserDate(u.createdAt) : u.lastLogin ? `Last seen ${formatUserDate(u.lastLogin)}` : "Early user"}</div>
                 </div>
                 <span style={{ fontSize: 10, fontWeight: 700, background: "var(--primary-light)", color: "var(--primary-text)", padding: "2px 8px", borderRadius: "var(--radius-pill)" }}>{u.faculty || "—"}</span>
               </div>
@@ -699,25 +710,12 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
         {/* ===== USERS TAB ===== */}
         {tab === "users" && (
           <>
-            <input type="text" placeholder="🔍 Search by name or email..." value={search} onChange={e => setSearch(e.target.value)}
-              style={{ width: "100%", padding: "12px 14px", marginBottom: 16, border: "1.5px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 14, fontFamily: "var(--font-main)", color: "var(--text)", outline: "none", boxSizing: "border-box" }} />
-
+            <input type="text" placeholder="🔍 Search by name or email..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: "100%", padding: "12px 14px", marginBottom: 16, border: "1.5px solid var(--border)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 14, fontFamily: "var(--font-main)", color: "var(--text)", outline: "none", boxSizing: "border-box" }} />
             <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-              {[
-                { key: "all", label: `All (${users.length})` },
-                { key: "paid", label: `💎 Paid (${paidUsers})` },
-                { key: "free", label: `🆓 Free (${freeUsers})` },
-              ].map(f => (
-                <button key={f.key} onClick={() => setPlanFilter(f.key)} style={{
-                  flex: 1, padding: "8px 4px", borderRadius: "var(--radius-md)",
-                  border: planFilter === f.key ? "2px solid var(--primary)" : "1px solid var(--border)",
-                  background: planFilter === f.key ? "var(--primary-light)" : "var(--surface)",
-                  color: planFilter === f.key ? "var(--primary-text)" : "var(--text2)",
-                  fontWeight: 800, fontSize: 11, cursor: "pointer", fontFamily: "var(--font-main)"
-                }}>{f.label}</button>
+              {[{ key: "all", label: `All (${users.length})` }, { key: "paid", label: `💎 Paid (${paidUsers})` }, { key: "free", label: `🆓 Free (${freeUsers})` }].map(f => (
+                <button key={f.key} onClick={() => setPlanFilter(f.key)} style={{ flex: 1, padding: "8px 4px", borderRadius: "var(--radius-md)", border: planFilter === f.key ? "2px solid var(--primary)" : "1px solid var(--border)", background: planFilter === f.key ? "var(--primary-light)" : "var(--surface)", color: planFilter === f.key ? "var(--primary-text)" : "var(--text2)", fontWeight: 800, fontSize: 11, cursor: "pointer", fontFamily: "var(--font-main)" }}>{f.label}</button>
               ))}
             </div>
-
             {loading ? (
               <div style={{ textAlign: "center", padding: "40px 0", color: "var(--text3)" }}>Loading users...</div>
             ) : filtered.length === 0 ? (
@@ -726,237 +724,141 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               const newUsers = filtered.filter(u => !u.seenByAdmin)
               const seenUsers = filtered.filter(u => u.seenByAdmin)
               const renderUser = (user) => (
-                  <div key={user.id}>
-                    <div onClick={() => setSelected(selected?.id === user.id ? null : user)} style={{
-                      display: "flex", alignItems: "center", gap: 12,
-                      background: selected?.id === user.id ? "var(--primary-light)" : "var(--surface)",
-                      border: selected?.id === user.id ? "1.5px solid var(--primary)" : "1px solid var(--border)",
-                      borderRadius: selected?.id === user.id ? "var(--radius-md) var(--radius-md) 0 0" : "var(--radius-md)",
-                      padding: "12px 14px", marginBottom: selected?.id === user.id ? 0 : 8, cursor: "pointer", transition: "all 0.15s"
-                    }}>
-                      <div style={{ width: 40, height: 40, borderRadius: "50%", background: user.disabled ? "var(--surface3)" : "var(--primary-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 800, color: user.disabled ? "var(--text3)" : "var(--primary)", flexShrink: 0 }}>{user.name?.[0]?.toUpperCase() || "?"}</div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                          {user.name || "Unknown"}
-                          <span style={{ fontSize: 9, fontWeight: 800, background: user.isPaid ? "rgba(34,201,122,0.15)" : "rgba(245,158,11,0.15)", color: user.isPaid ? "#15803d" : "#92400e", padding: "2px 7px", borderRadius: "var(--radius-pill)", border: `1px solid ${user.isPaid ? "rgba(34,201,122,0.4)" : "rgba(245,158,11,0.4)"}` }}>{user.isPaid ? "💎 PAID" : "🆓 FREE"}</span>
-                          {user.disabled && <span style={{ fontSize: 9, fontWeight: 700, background: "rgba(255,107,107,0.2)", color: "var(--accent)", padding: "1px 6px", borderRadius: "var(--radius-pill)" }}>DISABLED</span>}
-                        </div>
-                        <div style={{ fontSize: 11, color: "var(--text3)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{user.email || "—"}</div>
-                        <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 2 }}>
-                          {user.createdAt
-                            ? <span>Joined {formatUserDate(user.createdAt)}</span>
-                            : user.lastLogin
-                            ? <span style={{ color: "var(--text3)" }}>Last seen {formatUserDate(user.lastLogin)}</span>
-                            : <span style={{ color: "var(--text3)" }}>Early user</span>
-                          }
-                        </div>
+                <div key={user.id}>
+                  <div onClick={() => setSelected(selected?.id === user.id ? null : user)} style={{ display: "flex", alignItems: "center", gap: 12, background: selected?.id === user.id ? "var(--primary-light)" : "var(--surface)", border: selected?.id === user.id ? "1.5px solid var(--primary)" : "1px solid var(--border)", borderRadius: selected?.id === user.id ? "var(--radius-md) var(--radius-md) 0 0" : "var(--radius-md)", padding: "12px 14px", marginBottom: selected?.id === user.id ? 0 : 8, cursor: "pointer", transition: "all 0.15s" }}>
+                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: user.disabled ? "var(--surface3)" : "var(--primary-light)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 800, color: user.disabled ? "var(--text3)" : "var(--primary)", flexShrink: 0 }}>{user.name?.[0]?.toUpperCase() || "?"}</div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                        {user.name || "Unknown"}
+                        <span style={{ fontSize: 9, fontWeight: 800, background: user.isPaid ? "rgba(34,201,122,0.15)" : "rgba(245,158,11,0.15)", color: user.isPaid ? "#15803d" : "#92400e", padding: "2px 7px", borderRadius: "var(--radius-pill)", border: `1px solid ${user.isPaid ? "rgba(34,201,122,0.4)" : "rgba(245,158,11,0.4)"}` }}>{user.isPaid ? "💎 PAID" : "🆓 FREE"}</span>
+                        {user.disabled && <span style={{ fontSize: 9, fontWeight: 700, background: "rgba(255,107,107,0.2)", color: "var(--accent)", padding: "1px 6px", borderRadius: "var(--radius-pill)" }}>DISABLED</span>}
                       </div>
-                      <span style={{ fontSize: 10, fontWeight: 700, flexShrink: 0, background: "var(--surface2)", color: "var(--text2)", padding: "2px 8px", borderRadius: "var(--radius-pill)" }}>{user.faculty || "No faculty"}</span>
+                      <div style={{ fontSize: 11, color: "var(--text3)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{user.email || "—"}</div>
+                      <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 2 }}>
+                        {user.createdAt ? <span>Joined {formatUserDate(user.createdAt)}</span> : user.lastLogin ? <span>Last seen {formatUserDate(user.lastLogin)}</span> : <span>Early user</span>}
+                      </div>
                     </div>
-
-                    {selected?.id === user.id && (
-                      <div style={{ background: "var(--surface2)", border: "1.5px solid var(--primary)", borderTop: "none", borderRadius: "0 0 var(--radius-md) var(--radius-md)", padding: "14px 16px", marginBottom: 8 }}>
-                        <div style={{ marginBottom: 12 }}>
-                          {[
-                            { label: "WhatsApp", value: user.phone ? `0${user.phone.replace(/^0/, "")}` : "Not added" },
-                            { label: "Recovery Email", value: user.email && !user.email.includes("@examedgeng.com") ? user.email : "Not added" },
-                            { label: "Plan", value: user.isPaid ? "💎 Paid" : "🆓 Free" },
-                            { label: "Faculty", value: user.faculty || "⚠️ Not set" },
-                            { label: "Exam Type", value: user.examType || "Not set" },
-                            { label: "Referral Code", value: user.referralCode || "—" },
-                            { label: "Referred By", value: user.referredBy ? (users.find(u => u.id === user.referredBy)?.name || user.referredBy) : "No" },
-                            { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
-                            { label: "Joined", value: formatDateTime(user.createdAt) },
-                            { label: "Last Login", value: formatDateTime(user.lastLogin) },
-                          ].map((item, j) => (
-                            <div key={j} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "4px 0", borderBottom: j < 8 ? "1px solid var(--border)" : "none" }}>
-                              <span style={{ color: "var(--text3)", fontWeight: 700 }}>{item.label}</span>
-                              <span style={{ color: "var(--text)", fontWeight: 600 }}>{item.value}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-
-                          {/* ── MARK AS SEEN (WhatsApp welcome tracker) ── */}
-                          {!user.seenByAdmin && (
-                            <div style={{
-                              background: "linear-gradient(135deg, rgba(37,211,102,0.1), rgba(18,140,126,0.1))",
-                              border: "1.5px solid rgba(37,211,102,0.4)",
-                              borderRadius: "var(--radius-lg)", padding: "14px 16px"
-                            }}>
-                              <div style={{ fontSize: 13, fontWeight: 800, color: "#15803d", marginBottom: 6 }}>
-                                👋 New User — Send WhatsApp Welcome
-                              </div>
-                              {user.phone && (
-                                <div style={{
-                                  background: "rgba(37,211,102,0.15)", borderRadius: "var(--radius-md)",
-                                  padding: "10px 12px", marginBottom: 10,
-                                  display: "flex", alignItems: "center", justifyContent: "space-between"
-                                }}>
-                                  <span style={{ fontSize: 14, fontWeight: 800, color: "#15803d", letterSpacing: 1 }}>
-                                    📱 0{user.phone.replace(/^0+/, "")}
-                                  </span>
-                                  <a
-                                    href={`https://wa.me/234${user.phone.replace(/^0+/, "")}`}
-                                    target="_blank" rel="noreferrer"
-                                    style={{
-                                      fontSize: 11, fontWeight: 800, color: "#fff",
-                                      background: "#25d366", padding: "5px 12px",
-                                      borderRadius: "var(--radius-md)", textDecoration: "none"
-                                    }}
-                                  >Open WhatsApp →</a>
-                                </div>
-                              )}
-                              {!user.phone && (
-                                <div style={{ fontSize: 12, color: "#d97706", marginBottom: 10, fontWeight: 600 }}>
-                                  ⚠️ No WhatsApp number — message via email instead
-                                </div>
-                              )}
-                              <button
-                                onClick={() => handleMarkAsSeen(user)}
-                                disabled={markingAsSeen === user.id}
-                                style={{
-                                  width: "100%", padding: "11px",
-                                  background: "#25d366", color: "#fff",
-                                  border: "none", borderRadius: "var(--radius-md)",
-                                  fontWeight: 800, fontSize: 13,
-                                  cursor: markingAsSeen === user.id ? "not-allowed" : "pointer",
-                                  fontFamily: "var(--font-main)"
-                                }}
-                              >
-                                {markingAsSeen === user.id ? "Saving..." : "✓ Mark as Seen — Welcome Sent"}
-                              </button>
-                            </div>
-                          )}
-
-                          {user.seenByAdmin && (
-                            <div style={{ fontSize: 11, color: "var(--text3)", textAlign: "center", padding: "6px 0" }}>
-                              ✓ Welcome message sent
-                              {user.seenByAdminAt && <span> · {formatUserDate(user.seenByAdminAt)}</span>}
-                            </div>
-                          )}
-
-                          <button onClick={() => handleViewProgress(user)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(102,126,234,0.1)", color: "#667eea", border: "1px solid rgba(102,126,234,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
-                            📊 View Progress & CBT History
-                          </button>
-
-                          {!user.faculty && (
-                            <button onClick={async () => {
-                              const faculty = window.prompt(`Set faculty for ${user.name}:\n\nOptions:\n- engineering\n- lifesciences\n- management\n- arts`, "engineering")
-                              if (!faculty) return
-                              await updateDoc(doc(db, "users", user.id), { faculty: faculty.trim().toLowerCase(), examType: "postutme", university: "UNIBEN" })
-                              setActionMsg(`✅ Faculty set for ${user.name}`)
-                              fetchUsers(); setSelected(null)
-                            }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(102,126,234,0.1)", color: "#667eea", border: "1px solid rgba(102,126,234,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🎓 Set Faculty</button>
-                          )}
-
-                          <button onClick={async () => {
-                            const newStatus = !user.isPaid
-                            if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
-                            const isFree = newStatus && window.confirm(`Is this a FREE unlock (no payment received)?
-
-OK = Free unlock (won't count in revenue)
-Cancel = Paid unlock (counts in revenue)`)
-                            await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
-                            if (newStatus && user.referredBy) {
-                              const { increment } = await import("firebase/firestore")
-                              await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(500) }).catch(() => {})
-                            }
-                            setActionMsg(newStatus ? `✅ ${user.name} unlocked` : `🔒 ${user.name} access revoked`)
-                            fetchUsers(); setSelected(null)
-                          }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)", color: user.isPaid ? "#dc2626" : "#15803d", border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
-                            {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
-                          </button>
-
-                          {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
-                            <button onClick={async () => {
-                              const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
-                              if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?`)) return
-                              await updateDoc(doc(db, "users", user.id), { referralPaidOut: user.referralEarnings || 0, referralPaidOutAt: new Date().toISOString() })
-                              setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`)
-                              fetchUsers(); setSelected(null)
-                            }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(34,197,94,0.1)", color: "#15803d", border: "1px solid rgba(34,197,94,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
-                              💸 Pay Referral — ₦{(user.referralEarnings || 0) - (user.referralPaidOut || 0)}
-                            </button>
-                          )}
-
-                          {dmTarget?.id === user.id ? (
-                            <div>
-                              <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 6 }}>Tip: use [Name] and it will be replaced with the user's first name automatically.</div>
-                              <textarea value={dmText} onChange={e => setDmText(e.target.value)}
-                                placeholder={`Type your message to ${user.name}... (use [Name] for their first name)`}
-                                rows={4}
-                                style={{ width: "100%", padding: "10px 12px", border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 13, color: "var(--text)", fontFamily: "var(--font-main)", resize: "none", outline: "none", boxSizing: "border-box", marginBottom: 8 }}
-                              />
-                              <div style={{ display: "flex", gap: 8 }}>
-                                <button onClick={() => handleSendDm(user)} disabled={sendingDm || !dmText.trim()} style={{ flex: 2, padding: "10px", background: sendingDm || !dmText.trim() ? "#ccc" : "#7c3aed", color: "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>{sendingDm ? "Sending..." : "📨 Send Message"}</button>
-                                <button onClick={() => { setDmTarget(null); setDmText("") }} style={{ flex: 1, padding: "10px", background: "var(--surface2)", color: "var(--text2)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>Cancel</button>
-                              </div>
-                            </div>
-                          ) : (
-                            <button onClick={() => { setDmTarget(user); setDmText("") }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(124,58,237,0.1)", color: "#7c3aed", border: "1px solid rgba(124,58,237,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>💬 Send Direct Message</button>
-                          )}
-
-                          <button onClick={() => handlePasswordReset(user.email)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "var(--primary)", color: "#fff", border: "none", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🔑 Send Password Reset Email</button>
-
-                          <button onClick={() => handleDisableUser(user.id, user.disabled)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.disabled ? "rgba(34,201,122,0.1)" : "rgba(255,179,71,0.1)", color: user.disabled ? "var(--success)" : "#a07000", border: `1px solid ${user.disabled ? "rgba(34,201,122,0.3)" : "rgba(255,179,71,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
-                            {user.disabled ? "✅ Enable Account" : "⏸️ Disable Account"}
-                          </button>
-
-                          <button onClick={() => handleDeleteUser(user.id, user.name)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(255,107,107,0.1)", color: "var(--accent)", border: "1px solid rgba(255,107,107,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🗑️ Delete from Database</button>
-                        </div>
-                      </div>
-                    )}
+                    <span style={{ fontSize: 10, fontWeight: 700, flexShrink: 0, background: "var(--surface2)", color: "var(--text2)", padding: "2px 8px", borderRadius: "var(--radius-pill)" }}>{user.faculty || "No faculty"}</span>
                   </div>
+                  {selected?.id === user.id && (
+                    <div style={{ background: "var(--surface2)", border: "1.5px solid var(--primary)", borderTop: "none", borderRadius: "0 0 var(--radius-md) var(--radius-md)", padding: "14px 16px", marginBottom: 8 }}>
+                      <div style={{ marginBottom: 12 }}>
+                        {[
+                          { label: "WhatsApp", value: user.phone ? `0${user.phone.replace(/^0/, "")}` : "Not added" },
+                          { label: "Recovery Email", value: user.email && !user.email.includes("@examedgeng.com") ? user.email : "Not added" },
+                          { label: "Plan", value: user.isPaid ? "💎 Paid" : "🆓 Free" },
+                          { label: "Payment Ref", value: user.paymentRef || "—" },
+                          { label: "Faculty", value: user.faculty || "⚠️ Not set" },
+                          { label: "Referral Code", value: user.referralCode || "—" },
+                          { label: "Referred By", value: user.referredBy ? (users.find(u => u.id === user.referredBy)?.name || user.referredBy) : "No" },
+                          { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
+                          { label: "Joined", value: formatDateTime(user.createdAt) },
+                          { label: "Last Login", value: formatDateTime(user.lastLogin) },
+                        ].map((item, j) => (
+                          <div key={j} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "4px 0", borderBottom: j < 9 ? "1px solid var(--border)" : "none" }}>
+                            <span style={{ color: "var(--text3)", fontWeight: 700 }}>{item.label}</span>
+                            <span style={{ color: "var(--text)", fontWeight: 600, maxWidth: "60%", textAlign: "right", wordBreak: "break-all" }}>{item.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        {!user.seenByAdmin ? (
+                          <div style={{ background: "linear-gradient(135deg, rgba(37,211,102,0.1), rgba(18,140,126,0.1))", border: "1.5px solid rgba(37,211,102,0.4)", borderRadius: "var(--radius-lg)", padding: "14px 16px" }}>
+                            <div style={{ fontSize: 13, fontWeight: 800, color: "#15803d", marginBottom: 6 }}>👋 New User — Send WhatsApp Welcome</div>
+                            {user.phone ? (
+                              <div style={{ background: "rgba(37,211,102,0.15)", borderRadius: "var(--radius-md)", padding: "10px 12px", marginBottom: 10, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                <span style={{ fontSize: 14, fontWeight: 800, color: "#15803d", letterSpacing: 1 }}>📱 0{user.phone.replace(/^0+/, "")}</span>
+                                <a href={`https://wa.me/234${user.phone.replace(/^0+/, "")}`} target="_blank" rel="noreferrer" style={{ fontSize: 11, fontWeight: 800, color: "#fff", background: "#25d366", padding: "5px 12px", borderRadius: "var(--radius-md)", textDecoration: "none" }}>Open WhatsApp →</a>
+                              </div>
+                            ) : (
+                              <div style={{ fontSize: 12, color: "#d97706", marginBottom: 10, fontWeight: 600 }}>⚠️ No WhatsApp number — message via email instead</div>
+                            )}
+                            <button onClick={() => handleMarkAsSeen(user)} disabled={markingAsSeen === user.id} style={{ width: "100%", padding: "11px", background: "#25d366", color: "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13, cursor: markingAsSeen === user.id ? "not-allowed" : "pointer", fontFamily: "var(--font-main)" }}>
+                              {markingAsSeen === user.id ? "Saving..." : "✓ Mark as Seen — Welcome Sent"}
+                            </button>
+                          </div>
+                        ) : (
+                          <div style={{ fontSize: 11, color: "var(--text3)", textAlign: "center", padding: "6px 0" }}>
+                            ✓ Welcome message sent{user.seenByAdminAt && <span> · {formatUserDate(user.seenByAdminAt)}</span>}
+                          </div>
+                        )}
+                        <button onClick={() => handleViewProgress(user)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(102,126,234,0.1)", color: "#667eea", border: "1px solid rgba(102,126,234,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>📊 View Progress & CBT History</button>
+                        {!user.faculty && (
+                          <button onClick={async () => {
+                            const faculty = window.prompt(`Set faculty for ${user.name}:\n\nOptions:\n- engineering\n- lifesciences\n- management\n- arts`, "engineering")
+                            if (!faculty) return
+                            await updateDoc(doc(db, "users", user.id), { faculty: faculty.trim().toLowerCase(), examType: "postutme", university: "UNIBEN" })
+                            setActionMsg(`✅ Faculty set for ${user.name}`); fetchUsers(); setSelected(null)
+                          }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(102,126,234,0.1)", color: "#667eea", border: "1px solid rgba(102,126,234,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🎓 Set Faculty</button>
+                        )}
+                        <button onClick={async () => {
+                          const newStatus = !user.isPaid
+                          if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
+                          const isFree = newStatus && window.confirm(`Is this a FREE unlock (no payment received)?\n\nOK = Free unlock (won't count in revenue)\nCancel = Paid unlock (counts in revenue)`)
+                          await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
+                          if (newStatus && !isFree && user.referredBy) {
+                            const { increment } = await import("firebase/firestore")
+                            await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(500) }).catch(() => {})
+                          }
+                          setActionMsg(newStatus ? `✅ ${user.name} unlocked` : `🔒 ${user.name} access revoked`); fetchUsers(); setSelected(null)
+                        }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)", color: user.isPaid ? "#dc2626" : "#15803d", border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
+                          {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
+                        </button>
+                        {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
+                          <button onClick={async () => {
+                            const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
+                            if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?`)) return
+                            await updateDoc(doc(db, "users", user.id), { referralPaidOut: user.referralEarnings || 0, referralPaidOutAt: new Date().toISOString() })
+                            setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`); fetchUsers(); setSelected(null)
+                          }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(34,197,94,0.1)", color: "#15803d", border: "1px solid rgba(34,197,94,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
+                            💸 Pay Referral — ₦{(user.referralEarnings || 0) - (user.referralPaidOut || 0)}
+                          </button>
+                        )}
+                        {dmTarget?.id === user.id ? (
+                          <div>
+                            <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 6 }}>Tip: use [Name] — auto-replaced with user's first name.</div>
+                            <textarea value={dmText} onChange={e => setDmText(e.target.value)} placeholder={`Type your message to ${user.name}...`} rows={4} style={{ width: "100%", padding: "10px 12px", border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 13, color: "var(--text)", fontFamily: "var(--font-main)", resize: "none", outline: "none", boxSizing: "border-box", marginBottom: 8 }} />
+                            <div style={{ display: "flex", gap: 8 }}>
+                              <button onClick={() => handleSendDm(user)} disabled={sendingDm || !dmText.trim()} style={{ flex: 2, padding: "10px", background: sendingDm || !dmText.trim() ? "#ccc" : "#7c3aed", color: "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>{sendingDm ? "Sending..." : "📨 Send Message"}</button>
+                              <button onClick={() => { setDmTarget(null); setDmText("") }} style={{ flex: 1, padding: "10px", background: "var(--surface2)", color: "var(--text2)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>Cancel</button>
+                            </div>
+                          </div>
+                        ) : (
+                          <button onClick={() => { setDmTarget(user); setDmText("") }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(124,58,237,0.1)", color: "#7c3aed", border: "1px solid rgba(124,58,237,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>💬 Send Direct Message</button>
+                        )}
+                        <button onClick={() => handlePasswordReset(user.email)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "var(--primary)", color: "#fff", border: "none", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🔑 Send Password Reset Email</button>
+                        <button onClick={() => handleDisableUser(user.id, user.disabled)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.disabled ? "rgba(34,201,122,0.1)" : "rgba(255,179,71,0.1)", color: user.disabled ? "var(--success)" : "#a07000", border: `1px solid ${user.disabled ? "rgba(34,201,122,0.3)" : "rgba(255,179,71,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
+                          {user.disabled ? "✅ Enable Account" : "⏸️ Disable Account"}
+                        </button>
+                        <button onClick={() => handleDeleteUser(user.id, user.name)} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(255,107,107,0.1)", color: "var(--accent)", border: "1px solid rgba(255,107,107,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🗑️ Delete from Database</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               )
-
               return (
                 <>
-                  {/* ── NEW USERS ── */}
                   {newUsers.length > 0 && (
                     <>
-                      <div style={{
-                        display: "flex", alignItems: "center", gap: 10,
-                        background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
-                        border: "1.5px solid rgba(102,126,234,0.3)",
-                        borderRadius: "var(--radius-lg)", padding: "12px 16px", marginBottom: 12
-                      }}>
-                        <div style={{
-                          width: 32, height: 32, borderRadius: "50%",
-                          background: "var(--primary)", display: "flex",
-                          alignItems: "center", justifyContent: "center",
-                          fontSize: 16, flexShrink: 0
-                        }}>🆕</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))", border: "1.5px solid rgba(102,126,234,0.3)", borderRadius: "var(--radius-lg)", padding: "12px 16px", marginBottom: 12 }}>
+                        <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>🆕</div>
                         <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary)" }}>
-                            {newUsers.length} New User{newUsers.length !== 1 ? "s" : ""} — Needs WhatsApp Welcome
-                          </div>
-                          <div style={{ fontSize: 11, color: "var(--text3)" }}>
-                            Send them a WhatsApp message then tap "Mark as Seen"
-                          </div>
+                          <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary)" }}>{newUsers.length} New User{newUsers.length !== 1 ? "s" : ""} — Needs WhatsApp Welcome</div>
+                          <div style={{ fontSize: 11, color: "var(--text3)" }}>Send them a WhatsApp message then tap "Mark as Seen"</div>
                         </div>
                       </div>
                       {newUsers.map(user => renderUser(user))}
                     </>
                   )}
-
-                  {/* ── SEEN USERS ── */}
                   {seenUsers.length > 0 && (
                     <>
-                      <div style={{
-                        fontSize: 11, fontWeight: 800, color: "var(--text3)",
-                        textTransform: "uppercase", letterSpacing: "0.07em",
-                        marginTop: newUsers.length > 0 ? 20 : 0, marginBottom: 10,
-                        display: "flex", alignItems: "center", gap: 6
-                      }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.07em", marginTop: newUsers.length > 0 ? 20 : 0, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
                         <span>✓ All Users</span>
                         <span style={{ background: "var(--surface2)", padding: "1px 8px", borderRadius: 10, fontWeight: 700 }}>{seenUsers.length}</span>
                       </div>
                       {seenUsers.map(user => renderUser(user))}
                     </>
                   )}
-
                   {newUsers.length === 0 && seenUsers.length === 0 && (
                     <div className="ee-empty"><span className="ee-empty-icon">🔍</span><p>No users found</p></div>
                   )}
@@ -992,31 +894,24 @@ Cancel = Paid unlock (counts in revenue)`)
                       </div>
                       <div style={{ fontSize: 11, color: "var(--text3)" }}>{formatDate(msg.createdAt)}</div>
                     </div>
-
                     <p style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, margin: "8px 0", padding: "10px 12px", background: "var(--surface2)", borderRadius: "var(--radius-md)" }}>{msg.message}</p>
-
                     {msg.lastReply && (
                       <div style={{ fontSize: 12, color: "#15803d", padding: "8px 12px", marginBottom: 8, background: "rgba(34,201,122,0.06)", borderRadius: "var(--radius-md)", border: "1px solid rgba(34,201,122,0.2)", borderLeft: "3px solid #22c55e" }}>
                         <span style={{ fontWeight: 800 }}>Your reply: </span>{msg.lastReply}
                       </div>
                     )}
-
                     {replyingTo?.id === msg.id && (
                       <div style={{ marginBottom: 10 }}>
-                        <textarea value={replyText} onChange={e => setReplyText(e.target.value)} placeholder={`Reply to ${msg.username}...`} rows={3}
-                          style={{ width: "100%", padding: "10px 12px", border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 13, color: "var(--text)", fontFamily: "var(--font-main)", resize: "none", outline: "none", boxSizing: "border-box", marginBottom: 8 }} />
+                        <textarea value={replyText} onChange={e => setReplyText(e.target.value)} placeholder={`Reply to ${msg.username}...`} rows={3} style={{ width: "100%", padding: "10px 12px", border: "1.5px solid var(--primary)", borderRadius: "var(--radius-md)", background: "var(--surface)", fontSize: 13, color: "var(--text)", fontFamily: "var(--font-main)", resize: "none", outline: "none", boxSizing: "border-box", marginBottom: 8 }} />
                         <div style={{ display: "flex", gap: 8 }}>
                           <button onClick={() => handleReply(msg)} disabled={sendingReply || !replyText.trim()} style={{ flex: 2, padding: "10px", background: sendingReply || !replyText.trim() ? "#ccc" : "var(--primary)", color: "#fff", border: "none", borderRadius: "var(--radius-md)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>{sendingReply ? "Saving..." : "📨 Save Reply"}</button>
                           <button onClick={() => { setReplyingTo(null); setReplyText("") }} style={{ flex: 1, padding: "10px", background: "var(--surface2)", color: "var(--text2)", border: "1px solid var(--border)", borderRadius: "var(--radius-md)", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>Cancel</button>
                         </div>
                       </div>
                     )}
-
                     <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
                       <button onClick={() => { setReplyingTo(replyingTo?.id === msg.id ? null : msg); setReplyText("") }} style={{ flex: 1, padding: "8px", background: replyingTo?.id === msg.id ? "var(--primary-light)" : "rgba(102,126,234,0.1)", color: "var(--primary)", border: "1px solid rgba(102,126,234,0.3)", borderRadius: "var(--radius-sm)", fontWeight: 800, fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)" }}>{replyingTo?.id === msg.id ? "✕ Cancel" : "↩️ Reply"}</button>
-                      {msg.status === "unread" && (
-                        <button onClick={() => handleMarkRead(msg.id)} style={{ flex: 1, padding: "8px", background: "rgba(34,201,122,0.1)", color: "var(--success)", border: "1px solid rgba(34,201,122,0.3)", borderRadius: "var(--radius-sm)", fontWeight: 800, fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)" }}>✅ Mark Read</button>
-                      )}
+                      {msg.status === "unread" && <button onClick={() => handleMarkRead(msg.id)} style={{ flex: 1, padding: "8px", background: "rgba(34,201,122,0.1)", color: "var(--success)", border: "1px solid rgba(34,201,122,0.3)", borderRadius: "var(--radius-sm)", fontWeight: 800, fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)" }}>✅ Mark Read</button>}
                       <button onClick={() => handleDeleteMessage(msg.id)} style={{ flex: 1, padding: "8px", background: "rgba(255,107,107,0.1)", color: "var(--accent)", border: "1px solid rgba(255,107,107,0.3)", borderRadius: "var(--radius-sm)", fontWeight: 800, fontSize: 12, cursor: "pointer", fontFamily: "var(--font-main)" }}>🗑️ Delete</button>
                     </div>
                   </div>
