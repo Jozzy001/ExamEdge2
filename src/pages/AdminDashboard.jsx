@@ -692,6 +692,32 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               ))}
             </div>
 
+            {/* ── ENGAGEMENT INSIGHT ── */}
+            <div style={{
+              background: "rgba(245,158,11,0.07)", border: "1.5px solid rgba(245,158,11,0.25)",
+              borderRadius: "var(--radius-lg)", padding: "16px 18px", marginBottom: 20
+            }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: "#92400e", marginBottom: 8 }}>
+                💡 Why conversion might be low
+              </div>
+              <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.7 }}>
+                Your upgrade nudge only shows after a user takes <strong>2 CBT tests</strong>.
+                If most of your {totalUsers} users haven't started practicing yet, they'll
+                never see the paywall or feel the limitation. Tap any user below and check
+                "View Progress & CBT History" — if it says "No CBT records yet", that user
+                hasn't engaged enough to convert.
+              </div>
+              <div style={{
+                marginTop: 10, fontSize: 12, color: "#92400e",
+                fontWeight: 700, background: "rgba(245,158,11,0.12)",
+                borderRadius: "var(--radius-md)", padding: "8px 12px"
+              }}>
+                🎯 Quick fix: WhatsApp the 8 unwelcomed users with a direct nudge —
+                "Take your first CBT today" — personal outreach converts far better
+                than waiting for the in-app nudge to trigger.
+              </div>
+            </div>
+
             {/* Recent signups */}
             <div style={{ fontSize: 11, fontWeight: 800, color: "var(--text3)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 10 }}>Recent Signups</div>
             {users.slice(0, 5).map((u, i) => (
