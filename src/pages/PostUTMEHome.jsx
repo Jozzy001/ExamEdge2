@@ -473,7 +473,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         <XPBar onNavigate={onNavigate} />
 
         {/* ── UPGRADE NUDGE — shows after 2+ CBTs for free users ── */}
-        {!isPaid && cbtCount >= 2 && !nudgeDismissed && (
+        {!isPaid && cbtCount >= 1 && !nudgeDismissed && (
           <div style={{
             background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
             border: "2px solid var(--primary)",
@@ -502,12 +502,12 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               }}>📊</div>
               <div style={{ flex: 1, paddingRight: 16 }}>
                 <div style={{ fontSize: 14, fontWeight: 800, color: "var(--primary)", marginBottom: 4 }}>
-                  You've taken {cbtCount} CBT{cbtCount !== 1 ? "s" : ""} — but you're only seeing 2 of 20 years
+                  You've used your free CBT attempt — unlock unlimited practice
                 </div>
                 <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 12 }}>
-                  You're practicing with <strong>2014 & 2015</strong> only. Upgrade to unlock
-                  all <strong>20 years of questions</strong>, Hot Topics, Weak Areas tracking
-                  and CBT History — everything you need to actually pass.
+                  You completed your free CBT attempt with <strong>2014 & 2015</strong> questions.
+                  Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
+                  plus Hot Topics, Weak Areas tracking and CBT History.
                 </div>
                 <div style={{ display: "flex", gap: 8 }}>
                   <button
@@ -579,9 +579,17 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         </button>
 
         <div className="ee-home-grid">
-          <button className="ee-home-card primary" onClick={() => onNavigate("cbtSubjectSelect")}>
+          <button className="ee-home-card primary" onClick={() => {
+            if (!isPaid && cbtCount >= 1) { handleLockedFeature("cbtMode"); return }
+            onNavigate("cbtSubjectSelect")
+          }}>
             <span className="home-card-icon">🧪</span>
-            <div><div className="home-card-title">CBT Mode</div><div className="home-card-sub">Timed exam simulation</div></div>
+            <div>
+              <div className="home-card-title">CBT Mode {!isPaid && cbtCount >= 1 && "🔒"}</div>
+              <div className="home-card-sub">
+                {!isPaid && cbtCount >= 1 ? "Upgrade for unlimited CBTs" : "Timed exam simulation"}
+              </div>
+            </div>
           </button>
 
           <button className="ee-home-card" onClick={() => onNavigate("subjectSelect")}>
@@ -645,7 +653,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
               <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,500 →</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>₦3,000 →</div>
           </div>
         )}
 

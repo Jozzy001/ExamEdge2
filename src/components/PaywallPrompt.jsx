@@ -8,6 +8,12 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
       message: 'Upgrade to unlock unlimited questions across all topics and all 20 years.',
       cta: 'Unlock Unlimited Questions',
     },
+    cbtMode: {
+      icon: '🧪',
+      title: 'You\'ve used your free CBT attempt',
+      message: 'Upgrade to take unlimited CBT exams across all 20 years and track your real progress over time.',
+      cta: 'Unlock Unlimited CBTs',
+    },
     year: {
       icon: '📅',
       title: 'This year is locked',

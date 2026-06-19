@@ -96,13 +96,18 @@ const WeakAreas = ({ onNavigate, onBack, isPaid }) => {
             <h3 style={{ fontSize: 18, fontWeight: 900, color: "var(--text)", marginBottom: 12 }}>
               Upgrade to Review Weak Areas
             </h3>
-            <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 8 }}>
               You have weak areas in <strong>{selectedTopic}</strong>. Upgrade to see the exact questions you got wrong and learn from them.
             </p>
+            <div style={{ marginBottom: 20 }}>
+              <span style={{ fontSize: 13, color: "var(--text3)", textDecoration: "line-through" }}>₦5,000</span>
+              <span style={{ fontSize: 13, color: "var(--text3)" }}> · </span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: "var(--primary)" }}>₦2,500 launch price</span>
+            </div>
             <button
               className="ee-btn ee-btn-primary"
               onClick={() => onNavigate("upgrade")}
-            >Unlock for ₦3,000 🚀</button>
+            >Unlock for ₦2,500 🚀</button>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@
 // =============================================
 
 import { db } from "../firebase"
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "firebase/firestore"
+import { collection, addDoc, serverTimestamp, getDocs, query } from "firebase/firestore"
 
 const HISTORY_KEY = "ee-cbtHistory"
 const MAX_RECORDS = 50
@@ -39,18 +39,23 @@ export const saveCBTRecord = async (report, userId = null) => {
 
     // Save to Firestore (for admin visibility) — fire and forget
     if (userId) {
-      addDoc(collection(db, "users", userId, "cbtHistory"), {
-        score: record.score,
-        total: record.total,
-        percentage: record.percentage,
-        date: record.date,
-        timeTaken: record.timeTaken || null,
-        subjects: record.subjects || [],
-        isPersonalBest,
-        createdAt: serverTimestamp(),
-        // Save subject breakdown for admin progress view
-        subjectBreakdown: buildSubjectBreakdown(record.answers || []),
-      }).catch(() => {}) // silent fail — localStorage is source of truth
+      try {
+        await addDoc(collection(db, "users", userId, "cbtHistory"), {
+          score: record.score,
+          total: record.total,
+          percentage: record.percentage,
+          date: record.date,
+          timeTaken: record.timeTaken || null,
+          subjects: record.subjects || [],
+          isPersonalBest,
+          createdAt: serverTimestamp(),
+          // Save subject breakdown for admin progress view
+          subjectBreakdown: buildSubjectBreakdown(record.answers || []),
+        })
+      } catch (firestoreErr) {
+        // Log the actual error instead of silently swallowing it
+        console.error("CBT Firestore save failed:", firestoreErr)
+      }
     }
 
     return { record, isPersonalBest, prevBest }
@@ -73,16 +78,25 @@ const buildSubjectBreakdown = (answers) => {
 }
 
 // Fetch a specific user's CBT history from Firestore (for admin)
+// IMPORTANT: No orderBy on the query — subcollection orderBy queries
+// require a composite index that doesn't exist, which silently fails.
+// We fetch unordered and sort in JavaScript instead.
 export const fetchUserCBTHistory = async (userId) => {
   try {
-    const q = query(
-      collection(db, "users", userId, "cbtHistory"),
-      orderBy("createdAt", "desc"),
-      limit(50)
-    )
+    const q = query(collection(db, "users", userId, "cbtHistory"))
     const snap = await getDocs(q)
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    const records = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+
+    // Sort by createdAt (or date as fallback) descending in JS
+    records.sort((a, b) => {
+      const aTime = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.date || 0)
+      const bTime = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.date || 0)
+      return bTime - aTime
+    })
+
+    return records.slice(0, 50)
   } catch (e) {
+    console.error("fetchUserCBTHistory failed:", e)
     return []
   }
 }
