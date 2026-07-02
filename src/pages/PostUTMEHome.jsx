@@ -286,15 +286,30 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                 ))}
               </div>
 
+              {/* Promo banner */}
+              <div style={{
+                background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                borderRadius: "var(--radius-lg)",
+                padding: "10px 14px", marginBottom: 10, textAlign: "center"
+              }}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#fff" }}>
+                  🎉 Future Freshers Week — Ends July 9
+                </div>
+              </div>
+
               {/* What they're missing */}
               <div style={{
-                background: "rgba(102,126,234,0.06)",
-                border: "1px solid rgba(102,126,234,0.2)",
+                background: "rgba(245,158,11,0.08)",
+                border: "1px solid rgba(245,158,11,0.25)",
                 borderRadius: "var(--radius-lg)",
                 padding: "12px 14px", marginBottom: 16
               }}>
-                <div style={{ fontSize: 12, fontWeight: 800, color: "var(--primary)", marginBottom: 8 }}>
-                  🔒 What you're missing — unlock for ₦2,500:
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#d97706", marginBottom: 2 }}>
+                  🔒 What you're missing:
+                </div>
+                <div style={{ fontSize: 11, marginBottom: 8 }}>
+                  <span style={{ color: "var(--text3)", textDecoration: "line-through", marginRight: 6 }}>₦2,650</span>
+                  <span style={{ color: "#d97706", fontWeight: 800, fontSize: 13 }}>₦1,000</span>
                 </div>
                 {[
                   "📚 18 more years of questions (2005–2013, 2016–2024)",
@@ -302,6 +317,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   "📊 Weak Areas — know exactly what to fix",
                   "🕐 CBT History — review every attempt",
                   "📈 Full Progress analytics",
+                  "👥 Premium WhatsApp Study Group",
                 ].map((item, i) => (
                   <div key={i} style={{
                     fontSize: 12, color: "var(--text2)", fontWeight: 600,
@@ -314,7 +330,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   marginTop: 8, fontSize: 11, color: "var(--text3)",
                   fontWeight: 700, textAlign: "center"
                 }}>
-                  One-time payment · No subscription · No hidden fees
+                  One-time payment · Bank transfer · No hidden fees
                 </div>
               </div>
 
@@ -323,7 +339,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                 onClick={() => { setShowFreePrompt(false); onNavigate("upgrade") }}
                 style={{
                   width: "100%", padding: "14px",
-                  background: "linear-gradient(135deg, #667eea, #764ba2)",
+                  background: "linear-gradient(135deg, #f59e0b, #d97706)",
                   color: "#fff", border: "none",
                   borderRadius: "var(--radius-lg)",
                   fontSize: 15, fontWeight: 800,
@@ -331,7 +347,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   marginBottom: 10
                 }}
               >
-                Upgrade Now — ₦2,500 🚀
+                Upgrade Now — ₦1,000 🚀
               </button>
 
               <button
@@ -475,8 +491,8 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         {/* ── UPGRADE NUDGE — shows after 2+ CBTs for free users ── */}
         {!isPaid && cbtCount >= 1 && !nudgeDismissed && (
           <div style={{
-            background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
-            border: "2px solid var(--primary)",
+            background: "linear-gradient(135deg, rgba(245,158,11,0.12), rgba(217,119,6,0.12))",
+            border: "2px solid #d97706",
             borderRadius: "var(--radius-xl)",
             padding: "16px 18px",
             marginBottom: 16,
@@ -501,25 +517,28 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                 fontSize: 28, flexShrink: 0, marginTop: 2
               }}>📊</div>
               <div style={{ flex: 1, paddingRight: 16 }}>
-                <div style={{ fontSize: 14, fontWeight: 800, color: "var(--primary)", marginBottom: 4 }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#d97706", marginBottom: 4 }}>
                   You've used your free CBT attempt — unlock unlimited practice
                 </div>
-                <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 12 }}>
+                <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 8 }}>
                   You completed your free CBT attempt with <strong>2014 & 2015</strong> questions.
                   Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
                   plus Hot Topics, Weak Areas tracking and CBT History.
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 800, color: "#d97706", marginBottom: 12 }}>
+                  🎉 Future Freshers Promo: <span style={{ textDecoration: "line-through", opacity: 0.6, marginRight: 4 }}>₦2,650</span> ₦1,000 — ends July 9
                 </div>
                 <div style={{ display: "flex", gap: 8 }}>
                   <button
                     onClick={() => onNavigate("upgrade")}
                     style={{
                       flex: 2, padding: "10px 14px",
-                      background: "var(--primary)", color: "#fff",
+                      background: "#d97706", color: "#fff",
                       border: "none", borderRadius: "var(--radius-md)",
                       fontWeight: 800, fontSize: 13,
                       cursor: "pointer", fontFamily: "var(--font-main)"
                     }}
-                  >Unlock All 20 Years — ₦2,500 →</button>
+                  >Unlock All 20 Years — ₦1,000 →</button>
                   <button
                     onClick={() => {
                       setNudgeDismissed(true)
@@ -644,16 +663,19 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         {!isPaid && (
           <div onClick={() => onNavigate("upgrade")} style={{
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
             borderRadius: "var(--radius-xl)", padding: "16px 20px", marginBottom: 16,
             color: "#fff", display: "flex", alignItems: "center", gap: 12, cursor: "pointer",
           }}>
             <span style={{ fontSize: 28 }}>🚀</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access — Promo 🎉</div>
               <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,500 →</div>
+            <div style={{ textAlign: "right" }}>
+              <div style={{ fontSize: 11, opacity: 0.7, textDecoration: "line-through" }}>₦2,650</div>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>₦1,000 →</div>
+            </div>
           </div>
         )}
 
