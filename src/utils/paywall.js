@@ -58,36 +58,36 @@ export const PAYWALL_MESSAGES = {
   WEAK_AREAS: {
     title: "See Your Weak Areas",
     description: "Review the exact questions you got wrong and learn from them. Students who use this improve 2x faster.",
-    cta: "Unlock for ₦3,000",
-    price: "₦3,000",
+    cta: "Unlock for ₦2,000",
+    price: "₦2,000",
     features: ["Review all weak questions", "See your improvement", "Target your study"]
   },
   HOT_TOPICS: {
     title: "Master Hot Topics",
     description: "Questions that have appeared 3+ times in UNIBEN exams. These are the most likely to show up on your exam.",
-    cta: "Unlock for ₦3,000",
-    price: "₦3,000",
+    cta: "Unlock for ₦2,000",
+    price: "₦2,000",
     features: ["50+ most repeated questions", "Ranked by exam year", "Perfect for last-minute prep"]
   },
   CBT_HISTORY: {
     title: "Review Your Attempts",
     description: "See all your past mock exams, scores, and improvements. Track your progress over time.",
-    cta: "Unlock for ₦3,000",
-    price: "₦3,000",
+    cta: "Unlock for ₦2,000",
+    price: "₦2,000",
     features: ["View all past exams", "Compare scores", "See improvement trends"]
   },
   PROGRESS_ADVANCED: {
     title: "See Full Analytics",
     description: "Track your performance across all subjects, topics, and time periods. Get insights on what to study next.",
-    cta: "Unlock for ₦3,000",
-    price: "₦3,000",
+    cta: "Unlock for ₦2,000",
+    price: "₦2,000",
     features: ["Full history analytics", "Detailed topic breakdown", "Score predictions"]
   },
   LEADERBOARD: {
     title: "Join the Leaderboard",
     description: "Compete with other UNIBEN takers. See how you rank and get motivated to improve.",
-    cta: "Unlock for ₦3,000",
-    price: "₦3,000",
+    cta: "Unlock for ₦2,000",
+    price: "₦2,000",
     features: ["Live leaderboard", "Faculty rankings", "Beat your friends"]
   }
 }

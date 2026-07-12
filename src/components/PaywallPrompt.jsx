@@ -1,7 +1,5 @@
 // Reusable paywall prompt shown when user hits a locked feature
 
-const PROMO_END_LABEL = "July 9" // keep in sync with PROMO_END in Upgrade.jsx
-
 export default function PaywallPrompt({ type, onUpgrade, onClose }) {
   const configs = {
     studyQuestions: {
@@ -106,18 +104,6 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
           {config.message}
         </p>
 
-        {/* Promo banner */}
-        <div style={{
-          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-          borderRadius: 12,
-          padding: '10px 14px',
-          marginBottom: 16,
-        }}>
-          <p style={{ fontSize: 12, fontWeight: 800, color: '#fff', margin: 0, letterSpacing: 0.5 }}>
-            🎉 FUTURE FRESHERS WEEK — Ends {PROMO_END_LABEL}
-          </p>
-        </div>
-
         {/* What you get */}
         <div style={{
           background: '#f8f9fa',
@@ -145,18 +131,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
 
         {/* Price */}
         <div style={{ marginBottom: 16, textAlign: 'center' }}>
-          <div style={{ fontSize: 13, color: '#aaa', textDecoration: 'line-through', marginBottom: 2 }}>
-            ₦2,650
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-            <span style={{ fontSize: 32, fontWeight: 800, color: '#d97706' }}>₦1,000</span>
-            <span style={{
-              background: '#fff3cd', color: '#856404',
-              fontSize: 11, fontWeight: 700,
-              padding: '3px 10px', borderRadius: 20,
-              border: '1px solid #fde68a'
-            }}>💚 62% OFF</span>
-          </div>
+          <div style={{ fontSize: 32, fontWeight: 800, color: '#667eea' }}>₦2,000</div>
           <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>one-time payment · bank transfer</div>
         </div>
 
@@ -165,7 +140,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
           style={{
             width: '100%',
             padding: '16px',
-            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             color: '#fff',
             border: 'none',
             borderRadius: 12,
@@ -175,7 +150,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
             marginBottom: 12,
           }}
         >
-          {config.cta} — ₦1,000 🔓
+          {config.cta} — ₦2,000 🔓
         </button>
 
         <button

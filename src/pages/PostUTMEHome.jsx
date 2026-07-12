@@ -633,6 +633,20 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           </button>
         </div>
 
+        <button className="ee-home-card" onClick={() => onNavigate("classroom")} style={{
+          display: "flex", alignItems: "center", gap: 14,
+          width: "100%", padding: "16px 18px", marginBottom: 20,
+          background: "linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.15))",
+          border: "1.5px solid rgba(102,126,234,0.35)", borderRadius: "var(--radius-lg)",
+        }}>
+          <span style={{ fontSize: 32 }}>🏫</span>
+          <div style={{ flex: 1 }}>
+            <div className="home-card-title" style={{ color: "var(--primary)", fontSize: 15 }}>Classroom {!isPaid && "🔒"}</div>
+            <div className="home-card-sub">Study live with friends — same question, same time</div>
+          </div>
+          <span style={{ fontSize: 18, color: "var(--primary)", opacity: 0.7 }}>→</span>
+        </button>
+
         <span className="ee-label">Track yourself</span>
         <button className="ee-home-card" onClick={() => { if (!isPaid) { handleLockedFeature("progress"); return } onNavigate("progress") }}
           style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 10 }}>

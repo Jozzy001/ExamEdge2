@@ -17,6 +17,7 @@ import Leaderboard from "./pages/Leaderboard"
 import Referrals from "./pages/Referrals"
 import AccountDetails from "./pages/AccountDetails"
 import AITutor from "./pages/AITutor"
+import Classroom from "./pages/Classroom"
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
@@ -643,6 +644,18 @@ You've got this. UNIBEN is waiting. 🚀
           isPaid={effectiveIsPaid}
           faculty={faculty}
           facultySubjects={facultySubjects}
+        />
+      )
+
+      if (page === "classroom") return (
+        <Classroom
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          authUser={authUser}
+          userData={userData}
+          university={university}
+          facultySubjects={facultySubjects}
+          isPaid={effectiveIsPaid}
         />
       )
     }
