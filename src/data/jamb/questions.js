@@ -12,6 +12,7 @@ import econJamb2010 from "./economics/jamb2010"
 
 // --- BIOLOGY ---
 import bioJamb2010 from "./biology/jamb2010"
+import bioJamb1983 from "./biology/jamb1983"
 
 // --- LITERATURE ---
 import litJamb2010 from "./literature/jamb2010"
@@ -40,6 +41,7 @@ const questions = [
   ...govtJamb2010,
   ...econJamb2010,
   ...bioJamb2010,
+  ...bioJamb1983,
   ...litJamb2010,
   ...mathsJamb2010,
   ...physicsJamb2004,
