@@ -28,6 +28,24 @@ import { auth, db } from "./firebase"
 const INACTIVITY_LIMIT = 60 * 60 * 1000 // 60 minutes in ms
 import { UNIBEN_FACULTIES } from "./data/postutme/uniben/faculties"
 
+// A profile is "complete" once the exam is chosen.
+// JAMB has no university or faculty, so it is stored as "JAMB" for both.
+// Post-UTME also needs a faculty (university defaults to UNIBEN).
+const normalizeProfile = (p) => {
+  if (!p?.examType) return null
+  if (p.examType === "jamb") return { examType: "jamb", university: "JAMB", faculty: "JAMB" }
+  if (p.faculty) {
+    return { examType: p.examType, university: p.university || "UNIBEN", faculty: p.faculty }
+  }
+  return null
+}
+
+const saveProfileLocal = (p) => {
+  localStorage.setItem("ee-examType", p.examType)
+  localStorage.setItem("ee-university", p.university)
+  localStorage.setItem("ee-faculty", p.faculty)
+}
+
 function App() {
   const APP_VERSION = "2.0"
   const storedVersion = localStorage.getItem("ee-version")
@@ -38,16 +56,14 @@ function App() {
     localStorage.setItem("ee-version", APP_VERSION)
   }
 
-  const savedExamType = localStorage.getItem("ee-examType")
-  const savedUniversity = localStorage.getItem("ee-university")
-  const savedFaculty = localStorage.getItem("ee-faculty")
-
   const [appLoading, setAppLoading] = useState(true)
   const [isOnline, setIsOnline] = useState(navigator.onLine)
-  const [profile, setProfile] = useState(
-    savedExamType && savedUniversity && savedFaculty
-      ? { examType: savedExamType, university: savedUniversity, faculty: savedFaculty }
-      : null
+  const [profile, setProfile] = useState(() =>
+    normalizeProfile({
+      examType: localStorage.getItem("ee-examType"),
+      university: localStorage.getItem("ee-university"),
+      faculty: localStorage.getItem("ee-faculty"),
+    })
   )
   const [showSplash, setShowSplash] = useState(!localStorage.getItem("ee-splash-done"))
   const [page, setPage] = useState("home")
@@ -91,7 +107,7 @@ function App() {
     }
   }, [authUser])
 
-  // Auto-send welcome DM 45 mins after first sign up
+  // Auto-send welcome DM 45 mins after first sign up (one effect only)
   useEffect(() => {
     if (!authUser?.uid || !userData) return
 
@@ -100,77 +116,7 @@ function App() {
       ? userData.createdAt.toDate()
       : new Date(userData.createdAt || 0)
     const ageMs = Date.now() - createdAt.getTime()
-    const twoHours = 2 * 60 * 60 * 1000
-    if (ageMs > twoHours) return // account too old, skip
-
-    // Check if welcome already sent
-    const alreadySentKey = `ee-welcome-sent-${authUser.uid}`
-    if (localStorage.getItem(alreadySentKey)) return
-
-    // Schedule welcome DM for 45 minutes after app load
-    const DELAY = 45 * 60 * 1000 // 45 minutes
-    const timer = setTimeout(async () => {
-      try {
-        const { collection: col, addDoc: add, getDocs: get, query: q, where: w, serverTimestamp: st } = await import("firebase/firestore")
-        // Check Firestore — did they already get one?
-        const existing = await get(q(col(db, "messages"), w("uid", "==", authUser.uid), w("fromAdmin", "==", true)))
-        if (!existing.empty) {
-          localStorage.setItem(alreadySentKey, "1")
-          return
-        }
-        const firstName = userData.name?.split(" ")[0] || "Student"
-        const welcomeMessage = `Welcome to ExamEdgeNG! 🎉
-
-Hi ${firstName}! We're so glad you joined us. We are the ExamEdgeNG team and we built this app specifically for UNIBEN Post-UTME candidates like you.
-
-Here's how to get the most out of the app:
-
-Step 1 — Take a CBT test first 🧪
-Go to CBT Mode and do a full timed test. This gives the AI Tutor real data about you so it can tell you exactly what to focus on.
-
-Step 2 — Ask the AI Tutor 🎓
-After your CBT, open AI Tutor and ask: "What should I study today?" It will build you a personalised plan based on your actual weak areas.
-
-Step 3 — Study daily 📚
-Even 30 minutes a day consistently beats cramming. The app tracks your streak and XP to keep you motivated.
-
-Hot Topics 🔥 are your secret weapon — questions that have repeated across multiple UNIBEN papers. Master them and you're already ahead of most candidates.
-
-📢 Join our WhatsApp Channel for exam updates, app news and study tips:
-https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K
-
-If you ever have questions, go to Settings → Contact Support. We respond personally.
-
-You've got this. UNIBEN is waiting. 🚀
-
-— The ExamEdgeNG Team`
-
-        await add(col(db, "messages"), {
-          uid: authUser.uid,
-          username: userData.name || "User",
-          email: userData.email || "",
-          message: welcomeMessage,
-          createdAt: st(),
-          status: "unread",
-          fromAdmin: true,
-        })
-        localStorage.setItem(alreadySentKey, "1")
-      } catch(e) {}
-    }, DELAY)
-
-    return () => clearTimeout(timer)
-  }, [authUser?.uid, userData])
-
-  // ── AUTO-SEND WELCOME DM 45 MINS AFTER FIRST USE ──
-  useEffect(() => {
-    if (!authUser?.uid || !userData) return
-
-    // Only for accounts created in the last 2 hours
-    const createdAt = userData.createdAt?.toDate
-      ? userData.createdAt.toDate()
-      : new Date(userData.createdAt || 0)
-    const ageMs = Date.now() - createdAt.getTime()
-    if (ageMs > 2 * 60 * 60 * 1000) return // older than 2 hours — skip
+    if (ageMs > 2 * 60 * 60 * 1000) return
 
     // Don't send twice
     const sentKey = `ee-welcome-sent-${authUser.uid}`
@@ -180,18 +126,22 @@ You've got this. UNIBEN is waiting. 🚀
     const timer = setTimeout(async () => {
       try {
         const { collection: col, addDoc: add, getDocs: get, query: q, where: w, serverTimestamp: st } = await import("firebase/firestore")
-        // Check Firestore in case they already got one from admin bulk send
+        // Did they already get one (e.g. from an admin bulk send)?
         const existing = await get(q(col(db, "messages"), w("uid", "==", authUser.uid), w("fromAdmin", "==", true)))
         if (!existing.empty) { localStorage.setItem(sentKey, "1"); return }
 
         const firstName = userData.name?.split(" ")[0] || "Student"
+        const isJamb = userData.examType === "jamb"
+        const examLabel = isJamb ? "JAMB" : "UNIBEN Post-UTME"
+        const closing = isJamb ? "Exam day is coming. You've got this. 🚀" : "UNIBEN is waiting. 🚀"
+
         await add(col(db, "messages"), {
           uid: authUser.uid,
           username: userData.name || "User",
           email: userData.email || "",
           message: `Welcome to ExamEdgeNG! 🎉
 
-Hi ${firstName}! We're so glad you joined us. We are the ExamEdgeNG team and we built this app specifically for UNIBEN Post-UTME candidates like you.
+Hi ${firstName}! We're so glad you joined us. We are the ExamEdgeNG team and we built this app specifically for ${examLabel} candidates like you.
 
 Here's how to get the most out of the app:
 
@@ -204,14 +154,14 @@ After your CBT, open AI Tutor and ask: "What should I study today?" It will buil
 Step 3 — Study daily 📚
 Even 30 minutes a day consistently beats cramming. The app tracks your streak and XP to keep you motivated.
 
-Hot Topics 🔥 are your secret weapon — questions that have repeated across multiple UNIBEN papers. Master them and you're already ahead of most candidates.
+Hot Topics 🔥 are your secret weapon — questions that have repeated across multiple past papers. Master them and you're already ahead of most candidates.
 
 📢 Join our WhatsApp Channel — don't miss exam updates, app news and study tips:
 https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K
 
 If you ever have questions, go to Settings → Contact Support. We respond personally.
 
-You've got this. UNIBEN is waiting. 🚀
+You've got this. ${closing}
 
 — The ExamEdgeNG Team`,
           createdAt: st(),
@@ -296,16 +246,11 @@ You've got this. UNIBEN is waiting. 🚀
             const data = snap.data()
             setUserData(data)
             localStorage.setItem("ee-cached-userdata", JSON.stringify(data))
-            if (data.faculty && data.examType) {
-              const profileData = {
-                examType: data.examType,
-                university: data.university || "UNIBEN",
-                faculty: data.faculty
-              }
-              localStorage.setItem("ee-examType", profileData.examType)
-              localStorage.setItem("ee-university", profileData.university)
-              localStorage.setItem("ee-faculty", profileData.faculty)
-              setProfile(profileData)
+            // Restore the saved exam choice (works for JAMB and Post-UTME)
+            const restored = normalizeProfile(data)
+            if (restored) {
+              saveProfileLocal(restored)
+              setProfile(restored)
             }
           } else {
             const cached = localStorage.getItem("ee-cached-userdata")
@@ -379,16 +324,10 @@ You've got this. UNIBEN is waiting. 🚀
       setProfileLoading(true)
       setAuthUser(user)
       setUserData(user)
-      if (user.faculty && user.examType) {
-        const profileData = {
-          examType: user.examType,
-          university: user.university || "UNIBEN",
-          faculty: user.faculty
-        }
-        localStorage.setItem("ee-examType", profileData.examType)
-        localStorage.setItem("ee-university", profileData.university)
-        localStorage.setItem("ee-faculty", profileData.faculty)
-        setProfile(profileData)
+      const restored = normalizeProfile(user)
+      if (restored) {
+        saveProfileLocal(restored)
+        setProfile(restored)
       } else {
         localStorage.removeItem("ee-examType")
         localStorage.removeItem("ee-university")
@@ -444,16 +383,20 @@ You've got this. UNIBEN is waiting. 🚀
   }
 
   const handleOnboardingDone = (data) => {
-    setProfile(data)
+    // JAMB has no university or faculty, so normalise it. This is what makes
+    // the JAMB choice survive a refresh.
+    const p = normalizeProfile(data) || data
+    setProfile(p)
     setPage("home")
+    if (p.examType && p.faculty) saveProfileLocal({ ...p, university: p.university || "UNIBEN" })
     const uid = authUser?.uid || auth.currentUser?.uid
-    if (uid && data.faculty && data.examType) {
+    if (uid && p.faculty && p.examType) {
       updateDoc(doc(db, "users", uid), {
-        examType: data.examType,
-        university: data.university || "UNIBEN",
-        faculty: data.faculty,
+        examType: p.examType,
+        university: p.university || "UNIBEN",
+        faculty: p.faculty,
       }).catch((e) => {
-        console.log("Faculty save error:", e)
+        console.log("Exam save error:", e)
       })
     }
   }
@@ -479,14 +422,21 @@ You've got this. UNIBEN is waiting. 🚀
   const renderPage = () => {
     // ===================== JAMB =====================
     if (examType === "jamb") {
-      if (page === "home") return <Home onNavigate={handleNavigate} onReset={resetOnboarding} />
+      if (page === "home") return (
+        <Home
+          onNavigate={handleNavigate}
+          authUser={authUser}
+          userData={userData}
+          isPaid={effectiveIsPaid}
+        />
+      )
       if (page === "subjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="study" examType="jamb" />
       if (page === "cbtSubjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="cbt" examType="jamb" />
-      if (page === "study") return <StudyMode subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
-      if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} />
+      if (page === "study") return <StudyMode isPaid={effectiveIsPaid} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
+      if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} isPaid={effectiveIsPaid} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={effectiveIsPaid} />
       if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={effectiveIsPaid} />
-      if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} />
+      if (page === "cbt") return <Quiz topic="cbt" subjects={selectedSubjects} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" customCounts={cbtCounts} isPaid={effectiveIsPaid} />
       if (page === "cbtHistory") return (
         <CBTHistory
           isPaid={effectiveIsPaid}
@@ -505,6 +455,48 @@ You've got this. UNIBEN is waiting. 🚀
           isPaid={effectiveIsPaid}
           faculty={faculty}
           facultySubjects={facultySubjects}
+        />
+      )
+
+      // Pages the merged JAMB Home links to
+      if (page === "hotTopics") return (
+        <HotTopics
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          university={university}
+          facultySubjects={facultySubjects}
+        />
+      )
+      if (page === "hotTopicsQuiz") return (
+        <Quiz
+          topic={hotTopicTopic || "hotTopics"}
+          subject={selectedSubject}
+          onNavigate={handleNavigate}
+          onBack={() => { setPage("hotTopics"); setPageHistory([]) }}
+          examType="jamb"
+          isPaid={effectiveIsPaid}
+          hotTopicFilter={hotTopicTopic}
+        />
+      )
+      if (page === "leaderboard") return (
+        <Leaderboard
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          university={university}
+          isPaid={effectiveIsPaid}
+        />
+      )
+      if (page === "referrals") return <Referrals onNavigate={handleNavigate} onBack={handleBack} authUser={authUser} />
+      if (page === "accountDetails") return <AccountDetails onNavigate={handleNavigate} onBack={handleBack} authUser={authUser} />
+      if (page === "classroom") return (
+        <Classroom
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          authUser={authUser}
+          userData={userData}
+          university={university}
+          facultySubjects={facultySubjects}
+          isPaid={effectiveIsPaid}
         />
       )
     }

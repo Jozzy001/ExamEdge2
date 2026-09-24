@@ -5,42 +5,43 @@ const slides = [
     emoji: null,
     logo: true,
     title: "Welcome to ExamEdgeNG",
-    subtitle: "The smartest way to prepare for your Post-UTME exam — built from 20+ years of real past questions.",
+    subtitle: "The smartest way to prepare for JAMB and Post-UTME, built from 20+ years of real past questions.",
+    chips: ["📘 JAMB UTME", "🎓 Post-UTME"],
     bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     stat: null,
   },
   {
     emoji: "📚",
     title: "20+ Years of Past Questions",
-    subtitle: "Practice with real Post-UTME past questions from 2005 till date. Know exactly what to expect on exam day.",
+    subtitle: "Practice with real JAMB and Post-UTME past questions from 2005 till date. Know exactly what to expect on exam day.",
     bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
     stat: "3,000+ Questions",
   },
   {
     emoji: "🧪",
     title: "Real CBT Simulation",
-    subtitle: "Timed, all subjects together — exactly like the actual Post-UTME. The more you practice, the calmer you'll be on exam day.",
+    subtitle: "Timed, all subjects together, just like the real exam. The more you practice, the calmer you'll be on exam day.",
     bg: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     stat: "Timed & Scored",
   },
   {
     emoji: "🎓",
     title: "Your Personal AI Tutor",
-    subtitle: "Knows your weak areas, your streak and your exam countdown. Gives you a personalised study plan every single day — no other app has this.",
+    subtitle: "Knows your weak areas, your streak and your exam countdown. Gives you a personalised study plan every single day.",
     bg: "linear-gradient(135deg, #7c3aed 0%, #667eea 100%)",
-    stat: "Only on ExamEdgeNG",
+    stat: "AI-Powered",
   },
   {
     emoji: "🔥",
     title: "Hot Topics & Weak Areas",
-    subtitle: "We identified which topics repeat every year. Master them and you're already ahead of 80% of candidates.",
+    subtitle: "We identified which topics repeat every year. Master them and you're already ahead of most candidates.",
     bg: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
     stat: "Smart Analytics",
   },
   {
     emoji: "💰",
     title: "Refer Friends — Earn ₦500",
-    subtitle: "Share your referral code now. Every friend who signs up is registered under your name — when payouts launch, you get paid for all of them.",
+    subtitle: "Share your referral code now. Every friend who signs up is registered under your name. When payouts launch, you get paid for all of them.",
     bg: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
     stat: "Coming Soon",
   },
@@ -48,8 +49,9 @@ const slides = [
     emoji: null,
     logo: false,
     cta: true,
-    title: "100% Free — Start Now",
-    subtitle: "No credit card. No subscription. Everything is free right now. Just sign up and start preparing.",
+    title: "Start Free Today",
+    subtitle: "No credit card needed. Sign up, pick JAMB or Post-UTME, and start practising. Upgrade later for all 20 years of questions.",
+    chips: ["📘 JAMB UTME", "🎓 Post-UTME"],
     bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     stat: null,
   },
@@ -100,7 +102,7 @@ export default function Splash({ onDone }) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         background: slide.bg,
         display: "flex",
         flexDirection: "column",
@@ -210,6 +212,25 @@ export default function Splash({ onDone }) {
         }}>
           {slide.subtitle}
         </p>
+
+        {/* Exam chips */}
+        {slide.chips && (
+          <div style={{
+            display: "flex", flexWrap: "wrap", justifyContent: "center",
+            gap: 10, marginTop: 22,
+          }}>
+            {slide.chips.map(chip => (
+              <span key={chip} style={{
+                background: "rgba(255,255,255,0.22)",
+                border: "1px solid rgba(255,255,255,0.35)",
+                borderRadius: 20, padding: "8px 16px",
+                fontSize: 14, fontWeight: 800, color: "#fff",
+              }}>
+                {chip}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Bottom section */}
@@ -221,12 +242,13 @@ export default function Splash({ onDone }) {
           gap: 7, marginBottom: 28,
         }}>
           {slides.map((_, i) => (
-            <div
+            <button
               key={i}
               onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
               style={{
                 width: i === current ? 24 : 7,
-                height: 7, borderRadius: 4,
+                height: 7, borderRadius: 4, padding: 0, border: "none",
                 background: i === current ? "#fff" : "rgba(255,255,255,0.35)",
                 transition: "all 0.3s ease",
                 cursor: "pointer",
@@ -249,7 +271,7 @@ export default function Splash({ onDone }) {
                 boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
               }}
             >
-              Get Started — It's Free 🚀
+              Get Started Free 🚀
             </button>
             <button
               onClick={() => onDone("login")}

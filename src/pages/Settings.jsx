@@ -144,6 +144,10 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
     ? userData.email
     : "Not added"
 
+  // JAMB students have no faculty, so show "JAMB" instead of an empty value
+  const isJamb = examType === "jamb"
+  const displayFaculty = isJamb ? "JAMB" : (faculty || "—")
+
   return (
     <PageTransition>
     <div className="ee-page">
@@ -205,7 +209,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         {/* Recovery email — real email only */}
         {row("📧", "Recovery Email", displayEmail, null)}
 
-        {row("🎓", "Faculty", faculty || "—", null)}
+        {/* Faculty — shows "JAMB" for JAMB students */}
+        {row("🎓", "Faculty", displayFaculty, null)}
 
         {/* ===== STATS ===== */}
         {sectionTitle("📊 Your Stats")}
@@ -255,29 +260,32 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </button>
         </div>
 
-        <div style={{
-          display: "flex", alignItems: "center", gap: 12,
-          background: "var(--surface)", border: "1px solid var(--border)",
-          borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
-        }}>
-          <span style={{ fontSize: 20 }}>🎓</span>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>Change Faculty</div>
-            <div style={{ fontSize: 11, color: "var(--text3)" }}>Switch to a different department</div>
+        {/* Change Faculty — hidden for JAMB students, who have no faculty */}
+        {!isJamb && (
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            background: "var(--surface)", border: "1px solid var(--border)",
+            borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 8
+          }}>
+            <span style={{ fontSize: 20 }}>🎓</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>Change Faculty</div>
+              <div style={{ fontSize: 11, color: "var(--text3)" }}>Switch to a different department</div>
+            </div>
+            <button onClick={() => {
+              const confirmed = window.confirm("⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure?")
+              if (confirmed) {
+                const keysToKeep = ["ee-version", "ee-cached-user", "ee-cached-userdata", "ee-splash-done", "ee-read-notifs"]
+                Object.keys(localStorage).forEach(key => { if (!keysToKeep.includes(key)) localStorage.removeItem(key) })
+                onReset(2)
+              }
+            }} style={{
+              background: "rgba(239,68,68,0.1)", color: "#dc2626",
+              border: "1px solid rgba(239,68,68,0.3)", borderRadius: "var(--radius-sm)", padding: "6px 12px",
+              fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
+            }}>Change</button>
           </div>
-          <button onClick={() => {
-            const confirmed = window.confirm("⚠️ Change Faculty?\n\nThis will clear all your progress, CBT history, weak areas and XP — this cannot be undone.\n\nAre you sure?")
-            if (confirmed) {
-              const keysToKeep = ["ee-version", "ee-cached-user", "ee-cached-userdata", "ee-splash-done", "ee-read-notifs"]
-              Object.keys(localStorage).forEach(key => { if (!keysToKeep.includes(key)) localStorage.removeItem(key) })
-              onReset(2)
-            }
-          }} style={{
-            background: "rgba(239,68,68,0.1)", color: "#dc2626",
-            border: "1px solid rgba(239,68,68,0.3)", borderRadius: "var(--radius-sm)", padding: "6px 12px",
-            fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
-          }}>Change</button>
-        </div>
+        )}
 
         <div style={{
           display: "flex", alignItems: "center", gap: 12,
