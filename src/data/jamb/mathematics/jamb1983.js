@@ -218,7 +218,7 @@ const mathsJamb1983 = [
     options: ["9a²/2", "9a³/2", "2/(3a²)", "2/(3a²)", "3a³/2"],
     answer: "9a³/2",
     explanation: "∛729 = 9, ∛(a⁹) = a³, ∛8 = 2. So ∛(729a⁹/8) = 9a³/2. (The source's printed radical is faint/garbled; 729 is the value that makes the numbers work out to a listed option.)"
-  }
+  },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
     question: "A man drove for 4 hours at a certain speed, he then doubled his speed and drove for another 3 hours. Altogether he covered 600km. At what speed did he drive for the last 3 hours?",
