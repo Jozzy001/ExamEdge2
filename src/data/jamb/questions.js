@@ -18,6 +18,10 @@ import bioJamb1983 from "./biology/jamb1983"
 import litJamb2010 from "./literature/jamb2010"
 
 // --- MATHEMATICS ---
+import mathsJamb1983 from "./mathematics/jamb1983"
+import mathsJamb1984 from "./mathematics/jamb1984"
+import mathsJamb1985 from "./mathematics/jamb1985"
+import mathsJamb1986 from "./mathematics/jamb1986"
 import mathsJamb2010 from "./mathematics/jamb2010"
 
 // --- PHYSICS ---
@@ -43,6 +47,10 @@ const questions = [
   ...bioJamb2010,
   ...bioJamb1983,
   ...litJamb2010,
+  ...mathsJamb1983,
+  ...mathsJamb1984,
+  ...mathsJamb1985,
+  ...mathsJamb1986,
   ...mathsJamb2010,
   ...physicsJamb2004,
   ...chemJamb2004,
