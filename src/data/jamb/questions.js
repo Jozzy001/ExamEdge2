@@ -1,11 +1,11 @@
 // EXAMEDGE — CENTRAL QUESTION BANK
 
 // --- ENGLISH ---
-import englishjamb1983 from "./english/englishjamb1983"
-import englishjamb1984 from "./english/englishjamb1984"
-import englishjamb1985 from "./english/englishjamb1985"
-import jamb2010 from "./english/jamb2010"
-import jamb2011 from "./english/jamb2011"
+import englishjamb1983 from "./english/englishJamb1983"
+import englishjamb1984 from "./english/englishJamb1984"
+import englishjamb1985 from "./english/englishJamb1985"
+import englishjamb2010 from "./english/englishjamb2010"
+import englishjamb2011 from "./english/englishjamb2011"
 
 // --- GOVERNMENT ---
 import govtJamb2010 from "./government/jamb2010"
@@ -48,8 +48,8 @@ const questions = [
   ...englishjamb1983,
   ...englishjamb1984,
   ...englishjamb1985,
-  ...jamb2010,
-  ...jamb2011,
+  ...englishjamb2010,
+  ...englishjamb2011,
   ...govtJamb2010,
   ...econJamb2010,
   ...bioJamb2010,
