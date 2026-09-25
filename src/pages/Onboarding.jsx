@@ -103,7 +103,7 @@ const Onboarding = ({ onDone, authUser, startStep = 1 }) => {
               },
               {
                 id: "jamb",
-                image: "/images/jamblogo.png",
+                image: "/images/jamblogo.webp",
                 title: "JAMB / UTME",
                 desc: "Joint Admissions and Matriculation Board exam",
                 detail: "English (60q) + up to 3 subjects (40q each)"

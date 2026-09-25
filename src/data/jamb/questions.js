@@ -1,6 +1,9 @@
 // EXAMEDGE — CENTRAL QUESTION BANK
 
 // --- ENGLISH ---
+import englishjamb1983 from "./english/englishjamb1983"
+import englishjamb1984 from "./english/englishjamb1984"
+import englishjamb1985 from "./english/englishjamb1985"
 import jamb2010 from "./english/jamb2010"
 import jamb2011 from "./english/jamb2011"
 
@@ -42,6 +45,9 @@ import crkJamb2004 from "./crk/jamb2004"
 import accountsJamb2004 from "./accounts/jamb2004"
 
 const questions = [
+  ...englishjamb1983,
+  ...englishjamb1984,
+  ...englishjamb1985,
   ...jamb2010,
   ...jamb2011,
   ...govtJamb2010,
