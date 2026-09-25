@@ -18,7 +18,7 @@ import Referrals from "./pages/Referrals"
 import AccountDetails from "./pages/AccountDetails"
 import AITutor from "./pages/AITutor"
 import Classroom from "./pages/Classroom"
-import PastQuestions from "./pages/PastQuestions.jsx"
+import PastQuestions from "./pages/PastQuestions.jsx"   // ← add this
 import { FullPageLoader, HomeSkeleton, PageTransition } from "./components/LoadingScreen"
 import Splash from "./pages/Splash"
 import WeakAreas from "./pages/WeakAreas"
@@ -652,6 +652,14 @@ You've got this. ${closing}
         />
       )
     }
+
+    if (page === "pastQuestions") return (
+      <PastQuestions
+        onNavigate={handleNavigate}
+        onBack={handleBack}
+        isPaid={effectiveIsPaid}
+      />
+    )
 
     if (page === "upgrade") return (
       <Upgrade

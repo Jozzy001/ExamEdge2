@@ -103,7 +103,7 @@ const Onboarding = ({ onDone, authUser, startStep = 1 }) => {
               },
               {
                 id: "jamb",
-                icon: "🇳🇬",
+                image: "/images/jamblogo.png",
                 title: "JAMB / UTME",
                 desc: "Joint Admissions and Matriculation Board exam",
                 detail: "English (60q) + up to 3 subjects (40q each)"
@@ -120,7 +120,15 @@ const Onboarding = ({ onDone, authUser, startStep = 1 }) => {
                 onMouseEnter={e => e.currentTarget.style.borderColor = "var(--primary)"}
                 onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}
               >
-                <span style={{ fontSize: 32 }}>{opt.icon}</span>
+                {opt.image ? (
+                  <img
+                    src={opt.image}
+                    alt={opt.title}
+                    style={{ width: 32, height: 32, objectFit: "contain", flexShrink: 0, borderRadius: 6 }}
+                  />
+                ) : (
+                  <span style={{ fontSize: 32 }}>{opt.icon}</span>
+                )}
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text)", marginBottom: 4 }}>{opt.title}</div>
                   <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 6 }}>{opt.desc}</div>

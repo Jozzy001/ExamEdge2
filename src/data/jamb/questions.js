@@ -22,6 +22,8 @@ import mathsJamb1983 from "./mathematics/jamb1983"
 import mathsJamb1984 from "./mathematics/jamb1984"
 import mathsJamb1985 from "./mathematics/jamb1985"
 import mathsJamb1986 from "./mathematics/jamb1986"
+import mathsJamb1987 from "./mathematics/jamb1987"
+import mathsJamb1988 from "./mathematics/jamb1988"
 import mathsJamb2010 from "./mathematics/jamb2010"
 
 // --- PHYSICS ---
@@ -51,6 +53,8 @@ const questions = [
   ...mathsJamb1984,
   ...mathsJamb1985,
   ...mathsJamb1986,
+  ...mathsJamb1987,
+  ...mathsJamb1988,
   ...mathsJamb2010,
   ...physicsJamb2004,
   ...chemJamb2004,

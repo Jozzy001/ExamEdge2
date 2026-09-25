@@ -379,6 +379,16 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
 
         <span className="ee-label">Jump into</span>
 
+        {/* Past Questions */}
+        <button className="hm-banner soft" onClick={() => onNavigate("pastQuestions")}>
+          <span className="hm-banner-emoji">📄</span>
+          <span className="hm-banner-body">
+            <span className="hm-banner-title">Past Questions</span>
+            <span className="hm-banner-sub">Browse by subject, then by year</span>
+          </span>
+          <span className="hm-banner-go">›</span>
+        </button>
+
         {/* AI Tutor */}
         <button className="hm-banner soft" onClick={() => onNavigate("aiTutor")}>
           <span className="hm-banner-emoji">🎓</span>
