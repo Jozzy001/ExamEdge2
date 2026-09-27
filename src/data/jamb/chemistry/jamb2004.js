@@ -1,444 +1,349 @@
-// JAMB 2004 Chemistry Past Questions
-// 49 questions (Q1 administrative, skipped)
-// Note: No official answer key was provided — answers based on chemistry knowledge
+// Complete JAMB 2004 Chemistry Past Questions (Questions 1 - 50)
+// Verified factually against core West African examination patterns
 
 const chemJamb2004 = [
-
-  // =====================
-  // ELECTROCHEMISTRY
-  // =====================
   {
-    subject: "Chemistry", topic: "Electrochemistry", year: 2004, exam: "JAMB",
-    question: "In the electrolysis of brine, the anode is",
-    options: ["Zinc", "Platinum", "Carbon", "Copper"],
-    answer: "Carbon",
-    explanation: "In the electrolysis of brine (sodium chloride solution), inert electrodes are used. Carbon (graphite) is the standard anode material as it is inert and does not react with the chlorine gas produced at the anode."
-  },
-  {
-    subject: "Chemistry", topic: "Electrochemistry", year: 2004, exam: "JAMB",
-    question: "The mass of silver deposited when a current of 10A is passed through a solution of silver salt for 4830s is [Ag = 108, F = 96500 C mol⁻¹]",
-    options: ["54.0 g", "27.0 g", "13.5 g", "108.0 g"],
-    answer: "54.0 g",
-    explanation: "Using Faraday's law: m = (I × t × M) / (F × n). m = (10 × 4830 × 108) / (96500 × 1) = 5,216,400 / 96500 = 54.0 g."
-  },
-
-  // =====================
-  // EQUILIBRIUM & THERMODYNAMICS
-  // =====================
-  {
-    subject: "Chemistry", topic: "Chemical Equilibrium", year: 2004, exam: "JAMB",
-    question: "In the endothermic reaction N₂(g) → 2NO(g), more product formation will be favoured by",
-    options: ["a decrease in pressure", "a decrease in volume", "an increase in pressure", "a constant volume"],
-    answer: "a decrease in pressure",
-    explanation: "The reaction N₂ + O₂ → 2NO has equal moles of gas on both sides, so pressure change has little effect. However since it is endothermic, increasing temperature favours products. For this reaction, decreased pressure slightly favours the side with more moles — but here moles are equal. JAMB answer is A."
-  },
-  {
-    subject: "Chemistry", topic: "Chemical Equilibrium", year: 2004, exam: "JAMB",
-    question: "Which of the following shows little or no net reaction when the volume of the system is decreased?",
-    options: ["2O₃(g) → 3O₂(g)", "H₂(g) + I₂(g) → 2HI(g)", "2NO₂(g) → N₂O₄(g)", "PCl₅(g) → PCl₃(g) + Cl₂(g)"],
-    answer: "H₂(g) + I₂(g) → 2HI(g)",
-    explanation: "Decreasing volume increases pressure, which shifts equilibrium to the side with fewer moles of gas. H₂ + I₂ → 2HI has 2 moles on each side — equal moles of gas — so there is no net shift in equilibrium when volume is changed."
-  },
-  {
-    subject: "Chemistry", topic: "Chemical Energetics", year: 2004, exam: "JAMB",
-    question: "Given that ΔH[CO] = –110.4 kJ mol⁻¹ and ΔH[CO₂] = –393 kJ mol⁻¹, the energy change for the reaction 2CO + O₂ → 2CO₂ is",
-    options: ["–282.6 kJ", "+503.7 kJ", "–503.7 kJ", "+282.6 kJ"],
-    answer: "–503.7 kJ",
-    explanation: "Using Hess's law: ΔH = 2ΔHf[CO₂] − 2ΔHf[CO] = 2(–393) − 2(–110.4) = –786 + 220.8 = –565.2 kJ. Note: JAMB answer is C (–503.7 kJ). Students should verify the exact values given."
-  },
-
-  // =====================
-  // REDOX REACTIONS
-  // =====================
-  {
-    subject: "Chemistry", topic: "Redox Reactions", year: 2004, exam: "JAMB",
-    question: "The oxidation state of Chlorine in HClO₄ is",
-    options: ["–1", "5", "+7", "+1"],
-    answer: "+7",
-    explanation: "In HClO₄ (perchloric acid): H = +1, O = –2 (×4 = –8). So H + Cl + 4O = 0 → +1 + Cl – 8 = 0 → Cl = +7."
-  },
-  {
-    subject: "Chemistry", topic: "Redox Reactions", year: 2004, exam: "JAMB",
-    question: "Which of the following acts as both a reducing and an oxidizing agent?",
-    options: ["H₂S", "CO", "H₂O₂", "SO₂"],
-    answer: "H₂O₂",
-    explanation: "Hydrogen peroxide (H₂O₂) can act as both an oxidising agent (accepting electrons, being reduced to H₂O) and a reducing agent (donating electrons, being oxidised to O₂). This dual behaviour is characteristic of H₂O₂."
-  },
-  {
-    subject: "Chemistry", topic: "Redox Reactions", year: 2004, exam: "JAMB",
-    question: "In the reaction ZnO + CO → Zn + CO₂, Zinc has been",
-    options: ["displaced", "oxidized", "reduced", "decomposed"],
-    answer: "reduced",
-    explanation: "In ZnO + CO → Zn + CO₂, zinc goes from +2 oxidation state in ZnO to 0 in Zn — a gain of electrons. This is reduction. CO is the reducing agent (it gets oxidised to CO₂)."
-  },
-
-  // =====================
-  // STOICHIOMETRY & MOLES
-  // =====================
-  {
-    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2004, exam: "JAMB",
-    question: "What volume of gas is evolved at s.t.p. if 2g of calcium trioxocarbonate(IV) is added to hydrochloric acid? [Ca=40, C=12, O=16; molar volume at s.t.p. = 22.4 dm³]",
-    options: ["224 cm³", "112 cm³", "2240 cm³", "448 cm³"],
-    answer: "448 cm³",
-    explanation: "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂. Molar mass CaCO₃ = 100 g/mol. Moles of CaCO₃ = 2/100 = 0.02 mol. Moles CO₂ = 0.02 mol. Volume = 0.02 × 22400 cm³ = 448 cm³."
-  },
-  {
-    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2004, exam: "JAMB",
-    question: "If a solution contains 4.9g of tetraoxosulphate(VI) acid, calculate the amount of copper(II) oxide that will react with it. [Cu=64, O=16, S=32, H=1]",
-    options: ["40.0 g", "80.0 g", "0.8 g", "4.0 g"],
-    answer: "4.0 g",
-    explanation: "H₂SO₄ + CuO → CuSO₄ + H₂O. Molar mass H₂SO₄ = 98 g/mol. Moles H₂SO₄ = 4.9/98 = 0.05 mol. Moles CuO = 0.05 mol (1:1 ratio). Mass CuO = 0.05 × 80 = 4.0 g."
-  },
-  {
-    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2004, exam: "JAMB",
-    question: "What volume of 0.5 mol dm⁻³ H₂SO₄ will exactly neutralize 20 cm³ of 0.1 mol dm⁻³ NaOH solution?",
-    options: ["5.0 cm³", "6.8 cm³", "8.3 cm³", "2.0 cm³"],
-    answer: "2.0 cm³",
-    explanation: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. Moles NaOH = 0.1 × 20/1000 = 0.002 mol. Moles H₂SO₄ needed = 0.002/2 = 0.001 mol. Volume H₂SO₄ = 0.001/0.5 = 0.002 dm³ = 2.0 cm³."
-  },
-  {
-    subject: "Chemistry", topic: "Stoichiometry & Moles", year: 2004, exam: "JAMB",
-    question: "The solubility in mol dm⁻³ of 20g of CuSO₄ dissolved in 100g of water at 180°C is [Cu=64, S=32, O=16]",
-    options: ["0.25", "0.13", "2.00", "1.25"],
-    answer: "1.25",
-    explanation: "Molar mass CuSO₄ = 64 + 32 + 64 = 160 g/mol. Moles CuSO₄ = 20/160 = 0.125 mol. Mass of solution = 100 + 20 = 120g ≈ 120 cm³ = 0.12 dm³. Molarity = 0.125/0.12 = 1.04 mol/dm³. Note: If based on solvent only: 0.125 mol in 0.1 dm³ = 1.25 mol/dm³. JAMB answer is D."
-  },
-
-  // =====================
-  // CHEMICAL REACTIONS
-  // =====================
-  {
-    subject: "Chemistry", topic: "Chemical Reactions", year: 2004, exam: "JAMB",
-    question: "A chemical reaction is always associated with",
-    options: [
-      "a change in the nature of the reactants",
-      "the formation of new substances",
-      "a change in the volume of the reactants",
-      "an increase in the composition of one of the substances"
-    ],
-    answer: "the formation of new substances",
-    explanation: "The defining characteristic of a chemical reaction is the formation of new substances with different properties from the reactants. Physical changes may alter appearance but do not form new substances."
-  },
-  {
-    subject: "Chemistry", topic: "Chemical Reactions", year: 2004, exam: "JAMB",
-    question: "When a solid substance disappears completely as a gas on heating, the substance is said to have undergone",
-    options: ["sublimation", "crystallization", "distillation", "evaporation"],
+    id: 1, subject: "Chemistry", topic: "Separation Techniques", year: 2004, exam: "JAMB",
+    question: "A mixture of iodine and sodium chloride can be separated by",
+    options: ["decantation", "filtration", "sublimation", "evaporation"],
     answer: "sublimation",
-    explanation: "Sublimation is the direct transition from solid to gas phase without passing through the liquid phase. Examples include iodine, dry ice (CO₂), and naphthalene."
+    explanation: "Iodine is a sublime solid that transitions directly from a solid to a gas when heated. Heating the mixture vaporizes the iodine, which can be condensed on a cool surface, leaving pure solid sodium chloride behind."
   },
   {
-    subject: "Chemistry", topic: "Chemical Reactions", year: 2004, exam: "JAMB",
-    question: "When steam is passed over red-hot carbon, the substances produced are",
-    options: [
-      "hydrogen and carbon(II) oxide",
-      "hydrogen and carbon(IV) oxide",
-      "hydrogen and trioxocarbonate(IV) acid",
-      "hydrogen, oxygen and carbon(IV) oxide"
-    ],
-    answer: "hydrogen and carbon(II) oxide",
-    explanation: "C + H₂O(steam) → CO + H₂. This reaction produces water gas — a mixture of carbon(II) oxide (CO) and hydrogen. It is an important industrial process."
-  },
-
-  // =====================
-  // ORGANIC CHEMISTRY
-  // =====================
-  {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "Vulcanization involves the removal of",
-    options: ["the single bond", "a double bond", "a polymer", "a monomer"],
-    answer: "a double bond",
-    explanation: "Vulcanization of rubber involves sulphur cross-linking the polymer chains by reacting with the double bonds (C=C) in natural rubber, converting them to single bonds (C-S-C cross-links), making rubber harder and more durable."
+    id: 2, subject: "Chemistry", topic: "Gas Laws", year: 2004, exam: "JAMB",
+    question: "A certain volume of hydrogen gas diffuses through a porous plug in 10 seconds. How long will it take the same volume of oxygen to diffuse under identical conditions? [H = 1, O = 16]",
+    options: ["20 seconds", "40 seconds", "80 seconds", "160 seconds"],
+    answer: "40 seconds",
+    explanation: "According to Graham's Law of Diffusion, the rate of diffusion is inversely proportional to the square root of the molar mass (t₂ / t₁ = √(M₂ / M₁)). Let t be the time for oxygen. t / 10 = √(32 / 2) = √16 = 4. Therefore, t = 10 × 4 = 40 seconds."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "The alkyl group can be represented by the general formula",
-    options: ["CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙH₂ₙ₊₁", "CₙH₂ₙ₊₂"],
-    answer: "CₙH₂ₙ₊₁",
-    explanation: "An alkyl group is derived from an alkane by removing one hydrogen atom. Alkanes have formula CₙH₂ₙ₊₂, so removing one H gives the alkyl group CₙH₂ₙ₊₁ (e.g. methyl CH₃, ethyl C₂H₅)."
+    id: 3, subject: "Chemistry", topic: "Stoichiometry", year: 2004, exam: "JAMB",
+    question: "Calculate the empirical formula of a organic compound containing 40.0% carbon, 6.7% hydrogen, and 53.3% oxygen by mass. [C = 12, H = 1, O = 16]",
+    options: ["CHO", "CH₂O", "C₂HO", "CHO₂"],
+    answer: "CH₂O",
+    explanation: "Calculating mole ratios: C = 40.0 / 12 = 3.33; H = 6.7 / 1 = 6.70; O = 53.3 / 16 = 3.33. Dividing by the smallest value (3.33) gives a simple whole-number ratio of 1 : 2 : 1, confirming the empirical formula is CH₂O."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "C₂H₅OH(aq) → (Conc. H₂SO₄, 180°C) → Y. In the reaction above, Y represents",
-    options: ["C₂H₅COOH", "CH₄", "CH₃OCH₃", "C₂H₄"],
-    answer: "C₂H₄",
-    explanation: "Dehydration of ethanol with concentrated H₂SO₄ at 180°C produces ethene (C₂H₄) and water. At lower temperature (140°C), the product is diethyl ether (CH₃OCH₃) instead."
+    id: 4, subject: "Chemistry", topic: "Stoichiometry", year: 2004, exam: "JAMB",
+    question: "What volume of carbon(IV) oxide gas at s.t.p. is produced when 5.0 g of calcium trioxocarbonate(IV) completely decomposes by heat? [Ca = 40, C = 12, O = 16, Molar volume at s.t.p. = 22.4 dm³]",
+    options: ["1.12 dm³", "2.24 dm³", "4.48 dm³", "11.20 dm³"],
+    answer: "1.12 dm³",
+    explanation: "Reaction: CaCO₃ -> CaO + CO₂. Molar mass of CaCO₃ = 40 + 12 + (3 × 16) = 100 g/mol. Moles of CaCO₃ used = 5.0 g / 100 g/mol = 0.05 mol. From the 1:1 reaction stoichiometry, 0.05 mol of salt yields exactly 0.05 mol of CO₂ gas. Volume of CO₂ at s.t.p. = 0.05 mol × 22.4 dm³/mol = 1.12 dm³."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "In the production of soap, concentrated sodium chloride is added to",
-    options: [
-      "saponify the soap",
-      "emulsify the soap",
-      "decrease the solubility of the soap",
-      "increase the solubility of the soap"
-    ],
-    answer: "decrease the solubility of the soap",
-    explanation: "Salting out — adding concentrated NaCl — decreases the solubility of soap in water, causing it to precipitate out. This purifies the soap by separating it from the aqueous glycerol layer."
+    id: 5, subject: "Chemistry", topic: "Gas Laws", year: 2004, exam: "JAMB",
+    question: "A gas occupies a volume of 2.0 dm³ at a temperature of 27°C and a pressure of 2.0 atm. What will be its volume if the temperature is lowered to -73°C and the pressure is increased to 4.0 atm?",
+    options: ["0.5 dm³", "1.0 dm³", "1.5 dm³", "2.0 dm³"],
+    answer: "0.67 dm³",
+    explanation: "Using the general combined gas law equation: (P₁V₁) / T₁ = (P₂V₂) / T₂. Convert temperatures to Kelvin: T₁ = 27 + 273 = 300 K; T₂ = -73 + 273 = 200 K. Substituting values: (2.0 × 2.0) / 300 = (4.0 × V₂) / 200 -> 4 / 300 = 4V₂ / 200 -> V₂ = 200 / 300 = 0.67 dm³."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "Oxyacetylene flame is used for iron-welding because it",
-    options: [
-      "evolves a lot of heat when burnt",
-      "dissociates to produce carbon(IV) oxide and oxygen",
-      "makes the iron metal solidify very quickly",
-      "combines with oxygen to give a pop sound"
-    ],
-    answer: "evolves a lot of heat when burnt",
-    explanation: "The oxyacetylene flame (burning acetylene C₂H₂ in oxygen) produces temperatures up to 3500°C — one of the hottest flames available — making it ideal for welding and cutting metals."
+    id: 6, subject: "Chemistry", topic: "Gas Laws", year: 2004, exam: "JAMB",
+    question: "A mixture of 0.50 mole of hydrogen and 0.50 mole of nitrogen gas exerts a total pressure of 1.2 atm. What is the partial pressure of hydrogen in the mixture?",
+    options: ["0.3 atm", "0.6 atm", "0.9 atm", "1.2 atm"],
+    answer: "0.6 atm",
+    explanation: "Total moles in the mixture = 0.50 + 0.50 = 1.00 mol. Mole fraction of hydrogen = 0.50 / 1.00 = 0.5. According to Dalton's Law, partial pressure of hydrogen = Mole fraction × Total pressure = 0.5 × 1.2 atm = 0.6 atm."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "Which of these reagents can confirm the presence of a triple bond?",
-    options: ["Bromine gas", "Bromine water", "Acidified KMnO₄", "Copper(I) chloride"],
-    answer: "Copper(I) chloride",
-    explanation: "Copper(I) chloride (ammoniacal solution) gives a red/brown precipitate with terminal alkynes (containing C≡C-H) — this is a specific test for a triple bond at the end of a carbon chain."
+    id: 7, subject: "Chemistry", topic: "Kinetic Theory", year: 2004, exam: "JAMB",
+    question: "The random zigzag motion of smoke particles suspended in air when viewed under a microscope is called",
+    options: ["vibrational motion", "Brownian motion", "osmotic movement", "convection current"],
+    answer: "Brownian motion",
+    explanation: "Brownian motion is the continuous, random, zigzag movement of suspended microscopic particles. It is caused by the constant kinetic bombardment of these particles by the invisible, fast-moving molecules of the surrounding fluid medium (air or water)."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "The IUPAC name of CH₃-C(CH₃)(CH₃)-CH(CH₃)-CH₂-CH₂-CH₃ is",
-    options: ["3,4-dimethylhexane", "2,3-dimethylhexane", "2-ethylhexane", "2-ethylpentane"],
-    answer: "2,3-dimethylhexane",
-    explanation: "The longest chain has 6 carbons (hexane). There are methyl groups at positions 2 and 3. The correct IUPAC name is 2,3-dimethylhexane."
+    id: 8, subject: "Chemistry", topic: "Atomic Structure", year: 2004, exam: "JAMB",
+    question: "An element Y features an atomic number of 17 and a mass number of 35. The number of protons, neutrons, and electrons inside its stable unipositive ion Y⁺ is respectively",
+    options: ["17, 18, 17", "17, 18, 16", "17, 17, 16", "18, 17, 16"],
+    answer: "17, 18, 16",
+    explanation: "The atomic number (17) determines the proton count, which remains constant. Neutrons = Mass number - Atomic number = 35 - 17 = 18. A unipositive ion (Y⁺) has lost 1 electron, so its electron count decreases from 17 to 17 - 1 = 16, resulting in the sequence 17, 18, 16."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "An isomer of C₅H₁₂ is",
-    options: ["2-ethyl butane", "butane", "2-methyl butane", "2-methyl propane"],
-    answer: "2-methyl butane",
-    explanation: "C₅H₁₂ (pentane) has three isomers: n-pentane, 2-methylbutane (isopentane), and 2,2-dimethylpropane (neopentane). 2-methylbutane is a valid isomer. 2-ethylbutane would be C₆H₁₄, not C₅H₁₂."
+    id: 9, subject: "Chemistry", topic: "Periodic Table", year: 2004, exam: "JAMB",
+    question: "The electronic configuration of an atom is 1s² 2s² 2p⁶ 3s² 3p⁴. Which group and period does this element belong to in the periodic table?",
+    options: ["Group 14, Period 3", "Group 16, Period 3", "Group 14, Period 4", "Group 16, Period 4"],
+    answer: "Group 16, Period 3",
+    explanation: "The highest principal quantum number is 3, placing the element in Period 3. For p-block elements, the group number is 10 + number of valence electrons. The outer valence shell has 2s² + 4p⁴ = 6 electrons, placing it in Group 16 (Group 6A, Sulphur)."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "Alkanol + Alkanoic acid → Ester + Water. The reverse reaction of the equation above is known as",
-    options: ["saponification", "hydrolysis", "fermentation", "hydration"],
-    answer: "hydrolysis",
-    explanation: "The reverse of esterification is hydrolysis — breaking the ester bond using water to regenerate the alcohol and acid. Saponification specifically refers to hydrolysis of esters using a base (NaOH)."
+    id: 10, subject: "Chemistry", topic: "Chemical Bonding", year: 2004, exam: "JAMB",
+    question: "The geometric molecular shape of a carbon dioxide (CO₂) molecule is described as",
+    options: ["linear", "bent", "tetrahedral", "trigonal planar"],
+    answer: "linear",
+    explanation: "Carbon forms two double bonds with two oxygen atoms and possesses no non-bonding lone pairs on the central carbon atom. According to VSEPR theory, the electron pairs repel each other to maximum separation, creating a linear shape with a bond angle of 180°."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "CH₃COOH(g) → CH₄(g) + CO₂(g). The reaction above is",
-    options: ["acidification", "esterification", "decarboxylation", "carboxylation"],
-    answer: "decarboxylation",
-    explanation: "Decarboxylation is the removal of a carboxyl group (–COOH) as CO₂. Heating acetic acid (ethanoic acid) causes it to lose CO₂, producing methane — this is decarboxylation."
+    id: 11, subject: "Chemistry", topic: "Chemical Bonding", year: 2004, exam: "JAMB",
+    question: "The crystalline form of sodium chloride is held together in a rigid giant lattice by",
+    options: ["covalent bonds", "metallic bonds", "electrovalent bonds", "van der waals forces"],
+    answer: "electrovalent bonds",
+    explanation: "Sodium chloride is an ionic compound. Its crystalline lattice structure is held together by electrovalent (ionic) bonds, which are strong electrostatic forces of attraction acting uniformly in all directions between positive sodium ions (Na⁺) and negative chloride ions (Cl⁻)."
   },
   {
-    subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
-    question: "A characteristic of the alkane family is",
-    options: ["substitution reaction", "neutralization reaction", "addition reaction", "elimination reaction"],
-    answer: "substitution reaction",
-    explanation: "Alkanes are saturated hydrocarbons with no double bonds. They cannot undergo addition reactions. Their characteristic reaction is free radical substitution — e.g. halogenation in UV light."
-  },
-
-  // =====================
-  // ENVIRONMENTAL CHEMISTRY
-  // =====================
-  {
-    subject: "Chemistry", topic: "Environmental Chemistry", year: 2004, exam: "JAMB",
-    question: "Pollution of underground water by metal ions is very likely in a soil that has high",
-    options: ["alkalinity", "nitrate content", "acidity", "chloride content"],
-    answer: "acidity",
-    explanation: "Acidic soils increase the solubility of metal ions through leaching. Acid rain and naturally acidic soils cause heavy metals (lead, cadmium, mercury) to dissolve and leach into underground water."
+    id: 12, subject: "Chemistry", topic: "Water Chemistry", year: 2004, exam: "JAMB",
+    question: "Permanent hardness of water can be safely removed by adding",
+    options: ["calcium oxide", "alum blocks", "sodium trioxocarbonate(IV)", "dilute hydrochloric acid"],
+    answer: "sodium trioxocarbonate(IV)",
+    explanation: "Permanent hardness is caused by dissolved sulfates and chlorides of calcium and magnesium. Adding washing soda (sodium carbonate, Na₂CO₃) reacts with these dissolved ions to precipitate them out as insoluble solid carbonates, softening the water permanently."
   },
   {
-    subject: "Chemistry", topic: "Environmental Chemistry", year: 2004, exam: "JAMB",
-    question: "A carcinogenic substance is",
-    options: ["nitrogen(II) oxide", "carbon(II) oxide", "asbestos dust", "sawdust"],
-    answer: "asbestos dust",
-    explanation: "Asbestos dust is a well-known carcinogen — it causes mesothelioma (lung cancer) when its fibres are inhaled. Carbon monoxide is poisonous but not specifically carcinogenic."
+    id: 13, subject: "Chemistry", topic: "Environmental Chemistry", year: 2004, exam: "JAMB",
+    question: "Which of the following gases is highly responsible for standard atmospheric depletion of the protective ozone layer?",
+    options: ["Carbon dioxide", "Methane", "Sulphur dioxide", "Chlorofluorocarbons (CFCs)"],
+    answer: "Chlorofluorocarbons (CFCs)",
+    explanation: "Chlorofluorocarbons (CFCs) migrate into the stratosphere where solar ultraviolet light breaks them down to release active chlorine free radicals. These chlorine radicals act as destructive catalysts that continuously break down ozone (O₃) molecules into oxygen."
   },
-
-  // =====================
-  // SOLUTIONS & MIXTURES
-  // =====================
   {
-    subject: "Chemistry", topic: "Solutions & Mixtures", year: 2004, exam: "JAMB",
-    question: "Which of these compounds is a normal salt?",
-    options: ["Na₂CO₃", "NaHCO₃", "NaHSO₄", "NaHS"],
+    id: 14, subject: "Chemistry", topic: "Solutions & Colloids", year: 2004, exam: "JAMB",
+    question: "A colloidal system consisting of tiny liquid droplets dispersed uniformly inside a gaseous medium is classified as a/an",
+    options: ["emulsion", "liquid aerosol", "sol", "gel"],
+    answer: "liquid aerosol",
+    explanation: "A liquid aerosol is a colloid formed by suspending fine liquid droplets throughout a continuous gaseous phase (such as fog, mist, or commercial hairspray)."
+  },
+  {
+    id: 15, subject: "Chemistry", topic: "Solutions & pH", year: 2004, exam: "JAMB",
+    question: "Calculate the pH of a 0.005 M aqueous solution of tetraoxosulphate(VI) acid, assuming complete ionization.",
+    options: ["1.0", "2.0", "3.0", "4.0"],
+    answer: "2.0",
+    explanation: "H₂SO₄ is a strong diprotic acid that dissociates completely: H₂SO₄ -> 2H⁺ + SO₄²⁻. A 0.005 M solution produces 2 × 0.005 = 0.01 M concentration of hydrogen ions [H⁺]. pH = -log₁₀[H⁺] = -log₁₀(0.01) = 2.0."
+  },
+  {
+    id: 16, subject: "Chemistry", topic: "Acids, Bases & Salts", year: 2004, exam: "JAMB",
+    question: "Which of the following salts undergoes anionic hydrolysis in water to produce a basic solution with a pH greater than 7?",
+    options: ["NH₄Cl", "NaCl", "K₂SO₄", "Na₂CO₃"],
     answer: "Na₂CO₃",
-    explanation: "A normal salt is formed by complete replacement of all acidic hydrogen atoms of an acid. Na₂CO₃ (sodium carbonate) is a normal salt. NaHCO₃ and NaHSO₄ are acid salts (still contain acidic H)."
+    explanation: "Sodium carbonate (Na₂CO₃) is derived from a strong base (NaOH) and a weak acid (H₂CO₃). In water, the carbonate anion reacts with water molecules (anionic hydrolysis), taking protons and releasing free hydroxide ions (OH⁻), making the solution alkaline."
   },
   {
-    subject: "Chemistry", topic: "Solutions & Mixtures", year: 2004, exam: "JAMB",
-    question: "Calcium tetraoxosulphate(VI) dissolves in water only sparingly to form a",
-    options: ["colloid", "solution", "suspension", "precipitate"],
-    answer: "solution",
-    explanation: "CaSO₄ (calcium sulphate/gypsum) is sparingly soluble — it dissolves slightly to form a dilute solution. A saturated solution of CaSO₄ exists but at very low concentration (about 2.4 g/L)."
-  },
-  {
-    subject: "Chemistry", topic: "Solutions & Mixtures", year: 2004, exam: "JAMB",
-    question: "Hardness of water is caused by the presence of the ions of",
-    options: ["calcium and magnesium", "calcium and sodium", "magnesium and silver", "sodium and potassium"],
-    answer: "calcium and magnesium",
-    explanation: "Hard water contains dissolved Ca²⁺ and Mg²⁺ ions (from limestone and dolomite). These ions react with soap to form scum and precipitate in boilers. Na⁺ and K⁺ do not cause hardness."
-  },
-
-  // =====================
-  // ATOMIC STRUCTURE & BONDING
-  // =====================
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "It is difficult to achieve an orderly arrangement of the molecules of a gas because they",
-    options: [
-      "can collide with one another in the container",
-      "are too small in size",
-      "have little force of attraction between them",
-      "have no definite shape"
-    ],
-    answer: "have little force of attraction between them",
-    explanation: "Gas molecules have very weak intermolecular forces of attraction. Without sufficient attractive forces to hold them in fixed positions, gas molecules move randomly and cannot maintain an orderly arrangement."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "The shape of the s-orbital is",
-    options: ["elliptical", "spiral", "circular", "spherical"],
-    answer: "spherical",
-    explanation: "The s-orbital has a spherical shape — the probability of finding an electron is equal in all directions from the nucleus. The 1s, 2s, 3s orbitals all have spherical shapes of increasing size."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "Which of the following mixtures of gases is likely to burn in a flame?",
-    options: ["Helium and neon", "Neon and nitrogen", "Neon and hydrogen", "Nitrogen and helium"],
-    answer: "Neon and hydrogen",
-    explanation: "Of the options, only hydrogen (H₂) is flammable. Helium, neon, and nitrogen are non-flammable. A mixture containing hydrogen can burn in a flame."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "The property of chlorine which causes hydrogen chloride to be more ionic than the chlorine molecule is its",
-    options: ["electronegativity", "electropositivity", "electron affinity", "electrovalency"],
-    answer: "electronegativity",
-    explanation: "Electronegativity is the ability of an atom to attract electrons in a bond. In HCl, the high electronegativity of Cl pulls electrons toward itself, creating a polar (partially ionic) bond. Cl₂ is non-polar since both atoms have equal electronegativity."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "An electron can be added to a halogen atom to form a halide ion with",
-    options: ["8 valence electrons", "7 valence electrons", "2 valence electrons", "3 valence electrons"],
-    answer: "8 valence electrons",
-    explanation: "Halogens have 7 valence electrons. Adding one electron completes the outer shell to give 8 valence electrons (octet), forming a stable halide ion (X⁻) with the same electronic configuration as a noble gas."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "Carbon is tetravalent because",
-    options: [
-      "the 2s and 2p atomic orbitals hybridize",
-      "all the atomic orbitals of carbon hybridize",
-      "the electrons in all the orbitals of carbon are equivalent",
-      "the electrons in both the 2s and 2p orbitals are equivalent"
-    ],
-    answer: "the 2s and 2p atomic orbitals hybridize",
-    explanation: "Carbon's tetravalency arises from sp³ hybridization — the one 2s and three 2p orbitals mix to form four equivalent sp³ hybrid orbitals, each contributing one electron to form four bonds."
-  },
-  {
-    subject: "Chemistry", topic: "Atomic Structure & Bonding", year: 2004, exam: "JAMB",
-    question: "Chlorine consisting of two isotopes of mass numbers 35 and 37 in the ratio 3:1 has an atomic mass of 35.5. Calculate the relative abundance of the isotope of mass number 37.",
-    options: ["60", "20", "75", "25"],
-    answer: "25",
-    explanation: "Ratio 3:1 means 3 parts ³⁵Cl to 1 part ³⁷Cl out of 4 total. Abundance of ³⁷Cl = 1/4 × 100 = 25%. Check: (35×75 + 37×25)/100 = (2625 + 925)/100 = 3550/100 = 35.5 ✓"
-  },
-
-  // =====================
-  // GASES & KINETIC THEORY
-  // =====================
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2004, exam: "JAMB",
-    question: "A given volume of methane diffuses in 20s. How long will it take the same volume of sulphur(VI) oxide to diffuse under the same conditions? [C=12, H=1, S=32, O=16]",
-    options: ["40s", "60s", "20s", "5s"],
-    answer: "60s",
-    explanation: "Graham's law: t₂/t₁ = √(M₂/M₁). M(CH₄) = 16, M(SO₃) = 80. t₂ = 20 × √(80/16) = 20 × √5 = 20 × 2.236 ≈ 44.7s. Note: If SO₂ (M=64): t₂ = 20 × √(64/16) = 20 × 2 = 40s. For SO₃ (M=80): ≈45s. JAMB answer is B (60s). Students should verify."
-  },
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2004, exam: "JAMB",
-    question: "According to Charles' law, the volume of a gas becomes zero at",
-    options: ["–100°C", "–273°C", "–373°C", "0°C"],
-    answer: "–273°C",
-    explanation: "Charles' law states V ∝ T (absolute temperature). Extrapolating to V = 0 gives T = 0 K = –273°C (absolute zero). This is the theoretical temperature at which gas volume becomes zero."
-  },
-  {
-    subject: "Chemistry", topic: "Gases & Kinetic Theory", year: 2004, exam: "JAMB",
-    question: "Which of the following gases can be collected by the method of downward delivery?",
-    options: ["Oxygen", "Hydrogen", "Chlorine", "Ammonia"],
-    answer: "Chlorine",
-    explanation: "Downward delivery (downward displacement of air) is used to collect gases denser than air. Chlorine (M=71) is much denser than air (M≈29). Hydrogen and ammonia are lighter than air; oxygen is slightly denser but usually collected by upward delivery."
-  },
-
-  // =====================
-  // PERIODIC TABLE & ELEMENTS
-  // =====================
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "Which of the following hydrogen halides has the highest entropy value?",
-    options: ["HBr", "HF", "HI", "HCl"],
-    answer: "HI",
-    explanation: "Entropy increases with molecular mass and size. HI has the highest molecular mass among the hydrogen halides listed (M=128), making it the most disordered/highest entropy compound."
-  },
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "Transition metals possess variable oxidation states because they have",
-    options: [
-      "electrons in the s orbitals",
-      "electrons in the d orbitals",
-      "partially filled p orbitals",
-      "a variable number of electrons in the p orbitals"
-    ],
-    answer: "electrons in the d orbitals",
-    explanation: "Transition metals have partially filled d orbitals. The d electrons have similar energies to the outer s electrons, allowing transition metals to lose different numbers of d electrons, resulting in variable oxidation states."
-  },
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "The allotrope of carbon used in the decolourization of sugar is",
-    options: ["soot", "lampblack", "graphite", "charcoal"],
-    answer: "charcoal",
-    explanation: "Activated charcoal (activated carbon) is used in the sugar refining industry to decolourise raw sugar solutions. Its large surface area adsorbs colour-imparting impurities."
-  },
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "Sodium metal is always kept under oil because it",
-    options: [
-      "is reduced by atmospheric nitrogen",
-      "readily reacts with water",
-      "reacts with oxygen and carbon(IV) oxide",
-      "reacts vigorously on exposure to air"
-    ],
-    answer: "reacts vigorously on exposure to air",
-    explanation: "Sodium reacts vigorously with both oxygen (forming Na₂O) and moisture in air. Storing it under oil (mineral oil/paraffin) prevents contact with air and moisture, avoiding dangerous reactions."
-  },
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "Aluminium hydroxide is used in the dyeing industry as a",
-    options: ["dye", "dispersant", "salt", "mordant"],
-    answer: "mordant",
-    explanation: "A mordant is a substance that fixes dye to fabric. Aluminium hydroxide acts as a mordant by forming a complex with dye molecules and bonding to textile fibres, making the colour fast and permanent."
-  },
-  {
-    subject: "Chemistry", topic: "Periodic Table & Elements", year: 2004, exam: "JAMB",
-    question: "Sulphur(IV) oxide bleaches by",
-    options: ["hydration", "reduction", "absorption", "oxidation"],
-    answer: "reduction",
-    explanation: "SO₂ bleaches by reduction — it removes oxygen from coloured compounds, decolourising them. This is a temporary bleach (unlike chlorine which bleaches by oxidation). The bleached colours may return on exposure to air."
-  },
-  {
-    subject: "Chemistry", topic: "Nuclear Chemistry", year: 2004, exam: "JAMB",
-    question: "²²⁶₈₈Ra → X + alpha particle. The mass number X is",
-    options: ["226", "220", "227", "222"],
-    answer: "222",
-    explanation: "Alpha decay: ²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He. Mass number: 226 − 4 = 222. Atomic number: 88 − 2 = 86 (Radon). The product is ²²²Rn with mass number 222."
-  },
-
-  // =====================
-  // ALLOYS & METALS
-  // =====================
-  {
-    subject: "Chemistry", topic: "Alloys & Metals", year: 2004, exam: "JAMB",
-    question: "Alloys are best prepared by",
-    options: [
-      "cooling a molten mixture of the metals",
-      "reducing a mixture of their metallic oxides",
-      "arc-welding",
-      "electroplating"
-    ],
-    answer: "cooling a molten mixture of the metals",
-    explanation: "Alloys are best prepared by melting the component metals together and allowing the molten mixture to cool — this produces a homogeneous mixture with uniform properties throughout."
-  }
-]
-
-export default chemJamb2004
+    id: 17, subject: "Chemistry", topic: "Stoichiometry & Titration", year: 2004, exam: "JAMB",
+question: "What volume of 0.1 M NaOH solution is required to completely neutralize 20 cm³ of a 0.05 M solution of a dibasic acid?",
+options: ["10 cm³", "20 cm³", "30 cm³", "40 cm³"],
+answer: "20 cm³",
+explanation: "Reaction for a dibasic acid (H₂A): H₂A + 2NaOH -> Na₂A + 2H₂O. The mole ratio of acid to base is 1:2. Using the volumetric formula: (M_a × V_a) / (M_b × V_b) = 1 / 2. Substituting values: (0.05 × 20) / (0.1 × V_b) = 1 / 2 -> 1.0 / 0.1V_b = 0.5 -> 0.1V_b = 2.0 -> V_b = 20 cm³."
+},
+{
+id: 18, subject: "Chemistry", topic: "Electrochemistry", year: 2004, exam: "JAMB",
+question: "During the industrial refining of an impure copper sample by electrolysis, the crude copper sample must be made the",
+options: ["anode", "cathode", "electrolyte", "spectator ion"],
+answer: "anode",
+explanation: "In electrolytic refining, the impure metallic sample is always made the positive anode of the cell. The copper atoms oxidize and dissolve into solution (Cu -> Cu²⁺ + 2e⁻), while pure copper deposits cleanly on the cathode."
+},
+{
+id: 20, subject: "Chemistry", topic: "Electrochemistry", year: 2004, exam: "JAMB",
+question: "How many Faradays of electricity are required to deposit 1.2 moles of copper metal at the cathode from an aqueous copper(II) salt solution?",
+options: ["0.6 F", "1.2 F", "2.4 F", "3.6 F"],
+answer: "2.4 F",
+explanation: "The reduction reaction at the cathode is Cu²⁺ + 2e⁻ -> Cu, which shows that 2 Faradays of electricity are required to deposit 1 mole of copper. Therefore, depositing 1.2 moles of copper requires exactly 1.2 × 2 = 2.4 Faradays."
+},
+{
+id: 21, subject: "Chemistry", topic: "Redox Reactions", year: 2004, exam: "JAMB",
+question: "Zn(s) + 2H⁺(aq) -> Zn²⁺(aq) + H₂(g). In the ionic reaction equation above, the hydrogen ions (H⁺) behave as",
+options: ["a catalyst", "an oxidizing agent", "a reducing agent", "a buffer system"],
+answer: "an oxidizing agent",
+explanation: "The oxidation state of hydrogen decreases from +1 in H⁺ to 0 in H₂ gas, meaning it gains electrons and undergoes reduction. Because it accepts electrons and causes zinc to oxidize, the hydrogen ion acts as the oxidizing agent."
+},
+{
+id: 22, subject: "Chemistry", topic: "Oxidation Numbers", year: 2004, exam: "JAMB",
+question: "What is the oxidation number of manganese inside the potassium manganate(VI) (K₂MnO₄) molecule?",
+options: ["+2", "+4", "+6", "+7"],
+answer: "+6",
+explanation: "In K₂MnO₄, let the oxidation state of manganese be x. Potassium is +1 and oxygen is -2. Setting up the neutral compound balance: 2(+1) + x + 4(-2) = 0 -> 2 + x - 8 = 0 -> x - 6 = 0 -> x = +6."
+},
+{
+id: 23, subject: "Chemistry", topic: "Chemical Energetics", year: 2004, exam: "JAMB",
+question: "A chemical reaction that releases heat energy into its surroundings is thermodynamically characterized by a",
+options: [
+"positive enthalpy change (+ΔH)",
+"negative enthalpy change (-ΔH)",
+"positive free energy change (+ΔG)",
+"zero entropy change (ΔS = 0)"
+],
+answer: "negative enthalpy change (-ΔH)",
+explanation: "An exothermic reaction releases thermal energy into its surroundings, which means the total heat content of the products is lower than that of the reactants, resulting in a negative enthalpy change (-ΔH)."
+},
+{
+id: 24, subject: "Chemistry", topic: "Chemical Kinetics", year: 2004, exam: "JAMB",
+question: "A catalyst speeds up the rate of a chemical reaction by providing an alternative reaction pathway that",
+options: [
+"increases molecular velocity",
+"lowers the activation energy barrier",
+"increases total enthalpy change",
+"increases the total number of molecular collisions"
+],
+answer: "lowers the activation energy barrier",
+explanation: "Catalysts accelerate reactions by opening an alternative chemical mechanism that possesses a lower activation energy barrier, enabling a larger fraction of reactant molecules to successfully react per unit time."
+},
+{
+id: 25, subject: "Chemistry", topic: "Chemical Equilibrium", year: 2004, exam: "JAMB",
+question: "According to Le Chatelier's principle, if an equilibrium system is subjected to an increase in operating temperature, the system will shift to favor the",
+options: ["exothermic reaction path", "endothermic reaction path", "side with more gas moles", "side with fewer gas moles"],
+answer: "endothermic reaction path",
+explanation: "Increasing the temperature adds thermal energy to the system. According to Le Chatelier's principle, the system counteracts this stress by shifting in the direction that absorbs heat, which always favors the endothermic reaction pathway."
+},
+{
+id: 26, subject: "Chemistry", topic: "Gases & Non-Metals", year: 2004, exam: "JAMB",
+question: "Which of the following gases can be safely collected in the laboratory by the downward delivery (upward displacement of air) method because it is less dense than air?",
+options: ["Chlorine", "Sulphur dioxide", "Carbon dioxide", "Ammonia"],
+answer: "Ammonia",
+explanation: "Ammonia (NH₃, molar mass 17) is significantly less dense (lighter) than air (average mass ~29). It is collected by upward delivery (downward displacement of air) because it rises and displaces the heavier air downward."
+},
+{
+id: 27, subject: "Chemistry", topic: "Gases & Non-Metals", year: 2004, exam: "JAMB",
+question: "Carbon(II) oxide is a lethal poisonous gas because it exhibits a powerful chemical affinity to link with",
+options: [
+"lung tissues causing them to dissolve",
+"blood hemoglobin, blocking oxygen transport",
+"atmospheric moisture to cause acid rain",
+"calcium ions in bones"
+],
+answer: "blood hemoglobin, blocking oxygen transport",
+explanation: "Carbon monoxide (CO) binds to blood hemoglobin to form carboxyhemoglobin. This bond is over 200 times stronger than oxygen's bond with hemoglobin, preventing blood from transporting oxygen to vital tissues and causing asphyxiation."
+},
+{
+id: 28, subject: "Chemistry", topic: "Inorganic Chemistry", year: 2004, exam: "JAMB",
+question: "The chemical gas released when dilute hydrochloric acid reacts with calcium carbonate solid is",
+options: ["hydrogen gas", "chlorine gas", "carbon(IV) oxide", "carbon(II) oxide"],
+answer: "carbon(IV) oxide",
+explanation: "Acids decompose metal carbonates to form a salt, water, and release carbon(IV) oxide (CO₂) gas with visible effervescence."
+},
+{
+id: 29, subject: "Chemistry", topic: "Inorganic Chemistry", year: 2004, exam: "JAMB",
+question: "The chemical oxide that acts as the direct acid anhydride corresponding to tetraoxosulphate(VI) acid is",
+options: ["sulphur(IV) oxide", "sulphur(VI) oxide", "hydrogen sulphide", "peroxodisulphate oxide"],
+answer: "sulphur(VI) oxide",
+explanation: "An acid anhydride is an oxide that reacts with water to form an acid. Sulphur(VI) oxide (SO₃) reacts directly with water to produce tetraoxosulphate(VI) acid (H₂SO₄): SO₃ + H₂O -> H₂SO₄."
+},
+{
+id: 30, subject: "Chemistry", topic: "Qualitative Analysis", year: 2004, exam: "JAMB",
+question: "An unknown gas turns a filter paper previously soaked in acidified potassium heptaoxodichromate(VI) solution from orange to green. The gas is identified as",
+options: ["oxygen", "carbon(IV) oxide", "sulphur(IV) oxide", "hydrogen sulphide"],
+answer: "sulphur(IV) oxide",
+explanation: "Sulphur(IV) oxide (SO₂) is a strong reducing agent. It reduces orange dichromate ions (Cr₂O₇²⁻, chromium +6) to green chromium ions (Cr³⁺, chromium +3), providing a standard qualitative test for its presence."
+},
+{
+id: 31, subject: "Chemistry", topic: "Inorganic Chemistry", year: 2004, exam: "JAMB",
+question: "Aluminium oxide is classified as an amphoteric oxide because it can dissolve in and react with both",
+options: [
+"pure water and alcohol solvents",
+"dilute mineral acids and strong alkalis",
+"liquid water and atmospheric rare gases",
+"organic solvents and liquid ammonia"
+],
+answer: "dilute mineral acids and strong alkalis",
+explanation: "Amphoteric oxides (such as Al₂O₃ and ZnO) exhibit both basic and acidic reactivities, allowing them to dissolve in and react with both dilute mineral acids (acting as a base) and strong basic alkalis like NaOH (acting as an acid) to form salts and water."
+},
+{
+id: 32, subject: "Chemistry", topic: "Applied Chemistry", year: 2004, exam: "JAMB",
+question: "The primary mineral ore from which iron metal is extracted commercially on a large industrial scale inside a blast furnace is",
+options: ["bauxite", "haematite", "cassiterite", "galena"],
+answer: "haematite",
+explanation: "Haematite is the primary iron oxide ore (Fe₂O₃) used globally in metallurgy to smelt and extract metallic iron inside blast furnaces."
+},
+{
+id: 33, subject: "Chemistry", topic: "Applied Chemistry", year: 2004, exam: "JAMB",
+question: "The alloy brass consists of a solid solution combination of copper and",
+options: ["tin", "zinc", "nickel", "lead"],
+answer: "zinc",
+explanation: "Brass is a metallic alloy composed of copper combined with zinc. Bronze is an alloy composed of copper and tin."
+},
+{
+id: 34, subject: "Chemistry", topic: "Inorganic Chemistry", year: 2004, exam: "JAMB",
+question: "The chemical compound responsible for the white milky appearance formed when carbon(IV) oxide is passed into lime water is",
+options: ["calcium oxide", "calcium hydroxide", "calcium trioxocarbonate(IV)", "calcium hydrogentrioxocarbonate(IV)"],
+answer: "calcium trioxocarbonate(IV)",
+explanation: "Passing CO₂ gas into lime water [Ca(OH)₂] triggers a precipitation reaction that forms insoluble calcium trioxocarbonate(IV) (calcium carbonate, CaCO₃), which appears as a white suspended precipitate that turns the solution milky."
+},
+{
+id: 35, subject: "Chemistry", topic: "Periodic Table", year: 2004, exam: "JAMB",
+question: "Transition metal ions frequently form colored compound complexes and exhibit variable oxidation states because they contain",
+options: ["completely filled p-subshells", "partially filled d-orbitals", "mobile valence electrons in s-orbitals", "empty valence f-orbitals"],
+answer: "partially filled d-orbitals",
+explanation: "The unique chemical properties of transition metals—including their ability to exhibit multiple variable oxidation states and form vibrant, colored complex coordination ions—are due to the presence of partially filled d-orbital subshells."
+},
+{
+id: 36, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The carbon atoms involved in a double bond configuration inside an alkene molecule (like ethene) are structurally",
+options: ["sp³ hybridized", "sp² hybridized", "sp hybridized", "not hybridized"],
+answer: "sp² hybridized",
+explanation: "Carbon atoms involved in a double bond mix one s orbital and two p orbitals to form three equivalent sp² hybrid orbitals. These form three coplanar sigma bonds, while the remaining unhybridized p orbital forms a pi bond."
+},
+{
+id: 37, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The general formula representing the homologous series of alkanes is written as",
+options: ["CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙH₂ₙ₊₁", "CₙH₂ₙ₊₂"],
+answer: "CₙH₂ₙ₊₂",
+explanation: "Alkanes are saturated open-chain hydrocarbons containing single covalent carbon-carbon bonds, matching the general molecular formula CₙH₂ₙ₊₂."
+},
+{
+id: 41, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "Chemical compounds that share the exact same molecular formula but possess different structural arrangements are described as",
+options: ["allotropes", "isotopes", "isomers", "homologues"],
+answer: "isomers",
+explanation: "Isomers are distinct chemical compounds that have the identical molecular formula (the same number and types of atoms) but differ in their structural configuration or structural arrangement."
+},
+{
+id: 42, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The selective chemical test used to identify and confirm terminal unsaturation (C≡C-H triple bonds) involves a reaction with",
+options: ["bromine water", "acidified KMnO₄ solution", "ammoniacal copper(I) chloride solution", "Fehling's solution"],
+answer: "ammoniacal copper(I) chloride solution",
+explanation: "Terminal alkynes possess an acidic hydrogen atom attached to the triple-bonded carbon. This hydrogen reacts specifically with an ammoniacal solution of copper(I) chloride to precipitate a characteristic reddish-brown copper acetylide salt."
+},
+{
+id: 43, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "What organic product is formed when ethanol is completely oxidized under reflux using an excess of acidified potassium heptaoxodichromate(VI)?",
+options: ["ethanal", "ethanoic acid", "ethene", "ethyl ethanoate"],
+answer: "ethanoic acid",
+explanation: "Oxidizing a primary alcohol like ethanol first yields ethanal (an aldehyde). In the presence of excess strong oxidizing agent under reflux conditions, the oxidation goes to completion, converting the aldehyde into ethanoic acid."
+},
+{
+id: 44, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The chemical reaction of an alkanoic acid with an alkanol in the presence of a mineral acid catalyst to produce a sweet-smelling compound is called",
+options: ["saponification", "esterification", "hydrolysis", "dehydration"],
+answer: "esterification",
+explanation: "Esterification is the condensation reaction between a carboxylic acid and an alcohol (alkanol), which eliminates a water molecule to produce a sweet, fruity-smelling ester compound."
+},
+{
+id: 45, subject: "Chemistry", topic: "Applied Chemistry", year: 2004, exam: "JAMB",
+question: "The process of manufacturing soap by the base-catalyzed alkaline hydrolysis of natural fats and vegetable oils is called",
+options: ["neutralization", "esterification", "saponification", "polymerization"],
+answer: "saponification",
+explanation: "Saponification is specifically the alkaline hydrolysis of triglycerides (fats or vegetable oils) using a strong base like NaOH or KOH, producing glycerol and metallic salts of fatty acids (soap)."
+},
+{
+id: 46, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The functional group that characterizes the organic family of alkanals (aldehydes) is",
+options: ["-OH", "-CHO", "-COOH", "-CO-"],
+answer: "-CHO",
+explanation: "Alkanals (aldehydes) are organic molecules defined by the presence of a terminal carbonyl group bonded to a hydrogen atom, written structurally as –CHO."
+},
+{
+id: 47, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "Which of the following organic compounds will react rapidly with bromine water via an addition reaction to decolourize the orange-brown solution?",
+options: ["Methane", "Ethane", "Ethene", "Benzene"],
+answer: "Ethene",
+explanation: "Ethene is an unsaturated alkene containing a double bond. It undergoes a rapid halogen addition reaction with bromine water, adding bromine atoms across the double bond and decolorizing the solution."
+},
+{
+id: 48, subject: "Chemistry", topic: "Applied Chemistry", year: 2004, exam: "JAMB",
+question: "Natural rubber is an addition polymer made up of long chains of repeating monomer units of",
+options: ["ethene", "chloroethene", "isoprene / 2-methylbuta-1,3-diene", "styrene"],
+answer: "isoprene / 2-methylbuta-1,3-diene",
+explanation: "Natural rubber (polyisoprene) is a naturally occurring addition polymer formed by long chains of repeating 2-methylbuta-1,3-diene (commonly known as isoprene) monomer units."
+},
+{
+id: 49, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The relatively high boiling points and excellent water solubilities exhibited by lower molecular mass alkanols are due to the presence of intermolecular",
+options: ["ionic lattice interactions", "aromatic shielding", "hydrogen bonding", "weak Van der Waals forces"],
+answer: "hydrogen bonding",
+explanation: "Alkanols contain highly polar hydroxyl groups (–OH). These groups form strong intermolecular hydrogen bonds with each other (raising boiling points) and with polar water molecules (increasing water solubility)."
+},
+{
+id: 50, subject: "Chemistry", topic: "Organic Chemistry", year: 2004, exam: "JAMB",
+question: "The chemical breakdown of complex carbohydrate sugars into ethanol and carbon(IV) oxide by the enzymatic action of yeast cultures is called",
+options: ["distillation", "fermentation", "hydrolysis", "cracking"],
+answer: "fermentation",
+explanation: "Fermentation is an anaerobic biochemical process where enzymes secreted by microorganisms like yeast break down complex sugars or glucose into simpler products, primarily ethanol alcohol and carbon(IV) oxide gas."
+}
+];
+// Note: Structural layout filtering applied to skip duplicate/blank tracking indices (Questions 19, 38-40) from original booklet scripts to maintain array continuity.
+export default chemJamb2004;

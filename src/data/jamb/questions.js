@@ -1,5 +1,66 @@
 // EXAMEDGE — CENTRAL QUESTION BANK
 
+// --- ACCOUNTS ---
+import accountsJamb2004 from "./accounts/jamb2004"
+
+// --- BIOLOGY ---
+import bioJamb1983 from "./biology/jamb1983"
+import bioJamb1984 from "./biology/jamb1984"
+import bioJamb1985 from "./biology/jamb1985"
+import bioJamb1986 from "./biology/jamb1986"
+import bioJamb1987 from "./biology/jamb1987"
+import bioJamb1988 from "./biology/jamb1988"
+import bioJamb1989 from "./biology/jamb1989"
+import bioJamb1990 from "./biology/jamb1990"
+import bioJamb1991 from "./biology/jamb1991"
+import bioJamb1992 from "./biology/jamb1992"
+import bioJamb1993 from "./biology/jamb1993"
+import bioJamb1994 from "./biology/jamb1994"
+import bioJamb1995 from "./biology/jamb1995"
+import bioJamb1996 from "./biology/jamb1996"
+import bioJamb1997 from "./biology/jamb1997"
+import bioJamb1998 from "./biology/jamb1998"
+import bioJamb1999 from "./biology/jamb1999"
+import bioJamb2000 from "./biology/jamb2000"
+import bioJamb2001 from "./biology/jamb2001"
+import bioJamb2002 from "./biology/jamb2002"
+import bioJamb2003 from "./biology/jamb2003"
+import bioJamb2004 from "./biology/jamb2004"
+import bioJamb2010 from "./biology/jamb2010"
+
+// --- CHEMISTRY ---
+import chemJamb1983 from "./chemistry/jamb1983"
+import chemJamb1984 from "./chemistry/jamb1984"
+import chemJamb1985 from "./chemistry/jamb1985"
+import chemJamb1986 from "./chemistry/jamb1986"
+import chemJamb1987 from "./chemistry/jamb1987"
+import chemJamb1988 from "./chemistry/jamb1988"
+import chemJamb1989 from "./chemistry/jamb1989"
+import chemJamb1990 from "./chemistry/jamb1990"
+import chemJamb1991 from "./chemistry/jamb1991"
+import chemJamb1992 from "./chemistry/jamb1992"
+import chemJamb1993 from "./chemistry/jamb1993"
+import chemJamb1994 from "./chemistry/jamb1994"
+import chemJamb1995 from "./chemistry/jamb1995"
+import chemJamb1996 from "./chemistry/jamb1996"
+import chemJamb1997 from "./chemistry/jamb1997"
+import chemJamb1998 from "./chemistry/jamb1998"
+import chemJamb1999 from "./chemistry/jamb1999"
+import chemJamb2000 from "./chemistry/jamb2000"
+import chemJamb2001 from "./chemistry/jamb2001"
+import chemJamb2002 from "./chemistry/jamb2002"
+import chemJamb2003 from "./chemistry/jamb2003"
+import chemJamb2004 from "./chemistry/jamb2004"
+
+// --- COMMERCE ---
+import comJamb2004 from "./commerce/jamb2004"
+
+// --- CRK ---
+import crkJamb2004 from "./crk/jamb2004"
+
+// --- ECONOMICS ---
+import econJamb2010 from "./economics/jamb2010"
+
 // --- ENGLISH ---
 import englishjamb1983 from "./english/englishJamb1983"
 import englishjamb1984 from "./english/englishJamb1984"
@@ -29,13 +90,6 @@ import englishjamb2011 from "./english/englishjamb2011"
 // --- GOVERNMENT ---
 import govtJamb2010 from "./government/jamb2010"
 
-// --- ECONOMICS ---
-import econJamb2010 from "./economics/jamb2010"
-
-// --- BIOLOGY ---
-import bioJamb2010 from "./biology/jamb2010"
-import bioJamb1983 from "./biology/jamb1983"
-
 // --- LITERATURE ---
 import litJamb2010 from "./literature/jamb2010"
 
@@ -48,7 +102,6 @@ import mathsJamb1987 from "./mathematics/jamb1987"
 import mathsJamb1988 from "./mathematics/jamb1988"
 import mathsJamb1989 from "./mathematics/mathsjamb1989"
 import mathsJamb1990 from "./mathematics/jamb1990"
-
 import mathsJamb1991 from "./mathematics/jamb1991"
 import mathsJamb1992 from "./mathematics/jamb1992"
 import mathsJamb1993 from "./mathematics/jamb1993"
@@ -59,32 +112,18 @@ import mathsJamb1997 from "./mathematics/jamb1997"
 import mathsJamb1998 from "./mathematics/jamb1998"
 import mathsJamb1999 from "./mathematics/jamb1999"
 import mathsJamb2000 from "./mathematics/jamb2000"
-
 import mathsJamb2001 from "./mathematics/jamb2001"
 import mathsJamb2002 from "./mathematics/jamb2002"
 import mathsJamb2003 from "./mathematics/jamb2003"
 import mathsJamb2004 from "./mathematics/jamb2004"
 import mathsJamb2010 from "./mathematics/jamb2010"
 
-
 // --- PHYSICS ---
 import physicsJamb2004 from "./physics/jamb2004"
 
-// --- CHEMISTRY ---
-import chemJamb2004 from "./chemistry/jamb2004"
-
-// --- COMMERCE ---
-import comJamb2004 from "./commerce/jamb2004"
-
-// --- CRK ---
-import crkJamb2004 from "./crk/jamb2004"
-
-// --- ACCOUNTS ---
-import accountsJamb2004 from "./accounts/jamb2004"
 
 
 const questions = [
-
   ...englishjamb1983,
   ...englishjamb1984,
   ...englishjamb1985,
@@ -112,8 +151,32 @@ const questions = [
 
   ...govtJamb2010,
   ...econJamb2010,
-  ...bioJamb2010,
+
+  // --- BIOLOGY ---
   ...bioJamb1983,
+  ...bioJamb1984,
+  ...bioJamb1985,
+  ...bioJamb1986,
+  ...bioJamb1987,
+  ...bioJamb1988,
+  ...bioJamb1989,
+  ...bioJamb1990,
+  ...bioJamb1991,
+  ...bioJamb1992,
+  ...bioJamb1993,
+  ...bioJamb1994,
+  ...bioJamb1995,
+  ...bioJamb1996,
+  ...bioJamb1997,
+  ...bioJamb1998,
+  ...bioJamb1999,
+  ...bioJamb2000,
+  ...bioJamb2001,
+  ...bioJamb2002,
+  ...bioJamb2003,
+  ...bioJamb2004,
+  ...bioJamb2010,
+
   ...litJamb2010,
 
   ...mathsJamb1983,
@@ -141,7 +204,31 @@ const questions = [
   ...mathsJamb2010,
 
   ...physicsJamb2004,
+
+  // --- CHEMISTRY ---
+  ...chemJamb1983,
+  ...chemJamb1984,
+  ...chemJamb1985,
+  ...chemJamb1986,
+  ...chemJamb1987,
+  ...chemJamb1988,
+  ...chemJamb1989,
+  ...chemJamb1990,
+  ...chemJamb1991,
+  ...chemJamb1992,
+  ...chemJamb1993,
+  ...chemJamb1994,
+  ...chemJamb1995,
+  ...chemJamb1996,
+  ...chemJamb1997,
+  ...chemJamb1998,
+  ...chemJamb1999,
+  ...chemJamb2000,
+  ...chemJamb2001,
+  ...chemJamb2002,
+  ...chemJamb2003,
   ...chemJamb2004,
+
   ...comJamb2004,
   ...crkJamb2004,
   ...accountsJamb2004,
