@@ -40,7 +40,7 @@ const biologyJamb1990 = [
     explanation: "Hydra belongs to the phylum Cnidaria and features a sack-like gastrovascular cavity with only one opening: the mouth. This single opening serves for both food ingestion and the egestion of undigested structural waste particles."
   },
   {
-    subject: "Genetics & Reproduction", topic: "Classification & Diversity", year: 1990, exam: "JAMB",
+    subject: "Biology", topic: "Classification & Diversity", year: 1990, exam: "JAMB",
     question: "Which of the following groups of invertebrates reproduces by budding?",
     options: [
       "Arthropoda",

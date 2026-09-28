@@ -119,8 +119,28 @@ import mathsJamb2004 from "./mathematics/jamb2004"
 import mathsJamb2010 from "./mathematics/jamb2010"
 
 // --- PHYSICS ---
+import physicsJamb1983 from "./physics/jamb1983"
+import physicsJamb1984 from "./physics/jamb1984"
+import physicsJamb1985 from "./physics/jamb1985"
+import physicsJamb1986 from "./physics/jamb1986"
+import physicsJamb1987 from "./physics/jamb1987"
+import physicsJamb1988 from "./physics/jamb1988"
+import physicsJamb1989 from "./physics/jamb1989"
+import physicsJamb1990 from "./physics/jamb1990"
+import physicsJamb1991 from "./physics/jamb1991"
+import physicsJamb1992 from "./physics/jamb1992"
+import physicsJamb1993 from "./physics/jamb1993"
+import physicsJamb1994 from "./physics/jamb1994"
+import physicsJamb1995 from "./physics/jamb1995"
+import physicsJamb1996 from "./physics/jamb1996"
+import physicsJamb1997 from "./physics/jamb1997"
+import physicsJamb1998 from "./physics/jamb1998"
+import physicsJamb1999 from "./physics/jamb1999"
+import physicsJamb2000 from "./physics/jamb2000"
+import physicsJamb2001 from "./physics/jamb2001"
+import physicsJamb2002 from "./physics/jamb2002"
+import physicsJamb2003 from "./physics/jamb2003"
 import physicsJamb2004 from "./physics/jamb2004"
-
 
 
 const questions = [
@@ -203,6 +223,28 @@ const questions = [
   ...mathsJamb2004,
   ...mathsJamb2010,
 
+  // --- PHYSICS ---
+  ...physicsJamb1983,
+  ...physicsJamb1984,
+  ...physicsJamb1985,
+  ...physicsJamb1986,
+  ...physicsJamb1987,
+  ...physicsJamb1988,
+  ...physicsJamb1989,
+  ...physicsJamb1990,
+  ...physicsJamb1991,
+  ...physicsJamb1992,
+  ...physicsJamb1993,
+  ...physicsJamb1994,
+  ...physicsJamb1995,
+  ...physicsJamb1996,
+  ...physicsJamb1997,
+  ...physicsJamb1998,
+  ...physicsJamb1999,
+  ...physicsJamb2000,
+  ...physicsJamb2001,
+  ...physicsJamb2002,
+  ...physicsJamb2003,
   ...physicsJamb2004,
 
   // --- CHEMISTRY ---
