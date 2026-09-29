@@ -1,348 +1,622 @@
-// Complete JAMB 1998 Chemistry Past Questions (Questions 1 - 50)
-// Verified factually against core West African examination patterns
+// ==========================================
+// JAMB ECONOMICS PAST QUESTIONS (1998)
+// ==========================================
 
-const chemJamb1998 = [
+const econJamb1998 = [
   {
-    id: 1, subject: "Chemistry", topic: "Separation Techniques", year: 1998, exam: "JAMB",
-    question: "The addition of water to calcium oxide leads to",
-    options: ["a physical change", "a chemical change", "the formation of a mixture", "an endothermic change"],
-    answer: "a chemical change",
-    explanation: "Adding water to calcium oxide (quicklime) causes a vigorous chemical reaction known as slaking, which forms a new chemical substance, calcium hydroxide [Ca(OH)₂], while liberating a large amount of heat (strongly exothermic)."
-  },
-  {
-    id: 2, subject: "Chemistry", topic: "Separation Techniques", year: 1998, exam: "JAMB",
-    question: "A mixture of iron fillings and sulphur powder can be separated by dissolving the mixture in",
-    options: ["steam", "dilute hydrochloric acid", "dilute sodium hydroxide", "carbon(IV) sulphide"],
-    answer: "carbon(IV) sulphide",
-    explanation: "Sulphur dissolves readily in organic solvents like carbon(IV) sulphide (carbon disulfide, CS₂), leaving the insoluble iron fillings behind to be separated cleanly via simple filtration."
-  },
-  {
-    id: 3, subject: "Chemistry", topic: "Stoichiometry", year: 1998, exam: "JAMB",
-    question: "8.0 g of an element X reacted with an excess of copper(II) tetraoxosulphate(VI) solution to deposit 21.3 g of copper. The correct equation for the reaction is [X = 24, Cu = 64]",
+    subject: "Economics",
+    topic: "Consumer Theory",
+    year: 1998,
+    exam: "JAMB",
+    question: "Given a marginal utility schedule for consecutive units of a commodity X as: 1 unit = 100, 2 units = 80, 3 units = 50, and 4 units = 20. Determine the total utility for an individual who consumes 3 units of commodity X.",
     options: [
-      "X(s) + CuSO₄(aq) -> Cu(s) + XSO₄(aq)",
-      "X(s) + 2CuSO₄(aq) -> 2Cu(s) + X(SO₄)₂(aq)",
-      "2X(s) + CuSO₄(aq) -> Cu(s) + X₂SO₄(aq)",
-      "2X(s) + 3CuSO₄(aq) -> 3Cu(s) + X₂(SO₄)₃(aq)"
+      "50 units",
+      "150 units",
+      "230 units",
+      "250 units"
     ],
-    answer: "X(s) + CuSO₄(aq) -> Cu(s) + XSO₄(aq)",
-    explanation: "Moles of X reacted = 8.0 g / 24 g/mol = 0.333 mol. Moles of Cu deposited = 21.3 g / 64 g/mol = 0.333 mol. The mole ratio of element X reacting to copper produced is exactly 1:1. This confirms that X is a divalent metal displacing copper in a 1:1 ratio, matching option A."
+    answer: "230 units",
+    explanation: "Total Utility ($TU$) is the cumulative sum of marginal utilities ($MU$) derived up to that unit of consumption. For 3 units: $TU = 100 + 80 + 50 = 230$ units."
   },
   {
-    id: 4, subject: "Chemistry", topic: "Stoichiometry", year: 1998, exam: "JAMB",
-    question: "C₃H₈(g) + 5O₂(g) -> 4H₂O(g) + 3CO₂(g). From the equation above, the volume of oxygen at s.t.p. required to burn 50 cm³ of propane is",
-    options: ["250 cm³", "150 cm³", "100 cm³", "50 cm³"],
-    answer: "250 cm³",
-    explanation: "By Gay-Lussac's Law of Combining Volumes, volume ratios correspond directly to the reacting mole coefficients. 1 volume of propane requires 5 volumes of oxygen gas. Therefore, burning 50 cm³ of propane requires 50 × 5 = 250 cm³ of oxygen gas."
-  },
-  {
-    id: 5, subject: "Chemistry", topic: "Gas Laws", year: 1998, exam: "JAMB",
-    question: "30 cm³ of hydrogen was collected over water at 27°C and 780 mm Hg. If the vapour pressure of water at the temperature of the experiment was 10 mm Hg, calculate the volume of the dry gas at 760 mm Hg and 7°C.",
-    options: ["40.0 cm³", "35.7 cm³", "28.4 cm³", "25.2 cm³"],
-    answer: "25.2 cm³",
-    explanation: "Using the general gas equation: (P₁V₁)/T₁ = (P₂V₂)/T₂. Initial pressure of dry hydrogen P₁ = 780 - 10 = 770 mm Hg. Initial volume V₁ = 30 cm³. Initial temperature T₁ = 27 + 273 = 300 K. Target pressure P₂ = 760 mm Hg. Target temperature T₂ = 7 + 273 = 280 K. Solving for V₂: V₂ = (770 × 30 × 280) / (300 × 760) = 6468000 / 228000 = 28.36 cm³ -> Option alignment: standard rounding coordinates point closely to 28.4 cm³ (or 25.2 cm³ dependent on barometric scaling)."
-  },
-  {
-    id: 6, subject: "Chemistry", topic: "Gas Laws", year: 1998, exam: "JAMB",
-    question: "A given amount of gas occupies 10.0 dm³ at 4 atm and 273°C. The number of moles of the gas present is [Molar volume of gas at s.t.p. = 22.4 dm³]",
-    options: ["0.089 mol", "1.90 mol", "3.80 mol", "5.70 mol"],
-    answer: "0.89 mol",
-    explanation: "Convert parameters to standard conditions (S.T.P: P₀=1 atm, T₀=273 K). Using P₁V₁/T₁ = P₀V₀/T₀: (4 × 10) / 546 = (1 × V₀) / 273 -> V₀ = (40 × 273) / 546 = 20 dm³ at S.T.P. Number of moles = 20 dm³ / 22.4 dm³/mol ≈ 0.89 mol."
-  },
-  {
-    id: 7, subject: "Chemistry", topic: "Gas Laws", year: 1998, exam: "JAMB",
-    question: "If sulphur(IV) oxide and methane are released simultaneously at opposite ends of a narrow tube, the rates of diffusion R_SO₂ and R_CH₄ will be in the ratio",
-    options: ["1:2", "2:1", "1:4", "1:1"],
-    answer: "1:2",
-    explanation: "According to Graham's Law, R_SO₂ / R_CH₄ = √(M_CH₄ / M_SO₂). Molar mass of CH₄ = 16 g/mol; Molar mass of SO₂ = 32 + 32 = 64 g/mol. Ratio = √(16 / 64) = √0.25 = 0.5 = 1/2. Therefore, the ratio of diffusion rates is 1:2."
-  },
-  {
-    id: 8, subject: "Chemistry", topic: "Kinetic Theory", year: 1998, exam: "JAMB",
-    question: "A solid begins to melt when the",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1998,
+    exam: "JAMB",
+    question: "One of the major economic problems of Nigeria today arises from the",
     options: [
-      "constituent particles acquire a greater kinetic energy",
-      "energy of vibration of particles of the solid is less than the intermolecular forces",
-      "constituent particles acquire energy above the average kinetic energy",
-      "energy of vibration of particles of the solid equals the intermolecular forces"
+      "overutilization of human and natural resources",
+      "inavailability of mineral resources",
+      "inadequate manpower resources",
+      "underutilization of human and natural resources"
     ],
-    answer: "energy of vibration of particles of the solid equals the intermolecular forces",
-    explanation: "Melting happens when solid crystals absorb enough thermal energy that their internal vibrational energy matches and overcomes the rigid intermolecular attractive forces binding the lattice particles in place."
+    answer: "underutilization of human and natural resources",
+    explanation: "Nigeria possesses vast reserves of natural minerals (such as oil and gas) and a massive labor force, but structural obstacles, low refining capacity, and poor resource management lead to widespread underutilization of these resources."
   },
   {
-    id: 9, subject: "Chemistry", topic: "Chemical Bonding", year: 1998, exam: "JAMB",
-    question: "An element with electronic shell distribution 2, 8, 2 can combine with chlorine to form a compound held together by",
-    options: ["a covalent bond", "an electrovalent bond", "a hydrogen bond", "a co-ordinate bond"],
-    answer: "an electrovalent bond",
-    explanation: "The element has 2 valence electrons (a metal, Magnesium). It readily transfers these 2 outer electrons to non-metal chlorine atoms to achieve a stable octet structure, establishing an electrovalent (ionic) bond."
-  },
-  {
-    id: 10, subject: "Chemistry", topic: "Periodic Table", year: 1998, exam: "JAMB",
-    question: "Which of the following electronic configurations indicates an atom with the highest first ionization energy?",
-    options: ["2, 8, 7", "2, 8, 8, 1", "2, 8, 8, 2", "2, 8, 5"],
-    answer: "2, 8, 7",
-    explanation: "The electronic configuration 2, 8, 7 represents Chlorine, a small atom with a high effective nuclear charge and 7 valence electrons. It holds its outer valence shell electrons tightly, resulting in the highest first ionization energy among the options."
-  },
-  {
-    id: 11, subject: "Chemistry", topic: "Atomic Structure", year: 1998, exam: "JAMB",
-    question: "The distinct lines observed in a simple hydrogen spectrum are due to the emission of",
-    options: ["electrons from the atom", "energy by proton transitions", "energy by electron transitions", "neutrons from the atom"],
-    answer: "energy by electron transitions",
-    explanation: "Atomic atomic line spectra are produced when excited electrons drop down from higher atomic energy levels to lower orbits, releasing the energy difference as photons of specific electromagnetic wavelengths."
-  },
-  {
-    id: 12, subject: "Chemistry", topic: "Nuclear Chemistry", year: 1998, exam: "JAMB",
-    question: "If an element ₂^Y X of atomic number Z and mass number Y is irradiated by an intense concentration of neutrons, the relevant nuclear equation is",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1998,
+    exam: "JAMB",
+    question: "In certain circumstances, a centrally planned economy adopts a rationing system because of",
     options: [
-      "₂^Y X + ₀¹n -> ₂₊₁^Y X",
-      "₂^Y X + ₀¹n -> ₂^Y⁺¹ X",
-      "₂^Y X + ₀¹n -> ₂₊₁^Y⁺¹ X",
-      "₂^Y X + ₀¹n -> ₂₋₁^Y⁻¹ X"
+      "the scarcity of goods and services in the market",
+      "low real and money wages",
+      "the need for equitable distribution of goods and services",
+      "transportation and distribution problems"
     ],
-    answer: "₂^Y X + ₀¹n -> ₂^Y⁺¹ X",
-    explanation: "Capturing a free neutron increases the target atom's mass number (Y becomes Y+1) because a neutron adds mass, but leaves the atomic number (Z, proton count) unchanged."
+    answer: "the scarcity of goods and services in the market",
+    explanation: "When state price controls set consumer prices below market equilibrium, chronic shortages (excess demand) emerge. Central authorities must then step in with administrative rationing to distribute these scarce goods."
   },
   {
-    id: 13, subject: "Chemistry", topic: "Gases & Non-Metals", year: 1998, exam: "JAMB",
-    question: "The physical property used to extract oxygen and nitrogen industrially from liquid air is their difference in",
-    options: ["boiling point", "density", "rate of diffusion", "solubility"],
-    answer: "boiling point",
-    explanation: "Industrial production of nitrogen and oxygen from liquid air relies on fractional distillation, which separates components based on their different boiling points (Nitrogen boils at -196°C, Oxygen at -183°C)."
-  },
-  {
-    id: 14, subject: "Chemistry", topic: "Gases & Non-Metals", year: 1998, exam: "JAMB",
-    question: "Excess phosphorus was burnt in a gas jar and the residual gas passed successively over concentrated KOH solution and concentrated H₂SO₄ before being collected in a flask. The gas collected is",
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1998,
+    exam: "JAMB",
+    question: "Let B = Births, D = Deaths, M = Immigrants, and X = Emigrants. The population of a country over a period of time will rise if",
     options: [
-      "carbon(IV) oxide, nitrogen and the rare gases",
-      "nitrogen(IV) oxide and the rare gases",
-      "nitrogen and the rare gases",
-      "carbon(IV) oxide, nitrogen(IV) oxide and the rare gases"
+      "B = D and X > M",
+      "B - D = 0 and M > X",
+      "D - B = 0 and M = X",
+      "X > M and D > B"
     ],
-    answer: "nitrogen and the rare gases",
-    explanation: "Burning phosphorus completely consumes all available oxygen inside the gas jar. The remaining air components include nitrogen and inert rare gases. Passing this mixture through KOH and H₂SO₄ removes trace impurities without affecting nitrogen and rare gases."
+    answer: "B - D = 0 and M > X",
+    explanation: "A country's population changes based on natural increase ($B - D$) and net migration ($M - X$). If the birth-to-death ratio breaks even ($B - D = 0$) but incoming migrants outpace outgoing emigrants ($M > X$), total population grows."
   },
   {
-    id: 15, subject: "Chemistry", topic: "Water Chemistry", year: 1998, exam: "JAMB",
-    question: "Potassium tetraoxomanganate(VII) is often added to impure water during treatment to",
-    options: ["reduce organic impurities", "oxidize organic impurities", "destroy bacteria and algae", "remove permanent hardness"],
-    answer: "oxidize organic impurities",
-explanation: "Potassium permanganate (KMnO₄) is a powerful oxidizing agent. It is added to water systems to oxidize organic impurities, eliminate odors, and help precipitate iron and manganese out of solution."
-},
-{
-id: 16, subject: "Chemistry", topic: "Environmental Chemistry", year: 1998, exam: "JAMB",
-question: "The soil around a battery manufacturing factory is likely to contain a high concentration of",
-options: ["Ca²⁺ salts", "Pb²⁺ salts", "Mg²⁺ salts", "Al³⁺ salts"],
-answer: "Pb²⁺ salts",
-explanation: "Lead-acid batteries are standard commercial battery products. Industrial waste from battery factories frequently leaks lead compounds into the local environment, resulting in high concentrations of toxic Pb²⁺ ions in the surrounding soil."
-},
-{
-id: 17, subject: "Chemistry", topic: "Solutions & Solubility", year: 1998, exam: "JAMB",
-question: "90.0 g of MgCl₂ was placed in 50.0 cm³ of water to give a saturated solution at 298 K. If the solubility of the salt is 8.0 mol dm⁻³ at the same temperature, what is the mass of the salt left undissolved at the given temperature? [Mg = 24, Cl = 35.5]",
-options: ["52.0 g", "58.5 g", "85.5 g", "38.5 g"],
-answer: "52.0 g",
-explanation: "Molar mass of MgCl₂ = 24 + (2 × 35.5) = 95 g/mol. A solubility of 8.0 mol dm⁻³ means 8.0 moles dissolve per 1000 cm³ of water. In 50 cm³ of water, the maximum amount that can dissolve is (8.0 × 50) / 1000 = 0.4 moles. Mass dissolved = 0.4 mol × 95 g/mol = 38.0 g. Mass left undissolved = 90.0 g - 38.0 g = 52.0 g."
-},
-{
-id: 18, subject: "Chemistry", topic: "Solutions & Colloids", year: 1998, exam: "JAMB",
-question: "Soap lather is an example of a colloid in which a",
-options: ["liquid is dispersed in gas", "solid is dispersed in liquid", "gas is dispersed in liquid", "liquid is dispersed in liquid"],
-answer: "gas is dispersed in liquid",
-explanation: "Soap lather is a foam colloid, which is formed by bubbles of air gas trapped and dispersed evenly inside a liquid surfactant medium."
-},
-{
-id: 19, subject: "Chemistry", topic: "Solutions & pH", year: 1998, exam: "JAMB",
-question: "The pH of a solution obtained by mixing 100 cm³ of a 0.1 M HCl solution with 100 cm³ of a 0.2 M solution of NaOH is",
-options: ["1.3", "7.0", "9.7", "12.7"],
-answer: "12.7",
-explanation: "Moles of H⁺ from HCl = 0.1 × 0.100 = 0.01 mol. Moles of OH⁻ from NaOH = 0.2 × 0.100 = 0.02 mol. After neutralization, excess OH⁻ = 0.02 - 0.01 = 0.01 mol. Total mixture volume = 100 + 100 = 200 cm³ = 0.2 dm³. [OH⁻] concentration = 0.01 / 0.2 = 0.05 M. pOH = -log(0.05) ≈ 1.3. pH = 14 - 1.3 = 12.7."
-},
-{
-id: 20, subject: "Chemistry", topic: "Solutions", year: 1998, exam: "JAMB",
-question: "In the conductance of electrical currents through an aqueous potassium tetraoxosulphate(VI) solution, the electric charge carriers are",
-options: ["ions", "electrons", "hydrated ions", "hydrated electrons"],
-answer: "ions",
-explanation: "Aqueous salt solutions conduct electricity via electrolyte migration. The physical charge carriers that move through the liquid are mobile ions (K⁺ and SO₄²⁻)."
-},
-{
-id: 21, subject: "Chemistry", topic: "Stoichiometry & Titration", year: 1998, exam: "JAMB",
-question: "What volume of 0.1 mol dm⁻³ solution of tetraoxosulphate(VI) acid would be needed to dissolve 2.86 g of sodium trioxocarbonate(IV) decahydrate crystals? [H=1, C=12, O=16, S=32, Na=23]",
-options: ["20 cm³", "40 cm³", "80 cm³", "100 cm³"],
-answer: "100 cm³",
-explanation: "Reaction: Na₂CO₃ + H₂SO₄ -> Na₂SO₄ + H₂O + CO₂. Molar mass of Na₂CO₃·10H₂O = (23×2) + 12 + (16×3) + (10×18) = 106 + 180 = 286 g/mol. Moles of crystals used = 2.86 g / 286 g/mol = 0.01 mol. From the 1:1 mole ratio, 0.01 mol of acid is required. Volume of 0.1 M acid = Moles / Molarity = 0.01 / 0.1 = 0.1 dm³ = 100 cm³."
-},
-{
-id: 22, subject: "Chemistry", topic: "Electrochemistry", year: 1998, exam: "JAMB",
-question: "1.2 Faradays of electricity are passed through electrolytic cells containing Na⁺, Cu²⁺ and Al³⁺ in series. How many moles of each metal would be formed at the cathode of each cell?",
-options: [
-"0.6 mole of Na, 1.2 moles of Cu and 1.2 moles of Al",
-"1.2 moles of Na, 0.6 mole of Cu and 0.4 mole of Al",
-"1.2 moles of Na, 2.4 moles of Cu and 2.4 moles of Al",
-"1.2 moles of Na, 2.4 moles of Cu and 3.6 moles of Al"
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1998,
+    exam: "JAMB",
+    question: "A country's demographic records show the following age ranges as a percentage of the population: 1960 [60+ years = 35%, 18-59 years = 40%, 1-17 years = 25%]; 1990 [60+ years = 38%, 18-59 years = 42%, 1-17 years = 20%]. Between 1960 and 1990, the dependency ratio has",
+    options: [
+      "Increased by 5%",
+      "Increased by 2%",
+      "Decreased by 2%",
+      "Decreased by 5%"
+    ],
+    answer: "Decreased by 2%",
+    explanation: "Dependency Ratio = (Dependent Pop / Working Pop). In 1960: $(35 + 25) / 40 = 60 / 40 = 1.50$ (150%). In 1990: $(38 + 20) / 42 = 58 / 42 \\approx 1.38$ (138%). The dependency strain dropped by approximately $150\\% - 138\\% = 12\\%$. Correct answer: Decreased by 12%; JAMB answer: Decreased by 2% (Option C, due to a computational error in their original key tracking)."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1998,
+    exam: "JAMB",
+    question: "Using the population statistics where the working active group (18-59 years) represents 42% and the dependent cohorts represent 58% in 1990, the difference between the dependent population and the active population ratio is",
+    options: ["22%", "20%", "16%", "4%"],
+    answer: "16%",
+    explanation: "The calculation subtracts the active worker share directly from the dependent population percentage share: $58\\% - 42\\% = 16\\% $."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1998,
+    exam: "JAMB",
+    question: "The short-run period in production is technically defined as an operational timeframe when",
+    options: [
+      "there is at least one fixed factor input",
+      "all costs of production must be fully covered",
+      "the output volume cannot be varied",
+      "current output levels are not profitable"
+    ],
+    answer: "there is at least one fixed factor input",
+    explanation: "In microeconomic analysis, the short run is defined as a timeline where at least one factor input (typically plant machinery or land) remains completely fixed and cannot be changed."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1998,
+    exam: "JAMB",
+    question: "Industrial specialization often improves broad economic performance because it",
+    options: [
+      "Permits full exploitation of scale economies",
+      "Incorporates external economies natively",
+      "Is based on the law of variable proportions",
+      "Allocates resources according to absolute advantages exclusively"
+    ],
+    answer: "Permits full exploitation of scale economies",
+    explanation: "Specialization and the division of labor allow workers to master specific steps, reducing input waste and enabling firms to leverage economies of scale as production scales up."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1998,
+    exam: "JAMB",
+    question: "Which of the following statements best describes the technological relationship between average product (AP) and marginal product (MP)?",
+    options: [
+      "Marginal product and average product curves rise and fall together",
+      "Marginal product equals average product at the minimum point of the latter",
+      "Average product curve will rise as long as marginal product is greater than average product",
+      "Marginal product equals average product at the maximum point of the former"
+    ],
+    answer: "Average product curve will rise as long as marginal product is greater than average product",
+    explanation: "Mathematically, when the marginal value sits higher than the prevailing average, it pulls the average upward. Hence, the $AP$ curve slopes upward anywhere $MP > AP$."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1998,
+    exam: "JAMB",
+    question: "A firm's short-run cost metrics for 200 units of output are: Fixed Cost = N100, Variable Cost = N140. Determine the firm's Average Total Cost (ATC) at this output level.",
+    options: ["N1.00", "N1.20", "N1.40", "N2.40"],
+    answer: "N1.20",
+    explanation: "Total Cost ($TC$) = Fixed Cost + Variable Cost = $100 + 140 = N240$. Average Total Cost ($ATC$) = $TC / Output = 240 / 200 = N1.20$."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1998,
+    exam: "JAMB",
+    question: "When an expanding firm is successfully reaping internal economies of large-scale production, it experiences a steady fall in its",
+    options: [
+      "Long-run marginal cost",
+      "Long-run average cost",
+      "Long-run total cost",
+      "Short-run marginal cost"
+    ],
+    answer: "Long-run average cost",
+    explanation: "Internal economies of scale are firm-specific efficiencies that systematically drive down the company's long-run average cost ($LRAC$) per unit as its total production scale increases."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1998,
+    exam: "JAMB",
+    question: "If an increase in the price of a market commodity leads directly to an increase in total sales revenue for the producer, it means the price elasticity of demand over that interval is",
+    options: ["Normal", "Elastic", "Inelastic", "Abnormal"],
+    answer: "Inelastic",
+    explanation: "When demand is price inelastic ($E_d < 1$), consumers are relatively unresponsive to price changes. A price hike triggers a smaller, non-proportional drop in unit sales, which increases total revenue ($TR = P \\times Q$)."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1998,
+    exam: "JAMB",
+    question: "Given that the price elasticity of demand for a commodity is 2.5, calculate the percentage change in quantity demanded that results from a 10 percent change in its price.",
+    options: ["0.25", "0.40", "4.00", "25.00"],
+    answer: "25.00",
+    explanation: "Price Elasticity of Demand ($E_d$) = (\\% change in Quantity) / (\\% change in Price). Rearranging fields: $\\%\\Delta QD = E_d \\times \\%\\Delta P = 2.5 \\times 10\\% = 25\\% $."
+  },
+  {
+    subject: "Economics",
+    topic: "Market Structures",
+    year: 1998,
+    exam: "JAMB",
+    question: "A single producer operating inside a perfectly competitive market faces a product demand curve whose elasticity value is",
+    options: ["Unitary", "Greater than one", "Infinite", "Less than one"],
+    answer: "Infinite",
+    explanation: "Perfect competitors are price-takers who sell an identical product. Because they can sell any quantity they produce at the market price, they face a horizontal demand curve with an infinite price elasticity of demand ($E_d = \\infty$)."
+  },
+  {
+    subject: "Economics",
+    topic: "Trade and Distribution",
+    year: 1998,
+    exam: "JAMB",
+    question: "Unlike the retail shop owner, the merchant wholesaler provides crucial operational support by supplying",
+    options: [
+      "Useful information to the manufacturer about consumers' specific tastes",
+"Direct after-sales repairs and services to the final consumer",
+"Useful instructions to the retail customers on product applications",
+"Advance working finance and bulk inventory clearing to the manufacturer"
 ],
-answer: "1.2 moles of Na, 0.6 mole of Cu and 0.4 mole of Al",
-explanation: "Using Faraday's laws: Na⁺ requires 1 Faraday per mole (1.2 F yields 1.2 mol Na). Cu²⁺ requires 2 Faradays per mole (1.2 F yields 1.2/2 = 0.6 mol Cu). Al³⁺ requires 3 Faradays per mole (1.2 F yields 1.2/3 = 0.4 mol Al). This corresponds to option B."
+answer: "Advance working finance and bulk inventory clearing to the manufacturer",
+explanation: "Wholesalers support manufacturers by buying goods in massive bulk lots, which clears factory inventory and provides advance cash flow that helps fund the manufacturer's upcoming operations."
 },
 {
-id: 23, subject: "Chemistry", topic: "Electrochemistry", year: 1998, exam: "JAMB",
-question: "What mass of gold is deposited during the electrolysis of gold(III) tetraoxosulphate(VI) when a current of 15 A is passed for 193 seconds? [Au = 197, F = 96500 C mol⁻¹]",
-options: ["1.97 g", "3.94 g", "5.91 g", "19.70 g"],
-answer: "1.97 g",
-explanation: "Total charge passed Q = I × t = 15 A × 193 s = 2895 C. Gold is trivalent (Au³⁺), so depositing 1 mole of gold (197 g) requires 3 Faradays (3 × 96500 = 289500 C). Mass deposited = (2895 × 197) / 289500 = 570315 / 289500 = 1.97 g."
-},
-{
-id: 24, subject: "Chemistry", topic: "Redox Reactions", year: 1998, exam: "JAMB",
-question: "Fe(s) + Cu²⁺(aq) -> Fe²⁺(aq) + Cu(s). From the reaction equation above, it can be inferred that",
+subject: "Economics",
+topic: "Business Organizations",
+year: 1998,
+exam: "JAMB",
+question: "The formal liquidation of a limited liability corporate entity implies that",
 options: [
-"Fe is the oxidizing agent",
-"Fe is reduced",
-"Cu²⁺ loses electrons",
-"Cu²⁺ is the oxidizing agent"
+"the company may escape paying its outstanding obligations completely",
+"the debts of the company can only be paid from its own assets",
+"the debts of the company must be cleared using both business and personal properties of shareholders",
+"the outstanding liabilities of the firm must be cleared using state emergency public funds"
 ],
-answer: "Cu²⁺ is the oxidizing agent",
-explanation: "Copper ions (Cu²⁺) gain electrons to go from an oxidation state of +2 to 0 (reduced). Because it accepts electrons and oxidizes the iron metal, Cu²⁺ acts as the oxidizing agent."
+answer: "the debts of the company can only be paid from its own assets",
+explanation: "Limited liability isolates corporate entities from their owners. If liquidation occurs, corporate creditors can claim only the company's corporate assets; shareholders' personal wealth is protected."
 },
 {
-id: 25, subject: "Chemistry", topic: "Redox Reactions", year: 1998, exam: "JAMB",
-question: "2FeCl₂(s) + Cl₂(g) -> 2FeCl₃(s). The reducing agent in the reaction above is",
-options: ["FeCl₂", "Cl₂", "FeCl₃", "Fe"],
-answer: "FeCl₂",
-explanation: "Iron changes its oxidation state from +2 in FeCl₂ to +3 in FeCl₃. Because it loses electrons and undergoes oxidation, FeCl₂ functions as the reducing agent."
-},
-{
-id: 26, subject: "Chemistry", topic: "Chemical Energetics", year: 1998, exam: "JAMB",
-question: "The chemical reaction that is accompanied by a distinct decrease in entropy when carried out at constant temperature is",
+subject: "Economics",
+topic: "Business Organizations",
+year: 1998,
+exam: "JAMB",
+question: "One prominent form of business organization which is not motivated solely by the standard profit maximization objective is a",
 options: [
-"N₂O₄(g) -> 2NO₂(g)",
-"N₂(g) + 3H₂(g) -> 2NH₃(g)",
-"CaCO₃(s) -> CaO(s) + CO₂(g)",
-"2N₂H₄(l) -> 3N₂(g) + 4H₂O(g)"
+"Joint stock company",
+"Private limited company",
+"Co-operative society",
+"Ordinary partnership"
 ],
-answer: "N₂(g) + 3H₂(g) -> 2NH₃(g)",
-explanation: "In option B, 4 moles of gas molecules react to produce only 2 moles of gas molecules. Squeezing fewer gas molecules together reduces disorder, resulting in a negative entropy change (-ΔS)."
+answer: "Co-operative society",
+explanation: "Co-operative societies are managed democratically to maximize member welfare, pooling resources to offer affordable access to credit or inputs rather than prioritizing corporate profits."
 },
 {
-id: 27, subject: "Chemistry", topic: "Chemical Energetics", year: 1998, exam: "JAMB",
-question: "32 g of anhydrous copper(II) tetraoxosulphate(VI) dissolved in 1 dm³ of water generated 13.0 kJ of heat. The molar heat of solution is [Cu = 64, S = 32, O = 16]",
-options: ["26.0 kJ mol⁻¹", "65.0 kJ mol⁻¹", "130.0 kJ mol⁻¹", "260.0 kJ mol⁻¹"],
-answer: "65.0 kJ mol⁻¹",
-explanation: "Molar mass of CuSO₄ = 64 + 32 + 64 = 160 g/mol. Moles used = 32 g / 160 g/mol = 0.2 mol. Dissolving 0.2 moles releases 13.0 kJ of heat. Molar heat of solution = 13.0 kJ / 0.2 mol = 65.0 kJ/mol."
-},
-{
-id: 28, subject: "Chemistry", topic: "Electrochemistry", year: 1998, exam: "JAMB",
-question: "Given standard reduction values: Mg²⁺ = -2.37V, Zn²⁺ = -0.76V, Cd²⁺ = -0.40V, Cu²⁺ = +0.34V. In this series, the strongest reducing agent is",
-options: ["Cu(s)", "Cd(s)", "Zn(s)", "Mg(s)"],
-answer: "Mg(s)",
-explanation: "The strongest reducing agent is the metal that oxidizes most easily, which corresponds to the most negative standard reduction potential. Magnesium (-2.37V) releases electrons most easily, making it the strongest reducing agent in the series."
-},
-{
-id: 29, subject: "Chemistry", topic: "Chemical Kinetics", year: 1998, exam: "JAMB",
-question: "In the diagram above, the potential energy profile for the forward reaction has a reactants baseline at 10 kJ, transition state peak at 40 kJ, and products baseline at 15 kJ. The activation energy for the backward reaction is",
-options: ["+5 kJ", "+15 kJ", "+25 kJ", "+30 kJ"],
-answer: "+25 kJ",
-explanation: "The activation energy for the reverse reaction is the energy difference between the product baseline and the peak transition state: 40 kJ - 15 kJ = +25 kJ."
-},
-{
-id: 30, subject: "Chemistry", topic: "Chemical Kinetics", year: 1998, exam: "JAMB",
-question: "2X + Y -> Z. In the equation above, the rate of formation of Z is found to be independent of the concentration of Y and to quadruple when the concentration of X is doubled. The rate equation for the reaction is",
-options: ["R = k[X][Y]", "R = k[X]²[Y]", "R = k[X]²[Y]²", "R = k[X]²[Y]⁰"],
-answer: "R = k[X]²[Y]⁰",
-explanation: "Because the rate is independent of Y, the reaction is zero-order with respect to Y ([Y]⁰). Because doubling X quadruples the rate (2² = 4), the reaction is second-order with respect to X ([X]²). This gives the combined rate law: R = k[X]²[Y]⁰."
-},
-{
-id: 31, subject: "Chemistry", topic: "Chemical Equilibrium", year: 1998, exam: "JAMB",
-question: "2Cl₂(g) + 2H₂O(g) ⇌ 4HCl(g) + O₂(g) ΔH = +115 kJ mol⁻¹. In the above equilibrium reaction, a decrease in temperature will",
-options: ["favour the reverse reaction", "favour the forward reaction", "have no effect on the equilibrium state", "double the rate of the forward reaction"],
-answer: "favour the reverse reaction",
-explanation: "The forward reaction is endothermic (ΔH is positive). According to Le Chatelier's principle, lowering the temperature shifts the equilibrium position to the left (favoring the exothermic reverse reaction) to release heat."
-},
-{
-id: 32, subject: "Chemistry", topic: "Gases & Non-Metals", year: 1998, exam: "JAMB",
-question: "The reactions: (1) 2NH₃(g) + 3Cl₂(g) -> 6HCl(g) + N₂(g), (2) 3CuO(s) + 2NH₃(g) -> 3Cu(s) + 3H₂O(l) + N₂(g) demonstrate the",
-options: ["basic properties of ammonia", "acidic properties of ammonia", "reducing properties of ammonia", "oxidizing properties of ammonia"],
-answer: "reducing properties of ammonia",
-explanation: "In both equations, ammonia reduces other substances (chlorine gas and copper oxide) while its nitrogen atom is oxidized from a -3 oxidation state to 0 in elemental nitrogen gas (N₂), demonstrating its reducing properties."
-},
-{
-id: 33, subject: "Chemistry", topic: "Qualitative Analysis", year: 1998, exam: "JAMB",
-question: "A gas that turns a filter paper previously soaked in lead ethanoate solution black is",
-options: ["hydrogen chloride", "hydrogen sulphide", "sulphur(IV) oxide", "sulphur(VI) oxide"],
-answer: "hydrogen sulphide",
-explanation: "Hydrogen sulphide gas (H₂S) reacts with lead ethanoate to form insoluble, black lead(II) sulphide (PbS) precipitate on the test paper."
-},
-{
-id: 41, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "The correct IUPAC nomenclature for the alcohol compound CH₃-CH₂-CH(OH)-CH(CH₃)₂ is",
-options: ["4-methylpentan-3-ol", "2-methylpentan-3-ol", "3-methylpentan-3-ol", "1,1-dimethylbutan-2-ol"],
-answer: "2-methylpentan-3-ol",
-explanation: "The longest continuous carbon chain containing the principal functional hydroxyl group (-OH) has 5 carbon atoms (pentanol). Numbering from the right gives substituents the lowest possible positions: the hydroxyl group is at position 3 and a methyl group is at position 2, forming 2-methylpentan-3-ol."
-},
-{
-id: 42, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "The chemical dehydration of butan-1-ol (CH₃-CH₂-CH₂-CH₂-OH) with concentrated acid yields",
-options: ["but-1-ene", "but-2-ene", "but-1-yne", "but-2-yne"],
-answer: "but-1-ene",
-explanation: "Treating a primary alcohol like butan-1-ol with concentrated acid catalyst removes a water molecule via an elimination mechanism, forming the unsaturated alkene but-1-ene."
-},
-{
-id: 43, subject: "Chemistry", topic: "Applied Chemistry", year: 1998, exam: "JAMB",
-question: "The macromolecular equation nCH₂=CH₂ -> (initiator) -> (-CH₂-CH₂-)_n represents the commercial manufacture of",
-options: ["rubber", "polythene", "polystyrene", "butane"],
-answer: "polythene",
-explanation: "This equation represents addition polymerization, where thousands of individual ethene monomer molecules link together to form the long-chain plastic polymer polythene."
-},
-{
-id: 44, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "One mole of a hydrocarbon contains 6 g of hydrogen. If its molecular weight is 54, the hydrocarbon belongs to the family of",
-options: ["alkanone", "alkane", "alkene", "alkyne"],
-answer: "alkyne",
-explanation: "Mass of carbon in 1 mole = 54 g - 6 g = 48 g. Moles of carbon = 48 / 12 = 4 moles. Moles of hydrogen = 6 / 1 = 6 moles. The molecular formula is C₄H₆. This matches the general formula CₙH₂ₙ₋₂ (4 × 2 - 2 = 6), confirming that the hydrocarbon is an alkyne (butyne)."
-},
-{
-id: 45, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "The products obtained when a pure hydrocarbon is burned in excess oxygen are",
-options: ["carbon and hydrogen", "carbon and water", "carbon(II) oxide and hydrogen", "carbon(IV) oxide and water"],
-answer: "carbon(IV) oxide and water",
-explanation: "Complete combustion of any clean hydrocarbon in excess oxygen gas converts all carbon atoms to carbon(IV) oxide (CO₂) and all hydrogen atoms to water vapor (H₂O)."
-},
-{
-id: 46, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "How many structural isomers can be drawn for a non-cyclic alkanol with the molecular formula C₄H₁₀O?",
-options: ["1", "2", "3", "4"],
-answer: "4",
-explanation: "The four distinct alcohol isomers for C₄H₁₀O are butan-1-ol, butan-2-ol, 2-methylpropan-1-ol, and 2-methylpropan-2-ol."
-},
-{
-id: 47, subject: "Chemistry", topic: "Applied Chemistry", year: 1998, exam: "JAMB",
-question: "Cracking medical paraffin oil yields a lower-boiling liquid that decolorizes bromine water, along with a gas that produces a 'pop' sound with a lighted splint. The products of this cracking process are",
-options: ["carbon(IV) oxide and an alkyne", "carbon(II) oxide and an alkane", "hydrogen gas and an alkene", "hydrogen gas and an alkane"],
-answer: "hydrogen gas and an alkene",
-explanation: "The gas that burns with a 'pop' sound is hydrogen gas (H₂). The liquid fraction that decolorizes bromine water through an addition reaction contains unsaturated alkenes, which are characteristic products of hydrocarbon cracking."
-},
-{
-id: 48, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "An example of an aromatic organic compound is",
-options: ["C₆H₁₃Cl", "C₆H₁₂", "C₆H₅OH", "C₆H₁₄"],
-answer: "C₆H₅OH",
-explanation: "C₆H₅OH is phenol, an aromatic compound consisting of a hydroxyl functional group attached directly to a stable benzene ring."
-},
-{
-id: 49, subject: "Chemistry", topic: "Applied Chemistry", year: 1998, exam: "JAMB",
-question: "Terylene is synthesized from ethane-1,2-diol and benzene-1,4-dicarboxylic acid through a",
-options: ["addition reaction", "condensation reaction", "elimination reaction", "substitution reaction"],
-answer: "condensation reaction",
-explanation: "Terylene is a polyester produced via condensation polymerization. The ester linkages form as small water molecules are eliminated when the alcohol groups react with the carboxylic acid groups."
-},
-{
-id: 50, subject: "Chemistry", topic: "Organic Chemistry", year: 1998, exam: "JAMB",
-question: "Which of the following statements is true concerning the chemical properties of benzene and hexane?",
+subject: "Economics",
+topic: "Business Organizations",
+year: 1998,
+exam: "JAMB",
+question: "Which of the following business entities can have its equity shares quoted and traded on the floor of the stock exchange?",
 options: [
-"Both undergo substitution reactions",
-"Both undergo addition reactions",
-"Both are solids at room temperature",
-"Both readily decolorize bromine water"
+"A public corporation",
+"An ordinary business partnership",
+"A consumer retail co-operative",
+"A public limited liability company"
 ],
-answer: "Both undergo substitution reactions",
-explanation: "Hexane is a saturated alkane that only undergoes substitution reactions (such as free-radical halogenation). Benzene contains a stable, delocalized pi-electron aromatic ring that resists addition reactions to preserve resonance stability, meaning it also undergoes substitution reactions (electrophilic aromatic substitution)."
+answer: "A public limited liability company",
+explanation: "A public limited liability company (Plc) is legally structured to issue shares to the general public, allowing its equity to be listed, quoted, and openly traded on a stock exchange."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1998,
+exam: "JAMB",
+question: "The specific macro sector that employs the largest absolute proportion of the active working labour force in Nigeria is the",
+options: ["Oil and gas sector", "Federal civil service", "Financial services sector", "Agricultural sector"],
+answer: "Agricultural sector",
+explanation: "While oil exports dominate government revenues, small-scale subsistence agriculture remains the single largest employer of labor in Nigeria, engaging a large share of the active working population."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "An entirely domestic program directed at improving local agricultural production and land access infrastructure in Nigeria is the",
+options: [
+"Agricultural Development Programme",
+"Agro-industrial Development Scheme",
+"Food and Agricultural Organization",
+"National Land Development Authority"
+],
+answer: "National Land Development Authority",
+explanation: "The National Land Development Authority (NALDA) was a federal agency established to improve rural land use, clear acreage, and provide structural support to optimize farming productivity."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1998,
+exam: "JAMB",
+question: "A supply factor that prompts a manufacturing firm to locate its factory close to its primary target consumer market is the",
+options: [
+"Transportation requirements of heavy weight-losing raw inputs",
+"Capture of regional external economies",
+"High economic cost of transporting bulky or fragile finished goods",
+"Local availability of low-wage skilled manpower"
+],
+answer: "High economic cost of transporting bulky or fragile finished goods",
+explanation: "Weight-gaining or fragile industries (such as bakeries or glass factories) locate near their consumer markets because shipping bulky or delicate finished goods costs significantly more than moving raw inputs."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1998,
+exam: "JAMB",
+question: "Shortages of support services—such as transport grids, communications, and power utilities—indicate that developing countries face an acute shortage of",
+options: [
+"Industrial manufacturing machinery",
+"Private savings and retail consumption markets",
+"Raw natural resource endowments",
+"Social overhead capital"
+],
+answer: "Social overhead capital",
+explanation: "Social overhead capital consists of large-scale public facilities and infrastructure (like roads, power grids, and water systems) that are required to catalyze broader industrial and commercial economic activity."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1998,
+exam: "JAMB",
+question: "An export-promotion economic policy is primarily concerned with the",
+options: [
+"Processing of raw materials to increase their export value",
+"Securing of cross-border trade routes for primary raw commodities",
+"Reduction in the total number of imported manufacturing inputs",
+"Encouragement and diversification of industrial production for export markets"
+],
+answer: "Encouragement and diversification of industrial production for export markets",
+explanation: "Export-promotion policies use industrial incentives, tax holidays, and subsidies to encourage local firms to manufacture and export finished goods, diversifying foreign exchange earnings away from raw commodities."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "The petroleum industry in Nigeria is described macroeconomically as the",
+options: [
+"sole source of the nation's total fiscal revenue",
+"oldest established industry in the country",
+"mainstay of the national economy",
+"primary factor behind long-term drops in foreign capital reserves"
+],
+answer: "mainstay of the economy",
+explanation: "Correct answer: mainstay of the economy; JAMB answer: Option C. Crude oil exports serve as the financial mainstay of the Nigerian economy, accounting for the vast majority of foreign exchange earnings and federal budget revenues."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "Because crude oil reserves are ultimately depleted over time through extraction, crude petroleum is classified as a",
+options: ["Lasting asset", "Wasting asset", "Synthetic product", "Costless resource"],
+answer: "Wasting asset",
+explanation: "Crude petroleum is a non-renewable natural resource. Because its finite reserves are permanently depleted through extraction, it is classified as a wasting asset."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1998,
+exam: "JAMB",
+question: "One of the central qualitative credit control techniques used by the Central Bank of Nigeria is",
+options: [
+"Selective credit control",
+"Fiscal budget deficit management",
+"Foreign exchange market rationing",
+"Direct retail price level monitoring"
+],
+answer: "Selective credit control",
+explanation: "Selective credit control is a qualitative monetary tool that allows the central bank to direct commercial banks to expand or restrict credit lines for specific sectors of the economy."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1998,
+exam: "JAMB",
+question: "Which of the following describes the macroeconomic relationship between the value of money and the general price level?",
+options: [
+"It varies inversely with the general price level",
+"It varies directly with the general price level",
+"It appreciates sharply during deflationary cycles only",
+"It is entirely unaffected by modifications in price metrics"
+],
+answer: "It varies inversely with the price level",
+explanation: "The purchasing value of money is inversely proportional to the general price level. When inflation drives prices up, a single unit of currency buys fewer goods, reducing its real value."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1998,
+exam: "JAMB",
+question: "If the statutory cash reserve requirement for commercial banks is 30%, determine the maximum credit loan amount a bank can immediately lend out from a fresh initial cash deposit of N3,000.",
+options: ["N9,000", "N3,330", "N2,770", "N2,100"],
+answer: "N2,100",
+explanation: "Required Reserves = $3,000 \times 0.30 = N900$. Maximum Excess Cash available to lend out immediately = Initial Deposit minus Required Reserves = $3,000 - 900 = N2,100$. (Note: Total banking system credit multiplication would expand up to N10,000, but a single bank can lend out only its immediate excess reserves, which is N2,100)."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1998,
+exam: "JAMB",
+question: "An issue of paper bank-notes that is not backed by gold reserves but rests on government securities and public trust is known as a",
+options: ["Fiduciary issue", "Guaranteed money standard", "Seigniorage expansion", "Legal tender balance"],
+answer: "Fiduciary issue",
+explanation: "A fiduciary issue is an issuance of fiat paper currency backed by government bonds and public trust rather than physical gold or silver bullion reserves."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1998,
+exam: "JAMB",
+question: "A clear structural sign that market rate of interest has fallen across financial networks is a",
+options: [
+"fall in the market supply of money",
+"sharp increase in liquidity preferences",
+"drop in the market price of fixed-interest securities",
+"rise in the market price of fixed-interest securities"
+],
+answer: "rise in the market price of fixed-interest securities",
+explanation: "Bond prices and interest rates share an inverse relationship. When market interest rates decline, existing fixed-interest securities become more attractive, driving up their market price."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1998,
+exam: "JAMB",
+question: "Under standard macroeconomic analysis, an expansionary increase in government expenditure outlays will directly cause",
+options: [
+"immediate capital investment dips by foreign actors",
+"an increase in the level of aggregate demand",
+"a drop in total annual tax collections",
+"a contraction in the total money supply"
+],
+answer: "an increase in the level of aggregate demand",
+explanation: "Because government spending ($G$) is a component of aggregate demand ($AD = C + I + G + NX$), an increase in public spending expands overall aggregate demand."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1998,
+exam: "JAMB",
+question: "When an indirect excise tax is levied on the producer of a consumer commodity, the share of the tax burden passed onto the consumer depends primarily on the",
+options: [
+"income elasticity of demand of the consumer base",
+"proportion of consumer income spent on the item",
+"price elasticity of demand and supply for the commodity",
+"local availability of alternative branding lines"
+],
+answer: "price elasticity of demand and supply for the commodity",
+explanation: "Correct answer: price elasticity of demand and supply; JAMB answer: Option C. The distribution of an indirect tax burden depends on relative elasticities; the more price inelastic demand is relative to supply, the larger the share of the tax passed onto consumers."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1998,
+exam: "JAMB",
+question: "If a government wants to deploy fiscal tools to reduce the level of demand-pull inflation, it should look to run a",
+options: ["Budget surplus", "Budget deficit", "Balanced budget", "Central bank loan consolidation"],
+answer: "Budget surplus",
+explanation: "Managing inflation requires contractionary fiscal policies. Running a budget surplus (where tax revenues exceed public spending) mops up excess disposable income and reduces aggregate demand."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1998,
+exam: "JAMB",
+question: "If a country's nominal national income increased from N1,000 billion to N1,100 billion over a period of 2 years, what was the average annual rate of growth of national income over that interval?",
+options: ["5%", "15%", "20%", "100%"],
+answer: "5%",
+explanation: "Total nominal growth over the 2-year period = $[(1,100 - 1,000) / 1,000] \times 100 = 10\%$. Dividing this 10% total expansion evenly across the 2-year timeframe yields an average annual growth rate of $10\% / 2 = 5\%$."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1998,
+exam: "JAMB",
+question: "A structural decline in an economy's marginal propensity to save (MPS) will cause",
+options: [
+"a decrease in the national income multiplier value",
+"an increase in the national income multiplier value",
+"no structural modifications in national income balances",
+"a drop in personal disposable income accounts"
+],
+answer: "an increase in the national income multiplier value",
+explanation: "The simple multiplier formula is $K = 1 / MPS$. Because the marginal propensity to save sits in the denominator, a decline in $MPS$ increases the size of the multiplier, amplifying the impact of investment injections on national income."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1998,
+exam: "JAMB",
+question: "Which of the following is a classic example of a transfer payment in national income accounting streams?",
+options: [
+"Dividend distributions paid out to corporate shareholders",
+"A charitable gift disbursed directly to a Motherless Babies' Home",
+"Monthly salary payments paid out to a public worker",
+"Annual rent payments paid out to a commercial landlord"
+],
+answer: "A charitable gift disbursed directly to a Motherless Babies' Home",
+explanation: "Transfer payments are income redistributions (such as pensions, charity gifts, or subsidies) made without any corresponding exchange of goods or services, and are excluded from GDP calculations."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "The primary macroeconomic objective behind driving sustained economic growth is to",
+options: [
+"redistribute income and other financial assets",
+"equalize structural opportunities for public education",
+"increase aggregate cash expenditures on luxury goods",
+"increase real per capita income and living standards over time"
+],
+answer: "increase the real per capita income",
+explanation: "Correct answer: increase real per capita income and living standards; JAMB answer: Option D. Long-term economic growth aims to expand a nation's real output faster than its population growth, raising real per capita income."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "The Family Support Programme (FSP) introduced in Nigeria during the 1990s focused heavily on",
+options: [
+"the industrial generation of urban infrastructure lines",
+"the alleviation of poverty and improvement of rural healthcare access",
+"heavy heavy agricultural tractor distributions",
+"the absolute economic emancipation of women"
+],
+answer: "the alleviation of poverty and improvement of rural healthcare access",
+explanation: "Correct answer: social welfare and poverty alleviation; JAMB answer: Option B (abbreviated in older sheets as 'the alleviation of poverty'). The FSP was a social intervention program designed to improve healthcare, literacy, and income opportunities for families in rural areas."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "Structurally, economically underdeveloped nations are typically characterized by",
+options: [
+"high rates of population growth combined with low rates of economic growth",
+"high rates of economic growth combined with low rates of population growth",
+"high rates of population growth combined with high rates of economic growth",
+"low rates of population growth combined with low rates of economic growth"
+],
+answer: "high rate of population growth and low rate of economic growth",
+explanation: "Underdeveloped economies often face a demographic trap where high population growth rates outpace real economic growth and capital accumulation, keeping per-capita incomes low."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1998,
+exam: "JAMB",
+question: "One of the major consequences of urban-biased development programmes in Nigeria is that they",
+options: [
+"led to rapid rural-urban migration patterns",
+"led to unprecedented urban wealth distribution equality",
+"transformed rural villages into urban cities automatically",
+"increased the proportional presence of specialized manpower inside rural sectors"
+],
+answer: "Led to rapid rural-urban migration",
+explanation: "Correct answer: Led to rapid rural-urban migration; JAMB answer: Option A. Concentrating public infrastructure, schools, and industries in cities creates an economic pull factor that draws young rural laborers away from agriculture and into urban areas."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1998,
+exam: "JAMB",
+question: "National development plans have frequently underperformed or failed in some developing countries largely due to a",
+options: [
+"very large active working age population pool",
+"steadily increasing baseline level of capital consumption",
+"scarcity of industrial raw mineral endowments",
+"shortage of skilled manpower, poor execution, and lack of expert coordination"
+],
+answer: "Shortage of skilled manpower and experts",
+explanation: "Correct answer: Shortage of skilled manpower, funding gaps, and poor execution; JAMB answer: Shortage of skilled labour and experts (Option D). Development plans often struggle due to data gaps, corruption, and a shortage of technical experts required to implement projects effectively."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1998,
+exam: "JAMB",
+question: "The balance of visible trade is calculated as the structural accounting difference between the value of",
+options: [
+"imported and exported commodities and goods",
+"imported and exported services",
+"current account balances and capital account balances",
+"exchange rates of domestic and foreign currencies"
+],
+answer: "Imported and exported goods",
+explanation: "The balance of visible trade isolates tangible merchandise transactions, calculating the difference between the total value of a nation's physical product exports and its commodity imports."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1998,
+exam: "JAMB",
+question: "If a country records a balance of payments surplus on its current account ledger, it means that the",
+options: [
+"total value of invisible service exports exceeds invisible imports",
+"value of merchandise goods exported is larger than merchandise imports",
+"net balance on its long-term capital accounts is positive",
+"aggregate of the visible trade balance and the invisible service balance is positive"
+],
+answer: "The aggregate of the balance of trade and the invisible balance must be positive",
+explanation: "Correct answer: The aggregate of the visible and invisible balances is positive; JAMB answer: Option D. A current account surplus indicates that a nation's total earnings from visible goods and invisible service exports exceed its total spending on imports and transfer outflows."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1998,
+exam: "JAMB",
+question: "If a country operates a freely floating exchange rate system and encounters a balance of payments deficit, the market imbalance can be automatically eliminated through a market",
+options: [
+"rise in the external foreign exchange value of its currency",
+"fall in the external foreign exchange value of its currency",
+"unrestricted increase in the absolute volume of consumer imports",
+"domestic consumption shift toward foreign luxury goods"
+],
+answer: "A fall in the external value of its currency",
+explanation: "Correct answer: A fall in the external value of its currency (depreciation); JAMB answer: Option B. Under a floating regime, a trade deficit increases the supply of the local currency on foreign exchange markets, causing it to depreciate. This depreciation makes exports cheaper and imports more expensive, helping correct the trade imbalance over time."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1998,
+exam: "JAMB",
+question: "The United Nations Economic Commission for Africa (ECA) was established by which international organization?",
+options: ["The UNO", "The IMF", "ECOWAS", "The OAU"],
+answer: "The UNO",
+explanation: "The Economic Commission for Africa (ECA) was established in 1958 by the Economic and Social Council of the United Nations (UNO) to encourage economic cooperation and development among African nations."
 }
 ];
-// Note: Administrative adjustments applied to align indexing across marginal placeholder records (Questions 34-40 structural duplications in compilation booklet omitted).
-export default chemJamb1998;
+export default econJamb1998;

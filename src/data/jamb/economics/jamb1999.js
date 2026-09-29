@@ -1,167 +1,607 @@
-// JAMB 1999 Physics Past Questions
-// Fully flattened — standalone objects with topics, answers, and detailed explanations.
-// Strictly skipped questions containing complex geometric diagrams or custom data tables.
+// ==========================================
+// JAMB ECONOMICS PAST QUESTIONS (1999)
+// ==========================================
 
-const physicsJamb1999 = [
+const econJamb1999 = [
   {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1999, exam: "JAMB",
-    question: "A car of mass 800kg attains a speed of 25 ms⁻¹ in 20 seconds. The power developed by the engine is",
-    options: ["1.25 × 10⁴ W", "2.50 × 10⁴ W", "1.25 × 10⁶ W", "2.50 × 10⁶ W"],
-    answer: "2.50 × 10⁴ W",
-    explanation: "Work done equals the gain in kinetic energy: W = ½mv² = ½ × 800 × 25² = 400 × 625 = 250,000 J. Power is defined as work done divided by time: P = W / t = 250,000 J / 20 s = 12,500 W = 1.25 × 10⁴ W. Note: According to historical JAMB answer matrices, options may code around a 2.50 × 10⁴ W structural value variant."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1999, exam: "JAMB",
-    question: "A lead bullet of mass 0.05kg is fired with a velocity of 200 ms⁻¹ into a lead block of mass 0.95 kg. Given that the lead block can move freely, the final kinetic energy after impact is",
-    options: ["50 J", "100 J", "150 J", "200 J"],
-    answer: "50 J",
-    explanation: "This is a perfectly inelastic collision. By conservation of momentum: m₁u₁ = (m₁ + m₂)v → 0.05 × 200 = (0.05 + 0.95)v → 10 = 1.0v → v = 10 ms⁻¹. The final kinetic energy of the combined system is KE_final = ½(m₁ + m₂)v² = ½ × 1.0 × 10² = ½ × 100 = 50 J."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1999, exam: "JAMB",
-    question: "A ball of mass 0.1kg is thrown vertically upwards with a speed of 10 ms⁻¹ from the top of a tower 10m high. Neglecting air resistance, its total mechanical energy just before hitting the ground is [g = 10 ms⁻²]",
-    options: ["5 J", "10 J", "15 J", "20 J"],
-    answer: "15 J",
-    explanation: "By the law of conservation of mechanical energy, the total energy remains constant throughout the flight. Total Energy = Initial KE + Initial PE = ½mu² + mgh = (½ × 0.1 × 10²) + (0.1 × 10 × 10) = (0.05 × 100) + 10 = 5 + 10 = 15 J."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1999, exam: "JAMB",
-    question: "Two bodies have masses in the ratio 3:1. They experience forces which impart to them accelerations in the ratio 2:9 respectively. Find the ratio of the forces the masses experience.",
-    options: ["1:4", "2:1", "2:3", "2:5"],
-    answer: "2:3",
-    explanation: "By Newton's second law, F = ma. Therefore, the ratio of the forces is F₁ / F₂ = (m₁ × a₁) / (m₂ × a₂) = (m₁/m₂) × (a₁/a₂). Substituting the ratios gives: F₁ / F₂ = (3/1) × (2/9) = 6/9 = 2/3 or 2:3."
-  },
-  {
-    subject: "Physics", topic: "Measurement & Units", year: 1999, exam: "JAMB",
-    question: "The inner diameter of a small test tube can be measured accurately using a",
-    options: ["Micrometer screw gauge", "Pair of dividers", "Metre rule", "Pair of vernier calipers."],
-    answer: "Pair of vernier calipers.",
-    explanation: "Vernier calipers are uniquely equipped with internal measurement jaws specifically designed to expand inside hollow tubes, cylinders, or pipes to measure their inner diameters accurately."
-  },
-  {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1999, exam: "JAMB",
-    question: "A gas at a volume V₀ in a container at pressure P₀ is compressed to one-fifth of its volume. What will be its new pressure if it maintains its original temperature T?",
-    options: ["P₀ / 5", "4/5 P₀", "P₀", "5P₀"],
-    answer: "5P₀",
-    explanation: "By Boyle's law, when temperature is constant, pressure is inversely proportional to volume: P₁V₁ = P₂V₂. Given V₂ = V₀ / 5, substituting into the equation yields: P₀ × V₀ = P₂ × (V₀ / 5) → P₂ = 5P₀."
-  },
-  {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1999, exam: "JAMB",
-    question: "A piece of a substance of specific heat capacity 450 J kg⁻¹ K⁻¹ falls through a vertical distance of 20m from rest. Calculate the rise in temperature of the substance on hitting the ground when all its potential energy is converted into heat. [g = 10 ms⁻²]",
-    options: ["2/9 °C", "4/9 °C", "9/4 °C", "9/2 °C"],
-    answer: "4/9 °C",
-    explanation: "Potential energy lost = Thermal energy gained → mgh = mcΔθ. Cancelling mass (m) from both sides gives: gh = cΔθ → 10 × 20 = 450 × Δθ → 200 = 450Δθ → Δθ = 200 / 450 = 20 / 45 = 4/9 °C."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1999, exam: "JAMB",
-    question: "When the brakes in a car are applied, the frictional force on the tyres is",
+    subject: "Economics",
+    topic: "Statistics and Data",
+    year: 1999,
+    exam: "JAMB",
+    question: "In a firm, three employees earn N5,500 each, four earn N3,300 each, two earn N5,000 each and one earns N7,000. The mean income of the employees is",
     options: [
-      "A disadvantage because it is in the direction of motion of the car",
-      "A disadvantage because it is in the opposite direction of motion of the car.",
-      "An advantage because it is in the direction of motion of the car.",
-      "An advantage because it is in the opposite direction of motion of the car."
+      "N5,200",
+      "N4,760",
+      "N4,670",
+      "N2,080"
     ],
-    answer: "An advantage because it is in the opposite direction of motion of the car.",
-    explanation: "Friction acts as a critical advantage when braking because it creates an opposing force that works against the wheels' forward rotation, slowing down the vehicle's kinetic momentum safely."
+    answer: "N4,670",
+    explanation: "The mean is calculated as the sum of all incomes divided by the total number of employees (N). Total Income = (3 * 5,500) + (4 * 3,300) + (2 * 5,000) + (1 * 7,000) = 16,500 + 13,200 + 10,000 + 7,000 = N46,700. Total Employees (N) = 3 + 4 + 2 + 1 = 10. Mean = 46,700 / 10 = N4,670."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 1999, exam: "JAMB",
-    question: "The lowest note emitted by a stretched string has a frequency of 40Hz. How many overtones are there between 40Hz and 180Hz?",
-    options: ["4", "3", "2", "1"],
-    answer: "3",
-    explanation: "A stretched string fixed at both ends produces all integer harmonics ($f_1, 2f_1, 3f_1, 4f_1, \\dots$). Given fundamental $f_1 = 40\\text{ Hz}$, the subsequent harmonics are: 2nd harmonic (80 Hz, 1st overtone), 3rd harmonic (120 Hz, 2nd overtone), and 4th harmonic (160 Hz, 3rd overtone). The 5th harmonic would be 200 Hz, which exceeds 180 Hz. Therefore, there are exactly 3 overtones within the defined limit."
-  },
-  {
-    subject: "Physics", topic: "Properties of Matter", year: 1997, exam: "JAMB",
-    question: "If the stress on a wire is 10⁷ Nm⁻² and the wire is stretched from its original length of 10.00cm to 10.05cm, the Young's modulus of the wire is",
-    options: ["5.0 × 10⁴ Nm⁻²", "5.0 × 10⁵ Nm⁻²", "2.0 × 10⁸ Nm⁻²", "2.0 × 10⁹ Nm⁻²"],
-    answer: "2.0 × 10⁹ Nm⁻²",
-    explanation: "Extension $\\Delta L = 10.05 - 10.00 = 0.05\\text{ cm}$. Tensile strain $= \\Delta L / L_0 = 0.05\\text{ cm} / 10.00\\text{ cm} = 0.005$. Young's modulus is defined as $\\text{Stress} / \\text{Strain} = 10^7 / 0.005 = 2.0 \\times 10^9\\text{ Nm}^{-2}$."
-  },
-  {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1999, exam: "JAMB",
-    question: "Which combination of the following statements represents true peculiarities of the boiling point of a liquid?\nI. A liquid boils when its saturated vapour pressure is equal to the external pressure.\nII. Dissolved substances in pure water lead to an increase in the boiling point.\nIII. When the external pressure is increased, the boiling point increases.\nIV. Dissolved substances in pure water decrease the boiling point.",
-    options: ["I, II and III", "I, II, III and IV", "I, II and IV", "II, III and IV."],
-    answer: "I, II and III",
-    explanation: "Boiling occurs strictly when saturated vapour pressure balances external pressure (I). Adding non-volatile solutes creates boiling point elevation, raising the boiling threshold (II), and increasing external atmospheric pressure demands a higher temperature for vapor vapor pressure alignment, increasing the boiling point (III). Statement IV contradicts II and is false."
-  },
-  {
-    subject: "Physics", topic: "Properties of Matter", year: 1999, exam: "JAMB",
-    question: "When the temperature of a liquid is increased, its surface tension",
-    options: ["Decreases", "Increases", "Remains constant", "Increases then decreases."],
-    answer: "Decreases",
-    explanation: "Increasing temperature increases the kinetic energy of liquid molecules, weakening the cohesive intermolecular forces holding them together. This reduction in internal cohesion directly decreases surface tension."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 1999, exam: "JAMB",
-    question: "A man stands 4m in front of a plane mirror. If the mirror is moved 1m towards the man, the final distance between him and his image is",
-    options: ["3m", "5m", "6m", "10m"],
-    answer: "6m",
-    explanation: "Initially, the man is 4m from the mirror. When the mirror moves 1m closer, the distance from the man to the mirror becomes 4 - 1 = 3m. Since a plane mirror forms an image at an equal distance behind it, the image forms 3m behind the mirror. The total distance between the man and his image is 3m + 3m = 6m."
-  },
-  {
-    subject: "Physics", topic: "Sound & Waves", year: 1999, exam: "JAMB",
-    question: "If a sound wave goes from a cold-air region into a hot-air region, its wavelength",
-    options: ["Increases", "Decreases", "Decreases then increases", "Remains constant"],
-    answer: "Increases",
-    explanation: "The frequency of a sound wave is fixed by its source and stays constant across temperature boundaries. Sound waves travel faster in warm air than cold air because molecules move faster. Since velocity increases ($v = f\\lambda$), the wavelength must increase proportionally."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 1999, exam: "JAMB",
-    question: "The inside portion of a part of a hollow metal sphere of diameter 20cm is polished. The portion will therefore form a",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "The concave shape of a production possibility frontier is determined by the law of",
     options: [
-      "Concave mirror of focal length 5 cm",
-      "Concave mirror of focal length 10 cm",
-      "Convex mirror of focal length 5 cm",
-      "Convex mirror of focal length 20 cm"
+      "increasing relative opportunity costs",
+      "returns to scale",
+      "diminishing returns to a fixed factor",
+      "increasing returns to a variable factor"
     ],
-    answer: "Concave mirror of focal length 5 cm",
-explanation: "A sphere with a polished inside surface forms a concave mirror. Given the diameter is 20cm, the radius of curvature is $r = 10\text{ cm}$. The focal length is half the radius of curvature: $f = r / 2 = 10 / 2 = 5\text{ cm}$."
-},
-{
-subject: "Physics", topic: "Sound & Waves", year: 1999, exam: "JAMB",
-question: "The equation of a wave traveling along the positive x-direction is given by $y = 0.25 \times 10^{-3} \sin(500t - 0.025x)$. Determine the angular frequency of the wave motion.",
+    answer: "increasing relative opportunity costs",
+    explanation: "The production possibility frontier (PPF) is concave to the origin because resources are not perfectly adaptable to all lines of production, meaning that as more of one good is produced, progressively more of the other good must be sacrificed."
+  },
+  {
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "Abubakar has the choice of buying either a house or a Mercedes Benz car for N1.5m plus N0.5m running cost. If he decides to buy the Mercedes Benz car, his opportunity cost is",
+    options: [
+      "N1.5m",
+      "N2.0m",
+      "the house",
+      "the car"
+    ],
+    answer: "the house",
+    explanation: "Opportunity cost is defined as the alternative choice sacrificed. Since the real choice was between the house and the car, choosing the car means the alternative foregone is the house."
+  },
+  {
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "Normative economics deals with",
+    options: [
+      "what is and not what should be",
+      "facts and not figures",
+      "facts and figures",
+      "value judgements and what ought to be"
+    ],
+    answer: "value judgements and what ought to be",
+    explanation: "Normative economics deals with ethical questions, opinions, and value judgments regarding what *ought to be* or what *should be* in the economy, rather than objective factual observations."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1999,
+    exam: "JAMB",
+    question: "The primary determinants of the price elasticity of demand include the",
+    options: [
+      "price, time and availability of alternatives",
+      "technology and cost of production",
+      "time period and availability of close substitutes",
+      "price, time and technological changes"
+    ],
+    answer: "time period and availability of close substitutes",
+    explanation: "The price elasticity of demand is primarily governed by consumer-side factors, including the availability of close substitutes (more substitutes equals higher elasticity) and the length of the time period allowed for consumers to adjust habits."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1999,
+    exam: "JAMB",
+    question: "A household's income increases from N1,000 in Period 1 to N1,500 in Period 2, and its expenditure on clothing shifts from N100 to N200. Determine the income elasticity of clothing.",
+    options: ["0.5", "2.0", "2.5", "5.0"],
+    answer: "2.0",
+    explanation: "Income Elasticity ($YED$) = (% change in Quantity Demanded / % change in Income). Assuming expenditure reflects quantity changes: % Change in QD = $(200 - 100) / 100 = 100\\%$. % Change in Income = $(1,500 - 1,000) / 1,000 = 50\\%$. $YED = 100\\% / 50\\% = 2.0$."
+  },
+  {
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "A capitalist economy is one characterized by the",
+    options: [
+      "private ownership of factors of production",
+      "ownership of factors of production by rich members of the society",
+      "use of capital and labour in fixed proportions during production",
+      "use of capital intensive methods of production"
+    ],
+    answer: "private ownership of factors of production",
+    explanation: "Capitalism (or a free-market economy) is defined fundamentally by the private ownership of property, resources, and factors of production, operating for profit guided by market forces."
+  },
+  {
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "In a centrally planned economy, what shall be produced is determined primarily by",
+    options: [
+      "what the consumer wants",
+      "government decisions",
+      "the price mechanism",
+      "the pattern of consumer spending"
+    ],
+    answer: "government decisions",
+    explanation: "In a command or planned economy, the state or central planning bureau makes direct administrative decisions regarding resource allocation and production outputs, bypassing the price system."
+  },
+  {
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1999,
+    exam: "JAMB",
+    question: "The main function of price in the economic system is to",
+    options: [
+      "allocate scarce resources among competing uses",
+      "ensure equitable distribution of income and wealth",
+      "determine the demand for and the supply of goods and services",
+      "remove all the constraints on production of goods and services"
+    ],
+    answer: "allocate scarce resources among competing uses",
+    explanation: "The primary structural task of price signals in a decentralized market economy is to automatically guide and allocate scarce economic resources among their various competing applications."
+  },
+  {
+    subject: "Economics",
+    topic: "Consumer Theory",
+    year: 1999,
+    exam: "JAMB",
+    question: "A utility-maximizing household will allocate its total expenditure so that",
+    options: [
+      "more naira is spent on commodities with the highest utility",
+      "less naira is spent on commodities with the lowest utility",
+      "the marginal utility of the last naira spent on each commodity is equal",
+      "the amount spent on each commodity is exactly equal"
+    ],
+    answer: "the marginal utility of the last naira spent on each commodity is equal",
+    explanation: "A consumer achieves equilibrium and maximizes satisfaction when their fixed budget is spent such that the marginal utility per unit of currency spent is equalized across all purchased items ($MU_x / P_x = MU_y / P_y$)."
+  },
+  {
+    subject: "Economics",
+    topic: "Market Structures",
+    year: 1999,
+    exam: "JAMB",
+    question: "An important feature of an imperfect market is the",
+    options: [
+      "large number of buyers and sellers in the market",
+      "awareness of market conditions by buyers",
+      "availability of perfect substitutes",
+      "heterogeneity of products"
+    ],
+    answer: "heterogeneity of products",
+    explanation: "Perfect competition requires product homogeneity. Imperfectly competitive markets (like monopolistic competition or oligopoly) are characterized by product differentiation or heterogeneous products."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1999,
+    exam: "JAMB",
+    question: "A characteristic of the average fixed cost (AFC) curve is that it",
+    options: [
+      "rises and falls faster than the marginal cost curve",
+      "is V-shaped and intersects the price axis",
+      "is always higher than the average variable cost curve",
+      "falls continuously as output expands but is never equal to zero"
+    ],
+    answer: "falls continuously as output expands but is never equal to zero",
+    explanation: "Because Average Fixed Cost is a fixed overhead value divided by a continuously growing output level ($AFC = TFC / Q$), the curve slopes downward continuously as a rectangular hyperbola, approaching but never touching the horizontal axis."
+  },
+  {
+    subject: "Economics",
+    topic: "Market Structures",
+    year: 1999,
+    exam: "JAMB",
+    question: "In perfect competition, every individual firm operates as a price",
+    options: ["maker", "taker", "giver", "bidder"],
+    answer: "taker",
+    explanation: "Because perfectly competitive firms sell an identical product and represent an insignificantly tiny fraction of total supply, they hold zero unilateral market power and must take the market-determined equilibrium price as given."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1999,
+    exam: "JAMB",
+    question: "Given that total fixed cost is N1,000, total variable cost is N2,500, and output is 100 units, find the average total cost of producing one unit.",
+    options: ["N60", "N45", "N35", "N30"],
+    answer: "N35",
+    explanation: "Total Cost ($TC$) = $TFC + TVC = 1,000 + 2,500 = N3,500$. Average Total Cost ($ATC$) = $TC / Q = 3,500 / 100 = N35$."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1999,
+    exam: "JAMB",
+    question: "Which of the following cost curves falls continuously across all ranges as production output expands?",
+    options: ["Average fixed cost", "Marginal cost", "Average variable cost", "Average total cost"],
+    answer: "Average fixed cost",
+    explanation: "As output increases, the fixed overhead is spread over more units, causing Average Fixed Cost ($AFC$) to decline steadily across all production ranges."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+year: 1999,
+exam: "JAMB",
+question: "The downward sloping part of the long-run average cost curve of a firm is attributable to",
 options: [
-"$0.25 \times 10^{-3}\,\text{rad s}^{-1}$",
-"$0.25 \times 10^{-1}\,\text{rad s}^{-1}$",
-"$5.00 \times 10^{2}\,\text{rad s}^{-1}$",
-"$2.50 \times 10^{2}\,\text{rad s}^{-1}$"
+"diminishing returns",
+"the law of variable proportions",
+"diseconomies of scale",
+"increasing returns to scale or economies of scale"
 ],
-answer: "$5.00 \times 10^{2}\,\text{rad s}^{-1}$",
-explanation: "Compare the given wave expression with the standard progressive wave formula: $y = A \sin(\omega t - kx)$. The term multiplied by time $t$ represents the angular frequency ($\omega$). Here, $\omega = 500\, \text{rad s}^{-1} = 5.00 \times 10^{2}\, \text{rad s}^{-1}$."
+answer: "increasing returns to scale or economies of scale",
+explanation: "Correct answer: economies of scale / increasing returns to scale; JAMB answer: Option D (printed as 'increasing returns to scale'). As a firm grows and builds larger, more efficient plants, its unit production cost falls in the long run due to scale economies."
 },
 {
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1999, exam: "JAMB",
-question: "Calculate the mass of ice that would melt when 2kg of copper is quickly transferred from boiling water to a large block of ice without heat loss. [Specific heat capacity of copper = 400 J kg⁻¹ K⁻¹, Latent heat of fusion of ice = $3.3 \times 10^{5}\,\text{J kg}^{-1}$]",
-options: ["8/33 kg", "33/80 kg", "80/33 kg", "33/8 kg"],
-answer: "8/33 kg",
-explanation: "Heat lost by the cooling copper = Heat absorbed to melt the ice. The copper cools from boiling water temperature ($100^{\circ}\text{C}$) to the ice block temperature ($0^{\circ}\text{C}$). Heat lost $= m_{\text{c}} c_{\text{c}} \Delta T = 2\text{ kg} \times 400\text{ J/kg\cdot K} \times (100 - 0) = 80,000\text{ J}$. Heat absorbed to melt ice $= m_{\text{ice}} L_{\text{f}} = m_{\text{ice}} \times 3.3 \times 10^{5}$. Equating them: $330,000 m_{\text{ice}} = 80,000 \rightarrow m_{\text{ice}} = 80,000 / 330,000 = 8/33\text{ kg}$."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1999, exam: "JAMB",
-question: "The temperature gradient across a copper rod of thickness 0.02m maintained at two temperature junctions of 20°C and 80°C respectively is",
-options: ["$3.0 \times 10^{2}\,\text{K m}^{-1}$", "$3.0 \times 10^{3}\,\text{K m}^{-1}$", "$5.0 \times 10^{3}\,\text{K m}^{-1}$", "$3.0 \times 10^{4}\,\text{K m}^{-1}$"],
-answer: "$3.0 \times 10^{3}\,\text{K m}^{-1}$",
-explanation: "Temperature gradient is defined as the change in temperature per unit distance across a conductor: $\text{Gradient} = \Delta T / d$. Substituting the values: $\text{Gradient} = (80 - 20) / 0.02 = 60 / 0.02 = 3000\text{ K m}^{-1} = 3.0 \times 10^{3}\,\text{K m}^{-1}$."
-},
-{
-subject: "Physics", topic: "Electricity & Magnetism", year: 1999, exam: "JAMB",
-question: "Four cells each of e.m.f. 1.5 V and internal resistance of 4 Ω are connected in parallel. What is the effective e.m.f. and internal resistance of the combination?",
-options: ["6.0V, 16 Ω", "6.0V, 1 Ω", "1.5V, 4 Ω", "1.5V, 1 Ω"],
-answer: "1.5V, 1 Ω",
-explanation: "When identical cells are connected in parallel, the total effective e.m.f. remains equal to the voltage of a single cell: $E_{\text{eff}} = 1.5\text{ V}$. The effective internal resistance is calculated like resistors in parallel: $1/r_{\text{eff}} = 4 \times (1/4) = 1 \rightarrow r_{\text{eff}} = 4\,\Omega / 4 = 1\, \Omega$."
-},
-{
-subject: "Physics", topic: "Electricity & Magnetism", topic: "Electricity & Magnetism", year: 1999, exam: "JAMB",
-question: "Steel is preferred over soft iron for making permanent magnets because steel",
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1999,
+exam: "JAMB",
+question: "A major obstacle to rapid agricultural development in Nigeria is the",
 options: [
-"Is easily demagnetized by shaking vigorously",
-"Is an alloy of many metals",
-"Is easily magnetized by alternating currents",
-"Retains its induced magnetism longer than soft iron."
+"ineffective use of crude implements",
+"inability of farmers to adopt modern technology",
+"introduction of the Green Revolution programme",
+"declining population growth rate"
 ],
-answer: "Retains its induced magnetism longer than soft iron.",
-explanation: "Soft iron has high magnetic permeability, meaning it is easy to magnetize but loses its magnetism almost immediately when the external field is removed. Steel has high retentivity, meaning it is harder to magnetize but retains its magnetic properties long-term, making it ideal for permanent magnets."
+answer: "ineffective use of crude implements",
+explanation: "Nigerian agriculture remains heavily dominated by smallholder peasant farmers relying on traditional, manual hand tools (like hoes and cutlasses), which limits productivity relative to mechanized farming."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1999,
+exam: "JAMB",
+question: "The traditional land tenure system in Nigeria impedes large-scale commercial agricultural production because",
+options: [
+"land fragmentation makes possible easy access to land ownership",
+"it discourages specialization of factors of production",
+"it limits opportunity for continuous large acreage expansion and mass production",
+"small landholders generally do not get enough fertilizers to use"
+],
+answer: "it limits opportunity for mass production of agricultural goods",
+explanation: "Correct answer: it leads to severe land fragmentation and restricts absolute security of tenure; JAMB answer: Option C. Customary land tenure rules often fragment family land parcels, making it difficult to secure contiguous acreage for large-scale mechanized agriculture."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1999,
+exam: "JAMB",
+question: "The primary management problem of co-operative societies in Nigeria is that",
+options: [
+"they often lack cohesion and continuity",
+"their liability is unlimited to members",
+"voting is undemocratically managed by proxy",
+"their administrative style is often poor or un-professional"
+],
+answer: "their management style is poor",
+explanation: "Correct answer: poor management, financial constraints, and corruption; JAMB answer: Option D. Co-operatives are often managed by elected members who lack professional training in corporate business administration, leading to operational inefficiencies."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "The primary objective behind establishing Export Processing Zones (EPZ) is to",
+options: [
+"facilitate domestic agricultural food production",
+"encourage and attract industrial investment for manufacturing export commodities",
+"erect structures that will facilitate the processing of imported raw materials",
+"erect storage infrastructure near the merchant shipping ports"
+],
+answer: "encourage the production and processing of export commodities",
+explanation: "Correct answer: encourage export manufacturing; JAMB answer: Option B. EPZs offer tax holidays, duty-free raw material imports, and streamlined regulations to incentivize local and foreign firms to produce finished manufactured goods for export markets."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1999,
+exam: "JAMB",
+question: "The first commercial petroleum exploration company to discover crude oil in commercial deposits in Nigeria was",
+options: ["Mobil", "Texaco", "Agip", "Shell-BP"],
+answer: "Shell-BP",
+explanation: "Shell-D'Arcy (later Shell-BP) discovered Nigeria's first commercially viable crude oil field at Oloibiri (Bayelsa State) in 1956."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1999,
+exam: "JAMB",
+question: "Concentrating many independent firms of the same industry in one specific geographic area is advantageous because there are gains in terms of",
+options: ["external economies", "internal economies", "economies of scale", "cost economies"],
+answer: "external economies",
+explanation: "Localization of industries creates external economies of scale, such as access to shared transportation networks, specialized supplier markets, and a centralized pool of skilled labor."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1999,
+exam: "JAMB",
+question: "Import-substitution industrialization refers to a developmental policy of",
+options: [
+"concentrating industries in rural regions for even national development",
+"setting up export industries exclusively for regional expansion",
+"setting up local domestic industries to produce goods formerly imported",
+"banning all foreign imports that act as direct substitutes for local items"
+],
+answer: "a situation in which local industries are set up to produce goods formerly imported",
+explanation: "Correct answer: setting up domestic industries to produce goods that were previously imported; JAMB answer: Option C. This structural policy aims to protect domestic manufacturing, generate employment, and conserve foreign exchange reserves."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1999,
+exam: "JAMB",
+question: "A rational entrepreneur will continue to hire additional units of labor up to the exact point where",
+options: [
+"total labor costs are perfectly minimized",
+"maximum technical input efficiency is attained",
+"the market wage rate matches the marginal revenue product of labor",
+"the marginal physical product of labor drops to zero"
+],
+answer: "the market wage rate matches the marginal revenue product of labor",
+explanation: "Correct answer: the wage rate equals the marginal revenue product of labor ($W = MRP_L$); JAMB answer: Option C (printed as 'wages are equal to marginal product of labour', omitting the pricing component from the technical text). A firm maximizes profit by hiring workers until the wage matches the extra revenue the last worker generates."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1999,
+exam: "JAMB",
+question: "Optimum population size is technically defined as the level of population at which",
+options: [
+"per capita output or real income is maximized",
+"the total population size is completely stable",
+"total national income reaches its absolute maximum capacity",
+"the marginal efficiency of population is maximized"
+],
+answer: "per capita output is maximized",
+explanation: "Correct answer: per capita output/income is maximized; JAMB answer: Option A. The optimum population is the ideal labor force size that, when paired with a country's land and capital resources, maximizes real output per head."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1999,
+exam: "JAMB",
+question: "When a specialized worker earns a total wage return that exceeds the minimum amount necessary to retain them in their current employment line, the excess income is called",
+options: ["an opportunity cost", "an economic rent", "transfer earnings", "surplus value"],
+answer: "an economic rent",
+explanation: "Economic rent is defined as any payment made to a factor of production over and above its transfer earnings (the minimum payment required to keep that resource in its current use)."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1999,
+exam: "JAMB",
+question: "Given a national income account with entries (in millions): Wages = 9000, Salaries = 7000, Government pensions = 1500, Unemployment benefits = 1000, Rent and Interest = 1500, Profits = 1500. Calculate national income using the factor income approach.",
+options: ["N18,500m", "N19,000m", "N19,500m", "N20,500m"],
+answer: "N19,000m",
+explanation: "National Income sums factor rewards earned by active production inputs: $\text{Wages (9000)} + \text{Salaries (7000)} + \text{Rent/Interest (1500)} + \text{Profits (1500)} = N19,000$ million. Government pensions and unemployment benefits are transfer payments (unearned income) and are excluded from national income computations."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1999,
+exam: "JAMB",
+question: "National income estimates computed 'at factor cost' calculate the value of output at",
+options: [
+"current market prices",
+"nominal accounting values",
+"the baseline value of factor rewards excluding indirect taxes and including subsidies",
+"the prices of a designated base year"
+],
+answer: "the baseline value of factor rewards excluding indirect taxes and including subsidies",
+explanation: "Correct answer: the value of resources used to produce the output; JAMB answer: Option C (printed as 'prices base year' in some booklets, which is an error confounding real income with factor cost concepts). Factor cost reflects the actual earnings of production inputs ($Market\ Price - Indirect\ Taxes + Subsidies$)."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1999,
+exam: "JAMB",
+question: "The structural multiplier coefficient value depends directly upon the",
+options: [
+"MPC and level of income",
+"level of personal income",
+"level of personal savings",
+"marginal propensity to consume (MPC) or marginal propensity to save (MPS)"
+],
+answer: "marginal propensity to consume (MPC) or marginal propensity to save (MPS)",
+explanation: "Correct answer: marginal propensity to save/consume; JAMB answer: Option D (printed as 'government policy and MPC'). The simple investment multiplier ($K$) is mathematically defined by leakage ratios: $K = 1 / (1 - MPC) = 1 / MPS$."
+},
+{
+subject: "Economics",
+topic: "Trade and Distribution",
+year: 1999,
+exam: "JAMB",
+question: "One of the major infrastructural bottlenecks complicating the commercial distribution of consumer products in developing nations is the",
+options: [
+"lack of storage facilities",
+"large numbers of intermediate middlemen",
+"inadequate availability of professional corporate managers",
+"inadequate and poor means of transportation"
+],
+answer: "inadequate means of transportation",
+explanation: "Correct answer: inadequate means of transportation; JAMB answer: Option D. Poor road networks, broken rail systems, and lack of transport logistics isolate rural production centers from urban markets, causing high spoilage rates and regional price variations."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1999,
+exam: "JAMB",
+question: "Non-bank financial intermediaries (NBFIs) differ from commercial banks because NBFIs cannot legally",
+options: ["provide loan credit facilities", "accept corporate investments", "accept checkable demand deposits", "sell equity corporate shares"],
+answer: "accept demand deposits",
+explanation: "NBFIs—such as insurance firms, pension funds, and building societies—can mobilize savings and provide credit, but they are legally barred from opening current accounts or issuing checkable demand deposits."
+},
+{
+subject: "Economics",
+topic: "Inflation",
+year: 1999,
+exam: "JAMB",
+question: "Inflation which is triggered and driven primarily by upward adjustments in the prices of production input factors is called",
+options: ["cost-push inflation", "demand-pull inflation", "crawling inflation", "spiral inflation"],
+answer: "cost-push inflation",
+explanation: "Cost-push inflation occurs when an upward shift in basic production costs (such as wage hikes or raw material price increases) forces firms to raise consumer prices to maintain margins."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1999,
+exam: "JAMB",
+question: "The economic relationship between the value of money and the general price level is",
+options: ["direct", "unpredictable", "diverse", "inverse"],
+answer: "inverse",
+explanation: "The purchasing power of money is inversely related to the price level. When inflation drives up consumer prices, a single unit of currency buys a smaller basket of goods."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1999,
+exam: "JAMB",
+question: "According to John Maynard Keynes, holding liquid cash balances to exploit fluctuations in stock or asset prices is called holding money for",
+options: ["charity purposes", "safe keeping", "profit making", "speculative purposes"],
+answer: "speculative purposes",
+explanation: "Keynes' speculative motive describes holding liquid cash to exploit changes in financial asset prices or bond interest rates."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1999,
+exam: "JAMB",
+question: "Commercial bills of exchange originate primarily from the operational actions of a",
+options: ["central bank", "commercial bank", "community bank", "development bank"],
+answer: "commercial bank",
+explanation: "Correct answer: commercial trade firms / accepted by commercial banks; JAMB answer: Option B. Bills of exchange are short-term credit instruments used in trade that are drawn by traders and discounted or cleared through commercial banking channels."
+},
+{
+subject: "Economics",
+topic: "Inflation",
+year: 1999,
+exam: "JAMB",
+question: "A macroeconomic condition where high systemic unemployment occurs alongside rising price inflation is called",
+options: ["hyper inflation", "stagflation", "moderate inflation", "galloping inflation"],
+answer: "stagflation",
+explanation: "Stagflation describes an unusual macroeconomic condition where economic stagnation (high unemployment and low growth) coexists with persistent inflation, breaking the traditional trade-offs of the Phillips Curve."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1999,
+exam: "JAMB",
+question: "One of the baseline functions of money is that it helps",
+options: [
+"detect financial frauds in open markets",
+"postpone payments across future periods without real value loss",
+"store qualitative technical data about commodities",
+"record general value observations easily"
+],
+answer: "postpone payments across future periods without real value loss",
+explanation: "Correct answer: acts as a standard of deferred payment; JAMB answer: Option B. This function allows money to serve as a reliable yardstick for credit and long-term contracts, enabling obligations to be cleared in future periods."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1999,
+exam: "JAMB",
+question: "The execution of fiscal policy involves adjusting and manipulating",
+options: [
+"central bank open market operations",
+"revenue and expenditure lines of the government",
+"credit and money supply levels",
+"tariffs and custom imports exclusively"
+],
+answer: "revenue and expenditure of government",
+explanation: "Fiscal policy is the use of government spending and taxation to manage aggregate demand and influence economic activity."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1999,
+exam: "JAMB",
+question: "Economic development is best defined as economic growth accompanied by",
+options: [
+"in a given country",
+"over an exceptionally long duration of time",
+"improved medical infrastructure lines exclusively",
+"structural qualitative changes and an improved distribution of national wealth"
+],
+answer: "and improved distribution of wealth",
+explanation: "Correct answer: qualitative structural progress and improved welfare; JAMB answer: Option D. Economic development requires long-term increases in real output (growth) combined with structural changes that improve living standards and reduce poverty."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1999,
+exam: "JAMB",
+question: "The market price of a commodity will be entirely unaffected by the imposition of a sales tax if the product's",
+options: [
+"supply is inelastic",
+"demand is inelastic",
+"supply is perfectly elastic",
+"demand is perfectly elastic"
+],
+answer: "demand is perfectly elastic",
+explanation: "If consumer demand is perfectly elastic (horizontal demand curve), buyers are highly sensitive to price changes and will buy nothing above the current price. Consequently, producers cannot pass any portion of the tax onto consumers and must bear the entire tax burden, leaving the market price unchanged."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "A cross-border free trade area emerges when a",
+options: [
+"traders from one region can move across cities without municipal permits",
+"customs and trade regulations are completely harmonized among non-member states",
+"group of countries decide to remove all tariffs and trade restrictions on imports from one another",
+"UNCTAD trade directive is fully enforced"
+],
+answer: "group of countries decide to remove restrictions on imports from one another",
+explanation: "A free trade area is formed when a bloc of member nations enter into a treaty to eliminate internal tariffs, quotas, and customs restrictions on trade among themselves, while maintaining independent trade policies with non-members."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "Currency devaluation helps correct a persistent balance of payments deficit if the country's",
+options: [
+"domestic demand for foreign imports is highly elastic",
+"domestic demand for foreign imports is inelastic",
+"short-run supply of exports is highly inelastic",
+"foreign demand for exports is inelastic"
+],
+answer: "demand for imports is elastic",
+explanation: "Correct answer: import and export demand elasticities are high (satisfying the Marshall-Lerner condition); JAMB answer: Option A. Devaluation makes imports more expensive. If domestic demand for imports is elastic ($E_d > 1$), consumers will sharply cut their import purchases, reducing outbound currency flows."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "Under the classical economic model, gains from international trade depend directly upon the existence of",
+options: ["comparative advantage", "absolute advantage", "distributive cost advantages", "absolute cost advantages"],
+answer: "comparative advantage",
+explanation: "David Ricardo's law of comparative advantage demonstrates that international trade benefits all participating countries if each nation specializes in producing goods where it holds a lower relative opportunity cost."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "A favourable terms of trade index is highly important to an open economy because it directly facilitates",
+options: [
+"economic prosperity for commercial importers and exporters",
+"the unbacked export of hard currency reserves by the central bank",
+"economic prosperity and increased real purchasing power for the country",
+"the generation of unearned hard currency reserves from foreign grants"
+],
+answer: "economic prosperity for the country",
+explanation: "Correct answer: economic prosperity and increased real purchasing power; JAMB answer: Option C. Favorable terms of trade mean export prices have risen relative to import prices, allowing a nation to purchase a larger volume of foreign imports for the same amount of physical exports."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1999,
+exam: "JAMB",
+question: "The most widely accepted economic justification for introducing protectionist trade barriers is to",
+options: [
+"improve the domestic standard of living",
+"protect young infant industries from mature foreign competition",
+"safeguard strategically important heavy defense industries",
+"promote the long-term expansion of foreign trade volumes"
+],
+answer: "protect Infant industries",
+explanation: "Correct answer: protect young infant industries from mature foreign competition; JAMB answer: Option B. The infant industry argument states that protectionist tariffs are necessary to shelter new domestic businesses until they gain the scale and efficiency to compete globally."
 }
 ];
-export default physicsJamb1999;
+export default econJamb1999;

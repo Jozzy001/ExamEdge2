@@ -1,214 +1,652 @@
-// JAMB 1995 Physics Past Questions
-// Fully flattened — standalone objects with topics, answers, and detailed explanations.
-// Strictly skipped questions containing complex geometric diagrams or custom data tables.
+// ==========================================
+// JAMB ECONOMICS PAST QUESTIONS (1995)
+// ==========================================
 
-const physicsJamb1995 = [
+const econJamb1995 = [
   {
-    subject: "Physics", topic: "Measurement & Units", year: 1995, exam: "JAMB",
-    question: "Which of the following is the correct dimension of pressure?",
-    options: ["ML⁻¹T⁻²", "MLT²", "ML²T⁻³", "ML⁻³"],
-    answer: "ML⁻¹T⁻²",
-    explanation: "Pressure is defined as Force divided by Area ($P = F/A$). Force has dimensions of $\\text{Mass} \\times \\text{Acceleration} = M \\times LT^{-2} = MLT^{-2}$. Area has dimensions of $L^2$. Therefore, the dimension of pressure is $MLT^{-2} / L^2 = ML^{-1}T^{-2}$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "The length of a simple pendulum bob which passes its lowest point twice every second is [g = 10 ms⁻²]",
-    options: ["0.25m", "0.45m", "0.58m", "1.00m"],
-    answer: "0.25m",
-    explanation: "A pendulum bob passes its lowest point twice during one complete cycle (once swinging forward, once swinging back). If it passes the lowest point twice every second, it means it completes one full cycle every second, so its period $T = 1.0\\text{ s}$. Using the period formula $T = 2\\pi\\sqrt{L/g} \\rightarrow 1 = 2\\pi\\sqrt{L/10} \\rightarrow 1 = 4\\pi^2(L/10) \\rightarrow L = 10 / (4\\pi^2) \\approx 10 / 39.478 \\approx 0.25\\text{ m}$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "When a ball rolls on a smooth level ground, the motion of its centre is described as",
-    options: ["Translational", "Oscillatory", "Random", "Rotational"],
-    answer: "Translational",
-    explanation: "As a ball rolls on a horizontal surface, the body executes a combined rotational and translational motion. However, tracking specifically the center of mass of the ball shows that it moves in a straight line path along the plane, which represents purely translational motion."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "What is the acceleration due to gravity 'g' on the moon, given that g is 10 ms⁻² on the Earth?",
-    options: ["0.10 ms⁻²", "0.74 ms⁻²", "1.67 ms⁻²", "10.00 ms⁻²"],
-    answer: "1.67 ms⁻²",
-    explanation: "The acceleration due to gravity on the Moon's surface is approximately one-sixth ($1/6$) of the gravitational acceleration on the Earth's surface: $g_{\\text{moon}} = 10\\text{ ms}^{-2} / 6 \\approx 1.67\\text{ ms}^{-2}$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "A body is projected from the Earth's surface with the intention of letting it escape from the Earth's gravitational field. What is the minimum escape velocity of the body?",
-    options: ["14 km s⁻¹", "13 km s⁻¹", "12 km s⁻¹", "11 km s⁻¹"],
-    answer: "11 km s⁻¹",
-    explanation: "The escape velocity ($v_{\\text{e}}$) from the Earth surface is mathematically derived as $v_{\\text{e}} = \\sqrt{2gR_{\\text{E}}}$. Substituting standard baseline planetary values yields a constant minimum threshold speed of approximately $11.2\\text{ km/s}$, which corresponds closest to 11 km s⁻¹."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "A uniform rod PQ of length 1m and mass 2kg is pivoted at the end P. If a load of 14N is placed at the centre of the rod, find the force that should be applied vertically upwards at Q to maintain the rod in equilibrium horizontally. [g = 10 ms⁻²]",
-    options: ["68 N", "28 N", "17 N", "7 N"],
-    answer: "17 N",
-    explanation: "Weight of the uniform rod itself acts at its midpoint (center of gravity at 0.5m): $W = mg = 2\\text{ kg} \\times 10\\text{ ms}^{-2} = 20\\text{ N}$. An additional 14N load is also placed at the midpoint, so total downward force at the center (0.5m from P) is $20 + 14 = 34\\text{ N}$. Take moments about the pivot point P for equilibrium: $\\text{Clockwise Moments} = \\text{Anticlockwise Moments} \\rightarrow 34\\text{ N} \\times 0.5\\text{ m} = F_{\\text{Q}} \\times 1.0\\text{ m} \\rightarrow 17 = F_{\\text{Q}} \\rightarrow F_{\\text{Q}} = 17\\text{ N}$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "A vehicle of mass m is driven by an engine of power P from rest. Find the minimum time it will take to acquire a speed v.",
-    options: ["mv² / P", "mv² / 2P", "mv / P", "P / mv²"],
-    answer: "mv² / 2P",
-    explanation: "Power is defined as work done or energy transformed per unit time ($P = E/t$). The network input transferred to a vehicle accelerating from rest equals its final kinetic energy payload: $E = \\frac{1}{2}mv^2$. Substituting this into the power equation yields: $P = (\\frac{1}{2}mv^2) / t \\rightarrow t = mv^2 / 2P$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1995, exam: "JAMB",
-    question: "Which of the following statements are TRUE about frictional force?\nI. It is always a disadvantage.\nII. It is sometimes a disadvantage.\nIII. It always exists where there is relative motion of two bodies in contact.\nIV. It is sometimes very useful.",
-    options: ["I and II only", "II and III only", "I, II and III", "II, III and IV"],
-    answer: "II, III and IV",
-    explanation: "Friction is not always a disadvantage (making statement I false); it is essential for actions like walking, vehicle braking, or belt drives, making it very useful (IV). It acts as an energetic loss or mechanical wear disadvantage in gears and pistons (II), and it naturally opposes sliding wherever two contact surfaces experience relative movement (III)."
-  },
-  {
-    subject: "Physics", topic: "Properties of Matter", year: 1995, exam: "JAMB",
-    question: "The energy contained in a wire when it is extended by 0.02m by a force of 500 N is",
-    options: ["5 J", "10 J", "10³ J", "10⁴ J"],
-    answer: "5 J",
-    explanation: "The elastic potential energy (or strain energy) stored in a stretched wire obeying Hooke's law is given by the area under the force-extension graph: $E = \\frac{1}{2}Fe$. Substituting the values: $E = \\frac{1}{2} \\times 500\\text{ N} \\times 0.02\\text{ m} = 250 \\times 0.02 = 5\\text{ J}$."
-  },
-  {
-    subject: "Physics", topic: "Hydrostatics & Fluids", year: 1995, exam: "JAMB",
-    question: "The volume of an air bubble increases from the bottom to the top of a lake at constant temperature because",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1995,
+    exam: "JAMB",
+    question: "The ultimate objective of economics is to",
     options: [
-      "Atmospheric pressure acts on the surface of the lake.",
-      "Pressure increases with depth of the lake.",
-      "Density remains constant with pressure.",
-      "The fluid pressure drops as the bubble approaches the surface."
+      "make effort to understand how the economy works",
+      "make the best use of scarce resources",
+      "organize production at the lowest cost",
+      "decide under what circumstances in the economy"
     ],
-    answer: "The fluid pressure drops as the bubble approaches the surface.",
-    explanation: "By Boyle's law at a constant temperature, gas volume is inversely proportional to pressure ($V \\propto 1/P$). At the bottom of a lake, a bubble experiences high hydrostatic pressure ($P = P_{\\text{atm}} + \\rho gh$). As it rises, depth $h$ decreases, causing the surrounding fluid pressure to drop, which allows the bubble to expand."
+    answer: "make the best use of scarce resources",
+    explanation: "The primary purpose of economic science is to optimize the allocation and utilization of scarce productive resources to satisfy unlimited human wants as effectively as possible."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-    question: "Temperature can be described molecularly as a measure of the",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1995,
+    exam: "JAMB",
+    question: "A student in Obu'pu Secondary School discovers that he simultaneously needs a biro, an exercise book, an eraser and a ruler, but that he can purchase only one of these items. What is the first thing he is expected to do?",
     options: [
-      "Quantity of heat transferred into the molecules of an object",
-      "Mean kinetic energy of the molecules of the object",
-      "Kinetic energy of any individual molecule of the substance.",
-      "Amount of work done by the molecules of the object."
+      "Check how much money he has",
+      "Find out which is the cheapest of the items",
+      "Draw up a scale of preference",
+      "Weigh the opportunity cost of each item against the others"
     ],
-    answer: "Mean kinetic energy of the molecules of the object",
-    explanation: "In kinetic theory, temperature is not defined by individual molecular speeds, but represents a macroscopic measure of the average (mean) translational kinetic energy of the entire system of moving molecules ($E_{\\text{k}} = \\frac{3}{2}kT$)."
+    answer: "Draw up a scale of preference",
+    explanation: "When faced with multiple conflicting wants under a budget constraint, the consumer's first step is to arrange those unsatisfied wants on a scale of preference in order of relative importance."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-    question: "A rectangular metal block of volume $10^{-6}\\,\\text{m}^{3}$ is at 573K. If its coefficient of linear expansion is $1.2 \\times 10^{-5}\\,\\text{K}^{-1}$, the percentage change of its volume when cooled through 100K is",
-    options: ["1.5%", "1.1%", "0.4%", "0.36%"],
-    answer: "0.36%",
-    explanation: "The volume expansivity is $\\gamma = 3\\alpha = 3 \\times (1.2 \\times 10^{-5}) = 3.6 \\times 10^{-5}\\,\\text{K}^{-1}$. Fractional change in volume is $\\Delta V / V_0 = \\gamma \\Delta T = (3.6 \\times 10^{-5}) \\times 100 = 3.6 \\times 10^{-3} = 0.0036$. Percentage change $= (\\Delta V / V_0) \\times 100\\% = 0.0036 \\times 100\\% = 0.36\\%$."
-  },
-  {
-    subject: "Physics", topic: "Hydrostatics & Fluids", year: 1995, exam: "JAMB",
-    question: "A piece of wood floats inside water at room temperature with a fraction of its volume above the liquid surface. As the temperature of the water is raised, the part of the wood above the surface will",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1995,
+    exam: "JAMB",
+    question: "What to produce in any society is determined by the",
     options: [
-      "Decrease because the density of water decreases with temperature.",
-      "Increase because the density of water decreases with temperature.",
-      "Decrease because the density of water increases with temperature.",
-      "Increase because the density of water increases with temperature."
+      "expenditure of the people on different commodities",
+      "competition among the different producers",
+      "competition among the different consumers",
+      "supply and demand in the factor markets"
     ],
-    answer: "Decrease because the density of water decreases with temperature.",
-    explanation: "By the law of flotation, the fraction of an object's volume submerged is given by $V_{\\text{sub}} / V_{\\text{total}} = \\rho_{\\text{object}} / \\rho_{\\text{fluid}}$. Heating water above 4°C causes it to expand, decreasing its density ($\\rho_{\\text{fluid}}$). Because fluid density drops, the denominator decreases, forcing the submerged volume fraction to increase, which decreases the part visible above the surface."
+    answer: "expenditure of the people on different commodities",
+    explanation: "In general economic theory (particularly in a market system), consumers use their expenditures ('dollar votes') to signal to producers what commodities they value most, thereby determining what is produced."
   },
   {
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "The equation $P^{x}V^{y}T^{z} = \text{constant}$ represents Charles' law when",
-options: ["x = 1, y = -1, z = 1", "x = 0, y = 1, z = -1", "x = 1, y = 0, z = -1", "x = 0, y = 1, z = 1"],
-answer: "x = 0, y = 1, z = -1",
-explanation: "Charles's law states that at a constant pressure, the volume of a fixed mass of gas is directly proportional to its absolute temperature ($V \propto T \rightarrow V/T = \text{constant} \rightarrow V^1 T^{-1} = \text{constant}$). Since pressure $P$ has no effect or exponent parameter here, its power coefficient is $x = 0$. Matching terms yields $x = 0, y = 1, z = -1$."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "An electric kettle with negligible heat capacity is rated at 2000 W. If 2.0kg of water is put in it, how long will it take the temperature of the water to rise from 20°C to 100°C? [Specific heat capacity of water = $4200\,\text{J kg}^{-1}\text{K}^{-1}$]",
-options: ["420s", "336s", "168s", "84s"],
-answer: "336s",
-explanation: "Thermal energy needed: $Q = mc\Delta T = 2.0\text{ kg} \times 4200\text{ J/kg\cdot K} \times (100 - 20)^{\circ}\text{C} = 8400 \times 80 = 672,000\text{ J}$. Electrical energy supplied is $\text{Power} \times t = 2000 \times t$. Equating terms: $2000t = 672,000 \rightarrow t = 672,000 / 2000 = 336\text{ seconds}$."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "A temperature scale has a lower fixed point of 40mm and an upper fixed point of 200mm. What is the reading on this scale when a Celsius thermometer reads 60°C?",
-options: ["33.3 mm", "36.0 mm", "96.0 mm", "136.0 mm"],
-answer: "136.0 mm",
-explanation: "Using the linear scale property: $\frac{\theta - 0}{100 - 0} = \frac{S_{\theta} - S_0}{S_{100} - S_0} \rightarrow \frac{60}{100} = \frac{S_{\theta} - 40}{200 - 40} \rightarrow 0.6 = \frac{S_{\theta} - 40}{160}$. Cross-multiplying: $S_{\theta} - 40 = 0.6 \times 160 \rightarrow S_{\theta} - 40 = 96 \rightarrow S_{\theta} = 96 + 40 = 136.0\text{ mm}$."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "A quantity of ice at -10°C is heated until the temperature of the heating vessel reaches 90°C. Which of the following thermal constants is NOT required in calculating the total heat absorbed?",
-options: ["Specific heat capacity of ice", "Specific heat capacity of water", "Specific latent heat of fusion", "Specific latent heat of vaporization."],
-answer: "Specific latent heat of vaporization.",
-explanation: "The thermal steps are: warming ice from -10°C to 0°C (requires specific heat capacity of ice), melting ice at 0°C (requires specific latent heat of fusion), and warming water from 0°C to 90°C (requires specific heat capacity of water). Because the water never reaches its 100°C boiling threshold, the specific latent heat of vaporization is not required."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "Which of the following statements give the TRUE differences between evaporation and boiling?\nI. Evaporation occurs at all temperatures while boiling occurs at a fixed temperature for a given pressure.\nII. Evaporation is a surface phenomenon while boiling is an interior phenomenon.\nIII. Evaporation is affected by surface area whereas boiling is not.",
-options: ["I and II only", "II and III only", "I and III only", "I, II and III"],
-answer: "I, II and III",
-explanation: "All statements are correct. Evaporation happens dynamically at any temperature, while boiling requires a specific temperature threshold where vapour pressure matches atmospheric pressure (I). Evaporation involves only surface molecules escaping, whereas boiling involves vapor bubbles forming throughout the interior volume (II). Evaporation rates increase with a larger exposed surface area, which does not dictate the boiling point (III)."
-},
-{
-subject: "Physics", topic: "Heat & Thermodynamics", year: 1995, exam: "JAMB",
-question: "A well-lagged bar of length 100cm has its ends maintained at 100°C and 40°C respectively. What is the temperature at a point 60cm from the hotter end?",
-options: ["58°C", "62°C", "64°C", "76°C"],
-answer: "64°C",
-explanation: "For a perfectly lagged bar in steady state, the temperature gradient is constant: $\frac{\Delta T}{\Delta x} = \text{constant} \rightarrow \frac{100 - 40}{100} = \frac{100 - \theta}{60} \rightarrow \frac{60}{100} = \frac{100 - \theta}{60} \rightarrow 0.6 = \frac{100 - \theta}{60}$. Cross-multiplying gives: $100 - \theta = 36 \rightarrow \theta = 100 - 36 = 64^{\circ}\text{C}$."
-},
-{
-subject: "Physics", topic: "Sound & Waves", year: 1995, exam: "JAMB",
-question: "Which of the following is an exclusive property of a transverse wave?",
-options: ["Diffraction", "Refraction", "Compression", "Polarization"],
-answer: "Polarization",
-explanation: "Interference, refraction, and diffraction happen with all waves. Polarization, which limits wave vibrations to a single plane perpendicular to the direction of travel, can only happen with transverse waves, making it an exclusive property."
-},
-{
-subject: "Physics", topic: "Sound & Waves", year: 1995, exam: "JAMB",
-question: "The wavelength of a signal from a radio transmitter is 1500m and its frequency is 200kHz. What is the wavelength for a transmitter operating at 1000kHz in the same medium?",
-options: ["7500m", "300 m", "75 m", "15 m"],
-answer: "300 m",
-explanation: "Since both signals travel through the same medium, the wave velocity ($v = f\lambda$) is constant. Therefore, $f_1 \lambda_1 = f_2 \lambda_2 \rightarrow 200\text{ kHz} \times 1500\text{ m} = 1000\text{ kHz} \times \lambda_2 \rightarrow 300,000 = 1000\lambda_2 \rightarrow \lambda_2 = 300\text{ m}$."
-},
-{
-subject: "Physics", topic: "Sound & Waves", year: 1995, exam: "JAMB",
-question: "The fundamental difference between sound waves and light waves is that sound waves",
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1995,
+    exam: "JAMB",
+    question: "The active intervention of the central authorities in the management of a country's economy rests upon the",
+    options: [
+      "failure of the market forces to produce satisfactory social outcomes",
+      "superiority of the centrally planned economy over the private enterprise economy",
+      "result-oriented nature of the private enterprise economy",
+      "cost-minimization strategy of a mixed economy"
+    ],
+    answer: "failure of the market forces to produce satisfactory social outcomes",
+    explanation: "Government intervention in mixed economic systems is theoretically justified by market failure, where unguided supply and demand forces fail to allocate resources equitably or provide public goods efficiently."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "The structural problems of conducting a national census in developing countries include",
+    options: [
+      "high rate of rural-urban migration",
+      "poor geographical distribution of population",
+      "high birth rate in the country",
+      "poor town planning in urban areas"
+    ],
+    answer: "poor town planning in urban areas",
+    explanation: "Correct answer: poor town planning in urban areas; JAMB answer: Option D. Unplanned settlements, lack of proper street naming, and unnumbered houses create severe physical bottlenecks during data collection."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "An ageing population is a population",
+    options: [
+      "with a high dependency ratio",
+      "with many young people",
+      "in which the number of old persons is increasing",
+      "that is dominated by very old people"
+    ],
+    answer: "in which the number of old persons is increasing",
+    explanation: "An ageing population describes a demographic trend where a decline in birth rates combined with a rise in life expectancies causes the average age of the population to rise, increasing the proportion of elderly cohorts."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "The population of Ohaha L.G.A. was 480,000 in December 1980 out of which 60% were females. If within one year no births were recorded, but 5% of the males died, what will be the population of the L.G.A. in December 1981?",
+    options: ["96,000", "192,000", "288,000", "470,400"],
+    answer: "470,400",
+    explanation: "Total population = 480,000. Females = 60% of 480,000 = 288,000. Males = 40% of 480,000 = 192,000. Male deaths = 5% of 192,000 = 9,600. Remaining population = 480,000 - 9,600 = 470,400."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "What is meant by labour supply?",
+    options: [
+      "Number of people in working population",
+      "Number of men and hours they work",
+      "Number of hours during which the middle-aged persons work",
+      "Number of workforce multiplied by the hours they work"
+    ],
+    answer: "Number of workforce multiplied by the hours they work",
+    explanation: "Labor supply represents the total amount of labor available for production, measured as the total number of individuals in the active workforce multiplied by the average number of hours they are willing to work."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1995,
+    exam: "JAMB",
+    question: "The advantages which single firms obtain directly from expanding their internal operations are referred to as",
+    options: [
+      "Internal economies of scale",
+      "External economies of scale",
+      "Economies of localization",
+      "Economies of resource allocation"
+    ],
+    answer: "Internal economies of scale",
+    explanation: "Internal economies of scale are cost-reducing efficiencies (such as technical, financial, or managerial advantages) that a single business gains directly as its own output increases."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "The factor of production that has the highest degree of physical and geographic mobility is",
+    options: ["land", "labour", "capital", "entrepreneurship"],
+    answer: "capital",
+    explanation: "While labor and entrepreneurship are mobile, capital (especially liquid financial capital or transportable light equipment) can be moved across borders and industries with the lowest structural friction."
+  },
+  {
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1995,
+    exam: "JAMB",
+    question: "Any payment to a factor of production in excess of what is necessary to keep that factor in its present employment is known as",
+    options: ["real income", "economic rent", "real wage", "profit"],
+    answer: "economic rent",
+    explanation: "Economic rent is defined as any factor reward earned over and above its transfer earnings (the minimum payment required to prevent the factor from moving to an alternative use)."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1995,
+    exam: "JAMB",
+    question: "Given a labor schedule where 1 worker produces 24 units, 2 workers produce 46 units, and 5 workers produce 95 units, calculate the marginal product of the 2nd worker and the average product of the 5th worker respectively.",
+    options: [
+      "23 and 20",
+      "22 and 19",
+      "14 and 19",
+      "11 and 20"
+    ],
+    answer: "22 and 19",
+    explanation: "Marginal Product of 2nd worker = $46 - 24 = 22$. Average Product of 5th worker = Total Product / Workers = $95 / 5 = 19$."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1995,
+    exam: "JAMB",
+    question: "Given that TC = TFC + TVC and TR = AR * Q, profit is equal to",
+    options: [
+      "(AR * Q) - TFC",
+      "(TFC + TVC) / Q",
+      "(AR * Q) - TC",
+      "(TC * Q)"
+    ],
+    answer: "(AR * Q) - TC",
+    explanation: "Profit is total revenue minus total cost ($\\pi = TR - TC$). Substituting the definitions yields $\\pi = (AR \\times Q) - TC$."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1995,
+    exam: "JAMB",
+    question: "The opportunity cost of the use of productive resources which a producer already owns, and therefore does not make explicit cash payments for, constitutes",
+    options: ["a fixed cost", "an implicit cost", "a variable cost", "a prime cost"],
+    answer: "an implicit cost",
+    explanation: "Implicit costs are the imputed opportunity costs of utilizing self-owned resources (such as an owner's land or unpaid time) that do not involve an immediate out-of-pocket cash expenditure."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1995,
+    exam: "JAMB",
+    question: "The effect of changes in non-price conditions of demand on a demand schedule while price remains constant is a",
+    options: [
+      "movement along the demand curve",
+      "deflation of the demand curve",
+      "hyperbola formation by the demand curve",
+      "shift of the demand curve"
+    ],
+    answer: "shift of the demand curve",
+    explanation: "A change in price causes a movement along a fixed demand curve (change in quantity demanded). Changes in non-price determinants (like tastes or income) cause the entire demand curve to shift left or right."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+year: 1995,
+exam: "JAMB",
+question: "Which of the following statements is TRUE of the effect of changes in demand and supply on price?",
 options: [
-"Are transverse while light waves are longitudinal.",
-"Require a material medium to travel while light waves do not.",
-"Can be diffracted but light waves cannot.",
-"Cannot be reflected but light waves can."
+"A decrease in supply will lead to a fall in price and a fall in the quantity bought and sold",
+"An increase in demand will lead to a fall in price and a rise in the quantity bought and sold",
+"A decrease in demand will lead to a rise in price and a fall in the quantity bought and sold",
+"An increase in supply will lead to a fall in price and a rise in the quantity bought and sold"
 ],
-answer: "Require a material medium to travel while light waves do not.",
-explanation: "Sound waves are mechanical longitudinal waves that rely on particle vibrations to travel, so they cannot propagate through a vacuum. Light waves are electromagnetic transverse waves that need no material medium to travel."
+answer: "An increase in supply will lead to a fall in price and a rise in the quantity bought and sold",
+explanation: "A rightward shift in the supply curve creates a market surplus at the old price. This pushes the equilibrium price down and expands the total equilibrium quantity traded."
 },
 {
-subject: "Physics", topic: "Sound & Waves", year: 1995, exam: "JAMB",
-question: "The pitch of an acoustic device can be increased by",
-options: ["Increasing the frequency", "Increasing the amplitude", "Decreasing the loudness", "Decreasing the intensity"],
-answer: "Increasing the frequency",
-explanation: "Pitch is the psychological perception of sound that corresponds directly to its physical frequency. Higher wave frequency creates a higher perceived pitch, while amplitude dictates loudness parameters."
+subject: "Economics",
+topic: "Basic Economic Concepts",
+year: 1995,
+exam: "JAMB",
+question: "In a free market economy, available resources are more efficiently allocated by complete reliance on the",
+options: ["development planning", "strategic planning", "capital budgeting", "price system"],
+answer: "price system",
+explanation: "A free-market capitalism model allocates scarce resources entirely through the decentralized price mechanism, using price signals to match supply with consumer demand."
 },
 {
-subject: "Physics", topic: "Waves & Optics", year: 1995, exam: "JAMB",
-question: "A total eclipse of the Sun occurs when the",
+subject: "Economics",
+topic: "Demand and Supply",
+year: 1995,
+exam: "JAMB",
+question: "In order to maximize total revenue, a business owner who faces a highly elastic demand curve for his products is advised to",
 options: [
-"Earth is between the Moon and the Sun",
-"Sun is between the Moon and the Earth",
-"Moon is between the Sun and the Earth",
-"Ozone layer is threatened"
+"slightly increase the price of his products",
+"slightly reduce the price of his products",
+"leave his prices unchanged",
+"discriminate his prices"
 ],
-answer: "Moon is between the Sun and the Earth",
-explanation: "A solar eclipse happens when the Moon moves directly between the Sun and the Earth, casting its shadow onto the Earth's surface and blocking out the sunlight."
+answer: "slightly reduce the price of his products",
+explanation: "When demand is price elastic ($E_d > 1$), consumers are highly responsive to price adjustments. Lowering the price slightly triggers a proportionately larger increase in quantity demanded, raising total revenue ($TR = P \times Q$)."
 },
 {
-subject: "Physics", topic: "Waves & Optics", year: 1995, exam: "JAMB",
-question: "What is the approximate critical angle for total internal reflection inside a diamond if the refractive index of diamond is 2.42?",
-options: ["21°", "22°", "23°", "24°"],
-answer: "24°",
-explanation: "The equation for the critical angle is $\sin c = 1/n$. Given $n = 2.42$, we get $\sin c = 1 / 2.42 \approx 0.4132$. Taking the inverse sine: $c = \sin^{-1}(0.4132) \approx 24.4^{\circ}$, which rounds to 24°."
+subject: "Economics",
+topic: "Demand and Supply",
+year: 1995,
+exam: "JAMB",
+question: "What is the price elasticity of demand for commodity X, if at a price of N25 the quantity demanded is 80 and when the price is reduced to N20 the quantity demanded rises to 100?",
+options: ["1.25", "1.45", "0.25", "0.15"],
+answer: "1.25",
+explanation: "Elasticity = (% change in Q) / (% change in P). % Change in Q = $(100 - 80) / 80 = 20 / 80 = 25\%$. % Change in P = $(20 - 25) / 25 = -5 / 25 = -20\%$. Coefficient = $25\% / 20\% = 1.25$."
 },
 {
-subject: "Physics", topic: "Waves & Optics", year: 1995, exam: "JAMB",
-question: "Which of the following pairs of constituent colours gives the widest separation in a standard spectrum of white light?",
-options: ["Red and violet", "Green and yellow", "Red and indigo", "Yellow and violet."],
-answer: "Red and violet",
-explanation: "White light splits into colors based on wavelength. Red light has the longest wavelength and bends the least, while violet light has the shortest wavelength and bends the most. Because they sit at opposite ends of the visible spectrum, they have the widest separation."
+subject: "Economics",
+topic: "Basic Economic Concepts",
+year: 1995,
+exam: "JAMB",
+question: "If y represents the income earned by workers in a factory, find the range of their income which satisfies the inequality: 4y - 300 > 500.",
+options: ["y > 300", "y > 250", "y > 200", "y > 150"],
+answer: "y > 200",
+explanation: "Solving the inequality: $4y - 300 > 500 \implies 4y > 800 \implies y > 500 / 4 \implies y > 200$."
+},
+{
+subject: "Economics",
+topic: "Market Structures",
+year: 1995,
+exam: "JAMB",
+question: "Both in the short run and in the long run, a profit-maximizing firm optimizes its output at the point where",
+options: ["MC = MR", "AC = MC", "AVC = AC", "MC = AVC"],
+answer: "MC = MR",
+explanation: "Every profit-maximizing firm across all market structures chooses the exact output level where Marginal Cost matches Marginal Revenue ($MC = MR$)."
+},
+{
+subject: "Economics",
+topic: "Trade and Distribution",
+year: 1995,
+exam: "JAMB",
+question: "Stocking small quantities of a wide variety of goods is a major commercial function of the",
+options: ["manufacturer", "wholesaler", "retailer", "consumer"],
+answer: "retailer",
+explanation: "Unlike wholesalers who deal in bulk lines of specific goods, retailers stock small quantities of a wide variety of items to offer convenience to final consumers."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1995,
+exam: "JAMB",
+question: "In a joint stock company, preference shareholders are those who receive",
+options: [
+"high dividends when profits are high and little or nothing when profits are low",
+"a fixed rate of dividend and have the first claim on the net profits of the company",
+"the remaining profits after all other shareholders have been paid",
+"dividends quarterly when others receive annually"
+],
+answer: "a fixed rate of dividend and have the first claim on the net profits of the company",
+explanation: "Preference shares are fixed-income equity securities. Holders receive a predetermined dividend rate and have priority claims on profits before ordinary shareholders receive any payouts."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1995,
+exam: "JAMB",
+question: "The major reason for the survival of small independent shops despite intense competition from large business corporations is because of",
+options: [
+"the small capital outlay involved",
+"regularity and constant supply of commodities",
+"their localized services and longer hours of operation",
+"their ability to take prompt decisions and actions"
+],
+answer: "their localized services and longer hours of operation",
+explanation: "Small retail shops survive alongside retail chains because they provide personal attention, locate directly within residential neighborhoods, and remain open for longer hours."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1995,
+exam: "JAMB",
+question: "One of the major advantages of public corporations over private companies is that",
+options: [
+"they are heavily subsidized by the state to shield consumer welfare",
+"they are the largest employers of labour",
+"their operations are highly standardized",
+"they take prompt decisions and actions"
+],
+answer: "they are heavily subsidized by the state to shield consumer welfare",
+explanation: "Correct answer: They provide essential services at affordable rates; JAMB answer: Option A. Public corporations receive government financial backing and subsidies to keep utility rates affordable, prioritizing public welfare over profits."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1995,
+exam: "JAMB",
+question: "When public enterprises become commercialized, it means that",
+options: [
+"the products of the enterprises are further subsidized",
+"they are expected to operate efficiently with the primary aim of making profit or covering costs",
+"the government has decided to completely divest itself of such enterprises",
+"the staff of the enterprises will be immediately laid off"
+],
+answer: "they are expected to operate efficiently with the primary aim of making profit or covering costs",
+explanation: "Commercialization retains state ownership but requires the enterprise to operate on a commercial basis, charging market rates to cover operating costs and eliminate reliance on government subsidies."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1995,
+exam: "JAMB",
+question: "Which of the following statements are TRUE of agriculture in Nigeria?\nI. It provides food for the growing population\nII. A large proportion of the population is engaged in it\nIII. Agricultural products are used as raw materials by local industries\nIV. It serves as a source of heavy equipment to local industries",
+options: [
+"I and II only",
+"I, III and IV only",
+"I, II and III only",
+"II and III only"
+],
+answer: "I, II and III only",
+explanation: "Agriculture supplies food, employs the majority of the labor force, and provides primary raw inputs for agro-allied industries. It does not manufacture or supply heavy industrial machinery (Statement IV)."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1995,
+exam: "JAMB",
+question: "In recent times, agriculture in Nigeria tends to lose its vital labour force primarily as a result of",
+options: [
+"lack of an effective agricultural policy",
+"employment opportunities in the oil sector",
+"rural-urban drift",
+"low market prices of agricultural products"
+],
+answer: "rural-urban drift",
+explanation: "The agricultural sector loses young, able-bodied workers primarily due to rural-urban migration, as laborers leave rural areas in search of better infrastructure and high-paying jobs in cities."
+},
+{
+subject: "Economics",
+topic: "Demand and Supply",
+year: 1995,
+exam: "JAMB",
+question: "The government can stabilize the market price of agricultural products by utilizing",
+options: [
+"fixing minimum prices when agricultural output is low",
+"fixing maximum prices in years of bumper harvests",
+"the operations of buffer stocks and stabilization funds",
+"price control boards exclusively"
+],
+answer: "the operations of buffer stocks and stabilization funds",
+explanation: "Correct answer: the operations of buffer stocks and stabilization funds; JAMB answer: Option C. Buffer stock systems stabilize prices by buying crops during bumper harvests to prevent price crashes, and releasing grain reserves during shortages to cool prices."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1995,
+exam: "JAMB",
+question: "The crucial factors which determine the geographic location of petroleum refineries in Nigeria are availability of raw materials and",
+options: [
+"capital infrastructure",
+"political considerations",
+"nearness to source of power",
+"skilled labour supply"
+],
+answer: "political considerations",
+explanation: "Correct answer: proximity to transport hubs and raw materials; JAMB answer: political considerations (Option B). Siting refineries in regions far from oil fields (such as Kaduna) highlights the role of federal political balancing alongside economic factors in Nigeria."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1995,
+exam: "JAMB",
+question: "The economic term 'Infant industries' denotes industries which",
+options: [
+"are introducing brand new electronic products",
+"are too young and vulnerable to compete freely in the world market",
+"produce baby food and mothercare products exclusively",
+"are allowed time enough to mature for political recognition"
+],
+answer: "are too young and vulnerable to compete freely in the world market",
+explanation: "Infant industries are newly established domestic businesses that lack the scale economies and experience to compete with well-established foreign imports, requiring temporary tariff protection."
+},
+{
+subject: "Economics",
+topic: "Industry and Location",
+year: 1995,
+exam: "JAMB",
+question: "When compared with a labour-intensive industry, a capital-intensive industry employs more",
+options: [
+"workers than capital",
+"workers than machinery",
+"raw materials than capital",
+"machinery than workers"
+],
+answer: "machinery than workers",
+explanation: "A capital-intensive production model relies on a higher proportion of automated capital machinery and physical plant equipment relative to human labor inputs."
+},
+{
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 1995,
+exam: "JAMB",
+question: "The single largest source of Nigeria's foreign exchange earnings is the export of",
+options: [
+"skilled manpower",
+"palm-kernel and cocoa",
+"crude oil",
+"groundnuts and cotton"
+],
+answer: "crude oil",
+explanation: "Crude oil exports dominate Nigeria's international trade ledger, generating the vast majority of government revenue and foreign exchange earnings."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1995,
+exam: "JAMB",
+question: "The primary operational goal of the Organization of Petroleum Exporting Countries (OPEC) is to",
+options: [
+"present a united front for the purpose of stabilizing and raising prices of crude oil",
+"bring political unity among all petroleum exporting states",
+"ensure geo-political stability among member states",
+"ensure that rules on production quotas are strictly followed"
+],
+answer: "present a united front for the purpose of stabilizing and raising prices of crude oil",
+explanation: "OPEC functions as an international cartel. It coordinates production quotas among member nations to manage oil supplies and protect global crude oil prices."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1995,
+exam: "JAMB",
+question: "The Central Bank's expansionary monetary policy is economically justified during a period",
+options: [
+"when the inflation rate is exceptionally high and the economy is experiencing a boom",
+"of severe economic depression accompanied by low industrial capacity utilization",
+"when aggressive trade unions are clamouring for higher nominal wages",
+"when the global price of crude petroleum is rising rapidly"
+],
+answer: "of severe economic depression accompanied by low industrial capacity utilization",
+explanation: "An expansionary monetary policy (lowering interest rates and reserve ratios) injects liquidity into the banking system, stimulating investment and aggregate demand during economic recessions."
+},
+{
+subject: "Economics",
+topic: "Inflation",
+year: 1995,
+exam: "JAMB",
+question: "The sharp increases in the consumer prices of most goods and services in Nigeria during late 1994 were mainly fueled by",
+options: [
+"unilateral bans on the importation of foreign goods",
+"sudden urban population upsurges",
+"the introduction of the value-added tax",
+"spikes in internal fuel and transport costs"
+],
+answer: "spikes in internal fuel and transport costs",
+explanation: "Correct answer: spikes in internal fuel and transport costs; JAMB answer: Option D. Jumps in fuel pricing raise transport expenses, shifting production and distribution costs upward and driving cost-push inflation across the economy."
+},
+{
+subject: "Economics",
+topic: "Inflation",
+year: 1995,
+exam: "JAMB",
+question: "The most sustainable macroeconomic method to curb inflation in Nigeria over the long term is to",
+options: [
+"drastically reduce the importation of foreign commodities",
+"increase the general level of domestic production and output supply",
+"reduce the volume of broad money supply through monetary policy",
+"mandate price control boards across retail markets"
+],
+answer: "increase the general level of domestic production and output supply",
+explanation: "Correct answer: reduce money supply / increase production; JAMB answer: increase the general level of production (Option B). Expanding domestic aggregate supply satisfies demand and lowers unit costs, helping resolve structural inflation imbalances."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1995,
+exam: "JAMB",
+question: "A commercial banking institution is formally described as being distressed when it",
+options: [
+"is unable to clear transactions with the Central Bank",
+"has a small capital base",
+"experiences low levels of customer deposits",
+"faces a severe liquidity crisis that threatens its solvency"
+],
+answer: "faces a severe liquidity crisis that threatens its solvency",
+explanation: "A bank faces financial distress when systemic non-performing loans and asset-liability mismatches create severe liquidity shortages, leaving it unable to meet immediate depositor withdrawals."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 1995,
+exam: "JAMB",
+question: "Which of the following methods can the Central Bank use to restrict commercial banks' credit expansion capacity?",
+options: [
+"demand an increase in special reserves or cash ratios",
+"decrease the mandatory statutory cash ratio",
+"buy interest-bearing securities in the open market",
+"reduce the discount rate at which banks borrow from it"
+],
+answer: "demand an increase in special reserves or cash ratios",
+explanation: "Raising mandatory reserve ratios or demanding special deposits forces commercial banks to hold a larger percentage of their assets as cash, contracting their credit multiplier and lending capacity."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1995,
+exam: "JAMB",
+question: "Which of the following methods is most cost-effective for a government looking to improve the social welfare of its low-income citizens?",
+options: [
+"direct consumer subsidies on essential public goods",
+"income supplements",
+"donations to specific projects",
+"generalized statutory wage increases"
+],
+answer: "direct consumer subsidies on essential public goods",
+explanation: "Subsidizing public necessities (such as healthcare, transport, or education) ensures public funds directly lower the cost of living for low-income households without triggering wage-price inflation loops."
+},
+{
+subject: "Economics",
+topic: "Inflation",
+year: 1995,
+exam: "JAMB",
+question: "Which of the following statistical metrics is most widely used to evaluate changes in the cost of living over time?",
+options: [
+"marginal changes in factory prices",
+"consumer price index",
+"relative prices of imported and exported commodities",
+"producer price index"
+],
+answer: "consumer price index",
+explanation: "The Consumer Price Index (CPI) tracks percentage variations over time in the average price paid by urban households for a fixed basket of consumer goods and services, serving as the standard measure of inflation and cost of living changes."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1995,
+exam: "JAMB",
+question: "A medical student entitled to an annual allowance of N6,000 decides to leave the university to take up a job where he earns N7,000 per annum. By this singular act, the national income level will",
+options: [
+"increase by N1,000",
+"decrease by N7,000",
+"increase by N7,000",
+"increase by N13,000"
+],
+answer: "increase by N7,000",
+explanation: "Student allowances are transfer payments, which are excluded from national income because they do not represent active production. When the individual takes a job, their salary reflects a direct contribution to production, raising the national income by N7,000."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 1995,
+exam: "JAMB",
+question: "An increasing population might be of economic benefit to a country if",
+options: [
+"the female population is greater than the male population",
+"the dependency ratio is increasing continuously",
+"a continuously higher proportion of the growth falls into the active working-class category",
+"the rural and urban population sectors are balanced"
+],
+answer: "a continuously higher proportion of the growth falls into the active working-class category",
+explanation: "Population growth expands output capacity if the growth expands the active workforce, providing abundant labor inputs to combine with land and capital."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 1995,
+exam: "JAMB",
+question: "The structural economic demands made on each other by the agricultural and industrial sectors as an economy grows are reflected in",
+options: [
+"backward and forward production linkages",
+"horizontal and vertical market linkages",
+"vertical market integration linkages",
+"functional financial linkages"
+],
+answer: "backward and forward production linkages",
+explanation: "Linkages connect industries across sectors. Agriculture provides inputs for agro-allied manufacturing (forward linkage) and buys industrial inputs like fertilizers and machinery (backward linkage)."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1995,
+exam: "JAMB",
+question: "Under a freely floating exchange rate regime, the international value of a currency is determined entirely by",
+options: [
+"the administrative directives of the government",
+"the open market operations of the Central Bank",
+"the forces of demand and supply for that currency",
+"commercial banking financial consortia"
+],
+answer: "the forces of demand and supply for that currency",
+explanation: "A clean floating exchange rate system allows market forces to determine currency value based on the supply of and demand for that currency on global foreign exchange markets."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1995,
+exam: "JAMB",
+question: "The primary overarching objective of all major international economic organizations is to",
+options: [
+"ensure that third-world countries secure a dominant share of world resources",
+"promote international economic co-operation for the mutual benefit of all member states",
+"enforce structural adjustment programmes on less-developed nations",
+"encourage manufacturing exports from developed to less-developed countries"
+],
+answer: "promote international economic co-operation for the mutual benefit of all member states",
+explanation: "International economic organizations (like the IMF, World Bank, and WTO) are established to promote global monetary cooperation, stabilize exchange rates, lower trade barriers, and facilitate balanced international trade."
 }
 ];
-export default physicsJamb1995;
+export default econJamb1995;

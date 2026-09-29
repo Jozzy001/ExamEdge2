@@ -1,6 +1,16 @@
 // EXAMEDGE — CENTRAL QUESTION BANK
 
 // --- ACCOUNTS ---
+import accountsJamb1994 from "./accounts/jamb1994"
+import accountsJamb1995 from "./accounts/jamb1995"
+import accountsJamb1996 from "./accounts/jamb1996"
+import accountsJamb1997 from "./accounts/jamb1997"
+import accountsJamb1998 from "./accounts/jamb1998"
+import accountsJamb1999 from "./accounts/jamb1999"
+import accountsJamb2000 from "./accounts/jamb2000"
+import accountsJamb2001 from "./accounts/jamb2001"
+import accountsJamb2002 from "./accounts/jamb2002"
+import accountsJamb2003 from "./accounts/jamb2003"
 import accountsJamb2004 from "./accounts/jamb2004"
 
 // --- BIOLOGY ---
@@ -59,6 +69,28 @@ import comJamb2004 from "./commerce/jamb2004"
 import crkJamb2004 from "./crk/jamb2004"
 
 // --- ECONOMICS ---
+import econJamb1983 from "./economics/jamb1983"
+import econJamb1984 from "./economics/jamb1984"
+import econJamb1985 from "./economics/jamb1985"
+import econJamb1986 from "./economics/jamb1986"
+import econJamb1987 from "./economics/jamb1987"
+import econJamb1988 from "./economics/jamb1988"
+import econJamb1989 from "./economics/jamb1989"
+import econJamb1990 from "./economics/jamb1990"
+import econJamb1991 from "./economics/jamb1991"
+import econJamb1992 from "./economics/jamb1992"
+import econJamb1993 from "./economics/jamb1993"
+import econJamb1994 from "./economics/jamb1994"
+import econJamb1995 from "./economics/jamb1995"
+import econJamb1996 from "./economics/jamb1996"
+import econJamb1997 from "./economics/jamb1997"
+import econJamb1998 from "./economics/jamb1998"
+import econJamb1999 from "./economics/jamb1999"
+import econJamb2000 from "./economics/jamb2000"
+import econJamb2001 from "./economics/jamb2001"
+import econJamb2002 from "./economics/jamb2002"
+import econJamb2003 from "./economics/jamb2003"
+import econJamb2004 from "./economics/jamb2004"
 import econJamb2010 from "./economics/jamb2010"
 
 // --- ENGLISH ---
@@ -66,7 +98,7 @@ import englishjamb1983 from "./english/englishJamb1983"
 import englishjamb1984 from "./english/englishJamb1984"
 import englishjamb1985 from "./english/englishJamb1985"
 import englishjamb1986 from "./english/englishjamb1986"
-import englishJamb1987 from "./english/englishjamb1987"
+import englishYJamb1987 from "./english/englishjamb1987" // Preserved original project name key variations
 import englishJamb1988 from "./english/englishjamb1988"
 import englishJamb1989 from "./english/englishjamb1989"
 import englishJamb1990 from "./english/englishjamb1990"
@@ -142,13 +174,12 @@ import physicsJamb2002 from "./physics/jamb2002"
 import physicsJamb2003 from "./physics/jamb2003"
 import physicsJamb2004 from "./physics/jamb2004"
 
-
 const questions = [
   ...englishjamb1983,
   ...englishjamb1984,
   ...englishjamb1985,
   ...englishjamb1986,
-  ...englishJamb1987,
+  ...englishYJamb1987,
   ...englishJamb1988,
   ...englishJamb1989,
   ...englishJamb1990,
@@ -170,6 +201,30 @@ const questions = [
   ...englishjamb2011,
 
   ...govtJamb2010,
+  
+  // --- ECONOMICS ---
+  ...econJamb1983,
+  ...econJamb1984,
+  ...econJamb1985,
+  ...econJamb1986,
+  ...econJamb1987,
+  ...econJamb1988,
+  ...econJamb1989,
+  ...econJamb1990,
+  ...econJamb1991,
+  ...econJamb1992,
+  ...econJamb1993,
+  ...econJamb1994,
+  ...econJamb1995,
+  ...econJamb1996,
+  ...econJamb1997,
+  ...econJamb1998,
+  ...econJamb1999,
+  ...econJamb2000,
+  ...econJamb2001,
+  ...econJamb2002,
+  ...econJamb2003,
+  ...econJamb2004,
   ...econJamb2010,
 
   // --- BIOLOGY ---
@@ -273,6 +328,18 @@ const questions = [
 
   ...comJamb2004,
   ...crkJamb2004,
+
+  // --- ACCOUNTS ---
+  ...accountsJamb1994,
+  ...accountsJamb1995,
+  ...accountsJamb1996,
+  ...accountsJamb1997,
+  ...accountsJamb1998,
+  ...accountsJamb1999,
+  ...accountsJamb2000,
+  ...accountsJamb2001,
+  ...accountsJamb2002,
+  ...accountsJamb2003,
   ...accountsJamb2004,
 ]
 

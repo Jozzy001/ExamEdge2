@@ -1,194 +1,339 @@
-// JAMB 1983 Physics Past Questions
-// Fully flattened — standalone objects with topics, answers, and detailed explanations.
-// Strictly skipped questions containing complex geometric diagrams or custom data tables.
+// ==========================================
+// JAMB ECONOMICS PAST QUESTIONS (1983)
+// ==========================================
 
-const physicsJamb1983 = [
+const econJamb1983 = [
   {
-    subject: "Physics", topic: "Sound & Waves", year: 1983, exam: "JAMB",
-    question: "In a resonance tube experiment, a tube of fixed length is closed at one end and several tuning forks of increasing frequency used to obtain resonance at the open end. If the tuning fork with the lowest frequency which gave resonance had a frequency $f_{1}$ and the next tuning fork to give resonance had a frequency $f_{2}$, find the ratio $f_{2}/f_{1}.$",
-    options: ["8", "3", "2", "1/2", "1/3"],
-    answer: "3",
-    explanation: "For a tube closed at one end, the boundary conditions restrict the acoustic resonances to odd harmonics only ($1\lambda/4, 3\lambda/4, 5\lambda/4 \\dots$). The fundamental or lowest resonant frequency is $f_{1} = v/4L$. The next higher frequency that satisfies resonance is the third harmonic, $f_{2} = 3v/4L$. Therefore, the frequency ratio $f_{2}/f_{1} = 3$."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-    question: "Which of the following is NOT a vector quantity?",
-    options: ["Force", "Altitude", "Weight", "Displacement", "Acceleration"],
-    answer: "Altitude",
-    explanation: "Vector quantities are defined by possessing both a quantitative magnitude and a specific spatial direction. Force, weight, displacement, and acceleration are all vectors. Altitude defines a vertical height coordinate relative to a baseline datum, which is a scalar quantity."
-  },
-  {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-    question: "Which of the following statements about friction is NOT correct?",
+    subject: "Economics",
+    topic: "National Income Accounting",
+    year: 1983,
+    exam: "JAMB",
+    question: "Which of the following items is NOT included in measuring national income by the income approach?",
     options: [
-      "The force of kinetic friction is less than the force of static friction.",
-      "The force of kinetic friction between two surfaces is independent of the areas in contact provided the normal reaction is unchanged.",
-      "The force of rolling friction between two surfaces is less than the force of sliding friction.",
-      "The angle of friction is the angle between the normal reaction and the force of friction.",
-      "Friction may be reduced by lubrication."
+      "Wages and salaries of public servants",
+      "Student grants and scholarships",
+      "Profits of companies",
+      "Income earned by self-employed persons such as lawyers",
+      "Rents on property"
     ],
-    answer: "The angle of friction is the angle between the normal reaction and the force of friction.",
-    explanation: "The angle of friction ($\theta$) is standardly defined as the angle between the vertical normal reaction vector ($R$) and the *resultant* force vector ($S$) of the normal reaction and the limiting friction force. It is not the angle directly between the normal reaction and friction itself (which is always structurally $90^\\circ$)."
+    answer: "Student grants and scholarships",
+    explanation: "Student grants and scholarships are transfer payments. They represent income transfers without any corresponding production of goods or services, so they are excluded from national income computations."
   },
   {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-    question: "The force with which an object is attracted to the earth is called its",
-    options: ["Acceleration", "Mass", "Gravity", "Impulse", "Weight"],
-    answer: "Weight",
-    explanation: "Weight is defined as the gravitational force of attraction exerted by the Earth on a mass. It satisfies Newton's second law as $W = mg$, distinguishing it from mass, which is an intrinsic measurement of matter inertia."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "The refractive index of a liquid is 1.5. If the velocity of light in vacuum is $3.0 \\times 10^{8}\\,\\text{ms}^{-1}$, the velocity of light in the liquid is",
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1983,
+    exam: "JAMB",
+    question: "A downward sloping demand curve intersects a fixed supply curve. A shift of this demand curve to the right implies that",
     options: [
-      "$1.5 \\times 10^{8}\\,\\text{ms}^{-1}$",
-      "$2.0 \\times 10^{8}\\,\\text{ms}^{-1}$",
-      "$3.0 \\times 10^{8}\\,\\text{ms}^{-1}$",
-      "$4.5 \\times 10^{8}\\,\\text{ms}^{-1}$",
-      "$9.0 \\times 10^{8}\\,\\text{ms}^{-1}$"
+      "both price and quantity will increase",
+      "only price increase",
+      "only quantity increase",
+      "the price remains constant",
+      "the price falls"
     ],
-    answer: "$2.0 \\times 10^{8}\\,\\text{ms}^{-1}$",
-    explanation: "The index of refraction is defined by the ratio of light velocity in a vacuum ($c$) to its velocity inside the medium ($v$): $n = c/v$. Rearranging to solve for $v$ yields $v = c/n = (3.0 \\times 10^{8}\\,\\text{ms}^{-1}) / 1.5 = 2.0 \\times 10^{8}\\,\\text{ms}^{-1}$."
+    answer: "both price and quantity will increase",
+    explanation: "When a vertical or fixed supply curve is intersected by a rightward shifting demand curve, the new equilibrium point moves higher along the supply curve, causing market price to increase while quantity remains at its fixed maximum."
   },
   {
-    subject: "Physics", topic: "Hydrostatics & Fluids", year: 1983, exam: "JAMB",
-    question: "If the relative density of a metal is 19, what will be the mass of $20\\,\\text{cm}^{3}$ of the metal when immersed in water?",
-    options: ["380g", "360g", "400g", "39g", "180g"],
-    answer: "380g",
-    explanation: "Relative density is equal to the material density divided by the density of water ($1\\,\\text{g/cm}^{3}$). Thus, the actual density of the metal is $19\\,\\text{g/cm}^{3}$. Mass is independent of immersion state and is computed as $\\text{Density} \\times \\text{Volume} = 19\\,\\text{g/cm}^{3} \\times 20\\,\\text{cm}^{3} = 380\\,\\text{g}$."
-  },
-  {
-    subject: "Physics", topic: "Hydrostatics & Fluids", year: 1983, exam: "JAMB",
-    question: "Which of the following statements about liquid pressure is NOT correct? The pressure",
+    subject: "Economics",
+    topic: "Industry and Location",
+    year: 1983,
+    exam: "JAMB",
+    question: "Which of the following items is NOT an argument for locating industries in rural areas?",
     options: [
-      "At a point in a liquid is proportional to the depth.",
-      "At any point in a liquid is the same at the same level.",
-      "Is exerted equally in all directions at any point.",
-      "Of a liquid at any point on the wall of its container acts in a direction perpendicular to the wall.",
-      "At a particular depth depends on the shape of the vessel."
+      "Rural areas supply agricultural raw material",
+      "The pace of development will be quickened in rural areas",
+      "Employment will be provided for rural inhabitants",
+      "Capital is easily available in rural areas",
+      "Suitable humid climate is sometimes found in rural areas"
     ],
-    answer: "At a particular depth depends on the shape of the vessel.",
-    explanation: "Hydrostatic fluid pressure depends exclusively on the fluid density ($\\rho$), the acceleration due to gravity ($g$), and the depth coordinate ($h$) below the surface ($P = \\rho gh$). It is independent of the cross-sectional geometry or shape of the container."
+    answer: "Capital is easily available in rural areas",
+    explanation: "Capital is notoriously scarce in rural areas due to low savings, limited banking infrastructure, and a lack of acceptable banking collateral. This makes it a primary obstacle rather than an argument for rural industrialization."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 1983, exam: "JAMB",
-    question: "Which of the following statements is NOT correct?",
+    subject: "Economics",
+    topic: "Population and Labour",
+    year: 1983,
+    exam: "JAMB",
+    question: "The natural growth rate of a population is the",
     options: [
-      "The pitch of a sound note depends on the frequency of vibrations.",
-      "The intensity of a sound note is proportional to the amplitude of vibrations.",
-      "Beats are produced by two sources of sound because one wave is travelling faster than the other.",
-      "When two sources of sound of frequencies 500 Hz and 502 Hz are sounded together, a beat frequency of 2 Hz is observed.",
-      "The first harmonic of a note has double the frequency of the fundamental note."
+      "Sum of the birth rate and the death rate",
+      "Sum of the birth rate and the net migration rate",
+      "Birth rate minus the death rate",
+      "Birth rate divided by the net migration",
+      "Death rate minus the net migration"
     ],
-    answer: "Beats are produced by two sources of sound because one wave is travelling faster than the other.",
-    explanation: "Beats are generated by the physical wave interference of two acoustic signals possessing slightly different periodic frequencies moving at identical propagation speeds through a shared medium. They are not caused by variations in wave travel speeds."
+    answer: "Birth rate minus the death rate",
+    explanation: "The natural growth rate measures population change strictly from vital biological events within the population, calculated simply as the Crude Birth Rate minus the Crude Death Rate."
   },
   {
-    subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "Which of the following conditions are necessary and sufficient for total internal reflection to take place at the boundary between two optical media?\nI. Light is passing from an optically denser medium to an optically less dense medium.\nII. Light is passing from an optically less dense medium to an optically denser medium.\nIII. The angle of incidence is greater than the critical angle.\nIV. The angle of incidence is less than the critical angle.",
-    options: ["I and II only", "II and III only", "III and IV only", "I and III only", "II and IV only"],
-    answer: "I and III only",
-    explanation: "Total internal reflection requires two strict boundary conditions: first, light rays must travel inside an optically denser core medium moving toward a boundary with a less dense medium (I). Second, the angle of incidence must exceed the characteristic critical angle of the interface (III)."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "Which of the following statements about defects of vision is/are CORRECT?\nI. For a long-sighted person, close objects appear blurred.\nII. For a short-sighted person, distant objects appear blurred.\nIII. Short sight is corrected by using a pair of converging lenses.",
-    options: ["I only", "II only", "I and II only", "II and III only", "I, II and III"],
-    answer: "I and II only",
-    explanation: "Hyperometropia (long-sightedness) causes close objects to appear blurred (I), and myopia (short-sightedness) causes distant objects to blur (II). Statement III is incorrect because short-sightedness requires a diverging (concave) lens, not a converging one."
-  },
-  {
-    subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "The range of wavelengths of the visible spectrum is 400nm - 700nm. The wavelength of gamma rays is",
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1983,
+    exam: "JAMB",
+    question: "Which of the following sets fully represents factors of production?",
     options: [
-      "Longer than 700nm",
-      "Shorter than 700nm but longer than 400nm",
-      "550nm",
-      "Shorter than 400nm",
-      "Infinite"
+      "Sunlight, machinery, man, land",
+      "Land, labour, capital, enterprise technology",
+      "Capital, technology, ideas, market, land",
+      "Land, water, weather",
+      "Money, market, middlemen"
     ],
-    answer: "Shorter than 400nm",
-    explanation: "The electromagnetic spectrum arranges waves by frequency and wavelength. Gamma rays reside at the high-frequency end, giving them extremely short, high-energy wavelengths far below the violet border threshold of 400nm."
+    answer: "Land, labour, capital, enterprise technology",
+    explanation: "Standard economic theory structures the inputs to any productive economy into four core categories: Land, Labour, Capital, and Entrepreneurship (Enterprise)."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 1983, exam: "JAMB",
-    question: "If the pressure on $1000\\,\\text{cm}^{3}$ of an ideal gas is doubled while its Kelvin temperature is halved, then the new volume of the gas will become",
-    options: ["$25\\,\\text{cm}^{3}$", "$50\\,\\text{cm}^{3}$", "$1000\\,\\text{cm}^{3}$", "$200\\,\\text{cm}^{3}$", "$250\\,\\text{cm}^{3}$"],
-    answer: "$250\\,\\text{cm}^{3}$",
-    explanation: "Using the general ideal gas law: $P_{1}V_{1}/T_{1} = P_{2}V_{2}/T_{2}$. We are given $P_{2} = 2P_{1}$ and $T_{2} = 0.5T_{1}$. Rearranging to solve for $V_{2}$ gives $V_{2} = V_{1} \\times (P_{1}/P_{2}) \\times (T_{2}/T_{1}) = 1000 \\times (1/2) \\times (1/2) = 1000 / 4 = 250\\,\\text{cm}^{3}$."
+    subject: "Economics",
+    topic: "Production Alternatives",
+    year: 1983,
+    exam: "JAMB",
+    question: "Based on a production possibilities table where Alternative P yields 5 shelters & 0 foods, Q yields 4 shelters & 5 foods, and R yields 3 shelters & 9 foods, the real cost of a unit of food when alternative R is selected instead of Q is",
+    options: [
+      "One unit of shelter",
+      "Three units of shelter",
+      "One third of a unit of shelter",
+      "Six units of shelter",
+      "Two units of shelter"
+    ],
+    answer: "One fourth of a unit of shelter",
+    explanation: "Correct answer: One fourth of a unit of shelter; JAMB answer: One third of a unit of shelter. To move from Q to R, the economy gains 4 units of food (9 - 5) at the cost of losing 1 unit of shelter (4 - 3). Therefore, the real (opportunity) cost per unit of food is 1 shelter / 4 food = 0.25 shelters."
   },
   {
-subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-question: "A train has an initial velocity of $44\,\text{m/s}$ and an acceleration of $-4\,\text{m/s}^{2}$. Its velocity after 10 seconds is",
-options: ["$2\,\text{m/s}$", "$4\,\text{m/s}$", "$8\,\text{m/s}$", "$12\,\text{m/s}$", "$16\,\text{m/s}$"],
-answer: "$4\,\text{m/s}$",
-explanation: "Using the linear kinematic motion equation: $v = u + at$. Substituting the initial constraints yields $v = 44\,\text{m/s} + (-4\,\text{m/s}^{2} \times 10\,\text{s}) = 44 - 40 = 4\,\text{m/s}$."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 1983,
+    exam: "JAMB",
+    question: "The concept of economic efficiency primarily refers to",
+    options: [
+      "Obtaining the maximum output from available resources at the lowest possible cost",
+      "Conservation of our petroleum resources",
+      "Equity in the distribution of the nation's wealth",
+      "Producing without waste",
+      "The limited wants unlimited resources dilemma"
+    ],
+    answer: "Obtaining the maximum output from available resources at the lowest possible cost",
+    explanation: "Economic efficiency incorporates both productive efficiency (producing at lowest cost) and allocative efficiency (maximizing utility output from scarce inputs)."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1983,
+    exam: "JAMB",
+    question: "If successive units of labour are added to a piece of land while capital and technology remain constant, a point will be reached in the level of production when each added unit of labour will add less to the output than previous units of labour. This defines",
+    options: [
+      "The productivity of labour",
+      "The law of diminishing marginal utility",
+      "The law of diminishing returns",
+      "The concept of factor intensity",
+      "Labour intensive production"
+    ],
+    answer: "The law of diminishing returns",
+    explanation: "The Law of Diminishing Returns (Law of Variable Proportions) states that as equal increments of a variable input are added to a fixed factor, a point is eventually reached where the resulting additions to total output (marginal product) decline."
+  },
+  {
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 1983,
+    exam: "JAMB",
+    question: "A Nigerian household's demand curve for semovita is downward sloping because",
+    options: [
+      "The demand for semovita is high",
+      "The local markets are flooded with semovita",
+      "It is produced in Nigeria",
+      "Every household can afford to buy semovita",
+      "Higher prices attract lower quantities while lower prices attract larger quantities"
+    ],
+    answer: "Higher prices attract lower quantities while lower prices attract larger quantities",
+    explanation: "A standard demand curve displays an inverse relationship between price and quantity demanded due to income effects, substitution effects, and the law of diminishing marginal utility."
+  },
+  {
+    subject: "Economics",
+    topic: "Market Structures",
+    year: 1983,
+    exam: "JAMB",
+    question: "The market schedule for a commodity shows the following: At N5.00, QD=10,000 & QS=6,000. At N6.00, QD=7,000 & QS=7,000. At N7.00, QD=5,000 & QS=9,000. What is the market equilibrium price?",
+    options: ["N5.00", "N8.00", "N9.00", "N7.00", "N6.00"],
+    answer: "N6.00",
+    explanation: "Market equilibrium occurs precisely at the price level where the quantity demanded by consumers matches the quantity supplied by producers (QD = QS = 7,000 bags at N6.00)."
+  },
+  {
+    subject: "Economics",
+    topic: "Production and Costs",
+    year: 1983,
+    exam: "JAMB",
+    question: "The marginal cost curve intersects the average cost curve",
+    options: [
+      "From above at its lowest point",
+      "From below before the lowest point",
+      "From below at its lowest point",
+      "From below after the lowest point",
+      "At zero point"
+    ],
+    answer: "From below at its lowest point",
+    explanation: "Mathematically, when Marginal Cost is below Average Cost, AC falls. When MC is above AC, AC rises. Thus, MC must intersect the AC curve from below precisely at its absolute minimum point."
+  },
+  {
+    subject: "Economics",
+    topic: "Inflation",
+    year: 1983,
+    exam: "JAMB",
+    question: "The meaning of 'wage-price spiral' is",
+    options: [
+      "Demand pull and cost push inflation pulling each other in different directions",
+      "Demand pull and cost push inflation intensifying each other",
+      "Both of them bringing about a reduction in the price level",
+      "That demand pull and cost push inflation increase employment",
+      "That wages and prices are rising at a proportional rate"
+    ],
+    answer: "Demand pull and cost push inflation intensifying each other",
+    explanation: "A wage-price spiral is a macroeconomic feedback loop where rising wages create higher production costs (cost-push), which drives up prices, prompting demands for even higher wages."
+  },
+  {
+    subject: "Economics",
+    topic: "Inflation",
+    year: 1983,
+    exam: "JAMB",
+    question: "In an inflationary period, which of the following statements is NOT true?",
+    options: [
+      "Wages rise simultaneously with prices",
+      "The purchasing power of money diminishes",
+      "More money runs after a limited quantity of goods",
+      "Money supply increases",
+      "Aggregate real demand exceeds aggregate real supply"
+    ],
+    answer: "Wages rise simultaneously with prices",
+    explanation: "During inflation, wage increases typically lag far behind price jumps, which causes a contraction in real consumer purchasing power."
+  },
+  {
+    subject: "Economics",
+    topic: "Trade and Distribution",
+    year: 1983,
+    exam: "JAMB",
+question: "Retailers in an economy perform the function of",
+options: ["Production", "Exchange", "Distribution", "Hoarding", "Investment"],
+answer: "Distribution",
+explanation: "Retailers serve as the final stage of the commercial distribution chain, breaking bulk quantities to sell individual items directly to consumers."
 },
 {
-subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-question: "A man of mass 50kg ascends a flight of stairs 5m high in 5 seconds. If acceleration due to gravity is $10\,\text{m/s}^{-2}$, the power expended is",
-options: ["100W", ["300W"], "250W", "400W", "500W"],
-answer: "500W",
-explanation: "Work done equals the gain in gravitational potential energy: $W = mgh = 50\,\text{kg} \times 10\,\text{m/s}^{2} \times 5\,\text{m} = 2500\,\text{J}$. Power is work split over time: $P = W/t = 2500\,\text{J} / 5\,\text{s} = 500\,\text{W}$."
+subject: "Economics",
+topic: "Business Organizations",
+year: 1983,
+exam: "JAMB",
+question: "In a sole proprietorship, the decisions are made by the",
+options: ["Government", "Board of directors", "Management", "Shareholders' conference", "Owner"],
+answer: "Owner",
+explanation: "A sole proprietorship vests all financial ownership, operational control, and decision-making authority entirely in a single individual."
 },
 {
-subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-question: "Which of the following arrangements in the sequence shown can be used to obtain a pure spectrum of white light?",
+subject: "Economics",
+topic: "Business Organizations",
+year: 1983,
+exam: "JAMB",
+question: "Which of the following enterprises does NOT pursue the sole objective of profit maximization?",
 options: [
-"Source, slit, converging lens, prism, converging lens, screen.",
-"Source, slit, diverging lens, screen.",
-"Source, converging lens, prism, diverging lens, screen.",
-"Source, slit, prism, diverging lens, screen."
+"Roads Nigeria Ltd.",
+"Union Bank of Nigeria Ltd.",
+"Nigerian Electric Power Authority",
+"Volkswagen (VW) Nigeria Ltd.",
+"Kingsway Nigeria Ltd."
 ],
-answer: "Source, slit, converging lens, prism, converging lens, screen.",
-explanation: "To project a clean, non-overlapping pure spectrum, white light passes through a slit source and is parallel-aligned using a converging collimator lens. After the prism disperses the light rays, a second converging lens focuses each color wavelength cleanly onto a targeted screen plane."
+answer: "Nigerian Electric Power Authority",
+explanation: "As a statutory public corporation, the primary mandate of the Nigerian Electric Power Authority (NEPA) was to provide an essential public utility service rather than maximize corporate profits."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 1983, exam: "JAMB",
-question: "It is usual to transmit electric power at high voltage and low current. Which of the following are possible advantages of the method?\nI. Heat losses are reduced because the currents are small.\nII. Thin wires can be used because small currents are flowing.\nIII. The power can flow faster because the voltage is high.",
-options: ["I only", "I and II only", "II and III only", "I and III only", "I, II and III"],
-answer: "I and II only",
-explanation: "Transmission power line losses are governed by Joule heating ($P = I^{2}R$). Reducing the current flow ($I$) directly decreases energy lost to heat (I), allowing utility networks to run lighter, thinner transmission wires safely without overheating them (II). Voltage does not change wave travel speeds (III)."
+subject: "Economics",
+topic: "Money and Banking",
+year: 1983,
+exam: "JAMB",
+question: "The supply of loanable funds is significantly influenced by",
+options: ["Commercial banks", "Mortgage banks", "Financial intermediaries", "The Central Bank", "Insurance companies"],
+answer: "The Central Bank",
+explanation: "Through reserve ratios, open market actions, and discount rates, the Central Bank acts as the primary regulator of overall liquidity and credit conditions in the commercial banking network."
 },
 {
-subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-question: "A force of 16N is applied to a 4.0kg block that is at rest on a smooth horizontal surface. What is the velocity of the block at $t = 5$ seconds?",
-options: ["$4\,\text{m/s}$", "$10\,\text{m/s}$", "$20\,\text{m/s}$", "$50\,\text{m/s}$", "$80\,\text{m/s}$"],
-answer: "20\,\text{m/s}",
-explanation: "First compute the uniform linear acceleration using Newton's second law: $a = F/m = 16\,\text{N} / 4.0\,\text{kg} = 4\,\text{m/s}^{2}$. Using the kinematic equation with initial velocity $u = 0$: $v = u + at = 0 + (4\,\text{m/s}^{2} \times 5\,\text{s}) = 20\,\text{m/s}$."
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 1983,
+exam: "JAMB",
+question: "Which of the following are direct taxes?",
+options: ["Sales taxes", "Excise duties", "Income and company taxes", "Tariff duties", "Commodity taxes"],
+answer: "Income and company taxes",
+explanation: "Direct taxes are assessed directly on the income, wealth, or corporate earnings of individuals and companies, meaning the statutory tax burden cannot be shifted onto others."
 },
 {
-subject: "Physics", topic: "Sound & Waves", year: 1983, exam: "JAMB",
-question: "Ripples on water are similar to light waves in that they both",
+subject: "Economics",
+topic: "Production and Costs",
+year: 1983,
+exam: "JAMB",
+question: "Division of labour has many advantages. Notwithstanding, it is greatly limited by",
+options: ["Monotony of work", "Decline of craftsmanship", "Risk of unemployment", "Extent of market demand", "Boredom"],
+answer: "Extent of market demand",
+explanation: "As Adam Smith observed, the division of labour is bounded by the size and scale of the market. Small markets cannot support hyper-specialized production roles."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 1983,
+exam: "JAMB",
+question: "In the event of a limited liability company going into liquidation, each",
 options: [
-"Have the same wavelength",
-"Are longitudinal",
-"Cannot be reflected",
-"Travel at the same speed",
-"Can be refracted and diffracted."
+"Shareholder may lose the maximum of the amount he has invested",
+"Shareholder loses nothing",
+"Shareholder loses everything including his house",
+"Shareholder's liability becomes unlimited",
+"Shareholder will lose the amount he has invested plus a proportion of his bank account"
 ],
-answer: "Can be refracted and diffracted.",
-explanation: "Water ripples are mechanical periodic waves, and light waves are electromagnetic waves. They run at completely different velocities and wavelengths, but because both are types of wave motion, they experience refraction and diffraction."
+answer: "Shareholder may lose the maximum of the amount he has invested",
+explanation: "The core defining feature of limited liability is that a shareholder's personal assets are fully shielded; their financial exposure is strictly limited to the nominal value of their capital investment."
 },
 {
-subject: "Physics", topic: "Hydrostatics & Fluids", year: 1983, exam: "JAMB",
-question: "A piece of wood is floating on water. The forces acting on the wood are",
+subject: "Economics",
+topic: "International Trade",
+year: 1983,
+exam: "JAMB",
+question: "The meaning of 'Dumping' is selling goods in a foreign market",
 options: [
-"Upthrust and reaction.",
-"Weight and reaction",
-"Weight and upthrust",
-"Upthrust and viscosity",
-"Weight and viscosity."
+"At a price below that received in the home market",
+"At a price higher than that received in the home market",
+"At a price equal to the cost price in the home market",
+"In order to encourage indigenous producers",
+"At a price equal to the selling price in the home market"
 ],
-answer: "Weight and upthrust",
-explanation: "A static object floating on water is in static equilibrium under two vertical forces: its downward gravitational weight ($W$) and an equal, opposing vertical upthrust force ($U$) from the displaced fluid, satisfying Archimedes' principle."
+answer: "At a price below that received in the home market",
+explanation: "Dumping occurs when a country exports products at predatory prices below domestic production costs or home-market values, typically to eliminate local competitors in the destination market."
 },
 {
-subject: "Physics", topic: "Sound & Waves", year: 1983, exam: "JAMB",
-question: "Longitudinal waves do not exhibit",
-options: ["Refraction", "Reflection", "Diffraction", "Polarization", "Rarefaction"],
-answer: "Polarization",
-explanation: "Polarization restricts wave vibrations to a single transverse plane, which means it can only happen with transverse waves. Longitudinal waves vibrate along their line of travel, so they cannot be polarized."
+subject: "Economics",
+topic: "International Trade",
+year: 1983,
+exam: "JAMB",
+question: "Disequilibrium in the balance of payments means",
+options: [
+"Imports of the country exceeding its exports",
+"Overall deficit or surplus in the current account and capital account of the balance of payments",
+"Capital flowing out of the country exceeds the capital flowing into the country",
+"Deficit in the trade balance",
+"Export earnings exceed cost of imports"
+],
+answer: "Overall deficit or surplus in the current account and capital account of the balance of payments",
+explanation: "A balance of payments disequilibrium refers broadly to any persistent structural imbalance—either a net deficit or a net surplus—across both current and capital transaction records."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 1983,
+exam: "JAMB",
+question: "Petroleum 'glut' in international trade means",
+options: [
+"A fall in petroleum production",
+"An oversupply of petroleum",
+"A higher petroleum price offered by the buyer",
+"A higher petroleum price demanded by the seller",
+"Higher prices for the consumption of petroleum"
+],
+answer: "An oversupply of petroleum",
+explanation: "A market glut represents a condition of heavy structural oversupply where the volume of goods available vastly outstrips effective demand, placing downward pressure on global prices."
 }
 ];
-export default physicsJamb1983;
+export default econJamb1983;

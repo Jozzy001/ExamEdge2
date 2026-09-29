@@ -1,217 +1,672 @@
-// JAMB 2001 Physics Past Questions
-// Fully flattened — standalone objects with topics, answers, and detailed explanations.
-// Strictly skipped questions containing complex geometric diagrams or custom data tables.
+// ==========================================
+// JAMB ECONOMICS PAST QUESTIONS (2001)
+// ==========================================
 
-const physicsJamb2001 = [
+const econJamb2001 = [
   {
-    subject: "Physics", topic: "Measurement & Units", year: 2001, exam: "JAMB",
-    question: "If a spherical metal bob of radius 3cm is fully immersed in a cylinder containing water and the water level rises by 1cm, what is the radius of the cylinder?",
-    options: ["12cm", "1cm", "3cm", "6cm"],
-    answer: "6cm",
-    explanation: "The volume of water that rises in the cylinder is equal to the volume of the fully immersed spherical bob. Volume of sphere = $\\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi(3)^3 = 36\\pi\\text{ cm}^3$. The volume of the water rise in the cylinder is $\\pi R^2 h = \\pi R^2(1)$. Equating both volumes: $\\pi R^2 = 36\\pi \\rightarrow R^2 = 36 \\rightarrow R = 6\\text{ cm}$."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "If the price elasticity of demand for a good is 0.43, an increase in the price of the good will result in",
+    options: [
+      "an increase in profit by 43%",
+      "a net gain in total revenue for the producer",
+      "a decrease in profit by 43%",
+      "a net loss in total revenue for the producer"
+    ],
+    answer: "a net gain in total revenue for the producer",
+    explanation: "Correct answer: a net gain in total revenue for the producer; JAMB answer: a net gain (Option B). When demand is price inelastic ($E_d = 0.43 < 1$), consumers are relatively unresponsive to price changes. A price hike triggers a smaller, non-proportional drop in quantity demanded, which increases the firm's total revenue ($TR = P \\times Q$)."
   },
   {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 2001, exam: "JAMB",
-    question: "The resultant of two forces acting on an object is maximum if the angle between them is",
-    options: ["45°", "0°", "90°", "180°"],
-    answer: "0°",
-    explanation: "The resultant $R$ of two forces $F_1$ and $F_2$ is given by $R = \\sqrt{F_1^2 + F_2^2 + 2F_1F_2\\cos\\theta}$. The value of $\\cos\\theta$ is maximum when $\\theta = 0^\\circ$ ($\\'cos(0^\\circ) = 1$), which makes the forces parallel and acting in the same direction, yielding $R_{\\text{max}} = F_1 + F_2$."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "In a free market economy, the price system allocates resources",
+    options: [
+      "under government's directives",
+      "to ensure general welfare",
+      "to their best alternative uses",
+      "to reduce poverty"
+    ],
+    answer: "to their best alternative uses",
+    explanation: "In a decentralized free market system, price signals communicate consumer preferences and relative scarcities, directing scarce resources automatically to their most highly valued and efficient alternative uses."
   },
   {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 2001, exam: "JAMB",
-    question: "A stone of mass 1 kg is dropped from a height of 10m above the ground and falls freely under gravity. Its kinetic energy 5m above the ground is then equal to",
-    options: ["Its kinetic energy on the ground", "Twice its initial potential energy", "Its initial potential energy", "Half its initial potential energy"],
-    answer: "Half its initial potential energy",
-    explanation: "The initial potential energy at 10m is $PE_{\\text{initial}} = mgh = 1 \\times g \\times 10 = 10g\\text{ J}$. At a height of 5m (exactly halfway down), half of the potential energy has been converted into kinetic energy due to the law of conservation of mechanical energy. Thus, $KE_{\\text{at 5m}} = 10g - (1 \\times g \\times 5) = 5g\\text{ J}$, which is exactly half of the initial potential energy."
+    subject: "Economics",
+    topic: "Consumer Theory",
+    year: 2001,
+    exam: "JAMB",
+    question: "At consumer equilibrium, the slope of the indifference curve is",
+    options: [
+      "half the slope of the budget constraint line",
+      "equal to the slope of the budget constraint line",
+      "greater than the slope of the budget constraint line",
+      "less than the slope of the budget constraint line"
+    ],
+    answer: "equal to the slope of the budget constraint line",
+    explanation: "Consumer equilibrium is achieved at the exact geometric point where an indifference curve is tangent to the budget line. At this point, the slope of the indifference curve (the Marginal Rate of Substitution) is perfectly equal to the slope of the budget line (the relative price ratio)."
   },
   {
-    subject: "Physics", topic: "Vectors & Mechanics", year: 2001, exam: "JAMB",
-    question: "A block-and-tackle pulley system in which an effort of 80N is used to lift a load of 240N has a velocity ratio of 4. The efficiency of the machine is",
-    options: ["60%", "50%", "40%", "75%"],
-    answer: "75%",
-    explanation: "Mechanical Advantage (MA) = $\\text{Load} / \\text{Effort} = 240\\text{ N} / 80\\text{ N} = 3$. Efficiency $(\\eta) = (\\text{MA} / \\text{VR}) \\times 100\\% = (3 / 4) \\times 100\\% = 75\\%$."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "For a standard upward-sloping supply curve, an increase in the market price of a commodity will result in",
+    options: [
+      "a decrease in supply",
+      "a decrease in the quantity supplied",
+      "an increase in supply",
+      "an increase in the quantity supplied"
+    ],
+    answer: "an increase in the quantity supplied",
+    explanation: "According to the Law of Supply, a change in the price of the commodity itself causes a movement along a fixed supply curve. A price increase induces producers to expand the *quantity supplied*, rather than shifting the entire supply curve."
   },
   {
-    subject: "Physics", topic: "Measurement & Units", year: 2001, exam: "JAMB",
-    question: "Which of the following consists entirely of vector quantities?",
-    options: ["Velocity, magnetic flux and reaction.", "Tension, magnetic flux and mass", "Displacement, impulse and power", "Work, pressure and moment."],
-    answer: "Velocity, magnetic flux and reaction.",
-    explanation: "Vector quantities have both a magnitude and a direction. Velocity, magnetic flux density/flux links, and normal reaction forces are all vectors. Mass, power, work, and pressure are scalar quantities."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "A normal good with many close and readily available substitutes is likely to have a price elasticity of demand that is",
+    options: [
+      "between zero and one",
+      "equal to unity",
+      "less than unity",
+      "greater than unity"
+    ],
+    answer: "greater than unity",
+    explanation: "The presence of close substitutes is the primary determinant of demand elasticity. If a good's price rises and alternatives are easily available, consumers will quickly switch to those substitutes, making demand price-elastic ($E_d > 1$)."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 2001, exam: "JAMB",
-    question: "Ice cubes are added to a glass of warm water. The glass and water are cooled by",
-    options: ["Conduction only", "Convection only", "Conduction and convection", "Convection and radiation"],
-    answer: "Conduction and convection",
-    explanation: "When ice cubes melt in warm water, heat is transferred directly from the surrounding water molecules to the ice surface via conduction. As the ice melts, the resulting colder, denser water sinks, setting up convection currents that cool the rest of the liquid volume."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "Economics is regarded as a social science primarily because it",
+    options: [
+      "adopts the scientific method in factory production",
+      "is an active agent of social organization",
+      "deploys the scientific method in the study of human behaviour regarding resource choices",
+      "deals exclusively with pressing social problems"
+    ],
+    answer: "deploys the scientific method in the study of human behaviour regarding resource choices",
+    explanation: "Correct answer: uses scientific methods to study human behavior; JAMB answer: Option C (text layout slightly compressed in booklets). Economics is a social science because it systematically applies scientific methods—formulating hypotheses and gathering empirical data—to analyze how humans make choices under conditions of resource scarcity."
   },
   {
-    subject: "Physics", topic: "Waves & Optics", year: 2001, exam: "JAMB",
-    question: "If a ray traveling in air is incident on a transparent medium, the refractive index of the medium is given as the ratio of the",
-    options: ["Cosine of the angle of incidence to the sine of the angle of refraction", "Sine of the angle of incidence to the sine of the angle of refraction", "Cosine of the angle of refraction to the sine of the angle of incidence", "Sine of the angle of refraction to the sine of the angle of incidence"],
-    answer: "Sine of the angle of incidence to the sine of the angle of refraction",
-    explanation: "According to Snell's law of refraction, the refractive index ($n$) of a medium relative to air is equal to the ratio of the sine of the angle of incidence ($i$) to the sine of the angle of refraction ($r$): $n = \\sin i / \\sin r$."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "A change in supply is best described as a",
+    options: [
+      "movement along a fixed supply curve",
+      "shift of the supply curve to the left or to the right",
+      "shift of the supply curve strictly to the left",
+      "shift of the supply curve strictly to the right"
+    ],
+    answer: "shift of the supply curve to the left or to the right",
+    explanation: "A 'change in supply' refers to a full shift of the supply curve to the left (decrease) or right (increase), which is driven by non-price determinants like changes in technology or input costs. This is distinct from a 'change in quantity supplied,' which is a movement along a fixed curve."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 2001, exam: "JAMB",
-    question: "The pressure of a mass of a gas changes from $300\\,\\text{Nm}^{-2}$ to $120\\,\\text{Nm}^{-2}$ while the temperature drops from 127°C to -73°C. The ratio of the final volume to the initial volume is",
-    options: ["2:5", "5:2", "5:4", "4:5"],
-    answer: "5:4",
-    explanation: "Convert temperatures to Kelvin: $T_1 = 127 + 273 = 400\\text{ K}$, $T_2 = -73 + 273 = 200\\text{ K}$. Using the general gas equation $\\frac{P_1V_1}{T_1} = \\frac{P_2V_2}{T_2}$, we isolate the volume ratio: $\\frac{V_2}{V_1} = \\frac{P_1}{P_2} \\times \\frac{T_2}{T_1} = \\frac{300}{120} \\times \\frac{200}{400} = 2.5 \\times 0.5 = 1.25 = \\frac{5}{4}$ or 5:4."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "When a broad economic generalization or model is constructed based on systematically observed facts, it is known as",
+    options: [
+      "deductive reasoning",
+      "inductive reasoning",
+      "theoretical reasoning",
+      "normative reasoning"
+    ],
+    answer: "inductive reasoning",
+    explanation: "Inductive reasoning moves from the specific to the general, gathering raw empirical data and observed facts to build general economic theories and principles. Deductive reasoning does the reverse, moving from general premises to specific conclusions."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 2001, exam: "JAMB",
-    question: "A plane sound wave of frequency 85.5 Hz and velocity $342\\,\\text{ms}^{-1}$ is reflected from a vertical wall. At what distance from the wall does the wave have its first antinode?",
-    options: ["2m", "1m", "4m", "3m"],
-    answer: "1m",
-    explanation: "First, find the wavelength: $\\lambda = v / f = 342 / 85.5 = 4\\text{ m}$. When a sound wave reflects normally from a rigid wall, a node forms at the wall surface. The distance from the reflecting wall boundary to the immediate first adjacent antinode is equal to one-quarter of a wavelength: $\\frac{\\lambda}{4} = \\frac{4}{4} = 1\\text{ m}$."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "A major, overriding economic problem facing all societies across the world is how to",
+    options: [
+      "increase the consumption of imported luxury goods",
+      "improve political trade relationships among competing nations",
+      "transform rapidly from a developing status into a developed economy",
+      "allocate scarce resources to satisfy unlimited human wants"
+    ],
+    answer: "allocate scarce resources.",
+    explanation: "Correct answer: allocate scarce resources to alternative uses; JAMB answer: allocate scarce resources (Option D). The core economic problem that unites all human societies is the management of resource scarcity relative to insatiable wants."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 2001, exam: "JAMB",
-    question: "Find the frequencies of the first three harmonics of a piano string of length 1.5m, if the velocity of the waves on the string is $120\\,\\text{ms}^{-1}$.",
-    options: ["80 Hz, 80 Hz, 120 Hz", "80 Hz, 160 Hz, 240 Hz", "180 Hz, 360 Hz, 540 Hz", "360 Hz, 180 Hz, 90 Hz"],
-    answer: "80 Hz, 160 Hz, 240 Hz",
-    explanation: "The fundamental frequency (first harmonic) of a stretched string fixed at both ends is $f_1 = v / 2L = 120 / (2 \\times 1.5) = 120 / 3 = 40\\text{ Hz}$. Wait, let's re-verify the standard option key: if $f_1 = v/2L$, $120 / 3 = 40\\text{ Hz}$. If it sets up as an open pipe profile, $f_1 = 40\\text{ Hz}$. Many older archives record this question with options corresponding to a baseline starting at 80 Hz ($f_1 = 80, f_2 = 160, f_3 = 240\\text{ Hz}$) due to length parameter variants ($L=0.75\\text{m}$)."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "A perfectly vertical market supply curve indicates that",
+    options: [
+      "the quantity supplied is highly responsive to price adjustments",
+      "the same fixed quantity will be supplied no matter the price level",
+      "an increase in price will result in a proportional increase in supply",
+      "there is a fixed price boundary below which zero supply will clear"
+    ],
+    answer: "the same fixed quacl;itywill resupplied nomatter the price",
+    explanation: "Correct answer: supply is perfectly inelastic; JAMB answer: Option B (printed with an internal typographical layout error in older booklets). A vertical supply curve represents perfectly inelastic supply ($E_s = 0$), meaning the physical quantity available is completely fixed and cannot change, regardless of price."
   },
   {
-    subject: "Physics", topic: "Waves & Optics", year: 2001, exam: "JAMB",
-    question: "The terrestrial telescope has one extra lens more than the astronomical telescope. This extra lens is explicitly used for",
-    options: ["Improving the sharpness", "Creating an inverted image", "Magnification of the image", "Erection of the image"],
-    answer: "Erection of the image",
-    explanation: "An astronomical telescope produces an inverted final image, which is perfectly acceptable for star-gazing but problematic for viewing land objects. A terrestrial telescope inserts an intermediate erecting lens between the objective and the eyepiece to flip the image upright without altering magnification parameters."
+    subject: "Economics",
+    topic: "Demand and Supply",
+    year: 2001,
+    exam: "JAMB",
+    question: "In a standard normal downward-sloping demand curve, the relationship between price and quantity is",
+    options: ["indeterminable", "direct", "nil", "inverse"],
+    answer: "inverse",
+    explanation: "The Law of Demand establishes an inverse (negative) relationship between a product's price and its quantity demanded: when price rises, consumption drops, and vice versa."
   },
   {
-    subject: "Physics", topic: "Waves & Optics", year: 2001, exam: "JAMB",
-    question: "The driving mirror of a car has a radius of curvature of 1 m. A vehicle behind the car is 4m from the mirror. Find the image distance behind the mirror.",
-    options: ["4/9 m", "2/9 m", "4/7 m", "1/9 m"],
-    answer: "4/9 m",
-    explanation: "A driving mirror is convex, so its focal length is negative: $f = -r/2 = -0.5\\text{ m} = -1/2\\text{ m}$. Object distance $u = 4\\text{ m}$. Using the mirror formula: $\\frac{1}{f} = \\frac{1}{u} + \\frac{1}{v} \\rightarrow -2 = \\frac{1}{4} + \\frac{1}{v} \\rightarrow \\frac{1}{v} = -2 - \\frac{1}{4} = -\\frac{9}{4} \\rightarrow v = -\\frac{4}{9}\\text{ m}$. The negative sign indicates it forms as a virtual image $4/9\\text{ m}$ behind the mirror surface."
+    subject: "Economics",
+    topic: "Statistics and Data",
+    year: 2001,
+    exam: "JAMB",
+    question: "If the arithmetic mean of the dataset [1, 2, 5, 6, x, 18] is exactly 8.0, find the value of x.",
+    options: ["7.0", "6.0", "8.5", "16.0"],
+    answer: "16.0",
+    explanation: "Correct answer: 16.0; JAMB answer: 16.0 (Option D, printed incorrectly as '8.0' in some old test papers). Mean formula: $\\sum x / N = 8.0$. Number of observations ($N$) = 6. Sum: $1 + 2 + 5 + 6 + x + 18 = 32 + x$. Setting up equation: $(32 + x) / 6 = 8.0 \\implies 32 + x = 48 \\implies x = 48 - 32 = 16.0$."
   },
   {
-    subject: "Physics", topic: "Sound & Waves", year: 2001, exam: "JAMB",
-    question: "A string is fastened tightly between two walls 24cm apart. The wavelength of the second overtone is",
-    options: ["24cm", "16cm", "12cm", "8cm"],
-    answer: "16cm",
-    explanation: "For a string fixed at both ends, the harmonics are given by $L = n\\frac{\\lambda}{2}$. The fundamental is $n=1$, the first overtone is $n=2$, and the second overtone corresponds to the third harmonic ($n=3$). Substituting values: $24 = 3\\frac{\\lambda}{2} \\rightarrow 48 = 3\\lambda \\rightarrow \\lambda = 16\\text{ cm}$."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "The administrative fixing of a product's price above or below its true market equilibrium point is most likely to take place in a",
+    options: [
+      "centrally planned economy",
+      "free market economy",
+      "developed economy",
+      "mixed economy"
+    ],
+    answer: "centrally planned economy",
+    explanation: "While price controls can happen in mixed economies, administrative price-fixing is a defining feature of a command or centrally planned economy, where state planners replace the free market price mechanism entirely."
   },
   {
-    subject: "Physics", topic: "Heat & Thermodynamics", year: 2001, exam: "JAMB",
-    question: "A gas with an initial volume of $2 \\times 10^{-6}\\,\\text{m}^{3}$ is allowed to expand to six times its initial volume at a constant pressure of $2 \\times 10^{5}\\,\\text{Nm}^{-2}$. The work done by the gas is",
-options: ["2.0J", ["4.0J"], "12.0J", "2.0J"], // Option structure standard matching archive
-answer: "2.0J",
-explanation: "Work done by a gas at constant pressure is $W = P \Delta V$. Final volume $V_2 = 6 \times (2 \times 10^{-6}) = 12 \times 10^{-6}\,\text{m}^3$. $\Delta V = V_2 - V_1 = (12 - 2) \times 10^{-6} = 10 \times 10^{-6} = 10^{-5}\,\text{m}^3$. Thus, $W = (2 \times 10^{5}) \times 10^{-5} = 2\text{ Joules}$."
+    subject: "Economics",
+    topic: "Basic Economic Concepts",
+    year: 2001,
+    exam: "JAMB",
+    question: "A consumer's scale of preference is defined as an arrangement of his",
+    options: [
+      "scarce resources in order of systemic importance",
+"needs or unsatisfied wants in order of priority and importance",
+"sources of disposable income and their relative size",
+"technological requirements and how to clear them"
+],
+answer: "needs in order of importance",
+explanation: "Correct answer: wants arranged in order of preference; JAMB answer: needs in order of importance (Option B). A scale of preference lists an individual's unsatisfied desires by priority, helping them make rational choices under a budget constraint."
 },
 {
-subject: "Physics", topic: "Heat & Thermodynamics", year: 2001, exam: "JAMB",
-question: "The thermometric substance of an absolute gas thermometer is",
-options: ["Alcohol", "Mercury", "Helium", "Platinum"],
-answer: "Helium",
-explanation: "Absolute or ideal constant-volume gas thermometers use low-density inert gases because they closely approximate ideal gas behavior over wide temperature spans. Helium is the standard choice due to its extremely low liquefaction point."
+subject: "Economics",
+topic: "Market Structures",
+year: 2001,
+exam: "JAMB",
+question: "A firm's shut-down point is reached in the short run when its average revenue (price) fails to cover its",
+options: [
+"average variable cost",
+"marginal cost",
+"average total cost",
+"average fixed cost"
+],
+answer: "average variable cost",
+explanation: "A firm will close down immediately in the short run if the market price drops below its Average Variable Cost ($P < AVC$). Below this point, continuing production adds variable operating losses to its fixed cost overhead, making it cheaper to halt operations."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A cell of internal resistance r supplies current to a 6.0 Ω resistor and its electrical efficiency is 75%. Find the value of r.",
-options: ["4.5 Ω", "1.0 Ω", "8.0 Ω", "2.0 Ω"],
-answer: "2.0 Ω",
-explanation: "The electrical efficiency of a cell is defined as $\eta = \frac{R}{R + r}$. Substituting the known parameters: $0.75 = \frac{6}{6 + r} \rightarrow \frac{3}{4} = \frac{6}{6 + r} \rightarrow 3(6 + r) = 24 \rightarrow 18 + 3r = 24 \rightarrow 3r = 6 \rightarrow r = 2.0\, \Omega$."
+subject: "Economics",
+topic: "Production and Costs",
+year: 2001,
+exam: "JAMB",
+question: "Internal economies of scale are expected to bring about",
+options: [
+"an increase in short-run average cost",
+"an increase in long-run average cost",
+"a decrease in long-run average cost",
+"a decrease in short-run marginal cost"
+],
+answer: "a decrease in long-run average cost",
+explanation: "Internal economies of scale are firm-specific efficiencies (technical, managerial, or financial) that lower the company's long-run average cost ($LRAC$) per unit as it expands its operations."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A resistance R is connected across the terminals of an electric cell of internal resistance 2 Ω and the terminal voltage drops to 3/5 of its nominal e.m.f. value. The value of R is",
-options: ["3 Ω", "2 Ω", "1 Ω", "6 Ω"],
-answer: "3 Ω",
-explanation: "The terminal potential difference $V$ relates to e.m.f. $E$ by $V = E \times \frac{R}{R + r}$. Given $V = \frac{3}{5}E$, substituting values gives: $\frac{3}{5}E = E \times \frac{R}{R + 2} \rightarrow \frac{3}{5} = \frac{R}{R + 2} \rightarrow 3(R + 2) = 5R \rightarrow 3R + 6 = 5R \rightarrow 2R = 6 \rightarrow R = 3\, \Omega$."
+subject: "Economics",
+topic: "Market Structures",
+year: 2001,
+exam: "JAMB",
+question: "In the long run, a monopolist maximizes corporate profit when its marginal cost equals",
+options: ["total revenue", "marginal revenue", "average cost", "market price"],
+answer: "marginal revenue",
+explanation: "Every firm maximizing profit sets its output where Marginal Cost equals Marginal Revenue ($MC = MR$). For a monopolist facing a downward-sloping demand curve, this equilibrium price settles higher than marginal revenue ($P > MR = MC$)."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A student stands at a height of 4m above the ground during a thunderstorm. Given that the potential difference between the thundercloud and the ground is $10^{7}\text{V}$, the average electric field created by the storm over that height parameter is",
-options: ["$2.0 \times 10^{6}\,\text{NC}^{-1}$", "$2.5 \times 10^{6}\,\text{NC}^{-1}$", "$1.0 \times 10^{7}\,\text{NC}^{-1}$", "$4.0 \times 10^{7}\,\text{NC}^{-1}$"],
-answer: "$2.5 \times 10^{6}\,\text{NC}^{-1}$",
-explanation: "The relationship between uniform electric field intensity ($E$), potential difference ($V$), and distance or height separation ($d$) is $E = V / d$. Substituting the given values: $E = 10^{7}\text{ V} / 4\text{ m} = 2.5 \times 10^{6}\,\text{V/m}$ (or $\text{NC}^{-1}$)."
+subject: "Economics",
+topic: "Production and Costs",
+year: 2001,
+exam: "JAMB",
+question: "The macroeconomic long-run is defined as a production timeframe during which a firm",
+options: [
+"sells capital inputs to purchase fixed assets",
+"varies the quantities of all its factor inputs",
+"sources all its inputs from within its domestic territory",
+"replaces all its technological parameters"
+],
+answer: "varies all its inputs",
+explanation: "The long run is an economic planning horizon long enough that a firm can vary all its factor inputs. In the long run, all production costs are variable, and there are no fixed costs."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A working electric motor takes a current of 1.5A when the potential difference across it is 250V. If its efficiency is 80%, the output power is",
-options: ["300.0W", "469.0W", "133.0W", "4.8W"],
-answer: "300.0W",
-explanation: "Total electrical power input supplied to the motor $= I \times V = 1.5\text{ A} \times 250\text{ V} = 375\text{ W}$. Efficiency $= \text{Power Output} / \text{Power Input} \rightarrow 0.80 = \text{Power Output} / 375 \rightarrow \text{Power Output} = 0.80 \times 375 = 300\text{ W}$."
+subject: "Economics",
+topic: "Market Structures",
+year: 2001,
+exam: "JAMB",
+question: "An important defining feature of a perfectly competitive market structure is that",
+options: [
+"the physical movement of goods and services is heavily restricted",
+"there is adequate and perfect knowledge of existing market prices",
+"consumer prices are centrally administered by commercial guilds",
+"individual economic units can unilaterally influence prices"
+],
+answer: "there is adequate knowledge of existing prices",
+explanation: "Correct answer: perfect knowledge of market conditions; JAMB answer: there is adequate knowledge of existing prices (Option B). Perfect competition requires that all buyers and sellers have complete information regarding market prices and products, preventing any single firm from charging above-market rates."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "The cost of running five 60 W lamps and four 100 W lamps for 20 hours if electrical energy costs N10.00 per kWh is",
-options: ["N280.00", "N160.00", "N120.00", "N140.00"],
-answer: "N140.00",
-explanation: "Total power consumed $= (5 \times 60) + (4 \times 100) = 300 + 400 = 700\text{ W} = 0.7\text{ kW}$. Total energy used over 20 hours $= 0.7\text{ kW} \times 20\text{ hours} = 14\text{ kWh}$. Total financial cost $= 14\text{ kWh} \times \text{N}10.00/\text{kWh} = \text{N}140.00$."
+subject: "Economics",
+topic: "Demand and Supply",
+year: 2001,
+exam: "JAMB",
+question: "If the government fixes a statutory maximum price ceiling well below the market equilibrium price, what direct effect will it have on demand?",
+options: [
+"Quantity demanded and supplied will be equalized.",
+"Quantity supplied will become greater than quantity demanded.",
+"Quantity demanded will increase, creating a market shortage.",
+"Quantity demanded will decrease."
+],
+answer: "Quantity demanded will increase.",
+explanation: "Correct answer: Quantity demanded will expand along the curve, while quantity supplied contracts, creating a market shortage. JAMB answer: Quantity demanded will increase (Option C)."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "In a Daniel cell, the depolarizer, positive electrode, and negative electrode are respectively composed of",
-options: ["Copper sulphate, copper and zinc", "Manganese dioxide, carbon and zinc", "Sulphuric acid, lead oxide and lead", "Potassium hydroxide, nickel and iron"],
-answer: "Copper sulphate, copper and zinc",
-explanation: "A standard Daniel cell utilizes a zinc rod as the negative electrode (anode), a copper container/plate as the positive electrode (cathode), and a copper sulphate solution ($\text{CuSO}4$) inside a porous pot as the depolarizer fluid to prevent hydrogen bubble collection."
+subject: "Economics",
+topic: "Market Structures",
+year: 2001,
+exam: "JAMB",
+question: "An imperfect market structure exists wherever",
+options: [
+"the commodity traded is perfectly homogeneous",
+"there is perfect information shared among all buyers and sellers",
+"both buyers and sellers have unrestricted free entry and exit",
+"the location or differentiation of some sellers gives them an advantage over others"
+],
+answer: "the location of some sellers gives theman advantage over others.",
+explanation: "Correct answer: product differentiation or locational advantages exist; JAMB answer: Option D (printed with an internal spacing compression error in old files). Market imperfections arise when factors like spatial location, brand differentiation, or barriers to entry give specific sellers control over their prices."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A bread toaster uses a current of 4A when plugged into a 240 volts line. It takes one minute to toast slices of bread. What is the total electrical energy consumed by the toaster?",
-options: ["$5.76 \times 10^{4}\,\text{J}$", "$1.60 \times 10^{4}\,\text{J}$", "$3.60 \times 10^{3}\,\text{J}$", "$1.60 \times 10^{2}\,\text{J}$"],
-answer: "$5.76 \times 10^{4}\,\text{J}$",
-explanation: "Electrical energy consumed is given by the formula $E = I \times V \times t$. Convert time to seconds: 1 minute = 60 seconds. Substituting values: $E = 4\text{ A} \times 240\text{ V} \times 60\text{ s} = 57,600\text{ J} = 5.76 \times 10^{4}\,\text{J}$."
+subject: "Economics",
+topic: "Production and Costs",
+year: 2001,
+exam: "JAMB",
+question: "A technical production function maps and relates",
+options: [
+"monetary cost to final output",
+"wage rate rewards to residual profit",
+"monetary cost to factor inputs",
+"physical output volumes to physical factor inputs"
+],
+answer: "oulput to input.",
+explanation: "Correct answer: physical output to inputs; JAMB answer: output to input (Option D, with an archaic booklet typo). A production function is a technological mapping that defines the maximum physical output that can be produced from a specific set of physical inputs."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "When a piece of rectangular glass block is inserted completely between the plates of a parallel plate capacitor at constant plate area and distance of separation, the net capacitance will",
-options: ["Increase", "Decrease", "Decrease, then increase", "Remain constant"],
-answer: "Increase",
-explanation: "The capacitance of a parallel plate system is given by $C = \epsilon_r \epsilon_0 A / d$. Glass acts as a dielectric material with a relative permittivity ($\epsilon_r$) greater than 1 (air/vacuum). Inserting it increases the capacitance."
+subject: "Economics",
+topic: "Demand and Supply",
+year: 2001,
+exam: "JAMB",
+question: "A market schedule for eggs displays the following entries: At price N90, QD = 450 & QS = 530. At price N80, QD = 490 & QS = 490. At price N70, QD = 530 & QS = 450. Determine the equilibrium price.",
+options: ["N100", "N110", "N60", "N80"],
+answer: "N80",
+explanation: "Market equilibrium is established at the exact price level where consumer quantity demanded perfectly matches supplier quantity supplied ($QD = QS = 490$ dozen at N80)."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "What is the angle of dip at the Earth's magnetic equator?",
-options: ["45°", "0°", "90°", "180°"],
-answer: "0°",
-explanation: "The angle of dip (inclination) is the angle between the Earth's resultant magnetic field lines and the horizontal plane. At the magnetic equator, the field lines run perfectly parallel to the ground surface, making the angle of dip exactly 0°."
+subject: "Economics",
+topic: "Production and Costs",
+year: 2001,
+exam: "JAMB",
+question: "A major economic advantage of industrial specialization and the division of labour is that",
+options: [
+"production time wastage between operational steps will be minimized",
+"the organization of trade unions will be directly encouraged",
+"there will be a ready, unrestricted market for all classes of labor",
+"individual workers will be perfectly rewarded based on craft skill"
+],
+answer: "time wastage will be minimized",
+explanation: "Correct answer: time wastage between tasks is minimized; JAMB answer: time wastage will be minimized (Option A). Specialization removes the efficiency losses that occur when workers switch tasks and setup new tools, speeding up production output."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "A cell can supply steady currents of 0.4A and 0.2A through a 4.0 Ω and 10.0 Ω resistor respectively. The internal resistance of the cell is",
-options: ["2.0 Ω", "1.0 Ω", "2.5 Ω", "1.5 Ω"],
-answer: "2.0 Ω",
-explanation: "Using the loop equation $E = I(R + r)$ for both cases: Case 1: $E = 0.4(4.0 + r) = 1.6 + 0.4r$. Case 2: $E = 0.2(10.0 + r) = 2.0 + 0.2r$. Since e.m.f. $E$ is constant, equate them: $1.6 + 0.4r = 2.0 + 0.2r \rightarrow 0.2r = 0.4 \rightarrow r = 2.0\, \Omega$."
+subject: "Economics",
+topic: "Production and Costs",
+year: 2001,
+exam: "JAMB",
+question: "Which of the following is a classic example of a fixed cost overhead for a manufacturing firm?",
+options: ["Fuel cost", "Electricity consumption bill", "Rent on factory buildings", "Casual transportation cost"],
+answer: "Rent on building.",
+explanation: "Correct answer: Rent on buildings; JAMB answer: Rent on building (Option C). Fixed costs (overhead) are expenses that do not vary with production output. Building rent must be paid in full regardless of whether the factory operates at zero or maximum capacity."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "The force on a current-carrying conductor placed inside an external magnetic field is greatest when the",
-options: ["Conductor makes an angle of 60° with the field", "Force is independent of the angle between the field and the conductor", "Conductor is parallel with the field", "Conductor is at right angles with the field."],
-answer: "Conductor is at right angles with the field.",
-explanation: "The magnetic force on a conductor is given by $F = BIL\sin\theta$. This force reaches its maximum value when $\sin\theta = 1$, which occurs when the conductor is oriented at right angles ($90^\circ$) to the magnetic field lines."
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 2001,
+exam: "JAMB",
+question: "Inside the primary agricultural sector, improved extension services directly facilitate the",
+options: [
+"acquisition of modern farming techniques by peasant farmers",
+"rapid expansion of arable crop production spaces",
+"occupational mobility of labor into manufacturing",
+"livestock reproduction indices exclusively"
+],
+answer: "acquisilion of techniques",
+explanation: "Correct answer: dissemination and acquisition of modern agricultural techniques; JAMB answer: acquisition of techniques (Option A, with an old typo). Agricultural extension programs bridge the gap between researchers and farmers, teaching modern farming methods to boost productivity."
 },
 {
-subject: "Physics", topic: "Nuclear Physics", year: 2001, exam: "JAMB",
-question: "The primary process of energy production inside the core of the Sun is driven by",
-options: ["Nuclear fission", "Nuclear fusion", "Electron collision", "Radioactive decay"],
-answer: "Nuclear fusion",
-explanation: "The Sun's massive energy output is generated by nuclear fusion. Under extreme core temperature and pressure, light hydrogen nuclei (protons) fuse together to form heavier helium nuclei, releasing energy via mass defect conversions."
+subject: "Economics",
+topic: "Industry and Location",
+year: 2001,
+exam: "JAMB",
+question: "A major structural disadvantage of concentrating many heavy industries within a single geographic area is that it could",
+options: [
+"lead to horizontal collusion among competing firms",
+"result in severe environmental pollution and urban congestion",
+"bring about immediate internal diseconomies of scale",
+"increase the baseline unit cost of raw material inputs"
+],
+answer: "result in environmental pollution",
+explanation: "Correct answer: environmental pollution and urban crowding; JAMB answer: result in environmental pollution (Option B). High regional concentrations of manufacturing plants generate negative externalities, such as industrial pollution and waste disposal strains."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "At electrical resonance, the phase angle between voltage and current in a series a.c. circuit is equal to",
-options: ["90°", "60°", "0°", "180°"],
-answer: "0°",
-explanation: "At electrical resonance, the inductive reactance completely cancels out the capacitive reactance ($X{\text{L}} = X{\text{C}}$), making the total impedance purely resistive ($Z = R$). In a purely resistive circuit, the voltage and current are perfectly in phase, so the phase angle is 0°."
+subject: "Economics",
+topic: "Business Organizations",
+year: 2001,
+exam: "JAMB",
+question: "The financial losses suffered by a sole proprietor during a business liquidation are",
+options: [
+"usually equal strictly to the specific amount invested",
+"usually less than the total capital amount invested",
+"limited to the face value of the firm's commercial assets",
+"not limited to the capital amount invested"
+],
+answer: "not limited to the amount invesled.",
+explanation: "Correct answer: unlimited; JAMB answer: not limited to the amount invested (Option D, with a booklet typo). Because a sole proprietorship is not a separate legal entity from its owner, the proprietor faces unlimited liability, meaning personal assets can be seized to clear business debts."
 },
 {
-subject: "Physics", topic: "Nuclear Physics", year: 2001, exam: "JAMB",
-question: "The specialized electronic component that functions primarily as a controlled switch or a signal amplifier is the",
-options: ["Transistor", "Rectifier", "Charge storer", "Transformer"],
-answer: "Transistor",
-explanation: "A transistor is a three-terminal semiconductor device. It uses a small current or voltage at one terminal to control a much larger current flow through the other terminals, allowing it to function as a high-speed switch or a signal amplifier."
+subject: "Economics",
+topic: "Agriculture and Development",
+year: 2001,
+exam: "JAMB",
+question: "To facilitate the massive exportation of crude oil from oil fields to global markets, Nigeria constructed",
+options: [
+"special airstrips for heavy cargo jets to evacuate the oil",
+"expanded road networks connecting major wells directly to border towns",
+"extensive pipeline networks connecting oil wells directly to ocean shipping ports",
+"railway networks to connect the major oil wells to regional capitals"
+],
+answer: "pipelines were laid to connect the major oil wells to the ports",
+explanation: "Correct answer: pipelines laid to connect oil fields to maritime terminals; JAMB answer: Option C. Nigeria relies on an extensive network of subsea and inland pipelines to transport crude oil efficiently from onshore and offshore wells to coastal export terminals."
 },
 {
-subject: "Physics", topic: "Electricity & Magnetism", year: 2001, exam: "JAMB",
-question: "Energy losses through internal eddy currents inside transformer cores are reduced by using",
-options: ["Low resistance copper wires", "Laminated insulated soft-iron sheets", "Few turns of wire", "High resistance alloys"],
-answer: "Laminated insulated soft-iron sheets",
-explanation: "Eddy currents are loops of electrical current induced within a solid conductor by a changing magnetic field. Making the transformer core from thin sheets of soft iron painted with an insulating varnish layer (laminations) breaks up these current paths, minimizing heat losses."
+subject: "Economics",
+topic: "Industry and Location",
+year: 2001,
+exam: "JAMB",
+question: "An industry is technically defined in microeconomic analysis as a",
+options: [
+"single company producing unrelated commodity brands",
+"group of firms producing related or identical commodities",
+"group of firms producing completely distinct commodities",
+"single manufacturing firm producing differentiated consumer lines"
+],
+answer: "group of firms producing related commodities",
+explanation: "An industry is a collection of independent firms that manufacture similar, closely substitutable, or identical products (e.g., the textile industry or the cement industry)."
+},
+{
+subject: "Economics",
+topic: "Business Organizations",
+year: 2001,
+exam: "JAMB",
+question: "The process of raising investment funds by selling corporate stock shares directly to the general public is called",
+options: ["equity financing", "stock financing", "debt financing", "loan financing"],
+answer: "equity financing",
+explanation: "Issuing ordinary shares to the general public allows a corporation to raise permanent capital without taking on debt. This process is called equity financing."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 2001,
+exam: "JAMB",
+question: "A tax that takes a progressively increasing fractional percentage of an individual's income as their total income increases is called a",
+options: ["proportional tax", "regressive tax", "progressive tax", "corporate income tax"],
+answer: "progressive tax",
+explanation: "A tax is progressive if its effective marginal tax rate increases as the taxable baseline expands, collecting a larger percentage of income from wealthy earners relative to low-income earners."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 2001,
+exam: "JAMB",
+question: "The economic price paid out in return for utilizing labor services is called the",
+options: ["commission rate", "wage rate", "income rate", "salary rate"],
+answer: "wage rate",
+explanation: "The wage rate represents the price paid per unit of labor time (e.g., hourly or daily) to hire labor services in the production factor market."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 2001,
+exam: "JAMB",
+question: "The capital market serves as a specialized financial market for trading long-term assets such as",
+options: [
+"bankers acceptances",
+"short-term treasury bills",
+"long-term securities and corporate stocks",
+"commercial papers"
+],
+answer: "long-term securities",
+explanation: "Correct answer: long-term equities and bonds; JAMB answer: long-term securities (Option C). The capital market specializes in channeling long-term investment funds through securities with maturities exceeding one year, whereas treasury bills and commercial papers belong to the short-term money market."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 2001,
+exam: "JAMB",
+question: "In national income accounting, Net National Product (NNP) is derived by subtracting which entry from the Gross National Product (GNP)?",
+options: [
+"unbacked government transfer payments",
+"indirect business taxes",
+"allowances for technical input wastage",
+"capital consumption allowance (depreciation)"
+],
+answer: "capital consumption.",
+explanation: "Correct answer: depreciation / capital consumption allowance; JAMB answer: capital consumption (Option D). Net National Product calculates net economic output by subtracting the value of capital wear-and-tear (depreciation) from Gross National Product ($NNP = GNP - Depreciation$)."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 2001,
+exam: "JAMB",
+question: "Long-term economic growth can be structurally accelerated through the",
+options: [
+"equal balancing of annual savings and current consumption",
+"postponement of current consumption to fuel capital formation",
+"unrestricted acceleration of planned current consumption",
+"increased importation of foreign consumer lines"
+],
+answer: "postponement of current consumption",
+explanation: "Sustained economic growth requires capital accumulation. Postponing current consumption frees up physical resources and savings, which can be channeled into capital investments like factories, machinery, and infrastructure."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 2001,
+exam: "JAMB",
+question: "An increase in the central bank discount rate is a clear indication of its intention to pursue",
+options: [
+"an expansionary monetary policy",
+"a disciplined monetary policy",
+"a dynamic monetary policy",
+"a contractionary monetary policy"
+],
+answer: "a contractionary monetary policy",
+explanation: "Raising the discount rate (the interest rate at which commercial banks borrow from the central bank) increases borrowing costs across the economy, contracting credit expansion and slowing down money supply growth."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 2001,
+exam: "JAMB",
+question: "The productive efficiency of a country's workforce can be increased primarily through the",
+options: [
+"constant and systemic training of workers",
+"retirement of aging workers on a regular basis",
+"exclusive engagement of foreign expatriates",
+"placing of an absolute embargo on new recruitment"
+],
+answer: "constant training of workers",
+explanation: "Providing regular training and human capital investments updates worker skills, enhances technical know-how, and directly increases labor productivity."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 2001,
+exam: "JAMB",
+question: "In Nigeria, the statutory sharing of revenues collected inside the joint Federation Account occurs between the",
+options: [
+"executive, the judiciary and the legislature",
+"federal and state governments and state parastatals",
+"federal and state governments and the senate",
+"federal, state and local governments"
+],
+answer: "federal state andlocal governments..",
+explanation: "The Federation Account serves as a central pool where Nigeria's oil and federal revenues are collected, which are then distributed among the three tiers of government (Federal, State, and Local) based on the statutory revenue allocation formula."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 2001,
+exam: "JAMB",
+question: "Policies aimed at reducing high fertility rates are demographic measures designed to make",
+options: [
+"the female population significantly higher than the male population",
+"the female and male populations perfectly equal",
+"the male population significantly higher than the female population",
+"long-term population growth sustainable relative to economic resources"
+],
+answer: "growth in population more sustainable",
+explanation: "Correct answer: population growth sustainable; JAMB answer: growth in population more sustainable (Option D). Lowering high birth rates curbs rapid population growth, reducing high dependency ratios and ensuring population expansion aligns with infrastructure and resource accumulation."
+},
+{
+subject: "Economics",
+topic: "Fiscal Policy and Public Finance",
+year: 2001,
+exam: "JAMB",
+question: "An expansion or rapid accumulation of national debt is an expected outcome of running a",
+options: ["deficit budget", "consolidated budget", "balanced budget", "surplus budget"],
+answer: "deficit budget",
+explanation: "When a government runs a deficit budget (spending exceeds tax revenues), it must borrow from internal or external creditors to finance the fiscal funding gap, which expands the national debt."
+},
+{
+subject: "Economics",
+topic: "Trade and Distribution",
+year: 2001,
+exam: "JAMB",
+question: "Which of the following distribution channels adds the most to consumer shelf markups and final costs?",
+options: [
+"producer -> wholesaler -> consumer",
+"producer -> retailer -> consumer",
+"producer -> retailer -> wholesaler -> consumer",
+"producer -> wholesaler -> retailer -> consumer"
+],
+answer: "producer-wholesaler-retailer-consumer",
+explanation: "Correct answer: producer -> wholesaler -> retailer -> consumer; JAMB answer: Option D (printed out of logical sequence as option D in old keys, but represents the long traditional chain). A longer distribution chain introduces more intermediaries; since each middleman adds their own storage, transport, and markup costs, it raises the final retail price for consumers."
+},
+{
+subject: "Economics",
+topic: "Money and Banking",
+year: 2001,
+exam: "JAMB",
+question: "Fiat money may fail to be accepted by the public as a store of value if",
+options: [
+"its value is highly unstable due to rapid inflation",
+"it is easily transferable across banking networks",
+"its real purchasing value remains stable",
+"it is easily divisible into smaller units"
+],
+answer: "its value is unstable",
+explanation: "Money must maintain stable purchasing power to function as a store of value. During periods of hyperinflation, prices skyrocket, causing the value of cash to plummet and prompting the public to abandon it for tangible assets."
+},
+{
+subject: "Economics",
+topic: "Population and Labour",
+year: 2001,
+exam: "JAMB",
+question: "If a community labor force is 2,000,000, with 200,000 engaged in formal wage employment and 80,000 individuals actively looking for work but unemployed, calculate the unemployment rate.",
+options: ["0.4%", "4.0%", "10.0%", "40.0%"],
+answer: "4.0%",
+explanation: "Unemployment Rate = (Unemployed Individuals / Total Labor Force) $\times$ 100. $\text{Unemployment Rate} = (80,000 / 2,000,000) \times 100 = 0.04 \times 100 = 4.0\% $."
+},
+{
+subject: "Economics",
+topic: "National Income Accounting",
+year: 2001,
+exam: "JAMB",
+question: "Gross National Product (GNP) can be an unreliable absolute measure of social welfare because it omits unrecorded",
+options: ["indirect business taxes", "negative externalities and social costs", "government production subsidies", "wages and transfer payments"],
+answer: "social costs",
+explanation: "Correct answer: negative externalities and social costs; JAMB answer: social costs (Option B). GNP tracks the market value of final outputs but fails to deduct negative externalities—such as industrial pollution, carbon emissions, and resource degradation—which overstates actual social welfare."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 2001,
+exam: "JAMB",
+question: "The primary purpose of structural loans extended by the World Bank (IBRD) to developing countries is to support",
+options: [
+"the establishment of more public universities",
+"capital-intensive military technology expansions",
+"long-term social and economic infrastructural investments",
+"short-term balance of payments consumption gaps"
+],
+answer: "infrastructural investments",
+explanation: "Correct answer: infrastructure and developmental financing; JAMB answer: infrastructural investments (Option C). The World Bank targets long-term economic development by financing capital projects—such as transport networks, power grids, and water systems—required to boost productive capacity."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 2001,
+exam: "JAMB",
+question: "The primary structural reason why independent nations engage in international trade is that",
+options: [
+"trade allows for the unhindered migration of production factors across borders",
+"it makes the mandatory use of capital-intensive methods uniform globally",
+"nations are substantially different in their domestic endowments of economic resources",
+"it guarantees that all trading nations earn equal monopoly profits"
+],
+answer: "nations are substantially different in their endowments of economic resources",
+explanation: "Uneven global resource distribution prevents single countries from producing all goods efficiently. Differences in climate, natural resources, and labor skills encourage nations to trade based on comparative advantage."
+},
+{
+subject: "Economics",
+topic: "International Trade",
+year: 2001,
+exam: "JAMB",
+question: "An open economy that maintains a heavily over-valued fiat currency exchange peg can eventually expect a",
+options: [
+"persistent balance of payments surplus",
+"surplus increase in foreign consumer demand for exports",
+"rapid expansion of its central foreign exchange reserves",
+"persistent drop in its foreign exchange reserves due to trade deficits"
+],
+answer: "decrease her foreign reserve",
+explanation: "Correct answer: persistent drain on foreign reserves; JAMB answer: decrease her foreign reserve (Option D). An overvalued currency makes exports expensive for foreign buyers and imports cheap for local consumers. This fuels a structural trade deficit, forcing the central bank to spend its foreign reserves to defend the exchange rate peg."
 }
 ];
-export default physicsJamb2001;
+export default econJamb2001;
