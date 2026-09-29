@@ -63,9 +63,40 @@ import chemJamb2003 from "./chemistry/jamb2003"
 import chemJamb2004 from "./chemistry/jamb2004"
 
 // --- COMMERCE ---
+// --- COMMERCE ---
+import comJamb1994 from "./commerce/jamb1994"
+import comJamb1995 from "./commerce/jamb1995"
+import comJamb1997 from "./commerce/jamb1997"
+import comJamb1998 from "./commerce/jamb1998"
+import comJamb1999 from "./commerce/jamb1999"
+import comJamb2000 from "./commerce/jamb2000"
+import comJamb2001 from "./commerce/jamb2001"
+import comJamb2002 from "./commerce/jamb2002"
+import comJamb2003 from "./commerce/jamb2003"
 import comJamb2004 from "./commerce/jamb2004"
 
 // --- CRK ---
+import crkJamb1983 from "./crk/jamb1983"
+import crkJamb1984 from "./crk/jamb1984"
+import crkJamb1985 from "./crk/jamb1985"
+import crkJamb1986 from "./crk/jamb1986"
+import crkJamb1987 from "./crk/jamb1987"
+import crkJamb1988 from "./crk/jamb1988"
+import crkJamb1989 from "./crk/jamb1989"
+import crkJamb1990 from "./crk/jamb1990"
+import crkJamb1991 from "./crk/jamb1991"
+import crkJamb1992 from "./crk/jamb1992"
+import crkJamb1993 from "./crk/jamb1993"
+import crkJamb1994 from "./crk/jamb1994"
+import crkJamb1995 from "./crk/jamb1995"
+import crkJamb1996 from "./crk/jamb1996"
+import crkJamb1997 from "./crk/jamb1997"
+import crkJamb1998 from "./crk/jamb1998"
+import crkJamb1999 from "./crk/jamb1999"
+import crkJamb2000 from "./crk/jamb2000"
+import crkJamb2001 from "./crk/jamb2001" // matching your 2001 format structure
+import crkJamb2002 from "./crk/jamb2002"
+import crkJamb2003 from "./crk/jamb2003"
 import crkJamb2004 from "./crk/jamb2004"
 
 // --- ECONOMICS ---
@@ -326,7 +357,40 @@ const questions = [
   ...chemJamb2003,
   ...chemJamb2004,
 
+  // --- COMMERCE ---
+  ...comJamb1994,
+  ...comJamb1995,
+  ...comJamb1997,
+  ...comJamb1998,
+  ...comJamb1999,
+  ...comJamb2000,
+  ...comJamb2001,
+  ...comJamb2002,
+  ...comJamb2003,
   ...comJamb2004,
+
+  // --- CRK ---
+  ...crkJamb1983,
+  ...crkJamb1984,
+  ...crkJamb1985,
+  ...crkJamb1986,
+  ...crkJamb1987,
+  ...crkJamb1988,
+  ...crkJamb1989,
+  ...crkJamb1990,
+  ...crkJamb1991,
+  ...crkJamb1992,
+  ...crkJamb1993,
+  ...crkJamb1994,
+  ...crkJamb1995,
+  ...crkJamb1996,
+  ...crkJamb1997,
+  ...crkJamb1998,
+  ...crkJamb1999,
+  ...crkJamb2000,
+  ...crkJamb2001,
+  ...crkJamb2002,
+  ...crkJamb2003,
   ...crkJamb2004,
 
   // --- ACCOUNTS ---

@@ -307,83 +307,83 @@ answer: "Country cloth, copper trinkets and eggs",
 explanation: "The passage lists a woman selling country cloth, an old goldsmith working with copper filings to make trinkets, and women displaying eggs on the ground."
 },
 // =====================
-// LEXIS AND STRUCTURE — ANTONYMS
+// Lexis & Structure — ANTONYMS
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Our government is making determined efforts to eradicate illiteracy. (Opposite in meaning to eradicate)",
 options: ["compulsory", "ineffective", "innocent", "unreliable"],
 answer: "ineffective",
 explanation: "While 'eradicate' implies a strong, successful, and complete removal, an 'ineffective' effort fails to destroy it. (Note: Based on standard options provided in original text)."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Makerere University has a large intake of students each year. (Opposite in meaning to intake)",
 options: ["rejection", "product", "output", "turn-out"],
 answer: "output",
 explanation: "'Intake' refers to the acts of bringing individuals into an institution; its direct institutional opposite is 'output' (those produced/graduated)."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Florence flogged the girl reluctantly. (Opposite in meaning to reluctantly)",
 options: ["eagerly", "calmly", "furiously", "laboriously"],
 answer: "eagerly",
 explanation: "'Reluctantly' means doing something with hesitation or unwillingness; its opposite is 'eagerly'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Sola's car is badly damaged; he has to look for an expert mechanic to fix it. (Opposite in meaning to expert)",
 options: ["uneducated", "amateurish", "awkward", "unscientific"],
 answer: "amateurish",
 explanation: "The opposite of an 'expert' (someone highly skilled and professional) is someone who is 'amateurish'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Coastal plains are often very densely populated. (Opposite in meaning to densely)",
 options: ["weakly", "badly", "rarely", "sparsely"],
 answer: "sparsely",
 explanation: "The opposite of 'densely' populated (thickly/crowdedly packed) is 'sparsely' populated."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Wilfred was a mindless criminal. (Opposite in meaning to mindless)",
 options: ["strong", "mindful", "feeling", "memorable"],
 answer: "mindful",
 explanation: "'Mindless' indicates an unthinking or senseless disposition; its direct grammatical counter-word is 'mindful'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The judge blamed the plaintiff for misleading the court. (Opposite in meaning to plaintiff)",
 options: ["defendant", "complainant", "accused", "prosecution"],
 answer: "defendant",
 explanation: "In a civil lawsuit, the 'plaintiff' is the party that initiates the suit; the party being sued is the 'defendant'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The thieves vandalized the vault's lock. (Opposite in meaning to vandalized)",
 options: ["repaired", "arranged", "serviced", "actuated"],
 answer: "repaired",
 explanation: "To 'vandalize' means to deliberately destroy or damage property; its exact opposite is 'repaired'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The demonstrators have refused to call off their action. (Opposite in meaning to call off)",
 options: ["consolidate", "start", "resume", "end"],
 answer: "resume",
 explanation: "To 'call off' an action means to cancel or stop it; its operational opposite is to 'resume' it."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The angry waves swallowed the boat. (Opposite in meaning to angry)",
 options: ["gentle", "unruffled", "cool", "serene"],
 answer: "gentle",
 explanation: "When describing waves or weather conditions, the opposite of 'angry' (violent/turbulent) is 'gentle'."
 },
 // =====================
-// LEXIS AND STRUCTURE — IDIOMS / NEAREST MEANING
+// Lexis & Structure — IDIOMS / NEAREST MEANING
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Ngozi and Ekaete were fast friends when we were in the secondary school.",
 options: [
 "friends who run very quickly together",
@@ -395,7 +395,7 @@ answer: "friends who are not easily separated from each other",
 explanation: "The idiom 'fast friends' describes individuals who share a highly loyal, deep, close, and enduring relationship."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "My son has just been rusticated from the university.",
 options: [
 "sent home to get his fees",
@@ -407,14 +407,14 @@ answer: "sent home for misconduct",
 explanation: "To be 'rusticated' from an academic institution means to be suspended or sent away temporarily as a punishment for misconduct."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "All we need is a concerted effort to combat the epidemic.",
 options: ["persistent", "dramatic", "joint", "concentrated"],
 answer: "joint",
 explanation: "A 'concerted' effort means an action that is jointly planned, coordinated, and carried out together by a group."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Jimoh has cupboard love for Sidikatu.",
 options: [
 "love that never fails",
@@ -426,7 +426,7 @@ answer: "love for what he wants from her",
 explanation: "The idiom 'cupboard love' refers to a false or insincere affection displayed solely to gain material benefits or selfish ends."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Yahaya hardly knows on which side his bread is buttered in the matter.",
 options: [
 "where his interest lies",
@@ -438,14 +438,14 @@ answer: "where his interest lies",
 explanation: "To know 'which side one's bread is buttered' is a common idiom meaning to understand clearly where one's personal advantage or best financial interest lies."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The preacher is under a cloud among the congregation.",
 options: ["out of favour", "under observation", "under weather", "confused"],
 answer: "out of favour",
 explanation: "To be 'under a cloud' means to be viewed with suspicion, distrust, or to be currently out of favour with others."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The politician played to the gallery to win the election.",
 options: [
 "obeyed the people",
@@ -457,35 +457,35 @@ answer: "went out of his way to appeal to the taste of the people",
 explanation: "To 'play to the gallery' means to behave in an exaggerated way to curry favor or appeal directly to popular, superficial tastes."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The hefty warder came in and all the prisoners snuffed out their cigarettes.",
 options: ["extinguished", "put out", "squeeze", "put down"],
 answer: "extinguished",
 explanation: "To 'snuff out' a flame or a cigarette means to completely extinguish or put it out."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The popularity of the slogan is beginning to wane.",
 options: ["wear", "slide", "thin out", "decline"],
 answer: "decline",
 explanation: "To 'wane' means to decrease gradually in size, strength, or power; i.e., to decline."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The policeman looked at the face of robber and saw tell-tale sign of a dyed-in-the-wool convict.",
 options: ["hardened", "remorseless", "heady", "hardhearted"],
 answer: "hardened",
 explanation: "A 'dyed-in-the-wool' person is someone whose actions or beliefs are deeply ingrained and unchangeable; i.e., a 'hardened' convict."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "'Marcus bears watching;' remarked Emperor Nero.",
 options: ["deserves", "needs", "favours", "enjoys"],
 answer: "needs",
 explanation: "In this phrase, 'bears watching' idiomatically means that the subject requires or 'needs' careful monitoring and close observation."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The senior prefect had to carry the can because he refused to identify the culprit.",
 options: [
 "dispose the can of refuse",
@@ -497,7 +497,7 @@ answer: "accept responsibility",
 explanation: "The idiom 'to carry the can' means to take the official blame or accept absolute responsibility for something that went wrong."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The senator had the habit of setting the cat among the pigeons whenever matters concerning his constituency came up for debate.",
 options: [
 "illuminating issues that are not clear",
@@ -509,14 +509,14 @@ answer: "introducing elements of controversy and confusion",
 explanation: "To 'set the cat among the pigeons' means to deliberately introduce a highly controversial statement or action that causes trouble or chaotic panic."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Adah has not been regular at lectures because she has been off colour.",
 options: ["gloomy", "trying to hide her bleached skin", "slightly sick", "upset"],
 answer: "slightly sick",
 explanation: "The idiomatic phrase 'off colour' means feeling unwell, poorly, or slightly sick."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "When the man lost his two sons in a motor accident, he cracked up.",
 options: [
 "became broken-hearted",
@@ -528,14 +528,14 @@ answer: "became slightly deranged",
 explanation: "To 'crack up' under immense grief, mental pressure, or shock means to suffer an emotional breakdown or become mentally unstable/deranged."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The news of his performance in the sessional examination has made Okechukwu crestfallen.",
 options: ["highly irritable", "dejected", "elated", "pompous"],
 answer: "dejected",
 explanation: "'Crestfallen' means completely dispirited, disappointed, or intensely dejected."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The man rebuked his son severely, but his words seem to have cut no ice.",
 options: [
 "been unconvincing",
@@ -547,339 +547,339 @@ answer: "had no effect",
 explanation: "The phrase 'to cut no ice' means an argument, warning, or action has absolutely no influence or impact on a person."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The urban environment tends to form the nucleus of a common dialect.",
 options: ["setting", "repository", "cell", "core"],
 answer: "core",
 explanation: "'Nucleus' means the central, most essential part of an object or concept; i.e., its 'core'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I shall be with you presently.",
 options: ["now", "in a moment", "at present", "for the time being"],
 answer: "in a moment",
 explanation: "In standard formal syntax, the adverb 'presently' means 'soon' or 'in a very short moment' (not 'currently')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The builder's taste reflected superfluous grandeur.",
 options: ["excellent", "superlative", "expensive", "too much"],
 answer: "too much",
 explanation: "'Superfluous' means unnecessary, excessive, or more than enough; i.e., 'too much'."
 },
 // =====================
-// LEXIS AND STRUCTURE — GAP FILLING
+// Lexis & Structure — GAP FILLING
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The child's recent training has not been very effective, he is likely to ... to his old habits.",
 options: ["revert", "convert", "reverse", "revise"],
 answer: "revert",
 explanation: "To 'revert' means to return to a previous state, practice, or bad habit."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The students went on whispering in... of the teacher.",
 options: ["dishonour", "disagreement", "defiance", "disobedience"],
 answer: "defiance",
 explanation: "The idiom 'in defiance of' means behaving with open, stubborn disobedience or disregard for authority."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "You can never find Okwu; he is a very... person.",
 options: ["delusive", "elusive", "illusive", "disceptive"],
 answer: "elusive",
 explanation: "'Elusive' describes someone who is difficult to find, catch, track down, or achieve."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "You could see that Akpan did not give the evidence...",
 options: ["honestly completely", "complete honestly", "honest completely", "completely honestly"],
 answer: "completely honestly",
 explanation: "The dynamic verb 'give' requires the adverbial phrase structure 'completely honestly' to modify the action correctly."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The suspect defrauded his ... victims of large sums of money.",
 options: ["unsuspected", "unsuspecting", "unexpecting", "unexpected"],
 answer: "unsuspecting",
 explanation: "'Unsuspecting' is the correct adjective to describe people who are completely unaware of impending danger or trickery."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The ... of the participating countries will hold a pre-conference on the eve of the conference.",
 options: ["Auditor Generals", "Auditor General", "Auditors General", "Auditors Generals"],
 answer: "Auditors General",
 explanation: "For compound titles containing a primary noun followed by an adjective, the principal noun takes the plural marker: 'Auditors General'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The drummers struck their drums with great efforts, and the surging crowds of dancers... the grounds around the palace.",
 options: ["strutted/thumped", "kick/stamped", "thumped/licked", "stroked/thumped"],
 answer: "strutted/thumped",
 explanation: "Based on context and matching rhythm options, 'strutted' (walked proudly) and 'thumped' (hit with heavy sounds) fit the descriptive sequence."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The chairman's laughter was with no... to ridicule the applicant.",
 options: ["intention", "intend", "intendment", "intent"],
 answer: "intent",
 explanation: "The fixed legal or formal phrase is 'with no intent to' (meaning without active purpose or malice)."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The water is not good for drinking; it's been ... by the dead rabbit.",
 options: ["contaminated", "infested", "spoilt", "diseased"],
 answer: "contaminated",
 explanation: "Water supplies or food sources exposed to impurities or decay are textually described as 'contaminated'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The austerity of the times has made people to be more ... in their spending.",
 options: ["watchful", "circumspect", "miserly", "hesitant"],
 answer: "circumspect",
 explanation: "'Circumspect' means cautious, careful, and wary of consequences before acting, perfectly suiting economic management."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Are you sure he prefers a horse ride... a walk?",
 options: ["than to take", "to taking", "instead of take", "than"],
 answer: "to taking",
 explanation: "The verb 'prefer' strictly requires the comparative structures 'prefer X to Y', matching nominal gerunds: 'prefers a horse ride to taking a walk'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "... to your request, we have decided to provide the necessary information.",
 options: ["As regards", "With regards", "With regard", "Regarding"],
 answer: "With regard",
 explanation: "The standard adverbial phrase format is 'With regard to' (singular 'regard', no ending 's')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The price of everything seems to have... up in the last few months.",
 options: ["climbed", "shot", "risen", "flared"],
 answer: "shot",
 explanation: "The idiomatic expression for prices rising extremely rapidly and suddenly is 'to shoot up' (past participle: 'shot up')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Just to convince you about my commitment to the project, I shall ... at the office before I leave for Kano tomorrow.",
 options: ["put up an appearance", "put in an appearance", "put up appearance", "put an appearance"],
 answer: "put in an appearance",
 explanation: "The correct idiomatic phrase is 'to put in an appearance', which means to attend an event briefly just to be noticed."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "There was a ... of steps.",
 options: ["stair", "height", "flight", "climb"],
 answer: "flight",
 explanation: "The collective noun for a structured series of stairs or steps is a 'flight of steps'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Many young men of nowadays do not know how to properly... their clothes.",
 options: ["press", "iron", "smoothen", "stretch"],
 answer: "press",
 explanation: "While 'iron' is common, 'press' is the standard formal term for smoothing out creases in garments using heat."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The dancers were all in... before their departure.",
 options: ["good spirits", "good spirit", "high spirit", "high spirits"],
 answer: "high spirits",
 explanation: "The idiom meaning to be in an extremely happy, lively, and cheerful mood is to be in 'high spirits'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Ebun ... the edge of the cliff after his shoes had failed to grip.",
 options: ["fell down", "fell off", "fell away", "fell from"],
 answer: "fell off",
 explanation: "To lose footing and drop directly down away from a high surface or ledge is expressed as 'falling off'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "That old lady prefers... bread... clothes.",
 options: ["to bake/than making", "to bake/to making", "baking/to making", "baking/than to make"],
 answer: "baking/to making",
 explanation: "The construction uses 'prefer' followed by parallel gerunds separated by the preposition 'to': 'prefer baking to making'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I wonder how much...",
 options: ["cost these earrings", "do these earrings cost", "are these earrings costing", "these earrings cost"],
 answer: "these earrings cost",
 explanation: "In an indirect noun clause embedded within a statement, standard declarative word order (subject + verb) must be preserved."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The college authorities have... the students to end the strike.",
 options: ["called for", "called on", "called", "called at"],
 answer: "called on",
 explanation: "To 'call on' someone means to formally invite, appeal to, or urge them to take a specific course of action."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I have been trying to locate you...",
 options: ["since five days", "five days now", "since five days now", "for five days"],
 answer: "for five days",
 explanation: "To show duration or a specific length of time up to the present, the preposition 'for' must be used."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The host insisted on ... what he called 'a little gift.'",
 options: ["me to accept", "me accepting", "my accepting", "my acceptance"],
 answer: "my accepting",
 explanation: "Formal grammar rules dictate that a gerund ('accepting') functioning as a noun object should be pre-modified by a possessive pronoun ('my')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The whole class looked forward to... Kainji Dam at Christmas.",
 options: ["visiting", "visit", "be visiting", "a visit"],
 answer: "visiting",
 explanation: "The phrasal verb construction 'look forward to' requires a gerund noun form ('visiting') because 'to' functions here as a preposition."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "A government spokesman announced that efforts... the release of the hostages are continuing.",
 options: ["to obtain", "in obtaining", "for obtaining", "of obtaining"],
 answer: "to obtain",
 explanation: "The noun 'efforts' idiomatically takes a clarifying infinitive phrase verb structure: 'efforts to obtain'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I know you think I'm talking nonsense, Shehu, but... you'll realize that I was right.",
 options: ["at one time", "on time", "in time", "at times"],
 answer: "in time",
 explanation: "The phrase 'in time' idiomatically means 'eventually' or 'with the passage of time' in this predictive context."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The Inspector of Education who made several trips on the bad roads returned yesterday completely... by fever.",
 options: ["brought down", "put down", "worn down", "worn off"],
 answer: "worn down",
 explanation: "'Worn down' means exhausted, weakened, or completely depleted in health and physical energy."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The vice principal asked the students to always... their answers only from the textbooks recommended for the course.",
 options: ["look out", "search out", "look up", "bring up"],
 answer: "look up",
 explanation: "To 'look up' information means to actively search for and find facts within a specific reference source or text."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I know that your friend will not accept the proposal...",
 options: ["and you neither", "and neither you", "neither do you", "neither will you"],
 answer: "neither will you",
 explanation: "To express an additional negative agreement matching a future modal aspect ('will not'), inverted syntax with 'neither' is used: 'neither will you'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Mark is a very handsome fellow who informs me that he has ... for pretty girls.",
 options: ["a heart", "a lip", "an eye", "a check"],
 answer: "an eye",
 explanation: "The idiom 'to have an eye for' means to possess a natural ability to spot, appreciate, and judge things or people of quality/beauty."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "Wale Agun, in creating his characters, draws freely ... his experience in life.",
 options: ["by", "in", "on", "of"],
 answer: "on",
 explanation: "The phrasal verb 'draw on/upon' means to utilize past resources, knowledge, or personal experience for a present task."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "When I have an appointment with someone, I hate waiting...",
 options: ["kept", "for being", "being kept", "in being kept"],
 answer: "being kept",
 explanation: "The verb 'hate' correctly takes a passive gerund object clause ('being kept waiting') to complete the syntax."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "It's no good ... about the result until you have sat for the examination.",
 options: ["to worry", "worrying", "for worrying", "to have worried"],
 answer: "worrying",
 explanation: "The fixed idiomatic opening construction 'It's no good...' is strictly followed by a gerund verb structure ('worrying')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "If you don't want to ... your car to robber, then don't travel in the night.",
 options: ["loose", "loss", "lose", "lost"],
 answer: "lose",
 explanation: "'Lose' is the correct spelling for the verb meaning to be deprived of or fail to retain possession of a thing."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The beautiful plan made for the expansion of the business fell... as soon as the manager died.",
 options: ["down", "out", "in", "through"],
 answer: "through",
 explanation: "The phrasal verb 'fall through' means a plan, scheme, or deal fails completely or does not materialize."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The events reported in the newspaper did not happen years ago; they...",
 options: ["are of recent", "had happened recently", "are recent", "recently happened"],
 answer: "recently happened",
 explanation: "The simple past action modifier phrase 'recently happened' correctly completes the historical timeline established in the main clause."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "There is no point getting upset by problems; I take them... in my stride.",
 options: ["all", "on the spur of the moment", "by leaps and bounds", "in a jiffy"],
 answer: "all",
 explanation: "The idiomatic phrase 'to take things in one's stride' means to deal with challenges calmly without letting them disrupt your balance."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "There is no need to stand ... ceremony in matters of this nature.",
 options: ["by", "to", "on", "for"],
 answer: "on",
 explanation: "The idiom 'to stand on ceremony' means to insist on strict adherence to formal etiquette or social rituals."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The driver will ... all the students interested in going to Lagos tomorrow at 7 a.m. outside the main buildings.",
 options: ["lift", "lift up", "pick", "pick up"],
 answer: "pick up",
 explanation: "To 'pick up' passengers means to stop a vehicle to collect individuals waiting along a route."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "What bothered me about the lecture was the speaker ... too many irrelevant words.",
 options: ["slighted", "sighted", "sited", "cited"],
 answer: "cited",
 explanation: "'Cited' means quoted, referenced, or explicitly brought forward as examples or arguments."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The students were suspended because they were...",
 options: ["indisciplined", "undiscipled", "undisciplined", "disciplinary"],
 answer: "undisciplined",
 explanation: "Correct standard spelling: u-n-d-i-s-c-i-p-l-i-n-e-d, meaning lacking proper discipline or control."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "We heard the ... of brakes which was followed by a crashing noise.",
 options: ["screaming", "screeching", "scrapping", "streaking"],
 answer: "screeching",
 explanation: "The loud, high-pitched, piercing sound made by tires or brakes grinding against a surface is called 'screeching'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "I had not given the question a thought before; my answer came...",
 options: ["momentarily", "in an instant", "on the spur of the moment", "just like that"],
 answer: "on the spur of the moment",
 explanation: "The idiom 'on the spur of the moment' describes an action or speech performed spontaneously without any prior planning or thought."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "The small girl is ... than her elder sister.",
 options: ["more cleverer", "very cleverer", "much cleverer", "much more cleverer"],
 answer: "much cleverer",
 explanation: "'Cleverer' is already a comparative form; double comparatives ('more cleverer') are errors. It can only be intensified using 'much'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 1988, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 1988, exam: "JAMB",
 question: "... are good friends.",
 options: ["He and I", "I and him", "I and he", "He and me"],
 answer: "He and I",

@@ -327,254 +327,254 @@ answer: "neutral instruments whose social impact depends entirely on application
 explanation: "The passage closes by showing that cryptographic ledger systems are tools whose safety and social utility depend on the codes and ethics human operators use."
 },
 // =====================
-// LEXIS AND STRUCTURE — ANTONYMS
+// Lexis & Structure — ANTONYMS
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The division supervisor was known across the center to be exceptionally dogmatic. (Opposite in meaning to dogmatic)",
 options: ["inflexible", "flexible", "opinionated", "rigid"],
 answer: "flexible",
 explanation: "'Dogmatic' means asserting opinions in an arrogant, unyielding manner; its semantic opposite is 'flexible'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The administrative panel found the contractor's provisions to be completely ambiguous. (Opposite in meaning to ambiguous)",
 options: ["vague", "clear", "obscure", "confusing"],
 answer: "clear",
 explanation: "'Ambiguous' means open to more than one interpretation, vague, or uncertain; its exact opposite is 'clear'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The asset valuation indices inside the perimeter zone became highly volatile. (Opposite in meaning to volatile)",
 options: ["unstable", "stable", "explosive", "turbulent"],
 answer: "stable",
 explanation: "'Volatile' means liable to change rapidly and unpredictably for the worse; its direct opposite is 'stable'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The engineer presented a highly convoluted explanation regarding the line errors. (Opposite in meaning to convoluted)",
 options: ["complex", "simple", "intricate", "confusing"],
 answer: "simple",
 explanation: "'Convoluted' means extremely complex and difficult to follow; its direct structural opposite is 'simple'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The logistics crew handled the fragile instruments with extreme care. (Opposite in meaning to fragile)",
 options: ["brittle", "robust", "delicate", "weak"],
 answer: "robust",
 explanation: "'Fragile' means easily broken or delicate; its direct structural counter-concept is 'robust' (strong, sturdy, and durable)."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The tracking team decided to corroborate the warehouse staff's initial report. (Opposite in meaning to corroborate)",
 options: ["confirm", "refute", "support", "endorse"],
 answer: "refute",
 explanation: "To 'corroborate' means to confirm or give support to a statement; its direct opposite is to 'refute' (prove a claim false)."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The old filing structure featured transient structural tags during the layout sync. (Opposite in meaning to transient)",
 options: ["temporary", "permanent", "fleeting", "ephemeral"],
 answer: "permanent",
 explanation: "'Transient' means lasting only for a short time, impermanent; its long-term operational opposite is 'permanent'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The regional council chose to validate the contested proxy assignment ledger sheets. (Opposite in meaning to validate)",
 options: ["confirm", "nullify", "ratify", "endorse"],
 answer: "nullify",
 explanation: "To 'validate' means to make officially valid or legally binding; its direct operational counter-action is to 'nullify'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The local merchant was known across the district to be parsimonious. (Opposite in meaning to parsimonious)",
 options: ["stingy", "extravagant", "frugal", "prudent"],
 answer: "extravagant",
 explanation: "'Parsimonious' means extremely stingy or unwilling to spend money; its structural opposite is 'extravagant'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The operations instructions were issued in a manner that was completely overt. (Opposite in meaning to overt)",
 options: ["open", "covert", "public", "manifest"],
 answer: "covert",
 explanation: "'Overt' means done or shown openly; its direct behavioral opposite is 'covert' (secret or hidden)."
 },
 // =====================
-// LEXIS AND STRUCTURE — SYNONYMS
+// Lexis & Structure — SYNONYMS
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The regional technical chief issued a highly lucid operation brief. (Nearest in meaning to lucid)",
 options: ["confusing", "clear", "vague", "cryptic"],
 answer: "clear",
 explanation: "'Lucid' means expressed clearly and easy to understand; i.e., 'clear'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The small scale village markets began to thrive after the road infrastructure updates. (Nearest in meaning to thrive)",
 options: ["decline", "flourish", "stagnate", "fail"],
 answer: "flourish",
 explanation: "To 'thrive' means to grow or develop vigorously and successfully; closest in meaning to 'flourish'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The traditional community layout possesses an inherent structural stability. (Nearest in meaning to inherent)",
 options: ["external", "intrinsic", "accidental", "superficial"],
 answer: "intrinsic",
 explanation: "'Inherent' means existing in something as a permanent, essential, or built-in quality; i.e., 'intrinsic'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The unit director's notes on the regional project were rather cryptic. (Nearest in meaning to cryptic)",
 options: ["mysterious", "explicit", "straightforward", "clear"],
 answer: "mysterious",
 explanation: "'Cryptic' means having a meaning that is mysterious, hidden, or puzzling; i.e., 'mysterious'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The task group discovered an indigenous herb variety with high visual symmetry. (Nearest in meaning to indigenous)",
 options: ["foreign", "native", "imported", "exotic"],
 answer: "native",
 explanation: "'Indigenous' means originating or occurring naturally in a particular geographic place; i.e., 'native'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The research board was commended for its painstaking record management systems. (Nearest in meaning to painstaking)",
 options: ["careless", "meticulous", "haphazard", "cursory"],
 answer: "meticulous",
 explanation: "'Painstaking' means done with close, thorough, and diligent attention to detail; closest to 'meticulous'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The manual storage frameworks inside the facility have been rendered obsolete. (Nearest in meaning to obsolete)",
 options: ["current", "outdated", "efficient", "modern"],
 answer: "outdated",
 explanation: "'Obsolete' means no longer produced or out of date; i.e., 'outdated'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The community units achieved an amicable settlement regarding the regional water points. (Nearest in meaning to amicable)",
 options: ["hostile", "friendly", "bitter", "violent"],
 answer: "friendly",
 explanation: "'Amicable' describes an interaction characterized by friendliness and a desire to avoid discord; i.e., 'friendly'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The engine exhaust emits a pungent combination of industrial gasses. (Nearest in meaning to pungent)",
 options: ["mild", "sharp", "sweet", "pleasant"],
 answer: "sharp",
 explanation: "'Pungent' describes a sharp, biting, or piercing sensory stimulus; i.e., 'sharp'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The panel chair decided to reiterate the criteria rules before opening the floor. (Nearest in meaning to reiterate)",
 options: ["withdraw", "repeat", "change", "cancel"],
 answer: "repeat",
 explanation: "To 'reiterate' means to repeat a statement or action multiple times for absolute clarity; i.e., to 'repeat'."
 },
 // =====================
-// LEXIS AND STRUCTURE — GAP FILLING
+// Lexis & Structure — GAP FILLING
 // =====================
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The specialized testing unit has finally arrived ... a consensus regarding the calibration settings.",
 options: ["at", "in", "to", "by"],
 answer: "at",
 explanation: "The verb 'arrive' standardly collocates with the preposition 'at' when referencing structural outcomes, verdicts, or consensus choices."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "If the chief engineer ... inspected the pressure valves earlier, the pipeline rupture would have been prevented.",
 options: ["has", "had", "have", "would have"],
 answer: "had",
 explanation: "A past counterfactual conditional structure (third conditional) requires the past perfect auxiliary form ('had inspected') inside the condition clause."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "Neither the operations coordinator nor his technical assistants ... present at the layout site yesterday afternoon.",
 options: ["was", "were", "are", "have been"],
 answer: "were",
 explanation: "When correlating subjects using 'neither... nor', the verb agrees in number with the closer subject element. 'Technical assistants' is plural, so it takes 'were'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "Every branch manager is instructed to bring ... completed asset ledger sheets to the verification desk.",
 options: ["their", "his or her", "its", "there"],
 answer: "his or her",
 explanation: "The singular distributive adjective 'Every' requires a singular possessive reference pronoun configuration ('his or her') in formal grammar."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The high surface wind speeds prevented the survey aircraft ... taking off at the scheduled hour.",
 options: ["from", "to", "by", "against"],
 answer: "from",
 explanation: "The verb 'prevent' standardly takes the collocation form 'prevent X from doing Y' followed by a nominal gerund clause."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The constant shifts in input currency values resulted ... a complete restructuring of the price maps.",
 options: ["to", "in", "from", "by"],
 answer: "in",
 explanation: "The phrasal verb configuration 'result in' is the standard expression used to introduce a structural consequence or outcome."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The management board designed the simplified layout as a means ... reducing workflow delays.",
 options: ["of", "to", "for", "by"],
 answer: "of",
 explanation: "The structural layout configuration 'a means of doing something' is the standard fixed expression used to state a method."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The head technician was extremely sorry ... the compilation errors discovered in the early manual copies.",
 options: ["for", "about", "at", "in"],
 answer: "for",
 explanation: "The adjective 'sorry' standardly collocates with the preposition 'for' when expressing formal regret regarding an error or action."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The software engineering unit had finished the data mapping before the central terminal ... power.",
 options: ["loses", "lost", "had lost", "has lost"],
 answer: "lost",
 explanation: "When an action is completed before a past milestone (marked by past perfect 'had finished'), the subsequent dependent event takes the simple past ('lost')."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The new regional research facility provides adequate ... for sixty visiting scientists.",
 options: ["accommodation", "accomodation", "accommodation", "acommoddation"],
 answer: "accommodation",
 explanation: "The correct standard orthographical spelling is 'accommodation' featuring a double 'c' and a double 'm'."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The municipal court ordered the building contractor to pay full compensation for the ... caused to the public pipeline.",
 options: ["damage", "damages", "heavy damages", "destructions"],
 answer: "damage",
 explanation: "When referring to physical harm or destruction to property, the noun 'damage' is uncountable. 'Damages' in the plural refers to legal financial compensation sums."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The senior tracking partner insisted ... reviewing the audited statement files personally.",
 options: ["on", "in", "for", "at"],
 answer: "on",
 explanation: "The verb 'insist' strictly collocates with the preposition 'on' followed by a gerund noun phrase."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The unsuspecting wholesale buyer was completely taken ... by the elaborate counterfeit stamp details.",
 options: ["away", "out", "in", "off"],
 answer: "in",
 explanation: "The phrasal verb construction 'taken in' is an idiomatic expression that means to be thoroughly deceived or fooled by someone."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The city expansion council decided to postpone the structural zoning launch ... to allow for soil matrix evaluations.",
 options: ["indefinitely", "for six months", "definitely", "by next week"],
 answer: "indefinitely",
 explanation: "'Indefinitely' means delaying an event or project timeline without setting a specific resumption date."
 },
 {
-subject: "English", topic: "Lexis and Structure", year: 2002, exam: "JAMB",
+subject: "English", topic: "Lexis & Structure", year: 2002, exam: "JAMB",
 question: "The new analytical balance apparatus is ... than the mechanical device used during the previous terms.",
 options: ["more cleverer", "very cleverer", "much more efficient", "much efficienter"],
 answer: "much more efficient",
