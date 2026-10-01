@@ -1,4 +1,8 @@
 import { useState } from "react"
+import { UPGRADE_PRICE } from "../utils/appConfig"
+
+// The price comes from src/utils/appConfig.js, so it matches every other page.
+const PRICE_TEXT = UPGRADE_PRICE
 
 export default function Upgrade({ user, userData, onBack }) {
   const [copied, setCopied] = useState("")
@@ -21,7 +25,7 @@ export default function Upgrade({ user, userData, onBack }) {
   ]
   const featureIcons = ["📚", "🤖", "🎯", "🔥", "📈", "🕐", "👥", "🎁"]
 
-  const waMessage = `Hello ExamEdge,\n\nI have made payment of \u20a62,000 for Premium access.\n\nName: ${userData?.name || ""}\nEmail: ${user?.email || ""}\n\nReceipt attached.\n\nKindly activate my Premium account\nand send me the Study Group link.\n\nThank you.`
+  const waMessage = `Hello ExamEdge,\n\nI have made payment of ${PRICE_TEXT} for Premium access.\n\nName: ${userData?.name || ""}\nEmail: ${user?.email || ""}\n\nReceipt attached.\n\nKindly activate my Premium account\nand send me the Study Group link.\n\nThank you.`
 
   return (
     <div style={{
@@ -67,7 +71,7 @@ export default function Upgrade({ user, userData, onBack }) {
             ONE-TIME PAYMENT
           </div>
           <div style={{ fontSize: 42, fontWeight: 900, color: "#1a1a2e", lineHeight: 1 }}>
-            ₦2,000
+            {PRICE_TEXT}
           </div>
           <div style={{ fontSize: 12, color: "#888", marginTop: 8 }}>
             No subscription · Bank transfer
@@ -136,7 +140,7 @@ export default function Upgrade({ user, userData, onBack }) {
           <div style={{ textAlign: "center", marginBottom: 16 }}>
             <div style={{ fontSize: 32, marginBottom: 4 }}>🏦</div>
             <div style={{ fontSize: 12, color: "#888", fontWeight: 700, letterSpacing: 0.5 }}>TRANSFER</div>
-            <div style={{ fontSize: 32, fontWeight: 900, color: "#1a1a2e" }}>₦2,000</div>
+            <div style={{ fontSize: 32, fontWeight: 900, color: "#1a1a2e" }}>{PRICE_TEXT}</div>
           </div>
 
           <div style={{

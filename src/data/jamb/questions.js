@@ -37,6 +37,15 @@ import bioJamb2002 from "./biology/jamb2002"
 import bioJamb2003 from "./biology/jamb2003"
 import bioJamb2004 from "./biology/jamb2004"
 import bioJamb2010 from "./biology/jamb2010"
+import bioJamb2011 from "./biology/jamb2011"
+import bioJamb2012 from "./biology/jamb2012"
+import bioJamb2013 from "./biology/jamb2013"
+import bioJamb2014 from "./biology/jamb2014"
+import bioJamb2015 from "./biology/jamb2015"
+import bioJamb2016 from "./biology/jamb2016"
+import bioJamb2017 from "./biology/jamb2017"
+import bioJamb2018 from "./biology/jamb2018"
+
 
 // --- CHEMISTRY ---
 import chemJamb1983 from "./chemistry/jamb1983"
@@ -123,6 +132,15 @@ import econJamb2002 from "./economics/jamb2002"
 import econJamb2003 from "./economics/jamb2003"
 import econJamb2004 from "./economics/jamb2004"
 import econJamb2010 from "./economics/jamb2010"
+import econJamb2011 from "./economics/jamb2011"
+import econJamb2012 from "./economics/jamb2012"
+import econJamb2013 from "./economics/jamb2013"
+import econJamb2014 from "./economics/jamb2014"
+import econJamb2015 from "./economics/jamb2015"
+import econJamb2016 from "./economics/jamb2016"
+import econJamb2017 from "./economics/jamb2017"
+import econJamb2018 from "./economics/jamb2018"
+
 
 // --- ENGLISH ---
 import englishjamb1983 from "./english/englishJamb1983"
@@ -151,10 +169,48 @@ import englishjamb2010 from "./english/englishjamb2010"
 import englishjamb2011 from "./english/englishjamb2011"
 
 // --- GOVERNMENT ---
+import govtJamb1983 from "./government/jamb1983"
+import govtJamb1984 from "./government/jamb1984"
+import govtJamb1985 from "./government/jamb1985"
+import govtJamb1986 from "./government/jamb1986"
+import govtJamb1987 from "./government/jamb1987"
+import govtJamb1988 from "./government/jamb1988"
+import govtJamb1989 from "./government/jamb1989"
+import govtJamb1990 from "./government/jamb1990"
+import govtJamb1991 from "./government/jamb1991"
+import govtJamb1992 from "./government/jamb1992"
+import govtJamb1993 from "./government/jamb1993"
+import govtJamb1994 from "./government/jamb1994"
+import govtJamb1995 from "./government/jamb1995"
+import govtJamb1997 from "./government/jamb1997"
+import govtJamb1998 from "./government/jamb1998"
+import govtJamb1999 from "./government/jamb1999"
+import govtJamb2000 from "./government/jamb2000"
+import govtJamb2001 from "./government/jamb2001"
+import govtJamb2002 from "./government/jamb2002"
+import govtJamb2003 from "./government/jamb2003"
+import govtJamb2004 from "./government/jamb2004"
 import govtJamb2010 from "./government/jamb2010"
+import govtJamb2011 from "./government/jamb2011"
+import govtJamb2012 from "./government/jamb2012"
+import govtJamb2013 from "./government/jamb2013"
+import govtJamb2014 from "./government/jamb2014"
+import govtJamb2015 from "./government/jamb2015"
+import govtJamb2016 from "./government/jamb2016"
+import govtJamb2017 from "./government/jamb2017"
+import govtJamb2018 from "./government/jamb2018"
 
 // --- LITERATURE ---
 import litJamb2010 from "./literature/jamb2010"
+import litJamb2011 from "./literature/jamb2011"
+import litJamb2012 from "./literature/jamb2012"
+import litJamb2013 from "./literature/jamb2013"
+import litJamb2014 from "./literature/jamb2014"
+import litJamb2015 from "./literature/jamb2015"
+import litJamb2016 from "./literature/jamb2016"
+import litJamb2017 from "./literature/jamb2017"
+import litJamb2018 from "./literature/jamb2018"
+
 
 // --- MATHEMATICS ---
 import mathsJamb1983 from "./mathematics/jamb1983"
@@ -231,9 +287,40 @@ const questions = [
   ...englishjamb2010,
   ...englishjamb2011,
 
+  // --- GOVERNMENT ---
+  ...govtJamb1983,
+  ...govtJamb1984,
+  ...govtJamb1985,
+  ...govtJamb1986,
+  ...govtJamb1987,
+  ...govtJamb1988,
+  ...govtJamb1989,
+  ...govtJamb1990,
+  ...govtJamb1991,
+  ...govtJamb1992,
+  ...govtJamb1993,
+  ...govtJamb1994,
+  ...govtJamb1995,
+  ...govtJamb1997,
+  ...govtJamb1998,
+  ...govtJamb1999,
+  ...govtJamb2000,
+  ...govtJamb2001,
+  ...govtJamb2002,
+  ...govtJamb2003,
+  ...govtJamb2004,
   ...govtJamb2010,
+  ...govtJamb2011,
+  ...govtJamb2012,
+  ...govtJamb2013,
+  ...govtJamb2014,
+  ...govtJamb2015,
+  ...govtJamb2016,
+  ...govtJamb2017,
+  ...govtJamb2018,
+
   
-  // --- ECONOMICS ---
+// --- ECONOMICS ---
   ...econJamb1983,
   ...econJamb1984,
   ...econJamb1985,
@@ -257,8 +344,17 @@ const questions = [
   ...econJamb2003,
   ...econJamb2004,
   ...econJamb2010,
+  ...econJamb2011,
+  ...econJamb2012,
+  ...econJamb2013,
+  ...econJamb2014,
+  ...econJamb2015,
+  ...econJamb2016,
+  ...econJamb2017,
+  ...econJamb2018,
 
-  // --- BIOLOGY ---
+
+ // --- BIOLOGY ---
   ...bioJamb1983,
   ...bioJamb1984,
   ...bioJamb1985,
@@ -282,9 +378,27 @@ const questions = [
   ...bioJamb2003,
   ...bioJamb2004,
   ...bioJamb2010,
+  ...bioJamb2011,
+  ...bioJamb2012,
+  ...bioJamb2013,
+  ...bioJamb2014,
+  ...bioJamb2015,
+  ...bioJamb2016,
+  ...bioJamb2017,
+  ...bioJamb2018,
 
+// --- LITERATURE ---
   ...litJamb2010,
+  ...litJamb2011,
+  ...litJamb2012,
+  ...litJamb2013,
+  ...litJamb2014,
+  ...litJamb2015,
+  ...litJamb2016,
+  ...litJamb2017,
+  ...litJamb2018,
 
+//--- maths ---
   ...mathsJamb1983,
   ...mathsJamb1984,
   ...mathsJamb1985,

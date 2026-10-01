@@ -1,4 +1,5 @@
 // Reusable paywall prompt shown when user hits a locked feature
+import { UPGRADE_PRICE } from "../utils/appConfig"
 
 export default function PaywallPrompt({ type, onUpgrade, onClose }) {
   const configs = {
@@ -10,14 +11,14 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
     },
     cbtMode: {
       icon: '🧪',
-      title: 'You\'ve used your free CBT attempt',
+      title: 'You\'ve used your free CBTs',
       message: 'Upgrade to take unlimited CBT exams across all 20 years and track your real progress over time.',
       cta: 'Unlock Unlimited CBTs',
     },
     year: {
       icon: '📅',
       title: 'This year is locked',
-      message: 'You can only access 2014 and 2015 for free. Upgrade to unlock all 20 years (2005–2024).',
+      message: 'You can only access 2014 and 2015 for free. Upgrade to unlock all 20 years of past questions.',
       cta: 'Unlock All Years',
     },
     hotTopics: {
@@ -117,7 +118,6 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
           </p>
           {[
             '📚 All 20 years of questions',
-            '🤖 AI Tutor',
             '🎯 Unlimited CBT practice',
             '🔥 Hot Topics & Weak Areas',
             '📈 Full analytics & history',
@@ -131,7 +131,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
 
         {/* Price */}
         <div style={{ marginBottom: 16, textAlign: 'center' }}>
-          <div style={{ fontSize: 32, fontWeight: 800, color: '#667eea' }}>₦2,000</div>
+          <div style={{ fontSize: 32, fontWeight: 800, color: '#667eea' }}>{UPGRADE_PRICE}</div>
           <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>one-time payment · bank transfer</div>
         </div>
 
@@ -150,7 +150,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
             marginBottom: 12,
           }}
         >
-          {config.cta} — ₦2,000 🔓
+          {config.cta} — {UPGRADE_PRICE} 🔓
         </button>
 
         <button

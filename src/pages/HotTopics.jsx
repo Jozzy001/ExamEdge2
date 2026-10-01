@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
+import jambQuestions from "../data/jamb/questions"
 
 const SUBJECT_META = {
   "English":     { icon: "📖", color: "#4a90d9", bg: "#f0f7ff" },
@@ -17,17 +18,53 @@ const SUBJECT_META = {
   "IRK":         { icon: "☪️", color: "#276749", bg: "#f0fff4" },
 }
 
-const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
+const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = [] }) => {
   const [selectedSubject, setSelectedSubject] = useState(null)
   const [selectedTopic, setSelectedTopic] = useState(null)
 
-  const questionPool = POST_UTME_UNIVERSITIES[university]?.questions || []
+  // Post-UTME users have a university that exists in the Post-UTME data.
+  // Anyone else (JAMB users) uses the JAMB question bank, even if a label like "JAMB" is passed as the university.
+  // Passage-based questions are flattened so every question counts under its own subject and topic.
+  const questionPool = useMemo(() => {
+    const uni = university ? POST_UTME_UNIVERSITIES[university] : null
+    const source = uni ? (uni.questions || []) : jambQuestions
+    const toArray = (x) =>
+      Array.isArray(x) ? x.flat(Infinity)
+      : (x && typeof x === "object" ? Object.values(x).flat(Infinity) : [])
+    return toArray(source).flatMap(q => {
+      if (q && q.passage && q.questions) {
+        return q.questions.map(inner => ({ ...inner, passage: q.passage }))
+      }
+      return q ? [q] : []
+    })
+  }, [university])
+
+  // Treat "Maths", "Mathematics", "Use of English", "English Language" etc. as the same subject
+  const canon = (name) => {
+    const n = String(name || "").toLowerCase().replace(/[^a-z]/g, "")
+    if (n.includes("english")) return "english"
+    if (n.startsWith("math")) return "mathematics"
+    if (n === "crk" || n === "crs" || n.includes("christianreligious")) return "crk"
+    if (n === "irk" || n === "irs" || n.includes("islamicreligious")) return "irk"
+    return n
+  }
+
+  // Subjects to show: the user's subjects matched against what is really in the questions.
+  // If nothing matches (or none were passed), show every subject found in the questions.
+  const subjectList = useMemo(() => {
+    const poolSubjects = [...new Set(questionPool.map(q => q.subject).filter(Boolean))]
+    if (!facultySubjects || facultySubjects.length === 0) return poolSubjects
+    const matched = facultySubjects
+      .map(fs => poolSubjects.find(ps => canon(ps) === canon(fs)))
+      .filter(Boolean)
+    return matched.length > 0 ? [...new Set(matched)] : poolSubjects
+  }, [facultySubjects, questionPool])
 
   // Get hot topics per subject — topics with 2+ questions
   const getHotTopics = (subject) => {
     const topicCounts = {}
     questionPool.forEach(q => {
-      if (q.subject === subject) {
+      if (q.subject === subject && q.topic) {
         topicCounts[q.topic] = (topicCounts[q.topic] || 0) + 1
       }
     })
@@ -37,26 +74,12 @@ const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
       .map(([topic, count]) => ({ topic, count }))
   }
 
-  // Get questions for a specific topic (repeated ones) - flatten passages
-  const getTopicQuestions = (subject, topic) => {
-    const questions = []
-    questionPool.forEach(q => {
-      if (q.passage && q.questions) {
-        // Passage-based questions
-        q.questions.forEach(inner => {
-          if (inner.subject === subject && inner.topic === topic) {
-            questions.push({ ...inner, passage: q.passage })
-          }
-        })
-      } else if (q.subject === subject && q.topic === topic) {
-        questions.push(q)
-      }
-    })
-    return questions
-  }
+  // Get questions for a specific topic (repeated ones)
+  const getTopicQuestions = (subject, topic) =>
+    questionPool.filter(q => q.subject === subject && q.topic === topic)
 
   // Get subject stats
-  const subjectStats = facultySubjects.map(subject => {
+  const subjectStats = subjectList.map(subject => {
     const hotTopics = getHotTopics(subject)
     const totalHotQ = hotTopics.reduce((sum, t) => sum + t.count, 0)
     return { subject, hotTopicsCount: hotTopics.length, totalHotQ }
@@ -277,6 +300,16 @@ const HotTopics = ({ onNavigate, onBack, university, facultySubjects }) => {
         <h3 style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>
           Pick a Subject
         </h3>
+
+        {subjectStats.length === 0 && (
+          <div className="ee-empty">
+            <span className="ee-empty-icon">📭</span>
+            <p>No hot topics found yet.</p>
+            <p style={{ fontSize: 11, color: "var(--text3)", marginTop: 8 }}>
+              Debug: {questionPool.length} questions loaded · university: {String(university)} · subjects: {subjectList.join(", ") || "none"}
+            </p>
+          </div>
+        )}
 
         {subjectStats.map(({ subject, hotTopicsCount, totalHotQ }) => {
           const meta = SUBJECT_META[subject] || { icon: "📖", color: "#667eea", bg: "#f0f4ff" }

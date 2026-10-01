@@ -1,11 +1,12 @@
 import { useState, useRef, useMemo, useEffect } from "react"
-import { doc, updateDoc } from "firebase/firestore"
+import { doc, updateDoc, getDoc, increment } from "firebase/firestore"
 import { db } from "../firebase"
 import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import PageTour, { TOURS } from "../components/PageTour"
 import { saveCBTRecord } from "../utils/cbtHistory"
+import { FREE_CBT_LIMIT } from "../utils/appConfig"
 
 // =============================================
 // IMAGE RENDERER
@@ -257,6 +258,23 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
   const isStudyMode = !isCBT && !isWeak && topic !== "hotTopics"
   const FREE_STUDY_LIMIT = 5
   const [showStudyPaywall, setShowStudyPaywall] = useState(false)
+
+  // Free users get FREE_CBT_LIMIT CBTs. The count lives on their account in Firestore
+  // (and in this browser's history), so we use whichever is higher.
+  const [cbtBlocked, setCbtBlocked] = useState(false)
+  useEffect(() => {
+    if (!isCBT || isPaid) return
+    let localCount = 0
+    try { localCount = JSON.parse(localStorage.getItem("ee-cbtHistory") || "[]").length } catch (e) {}
+    if (localCount >= FREE_CBT_LIMIT) { setCbtBlocked(true); return }
+    if (!authUser?.uid) return
+    getDoc(doc(db, "users", authUser.uid))
+      .then(snap => {
+        const saved = snap.exists() ? (snap.data().cbtCount || 0) : 0
+        if (Math.max(saved, localCount) >= FREE_CBT_LIMIT) setCbtBlocked(true)
+      })
+      .catch(() => {})
+  }, [isCBT, isPaid, authUser?.uid])
   const currentQuestion = filteredQuestions[currentIndex]
 
   useEffect(() => {
@@ -310,6 +328,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
 
       // ✅ Save to localStorage AND Firestore using saveCBTRecord
       saveCBTRecord(reportData, authUser?.uid)
+
+      // Count this CBT on the user's account so the free limit survives clearing the browser
+      if (authUser?.uid) {
+        updateDoc(doc(db, "users", authUser.uid), { cbtCount: increment(1) }).catch(() => {})
+      }
     }
 
     // Update progress
@@ -399,6 +422,19 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             )}
           </div>
         </div>
+      </div>
+    )
+  }
+
+  // FREE CBT LIMIT REACHED
+  if (isCBT && !started && cbtBlocked) {
+    return (
+      <div className="ee-page">
+        <PaywallPrompt
+          type="cbtMode"
+          onUpgrade={() => onNavigate("upgrade")}
+          onClose={() => onNavigate("home")}
+        />
       </div>
     )
   }
@@ -495,7 +531,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     setFinished(true)
   }
   const goToQuestion = (i) => {
-    if (isStudyMode && !isPaid && examType === "postutme" && i >= FREE_STUDY_LIMIT) {
+    if (isStudyMode && !isPaid && i >= FREE_STUDY_LIMIT) {
       setShowStudyPaywall(true)
       return
     }
@@ -522,6 +558,15 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       if (answersMapRef.current[i]?.selected === q.answer) subjectBreakdown[subj].score++
     })
 
+    // JAMB equivalent: each subject is marked over 100, four subjects make 400.
+    // Average of the subject scores x 4 (equals the sum of the subject scores when 4 subjects are taken).
+    const subjectPcts = Object.values(subjectBreakdown).map(s => Math.round((s.score / s.total) * 100))
+    const avgSubjectPct = subjectPcts.length > 0
+      ? subjectPcts.reduce((a, b) => a + b, 0) / subjectPcts.length
+      : pct
+    const jambEquiv = Math.round(avgSubjectPct * 4)
+    const jambColor = jambEquiv >= 280 ? "#16a34a" : jambEquiv >= 200 ? "#d97706" : "#dc2626"
+
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -541,6 +586,25 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
             <div style={{ fontSize: 32, fontWeight: 800, marginBottom: 8 }}>{pct}%</div>
             <div style={{ fontSize: 14, opacity: 0.9 }}>{msg}</div>
           </div>
+
+          {isCBT && examType === "jamb" && (
+            <div style={{
+              background: "var(--surface)", border: `1.5px solid ${jambColor}`,
+              borderRadius: "var(--radius-lg)", padding: "16px",
+              marginBottom: 16, textAlign: "center"
+            }}>
+              <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 6, lineHeight: 1.5 }}>
+                Your score of <strong style={{ color: "var(--text)" }}>{score} out of {total}</strong> is equivalent to a JAMB result of
+              </div>
+              <div style={{ fontSize: 38, fontWeight: 900, color: jambColor, lineHeight: 1.1 }}>
+                {jambEquiv}<span style={{ fontSize: 18, fontWeight: 700, color: "var(--text3)" }}> / 400</span>
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 8, lineHeight: 1.5 }}>
+                JAMB is marked over 400, with each subject marked over 100.
+                {subjectPcts.length !== 4 && " You did not write exactly 4 subjects, so this is an estimate based on your average subject score."}
+              </div>
+            </div>
+          )}
 
           {isCBT && examType === "postutme" && (
             <div style={{
@@ -577,7 +641,11 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
                   <div key={subj} style={{ marginBottom: 10 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                       <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{subj}</span>
-                      <span style={{ fontSize: 13, fontWeight: 800, color }}>{stats.score}/{stats.total} ({subjPct}%)</span>
+                      <span style={{ fontSize: 13, fontWeight: 800, color }}>
+                        {examType === "jamb"
+                          ? `${stats.score}/${stats.total} · ${subjPct}/100`
+                          : `${stats.score}/${stats.total} (${subjPct}%)`}
+                      </span>
                     </div>
                     <div style={{ height: 6, borderRadius: 3, background: "var(--border)" }}>
                       <div style={{ height: "100%", width: `${subjPct}%`, borderRadius: 3, background: color }} />
@@ -611,7 +679,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         />
       )}
 
-      {isStudyMode && !isPaid && examType === "postutme" && !finished && (
+      {isStudyMode && !isPaid && !finished && (
         <div onClick={() => onNavigate("upgrade")} style={{
           background: currentIndex >= FREE_STUDY_LIMIT - 1
             ? "linear-gradient(135deg, #667eea, #764ba2)"
@@ -717,12 +785,12 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
           {currentIndex < filteredQuestions.length - 1 ? (
             <button className="ee-nav-btn" onClick={() => goToQuestion(currentIndex + 1)}
               style={{
-                background: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+                background: isStudyMode && !isPaid && currentIndex + 1 >= FREE_STUDY_LIMIT
                   ? "linear-gradient(135deg, #667eea, #764ba2)" : undefined,
-                color: isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+                color: isStudyMode && !isPaid && currentIndex + 1 >= FREE_STUDY_LIMIT
                   ? "#fff" : undefined,
               }}>
-              {isStudyMode && !isPaid && examType === "postutme" && currentIndex + 1 >= FREE_STUDY_LIMIT
+              {isStudyMode && !isPaid && currentIndex + 1 >= FREE_STUDY_LIMIT
                 ? "🔒 Upgrade to continue" : "Next →"}
             </button>
           ) : isCBT ? (

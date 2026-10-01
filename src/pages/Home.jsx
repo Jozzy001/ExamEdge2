@@ -10,21 +10,23 @@ import DailyQuote from "../components/DailyQuote"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
 import { getGameState } from "../utils/gamification"
+import { UPGRADE_PRICE, SHOW_REFERRALS, FREE_CBT_LIMIT } from "../utils/appConfig"
 import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"
 
-// Change these in one place
-const UPGRADE_PRICE = "₦2,500"
+// Change this in one place
 const WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K"
+
+// Temporary: who can use AI Tutor and Classroom while they're disabled for students
+const ADMIN_EMAILS = ["youradmin@email.com"] // put your admin email(s) here, lowercase
 
 const FREE_HAVE = [
   "📅 2 years of past questions (2014 & 2015)",
-  "🧪 CBT simulation mode",
+  `🧪 ${FREE_CBT_LIMIT} free CBT exams`,
   "📚 Study guides for all topics",
-  "🎓 AI Tutor",
 ]
 
 const FREE_MISSING = [
-  "📚 18 more years of questions (2005–2013, 2016–2024)",
+  "📚 All the other years of past questions",
   "🔥 Hot Topics — questions that repeat every year",
   "📊 Weak Areas — know exactly what to fix",
   "🕐 CBT History — review every attempt",
@@ -64,10 +66,22 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
 
   const streak = getGameState().streak || 0
 
+  // Admin check (any one of these makes the user an admin)
+  const isAdmin =
+    userData?.isAdmin === true ||
+    userData?.role === "admin" ||
+    ADMIN_EMAILS.includes(authUser?.email?.toLowerCase())
+
+  // Navigate only if admin (AI Tutor / Classroom are admin-only for now)
+  const adminOnly = (screen) => () => { if (isAdmin) onNavigate(screen) }
+
   // CBT count for the upgrade nudge and CBT lock
+  // Uses the higher of the browser history and the count saved on the user's account
   useEffect(() => {
-    try { setCbtCount(getCBTHistory().length) } catch (e) {}
-  }, [])
+    let local = 0
+    try { local = getCBTHistory().length } catch (e) {}
+    setCbtCount(Math.max(local, userData?.cbtCount || 0))
+  }, [userData?.cbtCount])
 
   // Free-plan prompt, once per session
   useEffect(() => {
@@ -171,7 +185,7 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
     authUser?.email?.split("@")[0] ||
     "Student"
 
-  const cbtLocked = !isPaid && cbtCount >= 1
+  const cbtLocked = !isPaid && cbtCount >= FREE_CBT_LIMIT
 
   // Subscription expiry warning (last 7 days)
   let expiryBanner = null
@@ -340,18 +354,18 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           {streak > 0 && <span className="hm-streak-count">{streak}</span>}
         </div>
 
-        {/* Upgrade nudge — free users after their first CBT */}
-        {!isPaid && cbtCount >= 1 && !nudgeDismissed && (
+        {/* Upgrade nudge — free users once they have used all their free CBTs */}
+        {!isPaid && cbtCount >= FREE_CBT_LIMIT && !nudgeDismissed && (
           <div className="hm-nudge">
             <button className="hm-nudge-x" onClick={dismissNudge} aria-label="Dismiss">✕</button>
             <div className="hm-nudge-row">
               <span className="hm-nudge-emoji">📊</span>
               <div>
                 <div className="hm-nudge-title">
-                  You've used your free CBT attempt. Unlock unlimited practice
+                  You've used your free CBTs. Unlock unlimited practice
                 </div>
                 <div className="hm-nudge-text">
-                  You completed your free CBT attempt with <strong>2014 & 2015</strong> questions.
+                  You completed your free CBTs with <strong>2014 & 2015</strong> questions.
                   Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
                   plus Hot Topics, Weak Areas tracking and CBT History.
                 </div>
@@ -389,14 +403,21 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           <span className="hm-banner-go">›</span>
         </button>
 
-        {/* AI Tutor */}
-        <button className="hm-banner soft" onClick={() => onNavigate("aiTutor")}>
+        {/* AI Tutor — admin only for now */}
+        <button
+          className="hm-banner soft"
+          onClick={adminOnly("aiTutor")}
+          disabled={!isAdmin}
+          style={!isAdmin ? { opacity: 0.55, cursor: "not-allowed" } : undefined}
+        >
           <span className="hm-banner-emoji">🎓</span>
           <span className="hm-banner-body">
-            <span className="hm-banner-title">AI Tutor</span>
-            <span className="hm-banner-sub">Ask me what to study today. I know your weak areas</span>
+            <span className="hm-banner-title">AI Tutor {isAdmin ? "🛠️" : "🔒"}</span>
+            <span className="hm-banner-sub">
+              {isAdmin ? "Admin preview · hidden from students" : "Coming soon"}
+            </span>
           </span>
-          <span className="hm-banner-go">›</span>
+          <span className="hm-banner-go">{isAdmin ? "›" : ""}</span>
         </button>
 
         <div className="hm-grid">
@@ -447,14 +468,21 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           </button>
         </div>
 
-        {/* Classroom */}
-        <button className="hm-banner soft" onClick={() => onNavigate("classroom")}>
+        {/* Classroom — admin only for now */}
+        <button
+          className="hm-banner soft"
+          onClick={adminOnly("classroom")}
+          disabled={!isAdmin}
+          style={!isAdmin ? { opacity: 0.55, cursor: "not-allowed" } : undefined}
+        >
           <span className="hm-banner-emoji">🏫</span>
           <span className="hm-banner-body">
-            <span className="hm-banner-title">Classroom {!isPaid && "🔒"}</span>
-            <span className="hm-banner-sub">Study live with friends. Same question, same time</span>
+            <span className="hm-banner-title">Classroom {isAdmin ? "🛠️" : "🔒"}</span>
+            <span className="hm-banner-sub">
+              {isAdmin ? "Admin preview · hidden from students" : "Coming soon"}
+            </span>
           </span>
-          <span className="hm-banner-go">›</span>
+          <span className="hm-banner-go">{isAdmin ? "›" : ""}</span>
         </button>
 
         <span className="ee-label" style={{ marginTop: 22 }}>Track yourself</span>
@@ -477,15 +505,17 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           <span className="hm-arrow-inline" aria-hidden="true">›</span>
         </button>
 
-        {/* Referrals */}
-        <button className="hm-banner green" onClick={() => onNavigate("referrals")}>
-          <span className="hm-banner-emoji">💰</span>
-          <span className="hm-banner-body">
-            <span className="hm-banner-title">Refer Friends. Earn ₦500 at Launch 🚀</span>
-            <span className="hm-banner-sub">Share your code now · Get paid when we fully launch</span>
-          </span>
-          <span className="hm-banner-go">›</span>
-        </button>
+        {/* Referrals — hidden for now. Turn back on in src/utils/appConfig.js (SHOW_REFERRALS) */}
+        {SHOW_REFERRALS && (
+          <button className="hm-banner green" onClick={() => onNavigate("referrals")}>
+            <span className="hm-banner-emoji">💰</span>
+            <span className="hm-banner-body">
+              <span className="hm-banner-title">Refer Friends. Earn ₦500 at Launch 🚀</span>
+              <span className="hm-banner-sub">Share your code now · Get paid when we fully launch</span>
+            </span>
+            <span className="hm-banner-go">›</span>
+          </button>
+        )}
 
         {/* Upgrade */}
         {!isPaid && (
@@ -514,7 +544,7 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           <span className="hm-emoji tone-primary">⚙️</span>
           <span className="hm-row-body">
             <span className="hm-tile-title">Settings</span>
-            <span className="hm-tile-sub">Account, plan, referrals and support</span>
+            <span className="hm-tile-sub">Account, plan and support</span>
           </span>
           <span className="hm-arrow-inline" aria-hidden="true">›</span>
         </button>

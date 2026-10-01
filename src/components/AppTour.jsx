@@ -6,7 +6,7 @@ const STEPS = [
   {
     emoji: "🎓",
     title: "Welcome to ExamEdgeNG",
-    desc: "The smartest way to prepare for your UNIBEN Post-UTME. Built from 20 years of past questions — let's get you ready to pass.",
+    desc: "The smartest way to prepare for JAMB and Post-UTME. Built from over 20 years of past questions — let's get you ready to pass.",
     highlight: null,
     color: "#667eea",
     bg: "linear-gradient(135deg, #667eea, #764ba2)",
@@ -14,8 +14,8 @@ const STEPS = [
   {
     emoji: "🧪",
     title: "CBT Mode",
-    desc: "Simulate the real Post-UTME exam. Timed, all subjects together — exactly like the actual test. The more you practice, the calmer you'll be on exam day.",
-    highlight: "📅 46 days to Post-UTME",
+    desc: "Simulate the real JAMB and Post-UTME exams. Timed, all subjects together — exactly like the actual test. The more you practice, the calmer you'll be on exam day.",
+    highlight: "⏱️ Timed & Scored",
     color: "#3b82f6",
     bg: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
   },
@@ -30,7 +30,7 @@ const STEPS = [
   {
     emoji: "🔥",
     title: "Hot Topics",
-    desc: "We analysed every UNIBEN past question from 2005 till date. These are the topics that repeat every year — master them and you're already ahead of 80% of candidates.",
+    desc: "We analysed over 20 years of JAMB and Post-UTME past questions. These are the topics that repeat every year — master them and you're already ahead of 80% of candidates.",
     highlight: "🎯 Most repeated questions identified",
     color: "#ef4444",
     bg: "linear-gradient(135deg, #ef4444, #f97316)",
@@ -42,14 +42,6 @@ const STEPS = [
     highlight: "⚡ Auto-updates after every CBT",
     color: "#d97706",
     bg: "linear-gradient(135deg, #d97706, #f59e0b)",
-  },
-  {
-    emoji: "💰",
-    title: "Refer Friends — Earn ₦500",
-    desc: "Share your referral code with friends. Every friend who signs up is registered under your name. When payouts launch, you'll be paid ₦500 for every one of them — including those you referred before launch.",
-    highlight: "🚀 Payouts launching soon",
-    color: "#10b981",
-    bg: "linear-gradient(135deg, #10b981, #059669)",
   },
   {
     emoji: "🚀",

@@ -3,7 +3,37 @@ import { saveCBTRecord, formatDate, formatTime } from "../utils/cbtHistory"
 import { processQuizResult } from "../utils/gamification"
 import { XPToast, BadgeQueue, LevelUpModal } from "../components/BadgeModal"
 
-const CBTResult = ({ onNavigate, record = null }) => {
+// A user is a JAMB candidate when their faculty is set to "jamb".
+const isJambValue = (v) => String(v || "").trim().toLowerCase() === "jamb"
+
+const detectJamb = (report, faculty, user) => {
+  // 0. The exam type saved on the result itself (Quiz saves examType: "jamb" or "postutme")
+  if (isJambValue(report?.examType)) return true
+  // 1. Faculty passed in from the app, or saved on the result itself
+  if (isJambValue(faculty) || isJambValue(user?.faculty) || isJambValue(report?.faculty)) return true
+  // 2. Faculty saved in the browser under any key with "faculty" in its name
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i)
+      if (!key || !key.toLowerCase().includes("faculty")) continue
+      const raw = localStorage.getItem(key)
+      if (isJambValue(raw)) return true
+      try {
+        const parsed = JSON.parse(raw)
+        if (isJambValue(parsed) || isJambValue(parsed?.faculty) || isJambValue(parsed?.id) || isJambValue(parsed?.name)) return true
+      } catch {}
+    }
+    // 3. A saved user profile that contains a faculty field
+    for (const k of ["user", "ee-user", "userData", "ee-userData", "profile", "ee-profile"]) {
+      const raw = localStorage.getItem(k)
+      if (!raw) continue
+      try { if (isJambValue(JSON.parse(raw)?.faculty)) return true } catch {}
+    }
+  } catch {}
+  return false
+}
+
+const CBTResult = ({ onNavigate, record = null, faculty = null, user = null }) => {
   const [report, setReport] = useState(null)
   const [isPersonalBest, setIsPersonalBest] = useState(false)
   const [prevBest, setPrevBest] = useState(0)
@@ -71,6 +101,16 @@ const CBTResult = ({ onNavigate, record = null }) => {
 
   const wrongAnswers = answers.filter(a => !a.isCorrect)
 
+  // JAMB equivalent: each subject is marked over 100, four subjects make 400.
+  // Average of the subject scores x 4 gives the /400 equivalent (equals the sum when 4 subjects were taken).
+  const isJamb = detectJamb(report, faculty, user)
+  const subjectPercents = Object.values(subjectStats).map(s => Math.round((s.correct / s.total) * 100))
+  const avgSubjectPct = subjectPercents.length > 0
+    ? subjectPercents.reduce((a, b) => a + b, 0) / subjectPercents.length
+    : percentage
+  const jambScore = Math.round(avgSubjectPct * 4)
+  const jambColor = jambScore >= 280 ? "var(--success)" : jambScore >= 200 ? "var(--warning)" : "var(--accent)"
+
   return (
     <div className="ee-page">
       {!isHistoryReview && xpToast && <XPToast xp={xpToast} onDone={() => setXpToast(null)} />}
@@ -127,6 +167,27 @@ const CBTResult = ({ onNavigate, record = null }) => {
           )}
         </div>
 
+        {isJamb && (
+          <div style={{
+            background: "var(--surface)",
+            border: "1.5px solid var(--border)",
+            borderRadius: "var(--radius-lg)",
+            padding: "16px", marginBottom: 20,
+            textAlign: "center"
+          }}>
+            <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 6 }}>
+              Your score of <strong style={{ color: "var(--text)" }}>{score} / {total}</strong> is equivalent to a JAMB score of
+            </div>
+            <div style={{ fontSize: 34, fontWeight: 900, color: jambColor, lineHeight: 1.1 }}>
+              {jambScore}<span style={{ fontSize: 18, fontWeight: 700, color: "var(--text3)" }}> / 400</span>
+            </div>
+            <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 8, lineHeight: 1.5 }}>
+              JAMB is marked over 400, with each subject marked over 100.
+              {subjectPercents.length !== 4 && " You wrote fewer or more than 4 subjects, so this is an estimate based on your average subject score."}
+            </div>
+          </div>
+        )}
+
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 20 }}>
           {[
             { icon: "✅", label: "Correct", value: score },
@@ -159,7 +220,9 @@ const CBTResult = ({ onNavigate, record = null }) => {
                 <span style={{ fontWeight: 800, fontSize: 15, color: "var(--text)" }}>
                   {subj}{isWeakSubj && <span className="ee-weak-badge">Weak</span>}
                 </span>
-                <span style={{ fontWeight: 700, fontSize: 15, color: subjColor }}>{subjPct}%</span>
+                <span style={{ fontWeight: 700, fontSize: 15, color: subjColor }}>
+                  {isJamb ? `${subjPct} / 100` : `${subjPct}%`}
+                </span>
               </div>
               <div className="topic-bar" style={{ marginBottom: 10 }}>
                 <div className="topic-bar-fill" style={{ width: `${subjPct}%`, background: subjColor }} />

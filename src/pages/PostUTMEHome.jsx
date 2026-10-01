@@ -9,6 +9,7 @@ import NotificationBell from "../components/NotificationBell"
 import DailyQuote from "../components/DailyQuote"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
+import { UPGRADE_PRICE, SHOW_REFERRALS, FREE_CBT_LIMIT } from "../utils/appConfig"
 import { collection, query, where, getDocs, orderBy, updateDoc, doc } from "firebase/firestore"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
@@ -32,12 +33,11 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
   const [phoneError, setPhoneError] = useState("")
 
   useEffect(() => {
-    // Load CBT count for upgrade nudge
-    try {
-      const history = getCBTHistory()
-      setCbtCount(history.length)
-    } catch(e) {}
-  }, [])
+    // Uses the higher of the browser history and the count saved on the user's account
+    let local = 0
+    try { local = getCBTHistory().length } catch(e) {}
+    setCbtCount(Math.max(local, userData?.cbtCount || 0))
+  }, [userData?.cbtCount])
 
   // Show free user prompt once per session on login
   useEffect(() => {
@@ -276,7 +276,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                 </div>
                 {[
                   "📅 2 years of past questions (2014 & 2015)",
-                  "🧪 CBT simulation mode",
+                  `🧪 ${FREE_CBT_LIMIT} free CBT exams`,
                   "📚 Study guides for all topics",
                   "🎓 AI Tutor",
                 ].map((item, i) => (
@@ -294,10 +294,10 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                 padding: "12px 14px", marginBottom: 16
               }}>
                 <div style={{ fontSize: 12, fontWeight: 800, color: "var(--primary)", marginBottom: 8 }}>
-                  🔒 What you're missing — unlock for ₦2,000:
+                  🔒 What you're missing — unlock for {UPGRADE_PRICE}:
                 </div>
                 {[
-                  "📚 18 more years of questions (2005–2013, 2016–2024)",
+                  "📚 All the other years of past questions",
                   "🔥 Hot Topics — questions that repeat every year",
                   "📊 Weak Areas — know exactly what to fix",
                   "🕐 CBT History — review every attempt",
@@ -332,7 +332,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   marginBottom: 10
                 }}
               >
-                Upgrade Now — ₦2,000 🚀
+                Upgrade Now — {UPGRADE_PRICE} 🚀
               </button>
 
               <button
@@ -474,7 +474,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         <XPBar onNavigate={onNavigate} />
 
         {/* ── UPGRADE NUDGE — shows after 2+ CBTs for free users ── */}
-        {!isPaid && cbtCount >= 1 && !nudgeDismissed && (
+        {!isPaid && cbtCount >= FREE_CBT_LIMIT && !nudgeDismissed && (
           <div style={{
             background: "linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.12))",
             border: "2px solid var(--primary)",
@@ -503,10 +503,10 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               }}>📊</div>
               <div style={{ flex: 1, paddingRight: 16 }}>
                 <div style={{ fontSize: 14, fontWeight: 800, color: "var(--primary)", marginBottom: 4 }}>
-                  You've used your free CBT attempt — unlock unlimited practice
+                  You've used your free CBTs — unlock unlimited practice
                 </div>
                 <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 12 }}>
-                  You completed your free CBT attempt with <strong>2014 & 2015</strong> questions.
+                  You completed your free CBTs with <strong>2014 & 2015</strong> questions.
                   Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
                   plus Hot Topics, Weak Areas tracking and CBT History.
                 </div>
@@ -520,7 +520,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                       fontWeight: 800, fontSize: 13,
                       cursor: "pointer", fontFamily: "var(--font-main)"
                     }}
-                  >Unlock All 20 Years — ₦2,000 →</button>
+                  >Unlock All 20 Years — {UPGRADE_PRICE} →</button>
                   <button
                     onClick={() => {
                       setNudgeDismissed(true)
@@ -581,14 +581,14 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
         <div className="ee-home-grid">
           <button className="ee-home-card primary" onClick={() => {
-            if (!isPaid && cbtCount >= 1) { handleLockedFeature("cbtMode"); return }
+            if (!isPaid && cbtCount >= FREE_CBT_LIMIT) { handleLockedFeature("cbtMode"); return }
             onNavigate("cbtSubjectSelect")
           }}>
             <span className="home-card-icon">🧪</span>
             <div>
-              <div className="home-card-title">CBT Mode {!isPaid && cbtCount >= 1 && "🔒"}</div>
+              <div className="home-card-title">CBT Mode {!isPaid && cbtCount >= FREE_CBT_LIMIT && "🔒"}</div>
               <div className="home-card-sub">
-                {!isPaid && cbtCount >= 1 ? "Upgrade for unlimited CBTs" : "Timed exam simulation"}
+                {!isPaid && cbtCount >= FREE_CBT_LIMIT ? "Upgrade for unlimited CBTs" : "Timed exam simulation"}
               </div>
             </div>
           </button>
@@ -642,20 +642,23 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <div><div className="home-card-title">Leaderboard</div><div className="home-card-sub">See how you rank against others</div></div>
         </button>
 
-        <button onClick={() => onNavigate("referrals")} style={{
-          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-          borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 16,
-          color: "#fff", border: "none", cursor: "pointer",
-          display: "flex", alignItems: "center", gap: 12, width: "100%",
-          fontSize: 14, fontWeight: 700, boxShadow: "0 4px 14px rgba(16,185,129,0.3)"
-        }}>
-          <span style={{ fontSize: 24 }}>💰</span>
-          <div style={{ flex: 1, textAlign: "left" }}>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>Refer Friends — Earn ₦500 at Launch 🚀</div>
-            <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Share your code now · Get paid when we fully launch</div>
-          </div>
-          <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
-        </button>
+        {/* Referral card — hidden for now. Turn back on in src/utils/appConfig.js (SHOW_REFERRALS) */}
+        {SHOW_REFERRALS && (
+          <button onClick={() => onNavigate("referrals")} style={{
+            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 16,
+            color: "#fff", border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", gap: 12, width: "100%",
+            fontSize: 14, fontWeight: 700, boxShadow: "0 4px 14px rgba(16,185,129,0.3)"
+          }}>
+            <span style={{ fontSize: 24 }}>💰</span>
+            <div style={{ flex: 1, textAlign: "left" }}>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Refer Friends — Earn ₦500 at Launch 🚀</div>
+              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Share your code now · Get paid when we fully launch</div>
+            </div>
+            <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
+          </button>
+        )}
 
         {!isPaid && (
           <div onClick={() => onNavigate("upgrade")} style={{
@@ -668,7 +671,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
               <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>₦2,000 →</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>{UPGRADE_PRICE} →</div>
           </div>
         )}
 

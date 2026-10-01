@@ -3,7 +3,7 @@
 // Free tier limits
 export const FREE_YEARS = ['2014', '2015']
 export const FREE_STUDY_QUESTIONS_LIMIT = 5
-export const PRICE = 250000 // ₦2,500 in kobo (Paystack uses kobo)
+export const PRICE = 150000 // ₦1,500 in kobo (Paystack uses kobo)
 
 // Check if user is paid
 export const isPaidUser = (userData) => {
