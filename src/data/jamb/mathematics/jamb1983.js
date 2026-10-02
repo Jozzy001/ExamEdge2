@@ -1,6 +1,7 @@
 // JAMB 1983 Mathematics Past Questions
 // Source had 50 questions. 20 were skipped (diagrams, or source text too garbled/ambiguous to transcribe reliably).
-// See the skipped-questions list sent alongside this file.
+// Cleaned version: no internal notes in explanations, factorisation answer corrected,
+// duplicate options replaced, and one ambiguous question reworded (see the list sent alongside this file).
 
 const mathsJamb1983 = [
 
@@ -30,7 +31,7 @@ const mathsJamb1983 = [
     question: "Solve the following equations: 4x − 3 = 3x + y = 2y + 5x − 12",
     options: ["x = 5, y = 2", "x = 2, y = 5", "x = -2, y = -5", "x = 5, y = -2", "x = -5, y = -2"],
     answer: "x = 5, y = 2",
-    explanation: "From 4x−3 = 3x+y: x − y = 3. From 3x+y = 2y+5x−12: 2x + y = 12. Adding/solving: x = 5, y = 2. (Option A is printed in the source as '4x = 5, y = 2', almost certainly a typo for 'x = 5, y = 2'.)"
+    explanation: "From 4x − 3 = 3x + y: x − y = 3. From 3x + y = 2y + 5x − 12: 2x + y = 12. Adding the two equations: 3x = 15, so x = 5 and y = 2."
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
@@ -58,7 +59,7 @@ const mathsJamb1983 = [
     question: "The value of (0.0303)³ − (0.02)³ is",
     options: ["0.019", "0.0019", "0.00019", "0.000019", "0.000035"],
     answer: "0.000019",
-    explanation: "(0.0303)³ ≈ 0.0000278 and (0.02)³ = 0.000008. Difference ≈ 0.0000198, which to the given precision is 0.000019. (Note: the source prints the first number as '0.303'; using 0.303 instead gives a result far outside all options, so 0.0303 is almost certainly the intended figure.)"
+    explanation: "(0.0303)³ ≈ 0.0000278 and (0.02)³ = 0.000008. The difference is about 0.0000198, which is closest to 0.000019."
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
@@ -103,10 +104,10 @@ const mathsJamb1983 = [
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
-    question: "Solve the simultaneous equations for x: x² + y − 8 = 0, y + 5x − 2 = 0",
+    question: "Solve the simultaneous equations x² + y − 8 = 0 and y + 5x − 2 = 0. Which of the following is the solution (x, y) in which x is positive?",
     options: ["-28,7", "6,-28", "6,-1", "-1, 7", "3,2"],
     answer: "6,-28",
-    explanation: "From the second equation, y = 2 − 5x. Substituting: x² + (2−5x) − 8 = 0 → x² − 5x − 6 = 0 → (x−6)(x+1) = 0, so x = 6 or x = −1. This gives (x,y) = (6, −28) or (x,y) = (−1, 7). Both solution pairs are valid; the source's option list splits them across two separate options (B and D)."
+    explanation: "From the second equation, y = 2 − 5x. Substituting: x² + (2−5x) − 8 = 0 → x² − 5x − 6 = 0 → (x−6)(x+1) = 0, so x = 6 or x = −1. When x = 6, y = 2 − 30 = −28. When x = −1, y = 2 + 5 = 7. The solution with x positive is (6, −28)."
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
@@ -170,12 +171,12 @@ const mathsJamb1983 = [
     options: [
       "(3a + 2b)(2a − 3b)(9a² + 4b²)",
       "(3a − 2b)(2a − 3b)(4a² − 9b²)",
-      "(3a − 2b)(3a − 2b)(9a² + 4b²)",
+      "(3a − 2b)(3a + 2b)(9a² + 4b²)",
       "(3a − 2b)(2a − 3b)(9a² + 4b²)",
       "(3a − 2b)(2a − 3b)(9a² − 4b²)"
     ],
-    answer: "(3a − 2b)(2a − 3b)(9a² + 4b²)",
-    explanation: "81a⁴−16b⁴ = (9a²)²−(4b²)² = (9a²−4b²)(9a²+4b²) = (3a−2b)(3a+2b)(9a²+4b²). None of the printed options exactly reproduce this (each has a garbled second factor, likely an OCR/typesetting error in the source); Option D is the closest match, containing the correct third factor (9a²+4b²)."
+    answer: "(3a − 2b)(3a + 2b)(9a² + 4b²)",
+    explanation: "81a⁴ − 16b⁴ = (9a²)² − (4b²)² = (9a² − 4b²)(9a² + 4b²). Then 9a² − 4b² = (3a − 2b)(3a + 2b), so the full factorisation is (3a − 2b)(3a + 2b)(9a² + 4b²)."
   },
   {
     subject: "Mathematics", topic: "Geometry & Mensuration", year: 1983, exam: "JAMB",
@@ -194,7 +195,7 @@ const mathsJamb1983 = [
   {
     subject: "Mathematics", topic: "Statistics & Probability", year: 1983, exam: "JAMB",
     question: "In a sample survey of a university community, the following table shows the distribution of the number of members per household. No. of members: 1,2,3,4,5,6,7,8; Number of households: 3,12,15,28,21,10,7,4 (Total 100). Find the modal number of members per household.",
-    options: ["4", "4.5", "5", "4.5", "None"],
+    options: ["4", "4.5", "5", "6", "None"],
     answer: "4",
     explanation: "The highest frequency (28 households) corresponds to 4 members per household, so the mode is 4."
   },
@@ -210,14 +211,14 @@ const mathsJamb1983 = [
     question: "If f(x) = 1/(x−1) + (x−1)/(x²−1), find f(1−x).",
     options: ["1/x + 1/(x+2)", "x + 1/(2x−1)", "-1/x − 1/(x−2)", "-1/x + 1/(x²−1)"],
     answer: "-1/x − 1/(x−2)",
-    explanation: "Since (x−1)/(x²−1) = 1/(x+1), f(x) = 1/(x−1)+1/(x+1) = 2x/(x²−1). Substituting x → 1−x gives f(1−x) = 2(1−x)/[(1−x)²−1] = 2(1−x)/[x²−2x] = -2(x−1)/[x(x−2)], which splits into partial fractions as -1/x − 1/(x−2)."
+    explanation: "Since (x−1)/(x²−1) = 1/(x+1), f(x) = 1/(x−1) + 1/(x+1). Replacing x with (1−x): 1/((1−x)−1) = 1/(−x) = −1/x, and 1/((1−x)+1) = 1/(2−x) = −1/(x−2). So f(1−x) = −1/x − 1/(x−2)."
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",
     question: "Simplify: ∛(729a⁹/8)",
-    options: ["9a²/2", "9a³/2", "2/(3a²)", "2/(3a²)", "3a³/2"],
+    options: ["9a²/2", "9a³/2", "2/(3a²)", "3a²/2", "3a³/2"],
     answer: "9a³/2",
-    explanation: "∛729 = 9, ∛(a⁹) = a³, ∛8 = 2. So ∛(729a⁹/8) = 9a³/2. (The source's printed radical is faint/garbled; 729 is the value that makes the numbers work out to a listed option.)"
+    explanation: "∛729 = 9, ∛(a⁹) = a³, ∛8 = 2. So ∛(729a⁹/8) = 9a³/2."
   },
   {
     subject: "Mathematics", topic: "Algebra", year: 1983, exam: "JAMB",

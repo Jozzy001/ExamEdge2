@@ -5,6 +5,7 @@ import PaywallPrompt from "../components/PaywallPrompt"
 import jambQuestions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import PageTour, { TOURS } from "../components/PageTour"
+import MathText from "../components/MathText"
 import { saveCBTRecord } from "../utils/cbtHistory"
 import { FREE_CBT_LIMIT } from "../utils/appConfig"
 
@@ -42,7 +43,7 @@ const RenderText = ({ text }) => {
       imgGroup.push(match[1])
     } else {
       flushImgGroup()
-      if (part) elements.push(<span key={i}>{part}</span>)
+      if (part) elements.push(<span key={i}><MathText text={part} /></span>)
     }
   })
   flushImgGroup()
@@ -762,7 +763,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
           return (
             <button key={i} className={cls} onClick={() => !showExplanation && handleSelectOption(opt)} disabled={showExplanation}>
               <span className="opt-badge">{String.fromCharCode(65 + i)}</span>
-              <span className="opt-label">{opt.replace(/^[A-D][\.\)\s]+/, "")}</span>
+              <span className="opt-label"><MathText text={opt.replace(/^[A-D][.)]\s*/, "")} /></span>
             </button>
           )
         })}
@@ -776,7 +777,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         {showExplanation && currentQuestion.explanation && (
           <div className="ee-explanation">
             <span className="exp-heading">💡 Explanation</span>
-            <p className="exp-body">{currentQuestion.explanation}</p>
+            <p className="exp-body"><MathText text={currentQuestion.explanation} /></p>
           </div>
         )}
 

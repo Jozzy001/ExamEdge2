@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import jambQuestions from "../data/jamb/questions"
+import MathText from "../components/MathText"
 
 const SUBJECT_META = {
   "English":     { icon: "📖", color: "#4a90d9", bg: "#f0f7ff" },
@@ -157,7 +158,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
               )}
 
               <div style={{ fontSize: 13, color: "var(--text)", lineHeight: 1.6, marginBottom: 10, fontWeight: 600 }}>
-                {q.question}
+                <MathText text={q.question} />
               </div>
 
               {/* Options */}
@@ -179,7 +180,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 10, fontWeight: 800
                     }}>{["A","B","C","D"][j]}</span>
-                    {opt}
+                    <MathText text={opt} />
                     {opt === q.answer && <span style={{ marginLeft: "auto" }}>✓</span>}
                   </div>
                 ))}
@@ -196,7 +197,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
                     💡 Why this answer is correct
                   </div>
                   <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.7 }}>
-                    {q.explanation}
+                    <MathText text={q.explanation} />
                   </div>
                 </div>
               )}

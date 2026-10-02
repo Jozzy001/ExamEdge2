@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { saveCBTRecord, formatDate, formatTime } from "../utils/cbtHistory"
 import { processQuizResult } from "../utils/gamification"
 import { XPToast, BadgeQueue, LevelUpModal } from "../components/BadgeModal"
+import MathText from "../components/MathText"
 
 // A user is a JAMB candidate when their faculty is set to "jamb".
 const isJambValue = (v) => String(v || "").trim().toLowerCase() === "jamb"
@@ -294,20 +295,20 @@ const CBTResult = ({ onNavigate, record = null, faculty = null, user = null }) =
               </span>
             </div>
             <p style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
-              Q{answers.indexOf(a) + 1}: {a.question}
+              Q{answers.indexOf(a) + 1}: <MathText text={a.question} />
             </p>
             <p style={{ fontSize: 13, marginBottom: 4 }}>
               Your answer: <span style={{ fontWeight: 700, color: a.isCorrect ? "var(--success)" : "var(--accent)" }}>
-                {a.selected === "skipped" ? "⏭ Skipped" : a.selected || "Not answered"}
+                {a.selected === "skipped" ? "⏭ Skipped" : <MathText text={a.selected || "Not answered"} />}
               </span>
             </p>
             {!a.isCorrect && a.selected !== "skipped" && (
-              <p style={{ fontSize: 13, color: "var(--success)", fontWeight: 700, marginBottom: 4 }}>Correct: {a.correct}</p>
+              <p style={{ fontSize: 13, color: "var(--success)", fontWeight: 700, marginBottom: 4 }}>Correct: <MathText text={a.correct} /></p>
             )}
             {a.explanation && (
               <div className="ee-explanation" style={{ marginTop: 10, marginBottom: 0 }}>
                 <span className="exp-heading">💡 Explanation</span>
-                <p className="exp-body">{a.explanation}</p>
+                <p className="exp-body"><MathText text={a.explanation} /></p>
               </div>
             )}
           </div>
