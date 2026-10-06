@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The challenges of population expansion and structural urban planning.";
-const PASSAGE_2 = "Passage II — The psychological impact of technical automation on worker motivation.";
-const PASSAGE_3 = "Passage III — Historical analysis of soil management systems and erosion control.";
-const PASSAGE_4 = "Passage IV — Reflections on early community leadership models and consensus building.";
-const PASSAGE_5 = "Passage V — Modern breakthroughs in digital communication networks and data access.";
+const PASSAGE_1 = "Unchecked urban growth poses a severe strain on existing public utilities, clean water distribution, and municipal sanitation services. Metropolitan congestion—the overcrowded conditions inside city centers and transport routes—worsens housing deficits. These deficits are further aggravated by the high market costs of formal land registration and legal build formats, pushing low-income rural migrants into informal spaces. Structural urban planning succeeds when authorities anticipate future population shifts and map layouts well in advance to avoid expensive corrections.";
+
+const PASSAGE_2 = "Introducing technical automation and assembly loops without human considerations causes workers to feel alienated, disconnected, and lacking operational motivation. When daily duties are entirely monotonous and afford no opportunities for individual creativity, employee efficiency drops and absenteeism rises. Modern industrial design must incorporate ergonomics—designing work environments and equipment to fit human physical and cognitive needs. Instead of basic mechanical automation arrays, factories must advocate for job enrichment and human-centered design.";
+
+const PASSAGE_3 = "Severe soil exhaustion occurs primarily when farmers cultivate the same crops continuously without adding organic nutrients back into the land. This problem is worsened by leaching—the process where topsoil minerals are washed downward into deep subsoil levels by heavy rainfall. Clear-cutting forest vegetation for farming removes the root networks, causing accelerated soil erosion due to wind and rain exposure. Sustainable land management requires terracing methods on hillsides to slow down water runoff, retaining vulnerable topsoil and preserving soil conservation.";
+
+const PASSAGE_4 = "Traditional community leadership models were characterized by their strict focus on building consensus and maintaining balance among families. This inclusive governance model allows multiple community levels to voice opinions and guide agreements, preventing long-term bitterness that damages social relationships. The authority of traditional elders was rooted in their accumulated historical wisdom, integrity, and cultural custody rather than force. Their methodology represents a form of restorative justice, where solutions aim to repair social damage and restore harmony.";
+
+const PASSAGE_5 = "Modern digital communication matrices have transformed global business by allowing immediate, cross-border information exchanges and operational coordination. However, the vulnerability of a highly connected network stems from cyber threats, system-wide disruptions, and data breaches. Telecommunication refers explicitly to the transmission of data and signals over significant physical distances. Managing this rapid information distribution requires accurate data verification and digital security, noting that these network tools remain neutral instruments whose impact depends entirely on human choices.";
+
 
 const englishJamb1992 = [
   // =====================

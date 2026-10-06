@@ -125,7 +125,7 @@ const chemJamb1995 = [
     explanation: "Hygroscopic substances possess the ability to absorb moisture from the atmosphere. Deliquescent substances do this to such an extreme extent that they absorb enough water to dissolve completely into an aqueous solution."
   },
   {
-    id: 17, subject: "Chemistry", topic: "Solutions & Colloids", year: 1995, exam: "JAMB",
+    id: 17, subject: "Chemistry", topic: "Solutions & Solubility", year: 1995, exam: "JAMB",
     question: "The structural difference between colloids and suspensions is brought out clearly by the fact that while colloids",
     options: [
       "do not scatter light, suspensions cannot be separated via centrifugation",
@@ -156,14 +156,14 @@ answer: "H₃O⁺ and OH⁻ ions",
 explanation: "In aqueous solutions, neutralization is fundamentally the combination of hydronium ions (H₃O⁺ or H⁺) from an acid with hydroxide ions (OH⁻) from a base to form neutral water molecules."
 },
 {
-id: 20, subject: "Chemistry", topic: "Solutions & pH", year: 1995, exam: "JAMB",
+id: 20, subject: "Chemistry", topic: "Solutions & Solubility", year: 1995, exam: "JAMB",
 question: "Which of the following salt solutions will exhibit an acidic pH value less than 7 (pH < 7)?",
 options: ["Na₂SO₄(aq)", "NaCl(aq)", "Na₂CO₃(aq)", "NH₄Cl(aq)"],
 answer: "NH₄Cl(aq)",
 explanation: "Ammonium chloride (NH₄Cl) is a salt derived from a strong acid (HCl) and a weak base (NH₃). In water, the ammonium ion undergoes cationic hydrolysis, releasing hydronium ions into solution: NH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺, making the solution acidic."
 },
 {
-id: 21, subject: "Chemistry", topic: "Solutions & pH", year: 1995, exam: "JAMB",
+id: 21, subject: "Chemistry", topic: "Solutions & Solubility", year: 1995, exam: "JAMB",
 question: "What is the measured pH of a 2.50 x 10⁻⁵ M aqueous solution of sodium hydroxide?",
 options: ["3.6", "5.0", "9.4", "12.0"],
 answer: "9.4",

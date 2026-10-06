@@ -1,128 +1,134 @@
 // JAMB 1985 English Language Past Questions
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your app's screen expectations.
-const PASSAGE_1 = "Passage I — Obi and Olu, Sports Club Cafeteria";
-const PASSAGE_2 = "Passage II — Ntanya and Teresa";
-const PASSAGE_3 = "Passage III — Mathematics as art";
-const PASSAGE_4 = "Passage IV — Senator's speech";
-const PASSAGE_5 = "Passage V — Drought (The Collector of Treasures)";
+
+const PASSAGE_1 = "Let's go to the Sports Club Cafeteria. One naira per meal is a privilege in this country. And God knows that I am too broke to afford anything more. But wait, we cannot just walk in like that. The place is for bona fide members only; there is a thorough checking of identity cards at the gate. If you don't have one, you have to 'pose' or convincingly claim privilege. V.I.Ps don't wear badges on their faces, you know. Look at that queue; not everybody at the Club Cafeteria queues, some people always break it on the pretext that they are V.I.Ps or know the semantics of 'getting along'. There are many impostors here laying claim to privileges in Nigeria, and many people with real privileges too. We just have to be resourceful 'go-getters' to get our food today.";
+
+const PASSAGE_2 = "Every bolus that went down Ntanya's throat was watched with affectionate devotion by his wife, Teresa. They had just got married, and in their absorbed devotion to each other, they could hardly notice the land getting brown or the sun dancing dizzily in the sky. When she served the meal, she would carefully cook it with extra care, give only bits of meat to the children because she kept most of it—the whole chunk—reserved for her husband. No matter how hungry she might be, Teresa would say she had eaten already so that Ntanya would eat to his full satisfaction. When he finished, Ntanya would look at her tenderly and say, 'Thank you mother' as an affectionate term for his wife.";
+
+const PASSAGE_3 = "Those who are familiar with it will tell you that Mathematics, like human life itself, is a study of beauty, harmony and order. It is not just about drawing figures or simple calculations. When we say 'Mathematics is the queen of the Sciences', this expression contains a deep analogy. The writer capitalizes 'Mathematics' because he wants to distinguish between a universal concept and a mere school subject. Every pattern in a poem, music, or a mathematical equation must stand up to the test of some symmetry. So if Mathematics is not an art, what is art? This is a statement put in the form of a question to show that it undeniably is an art form.";
+
+const PASSAGE_4 = "When Tony Agiwa accosted me along the corridor, he directly brought up the allegations of embezzlement regarding the N50,000 political fund. As a Senator, I am not trying to ignore the allegations or implicate Abu O. Abu. I am exonerating myself. I have not touched a single kobo of that money for personal gain. Every kobo of it has been spent in defraying political campaign expenses. An ordinary constituent, meaning a person having voting rights where he is living, has the right to ask, but for the exact records and receipts, they are in the hands of the Administrator. You should meet Abu O. Abu, who is portrayed as the administrator of the fund, to get those specific details.";
+
+const PASSAGE_5 = "The goats had started producing milk, which they had eagerly poured on their porridge. It was clear evidence that the family hopes had run high. But then the rain failed. The children played their 'game of making house' in the dirt, imitating running a home like adults and scoldingly treating their rag-dolls. The adults paid no attention to this children's game; they sat down in despair because the sun danced dizzily and it was impossible to plant seeds in the dry earth. All their animals had been sold during the bad years in order to purchase food, and now nothing was left but to wait.";
+
 const englishJamb1985 = [
-// =====================
-// COMPREHENSION — PASSAGE I
-// =====================
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
-question: "Which of the following is NOT implied in the expression: 'One naira per meal is a privilege in this country'?",
-options: [
-"Nowhere in this country is food sold for one naira.",
-"The price per meal at the Sports Club Cafeteria is one naira.",
-"It is rare for anybody to feed satisfactorily with one naira in any hotel in the country",
-"Obi cannot afford more than one naira for one meal",
-"Ordinarily, one naira cannot buy much in the country."
-],
-answer: "Nowhere in this country is food sold for one naira.",
-explanation: "The Sports Club Cafeteria itself sells meals for one naira, so it isn't true that food is sold nowhere for that price — this option is contradicted, not implied."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
-question: "The conversation about identity cards suggests that",
-options: [
-"without an identity card, no one can be allowed to eat in the Sports Club Cafeteria",
-"without an identity card, no one can be allowed into the Sports Club",
-"there is thorough checking of identity cards at the Sports Club gate",
-"bona fide members of the Club do not have to carry identity cards",
-"a club member can afford to forget his membership card"
-],
-answer: "without an identity card, no one can be allowed into the Sports Club",
-explanation: "Olu states the club rule ('the place is for bona fide members only'), even though Obi shows the rule can be circumvented by flashing a fake card."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
-question: "The conversation about queues in the passage reveals that",
-options: [
-"everybody at the Club Cafeteria queues",
-"club members can always break a queue at the Cafeteria",
-"people always break queues in the Cafeteria on the pretext that they are V.I.Ps",
-"only people who are capable of posing can break queues",
-"there is nothing wrong in breaking queues."
-],
-answer: "only people who are capable of posing can break queues",
-explanation: "Obi tells Olu to 'pose' as important, since 'V.I.Ps don't wear badges on their faces' — breaking the queue depends on convincingly posing."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
-question: "The conversation about privileges shows that",
-options: [
-"an impostor is one who claims privileges",
-"to get along must always imply making claims to privileges",
-"it is always easy to recognize V.I.Ps in Nigeria, because they are always laying claim to privileges",
-"there are many impostors laying claim to privileges in Nigeria",
-"'semantics' means calling 'to get along' 'privileges'."
-],
-answer: "there are many impostors laying claim to privileges in Nigeria",
-explanation: "Obi confirms 'there are many impostors here... and many people with privileges too,' pointing to widespread false claims to privilege."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
-question: "From the whole conversation, it is clear that Obi and Olu are",
-options: ["irresponsible", "selfish", "privileged", "'go-getters'", "epitomes of the Nigeria society."],
-answer: "'go-getters'",
-explanation: "Both are shown as resourceful people willing to bend rules and 'pose' to get what they want."
-},
-// =====================
-// COMPREHENSION — PASSAGE II
-// =====================
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
-question: "Bolus in the passage means",
-options: ["Adam's apple", "throat pill", "liquid", "piece of meat", "large morsel."],
-answer: "large morsel.",
-explanation: "'Every bolus that went down Ntanya's throat' refers to a mouthful/morsel of food he swallowed."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
-question: "Ntanya and Teresa could hardly notice the land getting brown because",
-options: [
-"they were on their honeymoon",
-"they had just got married",
-"they hardly notice the sun",
-"the sun did not come up",
-"Ntanya worked very hard in the field."
-],
-answer: "they had just got married",
-explanation: "The couple's absorbed devotion to each other (the loving detail of the meal ritual) suggests they were newly married and engrossed in one another, missing the passage of time."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
-question: "Teresa gave only bits of meat to the children because",
-options: [
-"they would get more from Ntanya",
-"she cooked it with extra care",
-"they were young",
-"she kept most of it for her husband",
-"she could not afford meat."
-],
-answer: "she kept most of it for her husband",
-explanation: "'She would... reserve the whole chunk for her husband' while the children only got bits."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
-question: "Ntanya said 'Thank you mother' to",
-options: ["his mother", "his wife", "his aunt", "Teresa's mother", "his grand-mother"],
-answer: "his wife",
-explanation: "The passage is about Ntanya and Teresa (husband and wife) — 'mother' here is an affectionate term he uses for his wife."
-},
-{
-subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
-question: "Teresa would say she had eaten already no matter how hungry she might be so that",
-options: [
-"Ntanya would eat to his satisfaction",
-"Ntanya would say 'Thank you mother'",
-"she could cook again",
-"she could watch him eat",
-"every bolus would go down her own throat."
-],
-answer: "Ntanya would eat to his satisfaction",
+  // =====================
+  // COMPREHENSION — PASSAGE I
+  // =====================
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
+    question: "Which of the following is NOT implied in the expression: 'One naira per meal is a privilege in this country'?",
+    options: [
+      "Nowhere in this country is food sold for one naira.",
+      "The price per meal at the Sports Club Cafeteria is one naira.",
+      "It is rare for anybody to feed satisfactorily with one naira in any hotel in the country",
+      "Obi cannot afford more than one naira for one meal",
+      "Ordinarily, one naira cannot buy much in the country."
+    ],
+    answer: "Nowhere in this country is food sold for one naira.",
+    explanation: "The Sports Club Cafeteria itself sells meals for one naira, so it isn't true that food is sold nowhere for that price — this option is contradicted, not implied."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
+    question: "The conversation about identity cards suggests that",
+    options: [
+      "without an identity card, no one can be allowed to eat in the Sports Club Cafeteria",
+      "without an identity card, no one can be allowed into the Sports Club",
+      "there is thorough checking of identity cards at the Sports Club gate",
+      "bona fide members of the Club do not have to carry identity cards",
+      "a club member can afford to forget his membership card"
+    ],
+    answer: "without an identity card, no one can be allowed into the Sports Club",
+    explanation: "Olu states the club rule ('the place is for bona fide members only'), even though Obi shows the rule can be circumvented by flashing a fake card."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
+    question: "The conversation about queues in the passage reveals that",
+    options: [
+      "everybody at the Club Cafeteria queues",
+      "club members can always break a queue at the Cafeteria",
+      "people always break queues in the Cafeteria on the pretext that they are V.I.Ps",
+      "only people who are capable of posing can break queues",
+      "there is nothing wrong in breaking queues."
+    ],
+    answer: "only people who are capable of posing can break queues",
+    explanation: "Obi tells Olu to 'pose' as important, since 'V.I.Ps don't wear badges on their faces' — breaking the queue depends on convincingly posing."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
+    question: "The conversation about privileges shows that",
+    options: [
+      "an impostor is one who claims privileges",
+      "to get along must always imply making claims to privileges",
+      "it is always easy to recognize V.I.Ps in Nigeria, because they are always laying claim to privileges",
+      "there are many impostors laying claim to privileges in Nigeria",
+      "'semantics' means calling 'to get along' 'privileges'."
+    ],
+    answer: "there are many impostors laying claim to privileges in Nigeria",
+    explanation: "Obi confirms 'there are many impostors here... and many people with privileges too,' pointing to widespread false claims to privilege."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_1,
+    question: "From the whole conversation, it is clear that Obi and Olu are",
+    options: ["irresponsible", "selfish", "privileged", "'go-getters'", "epitomes of the Nigeria society."],
+    answer: "'go-getters'",
+    explanation: "Both are shown as resourceful people willing to bend rules and 'pose' to get what they want."
+  },
+  // =====================
+  // COMPREHENSION — PASSAGE II
+  // =====================
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
+    question: "Bolus in the passage means",
+    options: ["Adam's apple", "throat pill", "liquid", "piece of meat", "large morsel."],
+    answer: "large morsel.",
+    explanation: "'Every bolus that went down Ntanya's throat' refers to a mouthful/morsel of food he swallowed."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
+    question: "Ntanya and Teresa could hardly notice the land getting brown because",
+    options: [
+      "they were on their honeymoon",
+      "they had just got married",
+      "they hardly notice the sun",
+      "the sun did not come up",
+      "Ntanya worked very hard in the field."
+    ],
+    answer: "they had just got married",
+    explanation: "The couple's absorbed devotion to each other (the loving detail of the meal ritual) suggests they were newly married and engrossed in one another, missing the passage of time."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
+    question: "Teresa gave only bits of meat to the children because",
+    options: [
+      "they would get more from Ntanya",
+      "she cooked it with extra care",
+      "they were young",
+      "she kept most of it for her husband",
+      "she could not afford meat."
+    ],
+    answer: "she kept most of it for her husband",
+    explanation: "'She would... reserve the whole chunk for her husband' while the children only got bits."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
+    question: "Ntanya said 'Thank you mother' to",
+    options: ["his mother", "his wife", "his aunt", "Teresa's mother", "his grand-mother"],
+    answer: "his wife",
+    explanation: "The passage is about Ntanya and Teresa (husband and wife) — 'mother' here is an affectionate term he uses for his wife."
+  },
+  {
+    subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_2,
+    question: "Teresa would say she had eaten already no matter how hungry she might be so that",
+    options: [
+      "Ntanya would eat to his satisfaction",
+      "Ntanya would say 'Thank you mother'",
+      "she could cook again",
+      "she could watch him eat",
+      "every bolus would go down her own throat."
+    ],
+    answer: "Ntanya would eat to his satisfaction",
 explanation: "By claiming she'd already eaten, she left more food for Ntanya to eat his fill."
 },
 // =====================
@@ -185,7 +191,7 @@ explanation: "The passage says each pattern (poem, music, painting, equation) 'm
 // COMPREHENSION — PASSAGE IV
 // =====================
 {
-  subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_4,
+subject: "English", topic: "Comprehension", year: 1985, exam: "JAMB", passage: PASSAGE_4,
 question: "The author is",
 options: [
 "exonerating himself from allegations of embezzlement",

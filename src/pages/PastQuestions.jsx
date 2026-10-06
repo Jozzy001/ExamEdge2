@@ -7,8 +7,7 @@ import { PageTransition } from "../components/LoadingScreen"
 import questions from "../data/jamb/questions"
 
 // Free users can only open these years. Set to null to open every year to everyone.
-// Example: const FREE_YEARS = [2010, 2011]
-const FREE_YEARS = null
+const FREE_YEARS = [1983]
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"]
 
@@ -71,6 +70,9 @@ const buildBank = () => {
 const sortYears = (years) =>
   years.sort((a, b) => (Number(b) || -1) - (Number(a) || -1))
 
+const isLockedYear = (year, isPaid) =>
+  !!FREE_YEARS && !isPaid && !FREE_YEARS.includes(Number(year))
+
 export default function PastQuestions({ onBack, onNavigate, isPaid }) {
   const bank = useMemo(buildBank, [])
   const [subject, setSubject] = useState(null)
@@ -78,6 +80,8 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})   // { [index]: { selected, checked } }
   const [finished, setFinished] = useState(false)
+  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false)
+  const [lockedYear, setLockedYear] = useState(null)
 
   const subjects = Object.keys(bank).sort()
   const list = subject && year ? bank[subject][year] : []
@@ -91,7 +95,11 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
   }
 
   const openYear = (y) => {
-    if (FREE_YEARS && !isPaid && !FREE_YEARS.includes(Number(y))) { onNavigate("upgrade"); return }
+    if (isLockedYear(y, isPaid)) {
+      setLockedYear(y)
+      setShowUpgradePrompt(true)
+      return
+    }
     resetQuiz()
     setYear(y)
   }
@@ -169,10 +177,14 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
         {/* ===== 2. YEARS ===== */}
         {subject && !year && (
           <>
-            <p className="ee-subtitle">Pick a year to practise {subject} past questions.</p>
+            <p className="ee-subtitle">
+              {isPaid
+                ? `Pick a year to practise ${subject} past questions.`
+                : `Free plan: ${FREE_YEARS.join(", ")} is unlocked. Upgrade for every other year.`}
+            </p>
             <div className="pq-year-grid">
               {sortYears(Object.keys(bank[subject])).map(y => {
-                const locked = FREE_YEARS && !isPaid && !FREE_YEARS.includes(Number(y))
+                const locked = isLockedYear(y, isPaid)
                 return (
                   <button key={y} className={`pq-year ${locked ? "locked" : ""}`} onClick={() => openYear(y)}>
                     <span className="pq-year-num">{y}</span>
@@ -277,6 +289,27 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
           </>
         )}
       </div>
+
+      {/* ===== UPGRADE PROMPT — locked year ===== */}
+      {showUpgradePrompt && (
+        <div className="pq-overlay">
+          <div className="pq-modal">
+            <div className="pq-modal-head">
+              <span className="pq-modal-emoji">🔒</span>
+              <div className="pq-modal-title">{subject} {lockedYear} is locked</div>
+              <div className="pq-modal-sub">
+                Free plan only includes {FREE_YEARS.join(", ")}. Upgrade to unlock every year.
+              </div>
+            </div>
+            <div className="pq-modal-body">
+              <button className="ee-btn ee-btn-primary" onClick={() => { setShowUpgradePrompt(false); onNavigate("upgrade") }}>
+                Upgrade for full access 🚀
+              </button>
+              <button className="pq-link" onClick={() => setShowUpgradePrompt(false)}>Not now</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
     </PageTransition>
   )

@@ -10,11 +10,14 @@ import DailyQuote from "../components/DailyQuote"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
 import { getGameState } from "../utils/gamification"
-import { UPGRADE_PRICE, SHOW_REFERRALS, FREE_CBT_LIMIT } from "../utils/appConfig"
+import { UPGRADE_PRICE, FREE_CBT_LIMIT } from "../utils/appConfig"
 import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"
 
 // Change this in one place
 const WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb7ZQAe90x2qXQY1Rw1K"
+
+// How much a referrer earns per paid referral
+const REFERRAL_PAYOUT = "₦200"
 
 // Temporary: who can use AI Tutor and Classroom while they're disabled for students
 const ADMIN_EMAILS = ["youradmin@email.com"] // put your admin email(s) here, lowercase
@@ -31,7 +34,7 @@ const FREE_MISSING = [
   "📊 Weak Areas — know exactly what to fix",
   "🕐 CBT History — review every attempt",
   "📈 Full Progress analytics",
-  "👥 Premium WhatsApp Study Group",
+  `💰 Earn ${REFERRAL_PAYOUT} per paid referral`,
 ]
 
 const greeting = () => {
@@ -51,6 +54,7 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
   const [showFullMessage, setShowFullMessage] = useState(false)
   const [cbtCount, setCbtCount] = useState(0)
   const [showFreePrompt, setShowFreePrompt] = useState(false)
+  const [showReferralUpgrade, setShowReferralUpgrade] = useState(false)
 
   // Upgrade nudge re-appears every 3 CBTs (at 1, 3, 6...)
   const nudgeMilestone = Math.floor(cbtCount / 3)
@@ -179,6 +183,13 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
     onNavigate(screen)
   }
 
+  // Earn with Us — paid users go straight to the referrals page,
+  // free users see an explanation first (upgrade + bank account needed)
+  const handleEarnWithUs = () => {
+    if (isPaid) onNavigate("referrals")
+    else setShowReferralUpgrade(true)
+  }
+
   const firstName =
     userData?.name?.split(" ")[0] ||
     authUser?.displayName?.split(" ")[0] ||
@@ -268,6 +279,39 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
               </button>
               <button className="hm-ghost" onClick={() => setShowFreePrompt(false)}>
                 Continue with free plan
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== EARN WITH US — FREE USER EXPLANATION ===== */}
+      {showReferralUpgrade && (
+        <div className="hm-overlay" style={{ zIndex: 9998 }}>
+          <div className="hm-modal">
+            <div className="hm-modal-head" style={{ background: "linear-gradient(135deg, #10b981, #059669)" }}>
+              <span className="big">💰</span>
+              <div className="hm-modal-title">Earn With Us</div>
+              <div className="hm-modal-sub">Only available on Full Access</div>
+            </div>
+            <div className="hm-modal-body">
+              <p className="hm-modal-p">
+                Referral earnings are a Full Access feature. Upgrade for {UPGRADE_PRICE} to get your
+                own referral code and start earning <strong>{REFERRAL_PAYOUT} for every friend</strong> who
+                signs up with your code and pays for Full Access.
+              </p>
+              <div className="hm-box miss" style={{ marginBottom: 16 }}>
+                <div className="hm-box-title" style={{ color: "var(--primary)" }}>📌 One more step after upgrading:</div>
+                <div className="hm-line">
+                  We'll ask for your <strong>bank account number</strong> so we know where to send your
+                  referral payouts.
+                </div>
+              </div>
+              <button className="hm-cta violet" onClick={() => { setShowReferralUpgrade(false); onNavigate("upgrade") }}>
+                Upgrade Now — {UPGRADE_PRICE} 🚀
+              </button>
+              <button className="hm-ghost" onClick={() => setShowReferralUpgrade(false)}>
+                Not now
               </button>
             </div>
           </div>
@@ -505,17 +549,21 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           <span className="hm-arrow-inline" aria-hidden="true">›</span>
         </button>
 
-        {/* Referrals — hidden for now. Turn back on in src/utils/appConfig.js (SHOW_REFERRALS) */}
-        {SHOW_REFERRALS && (
-          <button className="hm-banner green" onClick={() => onNavigate("referrals")}>
-            <span className="hm-banner-emoji">💰</span>
-            <span className="hm-banner-body">
-              <span className="hm-banner-title">Refer Friends. Earn ₦500 at Launch 🚀</span>
-              <span className="hm-banner-sub">Share your code now · Get paid when we fully launch</span>
+        {/* Earn with Us — free users see an explanation, paid users go straight to Referrals */}
+        <button className="hm-banner green" onClick={handleEarnWithUs}>
+          <span className="hm-banner-emoji">💰</span>
+          <span className="hm-banner-body">
+            <span className="hm-banner-title">
+              Earn With Us {!isPaid && "🔒"}
             </span>
-            <span className="hm-banner-go">›</span>
-          </button>
-        )}
+            <span className="hm-banner-sub">
+              {isPaid
+                ? `Share your code · Earn ${REFERRAL_PAYOUT} per paid referral`
+                : `Upgrade to start earning ${REFERRAL_PAYOUT} per referral`}
+            </span>
+          </span>
+          <span className="hm-banner-go">›</span>
+        </button>
 
         {/* Upgrade */}
         {!isPaid && (

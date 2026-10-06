@@ -165,7 +165,7 @@ answer: "11.70 g",
 explanation: "NaCl shows a nearly flat solubility curve. Cooling 1 dm³ of saturated solution across this short temperature gap drops its maximum solubility threshold by roughly 0.20 mol/dm³. Mass of crystals deposited = 0.20 mol × 58.5 g/mol = 11.70 g."
 },
 {
-id: 22, subject: "Chemistry", topic: "Solutions & pH", year: 1999, exam: "JAMB",
+id: 22, subject: "Chemistry", topic: "Solutions & Solubility", year: 1999, exam: "JAMB",
 question: "Which of the following sample combinations will exhibit the lowest absolute pH value?",
 options: [
 "5 ml of M/10 HCl acid solution",

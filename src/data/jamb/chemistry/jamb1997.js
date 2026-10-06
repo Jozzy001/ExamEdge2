@@ -137,14 +137,14 @@ answer: "1.69 x 10⁻¹⁰ mol² dm⁻⁶",
 explanation: "AgCl dissociates via AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq). Since the salt dissolves in a 1:1 ion ratio, [Ag⁺] = [Cl⁻] = 1.30 x 10⁻⁵ M. Solubility product K_sp = [Ag⁺][Cl⁻] = (1.30 x 10⁻⁵) * (1.30 x 10⁻⁵) = 1.69 x 10⁻¹⁰ mol² dm⁻⁶."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions & pH", year: 1997, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 1997, exam: "JAMB",
 question: "The hydroxyl ion concentration, [OH⁻], in a solution of sodium hydroxide of pH 10.0 is",
 options: ["10⁻¹⁰ mol dm⁻³", "10⁻⁶ mol dm⁻³", "10⁻⁴ mol dm⁻³", "10⁻² mol dm⁻³"],
 answer: "10⁻⁴ mol dm⁻³",
 explanation: "Since pH + pOH = 14: pOH = 14.0 - 10.0 = 4.0. Hydroxide ion concentration [OH⁻] = 10^(-pOH) = 10⁻⁴ mol dm⁻³."
 },
 {
-id: 19, subject: "Chemistry", topic: "Solutions & pH", year: 1997, exam: "JAMB",
+id: 19, subject: "Chemistry", topic: "Solutions & Solubility", year: 1997, exam: "JAMB",
 question: "Which of the aqueous solutions with the pH values below will liberate hydrogen when it reacts with magnesium metal?",
 options: ["13.0", "7.0", "6.5", "3.0"],
 answer: "3.0",

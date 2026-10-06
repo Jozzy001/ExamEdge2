@@ -94,14 +94,14 @@ const chemJamb2004 = [
     explanation: "Chlorofluorocarbons (CFCs) migrate into the stratosphere where solar ultraviolet light breaks them down to release active chlorine free radicals. These chlorine radicals act as destructive catalysts that continuously break down ozone (O₃) molecules into oxygen."
   },
   {
-    id: 14, subject: "Chemistry", topic: "Solutions & Colloids", year: 2004, exam: "JAMB",
+    id: 14, subject: "Chemistry", topic: "Solutions & Solubility", year: 2004, exam: "JAMB",
     question: "A colloidal system consisting of tiny liquid droplets dispersed uniformly inside a gaseous medium is classified as a/an",
     options: ["emulsion", "liquid aerosol", "sol", "gel"],
     answer: "liquid aerosol",
     explanation: "A liquid aerosol is a colloid formed by suspending fine liquid droplets throughout a continuous gaseous phase (such as fog, mist, or commercial hairspray)."
   },
   {
-    id: 15, subject: "Chemistry", topic: "Solutions & pH", year: 2004, exam: "JAMB",
+    id: 15, subject: "Chemistry", topic: "Solutions & Solubility", year: 2004, exam: "JAMB",
     question: "Calculate the pH of a 0.005 M aqueous solution of tetraoxosulphate(VI) acid, assuming complete ionization.",
     options: ["1.0", "2.0", "3.0", "4.0"],
     answer: "2.0",

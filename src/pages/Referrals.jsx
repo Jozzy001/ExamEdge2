@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import { getReferralLink } from "../utils/referrals"
-import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore"
+import { doc, getDoc, updateDoc, collection, query, where, getDocs } from "firebase/firestore"
 import { db } from "../firebase"
+
+const PAYOUT_PER_REFERRAL = 200 // ₦ per paid referral
 
 const Referrals = ({ onNavigate, onBack, authUser }) => {
   const [userData, setUserData] = useState(null)
@@ -9,13 +11,27 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
   const [copied, setCopied] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  // Bank account details, for payouts
+  const [editingBank, setEditingBank] = useState(false)
+  const [bankName, setBankName] = useState("")
+  const [accountNumber, setAccountNumber] = useState("")
+  const [accountName, setAccountName] = useState("")
+  const [savingBank, setSavingBank] = useState(false)
+  const [bankError, setBankError] = useState("")
+
   useEffect(() => {
     if (!authUser?.uid) return
     const load = async () => {
       try {
         // Load own user data (for referral code + earnings)
         const snap = await getDoc(doc(db, "users", authUser.uid))
-        if (snap.exists()) setUserData(snap.data())
+        if (snap.exists()) {
+          const data = snap.data()
+          setUserData(data)
+          setBankName(data.bankName || "")
+          setAccountNumber(data.bankAccountNumber || "")
+          setAccountName(data.bankAccountName || "")
+        }
 
         // Load all users referred by this user
         const q = query(collection(db, "users"), where("referredBy", "==", authUser.uid))
@@ -40,9 +56,35 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
   const handleShareWhatsApp = () => {
     const link = getReferralLink(userData?.referralCode)
     const text = encodeURIComponent(
-      `🎓 I'm using ExamEdgeNG to prepare for UNIBEN Post-UTME! It has 20 years of past questions, CBT simulation and an AI tutor.\n\nSign up free with my referral code and start preparing:\n\n${link}`
+      `🎓 I'm using ExamEdgeNG to prepare for JAMB and Post-UTME! It has 20 years of past questions, CBT simulation and an AI tutor.\n\nSign up free with my referral code and start preparing:\n\n${link}`
     )
     window.open(`https://wa.me/?text=${text}`, "_blank")
+  }
+
+  const handleSaveBank = async () => {
+    if (!bankName.trim() || !accountNumber.trim() || !accountName.trim()) {
+      setBankError("Please fill in all three fields")
+      return
+    }
+    const digits = accountNumber.replace(/\D/g, "")
+    if (digits.length !== 10) {
+      setBankError("Account number should be 10 digits")
+      return
+    }
+    setSavingBank(true)
+    setBankError("")
+    try {
+      await updateDoc(doc(db, "users", authUser.uid), {
+        bankName: bankName.trim(),
+        bankAccountNumber: digits,
+        bankAccountName: accountName.trim(),
+      })
+      setAccountNumber(digits)
+      setEditingBank(false)
+    } catch (e) {
+      setBankError("Failed to save. Please try again.")
+    }
+    setSavingBank(false)
   }
 
   if (loading) {
@@ -66,11 +108,20 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
   const totalEarned = userData?.referralEarnings || 0
   const totalPaidOut = userData?.referralPaidOut || 0
   const pendingBalance = totalEarned - totalPaidOut
+  const hasBankDetails = !!(userData?.bankAccountNumber)
 
   const formatDate = (ts) => {
     if (!ts) return "—"
     const d = ts?.toDate ? ts.toDate() : new Date(ts)
     return d.toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" })
+  }
+
+  const inputStyle = {
+    width: "100%", padding: "12px 14px", marginBottom: 10,
+    border: "1.5px solid var(--border)", borderRadius: "var(--radius-md)",
+    background: "var(--surface)", fontSize: 14,
+    fontFamily: "var(--font-main)", color: "var(--text)",
+    outline: "none", boxSizing: "border-box"
   }
 
   return (
@@ -114,6 +165,68 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
             }}>
               🎉 ₦{pendingBalance.toLocaleString()} will be paid to your bank account at the next payout
             </div>
+          )}
+        </div>
+
+        {/* ── BANK ACCOUNT FOR PAYOUTS ── */}
+        <div style={{
+          background: hasBankDetails ? "var(--surface)" : "rgba(245,158,11,0.07)",
+          border: hasBankDetails ? "1px solid var(--border)" : "1px solid rgba(245,158,11,0.3)",
+          borderRadius: "var(--radius-lg)", padding: "16px", marginBottom: 16
+        }}>
+          {!editingBank ? (
+            <>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: hasBankDetails ? 8 : 10 }}>
+                <span style={{ fontSize: 20 }}>🏦</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)" }}>
+                    Payout Bank Account
+                  </div>
+                  {!hasBankDetails && (
+                    <div style={{ fontSize: 11, color: "#92400e", marginTop: 2 }}>
+                      Add this so we know where to send your earnings
+                    </div>
+                  )}
+                </div>
+              </div>
+              {hasBankDetails ? (
+                <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10, lineHeight: 1.6 }}>
+                  {userData.bankAccountName} · {userData.bankName}
+                  <br />
+                  {userData.bankAccountNumber}
+                </div>
+              ) : null}
+              <button onClick={() => setEditingBank(true)} style={{
+                padding: "9px 14px",
+                background: hasBankDetails ? "var(--primary-light)" : "var(--primary)",
+                color: hasBankDetails ? "var(--primary-text)" : "#fff",
+                border: "none", borderRadius: "var(--radius-sm)",
+                fontSize: 12, fontWeight: 800, cursor: "pointer", fontFamily: "var(--font-main)"
+              }}>
+                {hasBankDetails ? "Edit details" : "Add bank account"}
+              </button>
+            </>
+          ) : (
+            <>
+              <div style={{ fontSize: 13, fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>
+                Payout Bank Account
+              </div>
+              <input type="text" value={accountName} onChange={e => setAccountName(e.target.value)}
+                placeholder="Account name" style={inputStyle} />
+              <input type="text" value={bankName} onChange={e => setBankName(e.target.value)}
+                placeholder="Bank name (e.g. GTBank)" style={inputStyle} />
+              <input type="text" value={accountNumber} onChange={e => setAccountNumber(e.target.value)}
+                placeholder="10-digit account number" maxLength={10} style={inputStyle} />
+              {bankError && <p style={{ fontSize: 12, color: "var(--accent)", marginTop: -4, marginBottom: 10 }}>{bankError}</p>}
+              <div style={{ display: "flex", gap: 8 }}>
+                <button className="ee-btn ee-btn-primary" onClick={handleSaveBank} disabled={savingBank} style={{ flex: 1, padding: "10px" }}>
+                  {savingBank ? "Saving..." : "Save"}
+                </button>
+                <button className="ee-btn ee-btn-secondary" onClick={() => { setEditingBank(false); setBankError("") }} style={{ flex: 1, padding: "10px" }}>
+                  Cancel
+                </button>
+              </div>
+            </>
           )}
         </div>
 
@@ -162,7 +275,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
                 <div style={{
                   fontSize: 11, fontWeight: 800, color: "#10b981",
                   marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5
-                }}>✅ Paid — earning you ₦500 each</div>
+                }}>✅ Paid — earning you ₦{PAYOUT_PER_REFERRAL} each</div>
                 {paidReferrals.map((u, i) => (
                   <div key={u.id} style={{
                     background: "rgba(16,185,129,0.06)",
@@ -192,7 +305,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
                       padding: "4px 10px", borderRadius: 20,
                       border: "1px solid rgba(16,185,129,0.3)",
                       flexShrink: 0
-                    }}>+₦500</div>
+                    }}>+₦{PAYOUT_PER_REFERRAL}</div>
                   </div>
                 ))}
               </>
@@ -242,7 +355,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
                   borderRadius: "var(--radius-md)", padding: "10px 12px",
                   fontSize: 12, color: "#92400e", lineHeight: 1.6, marginTop: 4
                 }}>
-                  💡 These friends signed up but haven't paid yet. You'll earn ₦500 for each one when they upgrade to full access.
+                  💡 These friends signed up but haven't paid yet. You'll earn ₦{PAYOUT_PER_REFERRAL} for each one when they upgrade to full access.
                 </div>
               </>
             )}
@@ -258,7 +371,7 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
               No referrals yet
             </div>
             <div style={{ fontSize: 12, color: "var(--text3)", lineHeight: 1.65 }}>
-              Share your referral code and start earning. Every friend who signs up under your code earns you ₦500 when they pay.
+              Share your referral code and start earning. Every friend who signs up under your code earns you ₦{PAYOUT_PER_REFERRAL} when they pay.
             </div>
           </div>
         )}
@@ -310,10 +423,10 @@ const Referrals = ({ onNavigate, onBack, authUser }) => {
             How earnings work
           </div>
           {[
-            { icon: "1️⃣", text: "Share your code with friends preparing for UNIBEN Post-UTME" },
+            { icon: "1️⃣", text: "Share your code with friends preparing for JAMB or Post-UTME" },
             { icon: "2️⃣", text: "They sign up using your code — permanently linked to you" },
-            { icon: "3️⃣", text: "When they pay ₦2,500, ₦500 is credited to your balance" },
-            { icon: "4️⃣", text: "We pay your balance to your bank account at payout time" },
+            { icon: "3️⃣", text: `When they pay for Full Access, ₦${PAYOUT_PER_REFERRAL} is credited to your balance` },
+            { icon: "4️⃣", text: "We pay your balance to the bank account on file at payout time" },
           ].map((s, i) => (
             <div key={i} style={{
               display: "flex", gap: 10, padding: "6px 0",

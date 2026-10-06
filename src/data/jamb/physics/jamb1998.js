@@ -142,21 +142,21 @@ answer: "52.0 g",
 explanation: "Molar mass of MgCl₂ = 24 + (2 × 35.5) = 95 g/mol. A solubility of 8.0 mol dm⁻³ means 8.0 moles dissolve per 1000 cm³ of water. In 50 cm³ of water, the maximum amount that can dissolve is (8.0 × 50) / 1000 = 0.4 moles. Mass dissolved = 0.4 mol × 95 g/mol = 38.0 g. Mass left undissolved = 90.0 g - 38.0 g = 52.0 g."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions & Colloids", year: 1998, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 1998, exam: "JAMB",
 question: "Soap lather is an example of a colloid in which a",
 options: ["liquid is dispersed in gas", "solid is dispersed in liquid", "gas is dispersed in liquid", "liquid is dispersed in liquid"],
 answer: "gas is dispersed in liquid",
 explanation: "Soap lather is a foam colloid, which is formed by bubbles of air gas trapped and dispersed evenly inside a liquid surfactant medium."
 },
 {
-id: 19, subject: "Chemistry", topic: "Solutions & pH", year: 1998, exam: "JAMB",
+id: 19, subject: "Chemistry", topic: "Solutions & Solubility", year: 1998, exam: "JAMB",
 question: "The pH of a solution obtained by mixing 100 cm³ of a 0.1 M HCl solution with 100 cm³ of a 0.2 M solution of NaOH is",
 options: ["1.3", "7.0", "9.7", "12.7"],
 answer: "12.7",
 explanation: "Moles of H⁺ from HCl = 0.1 × 0.100 = 0.01 mol. Moles of OH⁻ from NaOH = 0.2 × 0.100 = 0.02 mol. After neutralization, excess OH⁻ = 0.02 - 0.01 = 0.01 mol. Total mixture volume = 100 + 100 = 200 cm³ = 0.2 dm³. [OH⁻] concentration = 0.01 / 0.2 = 0.05 M. pOH = -log(0.05) ≈ 1.3. pH = 14 - 1.3 = 12.7."
 },
 {
-id: 20, subject: "Chemistry", topic: "Solutions", year: 1998, exam: "JAMB",
+id: 20, subject: "Chemistry", topic: "Solutions & Solubility", year: 1998, exam: "JAMB",
 question: "In the conductance of electrical currents through an aqueous potassium tetraoxosulphate(VI) solution, the electric charge carriers are",
 options: ["ions", "electrons", "hydrated ions", "hydrated electrons"],
 answer: "ions",

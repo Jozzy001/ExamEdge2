@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The value of discipline and the role of rules in institutional growth.";
-const PASSAGE_2 = "Passage II — The psychological impact of mass media advertising on consumer choices.";
-const PASSAGE_3 = "Passage III — Scientific advances in conservation biology and forest protection.";
-const PASSAGE_4 = "Passage IV — Reflections on early African trading trade routes and economic history.";
-const PASSAGE_5 = "Passage V — The mechanics of technological adoption in small scale rural farming.";
+const PASSAGE_1 = "The primary purpose of institutional discipline is to create a structured operational framework that fosters growth and harmony. An institution entirely devoid of rules will experience immediate chaotic operational decay, as individual impulses collide without guidance. However, regulations become counterproductive when they are excessively rigid and disconnected from human realities. An effective operational framework—the system of rules and procedures guiding daily actions—must remain flexible and balanced to achieve long-term institutional success.";
+
+const PASSAGE_2 = "Mass media advertising campaigns are explicitly designed to shape consumer desires and build brand loyalty artificially. Modern marketing rarely provides purely objective data; instead, it targets emotional needs like social status, prestige, and security to drive buying behavior. Some campaigns use subliminal cues operating below the threshold of conscious awareness to influence minds. Television broadcasts serve as a powerful tool for visual persuasion, blending moving imagery and audio to manipulate consumer choices and create artificial market demands.";
+
+const PASSAGE_3 = "Conservation biology has gained critical importance due to accelerated habitat destruction and biodiversity loss worldwide. Biodiversity—the rich variety of plant and animal life within an ecosystem—is deeply threatened when human development fragments natural habitats. The fragmentation of forest ecosystems causes the isolation of wildlife species, reducing genetic health and long-term survival. Sustainable forestry requires balancing immediate economic harvesting with long-term ecosystem regeneration, utilizing proactive scientific strategies to protect natural reserves.";
+
+const PASSAGE_4 = "Early African trading route configurations were primarily shaped by geographical landmarks, water access, and regional resource deposits like salt mines or gold fields. Early commerce relied on barter trade—the direct exchange of commodities without using money as a medium. Later, the introduction of cowrie shells provided a standardized, portable medium of value exchange. These long-distance networks had a major consequence: they facilitated the cross-regional exchange of ideas, customs, languages, and technological knowledge, making salt an indispensable asset for food preservation and biological survival.";
+
+const PASSAGE_5 = "Small-scale rural farmers are often slow to adopt new agricultural technologies because the structural risks of failure threaten their basic household food security. Subsistence farming is aimed strictly at meeting the immediate food consumption needs of the farmer's household, leaving no margin for error. Technical innovation succeeds in rural setup fields when it is affordable, easily repaired, and adapted to local crop patterns. Proactive deployment of agricultural extension services acts as a vital bridge between scientific labs and rural farmers, ensuring that technological transformation remains gradual and participatory.";
+
 
 const englishJamb1991 = [
   // =====================

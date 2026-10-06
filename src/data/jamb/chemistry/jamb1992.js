@@ -130,7 +130,7 @@ const chemJamb1992 = [
     explanation: "The solubility of a gas depends on the chemical identities of the solute and solvent (I, II), decreases with increasing temperature (III), and increases with increasing partial pressure according to Henry's Law (IV)."
   },
   {
-id: 17, subject: "Chemistry", topic: "Solutions & Colloids", year: 1992, exam: "JAMB",
+id: 17, subject: "Chemistry", topic: "Solutions & Solubility", year: 1992, exam: "JAMB",
 question: "An emulsion paint consists of",
 options: [
 "gas or liquid particles dispersed in a liquid",
@@ -142,7 +142,7 @@ answer: "liquid particles dispersed in another liquid",
 explanation: "An emulsion is a colloid formed by dispersing droplets of one liquid throughout another immiscible liquid medium, which describes the liquid-in-liquid stabilization structure of emulsion paints."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions & pH", year: 1992, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 1992, exam: "JAMB",
 question: "A sample of orange juice is found to have a pH of 3.80. What is the concentration of the hydroxide ion [OH⁻] in the juice?",
 options: ["1.58 x 10⁻⁴", "6.31 x 10⁻¹¹", "6.31 x 10⁻⁴", "1.58 x 10⁻¹¹"],
 answer: "6.31 x 10⁻¹¹",

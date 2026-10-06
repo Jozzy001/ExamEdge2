@@ -132,14 +132,14 @@ answer: "sulphur(IV) oxide",
 explanation: "Sulphur(IV) oxide (SO₂) gas dissolves in atmospheric cloud droplets to form sulfurous and sulfuric acids. This creates acid rain, which corrodes metallic structures and dissolves calcium carbonate in limestone and marble buildings."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions & Colloids", year: 2003, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 2003, exam: "JAMB",
 question: "A colloidal system consisting of tiny solid particles dispersed uniformly throughout a liquid medium is classified as a/an",
 options: ["emulsion", "sol", "gel", "foam"],
 answer: "sol",
 explanation: "A sol is a specific type of colloid where solid particles are suspended and dispersed throughout a liquid continuous phase (e.g., ink or muddy water). An emulsion is liquid-in-liquid; a gel is liquid-in-solid."
 },
 {
-id: 19, subject: "Chemistry", topic: "Solutions & pH", year: 2003, exam: "JAMB",
+id: 19, subject: "Chemistry", topic: "Solutions & Solubility", year: 2003, exam: "JAMB",
 question: "Calculate the hydrogen ion [H⁺] concentration of a solution that has a measured pH value of 4.70. [Given log₁₀(2.0) = 0.30]",
 options: ["2.0 x 10⁻⁵ M", "5.0 x 10⁻⁵ M", "2.0 x 10⁻⁴ M", "5.0 x 10⁻⁴ M"],
 answer: "2.0 x 10⁻⁵ M",

@@ -553,7 +553,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                 padding: "14px 16px"
               }}>
                 <div style={{ fontSize: 13, fontWeight: 800, color: "var(--primary)", marginBottom: 8 }}>
-                  🔒 Upgrade for ₦2,500 to Unlock:
+                  🔒 Upgrade for ₦1,500 to Unlock:
                 </div>
                 {[
                   "📚 All 20 years of questions (2005–2024)",

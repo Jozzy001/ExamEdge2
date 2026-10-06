@@ -152,7 +152,7 @@ answer: "destruction of marine life",
 explanation: "Oil spills create a floating slick that cuts off light and dissolved oxygen exchange from the atmosphere. This coats aquatic habitats and poisons or suffocates local marine organisms."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions", year: 1994, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 1994, exam: "JAMB",
 question: "Sodium chloride has no standard solubility product (K_sp) value cited in standard solubility text tables because of its",
 options: ["saline nature", "high solubility", "low solubility", "insolubility"],
 answer: "high solubility",
@@ -166,7 +166,7 @@ answer: "2.00",
 explanation: "Molar mass of KNO₃ = 39 + 14 + (3 × 16) = 101 g/mol. Moles of KNO₃ dissolved = 20.2 g / 101 g/mol = 0.20 mol. Volume of water solvent = 100 g = 100 cm³ = 0.10 dm³. Concentration in moles per dm³ = 0.20 mol / 0.10 dm³ = 2.00 mol/dm³."
 },
 {
-id: 20, subject: "Chemistry", topic: "Solutions & pH", year: 1994, exam: "JAMB",
+id: 20, subject: "Chemistry", topic: "Solutions & Solubility", year: 1994, exam: "JAMB",
 question: "A few drops of concentrated HCl acid are added to about 10 cm³ of a solution of pH 3.4. The pH of the resulting mixture will be",
 options: ["less than 3.4", "greater than 3.4", "unaltered", "the same as that of pure water"],
 answer: "less than 3.4",

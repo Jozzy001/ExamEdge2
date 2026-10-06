@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The relationship between science, technology, and economic advancement.";
-const PASSAGE_2 = "Passage II — Environmental pollution, industrial waste management, and regulatory systems.";
-const PASSAGE_3 = "Passage III — The role of formal education in social mobility and civic responsibility.";
-const PASSAGE_4 = "Passage IV — Traditional versus modern agricultural distribution models and food security.";
-const PASSAGE_5 = "Passage V — The evolution of printing technologies and its impact on literacy patterns.";
+const PASSAGE_1 = "The primary link between pure science and technology is that pure science provides the foundational theoretical principles that technology applies practically. When a country completely neglects basic scientific research, it experiences immediate long-term structural economic dependency on foreign innovations, forcing its local industries to import tools wholesale. Lasting technical progress relies upon applied research—meaning scientific work aimed at solving specific, practical problems and developing real-world products. Sustainable technical growth requires a balanced investment in both basic scientific research and technological applications, acting as a catalyst for sustainable economic advancement.";
+
+const PASSAGE_2 = "The unregulated dumping of industrial effluents into public waterways causes severe degradation of water resources and threats to public health safety. Factory waste contaminates local aquatic ecosystems—the network of biological interactions between living organisms and their environment. The effectiveness of environmental regulation is limited by weak enforcement mechanisms, systemic corruption, and inadequate monitoring tools. While chemical plants and textile factories release hazardous pollutants, natural agricultural organic compost beds are harmless. Sustainable pollution management requires strict accountability, modern waste treatments, and rigorous policy enforcement.";
+
+const PASSAGE_3 = "Formal education operates as a powerful instrument of social mobility because it equips individuals with skills, credentials, and access to better employment opportunities. Social mobility describes the process where individuals move upward or downward in social status relative to their family background. However, an educational system fails to build civic responsibility when it prioritizes certificate acquisition over character development and ethical values. This structural gap leads to high graduate unemployment, causing social disillusionment, frustration, and an increase in systemic vulnerabilities. Educational reforms must balance academic skills with moral values and job creation.";
+
+const PASSAGE_4 = "Traditional crop distribution networks in rural areas suffer primarily from poor transport infrastructure, inadequate cold storage, and heavy post-harvest losses. Because isolated farmers lack direct transit options, middlemen buy crops cheaply and sell them at high profits in cities. National food security can be stabilized by investing in rural access roads, processing plants, and strategic food reserves. Smallholder cooperatives face a major operational challenge because banks require rigid property collateral that small farmers do not own. This locking out worsens the waste of perishable items—meaning goods liable to spoil or decay rapidly if not consumed or properly stored.";
+
+const PASSAGE_5 = "The introduction of movable type printing transformed human society by enabling the mass production of books, dropping costs, and raising literacy. This machine array replaced the manual work of the scribe—a person whose job was to copy out documents, manuscripts, and texts by hand. The resulting democratization of knowledge implied that information became widely accessible to ordinary citizens rather than controlled by a small elite. Mass literacy empowered citizens to critique authority, read policy updates, and seek active political participation, serving as an anchor for the intellectual awakening, scientific revolution, and modern education.";
+
 
 const englishJamb1994 = [
   // =====================

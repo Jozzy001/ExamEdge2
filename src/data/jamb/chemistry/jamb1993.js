@@ -147,7 +147,7 @@ answer: "efflorescence",
 explanation: "Efflorescence is the process where a hydrated crystalline salt spontaneously loses some or all of its water of crystallization to the surrounding air when exposed to the atmosphere."
 },
 {
-id: 18, subject: "Chemistry", topic: "Solutions & pH", year: 1993, exam: "JAMB",
+id: 18, subject: "Chemistry", topic: "Solutions & Solubility", year: 1993, exam: "JAMB",
 question: "A student prepares 0.5 M solutions each of hydrochloric and ethanoic acids and then measures their pH. The result would show that the",
 options: [
 "pH values are equal",

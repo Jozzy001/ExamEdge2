@@ -2,11 +2,15 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The art of writing obituaries in Nigeria and 'mortuary stylistics'.";
-const PASSAGE_2 = "Passage II — Excerpt from Chinua Achebe's Arrow of God (Unachukwu's speech on the white man).";
-const PASSAGE_3 = "Passage III — Dialogue between a Manager and a Secretary regarding an untidy Conference Room.";
-const PASSAGE_4 = "Passage IV — Primitive man's use of firebrand, lamps, and flame preservation.";
-const PASSAGE_5 = "Passage V — Developments in electronic science and the transformation of record keeping.";
+const PASSAGE_1 = "With the volume of obituaries published daily in Nigerian newspapers, one suspects that the reason why some of our newspapers still manage to break even is because of the great amount of revenue they derive from obituaries. Without this steady stream of income, many would be running at a loss. This popularity might be explained by the fact that Nigerians value their dead greatly. Every dead Nigerian, according to these pages, must have lived a saintly life, as evil things are rarely if ever said against the deceased. This distinct practice has given rise to what can be termed 'mortuary stylistics'—which is the study in the art of eulogizing the dead and making their loss sound so heart breaking, transforming every departed soul into a paragon of virtue regardless of how they actually lived.";
+
+const PASSAGE_2 = "In his address to the elders, Unachukwu spoke with the gravity of an experienced traveler, saying, 'You all know how friendly we are with Okperi, but look at what is happening today. I have travelled in Olu and I have travelled in Igbo, and I witnessed the complete destruction of Abame. There is no escape from the white man. His power burns like fire, his roads pierce through our lands, and his new religion takes root everywhere. I know that as I say it now it passes by your ears and makes no impression, but it will happen.' His words made it clear that the total overrunning of their lifestyle was an inescapable reality, and rather than fighting the air, the people must accept the white man's presence as an irreversible shift in their world.";
+
+const PASSAGE_3 = "The Conference Room was completely untidy, sparking a sharp, charged dialogue between the Manager and his Secretary. The Manager began, 'I would not describe you as an inefficient worker, as you have shown great diligence in the past, but I am utterly dissatisfied with today's lapse. Was it sufficient for you to give instructions to the cleaner without ensuring that he actually carried them out?' The Secretary defensively countered, 'It is not the duty of a secretary to enforce the instructions he gives to his junior workers. I gave the order; I am not a cleaner.' Unmoved, the Manager closed the argument with a stern warning: 'I shall not forget that you allowed a board meeting to take place in an untidy Conference Room. A supervisor's job includes follow-through, and I am holding you responsible for this failure.'";
+
+const PASSAGE_4 = "Before primitive man discovered less laborious ways of making fire, he had to preserve it at all costs. Whenever he went on a long journey, he carried a firebrand with him mainly for flame preservation. His discovery that the firebrand—from which the torch may well have developed—could provide light was secondary to keeping the flame alive. Early man was least concerned with fire as a means of cooking, as his primary early associations were warmth, protection, and portable light. Illumination took a major step forward when he accidentally observed fat dripping during a meal and realized it could sustain a flame. All he had to do was to fashion a vessel, such as a hollowed stone or sea shell, to contain the molten fat and float a lighted reed in it, successfully inventing the first primitive lamp.";
+
+const PASSAGE_5 = "Developments in electronic science have completely transformed the art of record keeping over the years. The writer notes three distinct historical stages of development: first, traditional custody where history was kept entirely in people's minds; second, the era of writing which replaced mental recording; and third, the modern electronic memory. Relying on human memory was notoriously dangerous because people either forgot events wholly or in part, or deliberately falsified details. While writing stepped in to solve this, it was not entirely free from these shortcomings, as untruths and biases could still be written down willingly or inadvertently. However, with the advent of electronic recording devices, the dangers of memory loss and deliberate human falsification have been largely overcome, representing a superior leap in data reliability.";
 
 const englishJamb1987 = [
   // =====================
@@ -88,51 +92,50 @@ const englishJamb1987 = [
     question: "The relationship between the manager and his secretary, as revealed in the passage, could be said to be",
     options: ["strained", "charged", "personal", "cordial"],
     answer: "charged",
-    explanation: "The dialogue consists of sharp questioning, physical excuses, and direct accountability arguments regarding a failure of duty, creating a highly tense, dynamic, and charged environment."
-  },
-  {
-    subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
-    question: " 'I would not describe you as an inefficient worker...' suggests that the manager",
-    options: ["is quite pleased with the level of diligence of his secretary", "has had cause in the past to complain against his secretary", "is dissatisfied with the level of performance of his secretary", "is non-committal over the efficiency of his secretary"],
-    answer: "is quite pleased with the level of diligence of his secretary",
-    explanation: "By stating he would *not* call the secretary inefficient, the manager establishes a baseline validation of the worker's usual competence, setting up his confusion as to why this specific lapse occurred."
-  },
-  {
-    subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
-    question: "It would appear that the manager feels that the secretary",
-    options: ["should have, if possible, personally cleaned the Conference Room", "should have ensured that someone else cleaned the Conference Room", "should have ensured that the cleaner did his job", "is a coward"],
-    answer: "should have ensured that the cleaner did his job",
-    explanation: "The manager argues that an assignment is only executed properly when it is supervised, asking: 'Was it sufficient for you to give instructions to the cleaner without ensuring that he actually carried them out?'"
-  },
-  {
-    subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
-    question: "The secretary's attitude seems to be",
-    options: [
-      "Manager Sir, you employed this huge and recalcitrant cleaner and I am not going to do his job for him",
-      " 'It is not the duty of a secretary to enforce the instructions he gives to his junior workers'",
-      "I am a secretary by profession, not a cleaner",
-      "It is not terribly important how tidy the Conference Room is for the meeting"
-    ],
-    answer: " 'It is not the duty of a secretary to enforce the instructions he gives to his junior workers'",
-    explanation: "The secretary argues that he gave the instruction and shouldn't have to follow up or do it himself, showing he considers his duty ended once the order is issued."
-  },
-  {
-    subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
-    question: "The last comment by the manager suggests that he",
-    options: ["is going to hold the secretary responsible for what has happened", "is likely to reprimand both the secretary and the cleaner for dereliction of duty", "will punish the cleaner but warn the secretary", "will warn the cleaner and punish the secretary"],
-    answer: "is going to hold the secretary responsible for what has happened",
-    explanation: "The manager explicitly says, 'I shall not forget that you allowed a board meeting to take place in an untidy Conference Room,' solidifying that the responsibility stops with the secretary."
-  },
-
-  // =====================
-  // COMPREHENSION — PASSAGE IV
-  // =====================
-  {
-    subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_4,
-    question: "Primitive man carried a firebrand during his journeys mainly for",
-    options: ["illumination", "cooking of food", "flame preservation", "warmth"],
-    answer: "flame preservation",
-    explanation: "The text says: 'Before he discovered less laborious ways of making fire, he had to preserve it, and whenever he went on a journey he carried a firebrand with him.'"
+explanation: "The dialogue consists of sharp questioning, physical excuses, and direct accountability arguments regarding a failure of duty, creating a highly tense, dynamic, and charged environment."
+},
+{
+subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
+question: " 'I would not describe you as an inefficient worker...' suggests that the manager",
+options: ["is quite pleased with the level of diligence of his secretary", "has had cause in the past to complain against his secretary", "is dissatisfied with the level of performance of his secretary", "is non-committal over the efficiency of his secretary"],
+answer: "is quite pleased with the level of diligence of his secretary",
+explanation: "By stating he would not call the secretary inefficient, the manager establishes a baseline validation of the worker's usual competence, setting up his confusion as to why this specific lapse occurred."
+},
+{
+subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
+question: "It would appear that the manager feels that the secretary",
+options: ["should have, if possible, personally cleaned the Conference Room", "should have ensured that someone else cleaned the Conference Room", "should have ensured that the cleaner did his job", "is a coward"],
+answer: "should have ensured that the cleaner did his job",
+explanation: "The manager argues that an assignment is only executed properly when it is supervised, asking: 'Was it sufficient for you to give instructions to the cleaner without ensuring that he actually carried them out?'"
+},
+{
+subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
+question: "The secretary's attitude seems to be",
+options: [
+"Manager Sir, you employed this huge and recalcitrant cleaner and I am not going to do his job for him",
+" 'It is not the duty of a secretary to enforce the instructions he gives to his junior workers'",
+"I am a secretary by profession, not a cleaner",
+"It is not terribly important how tidy the Conference Room is for the meeting"
+],
+answer: " 'It is not the duty of a secretary to enforce the instructions he gives to his junior workers'",
+explanation: "The secretary argues that he gave the instruction and shouldn't have to follow up or do it himself, showing he considers his duty ended once the order is issued."
+},
+{
+subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_3,
+question: "The last comment by the manager suggests that he",
+options: ["is going to hold the secretary responsible for what has happened", "is likely to reprimand both the secretary and the cleaner for dereliction of duty", "will punish the cleaner but warn the secretary", "will warn the cleaner and punish the secretary"],
+answer: "is going to hold the secretary responsible for what has happened",
+explanation: "The manager explicitly says, 'I shall not forget that you allowed a board meeting to take place in an untidy Conference Room,' solidifying that the responsibility stops with the secretary."
+},
+// =====================
+// COMPREHENSION — PASSAGE IV
+// =====================
+{
+subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_4,
+question: "Primitive man carried a firebrand during his journeys mainly for",
+options: ["illumination", "cooking of food", "flame preservation", "warmth"],
+answer: "flame preservation",
+explanation: "The text says: 'Before he discovered less laborious ways of making fire, he had to preserve it, and whenever he went on a journey he carried a firebrand with him.'"
 },
 {
 subject: "English", topic: "Comprehension", year: 1987, exam: "JAMB", passage: PASSAGE_4,
@@ -641,7 +644,7 @@ subject: "English", topic: "Lexis & Structure", year: 1987, exam: "JAMB",
 question: "My brother does not have a flair... Mathematics.",
 options: ["for", "in", "at", "of"],
 answer: "for",
-explanation: "The noun 'flair' correctly collocates with the preposition 'for' (meaning natural ability)."
+explanation: "The noun 'flair' correctly concept-collocates with the preposition 'for' (meaning natural ability)."
 },
 {
 subject: "English", topic: "Lexis & Structure", year: 1987, exam: "JAMB",

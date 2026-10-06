@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — Global warning, atmospheric greenhouse gases, and ecological shifts.";
-const PASSAGE_2 = "Passage II — The psychological impact of mass urbanization on mental well-being.";
-const PASSAGE_3 = "Passage III — Financial technology developments, electronic capital transfers, and banking tracking systems.";
-const PASSAGE_4 = "Passage IV — Traditional conflict management models versus adversarial modern high court procedures.";
-const PASSAGE_5 = "Passage V — The history of scientific methods, academic empirical observation, and validation metrics.";
+const PASSAGE_1 = "The continuous rise in global temperatures is primarily driven by the excessive accumulation of greenhouse gases in the atmosphere caused by human industrial activity. Neglecting environmental emissions causes extreme long-term disruptions in global weather patterns and ecologies. This warming is caused by the greenhouse effect—the thermal trapping of solar radiation by atmospheric gas layers. Slowing down global warming requires a global transition to clean energy sources and proactive carbon reduction strategies, providing a pathway to preserve vulnerable wildlife habitats.";
+
+const PASSAGE_2 = "Intense crowding in metropolitan zones increases nervous strain, alienation, and chronic stress if unmanaged. This density overtaxes the nervous system, leading to severe urban isolation and feelings of loneliness despite living in crowded settings. The word 'alienation' describes a state of emotional isolation, detachment, and separation from the community core. While noise, traffic, and cramped blocks cause severe social strain, the slow growth of natural vegetation acts as a stress reducer. Easing this tension requires thoughtful urban planning, green spaces, and community engagement models.";
+
+const PASSAGE_3 = "Electronic banking arrays have transformed the global economy by allowing instantaneous capital transfers, data logging, and automated settlements across borders. This ease of movement has dramatically increased capital mobility—referring to the ease with which financial assets can be transferred across international lines. However, highly digital banking networks are vulnerable to cyber security threats, system outages, and sophisticated fraud data breaches. Regulatory panels face the challenge of tracking illicit transactions across interconnected networks, noting that digital banking tools are inherently neutral instruments whose operational value depends entirely on deployment choices.";
+
+const PASSAGE_4 = "Traditional dispute mediation frameworks prioritized restoring community equilibrium, healing relationships, and mutual compromise. Customary systems view conflict as a break in social harmony, depending on the integrity, knowledge of custom, and high moral standing of lineage mediators. In contrast, modern adversarial court systems focus on determining technical guilt or innocence through formal competitive contests. Ignoring the social relationship during a trial leaves long-term bitterness that keeps parties hostile after the final verdict. Custom systems rely on restorative options—meaning options that repair broken social bonds and return the group to a state of balance.";
+
+const PASSAGE_5 = "The scientific method revolutionized human understanding by replacing speculation with systematic empirical observation, testing, and verified data analysis. Within this framework, an empirical hypothesis becomes a validated law only when it is proven repeatable through independent scientific testing and scrutiny. The word 'empirical' means based on direct physical observation, measurement, and sensory evidence. A major challenge encountered during scientific paradigm shifts is the natural human resistance to letting go of long-held traditional beliefs. Ultimately, scientific knowledge serves as an anchor for continuous intellectual growth, technical innovation, and civic advancement.";
+
 
 const englishJamb1995 = [
   // =====================

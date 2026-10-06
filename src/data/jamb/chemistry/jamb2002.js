@@ -313,7 +313,7 @@ answer: "blue to pink",
 explanation: "Anhydrous cobalt(II) chloride is a deep blue solid. When it absorbs water from steam, it becomes hydrated cobalt(II) chloride hexahydrate [CoCl₂·6H₂O], which turns a distinct pink color. This change is used as a standard qualitative test for moisture."
 },
 {
-id: 41, subject: "Chemistry", topic: "Solutions & pH", year: 2002, exam: "JAMB",
+id: 41, subject: "Chemistry", topic: "Solutions & Solubility", year: 2002, exam: "JAMB",
 question: "Which of the following aqueous solutions containing hydroxyl ion concentrations will liberate hydrogen gas when reacted with active magnesium metal?",
 options: ["1.0 x 10⁻¹² mol dm⁻³", "1.0 x 10⁻⁴ mol dm⁻³", "1.0 x 10⁻⁶ mol dm⁻³", "1.0 x 10⁻² mol dm⁻³"],
 answer: "1.0 x 10⁻¹² mol dm⁻³",
@@ -341,7 +341,7 @@ answer: "efflorescence",
 explanation: "Efflorescence is the property where a hydrated crystalline salt spontaneously releases its water of crystallization into the air as vapor when exposed to the atmosphere."
 },
 {
-id: 45, subject: "Chemistry", topic: "Solutions & pH", year: 2002, exam: "JAMB",
+id: 45, subject: "Chemistry", topic: "Solutions & Solubility", year: 2002, exam: "JAMB",
 question: "Three drops of a 1.0 mol dm⁻³ solution of NaOH are added to 20 cm³ of a buffer solution that has a measured pH of 8.4. The pH of the resulting solution will be",
 options: ["less than 8.4", "greater than 8.4", "completely unaltered / close to 8.4", "close to that of pure water"],
 answer: "completely unaltered / close to 8.4",

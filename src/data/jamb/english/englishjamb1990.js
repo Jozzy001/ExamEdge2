@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The problem of waste disposal in urban centres and its environmental impact.";
-const PASSAGE_2 = "Passage II — The psychological and physiological effects of tobacco smoking.";
-const PASSAGE_3 = "Passage III — The role of literature in mirroring society and inducing social change.";
-const PASSAGE_4 = "Passage IV — Traditional versus modern methods of medical practice in Africa.";
-const PASSAGE_5 = "Passage V — The scientific revolution and its impact on human civilization.";
+const PASSAGE_1 = "The problem of waste disposal in urban centers has grown into a severe crisis. The major cause is rapid population growth unmatched by municipal infrastructure—the public services, equipment, and utilities managed by local authorities. Leaving urban waste uncollected leads to the widespread breeding of disease vectors like rats and mosquitoes, creating severe health hazards. Open dumping can be discouraged effectively by providing regular, accessible collection points paired with strict legal penalties. True urban sanitation requires expanding infrastructure alongside growing populations.";
+
+const PASSAGE_2 = "Medical data on long-term tobacco smoking shows it is strongly linked to chronic cardiovascular and respiratory diseases. The chemical deposits from smoke coat lung tissues, leading to permanent damage. Furthermore, the passage notes that passive smoking—inhaling secondhand smoke from other people's cigarettes—poses a similar threat to non-smokers. Cigarette smoke contains dangerous carcinogenic, cancer-causing toxins like nicotine and tar. The primary intent of analyzing these physiological effects is to raise public awareness about the health risks of tobacco consumption.";
+
+const PASSAGE_3 = "Literature is widely considered a mirror of society because it portrays human experiences, values, and conflicts within a culture. An author can trigger social change by exposing societal ills, injustices, and systemic corruption within the narrative. Many great works are intentionally didactic, meaning they are explicitly intended to teach a moral lesson to the community. However, imposing severe censorship on creative writing suppresses critical truths and creative expression. A great novelist must remain socially conscious and engaged with the struggles of their time.";
+
+const PASSAGE_4 = "Traditional medical practice in Africa relies heavily on herbal remedies, cultural knowledge, and holistic treatments that look at a patient's entire social and spiritual context. In contrast, modern medical practice emphasizes empirical testing, proven scientific methods, and isolated chemical treatments. While traditional healing provides excellent accessibility and psychological comfort for local populations, its main limitation is the difficulty in standardizing dosages and scientific testing. The ideal future healthcare system should integrate safe traditional knowledge with modern medical science.";
+
+const PASSAGE_5 = "The scientific revolution has transformed human civilization by increasing the speed of global communication and industrial productivity. However, technology possesses a dual nature: it has the capacity for both creative development and highly destructive applications, such as atomic weaponry. Mechanization, which replaces manual labor with automated machinery, accelerates production but introduces deep ethical challenges. Humanity's primary task is ensuring our moral responsibility matches our technical capabilities, recognizing that science is a neutral tool whose ultimate impact depends entirely on human use.";
+
 
 const englishJamb1990 = [
   // =====================

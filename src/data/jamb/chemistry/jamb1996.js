@@ -125,7 +125,7 @@ const chemJamb1996 = [
     explanation: "Carbon(IV) oxide (CO₂) is a greenhouse gas released in massive quantities by burning fossil fuels. It traps infrared heat radiation reflected from the earth's surface, leading to global warming."
   },
   {
-    id: 17, subject: "Chemistry", topic: "Solutions & Colloids", year: 1996, exam: "JAMB",
+    id: 17, subject: "Chemistry", topic: "Solutions & Solubility", year: 1996, exam: "JAMB",
     question: "A colloid formed by dispersing liquid droplets inside another liquid medium is classified as a/an",
 options: ["sol", "gel", "emulsion", "foam"],
 answer: "emulsion",
@@ -139,7 +139,7 @@ answer: "red litmus blue",
 explanation: "Bases release hydroxide ions (OH⁻) in water. This alkaline condition interacts with litmus plant pigments to change their molecular structure, turning red litmus paper blue."
 },
 {
-id: 19, subject: "Chemistry", topic: "Solutions & pH", year: 1996, exam: "JAMB",
+id: 19, subject: "Chemistry", topic: "Solutions & Solubility", year: 1996, exam: "JAMB",
 question: "What is the hydrogen ion [H⁺] concentration of an aqueous solution that has a measured pH of 3.0?",
 options: ["1.0 x 10⁻³ M", "1.0 x 10⁻⁷ M", "3.0 M", "1.0 x 10³ M"],
 answer: "1.0 x 10⁻³ M",

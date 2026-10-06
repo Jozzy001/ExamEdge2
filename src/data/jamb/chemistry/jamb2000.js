@@ -179,7 +179,7 @@ answer: "AgBr > AgCl > AgI",
 explanation: "Silver bromide (AgBr) is highly sensitive to light decomposition, making it the primary compound used historically in photography film emulsion lines, followed by silver chloride and silver iodide."
 },
 {
-id: 24, subject: "Chemistry", topic: "Solutions & pH", year: 2000, exam: "JAMB",
+id: 24, subject: "Chemistry", topic: "Solutions & Solubility", year: 2000, exam: "JAMB",
 question: "The pOH of an aqueous solution containing 0.25 mol dm⁻³ of hydrochloric acid is [Given log₁₀(2.5) = 0.398]",
 options: ["12.40", "13.40", "14.40", "14.60"],
 answer: "13.40",

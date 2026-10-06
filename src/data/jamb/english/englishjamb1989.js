@@ -2,11 +2,16 @@
 // Fully flattened — every question is a standalone object with its own passage,
 // subject, topic, year, and exam fields to match your screen expectations.
 
-const PASSAGE_1 = "Passage I — The challenges of economic self-reliance and the structural adjustment era.";
-const PASSAGE_2 = "Passage II — The psychological effects of environmental noise on human health and productivity.";
-const PASSAGE_3 = "Passage III — Historical evolution of agricultural practices and soil degradation.";
-const PASSAGE_4 = "Passage IV — Reflections on traditional African judicial systems and community dispute resolution.";
-const PASSAGE_5 = "Passage V — Human migration patterns, urbanisation, and the growth of informal settlements.";
+const PASSAGE_1 = "During the structural adjustment era, the challenges of economic self-reliance became central. True economic self-reliance can only be achieved when a country breaks away from dependency and produces its own critical raw materials and developmental goods, such as the machinery and tools necessary for setting up industries. A wholesale technology import scheme without adaptive local modification is highly counterproductive. However, a major psychological obstacle to this structural economic transformation is the population's entrenched taste configuration for foreign commodities. Breaking this cycle requires a shift in consumer behavior and an aggressive focus on local production capabilities.";
+
+const PASSAGE_2 = "High-decibel environmental noise in urban centers is no longer a minor nuisance; it is a significant threat to human mental and physical well-being. Prolonged exposure causes physiological complications, mental fatigue, and drops in human productivity. In noisy workplaces, human efficiency drops because the intense noise causes involuntary lapses in absolute focus and concentration as the auditory system struggles to filter out stimuli. Common sources include heavy machinery, traffic congestion, and commercial loudspeakers. Natural sounds, like rainfall on rooftops, are harmless, but human-made pollutants require strict regulatory enforcement of noise-abatement laws.";
+
+const PASSAGE_3 = "The historical evolution of agricultural practices shows that traditional shifting cultivation has become unsustainable. Rapid demographic pressures have drastically reduced the available fallow periods—the time land is left uncultivated to regenerate its natural fertility. To compensate, continuous cropping on vulnerable topsoil leads to severe nutrient exhaustion and accelerated soil erosion. Excessive reliance on synthetic chemical fertilizers without adding organic matter degrades the soil's natural structure and moisture retention capacity over time. A long-term perspective requires moving toward ecologically balanced, sustainable agricultural methods.";
+
+const PASSAGE_4 = "Reflections on traditional African judicial systems reveal a stark contrast with adversarial modern models. The primary focus of traditional dispute resolution was reconciling the parties and restoring communal harmony, rather than staging a competitive contest to determine absolute guilt or innocence. Elders played a mediatory and consensual role, guiding conversations through moral precedents. Ignoring the social context of a dispute in modern high courts leaves underlying hostility unresolved, leading to future friction. True justice must be restorative, aiming to bring back a state of balance and peace.";
+
+const PASSAGE_5 = "Human migration patterns show that rural-urban migration is principally triggered by the pursuit of better economic opportunities and modern social amenities in cities. This rapid influx creates housing deficits, forcing low-income migrants into precarious, congested informal settlements along urban perimeters. These perimeter slums are unregulated, spontaneous, and lack basic utilities. To stem the tide of unchecked metropolitan congestion and sanitary challenges, governments must focus on an even developmental investment and structural transformation of rural economies.";
+
 
 const englishJamb1989 = [
   // =====================
