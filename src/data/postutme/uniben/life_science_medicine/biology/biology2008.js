@@ -48,7 +48,7 @@ const unibenLifeBiology2008 = [
     explanation: "Sickle cell carrier = heterozygous = AS genotype. Two carriers = AS × AS. Cross produces: AA (25%), AS (50%), SS (25%). Two sickle cell carriers (AS) have a 25% chance of having a child with sickle cell disease (SS)."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Prokaryotic cells are found in:",
     options: ["Monerans", "Algae", "Tracheophytes", "Spirulina"],
@@ -95,7 +95,7 @@ const unibenLifeBiology2008 = [
     explanation: "Vitamin K is essential for the synthesis of clotting factors (prothrombin etc.) in the blood coagulation cascade. Deficiency leads to excessive bleeding. Vitamin B12 = red blood cells; Vitamin B complex = coenzymes in respiration."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "The following are components of nucleotides EXCEPT:",
     options: [
@@ -148,7 +148,7 @@ const unibenLifeBiology2008 = [
     explanation: "Ecological succession is a natural process of change in an ecosystem. Well-cultivated land is actively managed and maintained — it cannot undergo natural succession because human intervention prevents it. Ponds, savannah, and abandoned farmland all undergo natural succession."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2008, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2008, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Which of the following statements is/are correct about moles? I. 1 mol Na = 6.022×10²³ atoms weighing 23g. II. 1 mol Mg = 6.022×10²³ atoms weighing 24g. III. 1 mol O = 6.022×10²³ atoms weighing 16g.",
     options: ["I and II", "II and III", "I and III", "I, II and III"],

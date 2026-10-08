@@ -9,7 +9,7 @@ const bioJamb2010 = [
   // CELL BIOLOGY
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2010, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2010, exam: "JAMB",
     question: "Which of the following characterizes a mature plant cell?",
     options: [
       "the cytoplasm fills up the entire cell space",
@@ -21,7 +21,7 @@ const bioJamb2010 = [
     explanation: "A mature plant cell is characterised by a cell wall made of cellulose, a large central vacuole that pushes the nucleus to the periphery (not centre), and cytoplasm lining the cell wall."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2010, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2010, exam: "JAMB",
     question: "Which of the following is NOT a function of the nucleus of a cell?",
     options: [
       "it controls the life processes of the cell",
@@ -33,7 +33,7 @@ const bioJamb2010 = [
     explanation: "The nucleus controls life processes, stores hereditary information (DNA), and directs protein synthesis. Energy storage and production is the function of mitochondria — not the nucleus."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2010, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2010, exam: "JAMB",
     question: "Which of the following groups of cells is devoid of true nuclei?",
     options: ["algae", "monera", "fungi", "viruses"],
     answer: "viruses",

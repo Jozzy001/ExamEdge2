@@ -3,7 +3,7 @@
 
 const unibenLifeBiology2006 = [
   {
-    subject: "Biology", topic: "Cell Biology", year: 2006, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2006, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Which is the largest single cell in the body?",
     options: ["Neuron", "Ovum", "Liver cell", "Muscle cell"],

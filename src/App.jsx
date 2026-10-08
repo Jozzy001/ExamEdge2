@@ -434,6 +434,18 @@ You've got this. ${closing}
       if (page === "subjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="study" examType="jamb" />
       if (page === "cbtSubjectSelect") return <SubjectSelect onNavigate={handleNavigate} onBack={handleBack} mode="cbt" examType="jamb" />
       if (page === "study") return <StudyMode isPaid={effectiveIsPaid} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} />
+
+      // NEW: opened from Hot Topics — goes straight into the chosen topic in Study Mode
+      if (page === "studyTopic") return (
+        <StudyMode
+          isPaid={effectiveIsPaid}
+          subject={selectedSubject}
+          initialTopic={selectedTopic}
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+        />
+      )
+
       if (page === "quiz") return <Quiz topic={selectedTopic} subject={selectedSubject} onNavigate={handleNavigate} onBack={handleBack} examType="jamb" startFromIndex={startIndexRef.current} isPaid={effectiveIsPaid} />
       if (page === "progress") return <Progress onNavigate={handleNavigate} onBack={handleBack} isPaid={effectiveIsPaid} />
       if (page === "weak") return <WeakAreas onNavigate={handleNavigate} onBack={() => { setPage("home"); setPageHistory([]) }} isPaid={effectiveIsPaid} />
@@ -546,6 +558,19 @@ You've got this. ${closing}
           university={university}
         />
       )
+
+      // NEW: opened from Hot Topics — goes straight into the chosen topic in Study Mode
+      if (page === "studyTopic") return (
+        <StudyMode
+          isPaid={effectiveIsPaid}
+          subject={selectedSubject}
+          initialTopic={selectedTopic}
+          onNavigate={handleNavigate}
+          onBack={handleBack}
+          university={university}
+        />
+      )
+
       if (page === "quiz") return (
         <Quiz
           topic={selectedTopic}

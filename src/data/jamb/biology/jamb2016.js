@@ -84,14 +84,14 @@ const bioJamb2016 = [
   // CELL BIOLOGY & METABOLISM
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2016, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2016, exam: "JAMB",
     question: "Which of the following is the level of organization of a leaf?",
     options: ["IV", "I", "III", "II"],
     answer: "IV",
     explanation: "Using the options map provided in the exam text (I: Tissues, II: System, III: Cell, IV: Organs), a leaf is categorized structurally as an organ."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2016, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2016, exam: "JAMB",
     question: "In cellular respiration, energy is stored in the form of",
     options: ["heat energy", "adenosine diphosphate", "adenosine monophosphate", "adenosine triphosphate"],
     answer: "adenosine triphosphate",
@@ -105,7 +105,7 @@ const bioJamb2016 = [
     explanation: "The green leaf contains dense chlorophylose layers (mesophyll) specialized to trap sunlight and fix carbon during photosynthesis."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2016, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2016, exam: "JAMB",
     question: "The correct sequence of increasing level of complexity is",
     options: ["IV-II-III", "I-II-III-IV", "IV-III-I-II", "III-I-IV-II"],
     answer: "III-I-IV-II",
@@ -119,7 +119,7 @@ const bioJamb2016 = [
     explanation: "Osmosis facilitates the absorption of groundwater across root-hair membranes, while passive diffusion handles local inner cellular material movement."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2016, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2016, exam: "JAMB",
     question: "The cell organelle solely responsible for respiration is the",
     options: ["nucleus", "nucleolus", "endoplasmic reticulum", "mitochondrion"],
     answer: "mitochondrion",
@@ -291,7 +291,7 @@ answer: "inbreeding and cross-breeding",
 explanation: "Selective agricultural breeding relies on mating close relatives (inbreeding) to fix desirable traits, combined with crossing different strains (cross-breeding) to introduce fresh variants."
 },
 {
-subject: "Biology", topic: "Cell Biology", year: 2016, exam: "JAMB",
+subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2016, exam: "JAMB",
 question: "In a small unicellular organism, diffusion is sufficient for transport because",
 options: [
 "the surface area to volume ratio is small",

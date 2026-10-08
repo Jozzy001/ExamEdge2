@@ -147,7 +147,7 @@ import englishjamb1983 from "./english/englishJamb1983"
 import englishjamb1984 from "./english/englishJamb1984"
 import englishjamb1985 from "./english/englishJamb1985"
 import englishjamb1986 from "./english/englishjamb1986"
-import englishYJamb1987 from "./english/englishjamb1987" // Preserved original project name key variations
+import englishYJamb1987 from "./english/englishjamb1987"
 import englishJamb1988 from "./english/englishjamb1988"
 import englishJamb1989 from "./english/englishjamb1989"
 import englishJamb1990 from "./english/englishjamb1990"
@@ -158,15 +158,22 @@ import englishJamb1994 from "./english/englishjamb1994"
 import englishJamb1995 from "./english/englishjamb1995"
 import englishJamb1996 from "./english/englishjamb1996"
 import englishJamb1997 from "./english/englishJamb1997"
-import englishJamb1998 from "./english/englishJamb1998"
-import englishJamb1999 from "./english/englishJamb1999"
-import englishJamb2000 from "./english/englishJamb2000"
-import englishJamb2001 from "./english/englishJamb2001"
-import englishJamb2002 from "./english/englishJamb2002"
-import englishJamb2003 from "./english/englishJamb2003"
-import englishJamb2004 from "./english/englishJamb2004"
+import englishJamb1998 from "./english/englishjamb1998"
+import englishJamb1999 from "./english/englishjamb1999"
+import englishJamb2000 from "./english/englishjamb2000"
+import englishJamb2001 from "./english/englishjamb2001"
+import englishJamb2002 from "./english/englishjamb2002"
+import englishJamb2003 from "./english/englishjamb2003"
+import englishJamb2004 from "./english/englishjamb2004"
 import englishjamb2010 from "./english/englishjamb2010"
 import englishjamb2011 from "./english/englishjamb2011"
+import englishjamb2012 from "./english/jamb2012"
+import englishjamb2013 from "./english/jamb2013"
+import englishjamb2014 from "./english/jamb2014"
+import englishjamb2015 from "./english/jamb2015"
+import englishjamb2016 from "./english/jamb2016"
+import englishjamb2017 from "./english/jamb2017"
+import englishjamb2018 from "./english/jamb2018"
 
 // --- GOVERNMENT ---
 import govtJamb1983 from "./government/jamb1983"
@@ -286,6 +293,16 @@ const questions = [
   ...englishJamb2004,
   ...englishjamb2010,
   ...englishjamb2011,
+  ...englishjamb2010,
+  ...englishjamb2011,
+  ...englishjamb2012,
+  ...englishjamb2013,
+  ...englishjamb2014,
+  ...englishjamb2015,
+  ...englishjamb2016,
+  ...englishjamb2017,
+  ...englishjamb2018,
+
 
   // --- GOVERNMENT ---
   ...govtJamb1983,

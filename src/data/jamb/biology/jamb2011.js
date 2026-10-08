@@ -57,7 +57,7 @@ const bioJamb2011 = [
   // CELL & MOLECULAR TRANSPORT
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2011, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2011, exam: "JAMB",
     question: "Which of the following can cause shrinkage of living cells?",
     options: ["Hypotonic solution", "Isotonic solution", "Deionized water", "Hypertonic solution"],
     answer: "Hypertonic solution",

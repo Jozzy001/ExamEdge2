@@ -3,7 +3,7 @@ const bioJamb2018 = [
   // SYSTEM ANATOMY & PHYSIOLOGY
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2018, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2018, exam: "JAMB",
     question: "The cytoplasm of the cell is considered a very important component because it",
     options: [
       "regulates the amount of energy in the cell",
@@ -15,7 +15,7 @@ const bioJamb2018 = [
     explanation: "The cytoplasm is a semi-fluid jelly-like medium that fills the cell matrix and physically holds and suspends all the cellular organelles in place."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2018, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2018, exam: "JAMB",
     question: "Red blood cells were found to have burst open after being placed in distilled water for an hour. This phenomenon is known as",
     options: ["plasmolysis", "diffusion", "haemolysis", "wilting"],
     answer: "haemolysis",
@@ -29,7 +29,7 @@ const bioJamb2018 = [
     explanation: "Hydrotropism is a directional growth movement where plant structures (primarily roots) bend or curve toward moisture sources."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2018, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2018, exam: "JAMB",
     question: "The overall reaction in glycolysis can be summarised as",
     options: [
       "C6H1206 -> C3H4O3 + 4H + ATP",
@@ -223,7 +223,7 @@ answer: "50%",
 explanation: "Note: JAMB lists C (50%). Haemophilia is an X-linked recessive trait. A male is hemizygous ($X^hY$). If a heterozygous male/carrier cross is evaluated under typical sex-linked parameters, the expected outcome resolves to a 50% target distribution pool."
 },
 {
-subject: "Biology", topic: "Cell Biology", year: 2018, exam: "JAMB",
+subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2018, exam: "JAMB",
 question: "Cytokinesis of mitosis is a process that ensures that",
 options: [
 "each daughter cell gets the necessary organelles",

@@ -24,7 +24,7 @@ const unibenLifeBiology2021 = [
     explanation: "Tropisms are growth responses to directional stimuli: Hydrotropism = water, Geotropism = gravity, Phototropism = light, Thigmotropism = touch, Chemotropism = chemicals. Roots show positive hydrotropism — growing toward water."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2021, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2021, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Two organelles directly involved in mitotic cell division are:",
     options: [
@@ -37,7 +37,7 @@ const unibenLifeBiology2021 = [
     explanation: "Mitotic cell division directly involves: (1) the NUCLEUS — contains chromosomes that are duplicated and separated. (2) CENTRIOLES — form the spindle fibres (mitotic spindle) that pull chromosomes to the poles. Other organelles are not directly involved in the mechanics of mitosis."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2021, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2021, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "The following statements about mitotic cell division are correct EXCEPT:",
     options: [

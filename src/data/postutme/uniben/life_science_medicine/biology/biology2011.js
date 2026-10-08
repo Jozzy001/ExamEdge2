@@ -11,7 +11,7 @@ const unibenLifeBiology2011 = [
     explanation: "Evolutionary sequence from most primitive to most advanced: Fish (Tilapia zilli, IV) → Amphibian (Bufo regularis, III) → Reptile (Agama agama, II) → Mammal (Rattus rattus, I). Fish evolved first, then amphibians, reptiles, and finally mammals."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Which of the following cells is likely to have the highest concentration of mitochondria?",
     options: ["White blood cells", "Egg cells", "Sperm cells", "Red blood cells"],
@@ -73,7 +73,7 @@ const unibenLifeBiology2011 = [
     explanation: "Schistosomiasis (bilharzia) causes blood in urine (haematuria) — the schistosome worms live in blood vessels around the bladder. The cercariae penetrate skin while swimming in freshwater. ★ RECURRING!"
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "A large number of mitochondria indicates that the cell is:",
     options: ["Low in cytoplasm", "Dormant", "Very active", "Poor in respiration"],
@@ -118,7 +118,7 @@ const unibenLifeBiology2011 = [
     explanation: "Oxygen moves from the alveoli (high O₂ concentration) into the blood capillaries (low O₂ concentration) by DIFFUSION — movement from high to low concentration across the thin alveolar and capillary walls."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2011, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2011, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Growth does NOT include:",
     options: [

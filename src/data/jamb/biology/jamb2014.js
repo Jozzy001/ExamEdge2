@@ -3,14 +3,14 @@ const bioJamb2014 = [
   // LEVELS OF ORGANIZATION & CELLS
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2014, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2014, exam: "JAMB",
     question: "The lowest level of organization in living organisms is",
     options: ["organ", "cell", "system", "tissue"],
     answer: "cell",
     explanation: "The cell is the fundamental, structural, and functional unit of life, representing the lowest independent level of biological organization."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2014, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2014, exam: "JAMB",
     question: "Which of the following is the most complex according to their cellular level of organization?",
     options: ["Heart", "Hair", "Euglena", "Hydra"],
     answer: "Heart",

@@ -3,21 +3,21 @@ const bioJamb2013 = [
   // CELL BIOLOGY & BASICS
   // =====================
   {
-    subject: "Biology", topic: "Cell Biology", year: 2013, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2013, exam: "JAMB",
     question: "The process in which complex substances are broken down into simpler ones is referred to as",
     options: ["anabolism", "catabolism", "metabolism", "tropism"],
     answer: "catabolism",
     explanation: "Metabolism is split into two phases: anabolism (building up molecules) and catabolism (breaking down complex molecules into simpler units, typically releasing energy)."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2013, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2013, exam: "JAMB",
     question: "The organ which is sensitive to light in Euglena is the",
     options: ["gullet", "flagellum", "chloroplast", "eyespot"],
     answer: "eyespot",
     explanation: "The eyespot (stigma) in Euglena is a highly pigmented structure that shields a photoreceptor, helping the cell detect light direction to optimize photosynthesis."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2013, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2013, exam: "JAMB",
     question: "The organelles present in cells that are actively respiring and photosynthesizing are",
     options: [
       "lysosomes and ribosomes",
@@ -134,7 +134,7 @@ const bioJamb2013 = [
     explanation: "Carnivorous (insectivorous) plants produce specialized botanical trap modifications to digest insects, supplementing mineral shortages in nutrient-poor soils."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2013, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2013, exam: "JAMB",
     question: "The process of transforming the chemical energy of cellular fuels into the high energy bonds of ATP in plants is",
     options: ["autotropism", "photosynthesis", "photolysis", "respiration"],
     answer: "respiration",

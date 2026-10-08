@@ -35,7 +35,7 @@ const unibenLifeBiology2010 = [
     explanation: "The pancreas has two functions: (1) Exocrine — produces digestive enzymes (amylase, lipase, protease) secreted into the duodenum. (2) Endocrine — produces hormones insulin and glucagon from the islets of Langerhans."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Which of the following does a virus have in common with an animal cell?",
     options: ["Glycogen", "Starch", "Nucleus", "DNA"],
@@ -83,7 +83,7 @@ const unibenLifeBiology2010 = [
     explanation: "Sudan III is a fat-soluble dye that stains lipids (fats and oils) red/orange-red. Tests: Iodine = starch (blue-black); Biuret = proteins (purple); Benedict's = reducing sugars (brick red); Sudan III = fats (red)."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2010, exam: "Post-UTME", university: "UNIBEN",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2010, exam: "Post-UTME", university: "UNIBEN",
     faculty: ["lifesciences", "medicine"],
     question: "Protozoa use contractile vacuole to:",
     options: ["Reproduce", "Remove excess food", "Digest food", "Remove excess water"],

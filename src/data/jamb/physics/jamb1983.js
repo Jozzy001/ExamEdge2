@@ -1,7 +1,14 @@
 // JAMB 1983 Physics Past Questions (audited)
 // Questions containing complex geometric diagrams or custom data tables were skipped.
-// Display notes: the original file used LaTeX ($...$, \text{}, \times). Those show as raw code until KaTeX is installed, and several backslash
-// sequences (\t, \l) were also corrupted by JavaScript. Everything is now plain text: powers as 10^(8), units as m/s and m/s², subscripts as f₁ f₂.
+//
+// Math display: every symbol is a real Unicode character, so no LaTeX/KaTeX or runtime
+// conversion is needed:
+//   powers      10⁸        (superscript digits ⁰¹²³⁴⁵⁶⁷⁸⁹)
+//   units       m/s, m/s², cm³
+//   subscripts  f₁ f₂ P₁ V₁ T₁
+//   operators   × ÷ − ° and Greek letters λ θ ρ
+// This file must be saved and served as UTF-8 (for web pages: <meta charset="utf-8">).
+//
 // Items marked "// CHECK SOURCE" need the owner to verify against the original paper.
 
 const physicsJamb1983 = [
@@ -41,16 +48,16 @@ const physicsJamb1983 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "The refractive index of a liquid is 1.5. If the velocity of light in vacuum is 3.0 × 10^(8) m/s, the velocity of light in the liquid is",
+    question: "The refractive index of a liquid is 1.5. If the velocity of light in vacuum is 3.0 × 10⁸ m/s, the velocity of light in the liquid is",
     options: [
-      "1.5 × 10^(8) m/s",
-      "2.0 × 10^(8) m/s",
-      "3.0 × 10^(8) m/s",
-      "4.5 × 10^(8) m/s",
-      "9.0 × 10^(8) m/s"
+      "1.5 × 10⁸ m/s",
+      "2.0 × 10⁸ m/s",
+      "3.0 × 10⁸ m/s",
+      "4.5 × 10⁸ m/s",
+      "9.0 × 10⁸ m/s"
     ],
-    answer: "2.0 × 10^(8) m/s",
-    explanation: "The refractive index is n = c/v, where c is the speed of light in vacuum and v is its speed in the medium. So v = c/n = (3.0 × 10^(8))/1.5 = 2.0 × 10^(8) m/s."
+    answer: "2.0 × 10⁸ m/s",
+    explanation: "The refractive index is n = c/v, where c is the speed of light in vacuum and v is its speed in the medium. So v = c/n = (3.0 × 10⁸)/1.5 = 2.0 × 10⁸ m/s."
   },
   {
     // Checked against published answer keys: the keyed answer is 380g.
@@ -104,7 +111,7 @@ const physicsJamb1983 = [
   },
   {
     subject: "Physics", topic: "Waves & Optics", year: 1983, exam: "JAMB",
-    question: "The range of wavelengths of the visible spectrum is 400nm - 700nm. The wavelength of gamma rays is",
+    question: "The range of wavelengths of the visible spectrum is 400nm – 700nm. The wavelength of gamma rays is",
     options: [
       "Longer than 700nm",
       "Shorter than 700nm but longer than 400nm",
@@ -124,10 +131,10 @@ const physicsJamb1983 = [
   },
   {
     subject: "Physics", topic: "Vectors & Mechanics", year: 1983, exam: "JAMB",
-    question: "A train has an initial velocity of 44 m/s and an acceleration of -4 m/s². Its velocity after 10 seconds is",
+    question: "A train has an initial velocity of 44 m/s and an acceleration of −4 m/s². Its velocity after 10 seconds is",
     options: ["2 m/s", "4 m/s", "8 m/s", "12 m/s", "16 m/s"],
     answer: "4 m/s",
-    explanation: "Using v = u + at: v = 44 + (-4 × 10) = 44 - 40 = 4 m/s."
+    explanation: "Using v = u + at: v = 44 + (−4 × 10) = 44 − 40 = 4 m/s."
   },
   {
     // The question printed g as "10 m/s^-2"; the unit of g is m/s², which is what this uses.
@@ -196,6 +203,6 @@ const physicsJamb1983 = [
     answer: "Polarization",
     explanation: "Polarization restricts the vibrations to a single plane across the direction of travel, so only transverse waves can be polarized. Longitudinal waves vibrate along their direction of travel and cannot be polarized."
   }
-]
+];
 
-export default physicsJamb1983
+export default physicsJamb1983;

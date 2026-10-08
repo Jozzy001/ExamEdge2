@@ -101,7 +101,7 @@ const bioJamb2017 = [
     explanation: "In the light-independent dark stage (Calvin Cycle), carbon (IV) oxide ($CO_2$) is chemically reduced and fixed into energy-rich carbohydrates like glucose."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2017, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2017, exam: "JAMB",
     question: "Which of the following is an organ level of organisation?",
     options: ["Volvox sp.", "paramecium caudatum", "hydra viridis", "onion bulb"],
     answer: "onion bulb",

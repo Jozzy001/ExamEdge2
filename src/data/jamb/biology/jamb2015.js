@@ -40,7 +40,7 @@ const bioJamb2015 = [
     explanation: "Jean-Baptiste Lamarck's transformist platform argued that modifications acquired by an organism during its lifetime through use or disuse are directly transmissible to its offspring."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2015, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2015, exam: "JAMB",
     question: "The chromosomes of members of the kingdom Monera are within the",
     options: ["nucleoplasm", "nucleus", "nucleolus", "cytoplasm"],
     answer: "cytoplasm",
@@ -91,7 +91,7 @@ const bioJamb2015 = [
     explanation: "Note: JAMB lists C (Taraba), home to the high-altitude Mambilla Plateau, where unique montane grasslands and temperate cloud forest pockets thrive."
   },
   {
-    subject: "Biology", topic: "Cell Biology", year: 2015, exam: "JAMB",
+    subject: "Biology", topic: "Cell Biology & Biochemistry", year: 2015, exam: "JAMB",
     question: "Which of the following is true of cloning?",
     options: [
       "it is welcomed as an ethically and normally sound science",

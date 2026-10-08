@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import questions from "../data/jamb/questions"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import STUDY_GUIDES from "../data/studyGuides"
@@ -10,8 +10,9 @@ import VocabularyVault from "../components/VocabularyVault"
 import EnglishSkillsVault from "../components/EnglishSkillsVault"
 import MathsVault from "../components/MathsVault"
 
-const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) => {
-  const [selectedTopic, setSelectedTopic] = useState(null)
+// initialTopic: when provided (e.g. from Hot Topics), Study Mode opens straight into that topic
+const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid, initialTopic = null }) => {
+  const [selectedTopic, setSelectedTopic] = useState(initialTopic)
   const [showVault, setShowVault] = useState(false)
   const [showIdiomsVault, setShowIdiomsVault] = useState(false)
   const [showSynonymsVault, setShowSynonymsVault] = useState(false)
@@ -48,9 +49,26 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
     }
   }
 
+  // Open a specific topic straight away (used by Hot Topics).
+  // We always show the topic screen here (even with no study guide) so Back never loops into the quiz.
+  useEffect(() => {
+    if (initialTopic) setSelectedTopic(initialTopic)
+  }, [initialTopic])
+
+  // Back from a study guide: if we arrived from Hot Topics, go back there; otherwise show the topic list
+  const handleGuideBack = () => {
+    if (initialTopic && onBack) onBack()
+    else setSelectedTopic(null)
+  }
+
   // Show study guide inline before quiz
   if (selectedTopic) {
-    const guide = STUDY_GUIDES[selectedTopic]
+    // Fallback card for topics without a written study guide
+    const guide = STUDY_GUIDES[selectedTopic] || {
+      icon: "📖",
+      title: selectedTopic,
+      summary: "There's no written study guide for this topic yet. Jump straight into practice questions to learn it the way JAMB tests it.",
+    }
     return (
       <div className="ee-page">
         {showVault && (
@@ -98,7 +116,7 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
           />
         )}
         <header className="ee-header">
-          <button className="ee-back-btn" onClick={() => setSelectedTopic(null)}>← Back</button>
+          <button className="ee-back-btn" onClick={handleGuideBack}>← Back</button>
           <span style={{ fontWeight: 800, fontSize: "15px" }}>Study Guide</span>
           <span style={{ width: 60 }} />
         </header>
@@ -396,13 +414,11 @@ const StudyMode = ({ subject, onNavigate, onBack, university = null, isPaid }) =
           )}
 
           {/* Action buttons */}
-
-          {/* Action buttons */}
           <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("quiz", selectedTopic, subject)}>
             Start Practice Questions →
           </button>
-          <button className="ee-btn ee-btn-secondary" style={{ marginTop: 10 }} onClick={() => setSelectedTopic(null)}>
-            ← Back to Topics
+          <button className="ee-btn ee-btn-secondary" style={{ marginTop: 10 }} onClick={handleGuideBack}>
+            {initialTopic && onBack ? "← Back to Hot Topics" : "← Back to Topics"}
           </button>
         </div>
       </div>
