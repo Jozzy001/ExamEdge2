@@ -147,7 +147,7 @@ import jamb1983 from "./english/jamb1983"
 import jamb1984 from "./english/jamb1984"
 import jamb1985 from "./english/jamb1985"
 import jamb1986 from "./english/jamb1986"
-import englishYJamb1987 from "./english/jamb1987"
+import jamb1987 from "./english/jamb1987"
 import jamb1988 from "./english/jamb1988"
 import jamb1989 from "./english/jamb1989"
 import jamb1990 from "./english/jamb1990"
@@ -273,7 +273,7 @@ const questions = [
   ...jamb1984,
   ...jamb1985,
   ...jamb1986,
-  ...englishYJamb1987,
+  ...jamb1987,
   ...jamb1988,
   ...jamb1989,
   ...jamb1990,
@@ -291,8 +291,6 @@ const questions = [
   ...jamb2002,
   ...jamb2003,
   ...jamb2004,
-  ...jamb2010,
-  ...jamb2011,
   ...jamb2010,
   ...jamb2011,
   ...jamb2012,

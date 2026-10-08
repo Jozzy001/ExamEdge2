@@ -738,4 +738,5 @@ answer: "too tired",
 explanation: "The infinitive clause rule construction 'too... to' ('too tired to do...') is required here."
 }
 ];
+
 export default jamb1987;
