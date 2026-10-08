@@ -6303,9 +6303,9 @@ const STUDY_GUIDES = {
       { heading: "Quick Tip", type: "tip",
         content: "Development > growth (includes health, education, poverty). Natural increase = birth rate − death rate. Malthus: population grows faster than food (geometric vs arithmetic). Optimum population = maximises per capita output. Nigeria: petroleum dominates revenue. Agriculture provides raw materials for industry." }
     ],
+  },
 
 ...BIOLOGY_EXTRA_GUIDES,
-  },
 
 }
 
