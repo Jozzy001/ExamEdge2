@@ -13,7 +13,7 @@ const PASSAGE_4 = "Early pre-colonial iron-smelting networks operated successful
 const PASSAGE_5 = "The introduction of mechanical movable printing transformed literacy patterns by allowing the mass production of books, lowering costs, and expanding public education. This automated typesetting replaced the manual work of the 'manuscript'—describing a document that is written or copied completely by hand rather than printed mechanically. The resulting democratization of knowledge occurs when written facts become widely accessible to the public rather than restricted to a small elite group. Widespread public literacy empowered ordinary citizens to review regulations, share ideas, and challenge arbitrary rule, serving as a foundation for the scientific revolution, intellectual growth, and modern educational frameworks.";
 
 
-const englishJamb2001 = [
+const jamb2001 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -581,4 +581,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb2001;
+export default jamb2001;

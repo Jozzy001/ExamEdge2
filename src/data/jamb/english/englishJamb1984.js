@@ -13,7 +13,7 @@ const PASSAGE_4 = "One day, Alan, a friend of mine, who likes country life, was 
 
 const PASSAGE_5 = "In 1973 a Japanese sericulturist arrived in Malawi with a batch of 40,000 silkworm eggs. They were taken to the Bvumbwe Agricultural Research Station in Thyolo District. In this station, work is being done to determine favourable silkworm rearing conditions and areas where mulberry trees, whose leaves the worms feed on, could grow well. According to researchers, the silkworms -- which eventually develop into cocoons from which raw silk is produced -- do well in areas with warm climatic conditions.\n\nSilk is one of the strongest of fibres. In fact, for thousands of years, silk fabrics have been regarded as the most beautiful and durable materials woven by man. Many people call silk the 'cloth of kings and queens'.\n\nThe weaving of silk originated in China. An old Chinese book, believed to be written by Confucius, tells us that the wife of Emperor Huang-ti was the first person to make fabrics of silk. Around 2640 B.C., Emperor Huang-ti asked his wife Hsi Ling-shih to study the worms that were destroying the mulberry trees in his garden. The Empress took some of the cocoons into the palace to see what they were made of. She dropped one of the cocoons into a bowl of boiling water and was amazed to see a cobweb-like tangle separate itself from the cocoon. She picked up the gauzy mass and found that one of the threads could be unwound almost without end from the cocoon. Hsi Ling-shih had discovered silk. She was delighted with the discovery and even wove a ceremonial robe for the Emperor out of the cocoon threads. After that, the officials in the Emperor's court wore brightly dyed silk robes on important occasions.\n\nPeople in other countries regarded the new fibres as something rare and beautiful. A few traders went to China to learn about making cloth from silk, but the Chinese kept their silk worms a closely guarded secret.";
 
-const englishjamb1984 = [
+const jamb1984 = [
 
   // =====================
   // COMPREHENSION — PASSAGE I (Jim and Joan)
@@ -479,4 +479,4 @@ const englishjamb1984 = [
 
 ]
 
-export default englishjamb1984
+export default jamb1984

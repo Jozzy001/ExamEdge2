@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional dispute mediation frameworks prioritized restorin
 const PASSAGE_5 = "The scientific method revolutionized human understanding by replacing speculation with systematic empirical observation, testing, and verified data analysis. Within this framework, an empirical hypothesis becomes a validated law only when it is proven repeatable through independent scientific testing and scrutiny. The word 'empirical' means based on direct physical observation, measurement, and sensory evidence. A major challenge encountered during scientific paradigm shifts is the natural human resistance to letting go of long-held traditional beliefs. Ultimately, scientific knowledge serves as an anchor for continuous intellectual growth, technical innovation, and civic advancement.";
 
 
-const englishJamb1995 = [
+const jamb1995 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1995;
+export default jamb1995;

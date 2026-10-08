@@ -3,7 +3,7 @@
 // question is a standalone object with its own subject/topic/year/exam
 // fields, matching the structure the app's counter and Quiz screen expect.
 
-const englishjamb1983 = [
+const jamb1983 = [
   {
     "subject": "English",
     "topic": "Comprehension",
@@ -1631,4 +1631,4 @@ const englishjamb1983 = [
   }
 ]
 
-export default englishjamb1983
+export default jamb1983

@@ -143,37 +143,37 @@ import econJamb2018 from "./economics/jamb2018"
 
 
 // --- ENGLISH ---
-import englishjamb1983 from "./english/englishJamb1983"
-import englishjamb1984 from "./english/englishJamb1984"
-import englishjamb1985 from "./english/englishJamb1985"
-import englishjamb1986 from "./english/englishjamb1986"
-import englishYJamb1987 from "./english/englishjamb1987"
-import englishJamb1988 from "./english/englishjamb1988"
-import englishJamb1989 from "./english/englishjamb1989"
-import englishJamb1990 from "./english/englishjamb1990"
-import englishJamb1991 from "./english/englishjamb1991"
-import englishJamb1992 from "./english/englishjamb1992"
-import englishJamb1993 from "./english/englishjamb1993"
-import englishJamb1994 from "./english/englishjamb1994"
-import englishJamb1995 from "./english/englishjamb1995"
-import englishJamb1996 from "./english/englishjamb1996"
-import englishJamb1997 from "./english/englishJamb1997"
-import englishJamb1998 from "./english/englishjamb1998"
-import englishJamb1999 from "./english/englishjamb1999"
-import englishJamb2000 from "./english/englishjamb2000"
-import englishJamb2001 from "./english/englishjamb2001"
-import englishJamb2002 from "./english/englishjamb2002"
-import englishJamb2003 from "./english/englishjamb2003"
-import englishJamb2004 from "./english/englishjamb2004"
-import englishjamb2010 from "./english/englishjamb2010"
-import englishjamb2011 from "./english/englishjamb2011"
-import englishjamb2012 from "./english/jamb2012"
-import englishjamb2013 from "./english/jamb2013"
-import englishjamb2014 from "./english/jamb2014"
-import englishjamb2015 from "./english/jamb2015"
-import englishjamb2016 from "./english/jamb2016"
-import englishjamb2017 from "./english/jamb2017"
-import englishjamb2018 from "./english/jamb2018"
+import jamb1983 from "./english/jamb1983"
+import jamb1984 from "./english/jamb1984"
+import jamb1985 from "./english/jamb1985"
+import jamb1986 from "./english/jamb1986"
+import englishYJamb1987 from "./english/jamb1987"
+import jamb1988 from "./english/jamb1988"
+import jamb1989 from "./english/jamb1989"
+import jamb1990 from "./english/jamb1990"
+import jamb1991 from "./english/jamb1991"
+import jamb1992 from "./english/jamb1992"
+import jamb1993 from "./english/jamb1993"
+import jamb1994 from "./english/jamb1994"
+import jamb1995 from "./english/jamb1995"
+import jamb1996 from "./english/jamb1996"
+import jamb1997 from "./english/jamb1997"
+import jamb1998 from "./english/jamb1998"
+import jamb1999 from "./english/jamb1999"
+import jamb2000 from "./english/jamb2000"
+import jamb2001 from "./english/jamb2001"
+import jamb2002 from "./english/jamb2002"
+import jamb2003 from "./english/jamb2003"
+import jamb2004 from "./english/jamb2004"
+import jamb2010 from "./english/jamb2010"
+import jamb2011 from "./english/jamb2011"
+import jamb2012 from "./english/jamb2012"
+import jamb2013 from "./english/jamb2013"
+import jamb2014 from "./english/jamb2014"
+import jamb2015 from "./english/jamb2015"
+import jamb2016 from "./english/jamb2016"
+import jamb2017 from "./english/jamb2017"
+import jamb2018 from "./english/jamb2018"
 
 // --- GOVERNMENT ---
 import govtJamb1983 from "./government/jamb1983"
@@ -269,39 +269,39 @@ import physicsJamb2003 from "./physics/jamb2003"
 import physicsJamb2004 from "./physics/jamb2004"
 
 const questions = [
-  ...englishjamb1983,
-  ...englishjamb1984,
-  ...englishjamb1985,
-  ...englishjamb1986,
+  ...jamb1983,
+  ...jamb1984,
+  ...jamb1985,
+  ...jamb1986,
   ...englishYJamb1987,
-  ...englishJamb1988,
-  ...englishJamb1989,
-  ...englishJamb1990,
-  ...englishJamb1991,
-  ...englishJamb1992,
-  ...englishJamb1993,
-  ...englishJamb1994,
-  ...englishJamb1995,
-  ...englishJamb1996,
-  ...englishJamb1997,
-  ...englishJamb1998,
-  ...englishJamb1999,
-  ...englishJamb2000,
-  ...englishJamb2001,
-  ...englishJamb2002,
-  ...englishJamb2003,
-  ...englishJamb2004,
-  ...englishjamb2010,
-  ...englishjamb2011,
-  ...englishjamb2010,
-  ...englishjamb2011,
-  ...englishjamb2012,
-  ...englishjamb2013,
-  ...englishjamb2014,
-  ...englishjamb2015,
-  ...englishjamb2016,
-  ...englishjamb2017,
-  ...englishjamb2018,
+  ...jamb1988,
+  ...jamb1989,
+  ...jamb1990,
+  ...jamb1991,
+  ...jamb1992,
+  ...jamb1993,
+  ...jamb1994,
+  ...jamb1995,
+  ...jamb1996,
+  ...jamb1997,
+  ...jamb1998,
+  ...jamb1999,
+  ...jamb2000,
+  ...jamb2001,
+  ...jamb2002,
+  ...jamb2003,
+  ...jamb2004,
+  ...jamb2010,
+  ...jamb2011,
+  ...jamb2010,
+  ...jamb2011,
+  ...jamb2012,
+  ...jamb2013,
+  ...jamb2014,
+  ...jamb2015,
+  ...jamb2016,
+  ...jamb2017,
+  ...jamb2018,
 
 
   // --- GOVERNMENT ---

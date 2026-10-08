@@ -1,7 +1,7 @@
 // JAMB 2014 English Language Past Questions
 // 100 questions across all topics
 
-const englishjamb2014 = [
+const jamb2014 = [
 
   // =====================
   // COMPREHENSION — PASSAGE I
@@ -1664,4 +1664,4 @@ The publisher could decide to establish magazine which would be on sale weekly, 
 
 ];
 
-export default englishjamb2014;
+export default jamb2014;

@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional community leadership models were characterized by
 const PASSAGE_5 = "Modern digital communication matrices have transformed global business by allowing immediate, cross-border information exchanges and operational coordination. However, the vulnerability of a highly connected network stems from cyber threats, system-wide disruptions, and data breaches. Telecommunication refers explicitly to the transmission of data and signals over significant physical distances. Managing this rapid information distribution requires accurate data verification and digital security, noting that these network tools remain neutral instruments whose impact depends entirely on human choices.";
 
 
-const englishJamb1992 = [
+const jamb1992 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -578,4 +578,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1992;
+export default jamb1992;

@@ -13,7 +13,7 @@ const PASSAGE_4 = "The historical evolution of storytelling shows that tradition
 const PASSAGE_5 = "Traditional governance systems in Africa maintained political balance through strict institutional checks, council consultations, and lineage accountability. Rulers did not hold absolute command; rather, they operated within a framework of checks and balances designed to prevent any single leadership unit from holding unlimited power. Modern democracies differ by relying explicitly on formal elections and written constitutional frameworks. A major challenge faced by modern democratic transitions in plural societies is harmonizing formal legal structures with entrenched cultural practices. Effective governance models cannot be copied directly from foreign states without updates; they must be rooted in the historical values and social realities of the people.";
 
 
-const englishJamb1993 = [
+const jamb1993 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -581,4 +581,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1993;
+export default jamb1993;

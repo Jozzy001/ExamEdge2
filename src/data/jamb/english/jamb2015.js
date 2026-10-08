@@ -26,7 +26,7 @@ const rhyme = make("Rhymes");
 const stress = make("Stress");
 const emph = make("Emphatic Stress");
 
-const englishjamb2015 = [
+const jamb2015 = [
   // =====================
   // COMPREHENSION
   // =====================
@@ -680,4 +680,4 @@ const englishjamb2015 = [
   ),
 ];
 
-export default englishjamb2015;
+export default jamb2015;

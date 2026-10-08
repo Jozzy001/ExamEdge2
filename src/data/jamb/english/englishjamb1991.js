@@ -13,7 +13,7 @@ const PASSAGE_4 = "Early African trading route configurations were primarily sha
 const PASSAGE_5 = "Small-scale rural farmers are often slow to adopt new agricultural technologies because the structural risks of failure threaten their basic household food security. Subsistence farming is aimed strictly at meeting the immediate food consumption needs of the farmer's household, leaving no margin for error. Technical innovation succeeds in rural setup fields when it is affordable, easily repaired, and adapted to local crop patterns. Proactive deployment of agricultural extension services acts as a vital bridge between scientific labs and rural farmers, ensuring that technological transformation remains gradual and participatory.";
 
 
-const englishJamb1991 = [
+const jamb1991 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -556,4 +556,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified by adding the modifier 'much'."
 }
 ];
-export default englishJamb1991;
+export default jamb1991;

@@ -13,7 +13,7 @@ const PASSAGE_4 = "Reflections on traditional African judicial systems reveal a 
 const PASSAGE_5 = "Human migration patterns show that rural-urban migration is principally triggered by the pursuit of better economic opportunities and modern social amenities in cities. This rapid influx creates housing deficits, forcing low-income migrants into precarious, congested informal settlements along urban perimeters. These perimeter slums are unregulated, spontaneous, and lack basic utilities. To stem the tide of unchecked metropolitan congestion and sanitary challenges, governments must focus on an even developmental investment and structural transformation of rural economies.";
 
 
-const englishJamb1989 = [
+const jamb1989 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -556,4 +556,4 @@ answer: "indefinitely",
 explanation: "'Indefinitely' is the correct term for delaying or postponing an event without setting a specific resumption date."
 }
 ];
-export default englishJamb1989;
+export default jamb1989;

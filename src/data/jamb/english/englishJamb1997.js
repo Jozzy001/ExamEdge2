@@ -13,7 +13,7 @@ const PASSAGE_4 = "Pre-colonial commerce across regional networks relied heavily
 const PASSAGE_5 = "The implementation of automated crop sorting matrices has transformed logistics by allowing high-speed grading, quality tracking, and rapid packaging sync. Conversely, the local adoption of an agronomy innovation fails when it is excessively expensive, complex to repair, and unadapted to regional soil profiles. Bridging this gap relies on an extension service—describing the practical transmission of scientific farming data and methods to rural cultivators. A major operational bottleneck encountered during rapid farming mechanization is matching expensive automated tractor assets with tiny, scattered smallholder land shapes. Modernization should be gradual, scale-appropriate, and focused on cooperative asset-sharing solutions.";
 
 
-const englishJamb1997 = [
+const jamb1997 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1997;
+export default jamb1997;

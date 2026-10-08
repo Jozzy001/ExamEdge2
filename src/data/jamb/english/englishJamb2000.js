@@ -13,7 +13,7 @@ const PASSAGE_4 = "Early childhood cognitive conditioning operates effectively p
 const PASSAGE_5 = "Modern breakthroughs in recombinant DNA technologies have transformed medicine by allowing targeted genetic modifications, rapid vaccine syntheses, and customized therapy options. Gene mapping lets medical labs tailor treatments to a patient's genetic profile, replacing generic drugs with precise molecular cures. However, the critical biosecurity threat of unchecked biotechnology is the accidental generation of resilient pathogens or weaponized biological agents. Managing this power requires 'bioethics'—the study of moral boundaries and responsibility choices guiding biological research applications. A major regulatory challenge encountered during rapid genetic modification rollouts is ensuring global safety compliance across multiple borders while technology outpaces legislation.";
 
 
-const englishJamb2000 = [
+const jamb2000 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb2000;
+export default jamb2000;

@@ -12,7 +12,7 @@ const PASSAGE_4 = "When Tony Agiwa accosted me along the corridor, he directly b
 
 const PASSAGE_5 = "The goats had started producing milk, which they had eagerly poured on their porridge. It was clear evidence that the family hopes had run high. But then the rain failed. The children played their 'game of making house' in the dirt, imitating running a home like adults and scoldingly treating their rag-dolls. The adults paid no attention to this children's game; they sat down in despair because the sun danced dizzily and it was impossible to plant seeds in the dry earth. All their animals had been sold during the bad years in order to purchase food, and now nothing was left but to wait.";
 
-const englishJamb1985 = [
+const jamb1985 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -882,4 +882,4 @@ answer: "on",
 explanation: "'A pat on the back' is the fixed idiomatic phrase."
 }
 ];
-export default englishJamb1985;
+export default jamb1985;

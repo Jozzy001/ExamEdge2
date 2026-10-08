@@ -12,7 +12,7 @@ const PASSAGE_4 = "Before primitive man discovered less laborious ways of making
 
 const PASSAGE_5 = "Developments in electronic science have completely transformed the art of record keeping over the years. The writer notes three distinct historical stages of development: first, traditional custody where history was kept entirely in people's minds; second, the era of writing which replaced mental recording; and third, the modern electronic memory. Relying on human memory was notoriously dangerous because people either forgot events wholly or in part, or deliberately falsified details. While writing stepped in to solve this, it was not entirely free from these shortcomings, as untruths and biases could still be written down willingly or inadvertently. However, with the advent of electronic recording devices, the dangers of memory loss and deliberate human falsification have been largely overcome, representing a superior leap in data reliability.";
 
-const englishJamb1987 = [
+const jamb1987 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -738,4 +738,4 @@ answer: "too tired",
 explanation: "The infinitive clause rule construction 'too... to' ('too tired to do...') is required here."
 }
 ];
-export default englishJamb1987;
+export default jamb1987;

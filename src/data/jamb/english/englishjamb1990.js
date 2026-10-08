@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional medical practice in Africa relies heavily on herb
 const PASSAGE_5 = "The scientific revolution has transformed human civilization by increasing the speed of global communication and industrial productivity. However, technology possesses a dual nature: it has the capacity for both creative development and highly destructive applications, such as atomic weaponry. Mechanization, which replaces manual labor with automated machinery, accelerates production but introduces deep ethical challenges. Humanity's primary task is ensuring our moral responsibility matches our technical capabilities, recognizing that science is a neutral tool whose ultimate impact depends entirely on human use.";
 
 
-const englishJamb1990 = [
+const jamb1990 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -551,4 +551,4 @@ answer: "much cleverer",
 explanation: "'Cleverer' is already comparative. Double comparatives are grammatically incorrect. It can only be intensified by adding 'much'."
 }
 ];
-export default englishJamb1990;
+export default jamb1990;

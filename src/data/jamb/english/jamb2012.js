@@ -2,7 +2,7 @@
 // 100 questions across all topics.
 // Structured to match the supplied 2010 JS format.
 
-const englishjamb2012 = [
+const jamb2012 = [
 
   // =====================
   // COMPREHENSION — PASSAGE I (Traditional Religion)
@@ -1014,4 +1014,4 @@ const englishjamb2012 = [
 
 ]
 
-export default englishjamb2012
+export default jamb2012

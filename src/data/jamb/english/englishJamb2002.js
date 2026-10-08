@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional community mediation frameworks focused on outcome
 const PASSAGE_5 = "Modern decentralized database matrices change information management by enabling distributed ledger records, cryptographic security sync, and direct peer data validation. These frameworks sync duplicate records across independent computers, removing single points of failure. The privacy of a shared data architecture depends on robust cryptographic key protocols, access filters, and verified network blocks. This design functions via a 'distributed ledger'—describing a database shared and synchronized across multiple network nodes without a central owner. A major systemic challenge encountered during rapid network integration is maintaining consistent security across diverse nodes with varying computing capacities.";
 
 
-const englishJamb2002 = [
+const jamb2002 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb2002;
+export default jamb2002;

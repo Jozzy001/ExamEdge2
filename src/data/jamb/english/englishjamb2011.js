@@ -10,7 +10,7 @@ const PASSAGE_3 = "Though assumption is the lowest level of knowledge, it is sti
 
 const PASSAGE_4 = "Believe it or not, change is to human existence what blood is to the human body. We live in an era of amazing ___ change spawned by advancing technology and industrialization. However, man's ___ promoting and defending change in a deliberate effort to establish man's concern is proving unfavorable to the climate with threatening ___ repercussions. Human-induced climate change has awakened widespread concern across the globe. As a matter of fact, climate change is now ___ global issue. It is a major test of Africa's ___. The Fourth Assessment Report (AR4) of the Intergovernmental Panel on Climate Change (IPCC) confirms that human actions are changing the earth's climate and creating major disturbance in human ___ and ecosystems. The IPCC reports that the world has warmed by an average of 0.76°C since pre-industrial times. The rising global ___ for energy and the adverse changes on each were commensurate with the level of greenhouse ___ it spews out; perhaps Africa would have been spared. But as it is, this is not the case. Here again, we see well-meaning global citizens appealing for the rest of the world to take responsibility for the problem of Africa, a strategy that cannot, thus far, be termed ___.";
 
-const englishjamb2011 = [
+const jamb2011 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -867,4 +867,4 @@ answer: "Is Maiduguri a town in Borno state?",
 explanation: "Emphasizing 'CAPITAL' isolates the specific status profile of the entity, contrasting it with subordinate descriptors like 'a town'."
 }
 ];
-export default englishjamb2011;
+export default jamb2011;

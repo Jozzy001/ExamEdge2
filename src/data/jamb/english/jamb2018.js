@@ -24,7 +24,7 @@ const near = make("Nearest in Meaning");
 const vowel = make("Vowel Sounds");
 const stress = make("Word Stress");
 
-const englishjamb2018 = [
+const jamb2018 = [
   // =====================
   // COMPREHENSION — PASSAGE A (1–6)
   // =====================
@@ -480,4 +480,4 @@ const englishjamb2018 = [
   ),
 ];
 
-export default englishjamb2018;
+export default jamb2018;

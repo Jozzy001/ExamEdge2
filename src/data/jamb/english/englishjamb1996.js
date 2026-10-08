@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional community mediation frameworks focused primarily 
 const PASSAGE_5 = "The implementation of smart renewable energy grids has transformed distribution by allowing automated load balancing, storage sync, and dynamic power routing. The reliability of a decentralized grid network rests on robust automated algorithms, storage cell blocks, and adaptive distribution loops. The term 'load balancing' describes the automated redistribution of electricity supply to match real-time demand peaks. A major engineering challenge encountered during rapid smart grid transformation is integrating erratic weather-dependent input sources with steady power lines. Expanding these decentralized networks provides an anchor for long-term clean energy access, technical reliability, and structural cost reduction.";
 
 
-const englishJamb1996 = [
+const jamb1996 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1996;
+export default jamb1996;

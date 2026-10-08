@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional crop distribution networks in rural areas suffer 
 const PASSAGE_5 = "The introduction of movable type printing transformed human society by enabling the mass production of books, dropping costs, and raising literacy. This machine array replaced the manual work of the scribe—a person whose job was to copy out documents, manuscripts, and texts by hand. The resulting democratization of knowledge implied that information became widely accessible to ordinary citizens rather than controlled by a small elite. Mass literacy empowered citizens to critique authority, read policy updates, and seek active political participation, serving as an anchor for the intellectual awakening, scientific revolution, and modern education.";
 
 
-const englishJamb1994 = [
+const jamb1994 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -576,4 +576,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1994;
+export default jamb1994;

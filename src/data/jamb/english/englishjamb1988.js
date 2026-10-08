@@ -13,7 +13,7 @@ const PASSAGE_4 = "Watch a young child building a tower with blocks, and you wil
 const PASSAGE_5 = "In the heart of the village, the old African market was alive with sound and color. For some traders, trade was an earnest business, but for others, it was an explicit social excuse to mingle and laugh. Take the woman sitting on the ground with half a dozen eggs; she didn't come to make a fortune, she came purposely to enjoy herself, refusing to sell her last wares until sundown just to keep chatting. Nearby, an old goldsmith worked with copper filings on his dying art—a trade that was no longer popular in modern times. Looking across the crowded space at the stalls of country cloth, copper trinkets, and leather sandals, it was clear that this was a timeless setting where people came equally for business or pleasure.";
 
 
-const englishJamb1988 = [
+const jamb1988 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -891,4 +891,4 @@ answer: "He and I",
 explanation: "Polite formal protocol requires that the first-person singular pronoun ('I') should be placed last in a compound subject string."
 }
 ];
-export default englishJamb1988;
+export default jamb1988;

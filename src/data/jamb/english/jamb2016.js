@@ -1,6 +1,6 @@
 // JAMB 2016 English Language Past Questions
 // Default export: the main paper (flat array of question objects).
-// Named export `englishjamb2016Alt`: the second, alternate set of Q66-100 that was in the original file.
+// Named export `jamb2016Alt`: the second, alternate set of Q66-100 that was in the original file.
 
 const KEY = "according to the answer key in the supplied 2016 paper";
 
@@ -27,7 +27,7 @@ const rhyme = make("Rhymes");
 const stress = make("Stress");
 const emph = make("Emphatic Stress");
 
-const englishjamb2016 = [
+const jamb2016 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -795,7 +795,7 @@ const englishjamb2016 = [
 // =====================
 // ALTERNATE SET (second version of Q66–100 found in the original file)
 // =====================
-export const englishjamb2016Alt = [
+export const jamb2016Alt = [
   lexs(
     "You live in the city now, _____?",
     ["are you", "don't you", "didn't you", "haven't you"],
@@ -1020,4 +1020,4 @@ export const englishjamb2016Alt = [
   ),
 ];
 
-export default englishjamb2016;
+export default jamb2016;

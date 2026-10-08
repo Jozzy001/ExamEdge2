@@ -58,7 +58,7 @@ const emph = make(
 // JAMB 2013 QUESTIONS
 // ============================================================
 
-const englishjamb2013Groups = [
+const jamb2013Groups = [
 
   // ==========================================================
   // PASSAGE I — Pottery Training Centre
@@ -918,7 +918,7 @@ const englishjamb2013Groups = [
 //   ...
 // ]
 
-const englishjamb2013 = englishjamb2013Groups.flatMap(
+const jamb2013 = jamb2013Groups.flatMap(
   group => group.questions
 );
 
@@ -927,4 +927,4 @@ const englishjamb2013 = englishjamb2013Groups.flatMap(
 // EXPORT
 // ============================================================
 
-export default englishjamb2013;
+export default jamb2013;

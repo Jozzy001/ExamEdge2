@@ -1,7 +1,7 @@
 // JAMB English Language 2017 Past Questions
 // Source: Supplied JAMB English Language Past Questions and Answers 2010 - 2018 PDF
 
-const englishjamb2017 = [
+const jamb2017 = [
 
   // Questions 1–5: Passage I
 
@@ -1403,4 +1403,4 @@ const englishjamb2017 = [
 
 ];
 
-export default englishjamb2017;
+export default jamb2017;

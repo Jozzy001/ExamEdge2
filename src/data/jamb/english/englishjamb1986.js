@@ -11,7 +11,7 @@ const PASSAGE_4 = "Farming is the most important aspect of agriculture that has 
 
 const PASSAGE_5 = "It may be argued that museums as an institution and an agency for transmitting cultural heritage are an artificial creation, so far as objects are removed from their natural or proper environments and put into museums which are a different environment altogether. However, it seems that museums themselves have come to be accepted and recognized as the best equipped institutions devised by man for the assemblage of cultural objects and their presentation and preservation for the present and future generations.\n\nThe artificial character of museums is however being gradually transformed into a cultural reality. Thus, just as one goes to the theatre for plays and other performing arts, the mosque, the church or the shrine for worship, the library for the printed words, today, it is to the museum one goes to see evidence of man's material outfit. For, no other institution or place so readily comes to mind as museums do when evidence of material culture is sought. Herein lies the importance of museums as cultural institutions and an agency for transmitting culture."; 
 
-const englishjamb1986 = [ 
+const jamb1986 = [ 
 
 // =====================
 // COMPREHENSION — PASSAGE I
@@ -738,4 +738,4 @@ answer: "laid",
 explanation: "The past tense form of the verb 'lay' (to produce eggs) is 'laid'."
 }
 ];
-export default englishjamb1986;
+export default jamb1986;

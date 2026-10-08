@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional dispute mediation frameworks prioritized solution
 const PASSAGE_5 = "Modern information matrices have transformed business communications by enabling immediate, secure cross-border data synchronization and encrypted interactions, removing physical distances through data encryption frameworks. According to the passage, the primary security threat in a highly connected grid stems from cyber threats, system-wide disruptions, and malicious data breaches, meaning a single attack can disrupt multiple interconnected operations instantly. The word 'encryption' refers to the scrambling of data into secret codes to prevent unauthorized access using algorithmic formulas. A major systemic challenge encountered during rapid information acceleration is ensuring accurate data verification and managing digital security patches, leading the author to conclude that digital communication networks are inherently neutral instruments whose impact depends entirely on application choices.";
 
 
-const englishJamb2004 = [
+const jamb2004 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -576,4 +576,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb2004;
+export default jamb2004;

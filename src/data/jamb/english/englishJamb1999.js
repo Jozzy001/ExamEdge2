@@ -13,7 +13,7 @@ const PASSAGE_4 = "Pre-colonial regional trade across early networks operated se
 const PASSAGE_5 = "The introduction of automated manufacturing loops has transformed assembly lines by allowing high-speed repeatability, real-time tracking, and automated sorting. Robotic assembly components handle repetitive tasks with high sub-millimeter precision, reducing human error. However, an industrial design layout fails human ergonomics when it treats human workers as mere machine extensions, causing physical strain and boredom. The term 'ergonomics' describes the science of designing work environments and equipment to optimize human safety and efficiency. A major socio-economic problem encountered during rapid factory automation is the displacement of low-skilled manual workers who lack technical retraining tracks.";
 
 
-const englishJamb1999 = [
+const jamb1999 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1999;
+export default jamb1999;

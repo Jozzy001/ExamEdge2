@@ -13,7 +13,7 @@ const PASSAGE_4 = "Traditional agrarian dispute customs focused primarily on sol
 const PASSAGE_5 = "Theoretical physics breakthroughs transform human understanding by replacing speculation with mathematical consistency models that independent scientific teams can test empirically. These advanced models use complex equations to describe hidden particles, providing precise predictions that outside labs can check with sensory tools. According to the text, a new scientific hypothesis achieves status as a law only when it is proven repeatable and accurate through rigorous experimental scrutiny and peer review. The word 'empirical' means based on direct physical observation, experimentation, and measurable data results. A major challenge encountered during these scientific paradigm shifts is the natural institutional resistance to letting go of long-established textbook assumptions.";
 
 
-const englishJamb1998 = [
+const jamb1998 = [
   // =====================
   // COMPREHENSION — PASSAGE I
   // =====================
@@ -586,4 +586,4 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
-export default englishJamb1998;
+export default jamb1998;

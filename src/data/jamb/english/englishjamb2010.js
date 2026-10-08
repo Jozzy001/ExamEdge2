@@ -1,7 +1,7 @@
 // JAMB 2010 English Language Past Questions
 // 100 questions across all topics
 
-const englishjamb2010 = [
+const jamb2010 = [
 
   // =====================
   // COMPREHENSION — PASSAGE I (Spaceship Earth)
@@ -1227,4 +1227,4 @@ const englishjamb2010 = [
 
 ]
 
-export default englishjamb2010
+export default jamb2010
