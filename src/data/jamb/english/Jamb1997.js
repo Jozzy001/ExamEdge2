@@ -586,4 +586,5 @@ answer: "much more efficient",
 explanation: "'Efficient' is a multi-syllable adjective whose comparative is formed using 'more efficient'. It can be intensified using the modifier 'much'."
 }
 ];
+
 export default jamb1997;
