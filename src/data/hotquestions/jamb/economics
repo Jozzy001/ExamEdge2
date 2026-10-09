@@ -1,0 +1,115 @@
+// Path: src/data/hotquestions/jamb/economics.js
+
+export const economicsHotQuestions = [
+  // CATEGORY: ECONOMIC STATISTICS - MODE
+  {
+    id: 1,
+    category: "Economic Statistics",
+    question: "The most popular sizes of dresses, shirts and shoes sold in a retail market are best determined using which measure of central tendency?",
+    options: {
+      A: "Range",
+      B: "Mean",
+      C: "Mode",
+      D: "Median"
+    },
+    correctAnswer: "C",
+    yearsAppeared: [2010, 2016],
+    explanation: "The mode is the value that occurs most often. In retail, the sizes that sell most frequently are the modal sizes, so the mode is the measure traders use to decide which dress and shoe sizes to stock."
+  },
+
+  // CATEGORY: NATIONAL INCOME - INVESTMENT MULTIPLIER
+  {
+    id: 2,
+    category: "National Income Accounting",
+    question: "If the Marginal Propensity to Consume (MPC) of an economy is 0.75 and investment expenditure changes by ₦2 million, determine the resulting change in national income.",
+    options: {
+      A: "₦0.5 million",
+      B: "₦1.5 million",
+      C: "₦2.6 million",
+      D: "₦8.0 million"
+    },
+    correctAnswer: "D",
+    yearsAppeared: [1985, 2012],
+    explanation: "The investment multiplier is K = 1 / (1 - MPC) = 1 / (1 - 0.75) = 1 / 0.25 = 4. The change in national income = multiplier × change in investment = 4 × ₦2 million = ₦8.0 million."
+  },
+
+  // CATEGORY: THEORY OF PRODUCTION
+  {
+    id: 3,
+    category: "Theory of Production",
+    question: "In the short run, a firm's total product (TP) reaches its maximum at the point where:",
+    options: {
+      A: "Marginal Product (MP) is equal to zero",
+      B: "Marginal Product (MP) is greater than zero",
+      C: "Average Product (AP) is equal to zero",
+      D: "Average Product (AP) is at its maximum point"
+    },
+    correctAnswer: "A",
+    yearsAppeared: [1985, 2011],
+    explanation: "Total product is at its highest when an extra unit of the variable input adds nothing more to output. So when MP = 0, the TP curve flattens at its peak before it starts to fall."
+  },
+
+  // CATEGORY: MARKET STRUCTURES
+  {
+    id: 4,
+    category: "Market Structures",
+    question: "A profit-maximizing firm, whether a pure monopoly or a perfect competitor, will produce the output at which:",
+    options: {
+      A: "Price is at its maximum level",
+      B: "Price equals Average Cost",
+      C: "Marginal Cost equals Price",
+      D: "Marginal Cost equals Marginal Revenue"
+    },
+    correctAnswer: "D",
+    yearsAppeared: [1983, 1985, 2016],
+    explanation: "Any profit-maximizing firm expands output until the cost of one extra unit equals the revenue from it, that is, MC = MR. (Under perfect competition MR equals price, so MC = P as well, but only MC = MR holds for a monopoly too.)"
+  },
+
+  // CATEGORY: PRICE DETERMINATION
+  {
+    id: 5,
+    category: "Price Determination",
+    question: "Given the demand and supply schedules Qd = 30 - 3P and Qs = 9P - 18, calculate the equilibrium price.",
+    options: {
+      A: "₦12.00",
+      B: "₦3.75",
+      C: "₦2.80",
+      D: "₦4.00"
+    },
+    correctAnswer: "D",
+    yearsAppeared: [1997, 2016, 2017],
+    explanation: "At equilibrium, Qd = Qs. So 30 - 3P = 9P - 18, which gives 48 = 12P, and P = ₦4.00. (Check: Qd = 30 - 12 = 18 and Qs = 36 - 18 = 18.)"
+  },
+
+  // CATEGORY: ECONOMIC STATISTICS - PIE CHARTS
+  {
+    id: 6,
+    category: "Economic Statistics",
+    question: "A pie chart shows how national income is shared across sectors. If Mining takes 126°, Agriculture 72° and Manufacturing 108°, what percentage does the remaining Services sector contribute?",
+    options: {
+      A: "15%",
+      B: "10%",
+      C: "54%",
+      D: "24%"
+    },
+    correctAnswer: "A",
+    yearsAppeared: [2012, 2014],
+    explanation: "The angles in a pie chart add up to 360°. The given sectors total 126° + 72° + 108° = 306°, so Services is 360° - 306° = 54°. As a percentage, (54 / 360) × 100% = 15%."
+  },
+
+  // CATEGORY: INTERNATIONAL TRADE
+  {
+    id: 7,
+    category: "International Trade",
+    question: "Selling goods abroad at a price well below their production cost in the home country is known as:",
+    options: {
+      A: "Dumping",
+      B: "Counter trade",
+      C: "Bilateral trade",
+      D: "Trade liberalization"
+    },
+    correctAnswer: "A",
+    yearsAppeared: [1983, 1987, 1994, 2018],
+    explanation: "Dumping is selling in a foreign market at an artificially low price, often below production cost. Firms or countries do this to drive out local producers and take over the market."
+  }
+];

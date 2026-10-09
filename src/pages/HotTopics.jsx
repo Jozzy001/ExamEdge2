@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
 import jambQuestions from "../data/jamb/questions"
+import { CURATED_HOT_QUESTIONS } from "../data/hotquestions/jamb/index"
 import MathText from "../components/MathText"
 
 const SUBJECT_META = {
@@ -82,6 +83,204 @@ const CURATED_HOT_TOPICS = {
       ],
     },
   ],
+  Chemistry: [
+    {
+      title: "Calculation-Heavy Topics", emoji: "🟢",
+      blurb: "Formula-driven questions that repeat every year.",
+      items: [
+        { topic: "Gas Laws & Kinetic Theory", keywords: ["gas", "kinetic"],
+          focus: "Quantitative and graphical calculations using Boyle's, Charles', Ideal Gas and Graham's Law of Diffusion." },
+        { topic: "Stoichiometry & Chemical Calculations", keywords: ["stoichiometr", "mole", "calculation"],
+          focus: "Empirical/molecular formulas, reacting masses and volumes at S.T.P, water of crystallization, limiting reactants." },
+        { topic: "Electrochemistry & Electrolysis", keywords: ["electro"],
+          focus: "Faraday's Laws (M = ZIt), preferential discharge at cathode and anode, the electrochemical series." },
+      ],
+    },
+    {
+      title: "Equilibrium & Energy", emoji: "🟡",
+      blurb: "Reading diagrams and predicting shifts.",
+      items: [
+        { topic: "Chemical Equilibria & Energetics", keywords: ["equilibri", "energetic", "thermo"],
+          focus: "Le Chatelier's Principle (temperature and pressure shifts), potential energy profile diagrams, enthalpy (ΔH), free energy (ΔG) and entropy." },
+      ],
+    },
+    {
+      title: "Organic & Analysis", emoji: "🔵",
+      blurb: "Theory and lab-based questions.",
+      items: [
+        { topic: "Organic Chemistry Principles", keywords: ["organic", "hydrocarbon"],
+          focus: "IUPAC naming, functional group tests, structural isomerism, cracking, saponification, polymerization, esterification." },
+        { topic: "Acids, Bases, Salts & Qualitative Analysis", keywords: ["acid", "salt", "qualitative"],
+          focus: "pH, deliquescence, efflorescence, hygroscopy, indicators, salt tests using BaCl₂, NaOH and NH₄OH." },
+      ],
+    },
+  ],
+  Physics: [
+    {
+      title: "Mechanics & Heat", emoji: "🟢",
+      blurb: "Calculation-based questions that repeat across years.",
+      items: [
+        { topic: "Mechanics", keywords: ["mechanic", "motion", "dynamic", "equilibri"],
+          focus: "Scalars vs vectors, velocity-time graphs, momentum conservation, Hooke's Law, conditions for equilibrium and moments." },
+        { topic: "Thermal Properties & Gas Laws", keywords: ["thermal", "heat", "gas law", "temperature"],
+          focus: "Ideal gas equation (P1V1/T1 = P2V2/T2), fixed-point thermometers, specific heat capacity, latent heat of fusion and vaporization." },
+      ],
+    },
+    {
+      title: "Waves & Optics", emoji: "🟡",
+      blurb: "Formulas plus concept checks.",
+      items: [
+        { topic: "Waves, Sound & Resonance", keywords: ["wave", "sound", "resonan"],
+          focus: "Longitudinal vs transverse waves, echo depth (d = vt/2), sonometer wires and overtones, resonance tubes." },
+        { topic: "Optics (Reflection & Refraction)", keywords: ["optic", "light", "reflection", "refraction"],
+          focus: "Real/virtual images in curved mirrors and lenses (1/f = 1/u + 1/v), Snell's law and refractive index, critical angle, eye defects and corrective lenses." },
+      ],
+    },
+    {
+      title: "Electricity & Modern Physics", emoji: "🔵",
+      blurb: "Circuit calculations and nuclear concepts.",
+      items: [
+        { topic: "Current Electricity & Capacitance", keywords: ["current electric", "electric", "capacit"],
+          focus: "Series and parallel resistors (V = IR), terminal p.d. vs internal resistance (E = I(R + r)), effective capacitance." },
+        { topic: "Modern Physics (Atomic & Nuclear)", keywords: ["modern", "atomic", "nuclear", "radioact"],
+          focus: "Radioactive decay and half-life, photoelectric effect (E = hf - W0), subatomic particles, cathode rays, X-rays and gamma rays." },
+      ],
+    },
+  ],
+  Mathematics: [
+    {
+      title: "Algebra", emoji: "🟢", weight: "Extremely High",
+      blurb: "The biggest block of questions, present in every year from 1983 to 2004.",
+      items: [
+        { topic: "Quadratics, Factorization & Polynomials", keywords: ["quadratic", "factor", "polynomial", "algebra"],
+          focus: "Solving quadratics, forming equations from roots, factor and remainder theorem, expansion and simplification." },
+        { topic: "Indices, Logarithms & Surds", keywords: ["indices", "logarithm", "surd", "index"],
+          focus: "Laws of indices and logs, evaluating log expressions, standard form, significant figures, rationalising surds." },
+        { topic: "Variation & Proportion", keywords: ["variation", "proportion"],
+          focus: "Direct, inverse, joint and partial variation: finding the constant and then a new value." },
+        { topic: "Sequences & Series (AP/GP)", keywords: ["sequence", "series", "progression"],
+          focus: "nth term and sum of an AP, common ratio and sum of a GP." },
+        { topic: "Simultaneous Equations & Inequalities", keywords: ["simultaneous", "inequalit"],
+          focus: "Solving pairs of equations and linear inequalities." },
+      ],
+    },
+    {
+      title: "Geometry & Trigonometry", emoji: "🟡", weight: "Extremely High",
+      blurb: "Diagram-based questions that return nearly every year.",
+      items: [
+        { topic: "Circle Geometry & Angles", keywords: ["circle", "angle", "geometry", "polygon"],
+          focus: "Circle theorems (chord, tangent, cyclic quadrilateral), interior and exterior angles of polygons." },
+        { topic: "Mensuration", keywords: ["mensuration", "area", "volume"],
+          focus: "Areas and volumes of solids, arc length and sector area, perimeter and circumference." },
+        { topic: "Trigonometry & Bearings", keywords: ["trigonometr", "bearing"],
+          focus: "Sine and cosine rules, angles of elevation and depression, bearings and distances." },
+        { topic: "Coordinate Geometry", keywords: ["coordinate", "straight line", "gradient"],
+          focus: "Gradient, equation of a line, midpoint and distance between points." },
+      ],
+    },
+    {
+      title: "Statistics, Probability & Number Work", emoji: "🔵", weight: "High",
+      blurb: "Quick marks if you know the methods.",
+      items: [
+        { topic: "Statistics", keywords: ["statistic", "data"],
+          focus: "Mean, median and mode, reading pie charts, bar charts and histograms, frequency tables." },
+        { topic: "Probability & Permutation/Combination", keywords: ["probab", "permutation", "combination"],
+          focus: "Probability of single and combined events, counting arrangements and selections." },
+        { topic: "Number Bases & Number Operations", keywords: ["number base", "base", "number"],
+          focus: "Conversions between bases, HCF and LCM, fractions, percentages, ratio, simple and compound interest, profit and loss." },
+        { topic: "Sets & Venn Diagrams", keywords: ["set", "venn"],
+          focus: "Set notation, union and intersection, word problems with Venn diagrams." },
+      ],
+    },
+    {
+      title: "Calculus & Matrices", emoji: "🟣", weight: "Medium",
+      blurb: "Appear mainly from the late 1990s onward.",
+      items: [
+        { topic: "Calculus (Differentiation & Integration)", keywords: ["calculus", "differentiat", "integrat"],
+          focus: "Differentiating polynomials, gradient of a curve, maximum and minimum values, simple integration and area under a curve." },
+        { topic: "Matrices & Determinants", keywords: ["matri", "determinant"],
+          focus: "2×2 determinants, inverse of a matrix, singular matrices." },
+      ],
+    },
+  ],
+  English: [
+    {
+      title: "Language Skills", emoji: "🟢",
+      blurb: "Rules and patterns that examiners keep recycling.",
+      items: [
+        { topic: "Lexis and Structure (Grammar & Concord)", keywords: ["lexis", "structure", "grammar", "concord"],
+          focus: "Singular/plural constraints (furniture, equipment, electronics), proximity concord (as well as, no less than, alongside), subjunctive moods (it is time we did away with...)." },
+        { topic: "Idioms & Clichés", keywords: ["idiom", "expression", "cliche"],
+          focus: "High-frequency figurative phrases such as cross the Rubicon, a chip off the old block, pull the wool over my eyes." },
+        { topic: "Oral Forms & Phonology", keywords: ["oral", "phonolog", "sound"],
+          focus: "Vowel and consonant sound matching, silent letters (indict, chalet, paradigm), identical stress patterns and emphatic stress responses." },
+      ],
+    },
+    {
+      title: "Reading Skills", emoji: "🟡",
+      blurb: "Marks come from reading the passage carefully.",
+      items: [
+        { topic: "Comprehension & Inference", keywords: ["comprehension", "passage", "inference"],
+          focus: "Textual interpretation, the author's mood or attitude, choosing a suitable title, and working out vocabulary from context." },
+      ],
+    },
+  ],
+  Economics: [
+    {
+      title: "Microeconomics", emoji: "🟢",
+      blurb: "Demand, cost and market theory examiners return to every year.",
+      items: [
+        { topic: "Demand, Supply & Price Determination", keywords: ["demand", "supply", "price determination"],
+          focus: "Movements along a curve vs shifts, equilibrium price and quantity (Qd = Qs), government price controls (maximum price and minimum price)." },
+        { topic: "Elasticity", keywords: ["elastic"],
+          focus: "Mid-point and point coefficients of price elasticity of demand and supply, and cross-elasticity to tell substitutes from complements." },
+        { topic: "Theory of Consumer Behaviour", keywords: ["consumer", "utility", "behaviour"],
+          focus: "Cardinal utility (diminishing marginal utility) vs ordinal utility (indifference curves and the budget line)." },
+        { topic: "Theory of Production & Cost", keywords: ["production", "cost"],
+          focus: "Short-run vs long-run returns to scale, when diminishing returns set in (MP = 0 at maximum TP), costs (TC = TFC + TVC)." },
+        { topic: "Market Structures", keywords: ["market structure", "competition", "monopoly"],
+          focus: "Profit maximization where MC = MR, features of monopoly, oligopoly (collusion, price leadership) and monopolistic competition." },
+      ],
+    },
+    {
+      title: "Macroeconomics & Data", emoji: "🟡",
+      blurb: "Formula-based questions with quick marks.",
+      items: [
+        { topic: "National Income Accounting & Multipliers", keywords: ["national income", "income"],
+          focus: "Income, expenditure and value-added approaches, and the investment multiplier K = 1 / (1 - MPC)." },
+        { topic: "Economic Statistics & Data Tools", keywords: ["statistic", "data"],
+          focus: "Mean, median and mode, measures of dispersion (range, standard deviation, variance), tables and pie charts." },
+      ],
+    },
+  ],
+  Government: [
+    {
+      title: "Concepts & Structures", emoji: "🟢",
+      blurb: "The core framework of the JAMB Government exam, tested every year.",
+      items: [
+        { topic: "Sovereignty, Statehood & Ideologies", keywords: ["sovereign", "state", "ideolog"],
+          focus: "Attributes of a state (population, territory, government, sovereignty) and political philosophies: capitalism, socialism/Marxism, fascism, feudalism, totalitarianism." },
+        { topic: "Structures & Organs of Government", keywords: ["organ", "arms of government", "separation of power", "executive", "legislat"],
+          focus: "Executive, legislature and judiciary, their functions and quasi-functions, separation of powers, checks and balances." },
+        { topic: "Constitutional Systems & Tiers of Government", keywords: ["constitution", "federal", "parliament", "presidential"],
+          focus: "Parliamentary (Westminster) vs presidential systems, unicameral vs bicameral legislatures, federal, unitary and confederal systems." },
+        { topic: "Elections & Public Administration", keywords: ["election", "franchise", "civil service", "public administration"],
+          focus: "Types of franchise, gerrymandering, party systems, pressure groups vs political parties, civil service principles (anonymity, neutrality, permanence)." },
+      ],
+    },
+    {
+      title: "Nigerian & International Politics", emoji: "🟡",
+      blurb: "History and foreign policy that keep repeating.",
+      items: [
+        { topic: "Nigerian Constitutional Evolution", keywords: ["constitutional development", "constitutional history", "evolution", "constitution"],
+          focus: "Clifford 1922, Richards 1946, Macpherson 1951, Lyttleton 1954, then the 1960, 1963, 1979 and 1999 constitutions." },
+        { topic: "Pre-Colonial Systems & Nationalism", keywords: ["pre-colonial", "precolonial", "nationalis", "traditional"],
+          focus: "Centralized Hausa-Fulani Emirate and Oyo Empire vs the acephalous Igbo system, and early nationalist leaders." },
+        { topic: "International Relations & Organizations", keywords: ["international", "foreign policy", "ecowas", "united nations"],
+          focus: "Nigeria's foreign policy, ECOWAS, African Union (formerly OAU), Commonwealth, OPEC and the UN Security Council." },
+      ],
+    },
+  ],
 }
 
 const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = [] }) => {
@@ -98,7 +297,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
       : (x && typeof x === "object" ? Object.values(x).flat(Infinity) : [])
     return toArray(source).flatMap(q => {
       if (q && q.passage && q.questions) {
-        return q.questions.map(inner => ({ ...inner, passage: q.passage }))
+        return q.questions.map(inner => ({ ...inner, passage: q.passage, year: inner.year ?? q.year }))
       }
       return q ? [q] : []
     })
@@ -122,9 +321,24 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
     return matched.length > 0 ? [...new Set(matched)] : poolSubjects
   }, [facultySubjects, questionPool])
 
-  // Auto-detected hot topics (2+ questions)
+  // Hand-picked hot questions (JAMB only). Post-UTME users never see these.
+  const getCuratedQuestions = (subject) =>
+    university ? null : (CURATED_HOT_QUESTIONS[subject] || null)
+
+  // Questions from the main bank for a topic (used by Study Mode matching)
+  const getBankTopicQuestions = (subject, topic) =>
+    questionPool.filter(q => q.subject === subject && q.topic === topic)
+
+  // Auto-detected hot topics (2+ questions), or your curated list when one exists
   const getHotTopics = (subject) => {
+    const curated = getCuratedQuestions(subject)
     const counts = {}
+    if (curated) {
+      curated.forEach(q => { if (q.topic) counts[q.topic] = (counts[q.topic] || 0) + 1 })
+      return Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([topic, count]) => ({ topic, count }))
+    }
     questionPool.forEach(q => {
       if (q.subject === subject && q.topic) counts[q.topic] = (counts[q.topic] || 0) + 1
     })
@@ -134,8 +348,12 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
       .map(([topic, count]) => ({ topic, count }))
   }
 
-  const getTopicQuestions = (subject, topic) =>
-    questionPool.filter(q => q.subject === subject && q.topic === topic)
+  const getTopicQuestions = (subject, topic) => {
+    const curated = getCuratedQuestions(subject)
+    return curated
+      ? curated.filter(q => q.topic === topic)
+      : getBankTopicQuestions(subject, topic)
+  }
 
   // Curated groups for a subject, with each item matched to a real topic in the question bank
   const getCuratedGroups = (subject) => {
@@ -153,7 +371,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
         return {
           ...item,
           realTopic: real || item.topic,
-          count: real ? getTopicQuestions(subject, real).length : 0,
+          count: real ? getBankTopicQuestions(subject, real).length : 0,
         }
       }),
     }))
@@ -206,6 +424,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
   if (selectedSubject && mode === "questions" && selectedTopic) {
     const questions = getTopicQuestions(selectedSubject, selectedTopic)
     const meta = SUBJECT_META[selectedSubject] || DEFAULT_META
+    const isCurated = !!getCuratedQuestions(selectedSubject)
     return (
       <div className="ee-page">
         <Header title={`🔥 ${selectedTopic}`} />
@@ -215,21 +434,24 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
             borderRadius: "var(--radius-xl)", padding: "16px 20px",
             marginBottom: 20, color: "#fff"
           }}>
-            <div style={{ fontSize: 13, opacity: 0.9, marginBottom: 4 }}>{selectedSubject} · Hot Topic</div>
+            <div style={{ fontSize: 13, opacity: 0.9, marginBottom: 4 }}>{selectedSubject} · Hot Questions</div>
             <div style={{ fontSize: 18, fontWeight: 800 }}>{selectedTopic}</div>
             <div style={{ fontSize: 12, opacity: 0.85, marginTop: 4 }}>
-              🔥 {questions.length} repeated questions
+              🔥 {questions.length} hot question{questions.length === 1 ? "" : "s"}
             </div>
           </div>
 
           <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 16, lineHeight: 1.6 }}>
-            These questions have appeared in multiple past exams. Master them for maximum marks.
+            These questions and concepts have appeared in multiple past exams. Master them for maximum marks.
           </p>
 
           <button
             className="ee-btn ee-btn-primary"
             style={{ marginBottom: 16 }}
-            onClick={() => onNavigate("hotTopicsQuiz", null, selectedSubject, null, university, { topic: selectedTopic })}
+            onClick={() => onNavigate(
+              "hotTopicsQuiz", null, selectedSubject, null, university,
+              isCurated ? { topic: selectedTopic, questions } : { topic: selectedTopic }
+            )}
           >
             Practice These Questions 🚀
           </button>
@@ -240,7 +462,9 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
               borderRadius: "var(--radius-md)", padding: "14px 16px", marginBottom: 12
             }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: meta.color, marginBottom: 8 }}>
-                Q{i + 1} · {q.year || "Past Exam"}
+                Q{i + 1} · {q.years?.length
+                  ? `Tested ${q.years.length}× (${q.years.join(", ")})`
+                  : (q.year || "Past Exam")}
               </div>
 
               {q.passage && (
@@ -278,7 +502,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
                       color: opt === q.answer ? "#fff" : "var(--text3)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 10, fontWeight: 800
-                    }}>{["A","B","C","D"][j]}</span>
+                    }}>{String.fromCharCode(65 + j)}</span>
                     <MathText text={opt} />
                     {opt === q.answer && <span style={{ marginLeft: "auto" }}>✓</span>}
                   </div>
@@ -309,17 +533,18 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
   if (selectedSubject && mode === "questions") {
     const hotTopics = getHotTopics(selectedSubject)
     const meta = SUBJECT_META[selectedSubject] || DEFAULT_META
+    const isCurated = !!getCuratedQuestions(selectedSubject)
     return (
       <div className="ee-page">
         <Header title="🔥 Hot Questions" />
         <div className="ee-content">
-          <SubjectBanner subject={selectedSubject} line={`${hotTopics.length} topics with repeated questions`} />
+          <SubjectBanner subject={selectedSubject} line={`${hotTopics.length} topics with hot questions`} />
           <h3 style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", marginBottom: 12 }}>Pick a Topic</h3>
 
           {hotTopics.length === 0 && (
             <div className="ee-empty">
               <span className="ee-empty-icon">📭</span>
-              <p>No repeated questions found for {selectedSubject} yet.</p>
+              <p>No hot questions found for {selectedSubject} yet.</p>
             </div>
           )}
 
@@ -338,7 +563,9 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{topic}</div>
                 <div style={{ fontSize: 11, color: "var(--text2)", marginTop: 2 }}>
-                  Appeared {count} times in past exams
+                  {isCurated
+                    ? `${count} hot question${count === 1 ? "" : "s"}`
+                    : `Appeared ${count} times in past exams`}
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -401,7 +628,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
               {group.items.map((item, i) => (
                 <button
                   key={i}
-                  // Opens this topic in Study Mode (see the StudyMode change)
+                  // Opens this topic in Study Mode
                   onClick={() => onNavigate("studyTopic", item.realTopic, selectedSubject, null, university)}
                   style={{
                     width: "100%", display: "flex", alignItems: "center",
@@ -435,7 +662,7 @@ const HotTopics = ({ onNavigate, onBack, university = null, facultySubjects = []
       { key: "topics", icon: "📚", title: "Hot Topics",
         sub: `${stats?.hotTopicsCount || 0} topics examiners keep coming back to · opens in Study Mode` },
       { key: "questions", icon: "❓", title: "Hot Questions",
-        sub: `${stats?.totalHotQ || 0} repeated questions with answers and explanations` },
+        sub: `${stats?.totalHotQ || 0} hot questions with answers and explanations` },
     ]
     return (
       <div className="ee-page">
