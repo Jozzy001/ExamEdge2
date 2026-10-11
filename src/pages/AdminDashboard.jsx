@@ -2,12 +2,14 @@ import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import {
   collection, getDocs, orderBy, query, where,
-  doc, updateDoc, deleteDoc, setDoc, addDoc, serverTimestamp
+  doc, updateDoc, deleteDoc, setDoc, addDoc, serverTimestamp, increment
 } from "firebase/firestore"
 import { sendPasswordResetEmail } from "firebase/auth"
 import { fetchUserCBTHistory, formatDate, formatTime } from "../utils/cbtHistory"
 
 const ADMIN_EMAIL = "jce680@gmail.com"
+
+const REFERRAL_PAYOUT = 200 // ₦ credited to a referrer when the person they referred pays
 
 const formatUserDate = (ts) => {
   if (!ts) return "Before Jun 2026"
@@ -397,7 +399,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     const d = u.lastLogin.toDate ? u.lastLogin.toDate() : new Date(u.lastLogin)
     return d.toDateString() === today
   }).length
-  const PRICE = 2650, PAYSTACK_FEE = 138
+  const PRICE = 1500, PAYSTACK_FEE = 23
   const totalReferralOwed = users.reduce((sum, u) => sum + ((u.referralEarnings || 0) - (u.referralPaidOut || 0)), 0)
   const totalReferralPaid = users.reduce((sum, u) => sum + (u.referralPaidOut || 0), 0)
   const grossRevenue = (paidUsers * (PRICE - PAYSTACK_FEE)) - totalReferralPaid
@@ -778,10 +780,13 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           { label: "Referral Code", value: user.referralCode || "—" },
                           { label: "Referred By", value: user.referredBy ? (users.find(u => u.id === user.referredBy)?.name || user.referredBy) : "No" },
                           { label: "Referral Owed", value: `₦${((user.referralEarnings || 0) - (user.referralPaidOut || 0)).toLocaleString()}` },
+                          { label: "Bank", value: user.bankName || "—" },
+                          { label: "Account No.", value: user.bankAccountNumber || "—" },
+                          { label: "Account Name", value: user.bankAccountName || "—" },
                           { label: "Joined", value: formatDateTime(user.createdAt) },
                           { label: "Last Login", value: formatDateTime(user.lastLogin) },
-                        ].map((item, j) => (
-                          <div key={j} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "4px 0", borderBottom: j < 9 ? "1px solid var(--border)" : "none" }}>
+                        ].map((item, j, arr) => (
+                          <div key={j} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, padding: "4px 0", borderBottom: j < arr.length - 1 ? "1px solid var(--border)" : "none" }}>
                             <span style={{ color: "var(--text3)", fontWeight: 700 }}>{item.label}</span>
                             <span style={{ color: "var(--text)", fontWeight: 600, maxWidth: "60%", textAlign: "right", wordBreak: "break-all" }}>{item.value}</span>
                           </div>
@@ -822,9 +827,10 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
                           const isFree = newStatus && window.confirm(`Is this a FREE unlock (no payment received)?\n\nOK = Free unlock (won't count in revenue)\nCancel = Paid unlock (counts in revenue)`)
                           await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
-                          if (newStatus && !isFree && user.referredBy) {
-                            const { increment } = await import("firebase/firestore")
-                            await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(500) }).catch(() => {})
+                          // Credit the referrer once (and remember it, so a later Paystack payment can't credit twice)
+                          if (newStatus && !isFree && user.referredBy && !user.referralCredited) {
+                            await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(REFERRAL_PAYOUT) }).catch(() => {})
+                            await updateDoc(doc(db, "users", user.id), { referralCredited: true }).catch(() => {})
                           }
                           setActionMsg(newStatus ? `✅ ${user.name} unlocked` : `🔒 ${user.name} access revoked`); fetchUsers(); setSelected(null)
                         }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)", color: user.isPaid ? "#dc2626" : "#15803d", border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
@@ -833,8 +839,9 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                         {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
                           <button onClick={async () => {
                             const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
-                            if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?`)) return
-                            await updateDoc(doc(db, "users", user.id), { referralPaidOut: user.referralEarnings || 0, referralPaidOutAt: new Date().toISOString() })
+                            if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?\n\nOnly do this after you have actually sent the money.`)) return
+                            // Marks only the amount you saw and paid, so a referral that arrived meanwhile is not swallowed
+                            await updateDoc(doc(db, "users", user.id), { referralPaidOut: increment(owed), referralPaidOutAt: new Date().toISOString() })
                             setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`); fetchUsers(); setSelected(null)
                           }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(34,197,94,0.1)", color: "#15803d", border: "1px solid rgba(34,197,94,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
                             💸 Pay Referral — ₦{(user.referralEarnings || 0) - (user.referralPaidOut || 0)}
