@@ -24,6 +24,9 @@ const emojiFor = (subject) => {
   return hit ? hit[1] : "📘"
 }
 
+// Compares answers tolerantly: ignores case, extra spaces and trailing full stops
+const looseKey = (s) => String(s ?? "").trim().replace(/\s+/g, " ").replace(/[.\s]+$/, "").toLowerCase()
+
 // Reads a question no matter which common field names it uses
 const normalize = (q) => {
   const text = q.question ?? q.text ?? q.q ?? ""
@@ -40,11 +43,12 @@ const normalize = (q) => {
     const letterIdx = LETTERS.indexOf(t.toUpperCase())
     correct = t.length === 1 && letterIdx >= 0
       ? letterIdx
-      : options.findIndex(o => o.trim().toLowerCase() === t.toLowerCase())
+      : options.findIndex(o => looseKey(o) === looseKey(t))
   }
 
   return {
     text: String(text),
+    passage: q.passage ? String(q.passage) : "",
     options,
     correct: correct >= 0 && correct < options.length ? correct : -1,
     explanation: q.explanation ?? q.solution ?? q.reason ?? "",
@@ -57,13 +61,30 @@ const normalize = (q) => {
 // { subject: { year: [question, ...] } }
 const buildBank = () => {
   const bank = {}
-  questions.forEach(raw => {
+
+  const add = (raw) => {
     const q = normalize(raw)
     if (!q.text || q.options.length < 2) return
     bank[q.subject] = bank[q.subject] || {}
     bank[q.subject][q.year] = bank[q.subject][q.year] || []
     bank[q.subject][q.year].push(q)
+  }
+
+  questions.forEach(item => {
+    // Older format: { passage, questions: [...] } with the questions nested inside
+    if (item.passage && Array.isArray(item.questions)) {
+      item.questions.forEach(inner => add({
+        ...inner,
+        passage: inner.passage ?? item.passage,
+        subject: inner.subject ?? item.subject,
+        year: inner.year ?? item.year,
+        topic: inner.topic ?? item.topic,
+      }))
+    } else {
+      add(item)
+    }
   })
+
   return bank
 }
 
@@ -82,6 +103,7 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
   const [finished, setFinished] = useState(false)
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false)
   const [lockedYear, setLockedYear] = useState(null)
+  const [hidePassage, setHidePassage] = useState(false)
 
   const subjects = Object.keys(bank).sort()
   const list = subject && year ? bank[subject][year] : []
@@ -208,6 +230,28 @@ export default function PastQuestions({ onBack, onNavigate, isPaid }) {
             <div className="ee-progress-bar">
               <div className="ee-progress-fill" style={{ width: `${((index + 1) / list.length) * 100}%` }} />
             </div>
+
+            {/* Passage for comprehension questions */}
+            {cur.passage && (
+              <div className="ee-passage">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span className="passage-label">Read the passage</span>
+                  <button
+                    onClick={() => setHidePassage(h => !h)}
+                    style={{
+                      background: "none", border: "none", cursor: "pointer",
+                      color: "var(--primary)", fontWeight: 700, fontSize: 12,
+                      fontFamily: "var(--font-main)", padding: "2px 4px"
+                    }}
+                  >
+                    {hidePassage ? "Show passage" : "Hide passage"}
+                  </button>
+                </div>
+                {!hidePassage && cur.passage.split(/\n\s*\n/).map((para, i) => (
+                  <p key={i} className="passage-text" style={{ marginBottom: 10 }}>{para}</p>
+                ))}
+              </div>
+            )}
 
             <div className="ee-question-card">
               {cur.topic && <span className="question-topic-tag">{cur.topic}</span>}

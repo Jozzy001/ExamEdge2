@@ -10,6 +10,52 @@ import { saveCBTRecord } from "../utils/cbtHistory"
 import { FREE_CBT_LIMIT } from "../utils/appConfig"
 
 // =============================================
+// HELPERS
+// =============================================
+
+// Compare answers tolerantly: ignores case, extra spaces and trailing full stops,
+// so "reject all the advice." and "reject all the advice" count as the same answer.
+const normalize = (s) =>
+  String(s ?? "").trim().replace(/\s+/g, " ").replace(/[.\s]+$/, "").toLowerCase()
+
+const isCorrectAnswer = (selectedText, q) =>
+  !!selectedText && !!q && normalize(selectedText) === normalize(q.answer)
+
+// The exact option text that is the right answer (falls back to the raw answer)
+const correctOption = (q) =>
+  (q.options || []).find(o => normalize(o) === normalize(q.answer)) || q.answer
+
+// Proper random shuffle (the old sort(() => Math.random() - 0.5) is biased)
+const shuffle = (arr) => {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+// Groups questions that share a passage so they stay together, in their original order.
+// Standalone questions become groups of one.
+const groupByPassage = (pool) => {
+  const units = []
+  const byPassage = new Map()
+  pool.forEach(q => {
+    if (q.passage) {
+      if (!byPassage.has(q.passage)) {
+        const group = []
+        byPassage.set(q.passage, group)
+        units.push(group)
+      }
+      byPassage.get(q.passage).push(q)
+    } else {
+      units.push([q])
+    }
+  })
+  return units
+}
+
+// =============================================
 // IMAGE RENDERER
 // =============================================
 const RenderText = ({ text }) => {
@@ -167,9 +213,10 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         ? ["English", ...subjectsToUse.filter(s => s !== "English")]
         : subjectsToUse
       sortedSubjects.forEach(subj => {
-        const pool = (bySubject[subj] || []).sort(() => Math.random() - 0.5)
         const count = customCounts?.[subj] ?? getDefaultCount(subj)
-        ordered.push(...pool.slice(0, count))
+        // Questions that share a passage stay together (in order); the groups are shuffled
+        const units = shuffle(groupByPassage(bySubject[subj] || []))
+        ordered.push(...units.flat().slice(0, count))
       })
       return ordered
     }
@@ -192,33 +239,33 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         .filter(([_, s]) => s.total >= 2 && (s.score / s.total) * 100 < 50)
         .map(([t]) => t)
       if (weakTopics.length === 0) return []
-      base = questionPool.filter(q => {
+      base = shuffle(questionPool.filter(q => {
         if (q.passage && q.questions) return q.questions.some(inner =>
           weakTopics.includes(inner.topic) && (!subjectList || subjectList.includes(inner.subject))
         )
         return weakTopics.includes(q.topic) && (!subjectList || subjectList.includes(q.subject))
-      }).sort(() => Math.random() - 0.5)
+      }))
     } else if (topic === "hotTopics" || hotTopicFilter) {
       const filterTopic = hotTopicFilter || topic
       if (hotTopicFilter) {
-        base = questionPool.filter(q => {
+        base = shuffle(questionPool.filter(q => {
           if (q.passage && q.questions) return q.questions.some(inner =>
             inner.topic === filterTopic && (!subject || inner.subject === subject)
           )
           return q.topic === filterTopic && (!subject || q.subject === subject)
-        }).sort(() => Math.random() - 0.5)
+        }))
       } else {
-        base = questionPool.filter(q => {
+        base = shuffle(questionPool.filter(q => {
           if (q.passage && q.questions) return q.questions.some(inner =>
             inner.isHotTopic === true && (!subject || inner.subject === subject)
           )
           return q.isHotTopic === true && (!subject || q.subject === subject)
-        }).sort(() => Math.random() - 0.5)
+        }))
         if (base.length === 0 && subject) {
-          base = questionPool.filter(q => {
+          base = shuffle(questionPool.filter(q => {
             if (q.passage && q.questions) return q.questions.some(inner => inner.subject === subject)
             return q.subject === subject
-          }).sort(() => Math.random() - 0.5).slice(0, 30)
+          })).slice(0, 30)
         }
       }
     } else {
@@ -240,7 +287,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       }
       return { ...item, topic: item.topic || topic || "General", subject: item.subject || subject || "General" }
     })
-  }, [topic, subject, subjects, questionPool, customCounts])
+  }, [topic, subject, subjects, questionPool, customCounts, englishFirst, hotTopicFilter])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState("")
@@ -309,9 +356,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       return {
         question: q.question, topic: q.topic || "General",
         subject: q.subject || subject || "General",
-        selected: a.selected || "skipped", correct: q.answer,
+        selected: a.selected || "skipped", correct: correctOption(q),
         options: q.options || [],
-        explanation: q.explanation || "", isCorrect: a.selected === q.answer
+        explanation: q.explanation || "", isCorrect: isCorrectAnswer(a.selected, q)
       }
     })
     const score = answers.filter(a => a.isCorrect).length
@@ -380,7 +427,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
     }
   }, [finished])
 
-  if (filteredQuestions.length === 0 && (started || isWeak)) {
+  // No questions found. Study mode never sets "started", so it must be handled here too,
+  // otherwise an empty topic would crash on currentQuestion below.
+  if (filteredQuestions.length === 0 && (started || isWeak || !isCBT)) {
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -518,7 +567,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
 
   const saveAnswer = (index = currentIndex, value = selected) => {
     if (!filteredQuestions[index]) return
-    answersMapRef.current[index] = { selected: value, correct: filteredQuestions[index].answer }
+    answersMapRef.current[index] = { selected: value, correct: correctOption(filteredQuestions[index]) }
   }
   const handleSelectOption = (opt) => { setSelected(opt); setShowExplanation(false); saveAnswer(currentIndex, opt) }
   const handleCheckAnswer = () => { if (!selected) return; saveAnswer(); setShowExplanation(true) }
@@ -544,7 +593,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
 
   // RESULT SCREEN
   if (finished) {
-    const score = filteredQuestions.filter((q, i) => answersMapRef.current[i]?.selected === q.answer).length
+    const score = filteredQuestions.filter((q, i) => isCorrectAnswer(answersMapRef.current[i]?.selected, q)).length
     const total = filteredQuestions.length
     const pct = Math.round((score / total) * 100)
     const emoji = pct >= 70 ? "🌟" : pct >= 50 ? "👍" : "💪"
@@ -556,7 +605,7 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
       const subj = q.subject || "General"
       if (!subjectBreakdown[subj]) subjectBreakdown[subj] = { score: 0, total: 0 }
       subjectBreakdown[subj].total++
-      if (answersMapRef.current[i]?.selected === q.answer) subjectBreakdown[subj].score++
+      if (isCorrectAnswer(answersMapRef.current[i]?.selected, q)) subjectBreakdown[subj].score++
     })
 
     // JAMB equivalent: each subject is marked over 100, four subjects make 400.
@@ -670,6 +719,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
   const answeredCount = Object.values(answersMapRef.current).filter(a => a?.selected).length
   const progress = Math.round(((currentIndex + 1) / filteredQuestions.length) * 100)
 
+  // TEMPORARY DEBUG: remove this line once the passage problem is fixed
+  console.log("CURRENT QUESTION:", currentQuestion)
+
   return (
     <div className="ee-page">
       {showStudyPaywall && (
@@ -744,7 +796,9 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         {currentQuestion.passage && (
           <div className="ee-passage">
             <span className="passage-label">Read the passage</span>
-            <p className="passage-text">{currentQuestion.passage}</p>
+            {String(currentQuestion.passage).split(/\n\s*\n/).map((para, i) => (
+              <p key={i} className="passage-text" style={{ marginBottom: 10 }}>{para}</p>
+            ))}
           </div>
         )}
 
@@ -756,14 +810,14 @@ const Quiz = ({ topic, subject, subjects, onNavigate, onBack, examType = "jamb",
         {currentQuestion.options.map((opt, i) => {
           let cls = "ee-option"
           if (showExplanation) {
-            if (opt === currentQuestion.answer) cls += " correct"
-            else if (opt === selected && selected !== currentQuestion.answer) cls += " wrong"
+            if (isCorrectAnswer(opt, currentQuestion)) cls += " correct"
+            else if (opt === selected) cls += " wrong"
             else cls += " disabled"
           } else if (selected === opt) cls += " selected"
           return (
             <button key={i} className={cls} onClick={() => !showExplanation && handleSelectOption(opt)} disabled={showExplanation}>
               <span className="opt-badge">{String.fromCharCode(65 + i)}</span>
-              <span className="opt-label"><MathText text={opt.replace(/^[A-D][.)]\s*/, "")} /></span>
+              <span className="opt-label"><MathText text={opt.replace(/^[A-E][.)]\s+/, "")} /></span>
             </button>
           )
         })}
