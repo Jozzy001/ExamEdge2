@@ -88,7 +88,7 @@ const AccountDetails = ({ onNavigate, onBack, authUser }) => {
           fontSize: 13,
           color: "var(--text)"
         }}>
-          <strong>💡 How it works:</strong> When your friends make payments after signing up with your referral code, you'll earn ₦500 per person. We'll send the money to this account every weekend.
+          <strong>💡 How it works:</strong> When your friends make payments after signing up with your referral code, you'll earn ₦200 per person. We'll send the money to this account every weekend.
         </div>
 
         {/* Form */}

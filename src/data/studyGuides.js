@@ -3,6 +3,16 @@
 // Keyed by topic name (must match topic in question bank exactly)
 
 import BIOLOGY_EXTRA_GUIDES from "./studyGuidesBiologyExtra"
+import ENGLISH_EXTRA_GUIDES from "./studyGuidesEnglishExtra"
+import GOVERNMENT_EXTRA_GUIDES from "./studyGuidesGovernmentExtra"
+import ECONOMICS_EXTRA_GUIDES from "./studyGuidesEconomicsExtra"
+import LITERATURE_EXTRA_GUIDES from "./studyGuidesLiteratureExtra"
+import MATHS_EXTRA_GUIDES from "./studyGuidesMathsExtra"
+import PHYSICS_EXTRA_GUIDES from "./studyGuidesPhysicsExtra"
+import CHEMISTRY_EXTRA_GUIDES from "./studyGuidesChemistryExtra"
+import COMMERCE_EXTRA_GUIDES from "./studyGuidesCommerceExtra"
+import CRK_EXTRA_GUIDES from "./studyGuidesCRKExtra"
+import ACCOUNTS_EXTRA_GUIDES from "./studyGuidesAccountsExtra"
 
 const STUDY_GUIDES = {
 
@@ -6305,8 +6315,18 @@ const STUDY_GUIDES = {
     ],
   },
 
-...BIOLOGY_EXTRA_GUIDES,
 
+  ...BIOLOGY_EXTRA_GUIDES,
+  ...ENGLISH_EXTRA_GUIDES,
+  ...GOVERNMENT_EXTRA_GUIDES,
+  ...ECONOMICS_EXTRA_GUIDES,
+  ...LITERATURE_EXTRA_GUIDES,
+  ...PHYSICS_EXTRA_GUIDES,
+  ...CHEMISTRY_EXTRA_GUIDES,
+  ...COMMERCE_EXTRA_GUIDES,
+  ...CRK_EXTRA_GUIDES,
+  ...ACCOUNTS_EXTRA_GUIDES,
+  ...MATHS_EXTRA_GUIDES,
 }
 
 export default STUDY_GUIDES
