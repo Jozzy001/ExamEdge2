@@ -41,12 +41,12 @@ export default async function handler(req, res) {
 
   // 1. Verify the request really came from Paystack
   const raw = await readRawBody(req)
-  const hash = crypto
-    .createHmac("sha512", process.env.PAYSTACK_SECRET_KEY)
-    .update(raw)
-    .digest("hex")
+  const secret = (process.env.PAYSTACK_SECRET_KEY || "").trim().replace(/^"|"$/g, "")
+  const hash = crypto.createHmac("sha512", secret).update(raw).digest("hex")
 
   if (hash !== req.headers["x-paystack-signature"]) {
+    // Only the first 8 characters are logged (e.g. "sk_test_" or "sk_live_"), never the full key
+    console.error("Signature mismatch. Secret key starts with:", secret.slice(0, 8), "length:", secret.length)
     return res.status(401).end()
   }
 
