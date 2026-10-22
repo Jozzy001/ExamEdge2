@@ -89,24 +89,9 @@ function App() {
   const [loggingOut, setLoggingOut] = useState(false)
   const startIndexRef = useRef(0)
 
-  // Recover any pending payments that failed to write to Firestore
-  useEffect(() => {
-    const pending = localStorage.getItem("ee_pending_payment")
-    if (pending && authUser) {
-      try {
-        const { uid, ref } = JSON.parse(pending)
-        if (uid === authUser.uid) {
-          updateDoc(doc(db, "users", uid), {
-            isPaid: true,
-            paymentRef: ref,
-            paidAt: new Date().toISOString(),
-          }).then(() => {
-            localStorage.removeItem("ee_pending_payment")
-          }).catch(() => {})
-        }
-      } catch(e) {}
-    }
-  }, [authUser])
+  // NOTE: the old "recover pending payments" effect was removed on purpose.
+  // It unlocked Premium from a browser flag (localStorage), which anyone could fake.
+  // Premium is now granted only by the Paystack webhook on the server (api/paystack-webhook.js).
 
   // Auto-send welcome DM 45 mins after first sign up (one effect only)
   useEffect(() => {

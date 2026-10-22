@@ -7,10 +7,11 @@ import AppTour, { isTourDone } from "../components/AppTour"
 import { PageTransition } from "../components/LoadingScreen"
 import NotificationBell from "../components/NotificationBell"
 import DailyQuote from "../components/DailyQuote"
+import ExamCountdown from "../components/ExamCountdown"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
 import { getGameState } from "../utils/gamification"
-import { UPGRADE_PRICE, FREE_CBT_LIMIT } from "../utils/appConfig"
+import { UPGRADE_PRICE, FREE_CBT_LIMIT, ACCESS_END_LABEL, daysUntilAccessEnds } from "../utils/appConfig"
 import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"
 
 // Change this in one place
@@ -198,16 +199,16 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
 
   const cbtLocked = !isPaid && cbtCount >= FREE_CBT_LIMIT
 
-  // Subscription expiry warning (last 7 days)
+  // Access notice: everyone's Full Access runs to the same end date (see appConfig.js).
+  // Only shown in the last 7 days before that date.
   let expiryBanner = null
-  if (userData?.isPaid && userData?.paidAt) {
-    const expiry = new Date(new Date(userData.paidAt).getTime() + 30 * 24 * 60 * 60 * 1000)
-    const daysLeft = Math.ceil((expiry - new Date()) / (1000 * 60 * 60 * 24))
-    if (daysLeft <= 7) {
+  if (userData?.isPaid) {
+    const daysLeft = daysUntilAccessEnds()
+    if (daysLeft > 0 && daysLeft <= 7) {
       expiryBanner = (
         <div className={`hm-alert ${daysLeft <= 3 ? "danger" : "warn"}`}>
-          ⏰ Your subscription expires in <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""}</strong>.
-          {daysLeft <= 3 ? " Renew now to keep full access!" : " Renew soon to avoid losing access."}
+          ⏰ Your Full Access runs until <strong>{ACCESS_END_LABEL}</strong>
+          {" "}— <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""} left</strong>. Make the most of it!
         </div>
       )
     }
@@ -270,7 +271,7 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
                 </div>
                 {FREE_MISSING.map((item, i) => <div key={i} className="hm-line">{item}</div>)}
                 <div className="hm-modal-note" style={{ marginTop: 8, marginBottom: 0 }}>
-                  One-time payment · Bank transfer · No hidden fees
+                  One-time payment · Card, transfer or USSD · No hidden fees
                 </div>
               </div>
               <button className="hm-cta violet" style={{ marginTop: 6 }}
@@ -423,6 +424,9 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
             </div>
           </div>
         )}
+
+        {/* Countdown to the exam — defaults to the date in appConfig.js, students can set their own */}
+        <ExamCountdown userData={userData} authUser={authUser} label="JAMB" />
 
         {/* JAMB info card */}
         <div className="hm-jamb">

@@ -9,7 +9,7 @@ import NotificationBell from "../components/NotificationBell"
 import DailyQuote from "../components/DailyQuote"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
-import { UPGRADE_PRICE, SHOW_REFERRALS, FREE_CBT_LIMIT } from "../utils/appConfig"
+import { UPGRADE_PRICE, SHOW_REFERRALS, FREE_CBT_LIMIT, ACCESS_END_LABEL, daysUntilAccessEnds } from "../utils/appConfig"
 import { collection, query, where, getDocs, orderBy, updateDoc, doc } from "firebase/firestore"
 
 const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubjects, isPaid, userData, authUser }) => {
@@ -315,7 +315,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   marginTop: 8, fontSize: 11, color: "var(--text3)",
                   fontWeight: 700, textAlign: "center"
                 }}>
-                  One-time payment · Bank transfer · No hidden fees
+                  One-time payment · Card, transfer or USSD · No hidden fees
                 </div>
               </div>
 
@@ -443,10 +443,11 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
 
       <div className="ee-content">
 
-        {userData?.isPaid && userData?.paidAt && (() => {
-          const expiryDate = new Date(new Date(userData.paidAt).getTime() + 30*24*60*60*1000)
-          const daysLeft = Math.ceil((expiryDate - new Date()) / (1000*60*60*24))
-          if (daysLeft > 7) return null
+        {/* Access notice — everyone's Full Access runs to the same end date (see appConfig.js).
+            Only shown in the last 7 days before that date. */}
+        {userData?.isPaid && (() => {
+          const daysLeft = daysUntilAccessEnds()
+          if (daysLeft <= 0 || daysLeft > 7) return null
           return (
             <div style={{
               background: daysLeft <= 3 ? "rgba(239,68,68,0.1)" : "rgba(245,158,11,0.1)",
@@ -455,8 +456,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
               marginBottom: 12, fontSize: 13,
               color: daysLeft <= 3 ? "#dc2626" : "#d97706", fontWeight: 600
             }}>
-              ⏰ Your subscription expires in <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""}</strong>.
-              {daysLeft <= 3 ? " Renew now to keep full access!" : " Renew soon to avoid losing access."}
+              ⏰ Your Full Access runs until <strong>{ACCESS_END_LABEL}</strong> — <strong>{daysLeft} day{daysLeft !== 1 ? "s" : ""} left</strong>.
             </div>
           )
         })()}
@@ -653,8 +653,8 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           }}>
             <span style={{ fontSize: 24 }}>💰</span>
             <div style={{ flex: 1, textAlign: "left" }}>
-              <div style={{ fontSize: 14, fontWeight: 800 }}>Refer Friends — Earn ₦500 at Launch 🚀</div>
-              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Share your code now · Get paid when we fully launch</div>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Refer Friends — Earn ₦200 per paid referral 🚀</div>
+              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Share your code · Get paid when your friends upgrade</div>
             </div>
             <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
           </button>

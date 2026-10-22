@@ -23,3 +23,23 @@ export const FREE_CBT_LIMIT = 2
 
 // Referral card on the home screens. false = hidden, true = shown.
 export const SHOW_REFERRALS = false
+
+// ---------------------------------------------
+// ACCESS PERIOD
+// Everyone's Full Access runs until this date (format YYYY-MM-DD).
+// Nobody's access ends before it, whatever day they paid.
+// ---------------------------------------------
+export const ACCESS_END_DATE = "2027-04-01"
+export const ACCESS_END_LABEL = "1 April 2027"
+
+// Whole days left until the access end date (0 or negative once it has passed)
+export const daysUntilAccessEnds = () => {
+  const end = new Date(`${ACCESS_END_DATE}T00:00:00`)
+  return Math.ceil((end - new Date()) / (1000 * 60 * 60 * 24))
+}
+
+// ---------------------------------------------
+// EXAM COUNTDOWN
+// The default JAMB exam date (YYYY-MM-DD). Students can set their own date on the home screen.
+// ---------------------------------------------
+export const DEFAULT_EXAM_DATE = "2027-03-15"
