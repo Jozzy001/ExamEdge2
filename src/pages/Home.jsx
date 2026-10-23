@@ -11,7 +11,7 @@ import ExamCountdown from "../components/ExamCountdown"
 import { db } from "../firebase"
 import { getCBTHistory } from "../utils/cbtHistory"
 import { getGameState } from "../utils/gamification"
-import { UPGRADE_PRICE, FREE_CBT_LIMIT, ACCESS_END_LABEL, daysUntilAccessEnds } from "../utils/appConfig"
+import { UPGRADE_PRICE, FREE_CBT_LIMIT, ACCESS_END_LABEL, daysUntilAccessEnds, isAdminUser } from "../utils/appConfig"
 import { collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore"
 
 // Change this in one place
@@ -73,9 +73,9 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
 
   // Admin check (any one of these makes the user an admin)
   const isAdmin =
+    isAdminUser(authUser) ||
     userData?.isAdmin === true ||
-    userData?.role === "admin" ||
-    ADMIN_EMAILS.includes(authUser?.email?.toLowerCase())
+    userData?.role === "admin"
 
   // Navigate only if admin (AI Tutor / Classroom are admin-only for now)
   const adminOnly = (screen) => () => { if (isAdmin) onNavigate(screen) }

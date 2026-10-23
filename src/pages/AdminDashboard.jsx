@@ -6,8 +6,8 @@ import {
 } from "firebase/firestore"
 import { sendPasswordResetEmail } from "firebase/auth"
 import { fetchUserCBTHistory, formatDate, formatTime } from "../utils/cbtHistory"
+import { isAdminUser } from "../utils/appConfig"
 
-const ADMIN_EMAIL = "jce680@gmail.com"
 
 const REFERRAL_PAYOUT = 200 // ₦ credited to a referrer when the person they referred pays
 
@@ -120,7 +120,14 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     loadRevenue()
   }, [])
 
-  if (authUser?.email !== ADMIN_EMAIL) {
+  // Clear the message toast after a few seconds
+  useEffect(() => {
+    if (!actionMsg && !actionError) return
+    const t = setTimeout(() => { setActionMsg(""); setActionError("") }, 7000)
+    return () => clearTimeout(t)
+  }, [actionMsg, actionError])
+
+  if (!isAdminUser(auth.currentUser) && !isAdminUser(authUser)) {
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -144,7 +151,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     try {
       await updateDoc(doc(db, "users", user.id), { seenByAdmin: true, seenByAdminAt: new Date().toISOString() })
       setUsers(prev => prev.map(u => u.id === user.id ? { ...u, seenByAdmin: true } : u))
-    } catch(e) { setActionError("Failed to mark as seen.") }
+    } catch(e) { console.error(e); setActionError("Failed to mark as seen: " + (e.code || e.message)) }
     setMarkingAsSeen(null)
   }
 
@@ -295,13 +302,17 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
   }
 
   const handleMarkRead = async (msgId) => {
-    await updateDoc(doc(db, "messages", msgId), { status: "read" })
-    setMessages(prev => prev.map(m => m.id === msgId ? { ...m, status: "read" } : m))
+    try {
+      await updateDoc(doc(db, "messages", msgId), { status: "read" })
+      setMessages(prev => prev.map(m => m.id === msgId ? { ...m, status: "read" } : m))
+    } catch (e) { console.error(e); setActionError("Failed to mark as read: " + (e.code || e.message)) }
   }
 
   const handleDeleteMessage = async (msgId) => {
-    await deleteDoc(doc(db, "messages", msgId))
-    setMessages(prev => prev.filter(m => m.id !== msgId))
+    try {
+      await deleteDoc(doc(db, "messages", msgId))
+      setMessages(prev => prev.filter(m => m.id !== msgId))
+    } catch (e) { console.error(e); setActionError("Failed to delete message: " + (e.code || e.message)) }
   }
 
   const handleReply = async (msg) => {
@@ -345,7 +356,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
     try {
       await sendPasswordResetEmail(auth, email)
       setActionMsg(`✅ Password reset email sent to ${email}`)
-    } catch (e) { setActionError("Failed to send reset email.") }
+    } catch (e) { console.error(e); setActionError("Failed to send reset email: " + (e.code || e.message)) }
   }
 
   const handleDisableUser = async (userId, currentStatus) => {
@@ -353,7 +364,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       await updateDoc(doc(db, "users", userId), { disabled: !currentStatus })
       setActionMsg(`✅ User ${currentStatus ? "enabled" : "disabled"} successfully`)
       fetchUsers(); setSelected(null)
-    } catch (e) { setActionError("Failed to update user status.") }
+    } catch (e) { console.error(e); setActionError("Failed to update user status: " + (e.code || e.message)) }
   }
 
   const handleDeleteUser = async (userId, username) => {
@@ -362,7 +373,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       await deleteDoc(doc(db, "users", userId))
       setActionMsg(`✅ User "${username}" deleted`)
       setSelected(null); fetchUsers()
-    } catch (e) { setActionError("Failed to delete user.") }
+    } catch (e) { console.error(e); setActionError("Failed to delete user: " + (e.code || e.message)) }
   }
 
   const formatDateTime = (ts) => {
@@ -526,8 +537,24 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
       </header>
 
       <div className="ee-content">
-        {actionMsg && <div style={{ background: "rgba(34,201,122,0.1)", border: "1px solid rgba(34,201,122,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--success)", marginBottom: 12, fontWeight: 700 }}>{actionMsg}</div>}
-        {actionError && <div style={{ background: "rgba(255,107,107,0.1)", border: "1px solid rgba(255,107,107,0.3)", borderRadius: "var(--radius-md)", padding: "10px 14px", fontSize: 13, color: "var(--accent)", marginBottom: 12 }}>{actionError}</div>}
+        {(actionMsg || actionError) && (
+          <div onClick={() => { setActionMsg(""); setActionError("") }} style={{
+            position: "fixed", top: 64, left: 16, right: 16, zIndex: 5000,
+            background: actionError ? "#fee2e2" : "#dcfce7",
+            border: `1.5px solid ${actionError ? "#ef4444" : "#22c55e"}`,
+            color: actionError ? "#991b1b" : "#166534",
+            borderRadius: "var(--radius-md)", padding: "12px 14px",
+            fontSize: 13, fontWeight: 700, boxShadow: "0 8px 24px rgba(0,0,0,0.2)", cursor: "pointer"
+          }}>
+            {actionError || actionMsg}
+            <div style={{ fontSize: 10, fontWeight: 600, opacity: 0.7, marginTop: 4 }}>Tap to dismiss</div>
+          </div>
+        )}
+
+        <div style={{ fontSize: 10, color: "var(--text3)", marginBottom: 10, wordBreak: "break-all", lineHeight: 1.5 }}>
+          🔐 Firestore sees you as: <strong>{auth.currentUser?.email || "no email"}</strong><br />
+          UID: <strong>{auth.currentUser?.uid || authUser?.uid}</strong>
+        </div>
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
@@ -818,12 +845,16 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           <button onClick={async () => {
                             const faculty = window.prompt(`Set faculty for ${user.name}:\n\nOptions:\n- engineering\n- lifesciences\n- management\n- arts`, "engineering")
                             if (!faculty) return
-                            await updateDoc(doc(db, "users", user.id), { faculty: faculty.trim().toLowerCase(), examType: "postutme", university: "UNIBEN" })
-                            setActionMsg(`✅ Faculty set for ${user.name}`); fetchUsers(); setSelected(null)
+                            try {
+                              await updateDoc(doc(db, "users", user.id), { faculty: faculty.trim().toLowerCase(), examType: "postutme", university: "UNIBEN" })
+                              setActionMsg(`✅ Faculty set for ${user.name}`); fetchUsers(); setSelected(null)
+                            } catch (e) { console.error(e); setActionError("Failed to set faculty: " + (e.code || e.message)) }
                           }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(102,126,234,0.1)", color: "#667eea", border: "1px solid rgba(102,126,234,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>🎓 Set Faculty</button>
                         )}
                         <button onClick={async () => {
                           const newStatus = !user.isPaid
+                          try {
+                          setActionError("")
                           if (!newStatus && !window.confirm(`Revoke paid access for ${user.name}?`)) return
                           const isFree = newStatus && window.confirm(`Is this a FREE unlock (no payment received)?\n\nOK = Free unlock (won't count in revenue)\nCancel = Paid unlock (counts in revenue)`)
                           await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
@@ -833,6 +864,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             await updateDoc(doc(db, "users", user.id), { referralCredited: true }).catch(() => {})
                           }
                           setActionMsg(newStatus ? `✅ ${user.name} unlocked` : `🔒 ${user.name} access revoked`); fetchUsers(); setSelected(null)
+                          } catch (e) { console.error("Unlock/revoke failed:", e); setActionError("Failed to update access: " + (e.code || e.message)) }
                         }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)", color: user.isPaid ? "#dc2626" : "#15803d", border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
                           {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
                         </button>
@@ -841,8 +873,10 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             const owed = (user.referralEarnings || 0) - (user.referralPaidOut || 0)
                             if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?\n\nOnly do this after you have actually sent the money.`)) return
                             // Marks only the amount you saw and paid, so a referral that arrived meanwhile is not swallowed
-                            await updateDoc(doc(db, "users", user.id), { referralPaidOut: increment(owed), referralPaidOutAt: new Date().toISOString() })
-                            setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`); fetchUsers(); setSelected(null)
+                            try {
+                              await updateDoc(doc(db, "users", user.id), { referralPaidOut: increment(owed), referralPaidOutAt: new Date().toISOString() })
+                              setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`); fetchUsers(); setSelected(null)
+                            } catch (e) { console.error(e); setActionError("Failed to record payout: " + (e.code || e.message)) }
                           }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(34,197,94,0.1)", color: "#15803d", border: "1px solid rgba(34,197,94,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
                             💸 Pay Referral — ₦{(user.referralEarnings || 0) - (user.referralPaidOut || 0)}
                           </button>

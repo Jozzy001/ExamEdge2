@@ -7,6 +7,7 @@ import { useTheme } from "../context/ThemeContext"
 import { resetTour } from "../components/AppTour"
 import { getGameState } from "../utils/gamification"
 import PageTour, { TOURS } from "../components/PageTour"
+import { UPGRADE_PRICE, ACCESS_END_LABEL, isAdminUser } from "../utils/appConfig"
 
 const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()
@@ -25,6 +26,9 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
   const [myMessages, setMyMessages] = useState([])
 
   const gameState = getGameState()
+
+  // Admin is decided by the account's UID (see appConfig.js), never by an email or recovery email
+  const isAdmin = isAdminUser(auth.currentUser) || isAdminUser(authUser)
 
   useEffect(() => {
     const fetchMyMessages = async () => {
@@ -344,8 +348,8 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </div>
         )}
 
-        {/* Admin access */}
-        {(authUser?.email === "jce680@gmail.com" || authUser?.authEmail === "jce680@gmail.com") && (
+        {/* Admin access — decided by UID, so it survives a refresh and can't be faked with a recovery email */}
+        {isAdmin && (
           <>
             {sectionTitle("🛡️ Admin")}
             <button onClick={() => onNavigate("admin")} style={{
@@ -383,8 +387,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               padding: "12px 24px", fontWeight: 700, fontSize: 14, cursor: "pointer",
               width: "100%", fontFamily: "var(--font-main)"
             }}>
-              <span style={{ textDecoration: "line-through", opacity: 0.6, marginRight: 6, fontSize: 12 }}>₦5,000</span>
-              Get Full Access — ₦2,500 🎉
+              Get Full Access — {UPGRADE_PRICE} 🎉
             </button>
           </div>
         ) : (
@@ -398,6 +401,9 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
               <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)" }}>Full Access</div>
               <div style={{ fontSize: 12, color: "#15803d", fontWeight: 600 }}>
                 ✓ All features unlocked · Paid on {userData?.paidAt ? new Date(userData.paidAt).toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" }) : "—"}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>
+                Access runs until {ACCESS_END_LABEL}
               </div>
             </div>
           </div>

@@ -43,3 +43,15 @@ export const daysUntilAccessEnds = () => {
 // The default JAMB exam date (YYYY-MM-DD). Students can set their own date on the home screen.
 // ---------------------------------------------
 export const DEFAULT_EXAM_DATE = "2027-03-15"
+
+// ---------------------------------------------
+// ADMIN
+// Put your admin account's User UID here (Firebase console > Authentication > Users,
+// or copy it from the small "Firestore sees you as" line at the top of the admin page).
+// Use the SAME UID in firestore.rules. The UID never changes, unlike the login email.
+// ---------------------------------------------
+export const ADMIN_UIDS = ["hsTTTa89W8UhKMtN6TyrPdkq9JA2"]
+
+// True only for the admin account(s) listed above. Never use an email (or a "recovery email")
+// to decide who is an admin: anyone can type any email into their profile.
+export const isAdminUser = (user) => !!user?.uid && ADMIN_UIDS.includes(user.uid)

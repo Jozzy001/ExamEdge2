@@ -30,9 +30,9 @@ export default function ExamCountdown({ userData, authUser, label = "JAMB" }) {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState("")
 
-  // Refresh twice a minute so the minutes stay accurate
+  // Tick every second so the seconds count down live
   useEffect(() => {
-    const t = setInterval(() => setNow(new Date()), 30000)
+    const t = setInterval(() => setNow(new Date()), 1000)
     return () => clearInterval(t)
   }, [])
 
@@ -47,6 +47,8 @@ export default function ExamCountdown({ userData, authUser, label = "JAMB" }) {
   const days = Math.max(0, Math.floor(diff / 86400000))
   const hours = Math.max(0, Math.floor((diff % 86400000) / 3600000))
   const mins = Math.max(0, Math.floor((diff % 3600000) / 60000))
+  const secs = Math.max(0, Math.floor((diff % 60000) / 1000))
+  const pad = (n) => String(n).padStart(2, "0")
 
   const startEdit = () => {
     setInput(examDate)
@@ -86,7 +88,7 @@ export default function ExamCountdown({ userData, authUser, label = "JAMB" }) {
     flex: 1, background: "rgba(255,255,255,0.18)", borderRadius: "var(--radius-md)",
     padding: "10px 4px", textAlign: "center",
   }
-  const boxNum = { fontSize: 26, fontWeight: 900, lineHeight: 1.1 }
+  const boxNum = { fontSize: 24, fontWeight: 900, lineHeight: 1.1 }
   const boxLabel = { fontSize: 10, fontWeight: 700, opacity: 0.85, letterSpacing: 0.5, marginTop: 2 }
   const linkBtn = {
     background: "none", border: "none", color: "#fff", cursor: "pointer",
@@ -115,8 +117,9 @@ export default function ExamCountdown({ userData, authUser, label = "JAMB" }) {
       ) : (
         <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
           <div style={box}><div style={boxNum}>{days}</div><div style={boxLabel}>DAYS</div></div>
-          <div style={box}><div style={boxNum}>{hours}</div><div style={boxLabel}>HOURS</div></div>
-          <div style={box}><div style={boxNum}>{mins}</div><div style={boxLabel}>MINS</div></div>
+          <div style={box}><div style={boxNum}>{pad(hours)}</div><div style={boxLabel}>HOURS</div></div>
+          <div style={box}><div style={boxNum}>{pad(mins)}</div><div style={boxLabel}>MINS</div></div>
+          <div style={box}><div style={boxNum}>{pad(secs)}</div><div style={boxLabel}>SECS</div></div>
         </div>
       )}
 
