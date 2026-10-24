@@ -1,5 +1,6 @@
 // api/paystack-webhook.js  (in an "api" folder at the ROOT of your project, next to src/)
-// Paystack calls this URL after a payment. The SERVER, not the browser, grants Premium.
+// Paystack calls this URL after a payment. The SERVER, not the browser, grants Premium
+// and works out referral earnings.
 import crypto from "crypto"
 import { initializeApp, getApps, cert } from "firebase-admin/app"
 import { getFirestore, FieldValue } from "firebase-admin/firestore"
@@ -24,9 +25,10 @@ if (getApps().length === 0) {
 // Must match UPGRADE_PRICE_NUMBER in appConfig.js, in kobo (₦1,500 = 150000)
 const MIN_AMOUNT_KOBO = 150000
 
-// Referral settings
-const REFERRAL_PAYOUT = 200          // ₦ credited to the referrer
-const REFERRER_MUST_BE_PAID = true   // only paid users earn referral money
+// Referral pay rates (naira). Keep the same as REFERRAL_PAYOUT_USER / _PROMOTER in appConfig.js
+const REFERRAL_PAYOUT = 200       // normal users
+const PROMOTER_PAYOUT = 500       // promoters (users with role "promoter")
+const REFERRER_MUST_BE_PAID = true // normal users only earn once they have paid themselves. Promoters always earn.
 
 const readRawBody = (req) =>
   new Promise((resolve, reject) => {
@@ -69,28 +71,50 @@ export default async function handler(req, res) {
           // Paystack can send the same webhook twice. Skip if already processed.
           if (user.isPaid && user.paymentRef === data.reference) return
 
-          // Work out whether the referrer gets credited (reads must come before writes)
+          // Work out who (if anyone) gets credited. All reads must come before writes.
           let referrerRef = null
-          if (user.referredBy && user.referredBy !== uid && !user.referralCredited) {
+          let rate = 0
+          let rateType = "user"
+          const hasReferrer = !!user.referredBy && user.referredBy !== uid
+
+          if (hasReferrer) {
             const rRef = db.doc(`users/${user.referredBy}`)
             const rSnap = await tx.get(rRef)
-            if (rSnap.exists && (!REFERRER_MUST_BE_PAID || rSnap.data().isPaid)) {
-              referrerRef = rRef
+            if (rSnap.exists && !user.referralCredited) {
+              const referrer = rSnap.data()
+              const isPromoter = referrer.role === "promoter"
+              if (isPromoter || !REFERRER_MUST_BE_PAID || referrer.isPaid) {
+                referrerRef = rRef
+                rate = isPromoter ? PROMOTER_PAYOUT : REFERRAL_PAYOUT
+                rateType = isPromoter ? "promoter" : "user"
+              }
             }
           }
 
+          const now = new Date().toISOString()
+
           tx.update(userRef, {
             isPaid: true,
-            paidAt: new Date().toISOString(),
+            paidAt: now,
             paymentRef: data.reference,       // the admin page reads this one
             paystackReference: data.reference,
             ...(referrerRef ? { referralCredited: true } : {}),
           })
 
           if (referrerRef) {
-            tx.update(referrerRef, {
-              referralEarnings: FieldValue.increment(REFERRAL_PAYOUT),
-            })
+            tx.update(referrerRef, { referralEarnings: FieldValue.increment(rate) })
+          }
+
+          // The minimal record a promoter is allowed to see (name + paid status only)
+          if (hasReferrer) {
+            tx.set(db.doc(`referrals/${uid}`), {
+              referrerId: user.referredBy,
+              name: user.name || "Student",
+              createdAt: user.createdAt || FieldValue.serverTimestamp(),
+              isPaid: true,
+              paidAt: now,
+              ...(referrerRef ? { amountEarned: rate, rateType } : {}),
+            }, { merge: true })
           }
         })
       } catch (e) {

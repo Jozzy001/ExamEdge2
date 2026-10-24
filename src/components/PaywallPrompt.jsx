@@ -6,19 +6,19 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
     studyQuestions: {
       icon: '📖',
       title: 'You\'ve used your 5 free questions',
-      message: 'Upgrade to unlock unlimited questions across all topics and all 20 years.',
+      message: 'Upgrade to unlock unlimited questions across all topics and all 10,000+ past questions.',
       cta: 'Unlock Unlimited Questions',
     },
     cbtMode: {
       icon: '🧪',
       title: 'You\'ve used your free CBTs',
-      message: 'Upgrade to take unlimited CBT exams across all 20 years and track your real progress over time.',
+      message: 'Upgrade to take unlimited CBT exams across 10,000+ past questions and track your real progress over time.',
       cta: 'Unlock Unlimited CBTs',
     },
     year: {
       icon: '📅',
       title: 'This year is locked',
-      message: 'You can only access 2014 and 2015 for free. Upgrade to unlock all 20 years of past questions.',
+      message: 'Free accounts can only open a limited number of years. Upgrade to unlock every year of past questions.',
       cta: 'Unlock All Years',
     },
     hotTopics: {
@@ -117,7 +117,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
             UPGRADE TO GET:
           </p>
           {[
-            '📚 All 20 years of questions',
+            '📚 10,000+ past questions',
             '🎯 Unlimited CBT practice',
             '🔥 Hot Topics & Weak Areas',
             '📈 Full analytics & history',
@@ -132,7 +132,7 @@ export default function PaywallPrompt({ type, onUpgrade, onClose }) {
         {/* Price */}
         <div style={{ marginBottom: 16, textAlign: 'center' }}>
           <div style={{ fontSize: 32, fontWeight: 800, color: '#667eea' }}>{UPGRADE_PRICE}</div>
-          <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>one-time payment · bank transfer</div>
+          <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>one-time payment · card, transfer or USSD</div>
         </div>
 
         <button

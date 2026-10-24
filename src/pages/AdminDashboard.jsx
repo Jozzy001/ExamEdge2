@@ -2,11 +2,12 @@ import { useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import {
   collection, getDocs, orderBy, query, where,
-  doc, updateDoc, deleteDoc, setDoc, addDoc, serverTimestamp, increment
+  doc, updateDoc, deleteDoc, setDoc, addDoc, serverTimestamp, increment, writeBatch
 } from "firebase/firestore"
 import { sendPasswordResetEmail } from "firebase/auth"
 import { fetchUserCBTHistory, formatDate, formatTime } from "../utils/cbtHistory"
-import { isAdminUser } from "../utils/appConfig"
+import { isAdminUser, REFERRAL_PAYOUT_USER, REFERRAL_PAYOUT_PROMOTER } from "../utils/appConfig"
+import PromotersPanel from "../components/PromotersPanel"
 
 
 const REFERRAL_PAYOUT = 200 // ₦ credited to a referrer when the person they referred pays
@@ -558,7 +559,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
-          {["users", "stats", "messages"].map(t => (
+          {["users", "stats", "promoters", "messages"].map(t => (
             <button key={t} onClick={() => setTab(t)} style={{
               flex: 1, padding: "10px", borderRadius: "var(--radius-md)",
               border: tab === t ? "2px solid var(--primary)" : "1px solid var(--border)",
@@ -567,7 +568,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               fontWeight: 800, fontSize: 12, cursor: "pointer",
               fontFamily: "var(--font-main)", textTransform: "capitalize", position: "relative"
             }}>
-              {t === "users" ? "👥 Users" : t === "stats" ? "📊 Stats" : (
+              {t === "users" ? "👥 Users" : t === "stats" ? "📊 Stats" : t === "promoters" ? "📣 Promoters" : (
                 <>
                   💬 Messages
                   {messages.filter(m => m.status === "unread" && !m.fromAdmin).length > 0 && (
@@ -786,6 +787,7 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                       <div style={{ fontSize: 14, fontWeight: 800, color: "var(--text)", display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                         {user.name || "Unknown"}
                         <span style={{ fontSize: 9, fontWeight: 800, background: user.isPaid ? "rgba(34,201,122,0.15)" : "rgba(245,158,11,0.15)", color: user.isPaid ? "#15803d" : "#92400e", padding: "2px 7px", borderRadius: "var(--radius-pill)", border: `1px solid ${user.isPaid ? "rgba(34,201,122,0.4)" : "rgba(245,158,11,0.4)"}` }}>{user.isPaid ? "💎 PAID" : "🆓 FREE"}</span>
+                        {user.role === "promoter" && <span style={{ fontSize: 9, fontWeight: 800, background: "rgba(124,58,237,0.15)", color: "#7c3aed", padding: "2px 7px", borderRadius: "var(--radius-pill)" }}>📣 PROMOTER</span>}
                         {user.disabled && <span style={{ fontSize: 9, fontWeight: 700, background: "rgba(255,107,107,0.2)", color: "var(--accent)", padding: "1px 6px", borderRadius: "var(--radius-pill)" }}>DISABLED</span>}
                       </div>
                       <div style={{ fontSize: 11, color: "var(--text3)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{user.email || "—"}</div>
@@ -860,13 +862,36 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                           await updateDoc(doc(db, "users", user.id), { isPaid: newStatus, paidAt: newStatus ? new Date().toISOString() : null, paymentRef: newStatus ? (isFree ? "free_unlock" : "manual_admin_paid") : null })
                           // Credit the referrer once (and remember it, so a later Paystack payment can't credit twice)
                           if (newStatus && !isFree && user.referredBy && !user.referralCredited) {
-                            await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(REFERRAL_PAYOUT) }).catch(() => {})
+                            const referrer = users.find(u => u.id === user.referredBy)
+                            const rate = referrer?.role === "promoter" ? REFERRAL_PAYOUT_PROMOTER : REFERRAL_PAYOUT_USER
+                            await updateDoc(doc(db, "users", user.referredBy), { referralEarnings: increment(rate) }).catch(() => {})
                             await updateDoc(doc(db, "users", user.id), { referralCredited: true }).catch(() => {})
+                            await setDoc(doc(db, "referrals", user.id), {
+                              referrerId: user.referredBy, name: user.name || "Student",
+                              isPaid: true, paidAt: new Date().toISOString(), amountEarned: rate,
+                              rateType: referrer?.role === "promoter" ? "promoter" : "user",
+                            }, { merge: true }).catch(() => {})
                           }
                           setActionMsg(newStatus ? `✅ ${user.name} unlocked` : `🔒 ${user.name} access revoked`); fetchUsers(); setSelected(null)
                           } catch (e) { console.error("Unlock/revoke failed:", e); setActionError("Failed to update access: " + (e.code || e.message)) }
                         }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: user.isPaid ? "rgba(239,68,68,0.1)" : "rgba(34,201,122,0.1)", color: user.isPaid ? "#dc2626" : "#15803d", border: `1px solid ${user.isPaid ? "rgba(239,68,68,0.3)" : "rgba(34,201,122,0.3)"}`, fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
                           {user.isPaid ? "🔒 Revoke Access" : "💎 Unlock Full Access"}
+                        </button>
+                        <button onClick={async () => {
+                          const making = user.role !== "promoter"
+                          if (!window.confirm(making
+                            ? `Make ${user.name} a promoter?\n\nThey will earn ₦${REFERRAL_PAYOUT_PROMOTER} for every referral who pays, and get their own promoter page.`
+                            : `Remove promoter status from ${user.name}?\n\nThey will go back to ₦${REFERRAL_PAYOUT_USER} per referral. Money already earned stays on their balance.`)) return
+                          try {
+                            setActionError("")
+                            await updateDoc(doc(db, "users", user.id), making
+                              ? { role: "promoter", promoterSince: new Date().toISOString() }
+                              : { role: null })
+                            setActionMsg(making ? `📣 ${user.name} is now a promoter` : `${user.name} is no longer a promoter`)
+                            fetchUsers(); setSelected(null)
+                          } catch (e) { console.error(e); setActionError("Failed to change promoter status: " + (e.code || e.message)) }
+                        }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(124,58,237,0.1)", color: "#7c3aed", border: "1px solid rgba(124,58,237,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
+                          {user.role === "promoter" ? "📣 Remove Promoter" : "📣 Make Promoter"}
                         </button>
                         {((user.referralEarnings || 0) - (user.referralPaidOut || 0)) > 0 && (
                           <button onClick={async () => {
@@ -874,7 +899,10 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
                             if (!window.confirm(`Mark ₦${owed.toLocaleString()} referral payment as paid to ${user.name}?\n\nOnly do this after you have actually sent the money.`)) return
                             // Marks only the amount you saw and paid, so a referral that arrived meanwhile is not swallowed
                             try {
-                              await updateDoc(doc(db, "users", user.id), { referralPaidOut: increment(owed), referralPaidOutAt: new Date().toISOString() })
+                              const batch = writeBatch(db)
+                              batch.update(doc(db, "users", user.id), { referralPaidOut: increment(owed), referralPaidOutAt: new Date().toISOString() })
+                              batch.set(doc(collection(db, "payouts")), { userId: user.id, name: user.name || "", amount: owed, paidAt: new Date().toISOString(), note: "Referral payout" })
+                              await batch.commit()
                               setActionMsg(`✅ ₦${owed.toLocaleString()} marked as paid to ${user.name}`); fetchUsers(); setSelected(null)
                             } catch (e) { console.error(e); setActionError("Failed to record payout: " + (e.code || e.message)) }
                           }} style={{ padding: "10px", borderRadius: "var(--radius-md)", background: "rgba(34,197,94,0.1)", color: "#15803d", border: "1px solid rgba(34,197,94,0.3)", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "var(--font-main)" }}>
@@ -933,6 +961,16 @@ const AdminDashboard = ({ onNavigate, onBack, authUser }) => {
               )
             })()}
           </>
+        )}
+
+        {/* ===== PROMOTERS TAB ===== */}
+        {tab === "promoters" && (
+          <PromotersPanel
+            users={users}
+            setActionMsg={setActionMsg}
+            setActionError={setActionError}
+            refreshUsers={fetchUsers}
+          />
         )}
 
         {/* ===== MESSAGES TAB ===== */}

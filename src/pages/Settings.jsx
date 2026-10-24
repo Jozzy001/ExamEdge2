@@ -369,6 +369,27 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
           </>
         )}
 
+        {/* Promoter access */}
+        {userData?.role === "promoter" && (
+          <>
+            {sectionTitle("📣 Promoter")}
+            <button onClick={() => onNavigate("promoter")} style={{
+              width: "100%", padding: "14px 16px",
+              background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+              color: "#fff", border: "none", borderRadius: "var(--radius-md)",
+              fontWeight: 800, fontSize: 14, cursor: "pointer", fontFamily: "var(--font-main)",
+              display: "flex", alignItems: "center", gap: 10, marginBottom: 8
+            }}>
+              <span>📣</span>
+              <div style={{ textAlign: "left" }}>
+                <div>Promoter Dashboard</div>
+                <div style={{ fontSize: 11, opacity: 0.85, fontWeight: 600 }}>Your link, referrals and payments</div>
+              </div>
+              <span style={{ marginLeft: "auto" }}>→</span>
+            </button>
+          </>
+        )}
+
         {/* ===== PLAN ===== */}
         {sectionTitle("💎 Plan")}
 
@@ -380,7 +401,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             <div style={{ fontSize: 32, marginBottom: 8 }}>🚀</div>
             <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 6 }}>Upgrade to Full Access</div>
             <div style={{ fontSize: 13, opacity: 0.85, marginBottom: 16 }}>
-              Unlock all 20 years · Hot Topics · Weak Areas · CBT History
+              Unlock 10,000+ questions · Hot Topics · Weak Areas · CBT History
             </div>
             <button onClick={() => onNavigate("upgrade")} style={{
               background: "#fff", color: "#667eea", border: "none", borderRadius: 10,

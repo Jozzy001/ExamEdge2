@@ -55,3 +55,10 @@ export const ADMIN_UIDS = ["hsTTTa89W8UhKMtN6TyrPdkq9JA2"]
 // True only for the admin account(s) listed above. Never use an email (or a "recovery email")
 // to decide who is an admin: anyone can type any email into their profile.
 export const isAdminUser = (user) => !!user?.uid && ADMIN_UIDS.includes(user.uid)
+
+// ---------------------------------------------
+// REFERRAL PAY RATES (naira per referred student who pays)
+// Keep these the same as the constants at the top of api/paystack-webhook.js
+// ---------------------------------------------
+export const REFERRAL_PAYOUT_USER = 200
+export const REFERRAL_PAYOUT_PROMOTER = 500

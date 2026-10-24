@@ -13,6 +13,18 @@ import {
 import { useTheme } from "../context/ThemeContext"
 import { ButtonSpinner } from "../components/LoadingScreen"
 
+// ── Shared referral link: https://www.examedgeng.site/?ref=CODE ──
+// Runs once when the app loads, so it works even though the splash screen shows first.
+const REF_KEY = "ee-referral-code"
+try {
+  const refParam = new URLSearchParams(window.location.search).get("ref")
+  if (refParam) {
+    localStorage.setItem(REF_KEY, refParam.trim().toUpperCase().slice(0, 8))
+    // Tidy the address bar so the code isn't re-used by accident
+    window.history.replaceState({}, "", window.location.pathname)
+  }
+} catch (e) {}
+
 const phoneToEmail = (phone) => {
   const digits = phone.replace(/\D/g, "")
   return `${digits}@examedgeng.com`
@@ -29,7 +41,9 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const { dark, toggleTheme } = useTheme()
   const splashDestination = localStorage.getItem("ee-splash-destination")
   if (splashDestination) localStorage.removeItem("ee-splash-destination")
-  const [mode, setMode] = useState(splashDestination === "signup" ? "signup" : "login")
+  const savedRef = localStorage.getItem(REF_KEY) || ""
+  // Someone who opened a shared link goes straight to sign up
+  const [mode, setMode] = useState(splashDestination === "signup" || (savedRef && splashDestination !== "login") ? "signup" : "login")
   const [step, setStep] = useState(1)
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
@@ -43,7 +57,8 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const [error, setError] = useState("")
   const [resetSent, setResetSent] = useState(false)
   const [resetEmail, setResetEmail] = useState("")
-  const [referralCode, setReferralCode] = useState("")
+  const [referralCode, setReferralCode] = useState(savedRef)
+  const [invitedByLink] = useState(!!savedRef)
   const [referralStatus, setReferralStatus] = useState(null)
   const [referrerId, setReferrerId] = useState(null)
   const [checkingReferral, setCheckingReferral] = useState(false)
@@ -68,23 +83,23 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
     return () => unsub()
   }, [])
 
+  // Check the referral code. This reads one small public record, so it works before the student has an account.
   useEffect(() => {
     const timer = setTimeout(async () => {
-      if (!referralCode || referralCode.length < 6) {
+      if (!referralCode || referralCode.length < 5) {
         setReferralStatus(null); setReferrerId(null); return
       }
       setCheckingReferral(true)
       try {
-        const q = query(collection(db, "users"), where("referralCode", "==", referralCode.toUpperCase()))
-        const snap = await getDocs(q)
-        if (!snap.empty) {
-          setReferralStatus("valid"); setReferrerId(snap.docs[0].id)
+        const snap = await getDoc(doc(db, "referralCodes", referralCode.toUpperCase()))
+        if (snap.exists()) {
+          setReferralStatus("valid"); setReferrerId(snap.data().uid)
         } else {
           setReferralStatus("invalid"); setReferrerId(null)
         }
-      } catch { setReferralStatus("invalid") }
+      } catch { setReferralStatus("invalid"); setReferrerId(null) }
       setCheckingReferral(false)
-    }, 800)
+    }, 600)
     return () => clearTimeout(timer)
   }, [referralCode])
 
@@ -114,6 +129,15 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
   const handleSignup = async () => {
     setError(""); setLoading(true)
     try {
+      // Last-chance lookup, in case the student tapped "Create" before the code check finished
+      let refId = referrerId
+      if (!refId && referralCode.length >= 5 && referralStatus !== "invalid") {
+        try {
+          const s = await getDoc(doc(db, "referralCodes", referralCode.toUpperCase()))
+          if (s.exists()) refId = s.data().uid
+        } catch (e) {}
+      }
+
       const fakeEmail = phoneToEmail(phone)
       const result = await createUserWithEmailAndPassword(auth, fakeEmail, password)
       const user = result.user
@@ -132,9 +156,28 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
         referralCode: referralCode_gen,
         referralEarnings: 0,
         referralPaidOut: 0,
-        referredBy: referrerId || null,
+        referredBy: refId || null,
       }
       await setDoc(doc(db, "users", user.uid), userData)
+
+      // Public lookup record for this student's own code (so friends can use it before they have an account)
+      try {
+        await setDoc(doc(db, "referralCodes", referralCode_gen), { uid: user.uid, createdAt: serverTimestamp() })
+      } catch (e) { console.error("Could not save referral code record:", e) }
+
+      // The small record the referrer (or a promoter) is allowed to see: username + paid status only
+      if (refId) {
+        try {
+          await setDoc(doc(db, "referrals", user.uid), {
+            referrerId: refId,
+            name: name.trim(),
+            createdAt: serverTimestamp(),
+            isPaid: false,
+          })
+        } catch (e) { console.error("Could not save referral record:", e) }
+      }
+
+      localStorage.removeItem(REF_KEY)
       onAuthDone({ ...userData, uid: user.uid })
     } catch (err) {
       setError(getErrorMessage(err.code))
@@ -374,6 +417,16 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
               <p className="ee-subtitle">Step 1 of 2 — Your details</p>
             </div>
 
+            {invitedByLink && referralCode && (
+              <div style={{
+                background: "rgba(34,201,122,0.08)", border: "1px solid rgba(34,201,122,0.3)",
+                borderRadius: "var(--radius-md)", padding: "10px 14px", marginBottom: 16,
+                fontSize: 13, color: "#15803d", fontWeight: 700, textAlign: "center"
+              }}>
+                🎁 You were invited by a friend. Code <strong>{referralCode}</strong> will be applied on the next step.
+              </div>
+            )}
+
             <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
               {[1, 2].map(s => (
                 <div key={s} style={{
@@ -536,7 +589,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                   ✅ Your Free Account Includes:
                 </div>
                 {[
-                  "📅 2 years of past questions (2014 & 2015)",
+                  "📅 Limited past questions",
                   "🧪 CBT simulation mode",
                   "📚 Study guides for all topics",
                   "🎓 AI Tutor access",
@@ -556,7 +609,7 @@ const Auth = ({ onAuthDone, onGoToUpgrade }) => {
                   🔒 Upgrade for ₦1,500 to Unlock:
                 </div>
                 {[
-                  "📚 All 20 years of questions (2005–2024)",
+                  "📚 All 10,000+ past questions",
                   "🔥 Hot Topics — most repeated questions",
                   "📊 Weak Areas & full progress tracking",
                   "🕐 CBT History — review past attempts",

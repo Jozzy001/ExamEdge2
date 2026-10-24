@@ -275,7 +275,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   ✅ What you have now:
                 </div>
                 {[
-                  "📅 2 years of past questions (2014 & 2015)",
+                  "📅 Limited years of past questions",
                   `🧪 ${FREE_CBT_LIMIT} free CBT exams`,
                   "📚 Study guides for all topics",
                   "🎓 AI Tutor",
@@ -506,8 +506,8 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                   You've used your free CBTs — unlock unlimited practice
                 </div>
                 <div style={{ fontSize: 12, color: "var(--text2)", lineHeight: 1.65, marginBottom: 12 }}>
-                  You completed your free CBTs with <strong>2014 & 2015</strong> questions.
-                  Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
+                  You completed your free CBTs using the <strong>free past questions</strong>.
+                  Upgrade to take unlimited CBT exams across <strong>10,000+ past questions</strong>,
                   plus Hot Topics, Weak Areas tracking and CBT History.
                 </div>
                 <div style={{ display: "flex", gap: 8 }}>
@@ -520,7 +520,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
                       fontWeight: 800, fontSize: 13,
                       cursor: "pointer", fontFamily: "var(--font-main)"
                     }}
-                  >Unlock All 20 Years — {UPGRADE_PRICE} →</button>
+                  >Unlock 10,000+ Questions — {UPGRADE_PRICE} →</button>
                   <button
                     onClick={() => {
                       setNudgeDismissed(true)
@@ -642,6 +642,24 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
           <div><div className="home-card-title">Leaderboard</div><div className="home-card-sub">See how you rank against others</div></div>
         </button>
 
+        {/* Promoter dashboard — only for promoters */}
+        {userData?.role === "promoter" && (
+          <button onClick={() => onNavigate("promoter")} style={{
+            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            borderRadius: "var(--radius-lg)", padding: "14px 16px", marginBottom: 16,
+            color: "#fff", border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", gap: 12, width: "100%",
+            fontSize: 14, fontWeight: 700, boxShadow: "0 4px 14px rgba(16,185,129,0.3)"
+          }}>
+            <span style={{ fontSize: 24 }}>📣</span>
+            <div style={{ flex: 1, textAlign: "left" }}>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Promoter Dashboard</div>
+              <div style={{ fontSize: 11, opacity: 0.9, fontWeight: 600 }}>Your referrals, payments and what you're owed</div>
+            </div>
+            <span style={{ fontSize: 18, opacity: 0.85 }}>→</span>
+          </button>
+        )}
+
         {/* Referral card — hidden for now. Turn back on in src/utils/appConfig.js (SHOW_REFERRALS) */}
         {SHOW_REFERRALS && (
           <button onClick={() => onNavigate("referrals")} style={{
@@ -669,7 +687,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
             <span style={{ fontSize: 28 }}>🚀</span>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 800 }}>Unlock Full Access</div>
-              <div style={{ fontSize: 12, opacity: 0.85 }}>All 20 years · Hot Topics · Weak Areas</div>
+              <div style={{ fontSize: 12, opacity: 0.85 }}>10,000+ questions · Hot Topics · Weak Areas</div>
             </div>
             <div style={{ fontSize: 14, fontWeight: 800 }}>{UPGRADE_PRICE} →</div>
           </div>

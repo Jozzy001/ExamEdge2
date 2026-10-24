@@ -24,7 +24,7 @@ const REFERRAL_PAYOUT = "₦200"
 const ADMIN_EMAILS = ["youradmin@email.com"] // put your admin email(s) here, lowercase
 
 const FREE_HAVE = [
-  "📅 2 years of past questions (2014 & 2015)",
+  "📅 Limited years of past questions",
   `🧪 ${FREE_CBT_LIMIT} free CBT exams`,
   "📚 Study guides for all topics",
 ]
@@ -410,13 +410,13 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
                   You've used your free CBTs. Unlock unlimited practice
                 </div>
                 <div className="hm-nudge-text">
-                  You completed your free CBTs with <strong>2014 & 2015</strong> questions.
-                  Upgrade to take unlimited CBT exams across all <strong>20 years</strong>,
+                  You completed your free CBTs using the <strong>free past questions</strong>.
+                  Upgrade to take unlimited CBT exams across <strong>10,000+ past questions</strong>,
                   plus Hot Topics, Weak Areas tracking and CBT History.
                 </div>
                 <div className="hm-nudge-buttons">
                   <button className="hm-nudge-cta" onClick={() => onNavigate("upgrade")}>
-                    Unlock All 20 Years — {UPGRADE_PRICE} →
+                    Unlock 10,000+ Questions — {UPGRADE_PRICE} →
                   </button>
                   <button className="hm-nudge-later" onClick={dismissNudge}>Not now</button>
                 </div>
@@ -553,6 +553,18 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           <span className="hm-arrow-inline" aria-hidden="true">›</span>
         </button>
 
+        {/* Promoter dashboard — only for promoters */}
+        {userData?.role === "promoter" && (
+          <button className="hm-banner green" onClick={() => onNavigate("promoter")}>
+            <span className="hm-banner-emoji">📣</span>
+            <span className="hm-banner-body">
+              <span className="hm-banner-title">Promoter Dashboard</span>
+              <span className="hm-banner-sub">Your referrals, payments and what you're owed</span>
+            </span>
+            <span className="hm-banner-go">›</span>
+          </button>
+        )}
+
         {/* Earn with Us — free users see an explanation, paid users go straight to Referrals */}
         <button className="hm-banner green" onClick={handleEarnWithUs}>
           <span className="hm-banner-emoji">💰</span>
@@ -575,7 +587,7 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
             <span className="hm-banner-emoji">🚀</span>
             <span className="hm-banner-body">
               <span className="hm-banner-title">Unlock Full Access</span>
-              <span className="hm-banner-sub">All 20 years · Hot Topics · Weak Areas</span>
+              <span className="hm-banner-sub">10,000+ questions · Hot Topics · Weak Areas</span>
             </span>
             <span className="hm-banner-price">{UPGRADE_PRICE} ›</span>
           </button>

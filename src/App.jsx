@@ -16,6 +16,7 @@ import Upgrade from "./pages/Upgrade"
 import Leaderboard from "./pages/Leaderboard"
 import Referrals from "./pages/Referrals"
 import AccountDetails from "./pages/AccountDetails"
+import PromoterDashboard from "./pages/PromoterDashboard"
 import AITutor from "./pages/AITutor"
 import Classroom from "./pages/Classroom"
 import PastQuestions from "./pages/PastQuestions.jsx"   // ← add this
@@ -691,6 +692,15 @@ You've got this. ${closing}
         university={university}
         examType={examType}
         isPaid={effectiveIsPaid}
+        userData={userData}
+      />
+    )
+
+    if (page === "promoter") return (
+      <PromoterDashboard
+        onNavigate={handleNavigate}
+        onBack={handleBack}
+        authUser={authUser}
         userData={userData}
       />
     )

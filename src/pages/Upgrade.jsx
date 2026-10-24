@@ -51,7 +51,7 @@ export default function Upgrade({ user, userData, onBack }) {
   }, [status, user.uid, onBack])
 
   const features = [
-    "Complete UNIBEN Past Questions",
+    "10,000+ Past Questions (JAMB & Post-UTME)",
     "AI Tutor",
     "Unlimited CBT Practice",
     "Hot Topics",
@@ -164,7 +164,7 @@ export default function Upgrade({ user, userData, onBack }) {
           }}>
             <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 0.5, marginBottom: 4 }}>🎯 GOAL</div>
             <div style={{ fontSize: 13, lineHeight: 1.5 }}>
-              Finish ALL important UNIBEN Past Questions before the exam.
+              Finish ALL the important past questions before the exam.
             </div>
           </div>
         </div>
