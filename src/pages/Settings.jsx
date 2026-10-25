@@ -9,6 +9,9 @@ import { getGameState } from "../utils/gamification"
 import PageTour, { TOURS } from "../components/PageTour"
 import { UPGRADE_PRICE, ACCESS_END_LABEL, isAdminUser } from "../utils/appConfig"
 
+// How much a referrer earns per paid referral (same value as Home.jsx)
+const REFERRAL_PAYOUT = "₦200"
+
 const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, university, isPaid, userData, examType }) => {
   const { dark, toggleTheme } = useTheme()
   const [editingUsername, setEditingUsername] = useState(false)
@@ -24,6 +27,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
   const [showInbox, setShowInbox] = useState(false)
   const [contactMessage, setContactMessage] = useState("")
   const [myMessages, setMyMessages] = useState([])
+  const [showReferralUpgrade, setShowReferralUpgrade] = useState(false)
 
   const gameState = getGameState()
 
@@ -151,6 +155,13 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
   // JAMB students have no faculty, so show "JAMB" instead of an empty value
   const isJamb = examType === "jamb"
   const displayFaculty = isJamb ? "JAMB" : (faculty || "—")
+
+  // Earn With Us — paid users go straight to the referrals page,
+  // free users see an explanation first (upgrade + bank account needed)
+  const handleEarnWithUs = () => {
+    if (isPaid) onNavigate("referrals")
+    else setShowReferralUpgrade(true)
+  }
 
   return (
     <PageTransition>
@@ -401,7 +412,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             <div style={{ fontSize: 32, marginBottom: 8 }}>🚀</div>
             <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 6 }}>Upgrade to Full Access</div>
             <div style={{ fontSize: 13, opacity: 0.85, marginBottom: 16 }}>
-              Unlock 10,000+ questions · Hot Topics · Weak Areas · CBT History
+              Unlock 10,000+ questions · Hot Topics · Weak Areas · CBT History · Earn {REFERRAL_PAYOUT} per referral
             </div>
             <button onClick={() => onNavigate("upgrade")} style={{
               background: "#fff", color: "#667eea", border: "none", borderRadius: 10,
@@ -433,7 +444,7 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         {/* ===== REFERRALS ===== */}
         {sectionTitle("💰 Referrals & Earnings")}
 
-        <button onClick={() => onNavigate("referrals")} style={{
+        <button onClick={handleEarnWithUs} style={{
           width: "100%", display: "flex", alignItems: "center", gap: 14,
           background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
           borderRadius: "var(--radius-lg)", padding: "16px 18px",
@@ -443,13 +454,19 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
         }}>
           <span style={{ fontSize: 28 }}>💰</span>
           <div style={{ flex: 1, textAlign: "left" }}>
-            <div style={{ fontSize: 14, fontWeight: 800 }}>View Earnings & Referrals</div>
-            <div style={{ fontSize: 12, opacity: 0.9 }}>Total earned · Pending · Payment history · Share your code</div>
+            <div style={{ fontSize: 14, fontWeight: 800 }}>
+              {isPaid ? "View Earnings & Referrals" : "Earn With Us 🔒"}
+            </div>
+            <div style={{ fontSize: 12, opacity: 0.9 }}>
+              {isPaid
+                ? "Total earned · Pending · Payment history · Share your code"
+                : `Upgrade to start earning ${REFERRAL_PAYOUT} per referral`}
+            </div>
           </div>
           <span style={{ fontSize: 18, opacity: 0.8 }}>→</span>
         </button>
 
-        {(userData?.referralEarnings || 0) > 0 && (
+        {isPaid && (userData?.referralEarnings || 0) > 0 && (
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 12 }}>
             {[
               { label: "Total Earned", value: `₦${(userData?.referralEarnings || 0).toLocaleString()}`, color: "#15803d", bg: "rgba(34,197,94,0.08)", border: "rgba(34,197,94,0.2)" },
@@ -572,6 +589,66 @@ const Settings = ({ onNavigate, onBack, onReset, onLogout, authUser, faculty, un
             </div>
           )}
         </div>
+
+        {/* ===== EARN WITH US — FREE USER EXPLANATION ===== */}
+        {showReferralUpgrade && !isPaid && (
+          <div
+            onClick={() => setShowReferralUpgrade(false)}
+            style={{
+              position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.55)",
+              display: "flex", alignItems: "center", justifyContent: "center", padding: 20
+            }}
+          >
+            <div
+              onClick={e => e.stopPropagation()}
+              style={{
+                width: "100%", maxWidth: 380, background: "var(--bg, var(--surface))",
+                borderRadius: "var(--radius-xl)", overflow: "hidden",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.3)"
+              }}
+            >
+              <div style={{
+                background: "linear-gradient(135deg, #10b981, #059669)",
+                color: "#fff", textAlign: "center", padding: "24px 20px"
+              }}>
+                <div style={{ fontSize: 40, marginBottom: 6 }}>💰</div>
+                <div style={{ fontSize: 18, fontWeight: 800 }}>Earn With Us</div>
+                <div style={{ fontSize: 12, opacity: 0.9, marginTop: 2 }}>Only available on Full Access</div>
+              </div>
+              <div style={{ padding: "18px 20px 20px" }}>
+                <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.7, margin: "0 0 14px" }}>
+                  Referral earnings are a Full Access feature. Upgrade for {UPGRADE_PRICE} to get your
+                  own referral code and start earning <strong>{REFERRAL_PAYOUT} for every friend</strong> who
+                  signs up with your code and pays for Full Access.
+                </p>
+                <div style={{
+                  background: "var(--primary-light)", borderRadius: "var(--radius-md)",
+                  padding: "12px 14px", marginBottom: 16, fontSize: 12, color: "var(--text)", lineHeight: 1.6
+                }}>
+                  <div style={{ fontWeight: 800, color: "var(--primary)", marginBottom: 4 }}>📌 One more step after upgrading:</div>
+                  We'll ask for your <strong>bank account number</strong> so we know where to send your referral payouts.
+                </div>
+                <button
+                  className="ee-btn ee-btn-primary"
+                  style={{ width: "100%", marginBottom: 8 }}
+                  onClick={() => { setShowReferralUpgrade(false); onNavigate("upgrade") }}
+                >
+                  Upgrade Now — {UPGRADE_PRICE} 🚀
+                </button>
+                <button
+                  onClick={() => setShowReferralUpgrade(false)}
+                  style={{
+                    width: "100%", padding: "10px", background: "transparent", border: "none",
+                    color: "var(--text3)", fontWeight: 700, fontSize: 13, cursor: "pointer",
+                    fontFamily: "var(--font-main)"
+                  }}
+                >
+                  Not now
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <button onClick={handleLogout} className="ee-btn" style={{
           width: "100%", marginTop: 8, marginBottom: 8,
