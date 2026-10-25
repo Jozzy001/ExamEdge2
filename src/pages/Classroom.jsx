@@ -1,13 +1,20 @@
 // Classroom — synchronized live study session
 // Host controls pace, everyone sees the same question at the same time
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { db } from "../firebase"
 import {
   doc, collection, addDoc, updateDoc, onSnapshot,
   serverTimestamp, deleteDoc, setDoc, query, where, getDocs, increment
 } from "firebase/firestore"
 import { POST_UTME_UNIVERSITIES } from "../data/postutme/index"
+import jambQuestions from "../data/jamb/questions"
+import { UPGRADE_PRICE } from "../utils/appConfig"
+
+// ── TESTING SWITCH ──
+// true  = every student can use Classroom (beta testing)
+// false = Classroom is for paid users only (the "Coming Soon" screen shows for free users)
+const CLASSROOM_OPEN_TO_ALL = true
 
 const STORAGE_KEY = "classroom_session_id"
 const CODE_LENGTH = 5
@@ -40,10 +47,14 @@ const optionIsAnswer = (q, opt, i) => {
   return stripLetter(opt) === stripLetter(a)
 }
 
+// JAMB students use the JAMB question bank, Post-UTME students use their university's bank
+const getPool = (university) =>
+  university === "JAMB" ? jambQuestions : (POST_UTME_UNIVERSITIES[university]?.questions || [])
+
 // Build a question set for the session from existing question pool
 // Firestore rejects `undefined`, so every field gets a safe default.
 const buildQuestionSet = (university, subject, count = 10) => {
-  const pool = POST_UTME_UNIVERSITIES[university]?.questions || []
+  const pool = getPool(university)
   const flat = []
   pool.forEach(item => {
     if (item.passage && item.questions) {
@@ -88,6 +99,23 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
 
   const isHost = session?.hostId === authUser?.uid
   const myName = userData?.name || authUser?.email?.split("@")[0] || "Student"
+
+  // Subjects the host can pick from. Post-UTME students use their faculty's subjects;
+  // JAMB students have none, so list every subject that exists in the question bank.
+  const subjectOptions = useMemo(() => {
+    if (facultySubjects?.length) return facultySubjects
+    const found = new Set()
+    getPool(university).forEach(item => {
+      if (item.passage && item.questions) item.questions.forEach(q => q.subject && found.add(q.subject))
+      else if (item.subject) found.add(item.subject)
+    })
+    return found.size ? [...found].sort() : ["English"]
+  }, [facultySubjects, university])
+
+  // Keep the chosen subject valid (e.g. a JAMB student whose bank has no "English" entry)
+  useEffect(() => {
+    if (!subjectOptions.includes(selectedSubject)) setSelectedSubject(subjectOptions[0])
+  }, [subjectOptions])
 
   const rememberSession = (id) => {
     try {
@@ -183,7 +211,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
       setSessionId(ref.id)
     } catch (e) {
       console.error("create session failed", e)
-      setError("Failed to create session. Please try again.")
+      setError("Failed to create session: " + (e.code || e.message))
     }
     setCreating(false)
   }
@@ -213,7 +241,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
       setSessionId(active.id)
     } catch (e) {
       console.error("join session failed", e)
-      setError("Failed to join session. Please try again.")
+      setError("Failed to join session: " + (e.code || e.message))
     }
     setJoining(false)
   }
@@ -302,9 +330,9 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
   const myAnswerCount = (idx) => participants.filter(p => p.answeredQuestions?.[idx]).length
 
   // =========================================================
-  // COMING SOON GATE — Classroom is paid-only and still in beta
+  // COMING SOON GATE — only used when CLASSROOM_OPEN_TO_ALL is false
   // =========================================================
-  if (!isPaid) {
+  if (!isPaid && !CLASSROOM_OPEN_TO_ALL) {
     return (
       <div className="ee-page">
         <header className="ee-header">
@@ -330,7 +358,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
             </p>
           </div>
           <button className="ee-btn ee-btn-primary" onClick={() => onNavigate("upgrade")}>
-            🚀 Get Full Access — ₦2,500
+            🚀 Get Full Access — {UPGRADE_PRICE}
           </button>
         </div>
       </div>
@@ -363,6 +391,12 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
               Join a live classroom session — everyone answers the same question
               at the same time. See how you rank in real time.
             </p>
+            {CLASSROOM_OPEN_TO_ALL && !isPaid && (
+              <div style={{
+                display: "inline-block", marginTop: 10, fontSize: 11, fontWeight: 800,
+                background: "rgba(255,255,255,0.2)", padding: "3px 12px", borderRadius: 20
+              }}>🧪 BETA · open to everyone for now</div>
+            )}
           </div>
 
           {loadingSession && (
@@ -432,7 +466,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
                 fontFamily: "var(--font-main)", outline: "none", boxSizing: "border-box"
               }}
             >
-              {(facultySubjects || ["English", "Mathematics"]).map(s => (
+              {subjectOptions.map(s => (
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>

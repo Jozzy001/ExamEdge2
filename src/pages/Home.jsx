@@ -516,21 +516,14 @@ const Home = ({ onNavigate, isPaid, userData, authUser, subjects = [] }) => {
           </button>
         </div>
 
-        {/* Classroom — admin only for now */}
-        <button
-          className="hm-banner soft"
-          onClick={adminOnly("classroom")}
-          disabled={!isAdmin}
-          style={!isAdmin ? { opacity: 0.55, cursor: "not-allowed" } : undefined}
-        >
+        {/* Classroom — open to everyone while it is in beta */}
+        <button className="hm-banner soft" onClick={() => onNavigate("classroom")}>
           <span className="hm-banner-emoji">🏫</span>
           <span className="hm-banner-body">
-            <span className="hm-banner-title">Classroom {isAdmin ? "🛠️" : "🔒"}</span>
-            <span className="hm-banner-sub">
-              {isAdmin ? "Admin preview · hidden from students" : "Coming soon"}
-            </span>
+            <span className="hm-banner-title">Classroom 🧪</span>
+            <span className="hm-banner-sub">Study live with friends · Beta</span>
           </span>
-          <span className="hm-banner-go">{isAdmin ? "›" : ""}</span>
+          <span className="hm-banner-go">›</span>
         </button>
 
         <span className="ee-label" style={{ marginTop: 22 }}>Track yourself</span>

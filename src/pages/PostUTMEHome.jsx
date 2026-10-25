@@ -623,7 +623,7 @@ const PostUTMEHome = ({ onNavigate, onReset, university, faculty, facultySubject
         }}>
           <span style={{ fontSize: 32 }}>🏫</span>
           <div style={{ flex: 1 }}>
-            <div className="home-card-title" style={{ color: "var(--primary)", fontSize: 15 }}>Classroom {!isPaid && "🔒"}</div>
+            <div className="home-card-title" style={{ color: "var(--primary)", fontSize: 15 }}>Classroom <span style={{ fontSize: 10, fontWeight: 800, background: "rgba(102,126,234,0.15)", color: "var(--primary)", padding: "1px 8px", borderRadius: 10, marginLeft: 4 }}>BETA</span></div>
             <div className="home-card-sub">Study live with friends — same question, same time</div>
           </div>
           <span style={{ fontSize: 18, color: "var(--primary)", opacity: 0.7 }}>→</span>
