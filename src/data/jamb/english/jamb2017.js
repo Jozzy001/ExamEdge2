@@ -977,7 +977,7 @@ const jamb2017 = [
 
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -988,7 +988,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -999,7 +999,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1010,7 +1010,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1021,7 +1021,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1032,7 +1032,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1048,7 +1048,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1064,7 +1064,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1075,7 +1075,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1086,7 +1086,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1097,7 +1097,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1108,7 +1108,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1119,7 +1119,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1130,7 +1130,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1141,7 +1141,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1152,7 +1152,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1163,7 +1163,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1174,7 +1174,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1185,7 +1185,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",
@@ -1196,7 +1196,7 @@ const jamb2017 = [
   },
 
   {
-    topic: "Lexis and Structure",
+    topic: "Lexis & Structure",
     year: 2016,
     subject: "English",
     exam: "JAMB",

@@ -184,7 +184,7 @@ const CURATED_HOT_TOPICS = {
       title: "Language Skills", emoji: "🟢",
       blurb: "Rules and patterns that examiners keep recycling.",
       items: [
-        { topic: "Lexis and Structure (Grammar & Concord)", keywords: ["lexis", "structure", "grammar", "concord"],
+        { topic: "Lexis & Structure (Grammar & Concord)", keywords: ["lexis", "structure", "grammar", "concord"],
           focus: "Singular/plural constraints (furniture, equipment, electronics), proximity concord (as well as, no less than, alongside), subjunctive moods (it is time we did away with...)." },
         { topic: "Idioms & Clichés", keywords: ["idiom", "expression", "cliche"],
           focus: "High-frequency figurative phrases such as cross the Rubicon, a chip off the old block, pull the wool over my eyes." },

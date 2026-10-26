@@ -1,6 +1,6 @@
 // JAMB 2015 English Language Past Questions
 // Flat array of question objects (all share the same shape).
-// Note: Q23 (Literature) and Q71 (Lexis) are missing from the source PDF and are intentionally omitted.
+// Note: Q23 (Literature) and Q71 (Lexis & Structure) are missing from the source PDF and are intentionally omitted.
 
 const KEY = "according to the answer key in the supplied 2015 paper";
 
@@ -19,7 +19,7 @@ const comp = make("Comprehension");
 const cloze = make("Cloze Test");
 const lit = make("Literature");
 const lexs = make("Lexis & Structure");
-const lexis = make("Lexis");
+const lexis = make("Lexis & Structure");
 const vowel = make("Vowel Sounds");
 const cons = make("Consonant Sounds");
 const rhyme = make("Rhymes");

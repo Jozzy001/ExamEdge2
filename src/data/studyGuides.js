@@ -134,7 +134,7 @@ const STUDY_GUIDES = {
       {
         heading: "What is Lexis & Structure?",
         type: "text",
-        content: "Lexis refers to vocabulary — the words we use. Structure refers to grammar — how words are arranged. These questions test whether you can choose the right word to complete a sentence correctly."
+        content: "Lexis & Structure refers to vocabulary — the words we use. Structure refers to grammar — how words are arranged. These questions test whether you can choose the right word to complete a sentence correctly."
       },
       {
         heading: "Types of Questions",

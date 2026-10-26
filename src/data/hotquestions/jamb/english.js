@@ -4,7 +4,7 @@ export const englishHotQuestions = [
   // CATEGORY: UNCOUNTABLE NOUNS
   {
     id: 1,
-    category: "Lexis and Structure",
+    category: "Lexis & Structure",
     question: "The school Board has placed an order for...",
     options: {
       A: "all the furnitures and equipments required in the new schools",
@@ -36,7 +36,7 @@ export const englishHotQuestions = [
   // CATEGORY: SUBJUNCTIVE AFTER "IT IS TIME"
   {
     id: 3,
-    category: "Lexis and Structure",
+    category: "Lexis & Structure",
     question: "The lazy candidates suggested that it...",
     options: {
       A: "is time we do away with JAMB",
@@ -68,7 +68,7 @@ export const englishHotQuestions = [
   // CATEGORY: PROXIMITY CONCORD
   {
     id: 5,
-    category: "Lexis and Structure",
+    category: "Lexis & Structure",
     question: "The teacher with his wife... here.",
     options: {
       A: "were",

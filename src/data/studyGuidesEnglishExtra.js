@@ -280,14 +280,14 @@ const ENGLISH_EXTRA_GUIDES = {
   // ==========================================
   // ENGLISH — LEXIS
   // ==========================================
-  "Lexis": {
+  "Lexis & Structure": {
     subject: "English",
-    title: "Lexis — Choosing the Right Word",
+    title: "Lexis & Structure — Choosing the Right Word",
     icon: "📖",
     estimatedTime: "3 min read",
     sections: [
-      { heading: "What is Lexis?", type: "text",
-        content: "Lexis means vocabulary. Lexis questions test whether you can choose the word that best fits the meaning, tone and grammar of a sentence, and whether you know how words combine and differ in meaning." },
+      { heading: "What is Lexis & Structure?", type: "text",
+        content: "Lexis & Structure means vocabulary. Lexis & Structure questions test whether you can choose the word that best fits the meaning, tone and grammar of a sentence, and whether you know how words combine and differ in meaning." },
       { heading: "Common Question Types", type: "cards", items: [
         { title: "Word choice", body: "Pick the word that completes the sentence best: 'The manager gave a ______ reply' (brief, not short-cut)." },
         { title: "Collocation", body: "Words that naturally partner: make a mistake, do homework, heavy traffic, strong tea, give advice, pay a visit." },
@@ -445,14 +445,14 @@ const ENGLISH_EXTRA_GUIDES = {
   // ==========================================
   // ENGLISH — LEXIS AND STRUCTURE
   // ==========================================
-  "Lexis and Structure": {
+  "Lexis & Structure": {
     subject: "English",
-    title: "Lexis and Structure — Vocabulary Meets Grammar",
+    title: "Lexis & Structure — Vocabulary Meets Grammar",
     icon: "🧱",
     estimatedTime: "3 min read",
     sections: [
       { heading: "What is Tested", type: "text",
-        content: "Lexis is vocabulary (the words we choose). Structure is grammar (how words are arranged). These questions give you a sentence with a gap or an underlined word and ask for the option that is correct in both meaning and grammar." },
+        content: "Lexis & Structure is vocabulary (the words we choose). Structure is grammar (how words are arranged). These questions give you a sentence with a gap or an underlined word and ask for the option that is correct in both meaning and grammar." },
       { heading: "Types of Questions", type: "cards", items: [
         { title: "Word choice", body: "Choose the word that best fits meaning and tone. 'The general needed ______ veterans' → seasoned." },
         { title: "Contrast and signal words", body: "'Although he was rich, he lived ______' → frugally/simply (contrast). Read the signal word first." },

@@ -17,7 +17,7 @@ const make = (topic) => (question, options, answer, reason = KEY) => ({
 const comp = make("Comprehension");
 const cloze = make("Cloze Test");
 const lit = make("Literature");
-const lexs = make("Lexis and Structure");
+const lexs = make("Lexis & Structure");
 const opp = make("Opposite in Meaning");
 const compl = make("Completion");
 const near = make("Nearest in Meaning");
