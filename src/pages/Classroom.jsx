@@ -1,10 +1,12 @@
 // Classroom — live study + battle sessions
 //
 // STUDY  : host controls the pace (Next / End). Answers show straight away.
-// BATTLE : host only sets subject/topic/questions/time. The app runs the timer,
+// BATTLE : host only sets subject/questions/time. The app runs the timer,
 //          reveals answers, moves on automatically and ranks everyone.
 //            - Classic    : everyone answers within the timer, faster = more points
 //            - Rapid Fire : first correct answer wins the question, then it moves on
+//
+// Questions are always drawn randomly from the chosen subject (no topic picker).
 //
 // FIRESTORE READ SAVING (important):
 //   - Only the HOST listens to all participants while the game is live.
@@ -76,8 +78,7 @@ const getPool = (university) =>
   university === "JAMB" ? jambQuestions : (POST_UTME_UNIVERSITIES[university]?.questions || [])
 
 // Flatten the pool (unwrapping passage groups) into usable questions for a subject.
-// `topic` is optional: empty/null means "all topics" (random).
-const flattenPool = (university, subject, topic) => {
+const flattenPool = (university, subject) => {
   const flat = []
   getPool(university).forEach(item => {
     if (item.passage && item.questions) {
@@ -89,27 +90,14 @@ const flattenPool = (university, subject, topic) => {
   return flat.filter(q =>
     q.question &&
     Array.isArray(q.options) && q.options.length > 0 &&
-    (!subject || q.subject === subject) &&
-    (!topic || (q.topic ?? "General") === topic)
+    (!subject || q.subject === subject)
   )
 }
 
-// Topics that exist for a subject, with how many questions each has
-const getTopicsForSubject = (university, subject) => {
-  const counts = {}
-  flattenPool(university, subject, null).forEach(q => {
-    const t = q.topic ?? "General"
-    counts[t] = (counts[t] || 0) + 1
-  })
-  return Object.entries(counts)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => a.name.localeCompare(b.name))
-}
-
-// Build a question set for the session from existing question pool
+// Build a random question set for the session from the subject's question pool
 // Firestore rejects `undefined`, so every field gets a safe default.
-const buildQuestionSet = (university, subject, topic, count = DEFAULT_COUNT) => {
-  return shuffle(flattenPool(university, subject, topic))
+const buildQuestionSet = (university, subject, count = DEFAULT_COUNT) => {
+  return shuffle(flattenPool(university, subject))
     .slice(0, count)
     .map((q, i) => ({
       index: i,
@@ -165,7 +153,6 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
   const [creating, setCreating] = useState(false)
   const [joining, setJoining] = useState(false)
   const [selectedSubject, setSelectedSubject] = useState(facultySubjects?.[0] || "English")
-  const [selectedTopic, setSelectedTopic] = useState("") // "" = random (all topics)
   const [questionCount, setQuestionCount] = useState(DEFAULT_COUNT)
   const [mode, setMode] = useState("study") // study | battle
   const [battleStyle, setBattleStyle] = useState("classic") // classic | rapid
@@ -203,17 +190,10 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
     if (!subjectOptions.includes(selectedSubject)) setSelectedSubject(subjectOptions[0])
   }, [subjectOptions])
 
-  // Topics for the chosen subject. Changing subject resets the topic back to "Random".
-  const topicOptions = useMemo(
-    () => getTopicsForSubject(university, selectedSubject),
-    [university, selectedSubject]
-  )
-  useEffect(() => { setSelectedTopic("") }, [selectedSubject])
-
-  // How many questions exist for the current subject + topic choice
+  // How many questions exist for the chosen subject
   const availableCount = useMemo(
-    () => flattenPool(university, selectedSubject, selectedTopic).length,
-    [university, selectedSubject, selectedTopic]
+    () => flattenPool(university, selectedSubject).length,
+    [university, selectedSubject]
   )
 
   // Count chips the host can choose from (never more than what's available)
@@ -227,7 +207,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
     return choices
   }, [availableCount])
 
-  // The count that will actually be used (stays valid when subject/topic changes)
+  // The count that will actually be used (stays valid when the subject changes)
   const effectiveCount = countChoices.includes(questionCount)
     ? questionCount
     : (countChoices.filter(n => n <= questionCount).pop() ?? countChoices[0] ?? 0)
@@ -445,14 +425,14 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
     setCreating(true)
     setError("")
     try {
-      const questions = buildQuestionSet(university, selectedSubject, selectedTopic, effectiveCount)
+      const questions = buildQuestionSet(university, selectedSubject, effectiveCount)
       if (questions.length === 0) {
-        setError("No questions available for this choice. Try another topic or subject.")
+        setError("No questions available for this subject. Try another subject.")
         setCreating(false)
         return
       }
       const joinCode = generateJoinCode()
-      const topicLabel = selectedTopic || "Random"
+      const topicLabel = "Random"
       const isBattle = mode === "battle"
       const ref = await addDoc(collection(db, "classrooms"), {
         hostId: authUser.uid,
@@ -855,28 +835,15 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
-
-            {/* 2. Topic (or random) */}
-            <div style={fieldLabel}>Topic</div>
-            <select
-              value={selectedTopic}
-              onChange={e => setSelectedTopic(e.target.value)}
-              style={{ ...selectStyle, marginBottom: 6 }}
-            >
-              <option value="">🎲 Random (all topics)</option>
-              {topicOptions.map(t => (
-                <option key={t.name} value={t.name}>{t.name} ({t.count})</option>
-              ))}
-            </select>
-            <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 14 }}>
+            <div style={{ fontSize: 11, color: "var(--text3)", marginTop: -8, marginBottom: 14 }}>
               {availableCount} question{availableCount === 1 ? "" : "s"} available
             </div>
 
-            {/* 3. Number of questions */}
+            {/* 2. Number of questions */}
             <div style={fieldLabel}>Number of questions</div>
             {countChoices.length === 0 ? (
               <div style={{ fontSize: 12, color: "#dc2626", fontWeight: 600, marginBottom: 14 }}>
-                No questions for this choice. Try another topic or subject.
+                No questions for this subject. Try another subject.
               </div>
             ) : (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
@@ -886,7 +853,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
               </div>
             )}
 
-            {/* 4. Seconds per question (battle only) */}
+            {/* 3. Seconds per question (battle only) */}
             {mode === "battle" && (
               <>
                 <div style={fieldLabel}>Seconds per question</div>
@@ -898,7 +865,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
               </>
             )}
 
-            {/* 5. Player limit */}
+            {/* 4. Player limit */}
             <div style={fieldLabel}>Maximum players</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
               {PLAYER_CHOICES.map(n => (
@@ -948,7 +915,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
               {session.joinCode}
             </div>
             <div style={{ fontSize: 13, opacity: 0.9 }}>
-              {session.subject} · {session.topic && session.topic !== "Random" ? session.topic : "Random topics"} · {session.questions?.length} questions
+              {session.subject} · Random topics · {session.questions?.length} questions
             </div>
             {isBattle && (
               <div style={{ fontSize: 12, opacity: 0.9, marginTop: 6, fontWeight: 700 }}>
@@ -1297,9 +1264,7 @@ const Classroom = ({ onNavigate, onBack, authUser, userData, university, faculty
               {isBattle ? "Battle Complete!" : "Session Complete!"}
             </div>
             <div style={{ fontSize: 13, opacity: 0.9 }}>
-              {session.subject}
-              {session.topic && session.topic !== "Random" ? ` · ${session.topic}` : " · Random topics"}
-              {` · ${total} questions`}
+              {session.subject} · Random topics · {total} questions
             </div>
           </div>
 
